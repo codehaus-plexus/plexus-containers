@@ -44,6 +44,7 @@ public abstract class PlexusTestCase
         basedir = getBasedir();
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     protected void setupContainer()
     {
         // ----------------------------------------------------------------------------
@@ -167,8 +168,8 @@ public abstract class PlexusTestCase
      * this will produce a resource name of org/foo/FunTest.xml which would be used to
      * configure the Plexus container before running your test.
      *
-     * @param subname
-     * @return
+     * @param subname the subname
+     * @return A configruation name
      */
     protected String getConfigurationName( String subname )
     {
@@ -189,17 +190,19 @@ public abstract class PlexusTestCase
     // Container access
     // ----------------------------------------------------------------------
 
-    protected Object lookup( String componentKey )
+    @SuppressWarnings("unchecked")
+    protected <T> T lookup( String componentKey )
         throws Exception
     {
-        return getContainer().lookup( componentKey );
+        return (T) getContainer().lookup( componentKey );
     }
 
-    protected Object lookup( String role,
+    @SuppressWarnings("unchecked")
+    protected <T> T lookup( String role,
                              String roleHint )
         throws Exception
     {
-        return getContainer().lookup( role, roleHint );
+        return (T) getContainer().lookup( role, roleHint );
     }
 
     protected <T> T lookup( Class<T> componentClass )

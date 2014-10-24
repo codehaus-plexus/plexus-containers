@@ -23,7 +23,6 @@ import org.codehaus.plexus.PlexusConstants;
 import org.codehaus.plexus.component.composition.CycleDetectedInComponentGraphException;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
 import org.codehaus.plexus.component.repository.exception.ComponentLookupException;
-import org.codehaus.plexus.component.repository.exception.ComponentRepositoryException;
 import org.codehaus.plexus.configuration.source.ChainedConfigurationSource;
 import org.codehaus.plexus.configuration.source.ConfigurationSource;
 

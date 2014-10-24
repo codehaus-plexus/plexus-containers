@@ -1,10 +1,5 @@
 package org.codehaus.plexus.component.repository.exception;
 
-import org.codehaus.plexus.classworlds.realm.ClassRealm;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 /*
  * Copyright 2001-2006 Codehaus Foundation.
  *

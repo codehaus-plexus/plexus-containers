@@ -22,7 +22,6 @@ import org.codehaus.plexus.lifecycle.phase.Phase;
 import org.codehaus.plexus.personality.plexus.lifecycle.phase.PhaseExecutionException;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public abstract class AbstractLifecycleHandler

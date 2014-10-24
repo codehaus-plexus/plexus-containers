@@ -137,7 +137,7 @@ public class DefaultContext
      *
      * @return the containerContext data
      */
-    public Map getContextData()
+    public Map<Object,Object> getContextData()
     {
         return Collections.unmodifiableMap( contextData );
 

@@ -19,7 +19,6 @@ package org.codehaus.plexus.container.initialization;
 import org.codehaus.plexus.component.repository.ComponentRepository;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
 import org.codehaus.plexus.component.repository.io.PlexusTools;
-import org.codehaus.plexus.component.repository.exception.ComponentRepositoryException;
 import org.codehaus.plexus.component.composition.CycleDetectedInComponentGraphException;
 import org.codehaus.plexus.component.manager.PerLookupComponentManagerFactory;
 import org.codehaus.plexus.component.manager.SingletonComponentManagerFactory;

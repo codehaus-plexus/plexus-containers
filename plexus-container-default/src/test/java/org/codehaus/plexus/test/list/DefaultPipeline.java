@@ -16,7 +16,6 @@ package org.codehaus.plexus.test.list;
  * limitations under the License.
  */
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 

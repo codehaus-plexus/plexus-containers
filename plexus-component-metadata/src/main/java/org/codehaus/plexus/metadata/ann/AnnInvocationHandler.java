@@ -48,7 +48,7 @@ public class AnnInvocationHandler implements InvocationHandler {
       String sep = "";
       for(Map.Entry<String, Object> e : ann.getParams().entrySet()) {
         // TODO conversion for class, array, enum, and annotation types
-        sb.append(sep).append(e.getKey()+"="+e.getValue());
+        sb.append(sep).append(e.getKey()).append("=").append(e.getValue());
         sep = "; ";
       }
       sb.append("]");

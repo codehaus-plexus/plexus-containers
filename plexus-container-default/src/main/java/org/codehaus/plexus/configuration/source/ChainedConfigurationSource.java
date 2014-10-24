@@ -1,6 +1,5 @@
 package org.codehaus.plexus.configuration.source;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.codehaus.plexus.component.repository.ComponentDescriptor;

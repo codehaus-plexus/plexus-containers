@@ -16,7 +16,6 @@ package org.codehaus.plexus;
  * limitations under the License.
  */
 
-import junit.framework.TestCase;
 import org.codehaus.plexus.component.repository.exception.ComponentLookupException;
 import org.codehaus.plexus.component.repository.exception.ComponentLookupRuntimeException;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
@@ -49,6 +48,7 @@ public abstract class PlexusJUnit4TestCase
         basedir = getBasedir();
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     protected void setupContainer()
     {
         // ----------------------------------------------------------------------------
@@ -113,7 +113,7 @@ public abstract class PlexusJUnit4TestCase
      * Allow custom test case implementations do augment the default container configuration before
      * executing tests.
      *
-     * @param containerConfiguration
+     * @param containerConfiguration The configuration
      */
     protected void customizeContainerConfiguration( ContainerConfiguration containerConfiguration )
     {
@@ -171,8 +171,8 @@ public abstract class PlexusJUnit4TestCase
      * this will produce a resource name of org/foo/FunTest.xml which would be used to
      * configure the Plexus container before running your test.
      *
-     * @param subname
-     * @return
+     * @param subname   the subname (not used)
+     * @return A configuration name
      */
     protected String getConfigurationName( String subname )
     {

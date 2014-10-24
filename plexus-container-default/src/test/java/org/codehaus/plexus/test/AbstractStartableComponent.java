@@ -3,7 +3,7 @@ package org.codehaus.plexus.test;
 import org.codehaus.plexus.personality.plexus.lifecycle.phase.Startable;
 import org.codehaus.plexus.personality.plexus.lifecycle.phase.StartingException;
 import org.codehaus.plexus.personality.plexus.lifecycle.phase.StoppingException;
-import junit.framework.Assert;
+
 import static junit.framework.Assert.assertTrue;
 
 public class AbstractStartableComponent
