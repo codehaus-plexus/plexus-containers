@@ -25,11 +25,15 @@
   </modules>
 
   <scm>
-    <connection>scm:git:git@github.com:sonatype/plexus-containers.git</connection>
-    <developerConnection>scm:git:git@github.com:sonatype/plexus-containers.git</developerConnection>
-    <url>https://github.com/sonatype/plexus-containers</url>
+    <connection>scm:git:git@github.com:codehaus-plexus/plexus-containers.git</connection>
+    <developerConnection>scm:git:git@github.com:codehaus-plexus/plexus-containers.git</developerConnection>
+    <url>https://github.com/codehaus-plexus/plexus-containers</url>
     <tag>HEAD</tag>
   </scm>
+  <issueManagement>
+    <system>github</system>
+    <url>http://github.com/codehaus-plexus/plexus-containers/issues</url>
+  </issueManagement>
 
   <properties>
     <classWorldsVersion>2.5.1</classWorldsVersion>
