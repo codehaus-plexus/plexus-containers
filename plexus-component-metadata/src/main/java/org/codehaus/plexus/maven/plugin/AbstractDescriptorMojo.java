@@ -27,6 +27,8 @@ import org.apache.maven.project.MavenProjectHelper;
 import org.codehaus.plexus.metadata.MetadataGenerator;
 
 /**
+ * Base class for Plexus Metadata mojos.
+ *
  * @author Jason van Zyl
  */
 public abstract class AbstractDescriptorMojo
@@ -34,7 +36,9 @@ public abstract class AbstractDescriptorMojo
 {
 
     /**
-     * @parameter expression="${project}"
+     * Current project
+     *
+     * @parameter default-value="${project}"
      * @required
      * @readonly
      */
