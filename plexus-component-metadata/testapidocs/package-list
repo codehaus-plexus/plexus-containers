@@ -1,0 +1,4 @@
+org.codehaus.plexus.metadata
+org.codehaus.plexus.metadata.gleaner
+org.codehaus.plexus.metadata.gleaner.ann
+org.codehaus.plexus.metadata.merge

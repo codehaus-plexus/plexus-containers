@@ -1,0 +1,7 @@
+org.codehaus.plexus.component.repository
+org.codehaus.plexus.maven.plugin
+org.codehaus.plexus.metadata
+org.codehaus.plexus.metadata.ann
+org.codehaus.plexus.metadata.gleaner
+org.codehaus.plexus.metadata.merge
+org.codehaus.plexus.metadata.merge.support
