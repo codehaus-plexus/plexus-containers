@@ -4,8 +4,8 @@
 
   <parent>
     <groupId>org.codehaus.plexus</groupId>
-    <artifactId>plexus</artifactId>
-    <version>3.3.2</version>
+    <artifactId>plexus-components</artifactId>
+    <version>4.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>plexus-containers</artifactId>
@@ -43,9 +43,9 @@
 
   <properties>
     <scm.url>scm:git:git@github.com:codehaus-plexus/plexus-containers.git</scm.url>
-    <classWorldsVersion>2.5.2</classWorldsVersion>
-    <plexusUtilsVersion>3.0.22</plexusUtilsVersion>
-    <xbeanReflectVersion>4.4</xbeanReflectVersion>
+    <classWorldsVersion>2.5.1</classWorldsVersion>
+    <plexusUtilsVersion>3.0.20</plexusUtilsVersion>
+    <xbeanReflectVersion>3.7</xbeanReflectVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -84,7 +84,7 @@
       <dependency>
         <groupId>com.thoughtworks.qdox</groupId>
         <artifactId>qdox</artifactId>
-        <version>2.0-M3</version>
+        <version>2.0-M2</version>
       </dependency>
       <dependency>
         <groupId>org.jdom</groupId>
@@ -114,7 +114,7 @@
       <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
-        <version>4.12</version>
+        <version>4.11</version>
         <scope>provided</scope>
       </dependency>
     </dependencies>
