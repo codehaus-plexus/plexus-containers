@@ -26,7 +26,7 @@ package org.codehaus.plexus.metadata.merge;
 
 import org.codehaus.plexus.component.annotations.Component;
 import org.codehaus.plexus.metadata.merge.support.PlexusRootElement;
-import org.jdom.Document;
+import org.jdom2.Document;
 
 /**
  * Plexus XML merger. This is a superset of the components xml merger so can be used in its place if necessary.

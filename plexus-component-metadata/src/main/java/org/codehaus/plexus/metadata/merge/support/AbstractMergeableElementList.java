@@ -31,7 +31,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.codehaus.plexus.metadata.merge.MergeException;
-import org.jdom.Element;
+import org.jdom2.Element;
 
 /**
  * Base class that allows for handling merging two element lists.

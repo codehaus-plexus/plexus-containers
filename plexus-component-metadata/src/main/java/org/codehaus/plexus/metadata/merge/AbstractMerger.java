@@ -29,10 +29,10 @@ import java.io.Writer;
 import java.util.List;
 
 import org.codehaus.plexus.util.IOUtil;
-import org.jdom.Document;
-import org.jdom.JDOMException;
-import org.jdom.input.SAXBuilder;
-import org.jdom.output.XMLOutputter;
+import org.jdom2.Document;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.XMLOutputter;
 
 /**
  * Base class for common mergers.
@@ -43,7 +43,7 @@ public abstract class AbstractMerger
     implements Merger
 {
     /**
-     * @see org.codehaus.plexus.metadata.merge.Merger#writeMergedDocument(org.jdom.Document,
+     * @see org.codehaus.plexus.metadata.merge.Merger#writeMergedDocument(org.jdom2.Document,
      *      java.io.File)
      */
     public void writeMergedDocument( Document mergedDocument, File file )

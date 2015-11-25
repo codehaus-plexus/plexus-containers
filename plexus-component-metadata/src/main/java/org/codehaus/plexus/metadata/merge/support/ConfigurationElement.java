@@ -24,7 +24,7 @@ package org.codehaus.plexus.metadata.merge.support;
  * SOFTWARE.
  */
 
-import org.jdom.Element;
+import org.jdom2.Element;
 
 /**
  * TODO Implement merge for this.

@@ -25,7 +25,7 @@ package org.codehaus.plexus.metadata.merge.support;
  */
 
 import org.codehaus.plexus.metadata.merge.MergeException;
-import org.jdom.Element;
+import org.jdom2.Element;
 
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>

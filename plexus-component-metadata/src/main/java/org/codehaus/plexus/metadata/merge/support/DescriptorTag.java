@@ -25,7 +25,7 @@ package org.codehaus.plexus.metadata.merge.support;
 
 import java.lang.reflect.Constructor;
 
-import org.jdom.Element;
+import org.jdom2.Element;
 
 /**
  * Represents the various top-level tags in a deployment descriptor as a typesafe enumeration.

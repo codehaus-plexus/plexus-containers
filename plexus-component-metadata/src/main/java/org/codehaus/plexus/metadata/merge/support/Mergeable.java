@@ -26,7 +26,7 @@ package org.codehaus.plexus.metadata.merge.support;
 
 import org.codehaus.plexus.metadata.merge.MergeException;
 import org.codehaus.plexus.metadata.merge.MergeStrategy;
-import org.jdom.Element;
+import org.jdom2.Element;
 
 /**
  * Interface that marks an implementing entity as <b>mergeable</b>.<p>

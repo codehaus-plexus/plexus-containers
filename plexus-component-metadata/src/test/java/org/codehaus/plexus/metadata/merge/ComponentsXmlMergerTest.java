@@ -34,9 +34,9 @@ import org.codehaus.plexus.metadata.merge.support.ComponentElement;
 import org.codehaus.plexus.metadata.merge.support.ComponentsElement;
 import org.codehaus.plexus.metadata.merge.support.RequirementsElement;
 import org.codehaus.plexus.util.FileUtils;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.input.SAXBuilder;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.input.SAXBuilder;
 
 /**
  * Tests for {@link ComponentsXmlMerger}.

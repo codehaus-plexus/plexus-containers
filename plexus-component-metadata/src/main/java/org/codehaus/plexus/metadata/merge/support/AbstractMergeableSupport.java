@@ -30,13 +30,13 @@ import java.util.List;
 
 import org.codehaus.plexus.metadata.merge.MergeException;
 import org.codehaus.plexus.metadata.merge.MergeStrategy;
-import org.jdom.Attribute;
-import org.jdom.Content;
-import org.jdom.Document;
-import org.jdom.Element;
-import org.jdom.Namespace;
-import org.jdom.Parent;
-import org.jdom.filter.Filter;
+import org.jdom2.Attribute;
+import org.jdom2.Content;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.Namespace;
+import org.jdom2.Parent;
+import org.jdom2.filter.Filter;
 
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>

@@ -26,7 +26,7 @@ package org.codehaus.plexus.metadata.merge;
 
 import org.codehaus.plexus.component.annotations.Component;
 import org.codehaus.plexus.metadata.merge.support.ComponentSetElement;
-import org.jdom.Document;
+import org.jdom2.Document;
 
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>

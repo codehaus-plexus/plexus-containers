@@ -27,7 +27,7 @@ package org.codehaus.plexus.metadata.merge.support;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jdom.Element;
+import org.jdom2.Element;
 
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>

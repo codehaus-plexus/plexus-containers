@@ -31,8 +31,8 @@ import java.util.Set;
 
 import org.codehaus.plexus.metadata.merge.MergeException;
 import org.codehaus.plexus.metadata.merge.MergeStrategy;
-import org.jdom.Content;
-import org.jdom.Element;
+import org.jdom2.Content;
+import org.jdom2.Element;
 
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
