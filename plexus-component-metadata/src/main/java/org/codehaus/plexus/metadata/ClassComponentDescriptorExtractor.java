@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.maven.plugin.MojoExecutionException;
+import org.codehaus.plexus.component.annotations.Component;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
 import org.codehaus.plexus.metadata.gleaner.AnnotationComponentGleaner;
 import org.codehaus.plexus.metadata.gleaner.ClassComponentGleaner;
@@ -34,6 +35,7 @@ import org.codehaus.plexus.util.DirectoryScanner;
  * 
  * @version $Id$
  */
+@Component( role = ComponentDescriptorExtractor.class, hint = "class" )
 public class ClassComponentDescriptorExtractor
     extends ComponentDescriptorExtractorSupport
 {

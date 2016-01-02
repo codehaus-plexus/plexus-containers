@@ -20,6 +20,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import org.codehaus.plexus.component.annotations.Component;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
 import org.codehaus.plexus.metadata.gleaner.QDoxComponentGleaner;
 import org.codehaus.plexus.metadata.gleaner.SourceComponentGleaner;
@@ -33,6 +34,7 @@ import com.thoughtworks.qdox.model.JavaClass;
  * 
  * @version $Rev$ $Date$
  */
+@Component( role = ComponentDescriptorExtractor.class, hint = "source" )
 public class SourceComponentDescriptorExtractor
     extends ComponentDescriptorExtractorSupport
 {

@@ -51,10 +51,25 @@ public abstract class AbstractDescriptorMojo
      */
     protected String sourceEncoding;
 
+    /**
+     * The extractors to use. By default all available extractors will be used.
+     * <p>
+     * Known extractors:
+     * <ul>
+     * <li>source</li>
+     * <li>class</li>
+     * </ul>
+     * </p>
+     * 
+     * @parameter
+     */
+    protected String[] extractors;
+    
     /** @component */
     protected MavenProjectHelper mavenProjectHelper;
 
     /** @component */
     protected MetadataGenerator metadataGenerator;
+    
 
 }

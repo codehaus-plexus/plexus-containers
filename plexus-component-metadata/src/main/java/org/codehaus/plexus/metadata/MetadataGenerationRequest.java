@@ -31,4 +31,6 @@ public class MetadataGenerationRequest
     
     /** Output file for the final component descriptor. */
     public File outputFile;
+    
+    public List<String> extractors;
 }

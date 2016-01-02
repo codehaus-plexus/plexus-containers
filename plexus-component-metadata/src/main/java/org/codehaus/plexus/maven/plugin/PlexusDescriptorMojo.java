@@ -20,6 +20,7 @@ package org.codehaus.plexus.maven.plugin;
  */
 
 import java.io.File;
+import java.util.Arrays;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.codehaus.plexus.metadata.MetadataGenerationRequest;
@@ -78,6 +79,7 @@ public class PlexusDescriptorMojo
             request.componentDescriptorDirectory = staticMetadataDirectory;
             request.intermediaryFile = intermediaryMetadata;
             request.outputFile = generatedMetadata;
+            request.extractors = Arrays.asList( extractors );
             
             metadataGenerator.generateDescriptor( request );
         }

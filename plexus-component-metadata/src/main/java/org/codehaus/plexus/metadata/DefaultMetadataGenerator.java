@@ -26,8 +26,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.codehaus.plexus.component.annotations.Component;
 import org.codehaus.plexus.component.annotations.Requirement;
@@ -53,8 +55,8 @@ public class DefaultMetadataGenerator
 
     private ComponentDescriptor<?>[] roleDefaults;
 
-    // should be a component
-    private ComponentDescriptorExtractor[] extractors;
+    @Requirement
+    private Map<String, ComponentDescriptorExtractor> extractorMap;
 
     // should be a component
     private ComponentDescriptorWriter writer = new DefaultComponentDescriptorWriter();
@@ -64,21 +66,38 @@ public class DefaultMetadataGenerator
     {
         assert request.outputFile != null;
 
-        if ( extractors == null || extractors.length == 0 )
+        List<String> extractorHints = request.extractors;
+        
+        final Collection<ComponentDescriptorExtractor> extractors;
+        if ( extractorHints == null || extractorHints.size() == 0 )
         {
-            extractors = new ComponentDescriptorExtractor[] { new SourceComponentDescriptorExtractor(), new ClassComponentDescriptorExtractor( new AnnotationComponentGleaner() ) };
+            extractors = extractorMap.values();
+        }
+        else
+        {
+            extractors = new ArrayList<ComponentDescriptorExtractor>( extractorHints.size() );
+            
+            for ( String hint : extractorHints )
+            {
+                extractors.add( extractorMap.get( hint ) );
+            }
         }
 
         List<ComponentDescriptor<?>> descriptors = new ArrayList<ComponentDescriptor<?>>();
 
-        for (ComponentDescriptorExtractor extractor : extractors) {
-            try {
-                List<ComponentDescriptor<?>> list = extractor.extract(request, roleDefaults);
-                if (list != null && !list.isEmpty()) {
-                    descriptors.addAll(list);
+        for ( ComponentDescriptorExtractor extractor : extractors )
+        {
+            try
+            {
+                List<ComponentDescriptor<?>> list = extractor.extract( request, roleDefaults );
+                if ( list != null && !list.isEmpty() )
+                {
+                    descriptors.addAll( list );
                 }
-            } catch (Exception e) {
-                throw new Exception("Failed to extract descriptors", e);
+            }
+            catch ( Exception e )
+            {
+                throw new Exception( "Failed to extract descriptors", e );
             }
         }
 
