@@ -1,5 +1,7 @@
 package org.codehaus.plexus.maven.plugin;
 
+import java.util.List;
+
 /*
  * The MIT License
  * 
@@ -63,7 +65,7 @@ public abstract class AbstractDescriptorMojo
      * 
      * @parameter
      */
-    protected String[] extractors;
+    protected List<String> extractors;
     
     /** @component */
     protected MavenProjectHelper mavenProjectHelper;

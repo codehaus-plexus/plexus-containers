@@ -79,7 +79,7 @@ public class PlexusTestDescriptorMojo
             request.componentDescriptorDirectory = testStaticMetadataDirectory;
             request.intermediaryFile = testIntermediaryMetadata;
             request.outputFile = testGeneratedMetadata;
-            request.extractors = Arrays.asList( extractors );
+            request.extractors = extractors;
             
             metadataGenerator.generateDescriptor( request );
         }

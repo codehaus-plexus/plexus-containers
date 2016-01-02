@@ -32,7 +32,10 @@ import org.codehaus.plexus.util.IOUtil;
 import org.jdom2.Document;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
+import org.jdom2.input.sax.XMLReaderJDOMFactory;
+import org.jdom2.input.sax.XMLReaderSAX2Factory;
 import org.jdom2.output.XMLOutputter;
+import org.xml.sax.XMLReader;
 
 /**
  * Base class for common mergers.
@@ -70,7 +73,7 @@ public abstract class AbstractMerger
     public void mergeDescriptors( File outputDescriptor, List<File> descriptors )
         throws IOException
     {
-        SAXBuilder builder = new SAXBuilder( Driver.class.getName() );
+        SAXBuilder builder = new SAXBuilder( new XMLReaderSAX2Factory( false, Driver.class.getName() ) );
         
         Document finalDoc = null;
 

@@ -13,6 +13,16 @@
       <implementation>org.codehaus.plexus.metadata.DefaultComponentDescriptorCreator</implementation>
     </component>
     <component>
+      <role>org.codehaus.plexus.metadata.ComponentDescriptorExtractor</role>
+      <role-hint>class</role-hint>
+      <implementation>org.codehaus.plexus.metadata.ClassComponentDescriptorExtractor</implementation>
+    </component>
+    <component>
+      <role>org.codehaus.plexus.metadata.ComponentDescriptorExtractor</role>
+      <role-hint>source</role-hint>
+      <implementation>org.codehaus.plexus.metadata.SourceComponentDescriptorExtractor</implementation>
+    </component>
+    <component>
       <role>org.codehaus.plexus.metadata.ComponentDescriptorWriter</role>
       <implementation>org.codehaus.plexus.metadata.DefaultComponentDescriptorWriter</implementation>
     </component>
@@ -39,6 +49,10 @@
         <requirement>
           <role>org.codehaus.plexus.metadata.merge.Merger</role>
           <role-hint>componentsXml</role-hint>
+        </requirement>
+        <requirement>
+          <role>org.codehaus.plexus.metadata.ComponentDescriptorExtractor</role>
+          <field-name>extractorMap</field-name>
         </requirement>
       </requirements>
     </component>

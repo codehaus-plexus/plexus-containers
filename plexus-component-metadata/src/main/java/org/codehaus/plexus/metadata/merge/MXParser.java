@@ -460,6 +460,8 @@ public class MXParser
             //        "roundtrip feature can not be switched off");
             //}
             roundtripSupported = state;
+        } else if (FEATURE_VALIDATION.equals( name ) && !state) {
+            // noop, is already the default. JDom wants to set it anyway
         } else {
             throw new XmlPullParserException("unsupporte feature "+name);
         }
