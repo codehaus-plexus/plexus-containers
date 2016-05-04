@@ -44,6 +44,7 @@ public class ComponentElement
         FIELD_NAME,
         LIFECYCLE_HANDLER,
         DESCRIPTION,
+        ISOLATION_REALM,
         CONFIGURATION,
         RequirementsElement.TAG };
 
@@ -54,6 +55,8 @@ public class ComponentElement
     static final DescriptorTag ROLE_HINT = new DescriptorTag( "role-hint" );
 
     static final DescriptorTag OPTIONAL = new DescriptorTag( "optional" );
+    
+    static final DescriptorTag ISOLATION_REALM = new DescriptorTag( "isolated-realm" );
 
     private static final DescriptorTag DESCRIPTION = new DescriptorTag( "description" );
     
