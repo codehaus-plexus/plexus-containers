@@ -209,7 +209,8 @@ public class DefaultComponentDescriptorWriter
             }
             else
             {
-                element( w, "role-hint", cr.getRoleHint() );
+                // ensure there's no <role-hint/> written, which causes ComponentLookupException
+                element( w, "role-hint", "".equals( cr.getRoleHint() ) ? null : cr.getRoleHint() );
             }
 
             element( w, "field-name", cr.getFieldName() );
