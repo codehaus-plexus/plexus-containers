@@ -46,6 +46,7 @@
     <plexusUtilsVersion>3.0.20</plexusUtilsVersion>
     <xbeanReflectVersion>3.7</xbeanReflectVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <javaVersion>6</javaVersion>
   </properties>
 
   <dependencyManagement>
