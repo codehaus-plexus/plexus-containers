@@ -25,10 +25,9 @@
   </modules>
 
   <scm>
-    <connection>${scm.url}</connection>
-    <developerConnection>${scm.url}</developerConnection>
-    <url>http://github.com/codehaus-plexus/plexus-compiler/tree/${project.scm.tag}/</url>
-    <tag>plexus-containers-1.x</tag>
+    <connection>https://github.com/codehaus-plexus/plexus-containers.git</connection>
+    <developerConnection>https://github.com/codehaus-plexus/plexus-containers.git</developerConnection>
+    <url>https://github.com/codehaus-plexus/plexus-containers</url>
   </scm>
   <issueManagement>
     <system>github</system>
