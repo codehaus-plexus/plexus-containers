@@ -128,6 +128,8 @@ public class ClassComponentDescriptorExtractor
         scanner.setBasedir( classesDir );
         scanner.addDefaultExcludes();
         scanner.setIncludes( new String[] { "**/*.class" } );
+        // exclude special classes like module-info.class
+        scanner.setExcludes( new String[] { "**/*-*.class" } );
 
         //getLogger().debug( "Scanning for classes in: " + classesDir );
 
