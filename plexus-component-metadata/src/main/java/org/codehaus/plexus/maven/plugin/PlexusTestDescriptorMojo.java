@@ -20,49 +20,44 @@ package org.codehaus.plexus.maven.plugin;
  */
 
 import java.io.File;
-import java.util.Arrays;
 
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.codehaus.plexus.metadata.MetadataGenerationRequest;
 
 /**
  * Generates a Plexus <tt>components.xml</tt> component descriptor file from test source (javadoc)
  * or test class annotations.
  * 
- * @goal generate-test-metadata
- * @phase process-test-classes
- * @requiresDependencyResolution test
  * @author Jason van Zyl
  * @author Trygve Laugst&oslash;l
  * @version $Id$
  */
+@Mojo( name = "generate-test-metadata", defaultPhase = LifecyclePhase.PROCESS_TEST_CLASSES, requiresDependencyResolution = ResolutionScope.TEST )
 public class PlexusTestDescriptorMojo
     extends AbstractDescriptorMojo
 {
     /**
      * The output location for the generated descriptor.
-     * 
-     * @parameter default-value="${project.build.testOutputDirectory}/META-INF/plexus/components.xml"
-     * @required
      */
+    @Parameter( defaultValue = "${project.build.testOutputDirectory}/META-INF/plexus/components.xml", required = true )
     protected File testGeneratedMetadata;
 
     /**
      * The location of manually crafted component descriptors. The contents of the descriptor files in this directory is
      * merged with the information extracted from the project's sources/classes.
-     * 
-     * @parameter default-value="${basedir}/src/test/resources/META-INF/plexus"
-     * @required
      */
+    @Parameter( defaultValue = "${basedir}/src/test/resources/META-INF/plexus", required = true )
     protected File testStaticMetadataDirectory;
 
     /**
      * The output location for the intermediary descriptor. This descriptors contains only the information extracted
      * from the project's sources/classes.
-     * 
-     * @parameter default-value="${project.build.directory}/test-components.xml"
-     * @required
      */
+    @Parameter( defaultValue = "${project.build.directory}/test-components.xml", required = true )
     protected File testIntermediaryMetadata;
 
     public void execute()

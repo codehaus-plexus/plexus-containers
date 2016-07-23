@@ -27,36 +27,36 @@ import java.util.List;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugins.annotations.Component;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
 import org.codehaus.plexus.metadata.merge.Merger;
 
 /**
  * Merges a set of Plexus descriptors into one descriptor file.
  * 
- * @goal merge-metadata
- * @phase process-classes
  * @author Jason van Zyl
  * @author Trygve Laugst&oslash;l
  * @version $Id$
  */
+@Mojo( name = "merge-metadata", defaultPhase = LifecyclePhase.PROCESS_CLASSES )
 public class PlexusMergeMojo
     extends AbstractMojo
 {
     /**
      * The destination for the merged descriptor.
-     * 
-     * @parameter default-value="${project.build.outputDirectory}/META-INF/plexus/components.xml"
-     * @required
      */
+    @Parameter( defaultValue = "${project.build.outputDirectory}/META-INF/plexus/components.xml", required = true )
     private File output;
 
     /**
      * The paths of the input descriptors to merge.
-     * 
-     * @parameter
      */
+    @Parameter
     private File[] descriptors;
 
-    /** @component role-hint="componentsXml" */
+    @Component( hint = "componentsXml" )
     private Merger merger;
 
     public void execute()

@@ -24,6 +24,8 @@ import java.util.List;
  */
 
 import org.apache.maven.plugin.AbstractMojo;
+import org.apache.maven.plugins.annotations.Component;
+import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.project.MavenProjectHelper;
 import org.codehaus.plexus.metadata.MetadataGenerator;
@@ -39,11 +41,8 @@ public abstract class AbstractDescriptorMojo
 
     /**
      * Current project
-     *
-     * @parameter default-value="${project}"
-     * @required
-     * @readonly
      */
+    @Parameter( defaultValue = "${project}", required = true, readonly = true )
     protected MavenProject mavenProject;
 
     /**
@@ -51,6 +50,7 @@ public abstract class AbstractDescriptorMojo
      * 
      * @parameter default-value="${project.build.sourceEncoding}"
      */
+    @Parameter( defaultValue = "${project.build.sourceEncoding}" )
     protected String sourceEncoding;
 
     /**
@@ -62,16 +62,13 @@ public abstract class AbstractDescriptorMojo
      * <li>class</li>
      * </ul>
      * </p>
-     * 
-     * @parameter
      */
+    @Parameter
     protected List<String> extractors;
     
-    /** @component */
+    @Component
     protected MavenProjectHelper mavenProjectHelper;
 
-    /** @component */
+    @Component
     protected MetadataGenerator metadataGenerator;
-    
-
 }

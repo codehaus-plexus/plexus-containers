@@ -20,49 +20,44 @@ package org.codehaus.plexus.maven.plugin;
  */
 
 import java.io.File;
-import java.util.Arrays;
 
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
+import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.codehaus.plexus.metadata.MetadataGenerationRequest;
 
 /**
  * Generates a Plexus <tt>components.xml</tt> component descriptor file from source (javadoc) or
  * class annotations.
  * 
- * @goal generate-metadata
- * @phase process-classes
- * @requiresDependencyResolution compile
  * @author Jason van Zyl
  * @author Trygve Laugst&oslash;l
  * @version $Id$
  */
+@Mojo( name = "generate-metadata", defaultPhase = LifecyclePhase.PROCESS_CLASSES, requiresDependencyResolution = ResolutionScope.COMPILE )
 public class PlexusDescriptorMojo
     extends AbstractDescriptorMojo
 {
     /**
      * The output location for the generated descriptor.
-     * 
-     * @parameter default-value="${project.build.outputDirectory}/META-INF/plexus/components.xml"
-     * @required
      */
+    @Parameter( defaultValue = "${project.build.outputDirectory}/META-INF/plexus/components.xml", required = true )
     protected File generatedMetadata;
 
     /**
      * The location of manually crafted component descriptors. The contents of the descriptor files in this directory is
      * merged with the information extracted from the project's sources/classes.
-     * 
-     * @parameter default-value="${basedir}/src/main/resources/META-INF/plexus"
-     * @required
      */
+    @Parameter( defaultValue = "${basedir}/src/main/resources/META-INF/plexus", required = true )
     protected File staticMetadataDirectory;
 
     /**
      * The output location for the intermediary descriptor. This descriptors contains only the information extracted
      * from the project's sources/classes.
-     * 
-     * @parameter default-value="${project.build.directory}/components.xml"
-     * @required
      */
+    @Parameter( defaultValue = "${project.build.directory}/components.xml", required = true )
     protected File intermediaryMetadata;
 
     public void execute()
