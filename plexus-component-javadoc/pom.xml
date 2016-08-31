@@ -21,6 +21,7 @@
     <profile>
       <id>default-tools.jar</id>
       <activation>
+        <jdk>(,9)</jdk>
         <property>
           <name>java.vendor</name>
           <value>Sun Microsystems Inc.</value>
@@ -39,6 +40,7 @@
     <profile>
       <id>J7-default-tools.jar</id>
       <activation>
+        <jdk>(,9)</jdk>
         <property>
           <name>java.vendor</name>
           <value>Oracle Corporation</value>
