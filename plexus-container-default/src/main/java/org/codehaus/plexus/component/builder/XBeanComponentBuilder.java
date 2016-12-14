@@ -418,7 +418,7 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
 
         @Override
         public String toString() {
-            return "RequirementRecipe[fieldName=" + requirement.getFieldName() + ", role=" + componentDescriptor.getRole() + "]";
+            return "RequirementRecipe[fieldName=" + requirement.getFieldName() + ", role=" + requirement.getRole() + "]";
         }
     }
 
