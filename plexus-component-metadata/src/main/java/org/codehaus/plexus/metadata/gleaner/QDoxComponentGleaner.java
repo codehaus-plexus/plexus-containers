@@ -244,7 +244,7 @@ public class QDoxComponentGleaner
         // Remove any Plexus specific interfaces from the calculation
         // ----------------------------------------------------------------------
 
-        List<JavaClass> interfaces = new ArrayList<JavaClass>(  javaClass.getImplementedInterfaces() );
+        List<JavaClass> interfaces = new ArrayList<JavaClass>(  javaClass.getInterfaces() );
 
         for ( Iterator<JavaClass> it = interfaces.iterator(); it.hasNext(); )
         {
