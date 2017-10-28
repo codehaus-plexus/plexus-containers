@@ -25,6 +25,7 @@ package org.codehaus.plexus.metadata.merge;
  */
 
 import java.io.File;
+import java.io.StringReader;
 import java.util.List;
 
 import org.codehaus.plexus.PlexusTestCase;
@@ -269,4 +270,40 @@ public class ComponentsXmlMergerTest
         assertEquals( "recessive-required-role-hint", ( (Element) dCE.getChild( "requirements" )
             .getChildren( "requirement" ).get( 0 ) ).getChildText( "role-hint" ) );
     }
+    
+    public void testMergeRoleComponents() throws Exception
+    {
+        SAXBuilder saxBuilder = new SAXBuilder();
+
+        String source1 = "<component-set>\n" + 
+            "  <components>\n" + 
+            "    <component>\n" + 
+            "      <role>org.codehaus.plexus.metadata.component.DockerComposeConfigHandler</role>\n" + 
+            "      <implementation>org.codehaus.plexus.metadata.component.DominantComponent</implementation>\n" + 
+            "    </component>\n" + 
+            "    <component>\n" + 
+            "      <role>org.codehaus.plexus.metadata.component.PropertyConfigHandler</role>\n" + 
+            "      <implementation>org.codehaus.plexus.metadata.component.DominantComponent</implementation>\n" + 
+            "    </component>\n" + 
+            "  </components>\n" + 
+            "</component-set>";
+        Document doc1 = saxBuilder.build( new StringReader( source1 ) );
+        
+        String source2 = "<component-set>\n" + 
+            "  <components>\n" + 
+            "    <component>\n" + 
+            "      <role>org.codehaus.plexus.metadata.component.ExternalConfigHandler</role>\n" + 
+            "      <implementation>org.codehaus.plexus.metadata.component.DominantComponent</implementation>\n" + 
+            "    </component>\n" + 
+            "  </components>\n" + 
+            "</component-set>";
+        Document doc2 = saxBuilder.build( new StringReader( source2 ) );
+        
+        PlexusXmlMerger merger = new PlexusXmlMerger();
+        Document mergedDoc = merger.merge( doc1, doc2 );
+        
+        List<Element> components = mergedDoc.detachRootElement().getChild( "components" ).getChildren();
+        assertEquals( 3, components.size() );
+    }
+    
 }
