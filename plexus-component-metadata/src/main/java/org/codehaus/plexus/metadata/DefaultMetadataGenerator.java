@@ -28,6 +28,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -100,6 +101,15 @@ public class DefaultMetadataGenerator
                 throw new Exception( "Failed to extract descriptors", e );
             }
         }
+
+        // Sort the descriptors by key to make the output reproducible
+        Collections.sort( descriptors, new Comparator<ComponentDescriptor>()
+        {
+            public int compare( ComponentDescriptor d1, ComponentDescriptor d2 )
+            {
+                return d1.getHumanReadableKey().compareTo( d2.getHumanReadableKey() );
+            }
+        });
 
         List<File> componentDescriptors = new ArrayList<File>();        
         
