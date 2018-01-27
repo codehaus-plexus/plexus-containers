@@ -108,9 +108,10 @@
         <version>2.0.9</version>
       </dependency>
       <dependency>
-        <groupId>com.google.collections</groupId>
-        <artifactId>google-collections</artifactId>
-        <version>1.0</version>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <!-- Guava 20 is the last version supporting Java 7 -->
+        <version>20.0</version>
       </dependency>
       <dependency>
         <groupId>junit</groupId>
