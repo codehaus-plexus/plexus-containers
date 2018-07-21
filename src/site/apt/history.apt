@@ -37,9 +37,15 @@ Plexus Containers Structure History
 *----------------+--------------+------------------------+
 | 1.0-alpha-34   |  2007-10-23  | removal of <<<plexus-component-api>>>, which has been merged into <<<plexus-container-default>>>
 *----------------+--------------+------------------------+
-| 1.0-beta-1     |  2008-09-30  | addition of <<<{{{./plexus-component-metadata}plexus-component-metadata}}>>>, which supersedes {{{/plexus-tools/plexus-cdc/}Plexus Component Descriptor Creator}} and {{{/plexus-maven-plugin}Plexus Maven Plugin}}
+| 1.0-beta-1     |  2008-09-30  | addition of <<<{{{./plexus-component-metadata}plexus-component-metadata}}>>> Maven Plugin, which supersedes {{{/plexus-tools/plexus-cdc/}Plexus Component Descriptor Creator}} and {{{/plexus-maven-plugin}Plexus Maven Plugin}}
 *----------------+--------------+------------------------+
 | 1.0-beta-3.0.1 |  2008-12-01  | addition of <<<{{{./plexus-component-javadoc}plexus-component-javadoc}}>>>, which was previously known as <<<{{{/plexus-tools/plexus-javadoc/}plexus-javadoc}}>>> in <<<{{{/plexus-tools/}plexus-tools}}>>>
 *----------------+--------------+------------------------+
 | 1.0.0          |  2009-06-19  | no structure change, but the long expected 1.0.0 release...
 *----------------+--------------+------------------------+
+
+  Notice that Maven 3 uses {{{https://www.eclipse.org/sisu/}Sisu}} as a replacement for Plexus Container:
+  newer releases of Plexus Containers are mainly done for
+  <<<{{{./plexus-component-metadata}plexus-component-metadata}}>>> Maven Plugin,
+  <<<{{{./plexus-component-javadoc}plexus-component-javadoc}}>>> or
+  <<<{{{./plexus-component-annotations}plexus-component-annotations}}>>>.
