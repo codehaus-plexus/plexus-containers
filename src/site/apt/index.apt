@@ -12,8 +12,8 @@ Overview
 
   * {{{./plexus-container-default}plexus-container-default}} is the IoC container itself,
 
-  * {{{./plexus-component-metadata}plexus-component-metadata}} is a Maven plugin to generate plexus <<<{{{./plexus-container-default/plexus-components.html}component.xml}}>>> from
-  source annotations,
+  * {{{./plexus-component-metadata}plexus-component-metadata}}(-maven-plugin) is a Maven plugin to generate plexus <<<{{{./plexus-container-default/plexus-components.html}component.xml}}>>> from
+  source javadoc tags and Java 5 class annotations,
 
   * {{{./plexus-component-annotations}plexus-component-annotations}} provides the Java 5 annotations for plexus components,
 

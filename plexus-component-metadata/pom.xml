@@ -12,8 +12,8 @@
   <artifactId>plexus-component-metadata</artifactId>
   <packaging>maven-plugin</packaging>
 
-  <name>Plexus :: Component Metadata</name>
-  <description>A Maven plugin to generate Plexus descriptors from source tags and class annotations.</description>
+  <name>Plexus :: Component Metadata (Maven Plugin)</name>
+  <description>A Maven plugin to generate Plexus Components descriptors from source javadoc tags and Java 5 class annotations.</description>
 
   <dependencies>
     <dependency>
