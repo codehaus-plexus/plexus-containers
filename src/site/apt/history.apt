@@ -45,7 +45,7 @@ Plexus Containers Structure History
 *----------------+--------------+------------------------+
 
   Notice that Maven 3 uses {{{https://www.eclipse.org/sisu/}Sisu}} as a replacement for Plexus Container:
-  newer releases of Plexus Containers are mainly done for
+  newer releases of Plexus Containers are mainly done for companion tools
   <<<{{{./plexus-component-metadata}plexus-component-metadata}}>>> Maven Plugin,
   <<<{{{./plexus-component-javadoc}plexus-component-javadoc}}>>> or
   <<<{{{./plexus-component-annotations}plexus-component-annotations}}>>>.
