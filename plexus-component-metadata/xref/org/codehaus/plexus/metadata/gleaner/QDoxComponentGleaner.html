@@ -252,7 +252,7 @@
 <a class="jxr_linenumber" name="L244" href="#L244">244</a>         <em class="jxr_comment">// Remove any Plexus specific interfaces from the calculation</em>
 <a class="jxr_linenumber" name="L245" href="#L245">245</a>         <em class="jxr_comment">// ----------------------------------------------------------------------</em>
 <a class="jxr_linenumber" name="L246" href="#L246">246</a> 
-<a class="jxr_linenumber" name="L247" href="#L247">247</a>         List&lt;JavaClass&gt; interfaces = <strong class="jxr_keyword">new</strong> ArrayList&lt;JavaClass&gt;(  javaClass.getImplementedInterfaces() );
+<a class="jxr_linenumber" name="L247" href="#L247">247</a>         List&lt;JavaClass&gt; interfaces = <strong class="jxr_keyword">new</strong> ArrayList&lt;JavaClass&gt;(  javaClass.getInterfaces() );
 <a class="jxr_linenumber" name="L248" href="#L248">248</a> 
 <a class="jxr_linenumber" name="L249" href="#L249">249</a>         <strong class="jxr_keyword">for</strong> ( Iterator&lt;JavaClass&gt; it = interfaces.iterator(); it.hasNext(); )
 <a class="jxr_linenumber" name="L250" href="#L250">250</a>         {
@@ -529,6 +529,6 @@
 <a class="jxr_linenumber" name="L521" href="#L521">521</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2001&#x2013;2015 <a href="http://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2001&#x2013;2018 <a href="http://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
 </body>
 </html>

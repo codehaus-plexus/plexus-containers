@@ -19,20 +19,20 @@ under the License.
 -->
 <rss version="0.91">
   <channel>
-    <title>Plexus :: Component Metadata - Checkstyle report</title>
-    <link>http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata/</link>
-    <description>Plexus :: Component Metadata - Checkstyle report</description>
+    <title>Plexus :: Component Metadata (Maven Plugin) - Checkstyle report</title>
+    <link>http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata/</link>
+    <description>Plexus :: Component Metadata (Maven Plugin) - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2001 - 2015 Codehaus Plexus</copyright>
+    <copyright>&#169;2001 - 2018 Codehaus Plexus</copyright>
     <item>
       <title>File: 54,
-             Errors: 5324,
-             Warnings: 448,
-             Infos: 126
+             Errors: 5328,
+             Warnings: 435,
+             Infos: 129
       </title>
-            <link>http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html</link>
+            <link>http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html</link>
       <description>
-        <p>Click <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html">here</a> for the full Checkstyle report.</p>
+        <p>Click <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html">here</a> for the full Checkstyle report.</p>
 
         <table summary="Files" boder="1">
           <thead>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.gleaner.QDoxComponentGleaner.java">org/codehaus/plexus/metadata/gleaner/QDoxComponentGleaner.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.gleaner.QDoxComponentGleaner.java">org/codehaus/plexus/metadata/gleaner/QDoxComponentGleaner.java</a>
                 </td>
                 <td>
                   13
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.PlexusXmlTag.java">org/codehaus/plexus/metadata/merge/support/PlexusXmlTag.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.PlexusXmlTag.java">org/codehaus/plexus/metadata/merge/support/PlexusXmlTag.java</a>
                 </td>
                 <td>
                   11
@@ -74,7 +74,21 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ann.Ann.java">org/codehaus/plexus/metadata/ann/Ann.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ann.AnnField.java">org/codehaus/plexus/metadata/ann/AnnField.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+                <td>
+                  27
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ann.Ann.java">org/codehaus/plexus/metadata/ann/Ann.java</a>
                 </td>
                 <td>
                   0
@@ -88,21 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ann.AnnField.java">org/codehaus/plexus/metadata/ann/AnnField.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  8
-                </td>
-                <td>
-                  27
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.ConfigurationElement.java">org/codehaus/plexus/metadata/merge/support/ConfigurationElement.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.ConfigurationElement.java">org/codehaus/plexus/metadata/merge/support/ConfigurationElement.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +116,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.DescriptorTag.java">org/codehaus/plexus/metadata/merge/support/DescriptorTag.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.DescriptorTag.java">org/codehaus/plexus/metadata/merge/support/DescriptorTag.java</a>
                 </td>
                 <td>
                   0
@@ -130,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.gleaner.ComponentGleanerSupport.java">org/codehaus/plexus/metadata/gleaner/ComponentGleanerSupport.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.gleaner.ComponentGleanerSupport.java">org/codehaus/plexus/metadata/gleaner/ComponentGleanerSupport.java</a>
                 </td>
                 <td>
                   0
@@ -144,7 +144,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ComponentDescriptorExtractorSupport.java">org/codehaus/plexus/metadata/ComponentDescriptorExtractorSupport.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ComponentDescriptorExtractorSupport.java">org/codehaus/plexus/metadata/ComponentDescriptorExtractorSupport.java</a>
                 </td>
                 <td>
                   0
@@ -158,7 +158,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ClassComponentDescriptorExtractor.java">org/codehaus/plexus/metadata/ClassComponentDescriptorExtractor.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ClassComponentDescriptorExtractor.java">org/codehaus/plexus/metadata/ClassComponentDescriptorExtractor.java</a>
                 </td>
                 <td>
                   0
@@ -172,7 +172,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.Merger.java">org/codehaus/plexus/metadata/merge/Merger.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.Merger.java">org/codehaus/plexus/metadata/merge/Merger.java</a>
                 </td>
                 <td>
                   1
@@ -186,7 +186,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.component.repository.ComponentDescriptor.java">org/codehaus/plexus/component/repository/ComponentDescriptor.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.component.repository.ComponentDescriptor.java">org/codehaus/plexus/component/repository/ComponentDescriptor.java</a>
                 </td>
                 <td>
                   0
@@ -200,7 +200,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.MXParser.java">org/codehaus/plexus/metadata/merge/MXParser.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.MXParser.java">org/codehaus/plexus/metadata/merge/MXParser.java</a>
                 </td>
                 <td>
                   81
@@ -209,12 +209,12 @@ under the License.
                   87
                 </td>
                 <td>
-                  3742
+                  3753
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ann.AnnEnum.java">org/codehaus/plexus/metadata/ann/AnnEnum.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ann.AnnEnum.java">org/codehaus/plexus/metadata/ann/AnnEnum.java</a>
                 </td>
                 <td>
                   0
@@ -228,7 +228,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.MergeStrategy.java">org/codehaus/plexus/metadata/merge/MergeStrategy.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.MergeStrategy.java">org/codehaus/plexus/metadata/merge/MergeStrategy.java</a>
                 </td>
                 <td>
                   0
@@ -242,7 +242,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.component.repository.ComponentRequirement.java">org/codehaus/plexus/component/repository/ComponentRequirement.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.component.repository.ComponentRequirement.java">org/codehaus/plexus/component/repository/ComponentRequirement.java</a>
                 </td>
                 <td>
                   0
@@ -256,7 +256,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.ComponentElement.java">org/codehaus/plexus/metadata/merge/support/ComponentElement.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.ComponentElement.java">org/codehaus/plexus/metadata/merge/support/ComponentElement.java</a>
                 </td>
                 <td>
                   0
@@ -270,7 +270,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.AbstractMerger.java">org/codehaus/plexus/metadata/merge/AbstractMerger.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.AbstractMerger.java">org/codehaus/plexus/metadata/merge/AbstractMerger.java</a>
                 </td>
                 <td>
                   0
@@ -279,12 +279,12 @@ under the License.
                   4
                 </td>
                 <td>
-                  1
+                  3
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ann.AnnMethod.java">org/codehaus/plexus/metadata/ann/AnnMethod.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ann.AnnMethod.java">org/codehaus/plexus/metadata/ann/AnnMethod.java</a>
                 </td>
                 <td>
                   0
@@ -298,7 +298,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ComponentDescriptorWriteException.java">org/codehaus/plexus/metadata/ComponentDescriptorWriteException.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ComponentDescriptorWriteException.java">org/codehaus/plexus/metadata/ComponentDescriptorWriteException.java</a>
                 </td>
                 <td>
                   0
@@ -312,7 +312,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.maven.plugin.PlexusTestDescriptorMojo.java">org/codehaus/plexus/maven/plugin/PlexusTestDescriptorMojo.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.maven.plugin.PlexusTestDescriptorMojo.java">org/codehaus/plexus/maven/plugin/PlexusTestDescriptorMojo.java</a>
                 </td>
                 <td>
                   0
@@ -321,12 +321,12 @@ under the License.
                   1
                 </td>
                 <td>
-                  1
+                  2
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.DefaultMetadataGenerator.java">org/codehaus/plexus/metadata/DefaultMetadataGenerator.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.DefaultMetadataGenerator.java">org/codehaus/plexus/metadata/DefaultMetadataGenerator.java</a>
                 </td>
                 <td>
                   0
@@ -335,12 +335,12 @@ under the License.
                   1
                 </td>
                 <td>
-                  23
+                  7
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.AbstractMergeableElement.java">org/codehaus/plexus/metadata/merge/support/AbstractMergeableElement.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.AbstractMergeableElement.java">org/codehaus/plexus/metadata/merge/support/AbstractMergeableElement.java</a>
                 </td>
                 <td>
                   0
@@ -349,12 +349,12 @@ under the License.
                   8
                 </td>
                 <td>
-                  27
+                  26
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.ComponentSetElement.java">org/codehaus/plexus/metadata/merge/support/ComponentSetElement.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.PlexusRootElement.java">org/codehaus/plexus/metadata/merge/support/PlexusRootElement.java</a>
                 </td>
                 <td>
                   0
@@ -368,7 +368,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.PlexusRootElement.java">org/codehaus/plexus/metadata/merge/support/PlexusRootElement.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.ComponentSetElement.java">org/codehaus/plexus/metadata/merge/support/ComponentSetElement.java</a>
                 </td>
                 <td>
                   0
@@ -382,7 +382,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.component.repository.ComponentRequirementList.java">org/codehaus/plexus/component/repository/ComponentRequirementList.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.component.repository.ComponentRequirementList.java">org/codehaus/plexus/component/repository/ComponentRequirementList.java</a>
                 </td>
                 <td>
                   0
@@ -396,7 +396,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.gleaner.SourceComponentGleaner.java">org/codehaus/plexus/metadata/gleaner/SourceComponentGleaner.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.gleaner.SourceComponentGleaner.java">org/codehaus/plexus/metadata/gleaner/SourceComponentGleaner.java</a>
                 </td>
                 <td>
                   1
@@ -410,7 +410,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.PlexusXmlMerger.java">org/codehaus/plexus/metadata/merge/PlexusXmlMerger.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.PlexusXmlMerger.java">org/codehaus/plexus/metadata/merge/PlexusXmlMerger.java</a>
                 </td>
                 <td>
                   0
@@ -424,7 +424,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.gleaner.ClassComponentGleaner.java">org/codehaus/plexus/metadata/gleaner/ClassComponentGleaner.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.gleaner.ClassComponentGleaner.java">org/codehaus/plexus/metadata/gleaner/ClassComponentGleaner.java</a>
                 </td>
                 <td>
                   1
@@ -438,7 +438,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.MergeException.java">org/codehaus/plexus/metadata/merge/MergeException.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.MergeException.java">org/codehaus/plexus/metadata/merge/MergeException.java</a>
                 </td>
                 <td>
                   0
@@ -452,7 +452,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.AbstractMergeableSupport.java">org/codehaus/plexus/metadata/merge/support/AbstractMergeableSupport.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.AbstractMergeableSupport.java">org/codehaus/plexus/metadata/merge/support/AbstractMergeableSupport.java</a>
                 </td>
                 <td>
                   0
@@ -466,21 +466,21 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.MetadataGenerationRequest.java">org/codehaus/plexus/metadata/MetadataGenerationRequest.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.MetadataGenerationRequest.java">org/codehaus/plexus/metadata/MetadataGenerationRequest.java</a>
+                </td>
+                <td>
+                  1
                 </td>
                 <td>
                   0
                 </td>
                 <td>
-                  0
-                </td>
-                <td>
-                  12
+                  13
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.ComponentsElement.java">org/codehaus/plexus/metadata/merge/support/ComponentsElement.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.ComponentsElement.java">org/codehaus/plexus/metadata/merge/support/ComponentsElement.java</a>
                 </td>
                 <td>
                   0
@@ -494,7 +494,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.gleaner.ComponentGleanerException.java">org/codehaus/plexus/metadata/gleaner/ComponentGleanerException.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.gleaner.ComponentGleanerException.java">org/codehaus/plexus/metadata/gleaner/ComponentGleanerException.java</a>
                 </td>
                 <td>
                   0
@@ -508,7 +508,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.SourceComponentDescriptorExtractor.java">org/codehaus/plexus/metadata/SourceComponentDescriptorExtractor.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.SourceComponentDescriptorExtractor.java">org/codehaus/plexus/metadata/SourceComponentDescriptorExtractor.java</a>
                 </td>
                 <td>
                   0
@@ -522,7 +522,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.DefaultComponentDescriptorWriter.java">org/codehaus/plexus/metadata/DefaultComponentDescriptorWriter.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.DefaultComponentDescriptorWriter.java">org/codehaus/plexus/metadata/DefaultComponentDescriptorWriter.java</a>
                 </td>
                 <td>
                   0
@@ -536,7 +536,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ann.AnnInvocationHandler.java">org/codehaus/plexus/metadata/ann/AnnInvocationHandler.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ann.AnnInvocationHandler.java">org/codehaus/plexus/metadata/ann/AnnInvocationHandler.java</a>
                 </td>
                 <td>
                   0
@@ -550,7 +550,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.maven.plugin.PlexusDescriptorMojo.java">org/codehaus/plexus/maven/plugin/PlexusDescriptorMojo.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.maven.plugin.PlexusDescriptorMojo.java">org/codehaus/plexus/maven/plugin/PlexusDescriptorMojo.java</a>
                 </td>
                 <td>
                   0
@@ -559,12 +559,12 @@ under the License.
                   1
                 </td>
                 <td>
-                  1
+                  2
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.gleaner.AnnotationComponentGleaner.java">org/codehaus/plexus/metadata/gleaner/AnnotationComponentGleaner.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.gleaner.AnnotationComponentGleaner.java">org/codehaus/plexus/metadata/gleaner/AnnotationComponentGleaner.java</a>
                 </td>
                 <td>
                   0
@@ -578,7 +578,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.Mergeable.java">org/codehaus/plexus/metadata/merge/support/Mergeable.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.Mergeable.java">org/codehaus/plexus/metadata/merge/support/Mergeable.java</a>
                 </td>
                 <td>
                   0
@@ -592,35 +592,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ann.AnnClass.java">org/codehaus/plexus/metadata/ann/AnnClass.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  21
-                </td>
-                <td>
-                  69
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.Driver.java">org/codehaus/plexus/metadata/merge/Driver.java</a>
-                </td>
-                <td>
-                  11
-                </td>
-                <td>
-                  38
-                </td>
-                <td>
-                  461
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.PlexusMetadataGeneratorCli.java">org/codehaus/plexus/metadata/PlexusMetadataGeneratorCli.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.PlexusMetadataGeneratorCli.java">org/codehaus/plexus/metadata/PlexusMetadataGeneratorCli.java</a>
                 </td>
                 <td>
                   5
@@ -634,10 +606,38 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.maven.plugin.AbstractDescriptorMojo.java">org/codehaus/plexus/maven/plugin/AbstractDescriptorMojo.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.Driver.java">org/codehaus/plexus/metadata/merge/Driver.java</a>
+                </td>
+                <td>
+                  11
+                </td>
+                <td>
+                  25
+                </td>
+                <td>
+                  463
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ann.AnnClass.java">org/codehaus/plexus/metadata/ann/AnnClass.java</a>
                 </td>
                 <td>
                   0
+                </td>
+                <td>
+                  21
+                </td>
+                <td>
+                  69
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.maven.plugin.AbstractDescriptorMojo.java">org/codehaus/plexus/maven/plugin/AbstractDescriptorMojo.java</a>
+                </td>
+                <td>
+                  2
                 </td>
                 <td>
                   0
@@ -648,7 +648,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ann.AnnReader.java">org/codehaus/plexus/metadata/ann/AnnReader.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ann.AnnReader.java">org/codehaus/plexus/metadata/ann/AnnReader.java</a>
                 </td>
                 <td>
                   0
@@ -657,12 +657,12 @@ under the License.
                   7
                 </td>
                 <td>
-                  135
+                  139
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.RequirementsElement.java">org/codehaus/plexus/metadata/merge/support/RequirementsElement.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.RequirementsElement.java">org/codehaus/plexus/metadata/merge/support/RequirementsElement.java</a>
                 </td>
                 <td>
                   1
@@ -676,7 +676,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ComponentDescriptorWriter.java">org/codehaus/plexus/metadata/ComponentDescriptorWriter.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ComponentDescriptorWriter.java">org/codehaus/plexus/metadata/ComponentDescriptorWriter.java</a>
                 </td>
                 <td>
                   0
@@ -690,7 +690,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.component.repository.ComponentSetDescriptor.java">org/codehaus/plexus/component/repository/ComponentSetDescriptor.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.component.repository.ComponentSetDescriptor.java">org/codehaus/plexus/component/repository/ComponentSetDescriptor.java</a>
                 </td>
                 <td>
                   0
@@ -704,7 +704,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.AbstractMergeableElementList.java">org/codehaus/plexus/metadata/merge/support/AbstractMergeableElementList.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.AbstractMergeableElementList.java">org/codehaus/plexus/metadata/merge/support/AbstractMergeableElementList.java</a>
                 </td>
                 <td>
                   0
@@ -713,12 +713,12 @@ under the License.
                   4
                 </td>
                 <td>
-                  47
+                  46
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.RequirementElement.java">org/codehaus/plexus/metadata/merge/support/RequirementElement.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.RequirementElement.java">org/codehaus/plexus/metadata/merge/support/RequirementElement.java</a>
                 </td>
                 <td>
                   0
@@ -732,7 +732,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.MetadataGenerator.java">org/codehaus/plexus/metadata/MetadataGenerator.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.MetadataGenerator.java">org/codehaus/plexus/metadata/MetadataGenerator.java</a>
                 </td>
                 <td>
                   0
@@ -746,7 +746,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.ComponentsXmlMerger.java">org/codehaus/plexus/metadata/merge/ComponentsXmlMerger.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.ComponentsXmlMerger.java">org/codehaus/plexus/metadata/merge/ComponentsXmlMerger.java</a>
                 </td>
                 <td>
                   0
@@ -760,35 +760,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.maven.plugin.PlexusMergeMojo.java">org/codehaus/plexus/maven/plugin/PlexusMergeMojo.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.MergeStrategies.java">org/codehaus/plexus/metadata/merge/support/MergeStrategies.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ComponentDescriptorExtractor.java">org/codehaus/plexus/metadata/ComponentDescriptorExtractor.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.ComponentDescriptorExtractor.java">org/codehaus/plexus/metadata/ComponentDescriptorExtractor.java</a>
                 </td>
                 <td>
                   1
@@ -798,6 +770,34 @@ under the License.
                 </td>
                 <td>
                   2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.maven.plugin.PlexusMergeMojo.java">org/codehaus/plexus/maven/plugin/PlexusMergeMojo.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata//checkstyle.html#org.codehaus.plexus.metadata.merge.support.MergeStrategies.java">org/codehaus/plexus/metadata/merge/support/MergeStrategies.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
                 </td>
               </tr>
                       </tbody>

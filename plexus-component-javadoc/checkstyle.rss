@@ -20,19 +20,19 @@ under the License.
 <rss version="0.91">
   <channel>
     <title>Plexus :: Javadoc Taglets - Checkstyle report</title>
-    <link>http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-javadoc/</link>
+    <link>http://codehaus-plexus.github.io/plexus-containers/plexus-component-javadoc/</link>
     <description>Plexus :: Javadoc Taglets - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2007 - 2015 Codehaus Plexus</copyright>
+    <copyright>&#169;2007 - 2018 Codehaus Plexus</copyright>
     <item>
       <title>File: 4,
              Errors: 12,
              Warnings: 0,
              Infos: 0
       </title>
-            <link>http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-javadoc//checkstyle.html</link>
+            <link>http://codehaus-plexus.github.io/plexus-containers/plexus-component-javadoc//checkstyle.html</link>
       <description>
-        <p>Click <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-javadoc//checkstyle.html">here</a> for the full Checkstyle report.</p>
+        <p>Click <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-javadoc//checkstyle.html">here</a> for the full Checkstyle report.</p>
 
         <table summary="Files" boder="1">
           <thead>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-javadoc//checkstyle.html#org.codehaus.plexus.javadoc.AbstractPlexusTaglet.java">org/codehaus/plexus/javadoc/AbstractPlexusTaglet.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-javadoc//checkstyle.html#org.codehaus.plexus.javadoc.AbstractPlexusTaglet.java">org/codehaus/plexus/javadoc/AbstractPlexusTaglet.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-javadoc//checkstyle.html#org.codehaus.plexus.javadoc.PlexusRequirementTaglet.java">org/codehaus/plexus/javadoc/PlexusRequirementTaglet.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-javadoc//checkstyle.html#org.codehaus.plexus.javadoc.PlexusRequirementTaglet.java">org/codehaus/plexus/javadoc/PlexusRequirementTaglet.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-javadoc//checkstyle.html#org.codehaus.plexus.javadoc.PlexusComponentTaglet.java">org/codehaus/plexus/javadoc/PlexusComponentTaglet.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-javadoc//checkstyle.html#org.codehaus.plexus.javadoc.PlexusComponentTaglet.java">org/codehaus/plexus/javadoc/PlexusComponentTaglet.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-components/plexus-containers/plexus-component-javadoc//checkstyle.html#org.codehaus.plexus.javadoc.PlexusConfigurationTaglet.java">org/codehaus/plexus/javadoc/PlexusConfigurationTaglet.java</a>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-javadoc//checkstyle.html#org.codehaus.plexus.javadoc.PlexusConfigurationTaglet.java">org/codehaus/plexus/javadoc/PlexusConfigurationTaglet.java</a>
                 </td>
                 <td>
                   0
