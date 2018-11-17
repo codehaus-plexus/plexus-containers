@@ -9,7 +9,7 @@ install: true
 #
 # Run all integration tests.
 script: 
-  - "mvn --show-version --errors --batch-mode clean verify"
+  - "mvn --show-version --errors --batch-mode clean verify -Prun-its"
 #
 cache:
     directories:
