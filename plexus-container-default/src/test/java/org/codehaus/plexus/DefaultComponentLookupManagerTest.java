@@ -5,7 +5,6 @@ import org.codehaus.plexus.test.ComponentA;
 
 /**
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
- * @version $Id$
  */
 public class DefaultComponentLookupManagerTest
     extends PlexusTestCase

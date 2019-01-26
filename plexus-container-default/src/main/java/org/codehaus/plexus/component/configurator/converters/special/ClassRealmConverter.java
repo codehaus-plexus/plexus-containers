@@ -28,7 +28,7 @@ public class ClassRealmConverter
      * If there's a way to automatically configure this component
      * using the current classrealm, this method can go away.
      *
-     * @param classRealm
+     * @param classRealm {@link ClassRealm}.
      */
     public ClassRealmConverter( ClassRealm classRealm )
     {

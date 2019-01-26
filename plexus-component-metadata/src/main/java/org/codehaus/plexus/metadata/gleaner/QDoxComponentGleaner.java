@@ -43,7 +43,6 @@ import com.thoughtworks.qdox.model.JavaField;
  * A source component gleaner which uses QDox to discover Javadoc annotations.
  * 
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
- * @version $Id$
  */
 public class QDoxComponentGleaner
     extends ComponentGleanerSupport

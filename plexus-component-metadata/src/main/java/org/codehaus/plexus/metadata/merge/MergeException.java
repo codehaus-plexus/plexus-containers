@@ -26,7 +26,6 @@ package org.codehaus.plexus.metadata.merge;
 
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
- * @version $Id$
  */
 public class MergeException
     extends Exception

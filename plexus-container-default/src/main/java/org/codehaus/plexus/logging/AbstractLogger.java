@@ -22,7 +22,6 @@ package org.codehaus.plexus.logging;
 
 /**
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
- * @version $Id$
  */
 public abstract class AbstractLogger
         implements Logger

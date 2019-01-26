@@ -27,7 +27,6 @@ import org.codehaus.plexus.lifecycle.LifecycleHandler;
  *
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public class PerLookupComponentManager<T>
     extends AbstractComponentManager<T>

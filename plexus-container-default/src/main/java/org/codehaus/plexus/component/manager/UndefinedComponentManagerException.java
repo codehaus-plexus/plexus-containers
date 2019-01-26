@@ -18,7 +18,6 @@ package org.codehaus.plexus.component.manager;
 
 /**
  * @author Jason van Zyl
- * @version $Id$
  */
 public class UndefinedComponentManagerException
     extends Exception

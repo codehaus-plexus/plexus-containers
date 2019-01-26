@@ -20,7 +20,6 @@ package org.codehaus.plexus.component.configurator.expression;
  * Exception that occurs during the evaluation of an expression.
  *
  * @author <a href="mailto:brett@codehaus.org">Brett Porter</a>
- * @version $Id$
  */
 public class ExpressionEvaluationException
     extends Exception

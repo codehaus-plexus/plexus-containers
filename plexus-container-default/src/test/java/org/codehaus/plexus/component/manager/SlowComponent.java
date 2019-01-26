@@ -24,7 +24,6 @@ import org.codehaus.plexus.personality.plexus.lifecycle.phase.Startable;
  * Configuration:
  *   delay - number of milliseconds to sleep during start()
  * @author Ben Walding
- * @version $Id$
  */
 public class  SlowComponent
     implements Startable

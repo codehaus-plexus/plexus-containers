@@ -36,7 +36,6 @@ import org.codehaus.plexus.configuration.PlexusConfiguration;
  * Converter for  <code>org.codehaus.plexus.configuration.PlexusConfiguration</code>
  *
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
- * @version $Id$
  */
 public class PlexusConfigurationConverter
     extends AbstractConfigurationConverter

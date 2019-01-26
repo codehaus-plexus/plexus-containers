@@ -20,7 +20,6 @@ import org.codehaus.plexus.PlexusTestCase;
 
 /**
  * @author <a href="mailto:mma@imtf.ch">Michal Maczka</a>
- * @version $Id$
  */
 public class DefaultComponentComposerManagerTest
     extends PlexusTestCase

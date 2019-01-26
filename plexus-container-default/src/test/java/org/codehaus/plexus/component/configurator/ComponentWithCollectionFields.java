@@ -32,7 +32,6 @@ import java.util.Vector;
 
 /**
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
- * @version $Id$
  */
 public class ComponentWithCollectionFields
 {

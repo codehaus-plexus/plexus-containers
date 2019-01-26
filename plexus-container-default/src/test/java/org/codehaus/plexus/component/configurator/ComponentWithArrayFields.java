@@ -29,7 +29,6 @@ import java.net.URL;
 
 /**
  * @author <a href="mailto:kenney@codehaus.org">Kenney Westerhof</a>
- * @version $Id$
  */
 public class ComponentWithArrayFields
 {

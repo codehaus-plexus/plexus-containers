@@ -46,7 +46,6 @@ import java.util.TreeSet;
 
 /**
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
- * @version $Id$
  */
 public class CollectionConverter
     extends AbstractConfigurationConverter

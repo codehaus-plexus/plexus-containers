@@ -28,7 +28,6 @@ import org.codehaus.plexus.metadata.merge.support.Mergeable;
 
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
- * @version $Id$
  */
 public interface MergeStrategy
 {

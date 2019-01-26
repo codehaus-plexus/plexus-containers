@@ -29,7 +29,6 @@ import org.codehaus.plexus.context.DefaultContext;
  * @author Jason van Zyl
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
- * @version $Id$
  */
 public abstract class PlexusTestCase
     extends TestCase
@@ -109,7 +108,7 @@ public abstract class PlexusTestCase
      * Allow custom test case implementations do augment the default container configuration before
      * executing tests.
      *
-     * @param containerConfiguration
+     * @param containerConfiguration {@link ContainerConfiguration}.
      */
     protected void customizeContainerConfiguration( ContainerConfiguration containerConfiguration )
     {

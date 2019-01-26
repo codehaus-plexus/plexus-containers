@@ -21,7 +21,6 @@ package org.codehaus.plexus.test.map;
  * 
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public abstract class AbstractActivity
     implements Activity

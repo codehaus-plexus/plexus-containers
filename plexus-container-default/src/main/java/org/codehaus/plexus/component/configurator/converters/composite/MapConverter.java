@@ -39,7 +39,6 @@ import java.util.TreeMap;
  * Converter for <code>java.util.Properties</code>.
  *
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
- * @version $Id$
  */
 public class MapConverter
     extends AbstractConfigurationConverter

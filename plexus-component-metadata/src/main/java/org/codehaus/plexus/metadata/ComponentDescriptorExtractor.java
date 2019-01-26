@@ -21,7 +21,6 @@ import org.codehaus.plexus.component.repository.ComponentDescriptor;
 /**
  * An abstraction to allow pluggable {@link ComponentDescriptor} extraction to be dropped.
  * 
- * @version $Id$
  */
 public interface ComponentDescriptorExtractor
 {

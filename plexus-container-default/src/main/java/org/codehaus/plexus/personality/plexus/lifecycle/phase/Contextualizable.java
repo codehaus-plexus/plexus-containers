@@ -21,7 +21,6 @@ import org.codehaus.plexus.context.ContextException;
 
 /**
  * @author Jason van Zyl
- * @version $Id$
  */
 public interface Contextualizable
 {

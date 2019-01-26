@@ -22,7 +22,6 @@ import java.io.File;
  * Evaluate an expression.
  *
  * @author <a href="mailto:brett@codehaus.org">Brett Porter</a>
- * @version $Id$
  */
 public class DefaultExpressionEvaluator
     implements ExpressionEvaluator

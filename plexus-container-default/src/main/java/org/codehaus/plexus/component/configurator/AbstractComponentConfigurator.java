@@ -37,7 +37,6 @@ import java.lang.reflect.Method;
 
 /**
  * @author <a href="mailto:brett@codehaus.org">Brett Porter</a>
- * @version $Id$
  */
 public abstract class AbstractComponentConfigurator
     implements ComponentConfigurator
@@ -48,7 +47,6 @@ public abstract class AbstractComponentConfigurator
      * Once these are wired up as standard components properly then we won't have to instantiate the
      * converter lookup here and we can let the container do it.
      *
-     * @plexus.requirement
      */
     protected ConverterLookup converterLookup = new DefaultConverterLookup();
 

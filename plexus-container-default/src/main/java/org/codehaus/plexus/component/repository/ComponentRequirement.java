@@ -20,7 +20,6 @@ package org.codehaus.plexus.component.repository;
  * This represents a component this is required by another component.
  *
  * @author <a href="mmaczka@interia.pl">Michal Maczka</a>
- * @version $Id$
  */
 public class ComponentRequirement
 {

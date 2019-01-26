@@ -32,7 +32,6 @@ import org.codehaus.plexus.component.repository.ComponentDescriptor;
 /**
  * @author Jason van Zyl
  * @author <a href="mailto:mmaczka@interia.pl">Michal Maczka</a>
- * @version $Id$
  */
 public class JavaComponentFactoryTest
     extends TestCase

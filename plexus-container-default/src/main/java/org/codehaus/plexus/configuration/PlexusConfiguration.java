@@ -35,7 +35,7 @@ public interface PlexusConfiguration
     
     /**
      * Sets the name of this configuration.
-     * @param name
+     * @param name The name of the configuration.
      */
     void setName(String name);
 
@@ -46,7 +46,7 @@ public interface PlexusConfiguration
     /**
      * Returns the value of this configuration.
      * @return the value of this configuration
-     * @throws PlexusConfigurationException
+     * @throws PlexusConfigurationException in case of an error.
      */
     String getValue()
         throws PlexusConfigurationException;
@@ -61,16 +61,15 @@ public interface PlexusConfiguration
 
     /**
      * Set the value of a configuration element.
-     * @param value
-     * @return
+     * @param value The value of the configuration element.
      */
     void setValue( String value );
 
     /**
      * Set the value of a configuration element and return the PlexusConfiguration object
      * so that further operations can be carried out.
-     * @param value
-     * @return
+     * @param value set the value.
+     * @return {@link PlexusConfiguration}
      */
     PlexusConfiguration setValueAndGetSelf( String value );
 
@@ -80,8 +79,8 @@ public interface PlexusConfiguration
     
     /**
      * Sets an attribute on this configuration.
-     * @param name
-     * @param value
+     * @param name name of the attribute
+     * @param value the value of the attribute.
      */
     void setAttribute( String name, String value );
 
@@ -93,8 +92,9 @@ public interface PlexusConfiguration
 
     /**
      * Returns the value of the named attribute.
+     * @param paramName The name of the attribute.
      * @return the value of the named attribute
-     * @throws PlexusConfigurationException
+     * @throws PlexusConfigurationException in case of an error.
      */
     String getAttribute( String paramName )
         throws PlexusConfigurationException;
@@ -102,6 +102,7 @@ public interface PlexusConfiguration
     /**
      * Returns the value of the named attribute, or default if one cannot be
      * found.
+     * @param name The name of the attribute.
      * @param defaultValue value to return if none is found
      * @return the value of the named attribute
      */
@@ -156,16 +157,17 @@ public interface PlexusConfiguration
 
     /**
      * Add a child element with a given name and return the newly created element.
-     * @param name
-     * @return
+     * @param name The name of the element.
+     * @return {@link PlexusConfiguration}
      */
     PlexusConfiguration addChild( String name );
 
     /**
      * Add a child element with a given name, and given value and return the
      * newly created element.
-     * @param name
-     * @return
+     * @param name The name of the child element.
+     * @param value The value of the child element.
+     * @return {@link PlexusConfiguration}
      */
     PlexusConfiguration addChild( String name, String value );
 

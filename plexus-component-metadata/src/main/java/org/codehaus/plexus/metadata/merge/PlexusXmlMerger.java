@@ -32,15 +32,12 @@ import org.jdom2.Document;
  * Plexus XML merger. This is a superset of the components xml merger so can be used in its place if necessary.
  *
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
- * @version $Id$
  */
 @Component(role=Merger.class,hint="plexusXml")
 public class PlexusXmlMerger
     extends AbstractMerger
 {
-    /**
-     * @see org.codehaus.plexus.metadata.merge.Merger#merge(org.jdom.Document, org.jdom.Document)
-     */
+    /** {@inheritDoc} */
     public Document merge( Document dDocument, Document rDocument )
         throws MergeException
     {

@@ -26,12 +26,10 @@ import java.util.Map;
  * Base class for all LoggerManagers which use cache of Loggers.
  *
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
- * @version $Id$
  */
 public abstract class BaseLoggerManager
         extends AbstractLoggerManager implements Initializable
 {
-    /** */
     private Map loggerCache = new HashMap();
 
     private String threshold = "info";
@@ -78,8 +76,7 @@ public abstract class BaseLoggerManager
 
     /**
      * Sets the threshold for all new loggers. It will NOT affect the existing loggers.
-     * <p/>
-     * This is usually only set once while the logger manager is configured.
+     * <p>This is usually only set once while the logger manager is configured.</p>
      *
      * @param currentThreshold The new threshold.
      */
@@ -90,8 +87,7 @@ public abstract class BaseLoggerManager
 
     /**
      * Sets the threshold for all new loggers. It will NOT affect the existing loggers.
-     * <p/>
-     * This is usually only set once while the logger manager is configured.
+     * <p>This is usually only set once while the logger manager is configured.</p>
      *
      * @param currentThreshold The new threshold.
      */

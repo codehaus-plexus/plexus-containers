@@ -31,7 +31,6 @@ import java.util.TreeMap;
 /**
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public class ComponentDiscovererTest
     extends PlexusTestCase

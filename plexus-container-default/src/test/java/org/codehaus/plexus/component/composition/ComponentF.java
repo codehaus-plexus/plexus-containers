@@ -21,7 +21,6 @@ import java.util.Map;
 
 /**
  * @author <a href="mailto:mmaczka@interia.p">Michal Maczka</a>
- * @version $Id$
  */
 public class ComponentF
 {

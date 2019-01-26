@@ -28,7 +28,6 @@ import java.util.List;
  *
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public class ComponentDescriptorTest
     extends TestCase

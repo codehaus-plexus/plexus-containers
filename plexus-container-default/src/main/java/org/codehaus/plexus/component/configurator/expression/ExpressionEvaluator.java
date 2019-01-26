@@ -22,7 +22,6 @@ import java.io.File;
  * Evaluate an expression.
  *
  * @author <a href="mailto:brett@codehaus.org">Brett Porter</a>
- * @version $Id$
  */
 public interface ExpressionEvaluator
 {
@@ -33,6 +32,7 @@ public interface ExpressionEvaluator
      *
      * @param expression the expression
      * @return the value of the expression
+     * @throws ExpressionEvaluationException in case of an error. 
      */
     Object evaluate( String expression )
         throws ExpressionEvaluationException;

@@ -22,7 +22,6 @@ import org.codehaus.plexus.configuration.PlexusConfiguration;
 
 /**
  * @author <a href="mailto:rantene@hotmail.com">Ran Tene</a>
- * @version $Id$
  */
 public final class XmlPlexusConfigurationTest
     extends TestCase

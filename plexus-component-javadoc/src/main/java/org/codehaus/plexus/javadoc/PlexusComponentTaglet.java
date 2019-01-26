@@ -29,6 +29,7 @@ import com.sun.tools.doclets.Taglet;
  * The following parameters are available, but remember the <tt>role</tt> is required.
  * The text in the javadoc tag describing this class is copied into the component's <tt>&lt;description</tt>&gt; tag.
  * <table class="bodyTable">
+ * 	 <caption>The caption</caption>
  *   <tbody>
  *     <tr class="a">
  *       <td align="left"><b>Parameter</b></td>
@@ -58,7 +59,6 @@ import com.sun.tools.doclets.Taglet;
  * http://plexus.codehaus.org/guides/developer-guide/appendices/javadoc-tags-reference.html</a>
  *
  * @author <a href="mailto:vincent.siveton@gmail.com">Vincent Siveton</a>
- * @version $Id$
  */
 public class PlexusComponentTaglet
     extends AbstractPlexusTaglet

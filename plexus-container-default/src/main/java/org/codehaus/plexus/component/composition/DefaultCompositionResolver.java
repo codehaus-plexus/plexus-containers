@@ -30,7 +30,6 @@ import org.codehaus.plexus.util.dag.DAG;
 /**
  * @author Jason van Zyl
  * @author <a href="mailto:michal.maczka@dimatics.com">Michal Maczka</a>
- * @version $Id$
  */
 public class DefaultCompositionResolver
     implements CompositionResolver

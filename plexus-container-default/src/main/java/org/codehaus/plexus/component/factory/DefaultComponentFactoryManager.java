@@ -26,7 +26,6 @@ import org.codehaus.plexus.personality.plexus.lifecycle.phase.Contextualizable;
 
 /**
  * @author Jason van Zyl
- * @version $Id$
  */
 public class DefaultComponentFactoryManager
     implements ComponentFactoryManager, Contextualizable

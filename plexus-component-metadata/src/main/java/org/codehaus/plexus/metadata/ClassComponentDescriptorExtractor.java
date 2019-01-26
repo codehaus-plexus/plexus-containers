@@ -33,7 +33,6 @@ import org.codehaus.plexus.util.DirectoryScanner;
 /**
  * Extracts {@link ComponentDescriptor} from class files.
  * 
- * @version $Id$
  */
 @Component( role = ComponentDescriptorExtractor.class, hint = "class" )
 public class ClassComponentDescriptorExtractor

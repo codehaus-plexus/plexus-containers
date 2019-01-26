@@ -27,7 +27,6 @@ import java.lang.annotation.Target;
  * Marks a field as a configuration element with a default value.
  *
  * @since 1.0-alpha-33
- * @version $Id$
  */
 @Documented
 @Retention(RUNTIME)

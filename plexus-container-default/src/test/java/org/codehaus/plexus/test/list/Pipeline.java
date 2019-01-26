@@ -22,7 +22,6 @@ import java.util.Map;
 /**
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public interface Pipeline
 {

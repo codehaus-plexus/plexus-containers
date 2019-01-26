@@ -23,7 +23,6 @@ import java.util.Map;
  * 
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public class DefaultActivityManager
     implements ActivityManager

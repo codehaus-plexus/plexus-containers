@@ -26,7 +26,6 @@ import org.codehaus.plexus.component.repository.ComponentDescriptor;
  *
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public abstract class AbstractComponentFactory
     implements ComponentFactory

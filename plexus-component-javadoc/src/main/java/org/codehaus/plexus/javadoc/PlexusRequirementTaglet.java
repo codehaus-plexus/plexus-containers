@@ -27,12 +27,13 @@ import com.sun.tools.doclets.Taglet;
  * Tagging a field with <tt>@plexus.requirement</tt> will tell plexus to inject the required component or
  * list of components before the component itself is started. Fields can be of the type of the Interface
  * defining the component you wish to be injected or of type <tt>java.util.List</tt> or <tt>java.util.Map</tt>.
- * <br/>
+ * 
  * Fields of type <tt>java.lang.List</tt> will have a list of components injected whereas a field of
  * type <tt>java.lang.Map</tt> will have a mapping in the form of <tt>role-hint -&gt; component</tt>.
  * The <tt>role</tt> parameter is required if using a <tt>List</tt> or <tt>Map</tt> whereas a role-hint is
  * not allowed.
  * <table class="bodyTable">
+ * 	 <caption>The caption</caption>
  *   <tbody>
  *     <tr class="a">
  *       <td align="left"><b>Parameter</b></td>
@@ -58,7 +59,6 @@ import com.sun.tools.doclets.Taglet;
  * http://plexus.codehaus.org/guides/developer-guide/appendices/javadoc-tags-reference.html</a>
  *
  * @author <a href="mailto:vincent.siveton@gmail.com">Vincent Siveton</a>
- * @version $Id$
  */
 public class PlexusRequirementTaglet
     extends AbstractPlexusTaglet

@@ -22,7 +22,6 @@ import org.codehaus.plexus.component.repository.ComponentDescriptor;
 /**
  * Support for {@link ComponentDescriptorExtractor} implementations.
  * 
- * @version $Id$
  */
 public abstract class ComponentDescriptorExtractorSupport
     implements ComponentDescriptorExtractor

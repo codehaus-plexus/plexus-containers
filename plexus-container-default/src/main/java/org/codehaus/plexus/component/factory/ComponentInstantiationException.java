@@ -21,7 +21,6 @@ package org.codehaus.plexus.component.factory;
  * 
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
  *
- * @version $Id$
  */
 public class ComponentInstantiationException
     extends Exception

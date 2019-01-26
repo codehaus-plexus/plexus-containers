@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @version $Id$
  */
 public class DefaultPlexusConfiguration
     implements PlexusConfiguration

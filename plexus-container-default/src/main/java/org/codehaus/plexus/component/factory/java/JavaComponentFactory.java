@@ -29,7 +29,6 @@ import java.lang.reflect.Modifier;
  *
  * @author Jason van Zyl
  * @author <a href="mailto:mmaczka@interia.pl">Michal Maczka</a>
- * @version $Id$
  */
 public class JavaComponentFactory
     extends AbstractComponentFactory

@@ -21,7 +21,6 @@ package org.codehaus.plexus.component.repository.exception;
  * the requested component cannot be found.
  *
  * @author Kristian Rosenvold
- * @version $Id$
  */
 public class ComponentLookupRuntimeException
     extends RuntimeException

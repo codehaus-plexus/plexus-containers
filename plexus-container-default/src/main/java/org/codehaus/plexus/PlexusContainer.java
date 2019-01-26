@@ -45,6 +45,7 @@ public interface PlexusContainer
      * Looks up and returns a component object with the given unique key or role.
      * @param role a unique key for the desired component
      * @return a Plexus component object
+     * @throws ComponentLookupException in case of lookup error.
      */
     Object lookup( String role )
         throws ComponentLookupException;
@@ -54,6 +55,7 @@ public interface PlexusContainer
      * @param role a non-unique key for the desired component
      * @param roleHint a hint for the desired component implementation
      * @return a Plexus component object
+     * @throws ComponentLookupException in case of lookup error.
      */
     Object lookup( String role, String roleHint )
         throws ComponentLookupException;
@@ -61,7 +63,9 @@ public interface PlexusContainer
     /**
      * Looks up and returns a component object with the given unique key or role.
      * @param type the unique type of the component within the container
+     * @param <T> The type.
      * @return a Plexus component object
+     * @throws ComponentLookupException in case of lookup error.
      */
     <T> T lookup( Class<T> type )
         throws ComponentLookupException;
@@ -70,7 +74,9 @@ public interface PlexusContainer
      * Looks up and returns a component object with the given unique role/role-hint combination.
      * @param type the non-unique type of the component
      * @param roleHint a hint for the desired component implementation
+     * @param <T> The type.
      * @return a Plexus component object
+     * @throws ComponentLookupException in case of lookup error.
      */
     <T> T lookup( Class<T> type, String roleHint )
         throws ComponentLookupException;
@@ -80,7 +86,9 @@ public interface PlexusContainer
      * @param type the non-unique type of the component
      * @param role a non-unique key for the desired component
      * @param roleHint a hint for the desired component implementation
+     * @param <T> The type.
      * @return a Plexus component object
+     * @throws ComponentLookupException in case of lookup error.
      */
     <T> T lookup( Class<T> type, String role, String roleHint )
         throws ComponentLookupException;
@@ -88,7 +96,9 @@ public interface PlexusContainer
     /**
      * Looks up and returns a component object matching the given component descriptor.
      * @param componentDescriptor the descriptor of the component
+     * @param <T> The type.
      * @return a Plexus component object
+     * @throws ComponentLookupException in case of lookup error.
      */
     <T> T lookup( ComponentDescriptor<T> componentDescriptor )
         throws ComponentLookupException;
@@ -97,6 +107,7 @@ public interface PlexusContainer
      * Looks up and returns a List of component objects with the given role.
      * @param role a non-unique key for the desired components
      * @return a List of component objects
+     * @throws ComponentLookupException in case of lookup error.
      */
     List<Object> lookupList( String role )
         throws ComponentLookupException;
@@ -104,7 +115,9 @@ public interface PlexusContainer
     /**
      * Looks up and returns a List of component objects with the given role.
      * @param role a non-unique key for the desired components
+     * @param roleHints the list of hints.
      * @return a List of component objects
+     * @throws ComponentLookupException in case of lookup error.
      */
     List<Object> lookupList( String role, List<String> roleHints )
         throws ComponentLookupException;
@@ -112,7 +125,9 @@ public interface PlexusContainer
     /**
      * Looks up and returns a List of component objects with the given role.
      * @param type the non-unique type of the components
+     * @param <T> The type.
      * @return a List of component objects
+     * @throws ComponentLookupException in case of lookup error.
      */
     <T> List<T> lookupList( Class<T> type )
         throws ComponentLookupException;
@@ -120,7 +135,10 @@ public interface PlexusContainer
     /**
      * Looks up and returns a List of component objects with the given role.
      * @param type the non-unique type of the components
+     * @param roleHints the list of hints.
+     * @param <T> The type.
      * @return a List of component objects
+     * @throws ComponentLookupException in case of lookup error.
      */
     <T> List<T> lookupList( Class<T> type, List<String> roleHints )
         throws ComponentLookupException;
@@ -129,6 +147,7 @@ public interface PlexusContainer
      * Looks up and returns a Map of component objects with the given role, keyed by all available role-hints.
      * @param role a non-unique key for the desired components
      * @return a Map of component objects
+     * @throws ComponentLookupException in case of lookup error.
      */
     Map<String, Object> lookupMap( String role )
         throws ComponentLookupException;
@@ -136,7 +155,9 @@ public interface PlexusContainer
     /**
      * Looks up and returns a Map of component objects with the given role, keyed by all available role-hints.
      * @param role a non-unique key for the desired components
+     * @param roleHints the list of hints.
      * @return a Map of component objects
+     * @throws ComponentLookupException in case of lookup error.
      */
     Map<String, Object> lookupMap( String role, List<String> roleHints )
         throws ComponentLookupException;
@@ -144,7 +165,9 @@ public interface PlexusContainer
     /**
      * Looks up and returns a Map of component objects with the given role, keyed by all available role-hints.
      * @param type the non-unique type of the components
+     * @param <T> The type.
      * @return a Map of component objects
+     * @throws ComponentLookupException in case of lookup error.
      */
     <T> Map<String, T> lookupMap( Class<T> type )
         throws ComponentLookupException;
@@ -152,7 +175,10 @@ public interface PlexusContainer
     /**
      * Looks up and returns a Map of component objects with the given role, keyed by all available role-hints.
      * @param type the non-unique type of the components
+     * @param roleHints the list of hints.
+     * @param <T> The type.
      * @return a Map of component objects
+     * @throws ComponentLookupException in case of lookup error.
      */
     <T> Map<String, T> lookupMap( Class<T> type, List<String> roleHints )
         throws ComponentLookupException;
@@ -184,6 +210,7 @@ public interface PlexusContainer
      * @param type the Java type of the desired component
      * @param role a unique role for the desired component's descriptor
      * @param roleHint a hint showing which implementation should be used
+     * @param <T> The type.
      * @return the ComponentDescriptor with the given component role
      */
     <T> ComponentDescriptor<T> getComponentDescriptor( Class<T> type, String role, String roleHint );
@@ -201,6 +228,7 @@ public interface PlexusContainer
      * all are found, an empty Map if none are found.
      * @param type the Java type of the desired components
      * @param role a non-unique key for the desired components
+     * @param <T> The type.
      * @return a Map of component descriptors keyed by role-hint
      */
     <T> Map<String, ComponentDescriptor<T>> getComponentDescriptorMap( Class<T> type, String role );
@@ -218,14 +246,15 @@ public interface PlexusContainer
      * empty List if none are found.
      * @param type the Java type of the desired components
      * @param role a non-unique key for the desired components
+     * @param <T> The type.
      * @return a List of component descriptors
      */
     <T> List<ComponentDescriptor<T>> getComponentDescriptorList( Class<T> type,  String role );
 
     /**
      * Adds a component descriptor to this container. componentDescriptor should have realmId set.
-     * @param componentDescriptor
-     * @throws ComponentRepositoryException
+     * @param componentDescriptor {@link ComponentDescriptor}
+     * @throws CycleDetectedInComponentGraphException In case of an error.
      */
     void addComponentDescriptor( ComponentDescriptor<?> componentDescriptor )
         throws CycleDetectedInComponentGraphException;
@@ -235,7 +264,7 @@ public interface PlexusContainer
      * but usually enacts some standard lifecycle shutdown procedure on the component. In every case, the component is
      * no longer accessible from the container (unless another is created).
      * @param component the plexus component object to release
-     * @throws ComponentLifecycleException
+     * @throws ComponentLifecycleException in case of an error.
      */
     void release( Object component )
         throws ComponentLifecycleException;
@@ -244,7 +273,7 @@ public interface PlexusContainer
      * Releases all Mapped component values from the container.
      * @see PlexusContainer#release( Object component )
      * @param components Map of plexus component objects to release
-     * @throws ComponentLifecycleException
+     * @throws ComponentLifecycleException in case of an error.
      */
     void releaseAll( Map<String, ?> components )
         throws ComponentLifecycleException;
@@ -253,7 +282,7 @@ public interface PlexusContainer
      * Releases all Listed components from the container.
      * @see PlexusContainer#release( Object component )
      * @param components List of plexus component objects to release
-     * @throws ComponentLifecycleException
+     * @throws ComponentLifecycleException in case of an error.
      */
     void releaseAll( List<?> components )
         throws ComponentLifecycleException;
@@ -347,15 +376,22 @@ public interface PlexusContainer
 
     /**
      * Discovers components in the given realm.
-     * @param childRealm
-     * @param override whether to override/merge any conflicting components, where the new component takes precedence.
-     * @return
-     * @throws PlexusConfigurationException
-     * @throws ComponentRepositoryException
+     * @param childRealm {@link ClassRealm}
+     * @return list {@link ComponentDescriptor}
+     * @throws PlexusConfigurationException in case of an error.
+     * @throws CycleDetectedInComponentGraphException in case of an error.
      */
     List<ComponentDescriptor<?>> discoverComponents( ClassRealm childRealm )
         throws PlexusConfigurationException, CycleDetectedInComponentGraphException;
 
+    /**
+     * Discovers components in the given realm.
+     * @param realm the {@link ClassRealm}.
+     * @param data The data.
+     * @return list {@link ComponentDescriptor}
+     * @throws PlexusConfigurationException in case of an error.
+     * @throws CycleDetectedInComponentGraphException in case of an error.
+     */
     List<ComponentDescriptor<?>> discoverComponents( ClassRealm realm, Object data )
         throws PlexusConfigurationException, CycleDetectedInComponentGraphException;
 
@@ -372,13 +408,15 @@ public interface PlexusContainer
      * remove all components contained in the realm from the component repository.
      *
      * @param componentRealm Realm to remove from the container.
+     * @throws PlexusContainerException {@link PlexusContainerException}.
      */
     void removeComponentRealm( ClassRealm componentRealm )
         throws PlexusContainerException;
 
     /**
      * Returns the lookup realm for this container, which is either
-     * the container realm or the realm set by {@see MutablePlexusContainer#setLookupRealm(ClassRealm)}.
+     * the container realm or the realm set by {@link MutablePlexusContainer#setLookupRealm(ClassRealm)}.
+     * @return {@link ClassRealm}
      */
     ClassRealm getLookupRealm();
 
@@ -395,8 +433,8 @@ public interface PlexusContainer
      * Utility method to retrieve the lookup realm for a component instance.
      * If the component's classloader is a ClassRealm, that realm is returned,
      * otherwise the result of getLookupRealm is returned.
-     * @param component
-     * @return
+     * @param component The component.
+     * @return {@link ClassRealm}
      */
     ClassRealm getLookupRealm( Object component );
 
@@ -409,6 +447,10 @@ public interface PlexusContainer
      * Component instance is not associated with any class realm and will
      * be ignored during lookup is lookup realm is provided using thread context
      * classloader.
+     * @param component The component.
+     * @param role The role.
+     * @param roleHint The hint.
+     * @param <T> The type.
      */
     <T> void addComponent( T component, Class<?> role, String roleHint );
 }

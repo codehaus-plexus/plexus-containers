@@ -23,7 +23,6 @@ import org.codehaus.plexus.test.map.Activity;
  * 
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public interface Component
 {

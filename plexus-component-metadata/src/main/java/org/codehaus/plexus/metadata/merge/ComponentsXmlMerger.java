@@ -30,7 +30,6 @@ import org.jdom2.Document;
 
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
- * @version $Id$
  */
 @Component(role=Merger.class,hint="componentsXml")
 public class ComponentsXmlMerger

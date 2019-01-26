@@ -19,7 +19,6 @@ package org.codehaus.plexus.metadata.gleaner;
 /**
  * ???
  *
- * @version $Id$
  */
 public class NoAnnotationsClass
 {

@@ -21,7 +21,6 @@ package org.codehaus.plexus.component.factory;
  *
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public interface ComponentFactoryManager
 {

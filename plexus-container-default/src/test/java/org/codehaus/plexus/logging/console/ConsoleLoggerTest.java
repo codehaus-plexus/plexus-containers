@@ -25,7 +25,6 @@ import java.io.PrintStream;
 /**
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public class ConsoleLoggerTest
     extends TestCase

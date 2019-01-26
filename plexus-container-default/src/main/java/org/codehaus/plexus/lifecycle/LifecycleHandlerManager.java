@@ -24,7 +24,6 @@ package org.codehaus.plexus.lifecycle;
  *
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public interface LifecycleHandlerManager
 {

@@ -21,7 +21,6 @@ package org.codehaus.plexus.component.composition;
  *
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public interface ComponentE
 {

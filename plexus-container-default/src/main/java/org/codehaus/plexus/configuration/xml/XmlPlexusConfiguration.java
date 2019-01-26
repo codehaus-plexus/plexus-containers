@@ -24,7 +24,6 @@ import org.codehaus.plexus.configuration.io.XmlPlexusConfigurationWriter;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 
 /**
- * @version $Id$
  */
 public class XmlPlexusConfiguration
     extends DefaultPlexusConfiguration

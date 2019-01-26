@@ -27,6 +27,7 @@ import com.sun.tools.doclets.Taglet;
  * The <tt>@plexus.configuration</tt> tags are used to mark fields in a class for configuration through
  * the <tt>components.xml</tt>.
  * <table class="bodyTable">
+ * 	 <caption>The caption</caption>
  *   <tbody>
  *     <tr class="a">
  *       <td align="left"><b>Parameter</b></td>
@@ -46,7 +47,6 @@ import com.sun.tools.doclets.Taglet;
  * http://plexus.codehaus.org/guides/developer-guide/appendices/javadoc-tags-reference.html</a>
  *
  * @author <a href="mailto:vincent.siveton@gmail.com">Vincent Siveton</a>
- * @version $Id$
  */
 public class PlexusConfigurationTaglet
     extends AbstractPlexusTaglet

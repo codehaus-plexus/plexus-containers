@@ -232,6 +232,7 @@ public class MXParser
 
     /**
      * Make sure that in attributes temporary array is enough space.
+     * @param size The size.
      */
     protected  void ensureAttributesCapacity(int size) {
         final int attrPosSize = attributeName != null ? attributeName.length : 0;
@@ -312,6 +313,10 @@ public class MXParser
      * simplistic implementation of hash function that has <b>constant</b>
      * time to compute - so it also means diminishing hash quality for long strings
      * but for XML parsing it should be good enough ...
+     * @param ch The characters.
+     * @param off The offset.
+     * @param len The length.
+     * @return the hash.
      */
     protected static final int fastHash( char ch[], int off, int len ) {
         if(len == 0) return 0;
@@ -427,7 +432,7 @@ public class MXParser
      * @param    name                a  String
      * @param    state               a  boolean
      *
-     * @throws   XmlPullParserException
+     * @throws   XmlPullParserException in case of an error. 
      *
      */
     public void setFeature(String name,
@@ -467,7 +472,9 @@ public class MXParser
         }
     }
 
-    /** Unknown properties are <string>always</strong> returned as false */
+    /** {@inheritDoc}
+     * Unknown properties are <strong>always</strong> returned as false
+     */
     public boolean getFeature(String name)
     {
         if(name == null) throw new IllegalArgumentException("feature name should not be nulll");
@@ -1005,8 +1012,11 @@ public class MXParser
 
     /**
      * Skip sub tree that is currently porser positioned on.
-     * <br>NOTE: parser must be on START_TAG and when funtion returns
-     * parser will be positioned on corresponding END_TAG
+     * <p>
+     * NOTE: parser must be on START_TAG and when funtion returns
+     * parser will be positioned on corresponding END_TAG</p>
+     * @throws XmlPullParserException in case of an error.
+     * @throws IOException in case of an error.
      */
     public void skipSubTree()
         throws XmlPullParserException, IOException

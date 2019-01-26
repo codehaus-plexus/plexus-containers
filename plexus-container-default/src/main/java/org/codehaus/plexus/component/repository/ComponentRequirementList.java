@@ -6,7 +6,6 @@ import java.util.List;
  * Created by IntelliJ IDEA.
  *
  * @author Andrew Williams
- * @version $Id$
  * @since 1.0
  */
 public class ComponentRequirementList

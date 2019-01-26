@@ -30,7 +30,6 @@ package org.codehaus.plexus.component.configurator;
  * 
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public class ImportantThing extends AbstractThing implements ThingInterface
 {

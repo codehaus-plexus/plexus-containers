@@ -33,7 +33,6 @@ import static org.junit.Assert.fail;
  * @author Jason van Zyl
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
- * @version $Id$
  */
 public abstract class PlexusJUnit4TestCase
 {

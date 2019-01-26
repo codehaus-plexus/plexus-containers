@@ -7,7 +7,6 @@ import org.codehaus.plexus.configuration.PlexusConfiguration;
  * 
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public class ComponentConfigurationException
     extends Exception

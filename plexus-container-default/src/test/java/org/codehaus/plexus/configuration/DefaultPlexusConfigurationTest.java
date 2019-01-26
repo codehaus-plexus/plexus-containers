@@ -20,7 +20,6 @@ import junit.framework.TestCase;
 
 /**
  * @author <a href="mailto:rantene@hotmail.com">Ran Tene</a>
- * @version $Id$
  */
 public final class DefaultPlexusConfigurationTest
     extends TestCase

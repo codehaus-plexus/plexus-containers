@@ -21,7 +21,6 @@ import java.util.concurrent.ConcurrentMap;
 
 /**
  * @author Jason van Zyl
- * @version $Id$
  */
 public class DefaultLifecycleHandlerManager
     implements LifecycleHandlerManager

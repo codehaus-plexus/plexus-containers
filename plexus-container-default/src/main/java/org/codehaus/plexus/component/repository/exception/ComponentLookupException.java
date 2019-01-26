@@ -26,7 +26,6 @@ import org.codehaus.plexus.classworlds.realm.ClassRealm;
  * the requested component cannot be found.
  *
  * @author Jason van Zyl
- * @version $Id$
  */
 public class ComponentLookupException
     extends Exception

@@ -30,7 +30,6 @@ import org.jdom2.Element;
 /**
  * Represents the various top-level tags in a deployment descriptor as a typesafe enumeration.
  *
- * @version $Id$
  */
 public class DescriptorTag
 {
@@ -121,8 +120,8 @@ public class DescriptorTag
 
     /**
      * Determines if a particular Tag is mergeable or not.
-     * <p/>
-     * Basically means if we have a {@link Mergeable} class registered for a tag instance.
+     * <p>
+     * Basically means if we have a {@link Mergeable} class registered for a tag instance.</p>
      *
      * @return <code>true</code> if this tag is mergeable.
      */
@@ -140,6 +139,7 @@ public class DescriptorTag
      * Creates an {@link Mergeable} instance from the registered class for this
      * tag instance.
      *
+     * @param element {@link Element}.
      * @return instance of {@link Mergeable}.
      * @throws Exception if there was an error creating an instance.
      */

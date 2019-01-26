@@ -25,20 +25,38 @@ public interface LifecycleHandler
 {
     String getId();
 
+    /**
+     * @param phase {@link Phase}
+     */
     void addBeginSegment( Phase phase );
 
+    /**
+     * @param phase {@link Phase}
+     */
     void addEndSegment( Phase phase );
 
     /**
+     * @param component The component.
+     * @param manager The {@link ComponentManager}
+     * @throws PhaseExecutionException in case of an error.
      * @deprecated
      */
     void start( Object component, ComponentManager manager )
         throws PhaseExecutionException;
 
+    /**
+     * @param component The component.
+     * @param manager The {@link ComponentManager}
+     * @param realm The {@link ClassRealm}.
+     * @throws PhaseExecutionException in case of an error.
+     */
     void start( Object component, ComponentManager manager, ClassRealm realm )
         throws PhaseExecutionException;
 
     /**
+     * @param component The component.
+     * @param manager The {@link ComponentManager}
+     * @throws PhaseExecutionException in case of an error.
      * @deprecated
      */
     void end( Object component, ComponentManager manager )
@@ -46,15 +64,18 @@ public interface LifecycleHandler
 
     /**
      *
-     * @param component
-     * @param manager
+     * @param component The component.
+     * @param manager The {@link ComponentManager}
      * @param componentContextRealm the realm used to create the component, which may not be the component's realm; this
      *            component could have requirements that were satisfied using components from this realm. It could be
      *            used to lookup the same manager components that were used to start the component.
-     * @throws PhaseExecutionException
+     * @throws PhaseExecutionException in case of an error.
      */
     void end( Object component, ComponentManager manager, ClassRealm componentContextRealm )
         throws PhaseExecutionException;
 
+    /**
+     * initialize.
+     */
     void initialize();
 }

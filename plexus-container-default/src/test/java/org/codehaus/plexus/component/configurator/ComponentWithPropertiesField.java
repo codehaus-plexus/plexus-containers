@@ -31,7 +31,6 @@ import java.util.Properties;
  *
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
  *
- * @version $Id$
  */
 public class ComponentWithPropertiesField
 {

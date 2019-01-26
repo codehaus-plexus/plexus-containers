@@ -18,7 +18,6 @@ package org.codehaus.plexus.component.composition;
 
 /**
  * @author <a href="mailto:mmaczka@interia.pl">Michal Maczka</a>
- * @version $Id$
  */
 public class UndefinedComponentComposerException
     extends Exception

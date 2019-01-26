@@ -23,7 +23,6 @@ import java.io.StringReader;
 
 /**
  * @author Jason van Zyl
- * @version $Id$
  */
 public abstract class ConfigurationTestHelper
     extends TestCase

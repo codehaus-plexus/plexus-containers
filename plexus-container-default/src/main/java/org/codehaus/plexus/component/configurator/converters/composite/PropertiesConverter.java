@@ -37,7 +37,6 @@ import java.util.Properties;
  * Converter for <code>java.util.Properties</code>.
  *
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
- * @version $Id$
  */
 public class PropertiesConverter
     extends AbstractConfigurationConverter

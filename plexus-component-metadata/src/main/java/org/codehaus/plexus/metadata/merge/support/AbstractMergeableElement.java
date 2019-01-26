@@ -36,7 +36,6 @@ import org.jdom2.Element;
 
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
- * @version $Id$
  */
 public abstract class AbstractMergeableElement
     extends AbstractMergeableSupport
@@ -49,9 +48,8 @@ public abstract class AbstractMergeableElement
     /**
      * Detects if there was a conflict, that is the specified element was
      * present in both dominant and recessive element-sets.
-     * <p/>
-     * This delegates to
-     * {@link #isRecessiveElementInConflict(AbstractMergeableElement,List)}.
+     * <p>This delegates to
+     * {@link #isRecessiveElementInConflict(AbstractMergeableElement,List)}.</p>
      *
      * @param re      Recessive element.
      * @param eltName Element name to test for.
@@ -69,15 +67,15 @@ public abstract class AbstractMergeableElement
     /**
      * Detects if there was a conflict, that is the specified element was
      * present in both dominant and recessive element-sets.
-     * <p/>
+     * <p>
      * Use this to determine conflicts when the Dominant and Recessive element
-     * sets are keyed with Composite keys.<br>
-     * For instance: <code>&lt;component&gt;</code> is keyed on
-     * <code>&lt;role&gt;</code> and <code>&lt;role-hint&gt;</code>.
+     * sets are keyed with Composite keys.</p>
+     * <p>For instance: <code>&lt;component&gt;</code> is keyed on
+     * <code>&lt;role&gt;</code> and <code>&lt;role-hint&gt;</code>.</p>
      *
-     * @param re
+     * @param re {@link AbstractMergeableElement}.
      * @param eltNameList List of elements that will be checked for values in both dominant and recessive sets.
-     * @return
+     * @return true/false.
      */
     protected boolean isRecessiveElementInConflict( AbstractMergeableElement re, List eltNameList )
     {
@@ -108,7 +106,7 @@ public abstract class AbstractMergeableElement
      *
      * @param re      Recessive element.
      * @param eltName Element name to test for.
-     * @return
+     * @return true/false.
      */
     protected boolean mergeableElementComesFromRecessive( AbstractMergeableElement re, String eltName )
     {

@@ -22,7 +22,13 @@ import org.codehaus.plexus.personality.plexus.lifecycle.phase.PhaseExecutionExce
 
 public interface Phase
 {
-    /** Execute the phase. */
+    /** 
+     * Execute the phase.
+     * @param component The component.
+     * @param manager {@link ComponentManager}
+     * @param realm {@link ClassRealm}
+     * @throws PhaseExecutionException in case of an error.
+     */
     public void execute( Object component, ComponentManager manager, ClassRealm realm )
         throws PhaseExecutionException;
 }

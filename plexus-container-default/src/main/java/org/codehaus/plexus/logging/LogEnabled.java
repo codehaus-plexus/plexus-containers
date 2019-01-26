@@ -17,7 +17,6 @@ package org.codehaus.plexus.logging;
  */
 
 /**
- * @version $Id$
  */
 public interface LogEnabled
 {

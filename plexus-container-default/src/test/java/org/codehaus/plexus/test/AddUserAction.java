@@ -21,7 +21,6 @@ package org.codehaus.plexus.test;
  * 
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public class AddUserAction
     implements Action

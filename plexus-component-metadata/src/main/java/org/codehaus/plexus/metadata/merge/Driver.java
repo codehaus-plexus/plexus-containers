@@ -449,11 +449,15 @@ public class Driver implements Locator, XMLReader, Attributes
     }
 
     /**
-     * Calls {@link ContentHandler.startElement(String, String, String, Attributes) startElement}
+     * Calls {@link ContentHandler#startElement(String, String, String, Attributes) ContentHandler.startElement}
      * on the <code>ContentHandler</code> with <code>this</code> driver object as the
      * {@link Attributes} implementation. In default implementation
      * {@link Attributes} object is valid only during this method call and may not
      * be stored. Sub-classes can overwrite this method to cache attributes.
+     * @param namespace The namespace.
+     * @param localName The localname.
+     * @param qName The qName.
+     * @throws SAXException in case of an error.
      */
     protected void startElement(String namespace, String localName, String qName) throws SAXException {
         contentHandler.startElement(namespace, localName, qName, this);

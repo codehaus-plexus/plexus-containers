@@ -21,7 +21,6 @@ package org.codehaus.plexus.personality.plexus.lifecycle.phase;
  *
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public interface Initializable
 {

@@ -34,7 +34,6 @@ import org.codehaus.plexus.metadata.MetadataGenerationRequest;
  * 
  * @author Jason van Zyl
  * @author Trygve Laugst&oslash;l
- * @version $Id$
  */
 @Mojo( name = "generate-metadata", defaultPhase = LifecyclePhase.PROCESS_CLASSES, requiresDependencyResolution = ResolutionScope.COMPILE )
 public class PlexusDescriptorMojo

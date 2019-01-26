@@ -35,12 +35,12 @@ import org.jdom2.Element;
 
 /**
  * Base class that allows for handling merging two element lists.
- * <p/>
+ * <p>
  * <em>TODO Refactor and make this extend {@link AbstractMergeableElement} which is what
  * this actually is, but with added bits for merging child element lists.</em>
+ * </p>
  *
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
- * @version $Id$
  */
 public abstract class AbstractMergeableElementList
     extends AbstractMergeableElement
@@ -56,6 +56,7 @@ public abstract class AbstractMergeableElementList
      * @param tagName          Name of the tag that appears multiple times
      * @param compositeKeyList List of element/tag names to be used as composite keys to register recurring
      *                         {@link Mergeable} instances.
+     * @param parentElement  {@link Mergeable}.
      * @return Map of {@link Mergeable} instances keyed on the composite key obtained from
      *         {@link #getElementNamesForConflictResolution(java.util.List)}
      * @throws Exception if there was an error parsing and registering {@link Mergeable} instances
@@ -195,8 +196,7 @@ public abstract class AbstractMergeableElementList
     /**
      * Allows the sub classes to provided a tag name that they expect to recurr
      * within them.
-     * <p/>
-     * For instance: <br>
+     * For instance:
      * <ul>
      * <li>&lt;components&gt; expects &lt;component&gt; to recurr within
      * itself.</li>

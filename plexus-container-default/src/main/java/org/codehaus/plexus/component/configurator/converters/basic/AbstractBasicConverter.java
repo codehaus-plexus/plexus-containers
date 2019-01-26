@@ -34,7 +34,6 @@ import org.codehaus.plexus.component.configurator.expression.TypeAwareExpression
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 
 /**
- * @version $Id$
  */
 public abstract class AbstractBasicConverter
     extends AbstractConfigurationConverter

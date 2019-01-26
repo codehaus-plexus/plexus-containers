@@ -31,7 +31,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * a property has been hidden the containerContext will not search in the parent containerContext for the value.
  *
  * @author <a href="mailto:dev@avalon.codehaus.org">Avalon Development Team</a>
- * @version $Id$
  */
 public class DefaultContext
     implements Context

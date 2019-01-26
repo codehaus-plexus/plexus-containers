@@ -23,7 +23,6 @@ import org.codehaus.plexus.lifecycle.AbstractLifecycleHandler;
  *
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public class SimpleLifecycleHandler
     extends AbstractLifecycleHandler

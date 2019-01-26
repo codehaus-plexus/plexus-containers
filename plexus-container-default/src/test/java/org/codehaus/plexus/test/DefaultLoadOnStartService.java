@@ -23,7 +23,6 @@ import org.codehaus.plexus.personality.plexus.lifecycle.phase.Startable;
  *
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public class DefaultLoadOnStartService
     implements LoadOnStartService, Startable

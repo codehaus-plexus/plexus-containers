@@ -35,7 +35,6 @@ import java.util.concurrent.atomic.AtomicLong;
  *
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public interface ComponentManager<T>
 {
@@ -49,6 +48,7 @@ public interface ComponentManager<T>
     int getConnections();
 
     /**
+     * @return {@link LifecycleHandler}.
      * @deprecated use start instead
      */
     LifecycleHandler getLifecycleHandler();
@@ -79,6 +79,7 @@ public interface ComponentManager<T>
     void start(Object component) throws PhaseExecutionException;
 
     /**
+     * @return The start id.
      * @deprecated for internal use only.. will be removed
      */
     long getStartId();

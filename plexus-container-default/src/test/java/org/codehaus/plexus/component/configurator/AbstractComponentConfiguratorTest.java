@@ -49,7 +49,6 @@ import org.codehaus.plexus.configuration.PlexusConfigurationException;
 
 /**
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
- * @version $Id$
  */
 public abstract class AbstractComponentConfiguratorTest
     extends PlexusTestCase

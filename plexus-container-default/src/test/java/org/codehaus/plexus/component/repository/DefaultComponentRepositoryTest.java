@@ -23,7 +23,6 @@ import junit.framework.TestCase;
  *
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public class DefaultComponentRepositoryTest
     extends TestCase

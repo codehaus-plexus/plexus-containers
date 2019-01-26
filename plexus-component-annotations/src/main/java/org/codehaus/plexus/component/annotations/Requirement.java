@@ -28,7 +28,6 @@ import java.lang.annotation.Target;
  * Configures a requirement.
  *
  * @since 1.0-alpha-33
- * @version $Id$
  */
 @Documented
 @Retention(RUNTIME)

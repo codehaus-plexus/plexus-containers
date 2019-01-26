@@ -21,7 +21,6 @@ package org.codehaus.plexus.test.list;
  * 
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public class ValveTwo
     extends AbstractValve

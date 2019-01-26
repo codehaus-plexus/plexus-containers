@@ -30,13 +30,12 @@ import com.sun.javadoc.Tag;
 import com.sun.tools.doclets.Taglet;
 
 /**
- * Abstract <code>Taglet</code> for <a href="http://plexus.codehaus.org/"/>Plexus</a> tags.
+ * Abstract <code>Taglet</code> for <a href="http://plexus.codehaus.org/">Plexus</a> tags.
  *
  * @see <a href="http://plexus.codehaus.org/guides/developer-guide/appendices/javadoc-tags-reference.html">
  * http://plexus.codehaus.org/guides/developer-guide/appendices/javadoc-tags-reference.html</a>
  *
  * @author <a href="mailto:vincent.siveton@gmail.com">Vincent Siveton</a>
- * @version $Id$
  */
 public abstract class AbstractPlexusTaglet
     implements Taglet

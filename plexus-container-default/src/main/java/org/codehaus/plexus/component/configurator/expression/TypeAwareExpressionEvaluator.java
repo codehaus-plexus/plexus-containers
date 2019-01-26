@@ -20,7 +20,6 @@ package org.codehaus.plexus.component.configurator.expression;
  * Evaluate an expression.
  *
  * @author <a href="mailto:brett@codehaus.org">Brett Porter</a>
- * @version $Id$
  */
 public interface TypeAwareExpressionEvaluator
     extends ExpressionEvaluator
@@ -34,6 +33,7 @@ public interface TypeAwareExpressionEvaluator
      * @param expression the expression
      * @param type The expected type of expression result, may be {@code null}.
      * @return the value of the expression
+     * @throws ExpressionEvaluationException in case of an error. 
      */
     Object evaluate( String expression, Class<?> type )
         throws ExpressionEvaluationException;

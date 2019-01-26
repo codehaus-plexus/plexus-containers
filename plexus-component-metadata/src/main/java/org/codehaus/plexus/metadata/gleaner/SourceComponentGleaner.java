@@ -24,7 +24,6 @@ import com.thoughtworks.qdox.model.JavaClass;
 /**
  * Interface for component gleaners which glean off of source code.
  *
- * @version $Id$
  */
 public interface SourceComponentGleaner
 {

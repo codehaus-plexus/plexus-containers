@@ -21,7 +21,6 @@ package org.codehaus.plexus.component.composition;
  * 
  * @author Jason van Zyl 
  * @author <a href="mmaczka@interia.pl">Michal Maczka</a>
- * @version $Id$
  */
 public class CycleDetectedInComponentGraphException
     extends Exception

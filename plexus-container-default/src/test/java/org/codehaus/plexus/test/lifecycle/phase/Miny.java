@@ -21,7 +21,6 @@ package org.codehaus.plexus.test.lifecycle.phase;
  *
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public interface Miny
 {

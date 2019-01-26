@@ -34,7 +34,6 @@ import org.jdom2.Element;
  * It should be implemented by elements/tags that need to have a certain control on how elements of the same type are merged with them.
  *
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
- * @version $Id$
  */
 public interface Mergeable
 {

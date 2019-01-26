@@ -40,7 +40,6 @@ import java.util.List;
 
 /**
  * @author <a href="mailto:kenney@codehaus.org">Kenney Westerhof</a>
- * @version $Id$
  */
 public class ArrayConverter
     extends AbstractConfigurationConverter

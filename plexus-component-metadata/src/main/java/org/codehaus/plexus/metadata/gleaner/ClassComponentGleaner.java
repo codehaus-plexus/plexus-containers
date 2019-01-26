@@ -21,7 +21,6 @@ import org.codehaus.plexus.component.repository.ComponentDescriptor;
 /**
  * Interface for component gleaners which glean off of compiled classes..
  *
- * @version $Id$
  */
 public interface ClassComponentGleaner
 {

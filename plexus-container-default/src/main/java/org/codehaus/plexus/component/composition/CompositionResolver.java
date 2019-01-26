@@ -23,14 +23,13 @@ import java.util.List;
 /**
  * @author Jason van Zyl
  * @author <a href="mailto:mmaczka@interia.pl">Michal Maczka</a>
- * @version $Id$
  */
 public interface CompositionResolver
 {
     public static final char SEPARATOR_CHAR = ':';
 
     /**
-     * @param componentDescriptor
+     * @param componentDescriptor {@link ComponentDescriptor}.
      * @throws CycleDetectedInComponentGraphException when cycle is detected
      */
     void addComponentDescriptor( ComponentDescriptor<?> componentDescriptor ) 

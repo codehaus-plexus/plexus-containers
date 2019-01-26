@@ -21,7 +21,6 @@ import org.codehaus.plexus.PlexusTestCase;
 
 /**
  * @author Ben Walding
- * @version $Id$
  */
 public class SlowComponentClassicSingletonComponentManagerTest
     extends PlexusTestCase

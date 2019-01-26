@@ -47,21 +47,17 @@ public abstract class AbstractDescriptorMojo
 
     /**
      * The file encoding of the source files.
-     * 
-     * @parameter default-value="${project.build.sourceEncoding}"
      */
     @Parameter( defaultValue = "${project.build.sourceEncoding}" )
     protected String sourceEncoding;
 
     /**
      * The extractors to use. By default all available extractors will be used.
-     * <p>
      * Known extractors:
      * <ul>
      * <li>source</li>
      * <li>class</li>
      * </ul>
-     * </p>
      */
     @Parameter
     protected List<String> extractors;

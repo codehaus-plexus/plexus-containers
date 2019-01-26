@@ -31,7 +31,6 @@ import java.util.Map;
  *
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
  *
- * @version $Id$
  */
 public class ComponentWithMapField
 {

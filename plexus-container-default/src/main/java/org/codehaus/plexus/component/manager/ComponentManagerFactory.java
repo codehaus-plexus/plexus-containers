@@ -15,6 +15,13 @@ public interface ComponentManagerFactory
 
     /**
      * Creates a new component manager for the specified component descriptor.
+     * @param container {@link MutablePlexusContainer}.
+     * @param lifecycleHandler {@link LifecycleHandler}.
+     * @param componentDescriptor {@link ComponentDescriptor}
+     * @param role The role.
+     * @param roleHint The hint for the role.
+     * @param <T> The type.
+     * @return {@link ComponentManager}
      */
     <T> ComponentManager<T> createComponentManager( MutablePlexusContainer container,
                                              LifecycleHandler lifecycleHandler,

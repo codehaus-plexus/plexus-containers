@@ -24,7 +24,6 @@ import org.codehaus.plexus.component.configurator.ComponentConfigurationExceptio
 /**
  * Converter for {@link URI} objects.
  *
- * @version $Id$
  */
 public class UriConverter
     extends AbstractBasicConverter

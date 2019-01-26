@@ -19,7 +19,7 @@ import org.codehaus.plexus.configuration.xml.XmlPlexusConfiguration;
  */
 
 /**
- * @todo This merger explicity uses the XML implementation of the plexus configuration but
+ * TODO: This merger explicity uses the XML implementation of the plexus configuration but
  * it must work for configurations coming from any source.
  */
 public class PlexusConfigurationMerger

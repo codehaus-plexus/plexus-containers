@@ -21,7 +21,6 @@ package org.codehaus.plexus.metadata.gleaner;
  *
  * @plexus.component role="org.codehaus.plexus.metadata.gleaner.ChildComponent"
  *
- * @version $Id$
  */
 public class ChildComponent
 {

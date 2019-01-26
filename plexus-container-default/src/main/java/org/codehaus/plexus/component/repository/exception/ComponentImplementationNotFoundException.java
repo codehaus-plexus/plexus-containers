@@ -22,7 +22,6 @@ package org.codehaus.plexus.component.repository.exception;
  *
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public class ComponentImplementationNotFoundException
     extends Exception

@@ -38,7 +38,6 @@ import org.codehaus.plexus.metadata.merge.Merger;
  * 
  * @author Jason van Zyl
  * @author Trygve Laugst&oslash;l
- * @version $Id$
  */
 @Mojo( name = "merge-metadata", defaultPhase = LifecyclePhase.PROCESS_CLASSES )
 public class PlexusMergeMojo

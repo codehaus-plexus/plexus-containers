@@ -103,6 +103,7 @@ public class ComponentDescriptor<T>
 
     /**
      * The location this information came from (descriptor file URI).
+     * @param source Set the {@link #source}.
      */
     public void setSource( String source )
     {
@@ -111,6 +112,7 @@ public class ComponentDescriptor<T>
 
     /**
      * The location this information came from (descriptor file URI).
+     * @return The {@link #source}
      */
     public String getSource()
     {
@@ -502,7 +504,7 @@ public class ComponentDescriptor<T>
     /**
      * Sets the id of the factory to use to create this component. For example, "jruby" will use a JRuby factory.
      *
-     * @param componentFactory
+     * @param componentFactory The component factory.
      */
     public void setComponentFactory( String componentFactory )
     {
@@ -553,7 +555,7 @@ public class ComponentDescriptor<T>
     /**
      * Sets the instantiation-strategy for this component. For example, "container".
      *
-     * @param instantiationStrategy
+     * @param instantiationStrategy The strategy.
      */
     public void setInstantiationStrategy( String instantiationStrategy )
     {
@@ -618,7 +620,7 @@ public class ComponentDescriptor<T>
     /**
      * Sets the type of component configurator for this project.
      *
-     * @param componentConfigurator
+     * @param componentConfigurator The component configurator.
      */
     public void setComponentConfigurator( String componentConfigurator )
     {

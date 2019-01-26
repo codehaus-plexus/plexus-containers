@@ -34,7 +34,6 @@ import org.codehaus.plexus.configuration.PlexusConfiguration;
 /**
  * @author Jason van Zyl
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
- * @version $Id$
  */
 public class BasicComponentConfigurator
     extends AbstractComponentConfigurator

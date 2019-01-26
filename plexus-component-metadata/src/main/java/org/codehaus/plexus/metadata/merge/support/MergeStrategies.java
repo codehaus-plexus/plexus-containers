@@ -35,7 +35,6 @@ import org.codehaus.plexus.metadata.merge.MergeStrategy;
  * TODO: Revisit and factor {@link Mergeable#merge(Mergeable)} to use a {@link MergeStrategy}.
  *
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
- * @version $Id$
  */
 public class MergeStrategies
 {

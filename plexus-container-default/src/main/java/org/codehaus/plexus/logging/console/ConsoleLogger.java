@@ -25,7 +25,6 @@ import org.codehaus.plexus.logging.Logger;
  * does not have a logger to supply.
  *
  * @author <a href="mailto:dev@avalon.codehaus.org">Avalon Development Team</a>
- * @version $Id$
  */
 public final class ConsoleLogger
     extends AbstractLogger

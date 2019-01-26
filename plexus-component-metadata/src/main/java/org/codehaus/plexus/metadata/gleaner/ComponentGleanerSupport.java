@@ -26,7 +26,6 @@ import org.codehaus.plexus.configuration.xml.XmlPlexusConfiguration;
 /**
  * Support for component gleaner implementations.
  *
- * @version $Id$
  */
 public abstract class ComponentGleanerSupport
 {

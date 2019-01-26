@@ -31,7 +31,6 @@ import org.jdom2.Element;
 
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
- * @version $Id$
  */
 public class ComponentsElement
     extends AbstractMergeableElementList

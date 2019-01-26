@@ -21,7 +21,6 @@ package org.codehaus.plexus.component.discovery;
  * 
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public class DefaultDiscoveredComponent
     implements DiscoveredComponent

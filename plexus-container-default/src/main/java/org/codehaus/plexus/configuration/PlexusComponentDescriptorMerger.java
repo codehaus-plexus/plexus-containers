@@ -21,6 +21,8 @@ public class PlexusComponentDescriptorMerger
 {
     /**
      * Merges override and target, where target is updated with override.
+     * @param override {@link ComponentDescriptor}
+     * @param target {@link ComponentDescriptor}.
      */
     public static void merge( ComponentDescriptor<?> override, ComponentDescriptor<?> target )
     {

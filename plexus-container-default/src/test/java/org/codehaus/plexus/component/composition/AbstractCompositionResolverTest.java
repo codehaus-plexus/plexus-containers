@@ -29,7 +29,6 @@ import java.util.List;
  *
  * @author Jason van Zyl
  *
- * @version $Id$
  */
 public abstract class AbstractCompositionResolverTest
     extends TestCase           

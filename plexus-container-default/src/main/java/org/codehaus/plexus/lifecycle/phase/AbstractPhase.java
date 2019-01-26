@@ -23,11 +23,14 @@ import org.codehaus.plexus.personality.plexus.lifecycle.phase.PhaseExecutionExce
 public abstract class AbstractPhase
     implements Phase
 {
-    /** Execute the phase. */
+    /** {@inheritDoc} */
     public abstract void execute( Object component, ComponentManager manager, ClassRealm realm )
         throws PhaseExecutionException;
 
     /**
+     * @param component The component.
+     * @param manager The {@link ComponentManager}.
+     * @throws PhaseExecutionException in case of an error.
      * @deprecated
      */
     public final void execute( Object component, ComponentManager manager )

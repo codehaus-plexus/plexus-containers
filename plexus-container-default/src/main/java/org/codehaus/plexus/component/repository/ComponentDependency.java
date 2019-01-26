@@ -23,7 +23,6 @@ package org.codehaus.plexus.component.repository;
  * 
  * @author Jason van Zyl
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
- * @version $Id$
  */
 public class ComponentDependency
 {

@@ -33,7 +33,6 @@ import org.codehaus.plexus.util.StringUtils;
 
 /**
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
- * @version $Id$
  */
 public abstract class AbstractConfigurationConverter
     implements ConfigurationConverter
@@ -42,9 +41,14 @@ public abstract class AbstractConfigurationConverter
 
     /**
      * We will check if user has provided a hint which class should be used for given field.
-     * So we will check if something like <foo implementation="com.MyFoo"> is present in configuraion.
+     * So we will check if something like {@code <foo implementation="com.MyFoo">} is present in configuraion.
      * If 'implementation' hint was provided we will try to load correspoding class
      * If we are unable to do so error will be reported
+     * @param type {@link Class}.
+     * @param configuration {@link PlexusConfiguration}.
+     * @param classLoader {@link ClassLoader}.
+     * @return The class.
+     * @throws ComponentConfigurationException in case of an error.
      */
     protected Class getClassForImplementationHint( Class type, PlexusConfiguration configuration,
                                                    ClassLoader classLoader )

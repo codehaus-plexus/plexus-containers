@@ -29,18 +29,17 @@ import java.util.Map;
  * This is a simple logger manager that will only write the logging statements to the console.
  *
  * Sample configuration:
- * <pre>
+ * <pre>{@code
  * <logging>
  *   <implementation>org.codehaus.plexus.logging.ConsoleLoggerManager</implementation>
  *   <logger>
  *     <threshold>DEBUG</threshold>
  *   </logger>
  * </logging>
- * </pre>
+ * }</pre>
  * 
  * @author Jason van Zyl
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
- * @version $Id$
  */
 public class ConsoleLoggerManager
     extends AbstractLoggerManager
@@ -69,6 +68,7 @@ public class ConsoleLoggerManager
 
     /**
      * This special constructor is called directly when the container is bootstrapping itself.
+     * @param threshold The threshold.
      */
     public ConsoleLoggerManager( String threshold )
     {

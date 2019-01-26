@@ -21,7 +21,6 @@ import org.codehaus.plexus.component.annotations.*;
 /**
  * ???
  *
- * @version $Id$
  */
 @Component(role=MyComponent.class, hint="foo")
 public class MyComponent

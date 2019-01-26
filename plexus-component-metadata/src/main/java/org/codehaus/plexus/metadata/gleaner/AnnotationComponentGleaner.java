@@ -42,7 +42,6 @@ import org.codehaus.plexus.util.IOUtil;
  * A class component gleaner which inspects each type for <tt>org.codehaus.plexus.component.annotations.*</tt> annotations
  * and when found translates them into a {@link ComponentDescriptor}.
  *
- * @version $Id$
  */
 public class AnnotationComponentGleaner
     extends ComponentGleanerSupport

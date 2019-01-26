@@ -37,14 +37,14 @@ public interface ConfigurationConverter
 
     /**
      * @param converterLookup Repository of available converters
-     * @param configuration
+     * @param configuration {@link PlexusConfiguration}
      * @param type the type of object to read
      * @param baseType the type of object the the source is
      * @param classLoader ClassLoader which should be used for loading classes
      * @param expressionEvaluator the expression evaluator to use for expressions
      * @return the object
-     * @throws ComponentConfigurationException
-     * @todo a better way, instead of baseType, would be to pass in a factory for new classes that could be based from the given package
+     * @throws ComponentConfigurationException in case of an error.
+     * TODO: a better way, instead of baseType, would be to pass in a factory for new classes that could be based from the given package
      */
     Object fromConfiguration( ConverterLookup converterLookup, PlexusConfiguration configuration, Class type,
                               Class baseType, ClassLoader classLoader, ExpressionEvaluator expressionEvaluator )
@@ -52,14 +52,15 @@ public interface ConfigurationConverter
 
     /**
      * @param converterLookup Repository of available converters
-     * @param configuration
+     * @param configuration {@link PlexusConfiguration}
      * @param type the type of object to read
      * @param baseType the type of object the the source is
      * @param classLoader ClassLoader which should be used for loading classes
      * @param expressionEvaluator the expression evaluator to use for expressions
+     * @param listener {@link ConfigurationListener}.
      * @return the object
-     * @throws ComponentConfigurationException
-     * @todo a better way, instead of baseType, would be to pass in a factory for new classes that could be based from the given package
+     * @throws ComponentConfigurationException in case of an error.
+     * TODO: a better way, instead of baseType, would be to pass in a factory for new classes that could be based from the given package
      */
     Object fromConfiguration( ConverterLookup converterLookup, PlexusConfiguration configuration, Class type,
                               Class baseType, ClassLoader classLoader, ExpressionEvaluator expressionEvaluator,

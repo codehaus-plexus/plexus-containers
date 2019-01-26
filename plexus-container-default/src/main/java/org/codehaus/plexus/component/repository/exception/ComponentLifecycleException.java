@@ -21,7 +21,6 @@ package org.codehaus.plexus.component.repository.exception;
  * implementation are not available.
  *
  * @author Jason van Zyl
- * @version $Id$
  */
 public class ComponentLifecycleException
     extends Exception
