@@ -1,5 +1,12 @@
 package org.codehaus.plexus.component.repository;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import org.codehaus.classworlds.ClassRealm;
+
 /*
  * Copyright 2001-2006 Codehaus Foundation.
  *
@@ -17,13 +24,7 @@ package org.codehaus.plexus.component.repository;
  */
 
 import org.codehaus.plexus.PlexusConstants;
-import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * Component instantiation description.
@@ -41,7 +42,7 @@ public class ComponentDescriptor<T>
 
     private Class<? extends T> roleClass;
 
-    private String roleHint = PlexusConstants.PLEXUS_DEFAULT_HINT;
+    private String roleHint = "default";
 
     private String implementation;
 
@@ -246,7 +247,7 @@ public class ComponentDescriptor<T>
     {
         if ( ( roleHint == null ) || roleHint.trim().equals( "" ) )
         {
-            this.roleHint = PlexusConstants.PLEXUS_DEFAULT_HINT;
+            this.roleHint = "default";
         }
         else
         {
