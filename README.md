@@ -6,6 +6,10 @@ Plexus Containers
 
 Plexus IoC Container core with companion tools.
 
+## Attention
+
+We have changed the default branch in GitHub repository from `plexus-containers-1.x` to `master`
+
 ## Release Notes
 
 You can find details about the different releases in the [Release Notes](https://github.com/codehaus-plexus/plexus-containers/blob/master/ReleaseNotes.md).
