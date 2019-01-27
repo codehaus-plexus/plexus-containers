@@ -20,9 +20,12 @@ Plexus Containers 2.0.0 requires Java 6 and Maven 3.0+
  * [Issue #21][issue-21] - Upgrade plexus-utils 3.1.1
  * [Issue #22][issue-22] - Upgrade classworlds 2.6.0
 
+### Tasks
 
+ * [Issue #13][issue-13] - Move default development back to master.
 
 [issue-8]: https://github.com/codehaus-plexus/plexus-containers/issues/8
+[issue-13]: https://github.com/codehaus-plexus/plexus-containers/issues/13
 [issue-15]: https://github.com/codehaus-plexus/plexus-containers/issues/15
 [issue-19]: https://github.com/codehaus-plexus/plexus-containers/issues/19
 [issue-20]: https://github.com/codehaus-plexus/plexus-containers/issues/20
