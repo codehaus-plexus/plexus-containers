@@ -2,7 +2,9 @@ language: java
 jdk:
   - openjdk7
   - oraclejdk8
-  - oraclejdk9
+  - openjdk9
+  - openjdk10
+  - openjdk11
 
 # No need for preliminary install step.
 install: true
@@ -17,6 +19,4 @@ cache:
 branches:
     except:
         - gh-pages
-notifications:
-    email:
-        - olamy@apache.org
+
