@@ -47,7 +47,6 @@ public abstract class PlexusJUnit4TestCase
         basedir = getBasedir();
     }
 
-    @SuppressWarnings("ResultOfMethodCallIgnored")
     protected void setupContainer()
     {
         // ----------------------------------------------------------------------------
