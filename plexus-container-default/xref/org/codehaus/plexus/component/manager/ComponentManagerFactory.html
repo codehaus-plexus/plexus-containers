@@ -23,15 +23,22 @@
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  
 <a class="jxr_linenumber" name="L16" href="#L16">16</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_javadoccomment">     * Creates a new component manager for the specified component descriptor.</em>
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>      &lt;T&gt; ComponentManager&lt;T&gt; createComponentManager( MutablePlexusContainer container,
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>                                               <a href="../../../../../org/codehaus/plexus/lifecycle/LifecycleHandler.html">LifecycleHandler</a> lifecycleHandler,
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>                                               ComponentDescriptor&lt;T&gt; componentDescriptor,
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>                                               String role,
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>                                               String roleHint );
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  }
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_javadoccomment">     * @param container {@link MutablePlexusContainer}.</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <em class="jxr_javadoccomment">     * @param lifecycleHandler {@link LifecycleHandler}.</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_javadoccomment">     * @param componentDescriptor {@link ComponentDescriptor}</em>
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <em class="jxr_javadoccomment">     * @param role The role.</em>
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_javadoccomment">     * @param roleHint The hint for the role.</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <em class="jxr_javadoccomment">     * @param &lt;T&gt; The type.</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_javadoccomment">     * @return {@link ComponentManager}</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>      &lt;T&gt; ComponentManager&lt;T&gt; createComponentManager( MutablePlexusContainer container,
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>                                               <a href="../../../../../org/codehaus/plexus/lifecycle/LifecycleHandler.html">LifecycleHandler</a> lifecycleHandler,
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>                                               ComponentDescriptor&lt;T&gt; componentDescriptor,
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>                                               String role,
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>                                               String roleHint );
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2001&#x2013;2018 <a href="http://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2001&#x2013;2019 <a href="http://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
 </body>
 </html>

@@ -23,7 +23,7 @@ under the License.
     <link>http://codehaus-plexus.github.io/plexus-containers/plexus-component-annotations/</link>
     <description>Plexus :: Component Annotations - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2001 - 2018 Codehaus Plexus</copyright>
+    <copyright>&#169;2001 - 2019 Codehaus Plexus</copyright>
     <item>
       <title>File: 3,
              Errors: 15,
@@ -44,20 +44,6 @@ under the License.
             </tr>
           </thead>
           <tbody>
-                          <tr>
-                <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-annotations//checkstyle.html#org.codehaus.plexus.component.annotations.Component.java">org/codehaus/plexus/component/annotations/Component.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  13
-                </td>
-                <td>
-                  5
-                </td>
-              </tr>
                           <tr>
                 <td>
                   <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-annotations//checkstyle.html#org.codehaus.plexus.component.annotations.Requirement.java">org/codehaus/plexus/component/annotations/Requirement.java</a>
@@ -81,6 +67,20 @@ under the License.
                 </td>
                 <td>
                   2
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-annotations//checkstyle.html#org.codehaus.plexus.component.annotations.Component.java">org/codehaus/plexus/component/annotations/Component.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  13
                 </td>
                 <td>
                   5

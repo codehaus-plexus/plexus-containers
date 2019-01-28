@@ -38,32 +38,31 @@
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>  
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>  <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>  <em class="jxr_javadoccomment"> * @author &lt;a href='<a href="mailto:rahul.thakur.xdev@gmail.com'&gt;Rahul" target="alexandria_uri">mailto:rahul.thakur.xdev@gmail.com'&gt;Rahul</a> Thakur&lt;/a&gt;</em>
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <em class="jxr_javadoccomment"> * @version $Id$</em>
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  @Component(role=Merger.<strong class="jxr_keyword">class</strong>,hint=<span class="jxr_string">"componentsXml"</span>)
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/codehaus/plexus/metadata/merge/ComponentsXmlMerger.html">ComponentsXmlMerger</a>
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>      <strong class="jxr_keyword">extends</strong> <a href="../../../../../org/codehaus/plexus/metadata/merge/AbstractMerger.html">AbstractMerger</a>
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  {
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment">     * @see Merger#merge(Document, Document)</em>
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>      <strong class="jxr_keyword">public</strong> Document merge( Document dDocument, Document rDocument )
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>          <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/codehaus/plexus/metadata/merge/MergeException.html">MergeException</a>
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>      {
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>          <em class="jxr_comment">// TODO: Ideally we don't want to manipulate the original</em>
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>          <em class="jxr_comment">// dominant document but use its copy for merge.</em>
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>          <em class="jxr_comment">//Document mDoc = (Document) dDocument.clone();        // doesn't merge properly</em>
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>          Document mDoc = dDocument;
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>          <a href="../../../../../org/codehaus/plexus/metadata/merge/support/ComponentSetElement.html">ComponentSetElement</a> dCSE = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/metadata/merge/support/ComponentSetElement.html">ComponentSetElement</a>( mDoc.getRootElement() );
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>          <a href="../../../../../org/codehaus/plexus/metadata/merge/support/ComponentSetElement.html">ComponentSetElement</a> rCSE = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/metadata/merge/support/ComponentSetElement.html">ComponentSetElement</a>( rDocument.getRootElement() );
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>          dCSE.merge( rCSE );
-<a class="jxr_linenumber" name="L52" href="#L52">52</a>          <em class="jxr_comment">// the contents are merged into the dominant document DOM.</em>
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>          <strong class="jxr_keyword">return</strong> mDoc;
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>      }
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>  
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>  }
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  @Component(role=Merger.<strong class="jxr_keyword">class</strong>,hint=<span class="jxr_string">"componentsXml"</span>)
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/codehaus/plexus/metadata/merge/ComponentsXmlMerger.html">ComponentsXmlMerger</a>
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>      <strong class="jxr_keyword">extends</strong> <a href="../../../../../org/codehaus/plexus/metadata/merge/AbstractMerger.html">AbstractMerger</a>
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  {
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment">     * @see Merger#merge(Document, Document)</em>
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>      <strong class="jxr_keyword">public</strong> Document merge( Document dDocument, Document rDocument )
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>          <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/codehaus/plexus/metadata/merge/MergeException.html">MergeException</a>
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>      {
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>          <em class="jxr_comment">// TODO: Ideally we don't want to manipulate the original</em>
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>          <em class="jxr_comment">// dominant document but use its copy for merge.</em>
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>          <em class="jxr_comment">//Document mDoc = (Document) dDocument.clone();        // doesn't merge properly</em>
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>          Document mDoc = dDocument;
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>          <a href="../../../../../org/codehaus/plexus/metadata/merge/support/ComponentSetElement.html">ComponentSetElement</a> dCSE = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/metadata/merge/support/ComponentSetElement.html">ComponentSetElement</a>( mDoc.getRootElement() );
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>          <a href="../../../../../org/codehaus/plexus/metadata/merge/support/ComponentSetElement.html">ComponentSetElement</a> rCSE = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/metadata/merge/support/ComponentSetElement.html">ComponentSetElement</a>( rDocument.getRootElement() );
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>          dCSE.merge( rCSE );
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>          <em class="jxr_comment">// the contents are merged into the dominant document DOM.</em>
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>          <strong class="jxr_keyword">return</strong> mDoc;
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>      }
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>  
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>  }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2001&#x2013;2018 <a href="http://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2001&#x2013;2019 <a href="http://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
 </body>
 </html>

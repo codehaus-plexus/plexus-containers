@@ -45,14 +45,14 @@
 <a class="jxr_linenumber" name="L37" href="#L37">37</a>  
 <a class="jxr_linenumber" name="L38" href="#L38">38</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment">     * @param converterLookup Repository of available converters</em>
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment">     * @param configuration</em>
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment">     * @param configuration {@link PlexusConfiguration}</em>
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>  <em class="jxr_javadoccomment">     * @param type the type of object to read</em>
 <a class="jxr_linenumber" name="L42" href="#L42">42</a>  <em class="jxr_javadoccomment">     * @param baseType the type of object the the source is</em>
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>  <em class="jxr_javadoccomment">     * @param classLoader ClassLoader which should be used for loading classes</em>
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>  <em class="jxr_javadoccomment">     * @param expressionEvaluator the expression evaluator to use for expressions</em>
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>  <em class="jxr_javadoccomment">     * @return the object</em>
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>  <em class="jxr_javadoccomment">     * @throws ComponentConfigurationException</em>
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>  <em class="jxr_javadoccomment">     * @todo a better way, instead of baseType, would be to pass in a factory for new classes that could be based from the given package</em>
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>  <em class="jxr_javadoccomment">     * @throws ComponentConfigurationException in case of an error.</em>
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  <em class="jxr_javadoccomment">     * TODO: a better way, instead of baseType, would be to pass in a factory for new classes that could be based from the given package</em>
 <a class="jxr_linenumber" name="L48" href="#L48">48</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>      Object fromConfiguration( ConverterLookup converterLookup, PlexusConfiguration configuration, Class type,
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>                                Class baseType, ClassLoader classLoader, <a href="../../../../../../org/codehaus/plexus/component/configurator/expression/ExpressionEvaluator.html">ExpressionEvaluator</a> expressionEvaluator )
@@ -60,22 +60,23 @@
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>  
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>  <em class="jxr_javadoccomment">     * @param converterLookup Repository of available converters</em>
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment">     * @param configuration</em>
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment">     * @param configuration {@link PlexusConfiguration}</em>
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>  <em class="jxr_javadoccomment">     * @param type the type of object to read</em>
 <a class="jxr_linenumber" name="L57" href="#L57">57</a>  <em class="jxr_javadoccomment">     * @param baseType the type of object the the source is</em>
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>  <em class="jxr_javadoccomment">     * @param classLoader ClassLoader which should be used for loading classes</em>
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>  <em class="jxr_javadoccomment">     * @param expressionEvaluator the expression evaluator to use for expressions</em>
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>  <em class="jxr_javadoccomment">     * @return the object</em>
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>  <em class="jxr_javadoccomment">     * @throws ComponentConfigurationException</em>
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>  <em class="jxr_javadoccomment">     * @todo a better way, instead of baseType, would be to pass in a factory for new classes that could be based from the given package</em>
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>      Object fromConfiguration( ConverterLookup converterLookup, PlexusConfiguration configuration, Class type,
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>                                Class baseType, ClassLoader classLoader, <a href="../../../../../../org/codehaus/plexus/component/configurator/expression/ExpressionEvaluator.html">ExpressionEvaluator</a> expressionEvaluator,
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>                                <a href="../../../../../../org/codehaus/plexus/component/configurator/ConfigurationListener.html">ConfigurationListener</a> listener )
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>          <strong class="jxr_keyword">throws</strong> ComponentConfigurationException;
-<a class="jxr_linenumber" name="L68" href="#L68">68</a>  }
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>  <em class="jxr_javadoccomment">     * @param listener {@link ConfigurationListener}.</em>
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>  <em class="jxr_javadoccomment">     * @return the object</em>
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>  <em class="jxr_javadoccomment">     * @throws ComponentConfigurationException in case of an error.</em>
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>  <em class="jxr_javadoccomment">     * TODO: a better way, instead of baseType, would be to pass in a factory for new classes that could be based from the given package</em>
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>      Object fromConfiguration( ConverterLookup converterLookup, PlexusConfiguration configuration, Class type,
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>                                Class baseType, ClassLoader classLoader, <a href="../../../../../../org/codehaus/plexus/component/configurator/expression/ExpressionEvaluator.html">ExpressionEvaluator</a> expressionEvaluator,
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>                                <a href="../../../../../../org/codehaus/plexus/component/configurator/ConfigurationListener.html">ConfigurationListener</a> listener )
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>          <strong class="jxr_keyword">throws</strong> ComponentConfigurationException;
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>  }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2001&#x2013;2018 <a href="http://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2001&#x2013;2019 <a href="http://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
 </body>
 </html>
