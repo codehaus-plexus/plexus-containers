@@ -31,32 +31,47 @@ public class DyanamicComponentKungFuTest
     /**
      * Component additions during container operation.
      *
-     * 1. Add a component at runtime
-     *    -> Additions could be made by specifying an URL which will be compatible with Wagon
-     *       and specifically Maven's way of using Wagon.
+     * <ol>
+     * <li>Add a component at runtime
+     *    <ul>
+     *       <li>Additions could be made by specifying an URL which will be compatible with Wagon
+     *           and specifically Maven's way of using Wagon.</li>
+     *    </ul>
+     * </li>
      *
-     * 2. Configure the dynamically added component
-     *    -> We need to be able to deal with different flavours of components but we can focus
+     * <li>Configure the dynamically added component
+     *    <ul>
+     *      <li>We need to be able to deal with different flavours of components but we can focus
      *       on Plexus components to start with. But some components may have meta information
      *       and some may not like pico components. But one of the first flavours I want to
-     *       support is phoenix components because I specifically need the FTP server.
+     *       support is phoenix components because I specifically need the FTP server.</li>
+     *    </ul>
+     * </li>
      *
-     * 3. Let the component perform its role
+     * <li>Let the component perform its role</li>
+     * <li>Suspend the component
+     *    <ol type="a">
+     *      <li>Define the criteria for which we can suspend a component
+     *          <ul>
+     *            <li>When there are no client connections?</li>
+     *            <li>Even when there are no connections and a client tries to obtain a connection what do we do?</li>
+     *            <li>If we are in desperate need to suspend the component, say for urgent security requirement, and
+     *              clients simply won't bugger off what do we do?</li>
+     *          </ul>
+     *      </li>
+     *    </ol>
+     * </li>
      *
-     * 4. Suspend the component
-     *    a) Define the criteria for which we can suspend a component
-     *       -> When there are no client connections?
-     *       -> Even when there are no connections and a client tries to obtain a connection what do we do?
-     *       -> If we are in desperate need to suspend the component, say for urgent security requirement, and
-     *          clients simply won't bugger off what do we do?
+     * <li>Reconfigure the component</li>
      *
-     * 5. Reconfigure the component
+     * <li>Resume the component</li>
      *
-     * 6. Resume the component
+     * <li>Let the component perform its role</li>
      *
-     * 7. Let the component perform its role
-     *
-     * 8. Release the component
+     * <li>Release the component</li>
+     * </ol>
+     * 
+     * @throws Exception in case of a failure.
      */
     public void testAdditionOfComponentDuringContainerOperation()
         throws Exception
@@ -80,6 +95,8 @@ public class DyanamicComponentKungFuTest
      * and error but until much field testing has occurred I'm sure there will be
      * instances where miscalculations happen simply due to lack of experience and
      * usage with dynamic component replacement.
+     * 
+     * @throws Exception in case of a failure.
      */
     public void testComponentReplacementDuringContainerOperation()
         throws Exception

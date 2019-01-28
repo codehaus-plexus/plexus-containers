@@ -80,6 +80,13 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-plugin-plugin</artifactId>
       </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <additionalparam>-Xdoclint:none</additionalparam>
+          <failOnError>false</failOnError>
+        </configuration>
+        </plugin>
     </plugins>
   </reporting>
 
@@ -119,4 +126,6 @@
       </build>
     </profile>
   </profiles>
+  
+  
 </project>

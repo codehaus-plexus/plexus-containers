@@ -85,4 +85,15 @@
       </plugin>
     </plugins>
   </build>
+  <reporting>
+    <plugins>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <additionalparam>-Xdoclint:none</additionalparam>
+          <failOnError>false</failOnError>
+        </configuration>
+        </plugin>
+    </plugins>
+  </reporting>
 </project>

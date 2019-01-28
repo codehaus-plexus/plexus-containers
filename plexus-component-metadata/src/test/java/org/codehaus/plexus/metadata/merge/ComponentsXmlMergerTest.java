@@ -198,7 +198,7 @@ public class ComponentsXmlMergerTest
      * nested elements within a component.</em><p>
      * <em>Keeping this around for testing MergeStrategy implmentation.</em>
      *
-     * @throws Exception
+     * @throws Exception in case of an error.
      */
     public void testDeepComponentsMerge()
         throws Exception

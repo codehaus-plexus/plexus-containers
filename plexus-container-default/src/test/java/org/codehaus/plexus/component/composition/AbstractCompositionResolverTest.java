@@ -36,7 +36,7 @@ public abstract class AbstractCompositionResolverTest
 
     /**
      *
-     * @return
+     * @return {@link CompositionResolver}
      */
     protected abstract CompositionResolver getCompositionResolver();
 

@@ -19,7 +19,7 @@ package org.codehaus.plexus.test;
 /**
  * Component counts number of created instances of it.
  * 
- * @author <a href="mailto: ptab@newitech.com">Piotr Tabor</a>
+ * @author ptab at newitech.com Piotr Tabor
  */
 public class CountInstancesComponent
 {

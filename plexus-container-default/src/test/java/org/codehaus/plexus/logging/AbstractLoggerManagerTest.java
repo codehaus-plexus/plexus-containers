@@ -52,6 +52,7 @@ public abstract class AbstractLoggerManagerTest
 
     /**
      * There is only one logger instance pr component even if looked up more that once.
+     * @throws Exception in case of an error.
      */
     public void testActiveLoggerCount()
         throws Exception

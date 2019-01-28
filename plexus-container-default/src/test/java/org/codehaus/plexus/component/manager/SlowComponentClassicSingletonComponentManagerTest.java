@@ -33,6 +33,7 @@ public class SlowComponentClassicSingletonComponentManagerTest
 
     /**
      * Tests that multiple concurrent threads don't acquire different components.
+     * @throws Exception in case of an error.
      */
     public void testThreads1000()
         throws Exception

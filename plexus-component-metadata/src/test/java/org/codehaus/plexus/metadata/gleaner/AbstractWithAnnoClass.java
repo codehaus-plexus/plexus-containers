@@ -18,7 +18,6 @@ package org.codehaus.plexus.metadata.gleaner;
 
 /**
  * ???
- *
  * @plexus.component role="foo"
  *
  */

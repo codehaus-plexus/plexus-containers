@@ -20,8 +20,7 @@ import junit.framework.TestCase;
 
 /**
  *
- * @author <a href="mailto:peter at realityforge.org">Peter Donald</a>
- * @version $Revision$ $Date$
+ * @author peter at realityforge.org Peter Donald
  */
 public class LogEnabledTest
     extends TestCase
