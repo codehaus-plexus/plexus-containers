@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -148,7 +149,18 @@ public class DefaultMetadataGenerator
         {
             File[] files = request.componentDescriptorDirectory.listFiles();
 
-            for ( File file : files )
+            // Sort the descriptor files by name to make the output reproducible
+            List<File> sortedFiles = new ArrayList<File>( Arrays.asList( files) );
+            Collections.sort( sortedFiles, new Comparator<File>()
+            {
+                public int compare( File f1, File f2 )
+                {
+                    return f1.getName().compareTo( f2.getName() );
+                }
+            });
+
+            
+            for ( File file : sortedFiles )
             {
                 if ( file.getName().endsWith( ".xml" ) && !file.getName().equals( "plexus.xml" ) )
                 {
