@@ -14,6 +14,7 @@ We have changed the default branch in GitHub repository from `plexus-containers-
 
 You can find details about the different releases in the [Release Notes](https://github.com/codehaus-plexus/plexus-containers/blob/master/ReleaseNotes.md).
 
+ * [Release 2.1.0](https://github.com/codehaus-plexus/plexus-containers/blob/master/ReleaseNotes.md#plexus-containers-210).
  * [Release 2.0.0](https://github.com/codehaus-plexus/plexus-containers/blob/master/ReleaseNotes.md#plexus-containers-200).
 
 ## Site publishing

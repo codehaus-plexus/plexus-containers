@@ -1,6 +1,13 @@
 Plexus Containers Release Notes
 =========================
 
+Plexus Containers 2.1.0
+---------------------
+
+### Improvements
+ 
+ * [Issue #27][issue-27] - Sort manually crafted descriptors files for Reproducible Builds
+
 Plexus Containers 2.0.0
 ---------------------
 
@@ -32,6 +39,7 @@ Plexus Containers 2.0.0 requires Java 6 and Maven 3.0+
 [issue-21]: https://github.com/codehaus-plexus/plexus-containers/issues/21
 [issue-22]: https://github.com/codehaus-plexus/plexus-containers/issues/22
 [issue-23]: https://github.com/codehaus-plexus/plexus-containers/issues/23
+[issue-27]: https://github.com/codehaus-plexus/plexus-containers/issues/27
 
 [pr-7]: https://github.com/codehaus-plexus/plexus-containers/pull/7
 [pr-6]: https://github.com/codehaus-plexus/plexus-containers/pull/6
