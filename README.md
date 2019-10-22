@@ -21,5 +21,6 @@ You can find details about the different releases in the [Release Notes](https:/
 For publishing [the site](https://codehaus-plexus.github.io/plexus-containers/) do the following:
 
 ```
-mvn -Preporting verify site site:stage scm-publish:publish-scm
+mvn -Preporting verify site site:stage
+mvn scm-publish:publish-scm
 ```
