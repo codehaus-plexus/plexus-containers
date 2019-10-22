@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -148,13 +149,17 @@ public class DefaultMetadataGenerator
         {
             File[] files = request.componentDescriptorDirectory.listFiles();
 
+            int added = 0;
             for ( File file : files )
             {
                 if ( file.getName().endsWith( ".xml" ) && !file.getName().equals( "plexus.xml" ) )
                 {
                     componentDescriptors.add( file );
+                    added++;
                 }
             }
+
+            getLogger().info( "Merging " + added + " manually-crafted descriptor file(s)" );
         }
 
         if ( componentDescriptors.size() > 0 )
