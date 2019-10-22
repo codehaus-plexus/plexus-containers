@@ -149,6 +149,15 @@ public class DefaultMetadataGenerator
         {
             File[] files = request.componentDescriptorDirectory.listFiles();
 
+            // Sort the files by name to make the output reproducible
+            Arrays.sort( files, new Comparator<File>()
+            {
+                public int compare( File f1, File f2 )
+                {
+                    return f1.getName().compareTo( f2.getName() );
+                }
+            });
+
             int added = 0;
             for ( File file : files )
             {
