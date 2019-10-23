@@ -30,7 +30,7 @@ import org.codehaus.plexus.metadata.MetadataGenerationRequest;
 
 /**
  * Generates a Plexus <tt>components.xml</tt> component descriptor file from test source (javadoc)
- * or test class annotations.
+ * or test class annotations and manually crafted descriptor files.
  * 
  * @author Jason van Zyl
  * @author Trygve Laugst&oslash;l

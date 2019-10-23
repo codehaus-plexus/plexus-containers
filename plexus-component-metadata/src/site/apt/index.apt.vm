@@ -37,10 +37,12 @@ ${project.name}
   The Plexus Component Metadata Maven Plugin has 3 goals:
 
   * {{{./generate-metadata-mojo.html}plexus-component-metadata:generate-metadata}} generates
-  a Plexus components.xml component descriptor file from source (javadoc) or class annotations,
+  a Plexus components.xml component descriptor file from source (javadoc) or class annotations
+  and manually crafted descriptor files,
 
   * {{{./generate-test-metadata-mojo.html}plexus-component-metadata:generate-test-metadata}} generates
-  a Plexus components.xml component descriptor file from test source (javadoc) or class annotations,
+  a Plexus components.xml component descriptor file from test source (javadoc) or class annotations
+  and manually crafted descriptor files,
 
   * {{{./merge-metadata-mojo.html}plexus-component-metadata:merge-metadata}} merges
   a set of Plexus descriptors into one descriptor file.

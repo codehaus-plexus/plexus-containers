@@ -79,7 +79,7 @@ public class PlexusMergeMojo
         }
         catch ( IOException e )
         {
-            throw new MojoExecutionException( "Error while executing component descritor creator.", e );
+            throw new MojoExecutionException( "Error while executing component descriptor creator.", e );
         }
     }
 }
