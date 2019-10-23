@@ -354,7 +354,7 @@
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">try</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;178</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;179</td>  <td class="nbHitsCovered">&nbsp;77</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> containerRealm.createChildRealm( id );</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;179</td>  <td class="nbHitsCovered">&nbsp;78</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> containerRealm.createChildRealm( id );</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;180</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;181</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">catch</span> ( DuplicateRealmException e )</span></pre></td></tr>
@@ -722,7 +722,7 @@
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">throws</span> ComponentLookupException</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;398</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;399</td>  <td class="nbHitsCovered">&nbsp;127283</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> componentRegistry.lookup( componentDescriptor );</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;399</td>  <td class="nbHitsCovered">&nbsp;127453</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> componentRegistry.lookup( componentDescriptor );</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;400</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;401</td>  <td class="nbHits">&nbsp;</td>
@@ -892,7 +892,7 @@
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> &lt;T&gt; Map&lt;String, ComponentDescriptor&lt;T&gt;&gt; getComponentDescriptorMap( Class&lt;T&gt; type, String role )</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;492</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;493</td>  <td class="nbHitsCovered">&nbsp;255075</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> componentRegistry.getComponentDescriptorMap( type, role );</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;493</td>  <td class="nbHitsCovered">&nbsp;255217</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> componentRegistry.getComponentDescriptorMap( type, role );</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;494</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;495</td>  <td class="nbHits">&nbsp;</td>
@@ -921,7 +921,7 @@
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">throws</span> CycleDetectedInComponentGraphException</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;508</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;509</td>  <td class="nbHitsCovered"><a title="Line 509: Conditional coverage 100% (2/2).">&nbsp;1176</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 509: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> ( componentDescriptor.getRealm() == <span class="keyword">null</span> )</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;509</td>  <td class="nbHitsCovered"><a title="Line 509: Conditional coverage 100% (2/2).">&nbsp;1177</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 509: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> ( componentDescriptor.getRealm() == <span class="keyword">null</span> )</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;510</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;511</td>  <td class="nbHitsCovered">&nbsp;85</td>  <td class="src"><pre class="src">&nbsp;            componentDescriptor.setRealm( <span class="keyword">this</span>.containerRealm );</pre></td></tr>
@@ -929,8 +929,8 @@
   <td class="src"><pre class="src">&nbsp;            <span class="comment">// throw new ComponentImplementationNotFoundException( "ComponentDescriptor is missing realmId" );</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;513</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;514</td>  <td class="nbHitsCovered">&nbsp;1178</td>  <td class="src"><pre class="src">&nbsp;        componentRegistry.addComponentDescriptor( componentDescriptor );</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;515</td>  <td class="nbHitsCovered">&nbsp;1173</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;514</td>  <td class="nbHitsCovered">&nbsp;1176</td>  <td class="src"><pre class="src">&nbsp;        componentRegistry.addComponentDescriptor( componentDescriptor );</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;515</td>  <td class="nbHitsCovered">&nbsp;1172</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;516</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;517</td>  <td class="nbHits">&nbsp;</td>
@@ -1233,7 +1233,7 @@
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> ClassWorld getClassWorld()</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;699</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;700</td>  <td class="nbHitsCovered">&nbsp;128616</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> classWorld;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;700</td>  <td class="nbHitsCovered">&nbsp;128754</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> classWorld;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;701</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;702</td>  <td class="nbHits">&nbsp;</td>
@@ -1275,7 +1275,7 @@
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Context getContext()</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;723</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;724</td>  <td class="nbHitsCovered">&nbsp;412</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> containerContext;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;724</td>  <td class="nbHitsCovered">&nbsp;413</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> containerContext;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;725</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;726</td>  <td class="nbHits">&nbsp;</td>
@@ -1396,7 +1396,7 @@
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> ComponentDiscovererManager getComponentDiscovererManager()</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;791</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;792</td>  <td class="nbHitsCovered">&nbsp;139</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> componentDiscovererManager;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;792</td>  <td class="nbHitsCovered">&nbsp;140</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> componentDiscovererManager;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;793</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;794</td>  <td class="nbHits">&nbsp;</td>
@@ -1651,7 +1651,7 @@
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">throws</span> PlexusConfigurationException, CycleDetectedInComponentGraphException</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;940</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;941</td>  <td class="nbHitsCovered">&nbsp;139</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> discoverComponents( realm, <span class="keyword">null</span> );</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;941</td>  <td class="nbHitsCovered">&nbsp;140</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> discoverComponents( realm, <span class="keyword">null</span> );</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;942</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }    </pre></td></tr>
 <tr>  <td class="numLine">&nbsp;943</td>  <td class="nbHits">&nbsp;</td>
@@ -1662,7 +1662,7 @@
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">throws</span> PlexusConfigurationException, CycleDetectedInComponentGraphException</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;946</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;947</td>  <td class="nbHitsCovered">&nbsp;139</td>  <td class="src"><pre class="src">&nbsp;        List&lt;ComponentSetDescriptor&gt; componentSetDescriptors = <span class="keyword">new</span> ArrayList&lt;ComponentSetDescriptor&gt;();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;947</td>  <td class="nbHitsCovered">&nbsp;140</td>  <td class="src"><pre class="src">&nbsp;        List&lt;ComponentSetDescriptor&gt; componentSetDescriptors = <span class="keyword">new</span> ArrayList&lt;ComponentSetDescriptor&gt;();</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;948</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;949</td>  <td class="nbHitsCovered">&nbsp;140</td>  <td class="src"><pre class="src">&nbsp;        List&lt;ComponentDescriptor&lt;?&gt;&gt; discoveredComponentDescriptors = <span class="keyword">new</span> ArrayList&lt;ComponentDescriptor&lt;?&gt;&gt;();</pre></td></tr>
@@ -1671,7 +1671,7 @@
 <tr>  <td class="numLineCover">&nbsp;951</td>  <td class="nbHitsCovered"><a title="Line 951: Conditional coverage 100% (2/2).">&nbsp;140</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 951: Conditional coverage 100% (2/2).">        <span class="keyword">for</span> ( ComponentDiscoverer componentDiscoverer : getComponentDiscovererManager().getComponentDiscoverers() )</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;952</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;953</td>  <td class="nbHitsCovered"><a title="Line 953: Conditional coverage 100% (2/2).">&nbsp;278</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 953: Conditional coverage 100% (2/2).">            <span class="keyword">for</span> ( ComponentSetDescriptor componentSetDescriptor : componentDiscoverer.findComponents( getContext(), realm ) )</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;953</td>  <td class="nbHitsCovered"><a title="Line 953: Conditional coverage 100% (2/2).">&nbsp;279</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 953: Conditional coverage 100% (2/2).">            <span class="keyword">for</span> ( ComponentSetDescriptor componentSetDescriptor : componentDiscoverer.findComponents( getContext(), realm ) )</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;954</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            {</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;955</td>  <td class="nbHits">&nbsp;</td>
@@ -1692,19 +1692,19 @@
 <tr>  <td class="numLineCover">&nbsp;963</td>  <td class="nbHitsCovered">&nbsp;517</td>  <td class="src"><pre class="src">&nbsp;                ComponentDiscoveryEvent event = <span class="keyword">new</span> ComponentDiscoveryEvent( componentSetDescriptor, data );</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;964</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;965</td>  <td class="nbHitsCovered">&nbsp;517</td>  <td class="src"><pre class="src">&nbsp;                componentDiscovererManager.fireComponentDiscoveryEvent( event );</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;965</td>  <td class="nbHitsCovered">&nbsp;515</td>  <td class="src"><pre class="src">&nbsp;                componentDiscovererManager.fireComponentDiscoveryEvent( event );</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;966</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;967</td>  <td class="nbHitsCovered"><a title="Line 967: Conditional coverage 100% (2/2).">&nbsp;517</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 967: Conditional coverage 100% (2/2).">                <span class="keyword">for</span> ( ComponentDescriptor&lt;?&gt; componentDescriptor : componentSetDescriptor.getComponents() )</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;968</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;969</td>  <td class="nbHitsCovered">&nbsp;1091</td>  <td class="src"><pre class="src">&nbsp;                    addComponentDescriptor( componentDescriptor );</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;969</td>  <td class="nbHitsCovered">&nbsp;1090</td>  <td class="src"><pre class="src">&nbsp;                    addComponentDescriptor( componentDescriptor );</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;970</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;971</td>  <td class="nbHitsCovered">&nbsp;1085</td>  <td class="src"><pre class="src">&nbsp;                    discoveredComponentDescriptors.add( componentDescriptor );</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;971</td>  <td class="nbHitsCovered">&nbsp;1087</td>  <td class="src"><pre class="src">&nbsp;                    discoveredComponentDescriptors.add( componentDescriptor );</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;972</td>  <td class="nbHitsCovered">&nbsp;1085</td>  <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;973</td>  <td class="nbHitsCovered">&nbsp;516</td>  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;974</td>  <td class="nbHitsCovered">&nbsp;280</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;973</td>  <td class="nbHitsCovered">&nbsp;515</td>  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;974</td>  <td class="nbHitsCovered">&nbsp;279</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;975</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;976</td>  <td class="nbHitsCovered">&nbsp;140</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> discoveredComponentDescriptors;</pre></td></tr>
@@ -1714,6 +1714,6 @@
   <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
 </table>
 
-<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.1.1 on 1/28/19 8:22 PM.</div>
+<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.1.1 on 10/23/19 3:27 PM.</div>
 </body>
 </html>

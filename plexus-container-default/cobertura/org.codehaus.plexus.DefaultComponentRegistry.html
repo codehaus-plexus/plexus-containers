@@ -149,18 +149,18 @@
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;74</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">// reverse sort the managers by startId</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;75</td>  <td class="nbHitsCovered">&nbsp;548</td>  <td class="src"><pre class="src">&nbsp;        Collections.sort( managers, <span class="keyword">new</span> Comparator&lt;ComponentManager&lt;?&gt;&gt;() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;75</td>  <td class="nbHitsCovered">&nbsp;547</td>  <td class="src"><pre class="src">&nbsp;        Collections.sort( managers, <span class="keyword">new</span> Comparator&lt;ComponentManager&lt;?&gt;&gt;() {</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;76</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">public</span> <span class="keyword">int</span> compare( ComponentManager&lt;?&gt; left, ComponentManager&lt;?&gt; right )</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;77</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;78</td>  <td class="nbHitsCovered"><a title="Line 78: Conditional coverage 100% (2/2).">&nbsp;490</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 78: Conditional coverage 100% (2/2).">                <span class="keyword">if</span> (left.getStartId() &lt; right.getStartId() )</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;78</td>  <td class="nbHitsCovered"><a title="Line 78: Conditional coverage 100% (2/2).">&nbsp;489</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 78: Conditional coverage 100% (2/2).">                <span class="keyword">if</span> (left.getStartId() &lt; right.getStartId() )</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;79</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;80</td>  <td class="nbHitsCovered">&nbsp;193</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">return</span> 1;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;80</td>  <td class="nbHitsCovered">&nbsp;188</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">return</span> 1;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;81</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;82</td>  <td class="nbHitsUncovered"><a title="Line 82: Conditional coverage 50% (1/2).">&nbsp;297</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 82: Conditional coverage 50% (1/2).">                <span class="keyword">else</span> <span class="keyword">if</span> (left.getStartId() == right.getStartId() )</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;82</td>  <td class="nbHitsUncovered"><a title="Line 82: Conditional coverage 50% (1/2).">&nbsp;301</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 82: Conditional coverage 50% (1/2).">                <span class="keyword">else</span> <span class="keyword">if</span> (left.getStartId() == right.getStartId() )</a></span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;83</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;84</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                    <span class="keyword">return</span> 0;</span></pre></td></tr>
@@ -170,7 +170,7 @@
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">else</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;87</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;88</td>  <td class="nbHitsCovered">&nbsp;297</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">return</span> -1;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;88</td>  <td class="nbHitsCovered">&nbsp;301</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">return</span> -1;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;89</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;90</td>  <td class="nbHits">&nbsp;</td>
@@ -233,7 +233,7 @@
 <tr>  <td class="numLine">&nbsp;125</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;126</td>  <td class="nbHitsCovered">&nbsp;1175</td>  <td class="src"><pre class="src">&nbsp;        repository.addComponentDescriptor( componentDescriptor );</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;127</td>  <td class="nbHitsCovered">&nbsp;1175</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;127</td>  <td class="nbHitsCovered">&nbsp;1172</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;128</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;129</td>  <td class="nbHits">&nbsp;</td>
@@ -278,7 +278,7 @@
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> &lt;T&gt; Map&lt;String, ComponentDescriptor&lt;T&gt;&gt; getComponentDescriptorMap( Class&lt;T&gt; type, String role )</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;153</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;154</td>  <td class="nbHitsCovered">&nbsp;255070</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> repository.getComponentDescriptorMap( type, role );</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;154</td>  <td class="nbHitsCovered">&nbsp;255237</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> repository.getComponentDescriptorMap( type, role );</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;155</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;156</td>  <td class="nbHits">&nbsp;</td>
@@ -329,8 +329,8 @@
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">throws</span> ComponentLookupException</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;183</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;184</td>  <td class="nbHitsCovered">&nbsp;254567</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> getComponent( componentDescriptor.getRoleClass(), componentDescriptor.getRole(),</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;185</td>  <td class="nbHitsCovered">&nbsp;127281</td>  <td class="src"><pre class="src">&nbsp;                             componentDescriptor.getRoleHint(), componentDescriptor );</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;184</td>  <td class="nbHitsCovered">&nbsp;254904</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> getComponent( componentDescriptor.getRoleClass(), componentDescriptor.getRole(),</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;185</td>  <td class="nbHitsCovered">&nbsp;127452</td>  <td class="src"><pre class="src">&nbsp;                             componentDescriptor.getRoleHint(), componentDescriptor );</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;186</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;187</td>  <td class="nbHits">&nbsp;</td>
@@ -582,10 +582,10 @@
   <td class="src"><pre class="src">&nbsp;        <span class="comment">// lookup for unmanaged components first</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;345</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;346</td>  <td class="nbHitsCovered">&nbsp;128467</td>  <td class="src"><pre class="src">&nbsp;        T component = <span class="keyword">this</span>.&lt;T&gt;getUnmanagedComponent( role, roleHint ); <span class="comment">// weird syntax due to http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6302954</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;346</td>  <td class="nbHitsCovered">&nbsp;128646</td>  <td class="src"><pre class="src">&nbsp;        T component = <span class="keyword">this</span>.&lt;T&gt;getUnmanagedComponent( role, roleHint ); <span class="comment">// weird syntax due to http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6302954</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;347</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;348</td>  <td class="nbHitsCovered"><a title="Line 348: Conditional coverage 100% (2/2).">&nbsp;128563</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 348: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> ( component != <span class="keyword">null</span> )</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;348</td>  <td class="nbHitsCovered"><a title="Line 348: Conditional coverage 100% (2/2).">&nbsp;128700</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 348: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> ( component != <span class="keyword">null</span> )</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;349</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;350</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> component;</pre></td></tr>
@@ -593,7 +593,7 @@
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;352</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;353</td>  <td class="nbHitsCovered">&nbsp;128561</td>  <td class="src"><pre class="src">&nbsp;        ComponentManager&lt;T&gt; componentManager = getComponentManager( type, role, roleHint, descriptor );</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;353</td>  <td class="nbHitsCovered">&nbsp;128699</td>  <td class="src"><pre class="src">&nbsp;        ComponentManager&lt;T&gt; componentManager = getComponentManager( type, role, roleHint, descriptor );</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;354</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;355</td>  <td class="nbHits">&nbsp;</td>
@@ -602,13 +602,13 @@
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">try</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;357</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;358</td>  <td class="nbHitsCovered">&nbsp;128533</td>  <td class="src"><pre class="src">&nbsp;            component = componentManager.getComponent();</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;359</td>  <td class="nbHitsCovered">&nbsp;128530</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">synchronized</span> ( <span class="keyword">this</span> )</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;358</td>  <td class="nbHitsCovered">&nbsp;128671</td>  <td class="src"><pre class="src">&nbsp;            component = componentManager.getComponent();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;359</td>  <td class="nbHitsCovered">&nbsp;128668</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">synchronized</span> ( <span class="keyword">this</span> )</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;360</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;361</td>  <td class="nbHitsCovered">&nbsp;128530</td>  <td class="src"><pre class="src">&nbsp;                componentManagersByComponent.put( component, componentManager );</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;362</td>  <td class="nbHitsCovered">&nbsp;128530</td>  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;363</td>  <td class="nbHitsCovered">&nbsp;128530</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> component;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;361</td>  <td class="nbHitsCovered">&nbsp;128668</td>  <td class="src"><pre class="src">&nbsp;                componentManagersByComponent.put( component, componentManager );</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;362</td>  <td class="nbHitsCovered">&nbsp;128668</td>  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;363</td>  <td class="nbHitsCovered">&nbsp;128668</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> component;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;364</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;365</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">catch</span> ( ComponentInstantiationException e )</pre></td></tr>
@@ -637,17 +637,17 @@
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">synchronized</span> &lt;T&gt; T getUnmanagedComponent( String role, String roleHint )</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;381</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;382</td>  <td class="nbHitsCovered">&nbsp;128563</td>  <td class="src"><pre class="src">&nbsp;        Set&lt;ClassRealm&gt; realms = getSearchRealms( <span class="keyword">true</span> );</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;382</td>  <td class="nbHitsCovered">&nbsp;128701</td>  <td class="src"><pre class="src">&nbsp;        Set&lt;ClassRealm&gt; realms = getSearchRealms( <span class="keyword">true</span> );</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;383</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;384</td>  <td class="nbHitsCovered"><a title="Line 384: Conditional coverage 100% (2/2).">&nbsp;128563</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 384: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> ( realms != <span class="keyword">null</span> )</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;384</td>  <td class="nbHitsCovered"><a title="Line 384: Conditional coverage 100% (2/2).">&nbsp;128701</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 384: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> ( realms != <span class="keyword">null</span> )</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;385</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;386</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            <span class="comment">// ignore unmanaged components, they are not associated with realms </span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;387</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            <span class="comment">// but lookup realm is provided via thread context classloader </span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;388</td>  <td class="nbHitsCovered">&nbsp;127409</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;388</td>  <td class="nbHitsCovered">&nbsp;127547</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;389</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;390</td>  <td class="nbHits">&nbsp;</td>
@@ -675,7 +675,7 @@
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">throws</span> ComponentLookupException</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;403</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;404</td>  <td class="nbHitsCovered"><a title="Line 404: Conditional coverage 100% (2/2).">&nbsp;128561</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 404: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> ( disposingComponents )</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;404</td>  <td class="nbHitsCovered"><a title="Line 404: Conditional coverage 100% (2/2).">&nbsp;128699</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 404: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> ( disposingComponents )</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;405</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;406</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> ComponentLookupException(<span class="string">"ComponentRegistry is not active"</span>,</pre></td></tr>
@@ -687,7 +687,7 @@
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;410</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;411</td>  <td class="nbHitsCovered"><a title="Line 411: Conditional coverage 100% (2/2).">&nbsp;128560</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 411: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> ( descriptor == <span class="keyword">null</span> )</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;411</td>  <td class="nbHitsCovered"><a title="Line 411: Conditional coverage 100% (2/2).">&nbsp;128698</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 411: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> ( descriptor == <span class="keyword">null</span> )</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;412</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;413</td>  <td class="nbHitsCovered">&nbsp;1182</td>  <td class="src"><pre class="src">&nbsp;            descriptor = getComponentDescriptor( type, role, roleHint );</pre></td></tr>
@@ -695,13 +695,13 @@
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;415</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;416</td>  <td class="nbHitsCovered">&nbsp;128560</td>  <td class="src"><pre class="src">&nbsp;        ComponentManager&lt;T&gt; componentManager = <span class="keyword">null</span>;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;416</td>  <td class="nbHitsCovered">&nbsp;128698</td>  <td class="src"><pre class="src">&nbsp;        ComponentManager&lt;T&gt; componentManager = <span class="keyword">null</span>;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;417</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;418</td>  <td class="nbHitsCovered"><a title="Line 418: Conditional coverage 100% (2/2).">&nbsp;128560</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 418: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> ( descriptor != <span class="keyword">null</span> )</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;418</td>  <td class="nbHitsCovered"><a title="Line 418: Conditional coverage 100% (2/2).">&nbsp;128698</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 418: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> ( descriptor != <span class="keyword">null</span> )</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;419</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;420</td>  <td class="nbHitsCovered">&nbsp;128533</td>  <td class="src"><pre class="src">&nbsp;            componentManager = getComponentManager( type, role, descriptor.getRoleHint(), descriptor.getRealm() );</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;420</td>  <td class="nbHitsCovered">&nbsp;128671</td>  <td class="src"><pre class="src">&nbsp;            componentManager = getComponentManager( type, role, descriptor.getRoleHint(), descriptor.getRealm() );</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;421</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;422</td>  <td class="nbHits">&nbsp;</td>
@@ -713,7 +713,7 @@
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;426</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;427</td>  <td class="nbHitsCovered"><a title="Line 427: Conditional coverage 100% (2/2).">&nbsp;128560</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 427: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> ( componentManager == <span class="keyword">null</span> )</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;427</td>  <td class="nbHitsCovered"><a title="Line 427: Conditional coverage 100% (2/2).">&nbsp;128698</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 427: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> ( componentManager == <span class="keyword">null</span> )</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;428</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;429</td>  <td class="nbHits">&nbsp;</td>
@@ -751,7 +751,7 @@
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;449</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;450</td>  <td class="nbHitsCovered">&nbsp;128533</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> componentManager;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;450</td>  <td class="nbHitsCovered">&nbsp;128671</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> componentManager;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;451</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;452</td>  <td class="nbHits">&nbsp;</td>
@@ -789,11 +789,11 @@
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> &lt;T&gt; ComponentManager&lt;T&gt; getComponentManager( Class&lt;T&gt; type, String role, String roleHint, ClassRealm realm )</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;472</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;473</td>  <td class="nbHitsCovered">&nbsp;128533</td>  <td class="src"><pre class="src">&nbsp;        ComponentManager&lt;?&gt; manager = componentManagers.get( <span class="keyword">new</span> Key( realm, role, roleHint ) );</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;474</td>  <td class="nbHitsUncovered"><a title="Line 474: Conditional coverage 75% (3/4) [each condition: 100%, 50%].">&nbsp;128533</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 474: Conditional coverage 75% (3/4) [each condition: 100%, 50%].">        <span class="keyword">if</span> ( manager != <span class="keyword">null</span> &amp;&amp; isAssignableFrom( type, manager.getType() ) )</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;473</td>  <td class="nbHitsCovered">&nbsp;128671</td>  <td class="src"><pre class="src">&nbsp;        ComponentManager&lt;?&gt; manager = componentManagers.get( <span class="keyword">new</span> Key( realm, role, roleHint ) );</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;474</td>  <td class="nbHitsUncovered"><a title="Line 474: Conditional coverage 75% (3/4) [each condition: 100%, 50%].">&nbsp;128671</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 474: Conditional coverage 75% (3/4) [each condition: 100%, 50%].">        <span class="keyword">if</span> ( manager != <span class="keyword">null</span> &amp;&amp; isAssignableFrom( type, manager.getType() ) )</a></span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;475</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;476</td>  <td class="nbHitsCovered">&nbsp;128323</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> (ComponentManager&lt;T&gt;) manager;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;476</td>  <td class="nbHitsCovered">&nbsp;128461</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> (ComponentManager&lt;T&gt;) manager;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;477</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;478</td>  <td class="nbHitsCovered">&nbsp;210</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td></tr>
@@ -809,10 +809,10 @@
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;484</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="comment">// determine realms to search</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;485</td>  <td class="nbHitsCovered">&nbsp;128590</td>  <td class="src"><pre class="src">&nbsp;        Set&lt;ClassRealm&gt; realms = ClassRealmUtil.getContextRealms( container.getClassWorld() );</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;485</td>  <td class="nbHitsCovered">&nbsp;128728</td>  <td class="src"><pre class="src">&nbsp;        Set&lt;ClassRealm&gt; realms = ClassRealmUtil.getContextRealms( container.getClassWorld() );</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;486</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;487</td>  <td class="nbHitsCovered"><a title="Line 487: Conditional coverage 100% (2/2).">&nbsp;128590</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 487: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> ( realms.isEmpty() )</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;487</td>  <td class="nbHitsCovered"><a title="Line 487: Conditional coverage 100% (2/2).">&nbsp;128728</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 487: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> ( realms.isEmpty() )</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;488</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;489</td>  <td class="nbHitsCovered"><a title="Line 489: Conditional coverage 100% (2/2).">&nbsp;1180</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 489: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> ( specifiedOnly )</a></pre></td></tr>
@@ -828,7 +828,7 @@
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;496</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;497</td>  <td class="nbHitsCovered">&nbsp;127436</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> realms;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;497</td>  <td class="nbHitsCovered">&nbsp;127574</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> realms;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;498</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;499</td>  <td class="nbHits">&nbsp;</td>
@@ -913,7 +913,7 @@
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;547</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;548</td>  <td class="nbHitsCovered">&nbsp;838514</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> Key <span class="keyword">implements</span> Comparable&lt;Key&gt;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;548</td>  <td class="nbHitsCovered">&nbsp;831148</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> Key <span class="keyword">implements</span> Comparable&lt;Key&gt;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;549</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    {</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;550</td>  <td class="nbHits">&nbsp;</td>
@@ -928,35 +928,35 @@
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;555</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">private</span> Key( ClassRealm realm, String role, String roleHint )</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;556</td>  <td class="nbHitsCovered">&nbsp;129926</td>  <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;557</td>  <td class="nbHitsCovered">&nbsp;129926</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.realm = realm;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;556</td>  <td class="nbHitsCovered">&nbsp;130064</td>  <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;557</td>  <td class="nbHitsCovered">&nbsp;130064</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.realm = realm;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;558</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;559</td>  <td class="nbHitsUncovered"><a title="Line 559: Conditional coverage 50% (1/2).">&nbsp;129926</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 559: Conditional coverage 50% (1/2).">            <span class="keyword">if</span> ( role == <span class="keyword">null</span> )</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;559</td>  <td class="nbHitsUncovered"><a title="Line 559: Conditional coverage 50% (1/2).">&nbsp;130064</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 559: Conditional coverage 50% (1/2).">            <span class="keyword">if</span> ( role == <span class="keyword">null</span> )</a></span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;560</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;561</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                role = <span class="string">"null"</span>;</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;562</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;563</td>  <td class="nbHitsCovered">&nbsp;129926</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.role = role;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;563</td>  <td class="nbHitsCovered">&nbsp;130064</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.role = role;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;564</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;565</td>  <td class="nbHitsUncovered"><a title="Line 565: Conditional coverage 50% (1/2).">&nbsp;129926</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 565: Conditional coverage 50% (1/2).">            <span class="keyword">if</span> ( roleHint == <span class="keyword">null</span> )</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;565</td>  <td class="nbHitsUncovered"><a title="Line 565: Conditional coverage 50% (1/2).">&nbsp;130064</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 565: Conditional coverage 50% (1/2).">            <span class="keyword">if</span> ( roleHint == <span class="keyword">null</span> )</a></span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;566</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;567</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                roleHint = <span class="string">"null"</span>;</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;568</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;569</td>  <td class="nbHitsCovered">&nbsp;129926</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.roleHint = roleHint;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;569</td>  <td class="nbHitsCovered">&nbsp;130064</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.roleHint = roleHint;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;570</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;571</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">int</span> hashCode;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;572</td>  <td class="nbHitsCovered"><a title="Line 572: Conditional coverage 100% (2/2).">&nbsp;129926</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 572: Conditional coverage 100% (2/2).">            hashCode = ( realm != <span class="keyword">null</span> ? realm.hashCode() : 0 );</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;573</td>  <td class="nbHitsCovered">&nbsp;129926</td>  <td class="src"><pre class="src">&nbsp;            hashCode = 31 * hashCode + role.hashCode();</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;574</td>  <td class="nbHitsCovered">&nbsp;129926</td>  <td class="src"><pre class="src">&nbsp;            hashCode = 31 * hashCode + roleHint.hashCode();</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;575</td>  <td class="nbHitsCovered">&nbsp;129926</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.hashCode = hashCode;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;576</td>  <td class="nbHitsCovered">&nbsp;129926</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;572</td>  <td class="nbHitsCovered"><a title="Line 572: Conditional coverage 100% (2/2).">&nbsp;130064</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 572: Conditional coverage 100% (2/2).">            hashCode = ( realm != <span class="keyword">null</span> ? realm.hashCode() : 0 );</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;573</td>  <td class="nbHitsCovered">&nbsp;130064</td>  <td class="src"><pre class="src">&nbsp;            hashCode = 31 * hashCode + role.hashCode();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;574</td>  <td class="nbHitsCovered">&nbsp;130064</td>  <td class="src"><pre class="src">&nbsp;            hashCode = 31 * hashCode + roleHint.hashCode();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;575</td>  <td class="nbHitsCovered">&nbsp;130064</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.hashCode = hashCode;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;576</td>  <td class="nbHitsCovered">&nbsp;130064</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;577</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;578</td>  <td class="nbHits">&nbsp;</td>
@@ -1013,10 +1013,10 @@
   <td class="src"><pre class="src">&nbsp;        {</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;609</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">int</span> value;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;610</td>  <td class="nbHitsCovered"><a title="Line 610: Conditional coverage 100% (2/2).">&nbsp;708588</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 610: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> ( realm != <span class="keyword">null</span> )</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;610</td>  <td class="nbHitsCovered"><a title="Line 610: Conditional coverage 100% (2/2).">&nbsp;701084</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 610: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> ( realm != <span class="keyword">null</span> )</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;611</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;612</td>  <td class="nbHitsUncovered"><a title="Line 612: Conditional coverage 50% (1/2).">&nbsp;708584</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 612: Conditional coverage 50% (1/2).">                value = o.realm == <span class="keyword">null</span>? -1 : realm.getId().compareTo( o.realm.getId() );</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;612</td>  <td class="nbHitsUncovered"><a title="Line 612: Conditional coverage 50% (1/2).">&nbsp;701080</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 612: Conditional coverage 50% (1/2).">                value = o.realm == <span class="keyword">null</span>? -1 : realm.getId().compareTo( o.realm.getId() );</a></span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;613</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;614</td>  <td class="nbHits">&nbsp;</td>
@@ -1028,19 +1028,19 @@
   <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;618</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;619</td>  <td class="nbHitsCovered"><a title="Line 619: Conditional coverage 100% (2/2).">&nbsp;708588</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 619: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> ( value == 0 )</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;619</td>  <td class="nbHitsCovered"><a title="Line 619: Conditional coverage 100% (2/2).">&nbsp;701084</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 619: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> ( value == 0 )</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;620</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;621</td>  <td class="nbHitsCovered">&nbsp;128684</td>  <td class="src"><pre class="src">&nbsp;                value = role.compareTo( o.role );</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;622</td>  <td class="nbHitsCovered"><a title="Line 622: Conditional coverage 100% (2/2).">&nbsp;128684</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 622: Conditional coverage 100% (2/2).">                <span class="keyword">if</span> ( value == 0 )</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;621</td>  <td class="nbHitsCovered">&nbsp;128822</td>  <td class="src"><pre class="src">&nbsp;                value = role.compareTo( o.role );</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;622</td>  <td class="nbHitsCovered"><a title="Line 622: Conditional coverage 100% (2/2).">&nbsp;128822</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 622: Conditional coverage 100% (2/2).">                <span class="keyword">if</span> ( value == 0 )</a></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;623</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;624</td>  <td class="nbHitsCovered">&nbsp;128459</td>  <td class="src"><pre class="src">&nbsp;                    value = roleHint.compareTo( o.roleHint );</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;624</td>  <td class="nbHitsCovered">&nbsp;128597</td>  <td class="src"><pre class="src">&nbsp;                    value = roleHint.compareTo( o.roleHint );</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;625</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;626</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;627</td>  <td class="nbHitsCovered">&nbsp;708588</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> value;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;627</td>  <td class="nbHitsCovered">&nbsp;701084</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> value;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;628</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;629</td>  <td class="nbHits">&nbsp;</td>
@@ -1049,6 +1049,6 @@
   <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
 </table>
 
-<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.1.1 on 1/28/19 8:22 PM.</div>
+<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.1.1 on 10/23/19 3:27 PM.</div>
 </body>
 </html>
