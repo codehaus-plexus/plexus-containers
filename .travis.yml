@@ -1,17 +1,29 @@
-language: java
-jdk:
-  - openjdk7
-  - oraclejdk8
-  - openjdk11
+arch:
+  - amd64
+  - ppc64le
 
 dist: trusty
+
+addons:
+  apt:
+    packages:
+      - maven
+
+language: java
+
+jdk:
+  - openjdk7
+  - openjdk8
+  - openjdk11
+#  - openjdk12 add once code is requires Java 7
+
 
 # No need for preliminary install step.
 install: true
 #
 # Run all integration tests.
 script: 
-  - "mvn --show-version --errors --batch-mode clean verify -Prun-its"
+  - "mvn --show-version --errors --batch-mode clean verify"
 #
 cache:
     directories:
@@ -19,4 +31,6 @@ cache:
 branches:
     except:
         - gh-pages
-
+notifications:
+    email:
+        - khmarbaise@apache.org
