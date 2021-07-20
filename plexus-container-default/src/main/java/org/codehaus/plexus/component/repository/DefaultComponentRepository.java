@@ -20,10 +20,13 @@ import static org.codehaus.plexus.component.CastUtils.isAssignableFrom;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -37,10 +40,6 @@ import org.codehaus.plexus.component.composition.DefaultCompositionResolver;
 import org.codehaus.plexus.logging.AbstractLogEnabled;
 import org.codehaus.plexus.util.StringUtils;
 
-import com.google.common.collect.LinkedHashMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Multimaps;
-
 /**
  * @author Jason van Zyl
  */
@@ -48,7 +47,8 @@ public class DefaultComponentRepository
     extends AbstractLogEnabled
     implements ComponentRepository
 {
-    private final Map<ClassRealm, SortedMap<String, Multimap<String, ComponentDescriptor<?>>>> index = new LinkedHashMap<ClassRealm, SortedMap<String, Multimap<String, ComponentDescriptor<?>>>>();
+    private final Map<ClassRealm, SortedMap<String, Map<String, Set<ComponentDescriptor<?>>>>> index =
+            new LinkedHashMap<ClassRealm, SortedMap<String, Map<String, Set<ComponentDescriptor<?>>>>>();
 
     private final CompositionResolver compositionResolver = new DefaultCompositionResolver();
 
@@ -60,7 +60,7 @@ public class DefaultComponentRepository
     // Accessors
     // ----------------------------------------------------------------------
 
-    private Multimap<String, ComponentDescriptor<?>> getComponentDescriptors( String role )
+    private Map<String, Set<ComponentDescriptor<?>>> getComponentDescriptors( String role )
     {
         // verify arguments
         if ( role == null )
@@ -77,24 +77,35 @@ public class DefaultComponentRepository
 
         
         // Get all valid component descriptors
-        Multimap<String, ComponentDescriptor<?>> roleHintIndex = LinkedHashMultimap.create();
+        Map<String, Set<ComponentDescriptor<?>>> roleHintIndex =
+                new LinkedHashMap<String, Set<ComponentDescriptor<?>>>();
         for ( ClassRealm realm : realms )
         {
-            SortedMap<String, Multimap<String, ComponentDescriptor<?>>> roleIndex = index.get( realm );
+            SortedMap<String, Map<String, Set<ComponentDescriptor<?>>>> roleIndex = index.get( realm );
             if (roleIndex != null) {
-                Multimap<String, ComponentDescriptor<?>> descriptors = roleIndex.get( role );
+                Map<String, Set<ComponentDescriptor<?>>> descriptors = roleIndex.get( role );
                 if ( descriptors != null )
                 {
-                    roleHintIndex.putAll( descriptors );
+                    for ( Entry<String, Set<ComponentDescriptor<?>>> descriptor : descriptors.entrySet() )
+                    {
+                        Set<ComponentDescriptor<?>> componentDescriptors = roleHintIndex.get( descriptor.getKey() );
+                        if ( componentDescriptors == null )
+                        {
+                            componentDescriptors = new LinkedHashSet<ComponentDescriptor<?>>();
+                            roleHintIndex.put( descriptor.getKey(), componentDescriptors );
+                        }
+                        componentDescriptors.addAll( descriptor.getValue() );
+                    }
+
                 }
             }
         }
-        return Multimaps.unmodifiableMultimap( roleHintIndex );
+        return Collections.unmodifiableMap( roleHintIndex );
     }
 
     public <T> ComponentDescriptor<T> getComponentDescriptor( Class<T> type, String role, String roleHint )
     {
-        Multimap<String, ComponentDescriptor<?>> roleHintIndex = getComponentDescriptors( role );
+        Map<String, Set<ComponentDescriptor<?>>> roleHintIndex = getComponentDescriptors( role );
 
         Collection<ComponentDescriptor<?>> descriptors;
 
@@ -126,16 +137,15 @@ public class DefaultComponentRepository
             descriptors = allDescriptors;
         }
 
-        for ( ComponentDescriptor<?> descriptor : descriptors )
+        if ( descriptors!= null )
         {
-            Class<?> implClass = descriptor.getImplementationClass();
-            if ( isAssignableFrom( type, implClass ) )
+            for ( ComponentDescriptor<?> descriptor : descriptors )
             {
-                return (ComponentDescriptor<T>) descriptor;
-            }
-            else if ( Object.class == implClass && role.equals( type.getName() ) )
-            {
-                return (ComponentDescriptor<T>) descriptor;
+                Class<?> implClass = descriptor.getImplementationClass();
+                if ( isAssignableFrom( type, implClass ) || Object.class == implClass && role.equals( type.getName() ) )
+                {
+                    return (ComponentDescriptor<T>) descriptor;
+                }
             }
         }
                 
@@ -145,11 +155,12 @@ public class DefaultComponentRepository
     public <T> Map<String, ComponentDescriptor<T>> getComponentDescriptorMap( Class<T> type, String role )
     {
         Map<String, ComponentDescriptor<T>> descriptors = new TreeMap<String, ComponentDescriptor<T>>();
-        for ( ComponentDescriptor<?> descriptor : getComponentDescriptors( role ).values() )
+        for ( Set<ComponentDescriptor<?>> componentDescriptors : getComponentDescriptors( role ).values() )
         {
-            if ( !descriptors.containsKey( descriptor.getRoleHint() ) )
+            for ( ComponentDescriptor<?> descriptor : componentDescriptors )
             {
-                if ( isAssignableFrom( type, descriptor.getImplementationClass() ) )
+                if ( !descriptors.containsKey( descriptor.getRoleHint() ) && isAssignableFrom( type,
+                        descriptor.getImplementationClass() ) )
                 {
                     descriptors.put( descriptor.getRoleHint(), (ComponentDescriptor<T>) descriptor );
                 }
@@ -161,11 +172,14 @@ public class DefaultComponentRepository
     public <T> List<ComponentDescriptor<T>> getComponentDescriptorList( Class<T> type, String role )
     {
         List<ComponentDescriptor<T>> descriptors = new ArrayList<ComponentDescriptor<T>>();
-        for ( ComponentDescriptor<?> descriptor : getComponentDescriptors( role ).values() )
+        for ( Set<ComponentDescriptor<?>> componentDescriptors : getComponentDescriptors( role ).values() )
         {
-            if ( isAssignableFrom( type, descriptor.getImplementationClass() ) )
+            for ( ComponentDescriptor<?> descriptor : componentDescriptors )
             {
-                descriptors.add( (ComponentDescriptor<T>) descriptor );
+                if ( isAssignableFrom( type, descriptor.getImplementationClass() ) )
+                {
+                    descriptors.add( (ComponentDescriptor<T>) descriptor );
+                }
             }
         }
         return descriptors;
@@ -211,20 +225,27 @@ public class DefaultComponentRepository
         throws CycleDetectedInComponentGraphException
     {
         ClassRealm classRealm = componentDescriptor.getRealm();
-        SortedMap<String, Multimap<String, ComponentDescriptor<?>>> roleIndex = index.get( classRealm );
+        SortedMap<String, Map<String, Set<ComponentDescriptor<?>>>> roleIndex = index.get( classRealm );
         if (roleIndex == null) {
-            roleIndex = new TreeMap<String, Multimap<String, ComponentDescriptor<?>>>();
+            roleIndex = new TreeMap<String, Map<String, Set<ComponentDescriptor<?>>>>();
             index.put(classRealm,  roleIndex);
         }
 
         String role = componentDescriptor.getRole();
-        Multimap<String, ComponentDescriptor<?>> roleHintIndex = roleIndex.get( role );
+        Map<String, Set<ComponentDescriptor<?>>> roleHintIndex = roleIndex.get( role );
         if ( roleHintIndex == null )
         {
-            roleHintIndex = LinkedHashMultimap.create();
+            roleHintIndex = new LinkedHashMap<String, Set<ComponentDescriptor<?>>>();
             roleIndex.put( role, roleHintIndex );
         }
-        roleHintIndex.put( componentDescriptor.getRoleHint(), componentDescriptor );
+        String roleHint = componentDescriptor.getRoleHint();
+        Set<ComponentDescriptor<?>> componentDescriptors = roleHintIndex.get( roleHint );
+        if ( componentDescriptors == null )
+        {
+            componentDescriptors = new LinkedHashSet<ComponentDescriptor<?>>();
+            roleHintIndex.put( roleHint, componentDescriptors );
+        }
+        componentDescriptors.add(componentDescriptor);
 
         compositionResolver.addComponentDescriptor( componentDescriptor );
     }
