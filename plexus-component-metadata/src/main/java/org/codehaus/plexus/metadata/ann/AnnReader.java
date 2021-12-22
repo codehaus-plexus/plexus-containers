@@ -35,7 +35,7 @@ public class AnnReader extends ClassVisitor {
   private final AnnClass annClass;
 
   private AnnReader(AnnClass annClass) {
-    super(Opcodes.ASM7);
+    super(Opcodes.ASM9);
     this.annClass = annClass;
   }
 
@@ -64,7 +64,7 @@ public class AnnReader extends ClassVisitor {
   public FieldVisitor visitField(int access, final String name, final String desc, String signature, Object value) {
     final AnnField field = new AnnField(annClass, access, name, desc);
     annClass.addField(field);
-    return new FieldVisitor(Opcodes.ASM7) {
+    return new FieldVisitor(Opcodes.ASM9) {
 
       public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
         Ann ann = new Ann(desc);
@@ -79,7 +79,7 @@ public class AnnReader extends ClassVisitor {
     final AnnMethod method = new AnnMethod(annClass, access, mname, mdesc);
     annClass.addMethod(method);
     
-    return new MethodVisitor(Opcodes.ASM7) {
+    return new MethodVisitor(Opcodes.ASM9) {
 
       public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
         Ann ann = new Ann(desc);
@@ -99,7 +99,7 @@ public class AnnReader extends ClassVisitor {
     private Ann ann;
 
     public AnnAnnReader(Ann ann) {
-      super(Opcodes.ASM7);
+      super(Opcodes.ASM9);
       this.ann = ann;
     }
 
@@ -132,7 +132,7 @@ public class AnnReader extends ClassVisitor {
     private ArrayList<String> array = new ArrayList<String>();
 
     public AnnAnnArrayReader(Ann ann, String name) {
-      super(Opcodes.ASM7);
+      super(Opcodes.ASM9);
       this.ann = ann;
       this.name = name;
     }
