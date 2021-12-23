@@ -1,6 +1,15 @@
 Plexus Containers Release Notes
 =========================
 
+Plexus Containers 2.1.1
+---------------------
+Plexus Containers 2.1.1 requires Java 7 and Maven 3.2.5+
+
+### Improvements
+
+* Upgrade ASM to 9.2
+* Upgrade JDOM2 to 2.0.6.1
+
 Plexus Containers 2.1.0
 ---------------------
 
