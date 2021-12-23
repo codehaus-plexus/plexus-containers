@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.codehaus.plexus</groupId>
     <artifactId>plexus</artifactId>
-    <version>8</version>
+    <version>6.5</version>
   </parent>
 
   <artifactId>plexus-containers</artifactId>
@@ -47,7 +47,7 @@
     <xbeanReflectVersion>3.7</xbeanReflectVersion>
     <mavenVersion>3.2.5</mavenVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <javaVersion>8</javaVersion>
+    <javaVersion>7</javaVersion>
   </properties>
 
   <dependencyManagement>
