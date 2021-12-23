@@ -20,7 +20,7 @@
   <modules>
     <module>plexus-component-annotations</module>
     <module>plexus-component-metadata</module>
-    <module>plexus-container-default</module>
+<!--    <module>plexus-container-default</module>-->
   </modules>
 
   <scm>
@@ -52,11 +52,6 @@
 
   <dependencyManagement>
     <dependencies>
-      <dependency>
-        <groupId>org.codehaus.plexus</groupId>
-        <artifactId>plexus-container-default</artifactId>
-        <version>${project.version}</version>
-      </dependency>
       <dependency>
         <groupId>org.codehaus.plexus</groupId>
         <artifactId>plexus-component-annotations</artifactId>

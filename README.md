@@ -2,7 +2,6 @@ Plexus Containers
 ============
 
 [![Maven Central](https://img.shields.io/maven-central/v/org.codehaus.plexus/plexus-containers.svg?label=Maven%20Central)](https://search.maven.org/artifact/org.codehaus.plexus/plexus-containers)
-[![Build Status](https://travis-ci.org/codehaus-plexus/plexus-containers.svg?branch=master)](https://travis-ci.org/codehaus-plexus/plexus-containers)
 
 Plexus IoC Container core with companion tools.
 
