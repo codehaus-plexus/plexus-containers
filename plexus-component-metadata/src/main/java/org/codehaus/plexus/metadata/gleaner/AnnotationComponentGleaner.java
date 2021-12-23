@@ -39,7 +39,7 @@ import org.codehaus.plexus.metadata.ann.AnnReader;
 import org.codehaus.plexus.util.IOUtil;
 
 /**
- * A class component gleaner which inspects each type for <tt>org.codehaus.plexus.component.annotations.*</tt> annotations
+ * A class component gleaner which inspects each type for {@code org.codehaus.plexus.component.annotations.*} annotations
  * and when found translates them into a {@link ComponentDescriptor}.
  *
  */

@@ -29,7 +29,7 @@ import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.codehaus.plexus.metadata.MetadataGenerationRequest;
 
 /**
- * Generates a Plexus <tt>components.xml</tt> component descriptor file from source (javadoc) or
+ * Generates a Plexus {@code components.xml} component descriptor file from source (javadoc) or
  * class annotations and manually crafted descriptor files.
  * 
  * @author Jason van Zyl

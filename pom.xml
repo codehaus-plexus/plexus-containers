@@ -25,7 +25,7 @@
 
   <scm>
     <connection>scm:git:https://github.com/codehaus-plexus/plexus-containers.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/codehaus-plexus/plexus-containers.git</developerConnection>
+    <developerConnection>scm:git:https://github.com/codehaus-plexus/plexus-containers.git</developerConnection>
     <url>https://github.com/codehaus-plexus/plexus-containers</url>
     <tag>HEAD</tag>
   </scm>
