@@ -42,6 +42,9 @@ import org.xml.sax.helpers.DefaultHandler;
 public class Driver implements Locator, XMLReader, Attributes
 {
 
+    protected static final String EXTERNAL_GENERAL_ENTITIES_PROPERTY =
+        "http://xml.org/sax/features/external-general-entities";
+
     protected static final String DECLARATION_HANDLER_PROPERTY =
         "http://xml.org/sax/properties/declaration-handler";
 
@@ -200,6 +203,8 @@ public class Driver implements Locator, XMLReader, Attributes
                 }
             } else if(VALIDATION_FEATURE.equals(name)) {
                 pp.setFeature(XmlPullParser.FEATURE_VALIDATION, value);
+            } else if(EXTERNAL_GENERAL_ENTITIES_PROPERTY.equals(name)) {
+                // ignore
             } else {
                 pp.setFeature(name, value);
                 //throw new SAXNotRecognizedException("unrecognized feature "+name);
