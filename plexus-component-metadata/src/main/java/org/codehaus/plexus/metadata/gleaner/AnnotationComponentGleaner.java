@@ -68,7 +68,7 @@ public class AnnotationComponentGleaner
             return null;
         }
 
-        ComponentDescriptor<?> component = new ComponentDescriptor<Object>();
+        ComponentDescriptor<?> component = new ComponentDescriptor<>();
         
         component.setRole(anno.role().getName());
 
@@ -173,7 +173,7 @@ public class AnnotationComponentGleaner
     private List<AnnClass> getClasses(AnnClass annClass, ClassLoader cl) throws ComponentGleanerException {
         assert annClass != null;
 
-        List<AnnClass> classes = new ArrayList<AnnClass>();
+        List<AnnClass> classes = new ArrayList<>();
 
         while(annClass!=null) {
             classes.add(annClass);

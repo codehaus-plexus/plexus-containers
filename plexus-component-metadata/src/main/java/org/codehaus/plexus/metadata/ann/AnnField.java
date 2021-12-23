@@ -30,7 +30,7 @@ public class AnnField {
   private final int access;
   private final String name;
   private final String desc;
-  private Map<String, Ann> anns = new LinkedHashMap<String,Ann>();
+  private Map<String, Ann> anns = new LinkedHashMap<>();
   
   public AnnField(AnnClass owner, int access, String name, String desc) {
     this.owner = owner;

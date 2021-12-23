@@ -65,13 +65,7 @@ import java.util.LinkedHashSet;
 
 public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
     private static final ThreadLocal<LinkedHashSet<ComponentDescriptor<?>>> STACK =
-        new ThreadLocal<LinkedHashSet<ComponentDescriptor<?>>>()
-        {
-            protected LinkedHashSet<ComponentDescriptor<?>> initialValue()
-            {
-                return new LinkedHashSet<ComponentDescriptor<?>>();
-            }
-        };
+            ThreadLocal.withInitial( LinkedHashSet::new );
 
     private ComponentManager<T> componentManager;
 
@@ -101,7 +95,7 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
         if ( stack.contains( descriptor ) )
         {
             // create list of circularity
-            List<ComponentDescriptor<?>> circularity = new ArrayList<ComponentDescriptor<?>>( stack );
+            List<ComponentDescriptor<?>> circularity = new ArrayList<>( stack );
             circularity.subList( circularity.indexOf( descriptor ), circularity.size() );
             circularity.add( descriptor );
 
@@ -172,11 +166,10 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
             }
 
             return instance;
-        } catch (Exception e) {
+        } catch ( Exception | LinkageError e) {
             throw new ComponentLifecycleException("Error constructing component " + descriptor.getHumanReadableKey(), e);
-        } catch (LinkageError e) {
-            throw new ComponentLifecycleException("Error constructing component " + descriptor.getHumanReadableKey(), e);
-        } finally {
+        }
+        finally {
             Thread.currentThread().setContextClassLoader(oldClassLoader);
         }
     }
@@ -195,12 +188,7 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
             {
                 realm.loadClass( descriptor.getImplementation() );
             }
-            catch ( ClassNotFoundException e )
-            {
-                throw new ComponentInstantiationException( "Could not load implementation class for component "
-                    + descriptor.getHumanReadableKey() + " from class realm " + realm, e );
-            }
-            catch ( LinkageError e )
+            catch ( ClassNotFoundException | LinkageError e )
             {
                 throw new ComponentInstantiationException( "Could not load implementation class for component "
                     + descriptor.getHumanReadableKey() + " from class realm " + realm, e );
@@ -269,7 +257,7 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
         try {
             ComponentConfigurator componentConfigurator = getContainer().lookup(ComponentConfigurator.class, configuratorId);
             return componentConfigurator == null || componentConfigurator.getClass().equals(BasicComponentConfigurator.class);
-        } catch (ComponentLookupException e) {
+        } catch (ComponentLookupException ignored ) {
         }
 
         return true;
@@ -317,7 +305,7 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
                 ComponentRegistry componentRegistry = container.getComponentRegistry();
 
                 return componentRegistry.getComponentDescriptor(propertyType, requirement.getRole(), requirement.getRoleHint()) != null;
-            } catch (Exception e) {
+            } catch (Exception ignored ) {
             }
 
             return false;
@@ -336,7 +324,7 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
 
                 Object assignment;
                 if (propertyType.isArray()) {
-                    assignment = new ArrayList<Object>(container.lookupList(role, roleHints));
+                    assignment = new ArrayList<>( container.lookupList( role, roleHints ) );
                 }
 
                 // Map.class.isAssignableFrom( clazz ) doesn't make sense, since Map.class doesn't really
@@ -422,7 +410,7 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
         }
     }
 
-    private class PlexusConfigurationRecipe extends AbstractRecipe {
+    private static class PlexusConfigurationRecipe extends AbstractRecipe {
         private final PlexusConfiguration child;
 
         public PlexusConfigurationRecipe(PlexusConfiguration child) {
@@ -484,7 +472,7 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
             } else if ("map".equals(mappingType)) {
                 value = container.lookupMap(role);
             } else if ("set".equals(mappingType)) {
-                value = new HashSet<Object>(container.lookupList(role));
+                value = new HashSet<>( container.lookupList( role ) );
             } else {
                 value = container.lookup(role, hint);
             }

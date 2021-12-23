@@ -19,6 +19,7 @@ package org.codehaus.plexus.metadata.ann;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.ClassReader;
@@ -129,7 +130,7 @@ public class AnnReader extends ClassVisitor {
     private String name;
 
     // TODO good enough for now, but does not cover general case
-    private ArrayList<String> array = new ArrayList<String>();
+    private List<String> array = new ArrayList<>();
 
     public AnnAnnArrayReader(Ann ann, String name) {
       super(Opcodes.ASM9);
@@ -144,7 +145,7 @@ public class AnnReader extends ClassVisitor {
     }
 
     public void visitEnd() {
-      ann.addParam(name, array.toArray(new String[array.size()]));
+      ann.addParam(name, array.toArray( new String[0] ));
     }
   }
 }

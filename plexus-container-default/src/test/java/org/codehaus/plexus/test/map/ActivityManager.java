@@ -24,7 +24,7 @@ package org.codehaus.plexus.test.map;
  */
 public interface ActivityManager
 {
-    static String ROLE = ActivityManager.class.getName();
+    String ROLE = ActivityManager.class.getName();
 
     void execute( String id );
 

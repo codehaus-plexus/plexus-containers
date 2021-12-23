@@ -4,12 +4,12 @@ import static org.codehaus.plexus.component.CastUtils.isAssignableFrom;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.IdentityHashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.Map.Entry;
@@ -41,12 +41,12 @@ public class DefaultComponentRegistry implements ComponentRegistry
     private boolean disposingComponents; 
 
     private final Map<String, ComponentManagerFactory> componentManagerFactories =
-        Collections.synchronizedMap( new TreeMap<String, ComponentManagerFactory>() );
+        Collections.synchronizedMap( new TreeMap<>() );
 
-    private final Map<Key, ComponentManager<?>> componentManagers = new TreeMap<Key, ComponentManager<?>>();
-    private final Map<Object, ComponentManager<?>> componentManagersByComponent = new IdentityHashMap<Object, ComponentManager<?>>();
+    private final Map<Key, ComponentManager<?>> componentManagers = new TreeMap<>();
+    private final Map<Object, ComponentManager<?>> componentManagersByComponent = new IdentityHashMap<>();
 
-    private final Map<Key, Object> unmanagedComponents = new TreeMap<Key, Object>();
+    private final Map<Key, Object> unmanagedComponents = new TreeMap<>();
 
     public DefaultComponentRegistry( MutablePlexusContainer container,
                                      ComponentRepository repository,
@@ -63,7 +63,7 @@ public class DefaultComponentRegistry implements ComponentRegistry
         List<ComponentManager<?>> managers;
         synchronized ( this )
         {
-            managers = new ArrayList<ComponentManager<?>>( componentManagers.values() );
+            managers = new ArrayList<>( componentManagers.values() );
             componentManagers.clear();
             componentManagersByComponent.clear();
             unmanagedComponents.clear();
@@ -72,23 +72,7 @@ public class DefaultComponentRegistry implements ComponentRegistry
         }
 
         // reverse sort the managers by startId
-        Collections.sort( managers, new Comparator<ComponentManager<?>>() {
-            public int compare( ComponentManager<?> left, ComponentManager<?> right )
-            {
-                if (left.getStartId() < right.getStartId() )
-                {
-                    return 1;
-                }
-                else if (left.getStartId() == right.getStartId() )
-                {
-                    return 0;
-                }
-                else
-                {
-                    return -1;
-                }
-            }
-        });
+        managers.sort( ( left, right ) -> Long.compare( right.getStartId(), left.getStartId() ) );
 
         // Call dispose callback outside of synchronized lock to avoid deadlocks
         try
@@ -199,7 +183,7 @@ public class DefaultComponentRegistry implements ComponentRegistry
         }
 
         // if no hints provided, get all valid hints for this role
-        Map<String, T> components = new LinkedHashMap<String, T>();
+        Map<String, T> components = new LinkedHashMap<>();
         if ( roleHints == null )
         {
             Map<String, ComponentDescriptor<T>> componentDescriptors = getComponentDescriptorMap( type, role );
@@ -238,7 +222,7 @@ public class DefaultComponentRegistry implements ComponentRegistry
         }
 
         // if no hints provided, get all valid hints for this role
-        List<T> components = new ArrayList<T>();
+        List<T> components = new ArrayList<>();
         if ( roleHints == null )
         {
             List<ComponentDescriptor<T>> componentDescriptors = getComponentDescriptorList( type, role );
@@ -302,7 +286,7 @@ public class DefaultComponentRegistry implements ComponentRegistry
     {
         repository.removeComponentRealm( classRealm );
         
-        List<ComponentManager<?>> dispose = new ArrayList<ComponentManager<?>>();
+        List<ComponentManager<?>> dispose = new ArrayList<>();
         try
         {
             synchronized ( this )
@@ -343,7 +327,7 @@ public class DefaultComponentRegistry implements ComponentRegistry
     {
         // lookup for unmanaged components first
 
-        T component = this.<T>getUnmanagedComponent( role, roleHint ); // weird syntax due to http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6302954
+        T component = this.getUnmanagedComponent( role, roleHint );
 
         if ( component != null )
         {
@@ -588,9 +572,7 @@ public class DefaultComponentRegistry implements ComponentRegistry
 
             Key key = (Key) o;
 
-            return !( realm != null ? !realm.equals( key.realm ) : key.realm != null ) &&
-                role.equals( key.role ) &&
-                roleHint.equals( key.roleHint );
+            return Objects.equals( realm, key.realm ) && role.equals( key.role ) && roleHint.equals( key.roleHint );
 
         }
 

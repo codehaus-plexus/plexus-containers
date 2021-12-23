@@ -24,7 +24,7 @@ package org.codehaus.plexus.test.list;
  */
 public interface Valve
 {
-    static String ROLE = Valve.class.getName();
+    String ROLE = Valve.class.getName();
 
     void execute();
 

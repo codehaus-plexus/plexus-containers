@@ -89,7 +89,7 @@ public class ClassComponentDescriptorExtractor
     private ClassLoader createClassLoader( final List<String> elements )
         throws Exception
     {
-        List<URL> list = new ArrayList<URL>();
+        List<URL> list = new ArrayList<>();
 
         // Add the projects dependencies
         for ( String filename : elements )
@@ -104,12 +104,12 @@ public class ClassComponentDescriptorExtractor
             }
         }
 
-        URL[] urls = list.toArray( new URL[list.size()] );
+        URL[] urls = list.toArray( new URL[0] );
 
         //getLogger().debug( "Classpath:" );
-        for (URL url : urls) {
+//        for (URL url : urls) {
             //getLogger().debug( "    " + urls[i] );
-        }
+//        }
 
         return new URLClassLoader( urls, null );
     }
@@ -121,7 +121,7 @@ public class ClassComponentDescriptorExtractor
         assert cl != null;
         assert defaultsByRole != null;
 
-        List<ComponentDescriptor<?>> descriptors = new ArrayList<ComponentDescriptor<?>>();
+        List<ComponentDescriptor<?>> descriptors = new ArrayList<>();
 
         DirectoryScanner scanner = new DirectoryScanner();
         scanner.setBasedir( classesDir );

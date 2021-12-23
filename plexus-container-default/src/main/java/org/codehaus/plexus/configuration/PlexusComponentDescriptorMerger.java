@@ -49,11 +49,7 @@ public class PlexusComponentDescriptorMerger
 
             overrideDom = Xpp3DomBuilder.build( new StringReader( override.getConfiguration().toString() ) );
         }
-        catch ( XmlPullParserException e1 )
-        {
-            return;
-        }
-        catch ( IOException e1 )
+        catch ( XmlPullParserException | IOException e1 )
         {
             return;
         }
@@ -69,10 +65,7 @@ public class PlexusComponentDescriptorMerger
             {
                 targetDom = Xpp3DomBuilder.build( new StringReader( target.getConfiguration().toString() ) );
             }
-            catch ( XmlPullParserException e1 )
-            {
-            }
-            catch ( IOException e1 )
+            catch ( XmlPullParserException | IOException ignored )
             {
             }
         }
@@ -91,8 +84,8 @@ public class PlexusComponentDescriptorMerger
 
     private static void mergeRequirements( ComponentDescriptor<?> override, ComponentDescriptor<?> target )
     {
-        List<ComponentRequirement> toAdd = new ArrayList<ComponentRequirement>();
-        List<ComponentRequirement> toRemove = new ArrayList<ComponentRequirement>();
+        List<ComponentRequirement> toAdd = new ArrayList<>();
+        List<ComponentRequirement> toRemove = new ArrayList<>();
 
         for ( ComponentRequirement sourceReq : override.getRequirements() )
         {

@@ -24,37 +24,41 @@ import org.codehaus.plexus.configuration.PlexusConfiguration;
 import org.codehaus.plexus.metadata.gleaner.ann.AnnotatedComponent;
 import org.codehaus.plexus.metadata.gleaner.ann.AnnotatedComponentRole;
 
-import junit.framework.TestCase;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author Eugene Kuleshov
  */
-public class AnnotationComponentGleanerTest extends TestCase {
+public class AnnotationComponentGleanerTest
+{
 
+  @Test
   public void testGlean() throws Exception {
     AnnotationComponentGleaner gleaner = new AnnotationComponentGleaner();
     Class<AnnotatedComponent> c = AnnotatedComponent.class;
     ComponentDescriptor<?> descriptor = gleaner.glean(c.getName(), c.getClassLoader());
     
-    assertEquals("foo", descriptor.getComponentType());
-    assertEquals(AnnotatedComponentRole.class.getName(), descriptor.getRole());
+    assertEquals( "foo", descriptor.getComponentType() );
+    assertEquals( AnnotatedComponentRole.class.getName(), descriptor.getRole() );
     
     List<ComponentRequirement> requirements = descriptor.getRequirements();
-    assertEquals(requirements.toString(), 2, requirements.size());
+    assertEquals( requirements.toString(), 2, requirements.size() );
 
     ComponentRequirement requirement = requirements.get(0);
-    assertEquals("dependency", requirement.getFieldName());
-    assertEquals("default", requirement.getRoleHint());
+    assertEquals( "dependency", requirement.getFieldName() );
+    assertEquals( "default", requirement.getRoleHint() );
 
     ComponentRequirement requirement2 = requirements.get(1);
-    assertEquals("dependency2", requirement2.getFieldName());
-    assertEquals("release,latest,snapshot", requirement2.getRoleHint());
+    assertEquals( "dependency2", requirement2.getFieldName() );
+    assertEquals( "release,latest,snapshot", requirement2.getRoleHint() );
 
     PlexusConfiguration configuration = descriptor.getConfiguration();
-    assertEquals(1, configuration.getChildCount());
+    assertEquals( 1, configuration.getChildCount() );
     PlexusConfiguration child = configuration.getChild(0);
-    assertEquals("param", child.getName());
-    assertEquals("value", child.getValue());
+    assertEquals( "param", child.getName() );
+    assertEquals( "value", child.getValue() );
   }
 
 }

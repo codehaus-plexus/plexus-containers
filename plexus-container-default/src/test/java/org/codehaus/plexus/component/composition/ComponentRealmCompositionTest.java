@@ -149,7 +149,7 @@ public class ComponentRealmCompositionTest
 
     private Map<String, Object> mapByClassSimpleName(List<Object> objects)
     {
-        Map<String, Object> map = new TreeMap<String, Object>();
+        Map<String, Object> map = new TreeMap<>();
         for ( Object object : objects )
         {
             map.put(object.getClass().getSimpleName(), object);

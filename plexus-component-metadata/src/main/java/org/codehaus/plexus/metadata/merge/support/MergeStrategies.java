@@ -42,14 +42,7 @@ public class MergeStrategies
      * {@link MergeStrategy} implementation wherein the elements are merged
      * down to the deepest available {@link Mergeable} instance in the DOM tree.
      */
-    public static final MergeStrategy DEEP = new MergeStrategy()
-    {
-        public void apply( Mergeable dElt, Mergeable rElt )
-            throws MergeException
-        {
-            dElt.merge( rElt );
-        }
-    };
+    public static final MergeStrategy DEEP = Mergeable::merge;
 
     /**
      * {@link MergeStrategy} implementation wherein only the element on

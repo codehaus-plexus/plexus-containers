@@ -26,7 +26,7 @@ import java.util.List;
  */
 public interface CompositionResolver
 {
-    public static final char SEPARATOR_CHAR = ':';
+    char SEPARATOR_CHAR = ':';
 
     /**
      * @param componentDescriptor {@link ComponentDescriptor}.

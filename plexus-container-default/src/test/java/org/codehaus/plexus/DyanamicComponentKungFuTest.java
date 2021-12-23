@@ -16,7 +16,7 @@ package org.codehaus.plexus;
  * limitations under the License.
  */
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 /**
  * This is the start of the sketch which outlines some of the things
@@ -26,7 +26,6 @@ import junit.framework.TestCase;
  *
  */
 public class DyanamicComponentKungFuTest
-    extends TestCase
 {
     /**
      * Component additions during container operation.
@@ -73,6 +72,7 @@ public class DyanamicComponentKungFuTest
      * 
      * @throws Exception in case of a failure.
      */
+    @Test
     public void testAdditionOfComponentDuringContainerOperation()
         throws Exception
     {
@@ -98,6 +98,7 @@ public class DyanamicComponentKungFuTest
      * 
      * @throws Exception in case of a failure.
      */
+    @Test
     public void testComponentReplacementDuringContainerOperation()
         throws Exception
     {

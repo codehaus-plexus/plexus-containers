@@ -59,7 +59,7 @@ public class ComponentDescriptor<T>
 
     private String componentProfile;
 
-    private final List<ComponentRequirement> requirements = new ArrayList<ComponentRequirement>();
+    private final List<ComponentRequirement> requirements = new ArrayList<>();
 
     private String componentFactory;
 
@@ -182,7 +182,7 @@ public class ComponentDescriptor<T>
         if (roleClass == null) {
             return (Class<T>) Object.class;
         }
-        return (Class<T>)roleClass;
+        return roleClass;
     }
 
     private void attemptRoleLoad()
@@ -671,12 +671,12 @@ public class ComponentDescriptor<T>
             String role = getRole();
             String otherRole = otherDescriptor.getRole();
 
-            isEqual = isEqual && ( ( role.equals( otherRole ) ) || role.equals( otherRole ) );
+            isEqual = isEqual && ( role.equals( otherRole ) );
 
             String roleHint = getRoleHint();
             String otherRoleHint = otherDescriptor.getRoleHint();
 
-            isEqual = isEqual && ( ( roleHint.equals( otherRoleHint ) ) || roleHint.equals( otherRoleHint ) );
+            isEqual = isEqual && ( roleHint.equals( otherRoleHint ) );
 
             return isEqual;
         }

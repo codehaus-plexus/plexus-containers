@@ -35,8 +35,8 @@ public class XmlPlexusConfigurationReader
         }
         catch ( XmlPullParserException e )
         {
-            throw new PlexusConfigurationException( "Failed to parse configuration resource!\nError was: \'"
-                + e.getLocalizedMessage() + "\'", e );
+            throw new PlexusConfigurationException( "Failed to parse configuration resource!\nError was: '"
+                + e.getLocalizedMessage() + "'", e );
         }
     }
 }

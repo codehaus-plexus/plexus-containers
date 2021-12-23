@@ -26,16 +26,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import org.codehaus.plexus.util.IOUtil;
 import org.jdom2.Document;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
-import org.jdom2.input.sax.XMLReaderJDOMFactory;
 import org.jdom2.input.sax.XMLReaderSAX2Factory;
 import org.jdom2.output.XMLOutputter;
-import org.xml.sax.XMLReader;
 
 /**
  * Base class for common mergers.
@@ -61,7 +60,7 @@ public abstract class AbstractMerger
         Writer fw = null;
         try
         {
-            fw = new OutputStreamWriter( new FileOutputStream( file ), "UTF-8" );
+            fw = new OutputStreamWriter( new FileOutputStream( file ), StandardCharsets.UTF_8 );
             out.output( mergedDocument, fw );
         }
         finally

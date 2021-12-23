@@ -26,7 +26,7 @@ import org.codehaus.plexus.test.map.Activity;
  */
 public interface Component
 {
-    static String ROLE = Component.class.getName();
+    String ROLE = Component.class.getName();
 
     String getHost();
 

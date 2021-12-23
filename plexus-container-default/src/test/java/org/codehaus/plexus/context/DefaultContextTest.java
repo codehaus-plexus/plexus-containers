@@ -17,10 +17,14 @@ package org.codehaus.plexus.context;
  */
 
 import junit.framework.AssertionFailedError;
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * TestCase for Context.
@@ -29,24 +33,19 @@ import java.util.Map;
  * @author <a href="mailto:leo.sutic@inspireinfrastructure.com">Leo Sutic</a>
  */
 public class DefaultContextTest
-    extends TestCase
 {
 
-    public DefaultContextTest( String name )
-    {
-        super( name );
-    }
-
+    @Test
     public void testContextCreationWithMap()
         throws Exception
     {
-        Map map = new HashMap();
+        Map<Object, Object> map = new HashMap<>();
 
         map.put( "name", "jason" );
 
         DefaultContext context = new DefaultContext( map );
 
-        assertEquals( "jason", (String) context.get( "name" ) );
+        assertEquals( "jason", context.get( "name" ) );
 
         assertEquals( map, context.getContextData() );
 
@@ -66,14 +65,15 @@ public class DefaultContextTest
 
     }
 
+    @Test
     public void testAddContext()
         throws Exception
     {
         DefaultContext context = new DefaultContext();
         context.put( "key1", "value1" );
-        assertTrue( "value1".equals( context.get( "key1" ) ) );
+        assertEquals( "value1", context.get( "key1" ) );
         context.put( "key1", "" );
-        assertTrue( "".equals( context.get( "key1" ) ) );
+        assertEquals( "", context.get( "key1" ) );
 
         context.put( "key1", "value1" );
         context.makeReadOnly();
@@ -85,10 +85,11 @@ public class DefaultContextTest
         }
         catch ( IllegalStateException ise )
         {
-            assertTrue( "Value is null", "value1".equals( context.get( "key1" ) ) );
+            assertEquals( "Value is null", "value1", context.get( "key1" ) );
         }
     }
 
+    @Test
     public void testHiddenItems()
         throws ContextException
     {
@@ -97,7 +98,7 @@ public class DefaultContextTest
         context.put( "test", "test" );
 
         // verify inital state
-        assertTrue( "test".equals( context.get( "test" ) ) );
+        assertEquals( "test", context.get( "test" ) );
 
         // hide value and verify
         context.hide( "test" );
@@ -113,7 +114,7 @@ public class DefaultContextTest
 
         // reset to inital state and verify
         context.put( "test", "test" );
-        assertTrue( "test".equals( context.get( "test" ) ) );
+        assertEquals( "test", context.get( "test" ) );
 
         // mark context read-only and verify that item can not be hidden
         context.makeReadOnly();
@@ -128,6 +129,6 @@ public class DefaultContextTest
         }
 
         // verify state did not change in failed hide() invocation
-        assertTrue( "test".equals( context.get( "test" ) ) );
+        assertEquals( "test", context.get( "test" ) );
     }
 }

@@ -28,7 +28,7 @@ public abstract class ComponentDescriptorExtractorSupport
 {
     protected Map<String, ComponentDescriptor<?>> getDefaultsByRole( final ComponentDescriptor<?>[] roleDefaults )
     {
-        Map<String, ComponentDescriptor<?>> defaultsByRole = new HashMap<String, ComponentDescriptor<?>>();
+        Map<String, ComponentDescriptor<?>> defaultsByRole = new HashMap<>();
 
         if ( roleDefaults != null )
         {

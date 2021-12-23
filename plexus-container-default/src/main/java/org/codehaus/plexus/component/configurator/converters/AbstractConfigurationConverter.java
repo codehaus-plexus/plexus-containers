@@ -128,11 +128,7 @@ public abstract class AbstractConfigurationConverter
 
             return retValue;
         }
-        catch ( IllegalAccessException e )
-        {
-            throw new ComponentConfigurationException( "Class '" + clazz.getName() + "' cannot be instantiated", e );
-        }
-        catch ( InstantiationException e )
+        catch ( IllegalAccessException | InstantiationException e )
         {
             throw new ComponentConfigurationException( "Class '" + clazz.getName() + "' cannot be instantiated", e );
         }

@@ -170,7 +170,7 @@ public class PlexusTools
             if (hints != null && hints.length > 0) {
                 cr = new ComponentRequirementList();
 
-                List<String> hintList = new LinkedList<String>();
+                List<String> hintList = new LinkedList<>();
                 for (PlexusConfiguration hint : hints) {
                     hintList.add(hint.getValue());
                 }

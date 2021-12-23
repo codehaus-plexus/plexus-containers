@@ -56,7 +56,7 @@ public interface Context
      * @param value the item
      * @throws IllegalStateException if this context is read-only
      */
-    public void put( Object key, Object value )
+    void put( Object key, Object value )
         throws IllegalStateException;
 
     // todo [dain] this isn't needed anymore since containers are no longer nestable

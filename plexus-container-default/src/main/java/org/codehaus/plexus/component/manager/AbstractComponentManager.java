@@ -49,7 +49,7 @@ public abstract class AbstractComponentManager<T>
     
     private final String roleHint;
 
-    protected final ComponentBuilder<T> builder = new XBeanComponentBuilder<T>(this);
+    protected final ComponentBuilder<T> builder = new XBeanComponentBuilder<>( this );
 
 
     private final LifecycleHandler lifecycleHandler;
@@ -60,7 +60,7 @@ public abstract class AbstractComponentManager<T>
      * call all lifecycle methods.
      * This will define a synchronized map, make sure to synchronize the map when iterating.
      */
-    protected final Map<Object, ClassRealm> componentContextRealms = Collections.synchronizedMap(new HashMap<Object, ClassRealm>());
+    protected final Map<Object, ClassRealm> componentContextRealms = Collections.synchronizedMap( new HashMap<>());
 
     private int connections;
 

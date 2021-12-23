@@ -24,6 +24,6 @@ import org.codehaus.plexus.context.ContextException;
  */
 public interface Contextualizable
 {
-    public void contextualize( Context context )
+    void contextualize( Context context )
         throws ContextException;
 }

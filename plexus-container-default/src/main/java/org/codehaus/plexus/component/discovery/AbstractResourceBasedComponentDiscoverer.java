@@ -51,7 +51,7 @@ public abstract class AbstractResourceBasedComponentDiscoverer
     public List<ComponentSetDescriptor> findComponents( Context context, ClassRealm realm )
         throws PlexusConfigurationException
     {
-        List<ComponentSetDescriptor> componentSetDescriptors = new ArrayList<ComponentSetDescriptor>();
+        List<ComponentSetDescriptor> componentSetDescriptors = new ArrayList<>();
 
         Enumeration<URL> resources;
         

@@ -38,7 +38,7 @@ public class DefaultContext
     /**
      * Context data.
      */
-    private final ConcurrentMap<Object, Object> contextData = new ConcurrentHashMap<Object, Object>();
+    private final ConcurrentMap<Object, Object> contextData = new ConcurrentHashMap<>();
 
     /**
      * Is the containerContext read only.

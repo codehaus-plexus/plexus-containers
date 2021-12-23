@@ -16,12 +16,16 @@ package org.codehaus.plexus.component.repository;
  * limitations under the License.
  */
 
-import junit.framework.TestCase;
 import org.codehaus.plexus.component.repository.io.PlexusTools;
 import org.codehaus.plexus.classworlds.ClassWorld;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
+import org.junit.Test;
 
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  *
@@ -30,8 +34,8 @@ import java.util.List;
  *
  */
 public class ComponentDescriptorTest
-    extends TestCase
 {
+    @Test
     public void testSimpleComponentResolution()
         throws Exception
     {
@@ -88,16 +92,17 @@ public class ComponentDescriptorTest
         assertTrue( containsC3 );
     }
     
+    @Test
     public void testShouldNotBeEqualWhenRolesAreSameButHintsAreDifferent()
     {
-        ComponentDescriptor<Object> desc = new ComponentDescriptor<Object>();
+        ComponentDescriptor<Object> desc = new ComponentDescriptor<>();
         desc.setRole("one");
         desc.setRoleHint("one");
         
-        ComponentDescriptor<Object> desc2 = new ComponentDescriptor<Object>();
+        ComponentDescriptor<Object> desc2 = new ComponentDescriptor<>();
         desc2.setRole("one");
         desc2.setRoleHint("two");
         
-        assertFalse(desc.equals(desc2));
+        assertFalse( desc.equals( desc2 ) );
     }
 }

@@ -92,7 +92,7 @@ public class ComponentLookupException
             ByteArrayOutputStream os = new ByteArrayOutputStream( 1024 );
             PrintStream ps = new PrintStream( os );
             realm.display( ps );
-            sb.append( os.toString() );
+            sb.append( os );
         }
         else
         {

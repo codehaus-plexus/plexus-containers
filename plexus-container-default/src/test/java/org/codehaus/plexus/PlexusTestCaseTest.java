@@ -16,21 +16,26 @@ package org.codehaus.plexus;
  * limitations under the License.
  */
 
-import junit.framework.TestCase;
 import org.codehaus.plexus.component.discovery.DiscoveredComponent;
 import org.codehaus.plexus.component.repository.exception.ComponentLookupException;
 import org.codehaus.plexus.test.DefaultLoadOnStartService;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.File;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * @author <a href="mailto:jason@maven.org">Jason van Zyl</a>
  */
 public class PlexusTestCaseTest
-    extends TestCase
 {
     private String basedir;
 
+    @Before
     public void setUp()
     {
         basedir = System.getProperty( "basedir" );
@@ -41,6 +46,7 @@ public class PlexusTestCaseTest
         }
     }
 
+    @Test
     public void testPlexusTestCase()
         throws Exception
     {
@@ -71,6 +77,7 @@ public class PlexusTestCaseTest
         tc.tearDown();
     }
 
+    @Test
     public void testLoadOnStartComponents()
         throws Exception
     {
@@ -91,6 +98,7 @@ public class PlexusTestCaseTest
         tc.tearDown();
     }
 
+    @Test
     public void testGetFile()
     {
         File file = PlexusTestCase.getTestFile( "pom.xml" );
@@ -102,6 +110,7 @@ public class PlexusTestCaseTest
         assertTrue( file.exists() );
     }
 
+    @Test
     public void testGetPath()
     {
         File file = new File( PlexusTestCase.getTestPath( "pom.xml" ) );

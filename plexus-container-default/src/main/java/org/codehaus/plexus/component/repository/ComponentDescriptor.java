@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Objects;
 
 /**
  * Component instantiation description.
@@ -58,7 +59,7 @@ public class ComponentDescriptor<T>
 
     private String componentProfile;
 
-    private final List<ComponentRequirement> requirements = new ArrayList<ComponentRequirement>();
+    private final List<ComponentRequirement> requirements = new ArrayList<>();
 
     private String componentFactory;
 
@@ -181,7 +182,7 @@ public class ComponentDescriptor<T>
         if (roleClass == null) {
             return (Class<T>) Object.class;
         }
-        return (Class<T>) roleClass;
+        return roleClass;
     }
 
     private void attemptRoleLoad()
@@ -291,7 +292,7 @@ public class ComponentDescriptor<T>
         if (implementationClass == null) {
             return (Class<T>) Object.class;
         }
-        return (Class<T>)implementationClass;
+        return implementationClass;
     }
 
     private void attemptImplementationLoad()
@@ -675,29 +676,13 @@ public class ComponentDescriptor<T>
 
         ComponentDescriptor<?> that = (ComponentDescriptor<?>) other;
 
-        return eq( getRole(), that.getRole() ) && eq( getRoleHint(), that.getRoleHint() )
-            && eq( getRealm(), that.getRealm() );
-    }
-
-    private static <T> boolean eq( T o1, T o2 )
-    {
-        return ( o1 != null ) ? o1.equals( o2 ) : o2 == null;
+        return Objects.equals( getRole(), that.getRole() ) && Objects.equals( getRoleHint(), that.getRoleHint() )
+            && Objects.equals( getRealm(), that.getRealm() );
     }
 
     public int hashCode()
     {
-        int hash = 17;
-
-        hash = hash * 31 + hash( getRole() );
-        hash = hash * 31 + hash( getRoleHint() );
-        hash = hash * 31 + hash( getRealm() );
-
-        return hash;
-    }
-
-    private static int hash( Object obj )
-    {
-        return ( obj != null ) ? obj.hashCode() : 0;
+        return Objects.hash( getRole(), getRoleHint(), getRealm() );
     }
 
 }

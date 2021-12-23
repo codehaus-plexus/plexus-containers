@@ -69,22 +69,10 @@ public class JavaComponentFactory
 
             return instance;
         }
-        catch ( InstantiationException e )
+        catch ( InstantiationException | LinkageError | IllegalAccessException | ClassNotFoundException e )
         {
             //PLXAPI: most probably cause of this is the implementation class not having
             //        a default constructor.
-            throw makeException( classRealm, componentDescriptor, implementationClass, e );
-        }
-        catch ( ClassNotFoundException e )
-        {
-            throw makeException( classRealm, componentDescriptor, implementationClass, e );
-        }
-        catch ( IllegalAccessException e )
-        {
-            throw makeException( classRealm, componentDescriptor, implementationClass, e );
-        }
-        catch ( LinkageError e )
-        {
             throw makeException( classRealm, componentDescriptor, implementationClass, e );
         }
     }

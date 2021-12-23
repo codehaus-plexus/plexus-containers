@@ -17,7 +17,6 @@ package org.codehaus.plexus;
  */
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -31,7 +30,7 @@ public class ClassRealmUtil
 
     public static Set<ClassRealm> getContextRealms( ClassWorld world )
     {
-        Set<ClassRealm> realms = new LinkedHashSet<ClassRealm>();
+        Set<ClassRealm> realms = new LinkedHashSet<>();
 
         for ( ClassLoader classLoader = Thread.currentThread().getContextClassLoader(); classLoader != null; classLoader =
             classLoader.getParent() )
@@ -40,7 +39,7 @@ public class ClassRealmUtil
             {
                 realms.add( (ClassRealm) classLoader );
 
-                Queue<ClassRealm> queue = new LinkedList<ClassRealm>();
+                Queue<ClassRealm> queue = new LinkedList<>();
                 queue.add( (ClassRealm) classLoader );
 
                 while ( !queue.isEmpty() )
@@ -67,14 +66,7 @@ public class ClassRealmUtil
 
         if ( world != null )
         {
-            for ( Iterator<ClassRealm> it = realms.iterator(); it.hasNext(); )
-            {
-                ClassRealm realm = it.next();
-                if ( realm.getWorld() != world )
-                {
-                    it.remove();
-                }
-            }
+            realms.removeIf( realm -> realm.getWorld() != world );
         }
 
         return realms;

@@ -16,21 +16,27 @@ package org.codehaus.plexus.configuration;
  * limitations under the License.
  */
 
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
 
 /**
  * @author <a href="mailto:rantene@hotmail.com">Ran Tene</a>
  */
 public final class DefaultPlexusConfigurationTest
-    extends TestCase
 {
     private DefaultPlexusConfiguration configuration;
 
+    @Before
     public void setUp()
     {
         configuration = new DefaultPlexusConfiguration( "a" );
     }
 
+    @Test
     public void testWithHelper()
         throws Exception
     {
@@ -39,16 +45,16 @@ public final class DefaultPlexusConfigurationTest
         ConfigurationTestHelper.testConfiguration( c );
     }
 
+    @Test
     public void testGetValue()
-        throws Exception
     {
         String orgValue = "Original String";
         configuration.setValue( orgValue );
         assertEquals( orgValue, configuration.getValue() );
     }
 
+    @Test
     public void testGetAttribute()
-        throws Exception
     {
         String key = "key";
         String value = "original value";
@@ -58,6 +64,7 @@ public final class DefaultPlexusConfigurationTest
         assertEquals( defaultStr, configuration.getAttribute( "newKey", defaultStr ) );
     }
 
+    @Test
     public void testGetChild()
         throws Exception
     {
@@ -78,6 +85,7 @@ public final class DefaultPlexusConfigurationTest
         assertEquals( 1, configuration.getChildCount() );
     }
 
+    @Test
     public void testToString()
         throws Exception
     {
@@ -91,6 +99,7 @@ public final class DefaultPlexusConfigurationTest
         assertEquals( "<singleton attribute=\"attribute\"/>\n", c.getChild( "singleton" ).toString() );
     }
 
+    @Test
     public void testProgrammaticConfigurationCreation()
         throws Exception
     {
@@ -101,8 +110,8 @@ public final class DefaultPlexusConfigurationTest
         assertEquals( viewRoot, c.getChild( "viewRoot" ).getValue() );
     }
 
+    @Test
     public void testChildOrdering()
-        throws Exception
     {
         PlexusConfiguration child0 = new DefaultPlexusConfiguration( "child" );
         PlexusConfiguration child1 = new DefaultPlexusConfiguration( "child" );

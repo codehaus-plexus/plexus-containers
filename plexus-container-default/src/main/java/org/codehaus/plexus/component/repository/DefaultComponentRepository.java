@@ -48,7 +48,7 @@ public class DefaultComponentRepository
     implements ComponentRepository
 {
     private final Map<ClassRealm, SortedMap<String, Map<String, Set<ComponentDescriptor<?>>>>> index =
-            new LinkedHashMap<ClassRealm, SortedMap<String, Map<String, Set<ComponentDescriptor<?>>>>>();
+            new LinkedHashMap<>();
 
     private final CompositionResolver compositionResolver = new DefaultCompositionResolver();
 
@@ -78,7 +78,7 @@ public class DefaultComponentRepository
         
         // Get all valid component descriptors
         Map<String, Set<ComponentDescriptor<?>>> roleHintIndex =
-                new LinkedHashMap<String, Set<ComponentDescriptor<?>>>();
+                new LinkedHashMap<>();
         for ( ClassRealm realm : realms )
         {
             SortedMap<String, Map<String, Set<ComponentDescriptor<?>>>> roleIndex = index.get( realm );
@@ -88,12 +88,8 @@ public class DefaultComponentRepository
                 {
                     for ( Entry<String, Set<ComponentDescriptor<?>>> descriptor : descriptors.entrySet() )
                     {
-                        Set<ComponentDescriptor<?>> componentDescriptors = roleHintIndex.get( descriptor.getKey() );
-                        if ( componentDescriptors == null )
-                        {
-                            componentDescriptors = new LinkedHashSet<ComponentDescriptor<?>>();
-                            roleHintIndex.put( descriptor.getKey(), componentDescriptors );
-                        }
+                        Set<ComponentDescriptor<?>> componentDescriptors =
+                                roleHintIndex.computeIfAbsent( descriptor.getKey(), k -> new LinkedHashSet<>() );
                         componentDescriptors.addAll( descriptor.getValue() );
                     }
 
@@ -117,7 +113,7 @@ public class DefaultComponentRepository
         else
         {
             // missing role hint -> get all (wildcard)
-            Collection<ComponentDescriptor<?>> allDescriptors = new ArrayList<ComponentDescriptor<?>>();
+            Collection<ComponentDescriptor<?>> allDescriptors = new ArrayList<>();
 
             descriptors = roleHintIndex.get( PlexusConstants.PLEXUS_DEFAULT_HINT );
             if ( descriptors != null )
@@ -154,7 +150,7 @@ public class DefaultComponentRepository
 
     public <T> Map<String, ComponentDescriptor<T>> getComponentDescriptorMap( Class<T> type, String role )
     {
-        Map<String, ComponentDescriptor<T>> descriptors = new TreeMap<String, ComponentDescriptor<T>>();
+        Map<String, ComponentDescriptor<T>> descriptors = new TreeMap<>();
         for ( Set<ComponentDescriptor<?>> componentDescriptors : getComponentDescriptors( role ).values() )
         {
             for ( ComponentDescriptor<?> descriptor : componentDescriptors )
@@ -171,7 +167,7 @@ public class DefaultComponentRepository
 
     public <T> List<ComponentDescriptor<T>> getComponentDescriptorList( Class<T> type, String role )
     {
-        List<ComponentDescriptor<T>> descriptors = new ArrayList<ComponentDescriptor<T>>();
+        List<ComponentDescriptor<T>> descriptors = new ArrayList<>();
         for ( Set<ComponentDescriptor<?>> componentDescriptors : getComponentDescriptors( role ).values() )
         {
             for ( ComponentDescriptor<?> descriptor : componentDescriptors )
@@ -189,7 +185,7 @@ public class DefaultComponentRepository
     public ComponentDescriptor<?> getComponentDescriptor( String role, String roleHint, ClassRealm realm )
     {
         // find all realms from our realm to the root realm
-        Set<ClassRealm> realms = new HashSet<ClassRealm>();
+        Set<ClassRealm> realms = new HashSet<>();
         for ( ClassRealm r = realm; r != null; r = r.getParentRealm() )
         {
             realms.add( r );
@@ -225,26 +221,15 @@ public class DefaultComponentRepository
         throws CycleDetectedInComponentGraphException
     {
         ClassRealm classRealm = componentDescriptor.getRealm();
-        SortedMap<String, Map<String, Set<ComponentDescriptor<?>>>> roleIndex = index.get( classRealm );
-        if (roleIndex == null) {
-            roleIndex = new TreeMap<String, Map<String, Set<ComponentDescriptor<?>>>>();
-            index.put(classRealm,  roleIndex);
-        }
+        SortedMap<String, Map<String, Set<ComponentDescriptor<?>>>> roleIndex =
+                index.computeIfAbsent( classRealm, k -> new TreeMap<>() );
 
         String role = componentDescriptor.getRole();
-        Map<String, Set<ComponentDescriptor<?>>> roleHintIndex = roleIndex.get( role );
-        if ( roleHintIndex == null )
-        {
-            roleHintIndex = new LinkedHashMap<String, Set<ComponentDescriptor<?>>>();
-            roleIndex.put( role, roleHintIndex );
-        }
+        Map<String, Set<ComponentDescriptor<?>>> roleHintIndex =
+                roleIndex.computeIfAbsent( role, k -> new LinkedHashMap<>() );
         String roleHint = componentDescriptor.getRoleHint();
-        Set<ComponentDescriptor<?>> componentDescriptors = roleHintIndex.get( roleHint );
-        if ( componentDescriptors == null )
-        {
-            componentDescriptors = new LinkedHashSet<ComponentDescriptor<?>>();
-            roleHintIndex.put( roleHint, componentDescriptors );
-        }
+        Set<ComponentDescriptor<?>> componentDescriptors =
+                roleHintIndex.computeIfAbsent( roleHint, k -> new LinkedHashSet<>() );
         componentDescriptors.add(componentDescriptor);
 
         compositionResolver.addComponentDescriptor( componentDescriptor );

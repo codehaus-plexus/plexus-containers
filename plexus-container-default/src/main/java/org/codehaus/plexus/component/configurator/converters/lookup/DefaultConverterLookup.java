@@ -57,11 +57,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class DefaultConverterLookup
     implements ConverterLookup
 {
-    private final List<ConfigurationConverter> converters = new ArrayList<ConfigurationConverter>();
+    private final List<ConfigurationConverter> converters = new ArrayList<>();
 
-    private final List<ConfigurationConverter> customConverters = new CopyOnWriteArrayList<ConfigurationConverter>();
+    private final List<ConfigurationConverter> customConverters = new CopyOnWriteArrayList<>();
 
-    private final Map<Class<?>, ConfigurationConverter> converterMap = new ConcurrentHashMap<Class<?>, ConfigurationConverter>();
+    private final Map<Class<?>, ConfigurationConverter> converterMap = new ConcurrentHashMap<>();
 
     public DefaultConverterLookup()
     {

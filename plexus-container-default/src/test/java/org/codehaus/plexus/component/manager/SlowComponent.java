@@ -39,7 +39,7 @@ public class  SlowComponent
         {
             Thread.sleep( delay );
         }
-        catch ( InterruptedException e )
+        catch ( InterruptedException ignored )
         {
         }
     }

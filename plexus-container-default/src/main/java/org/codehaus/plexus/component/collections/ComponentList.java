@@ -193,7 +193,7 @@ public class ComponentList<T>
         // components in this map...we need to be able to release them all.
         if ( ( components == null ) || checkUpdate() )
         {
-            List<T> componentList = new ArrayList<T>();
+            List<T> componentList = new ArrayList<>();
 
             Map<String, ComponentDescriptor<T>> descriptorMap = getComponentDescriptorMap();
 

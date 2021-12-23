@@ -25,6 +25,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -35,11 +36,9 @@ import java.util.Map;
 
 import org.codehaus.plexus.component.annotations.Component;
 import org.codehaus.plexus.component.annotations.Requirement;
-import org.codehaus.plexus.component.repository.ComponentDependency;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
 import org.codehaus.plexus.component.repository.ComponentSetDescriptor;
 import org.codehaus.plexus.logging.AbstractLogEnabled;
-import org.codehaus.plexus.metadata.gleaner.AnnotationComponentGleaner;
 import org.codehaus.plexus.metadata.merge.Merger;
 import org.codehaus.plexus.util.FileUtils;
 import org.codehaus.plexus.util.IOUtil;
@@ -77,7 +76,7 @@ public class DefaultMetadataGenerator
         }
         else
         {
-            extractors = new ArrayList<ComponentDescriptorExtractor>( extractorHints.size() );
+            extractors = new ArrayList<>( extractorHints.size() );
             
             for ( String hint : extractorHints )
             {
@@ -85,7 +84,7 @@ public class DefaultMetadataGenerator
             }
         }
 
-        List<ComponentDescriptor<?>> descriptors = new ArrayList<ComponentDescriptor<?>>();
+        List<ComponentDescriptor<?>> descriptors = new ArrayList<>();
 
         for ( ComponentDescriptorExtractor extractor : extractors )
         {
@@ -104,15 +103,9 @@ public class DefaultMetadataGenerator
         }
 
         // Sort the descriptors by key to make the output reproducible
-        Collections.sort( descriptors, new Comparator<ComponentDescriptor>()
-        {
-            public int compare( ComponentDescriptor d1, ComponentDescriptor d2 )
-            {
-                return d1.getHumanReadableKey().compareTo( d2.getHumanReadableKey() );
-            }
-        });
+        descriptors.sort( Comparator.comparing( ( ComponentDescriptor d ) -> d.getHumanReadableKey() ) );
 
-        List<File> componentDescriptors = new ArrayList<File>();        
+        List<File> componentDescriptors = new ArrayList<>();
         
         //
         // If we found descriptors, write out the discovered descriptors
@@ -123,7 +116,7 @@ public class DefaultMetadataGenerator
 
             ComponentSetDescriptor set = new ComponentSetDescriptor();
             set.setComponents( descriptors );
-            set.setDependencies( Collections.<ComponentDependency> emptyList() );
+            set.setDependencies( Collections.emptyList() );
             
             if ( request.componentDescriptorDirectory == null )
             {
@@ -150,13 +143,7 @@ public class DefaultMetadataGenerator
             File[] files = request.componentDescriptorDirectory.listFiles();
 
             // Sort the files by name to make the output reproducible
-            Arrays.sort( files, new Comparator<File>()
-            {
-                public int compare( File f1, File f2 )
-                {
-                    return f1.getName().compareTo( f2.getName() );
-                }
-            });
+            Arrays.sort( files, Comparator.comparing( File::getName ) );
 
             int added = 0;
             for ( File file : files )
@@ -185,7 +172,8 @@ public class DefaultMetadataGenerator
 
         FileUtils.forceMkdir( outputFile.getParentFile() );
 
-        BufferedWriter output = new BufferedWriter( new OutputStreamWriter( new FileOutputStream( outputFile ), "UTF-8" ) );
+        BufferedWriter output = new BufferedWriter( new OutputStreamWriter( new FileOutputStream( outputFile ),
+                StandardCharsets.UTF_8 ) );
 
         try
         {

@@ -43,7 +43,7 @@
   <properties>
     <scm.url>scm:git:git@github.com:codehaus-plexus/plexus-containers.git</scm.url>
     <classWorldsVersion>2.6.0</classWorldsVersion>
-    <plexusUtilsVersion>3.1.1</plexusUtilsVersion>
+    <plexusUtilsVersion>3.4.1</plexusUtilsVersion>
     <xbeanReflectVersion>3.7</xbeanReflectVersion>
     <mavenVersion>3.2.5</mavenVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

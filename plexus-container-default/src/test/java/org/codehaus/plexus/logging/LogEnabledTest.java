@@ -16,17 +16,19 @@ package org.codehaus.plexus.logging;
  * limitations under the License.
  */
 
-import junit.framework.TestCase;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /**
  *
  * @author peter at realityforge.org Peter Donald
  */
 public class LogEnabledTest
-    extends TestCase
 {
+    @Test
     public void testGetLogger()
-        throws Exception
     {
         MockLogEnabled logEnabled = new MockLogEnabled();
         MockLogger logger = new MockLogger( "base" );
@@ -34,8 +36,8 @@ public class LogEnabledTest
         assertEquals( "logger", logger, logEnabled.getLogger() );
     }
 
+    @Test
     public void testSetupLoggerOnLogEnabled()
-        throws Exception
     {
         MockLogEnabled logEnabled = new MockLogEnabled();
         MockLogEnabled childLogEnabled = new MockLogEnabled();
@@ -46,8 +48,8 @@ public class LogEnabledTest
         assertEquals( "childLogEnabled.logger", logger, childLogEnabled.getLogger() );
     }
 
+    @Test
     public void testSetupLoggerOnNonLogEnabled()
-        throws Exception
     {
         MockLogEnabled logEnabled = new MockLogEnabled();
         MockLogger logger = new MockLogger( "base" );
@@ -55,8 +57,8 @@ public class LogEnabledTest
         logEnabled.setupLogger( new Object() );
     }
 
+    @Test
     public void testSetupLoggerWithNameOnLogEnabled()
-        throws Exception
     {
         MockLogEnabled logEnabled = new MockLogEnabled();
         MockLogEnabled childLogEnabled = new MockLogEnabled();
@@ -65,12 +67,12 @@ public class LogEnabledTest
         logEnabled.setupLogger( childLogEnabled, "child" );
         assertEquals( "logEnabled.logger", logger, logEnabled.getLogger() );
         assertEquals( "childLogEnabled.logger.name",
-                      "base.child",
-                      ( (MockLogger) childLogEnabled.getLogger() ).getName() );
+                "base.child",
+                childLogEnabled.getLogger().getName() );
     }
 
+    @Test
     public void testSetupLoggerWithNullName()
-        throws Exception
     {
         MockLogEnabled logEnabled = new MockLogEnabled();
         MockLogEnabled childLogEnabled = new MockLogEnabled();

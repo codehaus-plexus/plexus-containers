@@ -200,25 +200,18 @@ public class ConsoleLoggerManager
     {
         text = text.trim().toLowerCase( Locale.ENGLISH );
 
-        if ( text.equals( "debug" ) )
+        switch ( text )
         {
-            return ConsoleLogger.LEVEL_DEBUG;
-        }
-        else if ( text.equals( "info" ) )
-        {
-            return ConsoleLogger.LEVEL_INFO;
-        }
-        else if ( text.equals( "warn" ) )
-        {
-            return ConsoleLogger.LEVEL_WARN;
-        }
-        else if ( text.equals( "error" ) )
-        {
-            return ConsoleLogger.LEVEL_ERROR;
-        }
-        else if ( text.equals( "fatal" ) )
-        {
-            return ConsoleLogger.LEVEL_FATAL;
+            case "debug":
+                return ConsoleLogger.LEVEL_DEBUG;
+            case "info":
+                return ConsoleLogger.LEVEL_INFO;
+            case "warn":
+                return ConsoleLogger.LEVEL_WARN;
+            case "error":
+                return ConsoleLogger.LEVEL_ERROR;
+            case "fatal":
+                return ConsoleLogger.LEVEL_FATAL;
         }
 
         return -1;

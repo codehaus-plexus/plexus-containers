@@ -57,9 +57,9 @@ public class DefaultContainerConfiguration
 
     private ConfigurationSource configurationSource;
     
-    private List<Class> componentDiscoverers = new ArrayList<Class>();
+    private List<Class> componentDiscoverers = new ArrayList<>();
     
-    private List<Class> componentDiscoveryListeners = new ArrayList<Class>();
+    private List<Class> componentDiscoveryListeners = new ArrayList<>();
     
     public ContainerConfiguration setName( String name )
     {
@@ -172,7 +172,7 @@ public class DefaultContainerConfiguration
 
     public ContainerConfiguration addComponentDiscoverer( ComponentDiscoverer componentDiscoverer )
     {
-        ((DefaultComponentDiscovererManager)getComponentDiscovererManager()).addComponentDiscoverer( componentDiscoverer );
+        getComponentDiscovererManager().addComponentDiscoverer( componentDiscoverer );
 
         return this;
     }
@@ -212,9 +212,9 @@ public class DefaultContainerConfiguration
         {
             componentDiscovererManager = new DefaultComponentDiscovererManager();
 
-            ((DefaultComponentDiscovererManager)componentDiscovererManager).addComponentDiscoverer( new DefaultComponentDiscoverer() );
+            componentDiscovererManager.addComponentDiscoverer( new DefaultComponentDiscoverer() );
 
-            ((DefaultComponentDiscovererManager)componentDiscovererManager).addComponentDiscoverer( new PlexusXmlComponentDiscoverer() );
+            componentDiscovererManager.addComponentDiscoverer( new PlexusXmlComponentDiscoverer() );
         }
 
         return componentDiscovererManager;

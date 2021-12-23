@@ -16,12 +16,15 @@ package org.codehaus.plexus.component.repository;
  * limitations under the License.
  */
 
-import junit.framework.TestCase;
 import org.codehaus.plexus.component.repository.io.PlexusTools;
 import org.codehaus.plexus.classworlds.ClassWorld;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
+import org.junit.Test;
 
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  *
@@ -30,8 +33,8 @@ import java.util.List;
  *
  */
 public class ComponentSetTest
-    extends TestCase
 {
+    @Test
     public void testSimpleComponentResolution()
         throws Exception
     {

@@ -16,19 +16,22 @@ package org.codehaus.plexus.logging.console;
  * limitations under the License.
  */
 
-import junit.framework.TestCase;
 import org.codehaus.plexus.util.StringUtils;
+import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Jason van Zyl
  *
  */
 public class ConsoleLoggerTest
-    extends TestCase
 {
+    @Test
     public void testConsoleLogger()
     {
         ConsoleLogger logger = new ConsoleLogger( ConsoleLogger.LEVEL_DEBUG, "test" );

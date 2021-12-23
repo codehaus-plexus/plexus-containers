@@ -16,7 +16,6 @@ package org.codehaus.plexus.component.factory.java;
  * limitations under the License.
  */
 
-import junit.framework.TestCase;
 import org.codehaus.plexus.ContainerConfiguration;
 import org.codehaus.plexus.DefaultContainerConfiguration;
 import org.codehaus.plexus.DefaultPlexusContainer;
@@ -28,14 +27,19 @@ import org.codehaus.plexus.component.factory.ComponentImplB;
 import org.codehaus.plexus.component.factory.ComponentImplC;
 import org.codehaus.plexus.component.factory.ComponentInstantiationException;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
+import org.junit.Test;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * @author Jason van Zyl
  * @author <a href="mailto:mmaczka@interia.pl">Michal Maczka</a>
  */
 public class JavaComponentFactoryTest
-    extends TestCase
 {
+    @Test
     public void testComponentCreation()
         throws Exception
     {
@@ -58,6 +62,7 @@ public class JavaComponentFactoryTest
         assertNotNull( component );
     }
 
+    @Test
     public void testComponentCreationWithNotMatchingRoleAndImplemenation()
         throws Exception
     {
@@ -78,6 +83,7 @@ public class JavaComponentFactoryTest
         factory.newInstance( componentDescriptor, classWorld.getRealm( "core" ), container );
     }
 
+    @Test
     public void testInstanciationOfAAbstractComponent()
         throws Exception
     {

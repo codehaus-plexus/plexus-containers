@@ -25,7 +25,7 @@ import java.util.concurrent.ConcurrentMap;
 public class DefaultLifecycleHandlerManager
     implements LifecycleHandlerManager
 {
-    private final ConcurrentMap<String, LifecycleHandler> lifecycleHandlers = new ConcurrentHashMap<String, LifecycleHandler>();
+    private final ConcurrentMap<String, LifecycleHandler> lifecycleHandlers = new ConcurrentHashMap<>();
 
     private String defaultLifecycleHandlerId = "plexus";
 

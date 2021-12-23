@@ -146,7 +146,7 @@ public class DescriptorTag
     public Mergeable createMergeable( Element element )
         throws Exception
     {
-        Constructor cons = this.mergeableClass.getConstructor( new Class[] { Element.class } );
+        Constructor cons = this.mergeableClass.getConstructor( Element.class );
         // XXX Is there a better way to determine this?
         if ( this.mergeableClass.getSuperclass().equals( AbstractMergeableElementList.class ) )
         {

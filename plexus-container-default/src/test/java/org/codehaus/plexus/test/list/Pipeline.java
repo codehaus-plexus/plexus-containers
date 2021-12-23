@@ -25,11 +25,11 @@ import java.util.Map;
  */
 public interface Pipeline
 {
-    static String ROLE = Pipeline.class.getName();
+    String ROLE = Pipeline.class.getName();
 
     void execute();
 
-    List getValves();
+    List<Valve> getValves();
 
     Map getValveMap();
 }

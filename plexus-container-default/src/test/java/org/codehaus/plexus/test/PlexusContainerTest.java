@@ -27,8 +27,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import junit.framework.TestCase;
-
 import org.codehaus.plexus.ContainerConfiguration;
 import org.codehaus.plexus.DefaultContainerConfiguration;
 import org.codehaus.plexus.DefaultPlexusContainer;
@@ -49,9 +47,21 @@ import org.codehaus.plexus.test.list.ValveThree;
 import org.codehaus.plexus.test.list.ValveTwo;
 import org.codehaus.plexus.test.map.Activity;
 import org.codehaus.plexus.test.map.ActivityManager;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class PlexusContainerTest
-    extends TestCase
 {
     private String basedir;
 
@@ -61,11 +71,7 @@ public class PlexusContainerTest
 
     private DefaultPlexusContainer container;
 
-    public PlexusContainerTest( String name )
-    {
-        super( name );
-    }
-
+    @Before
     public void setUp()
         throws Exception
     {
@@ -81,7 +87,7 @@ public class PlexusContainerTest
         // Context
         // ----------------------------------------------------------------------------
 
-        Map<Object, Object> context = new HashMap<Object, Object>();
+        Map<Object, Object> context = new HashMap<>();
 
         context.put( "basedir", basedir );
 
@@ -102,16 +108,16 @@ public class PlexusContainerTest
         container = new DefaultPlexusContainer( containerConfiguration );
     }
 
+    @After
     public void tearDown()
-        throws Exception
     {
         container.dispose();
 
         container = null;
     }
 
+    @Test
     public void testDefaultPlexusContainerSetup()
-        throws Exception
     {
         assertEquals( "bar", System.getProperty( "foo" ) );
     }
@@ -122,6 +128,7 @@ public class PlexusContainerTest
     // the native lifecycle is available after configuration merging.
     // ----------------------------------------------------------------------
 
+    @Test
     public void testNativeLifecyclePassage()
         throws Exception
     {
@@ -131,21 +138,22 @@ public class PlexusContainerTest
         assertNotNull( serviceB );
 
         // Make sure the component went through all the lifecycle phases
-        assertEquals( true, serviceB.enableLogging );
+        assertTrue( serviceB.enableLogging );
 
-        assertEquals( true, serviceB.contextualize );
+        assertTrue( serviceB.contextualize );
 
-        assertEquals( true, serviceB.initialize );
+        assertTrue( serviceB.initialize );
 
-        assertEquals( true, serviceB.start );
+        assertTrue( serviceB.start );
 
-        assertEquals( false, serviceB.stop );
+        assertFalse( serviceB.stop );
 
         container.release( serviceB );
 
-        assertEquals( true, serviceB.stop );
+        assertTrue( serviceB.stop );
     }
 
+    @Test
     public void testConfigurableLifecyclePassage()
         throws Exception
     {
@@ -155,25 +163,26 @@ public class PlexusContainerTest
         assertNotNull( serviceE );
 
         // Make sure the component went through all the lifecycle phases
-        assertEquals( true, serviceE.enableLogging );
+        assertTrue( serviceE.enableLogging );
 
-        assertEquals( true, serviceE.contextualize );
+        assertTrue( serviceE.contextualize );
 
-        assertEquals( true, serviceE.initialize );
+        assertTrue( serviceE.initialize );
 
-        assertEquals( true, serviceE.start );
+        assertTrue( serviceE.start );
 
-        assertEquals( false, serviceE.stop );
+        assertFalse( serviceE.stop );
 
         container.release( serviceE );
 
-        assertEquals( true, serviceE.stop );
+        assertTrue( serviceE.stop );
     }
 
     /*
      * Check that we can get references to a single component with a role
      * hint.
      */
+    @Test
     public void testSingleComponentLookupWithRoleHint()
         throws Exception
     {
@@ -218,6 +227,7 @@ public class PlexusContainerTest
     /*
      * Check that distinct components with the same implementation are managed correctly.
      */
+    @Test
     public void testMultipleSingletonComponentInstances()
         throws Exception
     {
@@ -227,7 +237,7 @@ public class PlexusContainerTest
         // Make sure the component is alive.
         assertNotNull( serviceC1 );
 
-        assertTrue( serviceC1.started ); 
+        assertTrue( serviceC1.started );
 
         assertFalse( serviceC1.stopped );
 
@@ -269,6 +279,7 @@ public class PlexusContainerTest
     // Test using an arbitrary component lifecycle handler
     // ----------------------------------------------------------------------
 
+    @Test
     public void testArbitraryLifecyclePassageUsingFourArbitraryPhases()
         throws Exception
     {
@@ -279,17 +290,18 @@ public class PlexusContainerTest
         assertNotNull( serviceH );
 
         // Make sure the component went through all the lifecycle phases
-        assertEquals( true, serviceH.eeny );
+        assertTrue( serviceH.eeny );
 
-        assertEquals( true, serviceH.meeny );
+        assertTrue( serviceH.meeny );
 
-        assertEquals( true, serviceH.miny );
+        assertTrue( serviceH.miny );
 
-        assertEquals( true, serviceH.mo );
+        assertTrue( serviceH.mo );
 
         container.release( serviceH );
     }
 
+    @Test
     public void testLookupAll()
         throws Exception
     {
@@ -310,6 +322,7 @@ public class PlexusContainerTest
         container.releaseAll( components );
     }
 
+    @Test
     public void testAutomatedComponentConfigurationUsingXStreamPoweredComponentConfigurator()
         throws Exception
     {
@@ -324,6 +337,7 @@ public class PlexusContainerTest
         assertEquals( 10000, component.getPort() );
     }
 
+    @Test
     public void testAutomatedComponentComposition()
         throws Exception
     {
@@ -350,6 +364,7 @@ public class PlexusContainerTest
         assertEquals( "jason", componentD.getName() );
     }
 
+    @Test
     public void testComponentCompositionWhereTargetFieldIsAMap()
         throws Exception
     {
@@ -379,6 +394,7 @@ public class PlexusContainerTest
         assertTrue( two.getState() );
     }
 
+    @Test
     public void testComponentCompositionWhereTargetFieldIsAPartialMap()
         throws Exception
     {
@@ -397,6 +413,7 @@ public class PlexusContainerTest
         assertTrue( one.getState() );
     }
 
+    @Test
     public void testComponentCompositionWhereTargetFieldIsAList()
         throws Exception
     {
@@ -406,7 +423,7 @@ public class PlexusContainerTest
 
         for (Object valve : valves) {
             // repeated retrieval from list should not cause re-lookup even if instantiation strategy is per-lookup
-            assertSame(valve, valve);
+            assertSame( valve, valve );
         }
 
         assertFalse( ( (Valve) valves.get( 0 ) ).getState() );
@@ -420,6 +437,7 @@ public class PlexusContainerTest
         assertTrue( ( (Valve) valves.get( 1 ) ).getState() );
     }
 
+    @Test
     public void testComponentCompositionWhereTargetFieldIsAPartialList()
         throws Exception
     {
@@ -436,6 +454,7 @@ public class PlexusContainerTest
         assertTrue( ( (Valve) valves.get( 0 ) ).getState() );
     }
 
+    @Test
     public void testComponentCompositionWhereTargetFieldAMapThatMustRetainTheOrderOfComponentsGivenASetOfRoleHints()
         throws Exception
     {
@@ -443,19 +462,20 @@ public class PlexusContainerTest
 
         Map valveMap = pipeline.getValveMap();
 
-        List valves = new ArrayList( valveMap.values() );
+        List<Valve> valves = new ArrayList<>( valveMap.values() );
 
         assertEquals( "Expecting three valves.", 4, valves.size() );
 
-        assertTrue( "Expecting valve one.", valves.get(0) instanceof ValveOne );
+        assertTrue( "Expecting valve one.", valves.get( 0 ) instanceof ValveOne );
 
-        assertTrue( "Expecting valve two.", valves.get(1) instanceof ValveTwo );
+        assertTrue( "Expecting valve two.", valves.get( 1 ) instanceof ValveTwo );
 
-        assertTrue( "Expecting valve three.", valves.get(2) instanceof ValveThree );
+        assertTrue( "Expecting valve three.", valves.get( 2 ) instanceof ValveThree );
 
-        assertTrue( "Expecting valve four.", valves.get(3) instanceof ValveFour );        
+        assertTrue( "Expecting valve four.", valves.get( 3 ) instanceof ValveFour );
     }
 
+    @Test
     public void testLookupOfComponentThatShouldBeDiscovered()
         throws Exception
     {
@@ -464,6 +484,7 @@ public class PlexusContainerTest
         assertNotNull( discoveredComponent );
     }
     
+    @Test
     public void testStartableComponentSnake()
         throws Exception
     {
@@ -478,6 +499,7 @@ public class PlexusContainerTest
         ca.assertStopOrderCorrect();
     }
     
+    @Test
     public void testStartableComponentTree()
         throws Exception
     {
@@ -492,13 +514,14 @@ public class PlexusContainerTest
         ca.assertStopOrderCorrect();
     }
 
+    @Test
     public void testLookupCircularity()
         throws Exception
     {
         try
         {
             container.lookup( CircularComponent.class, "A" );
-            fail("Expected ComponentLookupException due to circularity");
+            fail( "Expected ComponentLookupException due to circularity" );
         }
         catch ( ComponentLookupException e )
         {
@@ -506,6 +529,7 @@ public class PlexusContainerTest
         }
     }
 
+    @Test
     public void testAddComponent()
         throws Exception
     {
@@ -518,7 +542,8 @@ public class PlexusContainerTest
         assertSame( live, c );
     }
 
-    public void testComponentOverride() 
+    @Test
+    public void testComponentOverride()
         throws Exception
     {
         assertNotNull( container.lookup( Component.class ) );
@@ -544,6 +569,7 @@ public class PlexusContainerTest
         assertSame( live, container.lookup( Component.class ) );
     }
 
+    @Test
     public void testUpdateOfActiveComponentCollectionUponChangeOfThreadContextClassLoader()
         throws Exception
     {
@@ -605,6 +631,7 @@ public class PlexusContainerTest
         }
     }
 
+    @Test
     public void testUpdateOfActiveComponentCollectionUponChangeOfThreadContextClassLoaderFromParentToChildRealm()
         throws Exception
     {
@@ -670,6 +697,7 @@ public class PlexusContainerTest
         }
     }
 
+    @Test
     public void testComponentLookupFromParentRealmOfImportedRealms()
         throws Exception
     {
@@ -716,6 +744,7 @@ public class PlexusContainerTest
         }
     }
 
+    @Test
     public void testOptionalComponentRequirement()
         throws Exception
     {
@@ -729,6 +758,7 @@ public class PlexusContainerTest
         assertNull( ca.optionalComponent );
     }
 
+    @Test
     public void testLookupOfComponentThatHasARequirementWithoutRoleHintAndTheOneAndOnlyImplHasNoDefaultHint()
         throws Exception
     {
@@ -737,6 +767,7 @@ public class PlexusContainerTest
         assertNotNull( component.thing );
     }
 
+    @Test
     public void testSingleLookupWithAndWithoutRoleHint()
         throws Exception
     {
@@ -747,6 +778,7 @@ public class PlexusContainerTest
         assertSame( withRoleHint, withoutRoleHint );
     }
 
+    @Test
     public void testLookupUponChangeOfThreadContextClassLoaderFromParentToChildRealm()
         throws Exception
     {
@@ -794,6 +826,7 @@ public class PlexusContainerTest
         }
     }
 
+    @Test
     public void testSafeConcurrentAccessToActiveComponentCollection()
         throws Exception
     {
@@ -809,52 +842,47 @@ public class PlexusContainerTest
 
         final AtomicBoolean go = new AtomicBoolean( false );
 
-        final List<Exception> exceptions = new CopyOnWriteArrayList<Exception>();
+        final List<Exception> exceptions = new CopyOnWriteArrayList<>();
         Thread[] threads = new Thread[64];
         final CountDownLatch latch = new CountDownLatch( threads.length );
         for ( int i = 0; i < threads.length; i++ )
         {
-            threads[i] = new Thread()
-            {
-                @Override
-                public void run()
+            threads[i] = new Thread( () -> {
+                try
                 {
-                    try
-                    {
-                        ClassRealm realm = container.createChildRealm( "realm-" + UUID.randomUUID().toString() );
-                        realm.addURL( new File( "src/test/test-components/component-a-1.0-SNAPSHOT.jar" ).toURI().toURL() );
-                        container.discoverComponents( realm );
-                        Thread.currentThread().setContextClassLoader( realm );
+                    ClassRealm realm = container.createChildRealm( "realm-" + UUID.randomUUID() );
+                    realm.addURL( new File( "src/test/test-components/component-a-1.0-SNAPSHOT.jar" ).toURI().toURL() );
+                    container.discoverComponents( realm );
+                    Thread.currentThread().setContextClassLoader( realm );
 
-                        while ( !go.get() )
-                        {
-                            // just wait
-                        }
+                    while ( !go.get() )
+                    {
+                        // just wait
+                    }
 
-                        for ( int j = 0; j < 1000; j++ )
+                    for ( int j = 0; j < 1000; j++ )
+                    {
+                        // this just must not die with some exception
+                        for ( Object value : map.values() )
                         {
-                            // this just must not die with some exception
-                            for ( Object value : map.values() )
-                            {
-                                value.toString();
-                            }
-                            for ( Object value : list )
-                            {
-                                value.toString();
-                            }
+                            value.toString();
                         }
-                    }
-                    catch ( Exception e )
-                    {
-                        e.printStackTrace();
-                        exceptions.add( e );
-                    }
-                    finally
-                    {
-                        latch.countDown();
+                        for ( Object value : list )
+                        {
+                            value.toString();
+                        }
                     }
                 }
-            };
+                catch ( Exception e )
+                {
+                    e.printStackTrace();
+                    exceptions.add( e );
+                }
+                finally
+                {
+                    latch.countDown();
+                }
+            } );
             threads[i].start();
         }
         go.set( true );

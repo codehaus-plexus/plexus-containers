@@ -120,7 +120,7 @@ public abstract class AbstractComponentCollection<T>
 
         Map<String, ComponentDescriptor<T>> componentMap = container.getComponentDescriptorMap( componentType, role );
         Map<String, ComponentDescriptor<T>> newComponentDescriptors =
-            new HashMap<String, ComponentDescriptor<T>>( componentMap.size() * 2 );
+            new HashMap<>( componentMap.size() * 2 );
 
         if ( roleHints != null && !roleHints.isEmpty() )
         {

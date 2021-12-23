@@ -242,7 +242,7 @@ public class PlexusConfigurationMerger
 
     private static void copyResources( PlexusConfiguration source, PlexusConfiguration destination )
     {
-        PlexusConfiguration handlers[] = source.getChild( "resources" ).getChildren();
+        PlexusConfiguration[] handlers = source.getChild( "resources" ).getChildren();
 
         PlexusConfiguration dest = destination.getChild( "resources" );
 
@@ -270,7 +270,7 @@ public class PlexusConfigurationMerger
         }
 
 
-        PlexusConfiguration handlers[] = source.getChild( "component-managers" ).getChildren( "component-manager" );
+        PlexusConfiguration[] handlers = source.getChild( "component-managers" ).getChildren( "component-manager" );
 
         PlexusConfiguration dest = destination.getChild( "component-managers" );
 
@@ -281,7 +281,7 @@ public class PlexusConfigurationMerger
 
     private static void copyComponentDiscoverers( PlexusConfiguration source, PlexusConfiguration destination )
     {
-        PlexusConfiguration handlers[] = source.getChild( "component-discoverers" ).getChildren( "component-discoverer" );
+        PlexusConfiguration[] handlers = source.getChild( "component-discoverers" ).getChildren( "component-discoverer" );
 
         PlexusConfiguration dest = destination.getChild( "component-discoverers" );
 
@@ -292,7 +292,7 @@ public class PlexusConfigurationMerger
 
     private static void copyComponentFactories( PlexusConfiguration source, PlexusConfiguration destination )
     {
-        PlexusConfiguration handlers[] = source.getChild( "component-factories" ).getChildren( "component-factory" );
+        PlexusConfiguration[] handlers = source.getChild( "component-factories" ).getChildren( "component-factory" );
 
         PlexusConfiguration dest = destination.getChild( "component-factories" );
 
@@ -319,7 +319,7 @@ public class PlexusConfigurationMerger
             // do nothing
         }
 
-        PlexusConfiguration composers[] = source.getChild( "component-composers" ).getChildren( "component-composer" );
+        PlexusConfiguration[] composers = source.getChild( "component-composers" ).getChildren( "component-composer" );
 
         PlexusConfiguration dest = destination.getChild( "component-composers" );
 
@@ -330,7 +330,7 @@ public class PlexusConfigurationMerger
 
     private static void copyLifecycles( PlexusConfiguration source, PlexusConfiguration destination )
     {
-        PlexusConfiguration handlers[] = source.getChild( "lifecycle-handlers" ).getChildren( "lifecycle-handler" );
+        PlexusConfiguration[] handlers = source.getChild( "lifecycle-handlers" ).getChildren( "lifecycle-handler" );
 
         PlexusConfiguration dest = destination.getChild( "lifecycle-handlers" );
 
@@ -341,7 +341,7 @@ public class PlexusConfigurationMerger
 
     private static void copyComponents( PlexusConfiguration source, PlexusConfiguration destination )
     {
-        PlexusConfiguration components[] = source.getChildren( "component" );
+        PlexusConfiguration[] components = source.getChildren( "component" );
 
         for (PlexusConfiguration component : components) {
             destination.addChild(component);

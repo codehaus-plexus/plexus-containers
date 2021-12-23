@@ -97,15 +97,15 @@ public class MXParser
     protected boolean emptyElementTag;
     // element stack
     protected int depth;
-    protected char[] elRawName[];
-    protected int elRawNameEnd[];
-    protected int elRawNameLine[];
+    protected char[][] elRawName;
+    protected int[] elRawNameEnd;
+    protected int[] elRawNameLine;
 
-    protected String elName[];
-    protected String elPrefix[];
-    protected String elUri[];
+    protected String[] elName;
+    protected String[] elPrefix;
+    protected String[] elUri;
     //protected String elValue[];
-    protected int elNamespaceCount[];
+    protected int[] elNamespaceCount;
 
     // input buffer management
     protected static final int READ_CHUNK_SIZE = 8*1024; //max data chars in one read() call
@@ -116,7 +116,7 @@ public class MXParser
     protected int bufLoadFactor = 95;  // 99%
     //protected int bufHardLimit;  // only matters when expanding
 
-    protected char buf[] = new char[READ_CHUNK_SIZE];
+    protected char[] buf = new char[READ_CHUNK_SIZE];
     protected int bufSoftLimit = ( bufLoadFactor * buf.length ) /100; 
     protected boolean preventBufferCompaction;
 
@@ -127,7 +127,7 @@ public class MXParser
     protected int posStart;
     protected int posEnd;
 
-    protected char pc[] = new char[READ_CHUNK_SIZE];
+    protected char[] pc = new char[READ_CHUNK_SIZE];
     protected int pcStart;
     protected int pcEnd;
 
@@ -219,13 +219,13 @@ public class MXParser
 
     // attribute stack
     protected int attributeCount;
-    protected String attributeName[];
-    protected int attributeNameHash[];
+    protected String[] attributeName;
+    protected int[] attributeNameHash;
     //protected int attributeNameStart[];
     //protected int attributeNameEnd[];
-    protected String attributePrefix[];
-    protected String attributeUri[];
-    protected String attributeValue[];
+    protected String[] attributePrefix;
+    protected String[] attributeUri;
+    protected String[] attributeValue;
     //protected int attributeValueStart[];
     //protected int attributeValueEnd[];
 
@@ -273,9 +273,9 @@ public class MXParser
 
     // namespace stack
     protected int namespaceEnd;
-    protected String namespacePrefix[];
-    protected int namespacePrefixHash[];
-    protected String namespaceUri[];
+    protected String[] namespacePrefix;
+    protected int[] namespacePrefixHash;
+    protected String[] namespaceUri;
 
     protected void ensureNamespacesCapacity(int size) {
         final int namespaceSize = namespacePrefix != null ? namespacePrefix.length : 0;
@@ -318,7 +318,7 @@ public class MXParser
      * @param len The length.
      * @return the hash.
      */
-    protected static final int fastHash( char ch[], int off, int len ) {
+    protected static final int fastHash( char[] ch, int off, int len ) {
         if(len == 0) return 0;
         //assert len >0
         int hash = ch[off]; // hash at beginning
@@ -339,12 +339,12 @@ public class MXParser
     // entity replacement stack
     protected int entityEnd;
 
-    protected String entityName[];
-    protected char[] entityNameBuf[];
-    protected String entityReplacement[];
-    protected char[] entityReplacementBuf[];
+    protected String[] entityName;
+    protected char[][] entityNameBuf;
+    protected String[] entityReplacement;
+    protected char[][] entityReplacementBuf;
 
-    protected int entityNameHash[];
+    protected int[] entityNameHash;
 
     protected void ensureEntityCapacity() {
         final int entitySize = entityReplacementBuf != null ? entityReplacementBuf.length : 0;
@@ -354,9 +354,9 @@ public class MXParser
                 System.err.println("TRACE_SIZING entitySize "+entitySize+" ==> "+newSize);
             }
             final String[] newEntityName = new String[newSize];
-            final char[] newEntityNameBuf[] = new char[newSize][];
+            final char[][] newEntityNameBuf = new char[newSize][];
             final String[] newEntityReplacement = new String[newSize];
-            final char[] newEntityReplacementBuf[] = new char[newSize][];
+            final char[][] newEntityReplacementBuf = new char[newSize][];
             if(entityName != null) {
                 System.arraycopy(entityName, 0, newEntityName, 0, entityEnd);
                 System.arraycopy(entityNameBuf, 0, newEntityNameBuf, 0, entityEnd);
@@ -478,22 +478,23 @@ public class MXParser
     public boolean getFeature(String name)
     {
         if(name == null) throw new IllegalArgumentException("feature name should not be nulll");
-        if(FEATURE_PROCESS_NAMESPACES.equals(name)) {
-            return processNamespaces;
+        switch ( name )
+        {
+            case FEATURE_PROCESS_NAMESPACES:
+                return processNamespaces;
             //        } else if(FEATURE_REPORT_NAMESPACE_ATTRIBUTES.equals(name)) {
             //            return reportNsAttribs;
-        } else if(FEATURE_NAMES_INTERNED.equals(name)) {
-            return false;
-        } else if(FEATURE_PROCESS_DOCDECL.equals(name)) {
-            return false;
+            case FEATURE_NAMES_INTERNED:
+                return false;
+            case FEATURE_PROCESS_DOCDECL:
+                return false;
             //} else if(REPORT_DOCDECL.equals(name)) {
             //    return paramNotifyDoctype;
-        } else if(FEATURE_XML_ROUNDTRIP.equals(name)) {
-            //return true;
-            return roundtripSupported;
-        }
-        else if( REPORT_NAMESPACE_PREFIXES.equals(  name ) ) {
-            return processNamespaces;
+            case FEATURE_XML_ROUNDTRIP:
+                //return true;
+                return roundtripSupported;
+            case REPORT_NAMESPACE_PREFIXES:
+                return processNamespaces;
         }
                 
         return false;
@@ -514,14 +515,16 @@ public class MXParser
     public Object getProperty(String name)
     {
         if(name == null) throw new IllegalArgumentException("property name should not be nulll");
-        if(PROPERTY_XMLDECL_VERSION.equals(name)) {
-            return xmlDeclVersion;
-        } else if(PROPERTY_XMLDECL_STANDALONE.equals(name)) {
-            return xmlDeclStandalone;
-        } else if(PROPERTY_XMLDECL_CONTENT.equals(name)) {
-            return xmlDeclContent;
-        } else if(PROPERTY_LOCATION.equals(name)) {
-            return location;
+        switch ( name )
+        {
+            case PROPERTY_XMLDECL_VERSION:
+                return xmlDeclVersion;
+            case PROPERTY_XMLDECL_STANDALONE:
+                return xmlDeclStandalone;
+            case PROPERTY_XMLDECL_CONTENT:
+                return xmlDeclContent;
+            case PROPERTY_LOCATION:
+                return location;
         }
         return null;
     }
@@ -2946,12 +2949,11 @@ public class MXParser
                         "TRACE_SIZING fillBuf() compacting "+bufStart
                             +" bufEnd="+bufEnd
                             +" pos="+pos+" posStart="+posStart+" posEnd="+posEnd
-                            +" buf first 100 chars:"+new String(buf, bufStart,
-                                                                bufEnd - bufStart < 100 ? bufEnd - bufStart : 100 ));
+                            +" buf first 100 chars:"+new String(buf, bufStart, Math.min( bufEnd - bufStart, 100 ) ));
 
             } else if(expand) {
                 final int newSize = 2 * buf.length;
-                final char newBuf[] = new char[ newSize ];
+                final char[] newBuf = new char[ newSize ];
                 if(TRACE_SIZING) System.out.println("TRACE_SIZING fillBuf() "+buf.length+" => "+newSize);
                 System.arraycopy(buf, bufStart, newBuf, 0, bufEnd - bufStart);
                 buf = newBuf;
@@ -2971,16 +2973,16 @@ public class MXParser
             if(TRACE_SIZING) System.out.println(
                     "TRACE_SIZING fillBuf() after bufEnd="+bufEnd
                         +" pos="+pos+" posStart="+posStart+" posEnd="+posEnd
-                        +" buf first 100 chars:"+new String(buf, 0, bufEnd < 100 ? bufEnd : 100));
+                        +" buf first 100 chars:"+new String(buf, 0, Math.min( bufEnd, 100 ) ));
         }
         // at least one charcter must be read or error
-        final int len = buf.length - bufEnd > READ_CHUNK_SIZE ? READ_CHUNK_SIZE : buf.length - bufEnd;
+        final int len = Math.min( buf.length - bufEnd, READ_CHUNK_SIZE );
         final int ret = reader.read(buf, bufEnd, len);
         if(ret > 0) {
             bufEnd += ret;
             if(TRACE_SIZING) System.out.println(
                     "TRACE_SIZING fillBuf() after filling in buffer"
-                        +" buf first 100 chars:"+new String(buf, 0, bufEnd < 100 ? bufEnd : 100));
+                        +" buf first 100 chars:"+new String(buf, 0, Math.min( bufEnd, 100 ) ));
 
             return;
         }
@@ -3019,7 +3021,7 @@ public class MXParser
                         expectedTagStack.append(", parser stopped on");
                     }
                     throw new EOFException("no more data available"
-                                               +expectedTagStack.toString()+getPositionDescription());
+                                               + expectedTagStack +getPositionDescription());
                 }
             }
         } else {
@@ -3111,8 +3113,8 @@ public class MXParser
     protected static final char LOOKUP_MAX_CHAR = (char)LOOKUP_MAX;
     //    protected static int lookupNameStartChar[] = new int[ LOOKUP_MAX_CHAR / 32 ];
     //    protected static int lookupNameChar[] = new int[ LOOKUP_MAX_CHAR / 32 ];
-    protected static boolean lookupNameStartChar[] = new boolean[ LOOKUP_MAX ];
-    protected static boolean lookupNameChar[] = new boolean[ LOOKUP_MAX ];
+    protected static boolean[] lookupNameStartChar = new boolean[ LOOKUP_MAX ];
+    protected static boolean[] lookupNameChar = new boolean[ LOOKUP_MAX ];
 
     private static final void setName(char ch)
         //{ lookupNameChar[ (int)ch / 32 ] |= (1 << (ch % 32)); }
@@ -3214,7 +3216,7 @@ public class MXParser
         } else if(ch == '\'') {
             return "\\'";
         } if(ch > 127 || ch < 32) {
-            return "\\u"+Integer.toHexString((int)ch);
+            return "\\u"+Integer.toHexString( ch );
         }
         return ""+ch;
     }

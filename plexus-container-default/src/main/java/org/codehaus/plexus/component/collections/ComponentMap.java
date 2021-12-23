@@ -35,7 +35,7 @@ public class ComponentMap<T>
 {
     private Map<String, T> components;
 
-    private Map<String, T> customAdditions = new LinkedHashMap<String, T>();
+    private Map<String, T> customAdditions = new LinkedHashMap<>();
 
     public ComponentMap( MutablePlexusContainer container, Class<T> type, String role, List<String> roleHints, String hostComponent )
     {
@@ -157,7 +157,7 @@ public class ComponentMap<T>
     {
         if ( ( components == null ) || checkUpdate() )
         {
-            Map<String, T> componentMap = new LinkedHashMap<String, T>();
+            Map<String, T> componentMap = new LinkedHashMap<>();
 
             Map<String, ComponentDescriptor<T>> descriptorMap = getComponentDescriptorMap();
 

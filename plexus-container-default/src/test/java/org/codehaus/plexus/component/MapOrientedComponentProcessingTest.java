@@ -18,8 +18,6 @@ package org.codehaus.plexus.component;
 
 import java.util.Map;
 
-import junit.framework.TestCase;
-
 import org.codehaus.plexus.DefaultPlexusContainer;
 import org.codehaus.plexus.PlexusContainer;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
@@ -27,18 +25,22 @@ import org.codehaus.plexus.component.repository.ComponentRequirement;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 import org.codehaus.plexus.configuration.xml.XmlPlexusConfiguration;
 import org.codehaus.plexus.logging.LoggerManager;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class MapOrientedComponentProcessingTest
-    extends TestCase
 {
 
+    @Test
     public void testShouldFindAndInitializeMapOrientedComponent()
         throws Exception
     {
         PlexusContainer embedder = new DefaultPlexusContainer();
 
         ComponentDescriptor<TestMapOrientedComponent> descriptor =
-            new ComponentDescriptor(TestMapOrientedComponent.class, embedder.getContainerRealm());
+            new ComponentDescriptor<>(TestMapOrientedComponent.class, embedder.getContainerRealm());
 
         descriptor.setRole( TestMapOrientedComponent.ROLE );
 
@@ -74,7 +76,7 @@ public class MapOrientedComponentProcessingTest
         Map context = component.getContext();
 
         assertTrue( "requirement (LogManager) missing from containerContext.",
-                    ( context.get( "testRequirement" ) instanceof LoggerManager ) );
+                ( context.get( "testRequirement" ) instanceof LoggerManager ) );
 
         assertEquals( "parameter missing from containerContext.", "testValue", context.get( "testParameter" ) );
     }

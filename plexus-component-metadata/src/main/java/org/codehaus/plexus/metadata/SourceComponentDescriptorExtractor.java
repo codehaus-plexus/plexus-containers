@@ -66,7 +66,7 @@ public class SourceComponentDescriptorExtractor
         assert sourceDirectories != null;
         assert defaultsByRole != null;
 
-        List<ComponentDescriptor<?>> descriptors = new ArrayList<ComponentDescriptor<?>>();
+        List<ComponentDescriptor<?>> descriptors = new ArrayList<>();
 
         // Scan the sources
         JavaProjectBuilder builder = new JavaProjectBuilder();

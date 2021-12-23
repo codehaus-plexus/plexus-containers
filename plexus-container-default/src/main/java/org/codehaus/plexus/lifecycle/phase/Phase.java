@@ -29,6 +29,6 @@ public interface Phase
      * @param realm {@link ClassRealm}
      * @throws PhaseExecutionException in case of an error.
      */
-    public void execute( Object component, ComponentManager manager, ClassRealm realm )
+    void execute( Object component, ComponentManager manager, ClassRealm realm )
         throws PhaseExecutionException;
 }

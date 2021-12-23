@@ -25,10 +25,10 @@ import java.util.LinkedHashMap;
 public class DefaultComponentDiscovererManager
     implements ComponentDiscovererManager
 {
-    private final List<ComponentDiscoverer> componentDiscoverers = new ArrayList<ComponentDiscoverer>();
+    private final List<ComponentDiscoverer> componentDiscoverers = new ArrayList<>();
 
     // todo dain change this to LinkedHashSet<ComponentDiscoveryListener> (requires change to maven)
-    private final Map<ComponentDiscoveryListener, Object> listeners = new LinkedHashMap<ComponentDiscoveryListener, Object>();
+    private final Map<ComponentDiscoveryListener, Object> listeners = new LinkedHashMap<>();
 
     public synchronized void addComponentDiscoverer( ComponentDiscoverer discoverer )
     {

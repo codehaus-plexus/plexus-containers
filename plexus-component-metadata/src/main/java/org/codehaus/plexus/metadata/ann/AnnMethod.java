@@ -31,8 +31,8 @@ public class AnnMethod {
   private final int access;
   private final String name;
   private final String desc;
-  private Map<String, Ann> anns = new LinkedHashMap<String, Ann>();
-  private Map<Integer, Map<String, Ann>> paramAnns = new HashMap<Integer, Map<String,Ann>>();
+  private Map<String, Ann> anns = new LinkedHashMap<>();
+  private Map<Integer, Map<String, Ann>> paramAnns = new HashMap<>();
 
   public AnnMethod(AnnClass owner, int access, String name, String desc) {
     this.owner = owner;
@@ -66,12 +66,8 @@ public class AnnMethod {
   }
 
   public void addParamAnn(int parameter, Ann ann) {
-    Map<String, Ann> anns = paramAnns.get(parameter);
-    if(anns==null) {
-      anns = new LinkedHashMap<String, Ann>();
-      paramAnns.put(parameter, anns);
-    }
-    anns.put(ann.getDesc(), ann);
+    paramAnns.computeIfAbsent( parameter, k -> new LinkedHashMap<>() )
+            .put(ann.getDesc(), ann);
   }
   
   public <T> T getAnnotation(Class<T> c) {

@@ -55,11 +55,11 @@ public class DefaultPlexusConfiguration
 
         this.value = value;
 
-        this.attributes = new LinkedHashMap<String, String>();
+        this.attributes = new LinkedHashMap<>();
 
-        this.childMap = new LinkedHashMap<String, List<PlexusConfiguration>>();
+        this.childMap = new LinkedHashMap<>();
 
-        this.childList = new ArrayList<PlexusConfiguration>();
+        this.childList = new ArrayList<>();
     }
 
     // ----------------------------------------------------------------------
@@ -136,7 +136,7 @@ public class DefaultPlexusConfiguration
 
     public String[] getAttributeNames()
     {
-        return attributes.keySet().toArray( new String[attributes.size()] );
+        return attributes.keySet().toArray( new String[0] );
     }
 
     // ----------------------------------------------------------------------
@@ -177,12 +177,12 @@ public class DefaultPlexusConfiguration
 
     public PlexusConfiguration[] getChildren()
     {
-        return childList.toArray( new PlexusConfiguration[childList.size()] );
+        return childList.toArray( new PlexusConfiguration[0] );
     }
 
     public PlexusConfiguration[] getChildren( String name )
     {
-        List<PlexusConfiguration> childs = new ArrayList<PlexusConfiguration>();
+        List<PlexusConfiguration> childs = new ArrayList<>();
 
         List<PlexusConfiguration> childList = childMap.get( name );
 
@@ -191,18 +191,14 @@ public class DefaultPlexusConfiguration
             childs.addAll( childList );
         }
 
-        return childs.toArray( new PlexusConfiguration[childs.size()] );
+        return childs.toArray( new PlexusConfiguration[0] );
     }
 
     public void addChild( PlexusConfiguration child )
     {
         childList.add( child );
 
-        List<PlexusConfiguration> children = childMap.get( child.getName() );
-        if ( children == null )
-        {
-            childMap.put( child.getName(), children = new ArrayList<PlexusConfiguration>() );
-        }
+        List<PlexusConfiguration> children = childMap.computeIfAbsent( child.getName(), k -> new ArrayList<>() );
 
         children.add( child );
     }

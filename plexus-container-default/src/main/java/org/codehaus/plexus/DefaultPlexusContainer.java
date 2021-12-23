@@ -120,7 +120,7 @@ public class DefaultPlexusContainer
     // ----------------------------------------------------------------------------
 
     // TODO: Is there a more threadpool-friendly way to do this?
-    private ThreadLocal<ClassRealm> lookupRealm = new ThreadLocal<ClassRealm>();
+    private ThreadLocal<ClassRealm> lookupRealm = new ThreadLocal<>();
 
     public void addComponent( Object component, String role )
     {
@@ -218,7 +218,7 @@ public class DefaultPlexusContainer
             }
             catch ( NoSuchRealmException e )
             {
-                containerRealm = (ClassRealm) classWorld.getRealms().iterator().next();
+                containerRealm = classWorld.getRealms().iterator().next();
 
                 if ( containerRealm == null )
                 {
@@ -294,7 +294,7 @@ public class DefaultPlexusContainer
                 ComponentDiscoverer cd = (ComponentDiscoverer) lookup( clazz );
                 componentDiscovererManager.addComponentDiscoverer( cd );
             }
-            catch ( ComponentLookupException e )
+            catch ( ComponentLookupException ignored )
             {
             }
         }
@@ -306,7 +306,7 @@ public class DefaultPlexusContainer
                 ComponentDiscoveryListener cdl = (ComponentDiscoveryListener) lookup( clazz );
                 componentDiscovererManager.registerComponentDiscoveryListener( cdl );
             }
-            catch ( ComponentLookupException e )
+            catch ( ComponentLookupException ignored )
             {
             }
         }                
@@ -944,9 +944,9 @@ public class DefaultPlexusContainer
     public List<ComponentDescriptor<?>> discoverComponents( ClassRealm realm, Object data )            
         throws PlexusConfigurationException, CycleDetectedInComponentGraphException
     {
-        List<ComponentSetDescriptor> componentSetDescriptors = new ArrayList<ComponentSetDescriptor>();
+        List<ComponentSetDescriptor> componentSetDescriptors = new ArrayList<>();
 
-        List<ComponentDescriptor<?>> discoveredComponentDescriptors = new ArrayList<ComponentDescriptor<?>>();
+        List<ComponentDescriptor<?>> discoveredComponentDescriptors = new ArrayList<>();
 
         for ( ComponentDiscoverer componentDiscoverer : getComponentDiscovererManager().getComponentDiscoverers() )
         {

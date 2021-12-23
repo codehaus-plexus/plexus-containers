@@ -38,10 +38,10 @@ public class ComponentSetDescriptor
     private boolean isolatedRealm;
     
     /** The component descriptors that can be found within this component set descriptor. */
-    private final List<ComponentDescriptor<?>> components = new ArrayList<ComponentDescriptor<?>>();
+    private final List<ComponentDescriptor<?>> components = new ArrayList<>();
 
     /** The dependencies that are required by the set of components found in this component set descriptor. */
-    private final List<ComponentDependency> dependencies = new ArrayList<ComponentDependency>();
+    private final List<ComponentDependency> dependencies = new ArrayList<>();
     
     /**
      * Returns a list of components in this set.

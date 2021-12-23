@@ -176,7 +176,7 @@ public abstract class AbstractMergeableElementList
             for (Object aRKeySet : rKeySet) {
                 String rKey = (String) aRKeySet;
                 // add to parent
-                parent.addContent((Element) ((Mergeable) rMap.get(rKey)).getElement().clone());
+                parent.addContent( ((Mergeable) rMap.get(rKey)).getElement().clone() );
             }
         }
     }

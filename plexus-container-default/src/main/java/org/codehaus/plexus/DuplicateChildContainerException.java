@@ -25,7 +25,7 @@ public class DuplicateChildContainerException
 
     public DuplicateChildContainerException( String parent, String child )
     {
-        super( "Cannot create child container, because child named \'" + child + "\' already exists in parent \'" + parent + "\'." );
+        super( "Cannot create child container, because child named '" + child + "' already exists in parent '" + parent + "'." );
 
         this.parent = parent;
 

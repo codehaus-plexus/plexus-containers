@@ -106,7 +106,7 @@ public class DefaultComponentDescriptorWriterTest
     }
 
     public void testComponentsOrder() throws Exception {
-        MetadataGenerator generator = (MetadataGenerator) lookup(MetadataGenerator.class);
+        MetadataGenerator generator = lookup(MetadataGenerator.class);
         assertNotNull(generator);
 
         MetadataGenerationRequest request = new MetadataGenerationRequest();

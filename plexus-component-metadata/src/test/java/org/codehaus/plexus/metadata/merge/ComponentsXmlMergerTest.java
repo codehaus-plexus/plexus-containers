@@ -266,8 +266,8 @@ public class ComponentsXmlMergerTest
         assertEquals( "plexus-configurable", dCE.getChildText( "lifecycle-handler" ) );
         assertTrue( null != dCE.getChild( "requirements" ) );
         assertEquals( 1, dCE.getChild( "requirements" ).getChildren( "requirement" ).size() );
-        assertEquals( "recessive-required-role-hint", ( (Element) dCE.getChild( "requirements" )
-            .getChildren( "requirement" ).get( 0 ) ).getChildText( "role-hint" ) );
+        assertEquals( "recessive-required-role-hint", dCE.getChild( "requirements" )
+            .getChildren( "requirement" ).get( 0 ).getChildText( "role-hint" ) );
     }
     
     public void testMergeRoleComponents() throws Exception

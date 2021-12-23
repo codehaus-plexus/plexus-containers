@@ -61,7 +61,7 @@ public class PlexusMergeMojo
     public void execute()
         throws MojoExecutionException
     {
-        List<File> files = new ArrayList<File>();
+        List<File> files = new ArrayList<>();
 
         if ( descriptors != null )
         {

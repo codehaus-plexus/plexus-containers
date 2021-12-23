@@ -2,14 +2,13 @@ package org.codehaus.plexus.configuration.io;
 
 import java.io.StringReader;
 
-import junit.framework.TestCase;
-
 import org.codehaus.plexus.configuration.ConfigurationTestHelper;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
+import org.junit.Test;
 
 public class XmlPlexusConfigurationReaderTest
-    extends TestCase
 {
+    @Test
     public void testRead()
         throws Exception
     {

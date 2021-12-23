@@ -16,14 +16,16 @@ package org.codehaus.plexus.component.repository;
  * limitations under the License.
  */
 
-import junit.framework.TestCase;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * @author <a href="michal.maczka@dimatics.com">Michal Maczka</a>
  */
 public class ComponentRequirementTest
-    extends TestCase
 {
+    @Test
     public void testComponentRequirement()
     {
         ComponentRequirement requirement = new ComponentRequirement();

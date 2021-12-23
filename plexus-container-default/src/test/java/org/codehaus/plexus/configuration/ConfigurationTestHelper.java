@@ -16,16 +16,17 @@ package org.codehaus.plexus.configuration;
  * limitations under the License.
  */
 
-import junit.framework.TestCase;
 import org.codehaus.plexus.component.repository.io.PlexusTools;
 
 import java.io.StringReader;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * @author Jason van Zyl
  */
 public abstract class ConfigurationTestHelper
-    extends TestCase
 {
     public static PlexusConfiguration getTestConfiguration()
         throws Exception
@@ -73,8 +74,8 @@ public abstract class ConfigurationTestHelper
 
         // Attributes
 
-        assertEquals( "string", c.getChild( "string" ).getAttribute( "string" ));
+        assertEquals( "string", c.getChild( "string" ).getAttribute( "string" ) );
 
-        assertEquals( "attribute", c.getChild( "singleton" ).getAttribute( "attribute" ));
+        assertEquals( "attribute", c.getChild( "singleton" ).getAttribute( "attribute" ) );
     }
 }

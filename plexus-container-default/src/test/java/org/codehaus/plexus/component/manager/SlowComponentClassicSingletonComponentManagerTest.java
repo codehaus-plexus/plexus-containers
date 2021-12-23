@@ -44,7 +44,7 @@ public class SlowComponentClassicSingletonComponentManagerTest
     private void test( int count )
         throws Exception
     {
-        ComponentLookupThread components[] = new ComponentLookupThread[ count ];
+        ComponentLookupThread[] components = new ComponentLookupThread[ count ];
         //Create them
         for ( int i = 0; i < count; i++ )
         {
@@ -74,7 +74,7 @@ public class SlowComponentClassicSingletonComponentManagerTest
         }
     }
 
-    class ComponentLookupThread
+    static class ComponentLookupThread
         extends Thread
     {
         final PlexusContainer container;

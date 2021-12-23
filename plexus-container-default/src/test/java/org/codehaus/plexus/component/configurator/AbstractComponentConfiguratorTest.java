@@ -363,9 +363,9 @@ public abstract class AbstractComponentConfiguratorTest
 
         assertEquals( 2, integerArray.length );
 
-        assertEquals( new Integer( 42 ), integerArray[0] );
+        assertEquals( Integer.valueOf( 42 ), integerArray[0] );
 
-        assertEquals( new Integer( 69 ), integerArray[1] );
+        assertEquals( Integer.valueOf( 69 ), integerArray[1] );
 
         ImportantThing[] importantThingArray = component.getImportantThingArray();
 
@@ -558,7 +558,7 @@ public abstract class AbstractComponentConfiguratorTest
         {
             public Object evaluate( String expression )
             {
-                return values.containsKey( expression ) ? values.get( expression ) : expression;
+                return values.getOrDefault( expression, expression );
             }
 
             public File alignToBaseDirectory( File file )
@@ -655,7 +655,7 @@ public abstract class AbstractComponentConfiguratorTest
             configureComponent( component, descriptor, realm );
             fail( "Configuration did not fail" );
         }
-        catch ( ComponentConfigurationException e )
+        catch ( ComponentConfigurationException ignored )
         {
         }
     }

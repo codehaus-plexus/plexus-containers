@@ -32,9 +32,9 @@ public class AnnClass {
   private String superName;
   private String[] interfaces;
   
-  private Map<String, Ann> anns = new LinkedHashMap<String, Ann>();
-  private Map<String, AnnField> fields = new LinkedHashMap<String, AnnField>();
-  private Map<String, AnnMethod> methods = new LinkedHashMap<String, AnnMethod>();
+  private Map<String, Ann> anns = new LinkedHashMap<>();
+  private Map<String, AnnField> fields = new LinkedHashMap<>();
+  private Map<String, AnnMethod> methods = new LinkedHashMap<>();
   private ClassLoader cl;
 
   // setters

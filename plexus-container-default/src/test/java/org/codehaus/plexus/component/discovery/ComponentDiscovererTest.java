@@ -64,7 +64,7 @@ public class ComponentDiscovererTest
     }
 
     private static Map<String, ComponentDescriptor<?>> byImplementation(List<ComponentSetDescriptor> descriptorSets) {
-        TreeMap<String, ComponentDescriptor<?>> index = new TreeMap<String, ComponentDescriptor<?>>();
+        TreeMap<String, ComponentDescriptor<?>> index = new TreeMap<>();
         for ( ComponentSetDescriptor descriptorSet : descriptorSets )
         {
             for ( ComponentDescriptor<?> descriptor : descriptorSet.getComponents() )

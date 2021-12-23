@@ -187,7 +187,7 @@ public class ComponentValueSetter
 
         try
         {
-            setter.invoke( object, new Object[]{value} );
+            setter.invoke( object, value );
         }
         catch ( IllegalAccessException e )
         {

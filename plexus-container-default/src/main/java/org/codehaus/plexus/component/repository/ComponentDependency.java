@@ -112,13 +112,9 @@ public class ComponentDependency
 
     public String toString()
     {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append( "groupId = " ).append( groupId ).
-            append( ", artifactId = " ).append( artifactId ).
-            append( ", version = " ).append( version ).
-            append( ", type = " ).append( type );
-
-        return sb.toString();
+        return "groupId = " + groupId
+                + ", artifactId = " + artifactId
+                + ", version = " + version
+                + ", type = " + type;
     }
 }

@@ -28,18 +28,18 @@ import java.util.Map;
 public class DefaultPipeline
     implements Pipeline
 {
-    private List valves;
+    private List<Valve> valves;
 
     private Map valveMap;
 
     public void execute()
     {
-        for (Object valve : valves) {
-            ((Valve) valve).execute();
+        for (Valve valve : valves) {
+            valve.execute();
         }
     }
 
-    public List getValves()
+    public List<Valve> getValves()
     {
         return valves;
     }

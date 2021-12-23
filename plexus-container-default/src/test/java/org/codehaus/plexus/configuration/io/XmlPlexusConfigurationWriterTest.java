@@ -3,18 +3,17 @@ package org.codehaus.plexus.configuration.io;
 import java.io.StringReader;
 import java.io.StringWriter;
 
-import junit.framework.TestCase;
-
 import org.codehaus.plexus.configuration.ConfigurationTestHelper;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 import org.codehaus.plexus.configuration.xml.XmlPlexusConfiguration;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.Xpp3DomBuilder;
+import org.junit.Test;
 
 public class XmlPlexusConfigurationWriterTest
-    extends TestCase
 {
 
+    @Test
     public void testWrite()
         throws Exception
     {

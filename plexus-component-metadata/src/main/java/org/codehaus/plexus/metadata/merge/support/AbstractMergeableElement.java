@@ -31,7 +31,6 @@ import java.util.Set;
 
 import org.codehaus.plexus.metadata.merge.MergeException;
 import org.codehaus.plexus.metadata.merge.MergeStrategy;
-import org.jdom2.Content;
 import org.jdom2.Element;
 
 /**
@@ -152,7 +151,7 @@ public abstract class AbstractMergeableElement
             if ( !isRecessiveElementInConflict( rce, defaultConflictChecklist ) &&
                 mergeableElementComesFromRecessive( rce, tagName ) )
             {
-                this.addContent( (Element) rce.getChild( tagName ).clone() );
+                this.addContent( rce.getChild( tagName ).clone() );
                 // else dominant wins in anycase!
             }
             else
@@ -174,12 +173,10 @@ public abstract class AbstractMergeableElement
             }
         }
 
-        for (Object o : me.getElement().getChildren()) {
-            Element child = (Element) o;
-
-            if (!allowedTags.contains(child.getName())) {
+        for ( Element o : me.getElement().getChildren()) {
+            if (!allowedTags.contains( o.getName())) {
                 // not yet merged, copy over
-                element.addContent((Content) child.clone());
+                element.addContent( o.clone() );
             }
         }
 

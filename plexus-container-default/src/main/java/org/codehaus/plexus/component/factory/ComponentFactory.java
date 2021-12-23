@@ -30,7 +30,7 @@ import org.codehaus.plexus.component.repository.ComponentDescriptor;
 public interface ComponentFactory
 {
     /** Component role. */
-    static String ROLE = ComponentFactory.class.getName();
+    String ROLE = ComponentFactory.class.getName();
 
     String getId();
 

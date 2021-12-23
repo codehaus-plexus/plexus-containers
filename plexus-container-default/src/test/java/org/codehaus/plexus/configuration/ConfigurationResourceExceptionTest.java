@@ -16,7 +16,9 @@ package org.codehaus.plexus.configuration;
  * limitations under the License.
  */
 
-import junit.framework.TestCase;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  *
@@ -25,8 +27,8 @@ import junit.framework.TestCase;
  *
  */
 public class ConfigurationResourceExceptionTest
-    extends TestCase
 {
+    @Test
     public void testException()
     {
         PlexusConfigurationResourceException e = new PlexusConfigurationResourceException( "bad doggy!" );

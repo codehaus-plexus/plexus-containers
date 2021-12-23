@@ -50,25 +50,18 @@ public abstract class BaseLoggerManager
     {
         text = text.trim().toLowerCase( Locale.ENGLISH );
 
-        if ( text.equals( "debug" ) )
+        switch ( text )
         {
-            return Logger.LEVEL_DEBUG;
-        }
-        else if ( text.equals( "info" ) )
-        {
-            return Logger.LEVEL_INFO;
-        }
-        else if ( text.equals( "warn" ) )
-        {
-            return Logger.LEVEL_WARN;
-        }
-        else if ( text.equals( "error" ) )
-        {
-            return Logger.LEVEL_ERROR;
-        }
-        else if ( text.equals( "fatal" ) )
-        {
-            return Logger.LEVEL_FATAL;
+            case "debug":
+                return Logger.LEVEL_DEBUG;
+            case "info":
+                return Logger.LEVEL_INFO;
+            case "warn":
+                return Logger.LEVEL_WARN;
+            case "error":
+                return Logger.LEVEL_ERROR;
+            case "fatal":
+                return Logger.LEVEL_FATAL;
         }
 
         return -1;

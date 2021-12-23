@@ -58,7 +58,7 @@ public class InitializeUserConfigurationSourcePhase
                 if ( userConfigurationSources.size() > 0 )
                 {
                     List<ConfigurationSource> configurationSources =
-                        new ArrayList<ConfigurationSource>( userConfigurationSources.size() + 1 );
+                        new ArrayList<>( userConfigurationSources.size() + 1 );
 
                     // adding user provied ones to be able to interfere
                     configurationSources.addAll( userConfigurationSources );
@@ -74,7 +74,7 @@ public class InitializeUserConfigurationSourcePhase
                 }
 
                 // register the default source, either the chained or the existing one as default
-                ComponentDescriptor<ConfigurationSource> cd = new ComponentDescriptor<ConfigurationSource>();
+                ComponentDescriptor<ConfigurationSource> cd = new ComponentDescriptor<>();
 
                 cd.setRole( ConfigurationSource.ROLE );
 

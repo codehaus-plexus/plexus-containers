@@ -28,7 +28,7 @@ import org.objectweb.asm.Type;
 public class Ann {
 
   private String desc;
-  private Map<String, Object> params = new LinkedHashMap<String, Object>();
+  private Map<String, Object> params = new LinkedHashMap<>();
   
   public Ann(String desc) {
     this.desc = desc;

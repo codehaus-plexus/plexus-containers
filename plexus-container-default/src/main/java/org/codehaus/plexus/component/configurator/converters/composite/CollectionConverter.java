@@ -90,14 +90,7 @@ public class CollectionConverter
                 {
                     retValue = type.newInstance();
                 }
-                catch ( IllegalAccessException e )
-                {
-                    String msg = "An attempt to convert configuration entry " + configuration.getName() + "' into " +
-                        type + " object failed: " + e.getMessage();
-
-                    throw new ComponentConfigurationException( msg, e );
-                }
-                catch ( InstantiationException e )
+                catch ( IllegalAccessException | InstantiationException e )
                 {
                     String msg = "An attempt to convert configuration entry " + configuration.getName() + "' into " +
                         type + " object failed: " + e.getMessage();

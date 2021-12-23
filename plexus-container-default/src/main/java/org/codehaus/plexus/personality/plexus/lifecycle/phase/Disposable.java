@@ -24,5 +24,5 @@ package org.codehaus.plexus.personality.plexus.lifecycle.phase;
  */
 public interface Disposable
 {
-    public void dispose();
+    void dispose();
 }

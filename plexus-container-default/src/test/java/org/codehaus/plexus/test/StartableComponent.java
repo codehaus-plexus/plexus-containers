@@ -4,7 +4,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public interface StartableComponent
 {
-    static String ROLE = StartableComponent.class.getName();
+    String ROLE = StartableComponent.class.getName();
 
     AtomicInteger startGenerator = new AtomicInteger( 1 );
 

@@ -16,23 +16,28 @@ package org.codehaus.plexus.configuration.xml;
  * limitations under the License.
  */
 
-import junit.framework.TestCase;
 import org.codehaus.plexus.configuration.ConfigurationTestHelper;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * @author <a href="mailto:rantene@hotmail.com">Ran Tene</a>
  */
 public final class XmlPlexusConfigurationTest
-    extends TestCase
 {
     private XmlPlexusConfiguration configuration;
 
+    @Before
     public void setUp()
     {
         configuration = new XmlPlexusConfiguration( "a" );
     }
 
+    @Test
     public void testWithHelper()
         throws Exception
     {
@@ -41,6 +46,7 @@ public final class XmlPlexusConfigurationTest
         ConfigurationTestHelper.testConfiguration( c );
     }
 
+    @Test
     public void testGetValue()
         throws Exception
     {
@@ -49,6 +55,7 @@ public final class XmlPlexusConfigurationTest
         assertEquals( orgValue, configuration.getValue() );
     }
 
+    @Test
     public void testGetAttribute()
         throws Exception
     {
@@ -60,10 +67,11 @@ public final class XmlPlexusConfigurationTest
         assertEquals( defaultStr, configuration.getAttribute( "newKey", defaultStr ) );
     }
 
+    @Test
     public void testGetChild()
         throws Exception
     {
-        PlexusConfiguration child = (XmlPlexusConfiguration) configuration.getChild( "child" );
+        PlexusConfiguration child = configuration.getChild( "child" );
 
         assertNotNull( child );
 
@@ -71,7 +79,7 @@ public final class XmlPlexusConfigurationTest
 
         assertEquals( 1, configuration.getChildCount() );
 
-        child = (XmlPlexusConfiguration) configuration.getChild( "child" );
+        child = configuration.getChild( "child" );
 
         assertNotNull( child );
 
@@ -80,6 +88,7 @@ public final class XmlPlexusConfigurationTest
         assertEquals( 1, configuration.getChildCount() );
     }
 
+    @Test
     public void testToString()
        throws Exception
     {
@@ -91,6 +100,7 @@ public final class XmlPlexusConfigurationTest
 //        assertEquals( "<singleton attribute=\"attribute\"/>\n", c.getChild( "singleton" ).toString() );
     }
 
+    @Test
     public void testProgrammaticConfigurationCreation()
         throws Exception
     {

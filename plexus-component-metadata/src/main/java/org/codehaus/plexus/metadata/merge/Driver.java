@@ -57,6 +57,9 @@ public class Driver implements Locator, XMLReader, Attributes
     protected static final String VALIDATION_FEATURE =
         "http://xml.org/sax/features/validation";
 
+    protected static final String EXTERNAL_GENERAL_ENTITIES_FEATURE =
+            "http://xml.org/sax/features/external-general-entities";
+
     protected static final String APACHE_SCHEMA_VALIDATION_FEATURE =
         "http://apache.org/xml/features/validation/schema";
 
@@ -64,7 +67,7 @@ public class Driver implements Locator, XMLReader, Attributes
         "http://apache.org/xml/features/validation/dynamic";
 
     protected ContentHandler contentHandler = new DefaultHandler();
-    protected ErrorHandler errorHandler = new DefaultHandler();;
+    protected ErrorHandler errorHandler = new DefaultHandler();
 
     protected String systemId;
 
@@ -200,6 +203,8 @@ public class Driver implements Locator, XMLReader, Attributes
                 }
             } else if(VALIDATION_FEATURE.equals(name)) {
                 pp.setFeature(XmlPullParser.FEATURE_VALIDATION, value);
+            } else if(EXTERNAL_GENERAL_ENTITIES_FEATURE.equals(name)) {
+                // skip
             } else {
                 pp.setFeature(name, value);
                 //throw new SAXNotRecognizedException("unrecognized feature "+name);
