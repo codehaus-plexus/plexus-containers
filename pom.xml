@@ -26,8 +26,8 @@
   <scm>
     <connection>scm:git:https://github.com/codehaus-plexus/plexus-containers.git</connection>
     <developerConnection>scm:git:https://github.com/codehaus-plexus/plexus-containers.git</developerConnection>
-    <url>https://github.com/codehaus-plexus/plexus-containers</url>
-    <tag>HEAD</tag>
+    <url>https://github.com/codehaus-plexus/plexus-containers/tree/${project.scm.tag}/</url>
+    <tag>master</tag>
   </scm>
   <issueManagement>
     <system>github</system>
