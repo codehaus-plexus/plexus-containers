@@ -19,9 +19,9 @@ under the License.
 -->
 <rss version="0.91">
   <channel>
-    <title>Plexus :: Default Container - Checkstyle report</title>
+    <title>Plexus :: Default Container (deprecated) - Checkstyle report</title>
     <link>https://codehaus-plexus.github.io/plexus-containers/plexus-container-default/</link>
-    <description>Plexus :: Default Container - Checkstyle report</description>
+    <description>Plexus :: Default Container (deprecated) - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2001 - 2021 Codehaus Plexus</copyright>
     <item>

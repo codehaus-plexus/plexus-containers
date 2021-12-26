@@ -15,7 +15,7 @@
 -docencoding
 'UTF-8'
 -doctitle
-'Plexus :: Component Metadata (Maven Plugin) 2.2.0-SNAPSHOT Test API'
+'Plexus :: Component Metadata (Maven Plugin) (deprecated) 2.2.0-SNAPSHOT Test API'
 -link
 'http://junit.sourceforge.net/javadoc'
 -link
@@ -41,4 +41,4 @@
 -use
 -version
 -windowtitle
-'Plexus :: Component Metadata (Maven Plugin) 2.2.0-SNAPSHOT Test API'
+'Plexus :: Component Metadata (Maven Plugin) (deprecated) 2.2.0-SNAPSHOT Test API'

@@ -19,9 +19,9 @@ under the License.
 -->
 <rss version="0.91">
   <channel>
-    <title>Plexus :: Component Metadata (Maven Plugin) - Checkstyle report</title>
+    <title>Plexus :: Component Metadata (Maven Plugin) (deprecated) - Checkstyle report</title>
     <link>https://codehaus-plexus.github.io/plexus-containers/plexus-component-metadata/</link>
-    <description>Plexus :: Component Metadata (Maven Plugin) - Checkstyle report</description>
+    <description>Plexus :: Component Metadata (Maven Plugin) (deprecated) - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2001 - 2021 Codehaus Plexus</copyright>
     <item>
