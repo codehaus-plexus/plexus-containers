@@ -15,7 +15,7 @@
 <a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> * you may not use this file except in compliance with the License.</em>
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> * You may obtain a copy of the License at</em>
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *      <a href="http://www.apache.org/licenses/LICENSE-2." target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.</a>0</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *      <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS,</em>
@@ -58,7 +58,7 @@
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>  <strong class="jxr_keyword">import</strong> org.codehaus.plexus.test.map.Activity;
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>  <strong class="jxr_keyword">import</strong> org.codehaus.plexus.test.map.ActivityManager;
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>  
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/codehaus/plexus/test/PlexusContainerTest.html">PlexusContainerTest</a>
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="PlexusContainerTest" href="../../../../org/codehaus/plexus/test/PlexusContainerTest.html#PlexusContainerTest">PlexusContainerTest</a>
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>      <strong class="jxr_keyword">extends</strong> TestCase
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>  {
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>      <strong class="jxr_keyword">private</strong> String basedir;
@@ -69,7 +69,7 @@
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>  
 <a class="jxr_linenumber" name="L62" href="#L62">62</a>      <strong class="jxr_keyword">private</strong> DefaultPlexusContainer container;
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>  
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../org/codehaus/plexus/test/PlexusContainerTest.html">PlexusContainerTest</a>( String name )
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>      <strong class="jxr_keyword">public</strong> <a name="PlexusContainerTest" href="../../../../org/codehaus/plexus/test/PlexusContainerTest.html#PlexusContainerTest">PlexusContainerTest</a>( String name )
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>      {
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>          <strong class="jxr_keyword">super</strong>( name );
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>      }
@@ -96,10 +96,10 @@
 <a class="jxr_linenumber" name="L88" href="#L88">88</a>          context.put( <span class="jxr_string">"plexus.home"</span>, basedir + <span class="jxr_string">"/target/plexus-home"</span> );
 <a class="jxr_linenumber" name="L89" href="#L89">89</a>  
 <a class="jxr_linenumber" name="L90" href="#L90">90</a>          LifecycleHandler arbitrary = <strong class="jxr_keyword">new</strong> BasicLifecycleHandler( <span class="jxr_string">"arbitrary"</span> );
-<a class="jxr_linenumber" name="L91" href="#L91">91</a>          arbitrary.addBeginSegment( <strong class="jxr_keyword">new</strong> EenyPhase() );
-<a class="jxr_linenumber" name="L92" href="#L92">92</a>          arbitrary.addBeginSegment( <strong class="jxr_keyword">new</strong> MeenyPhase() );
-<a class="jxr_linenumber" name="L93" href="#L93">93</a>          arbitrary.addBeginSegment( <strong class="jxr_keyword">new</strong> MinyPhase() );
-<a class="jxr_linenumber" name="L94" href="#L94">94</a>          arbitrary.addBeginSegment( <strong class="jxr_keyword">new</strong> MoPhase() );
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>          arbitrary.addBeginSegment( <strong class="jxr_keyword">new</strong> <a name="EenyPhase" href="../../../../org/codehaus/plexus/test/lifecycle/phase/EenyPhase.html#EenyPhase">EenyPhase</a>() );
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>          arbitrary.addBeginSegment( <strong class="jxr_keyword">new</strong> <a name="MeenyPhase" href="../../../../org/codehaus/plexus/test/lifecycle/phase/MeenyPhase.html#MeenyPhase">MeenyPhase</a>() );
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>          arbitrary.addBeginSegment( <strong class="jxr_keyword">new</strong> <a name="MinyPhase" href="../../../../org/codehaus/plexus/test/lifecycle/phase/MinyPhase.html#MinyPhase">MinyPhase</a>() );
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>          arbitrary.addBeginSegment( <strong class="jxr_keyword">new</strong> <a name="MoPhase" href="../../../../org/codehaus/plexus/test/lifecycle/phase/MoPhase.html#MoPhase">MoPhase</a>() );
 <a class="jxr_linenumber" name="L95" href="#L95">95</a>  
 <a class="jxr_linenumber" name="L96" href="#L96">96</a>          ContainerConfiguration containerConfiguration = <strong class="jxr_keyword">new</strong> DefaultContainerConfiguration()
 <a class="jxr_linenumber" name="L97" href="#L97">97</a>              .setName( <span class="jxr_string">"test"</span> )
@@ -133,7 +133,7 @@
 <a class="jxr_linenumber" name="L125" href="#L125">125</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testNativeLifecyclePassage()
 <a class="jxr_linenumber" name="L126" href="#L126">126</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L127" href="#L127">127</a>     {
-<a class="jxr_linenumber" name="L128" href="#L128">128</a>         <a href="../../../../org/codehaus/plexus/test/DefaultServiceB.html">DefaultServiceB</a> serviceB = (DefaultServiceB) container.lookup( ServiceB.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L128" href="#L128">128</a>         <a name="DefaultServiceB" hr<a name="DefaultServiceB" href="../../../../org/codehaus/plexus/test/DefaultServiceB.html#DefaultServiceB">DefaultServiceB</a>/org/codehaus/plexus/test/DefaultServiceB.html#DefaultServiceB">DefaultServiceB</a> serviceB = (<a name="DefaultServiceB" href="../../../../org/codehaus/plexus/test/DefaultServiceB.html#DefaultServiceB">DefaultServiceB</a>) container.lookup( ServiceB.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L129" href="#L129">129</a> 
 <a class="jxr_linenumber" name="L130" href="#L130">130</a>         <em class="jxr_comment">// Make sure the component is alive.</em>
 <a class="jxr_linenumber" name="L131" href="#L131">131</a>         assertNotNull( serviceB );
@@ -157,7 +157,7 @@
 <a class="jxr_linenumber" name="L149" href="#L149">149</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testConfigurableLifecyclePassage()
 <a class="jxr_linenumber" name="L150" href="#L150">150</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L151" href="#L151">151</a>     {
-<a class="jxr_linenumber" name="L152" href="#L152">152</a>         <a href="../../../../org/codehaus/plexus/test/DefaultServiceE.html">DefaultServiceE</a> serviceE = (DefaultServiceE) container.lookup( ServiceE.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L152" href="#L152">152</a>         <a name="DefaultServiceE" hr<a name="DefaultServiceE" href="../../../../org/codehaus/plexus/test/DefaultServiceE.html#DefaultServiceE">DefaultServiceE</a>/org/codehaus/plexus/test/DefaultServiceE.html#DefaultServiceE">DefaultServiceE</a> serviceE = (<a name="DefaultServiceE" href="../../../../org/codehaus/plexus/test/DefaultServiceE.html#DefaultServiceE">DefaultServiceE</a>) container.lookup( ServiceE.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L153" href="#L153">153</a> 
 <a class="jxr_linenumber" name="L154" href="#L154">154</a>         <em class="jxr_comment">// Make sure the component is alive.</em>
 <a class="jxr_linenumber" name="L155" href="#L155">155</a>         assertNotNull( serviceE );
@@ -186,7 +186,7 @@
 <a class="jxr_linenumber" name="L178" href="#L178">178</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L179" href="#L179">179</a>     {
 <a class="jxr_linenumber" name="L180" href="#L180">180</a>         <em class="jxr_comment">// Retrieve an instance of component c.</em>
-<a class="jxr_linenumber" name="L181" href="#L181">181</a>         <a href="../../../../org/codehaus/plexus/test/DefaultServiceC.html">DefaultServiceC</a> serviceC1 = (DefaultServiceC) container.lookup( ServiceC.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"first-instance"</span> );
+<a class="jxr_linenumber" name="L181" href="#L181">181</a>         <a name="DefaultServiceC" hre<a name="DefaultServiceC" href="../../../../org/codehaus/plexus/test/DefaultServiceC.html#DefaultServiceC">DefaultServiceC</a>org/codehaus/plexus/test/DefaultServiceC.html#DefaultServiceC">DefaultServiceC</a> serviceC1 = (<a name="DefaultServiceC" href="../../../../org/codehaus/plexus/test/DefaultServiceC.html#DefaultServiceC">DefaultServiceC</a>) container.lookup( ServiceC.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"first-instance"</span> );
 <a class="jxr_linenumber" name="L182" href="#L182">182</a> 
 <a class="jxr_linenumber" name="L183" href="#L183">183</a>         <em class="jxr_comment">// Make sure the component is alive.</em>
 <a class="jxr_linenumber" name="L184" href="#L184">184</a>         assertNotNull( serviceC1 );
@@ -196,7 +196,7 @@
 <a class="jxr_linenumber" name="L188" href="#L188">188</a>         assertFalse( serviceC1.stopped );
 <a class="jxr_linenumber" name="L189" href="#L189">189</a> 
 <a class="jxr_linenumber" name="L190" href="#L190">190</a>         <em class="jxr_comment">// Retrieve a second reference to the same component.</em>
-<a class="jxr_linenumber" name="L191" href="#L191">191</a>         <a href="../../../../org/codehaus/plexus/test/DefaultServiceC.html">DefaultServiceC</a> serviceC2 = (DefaultServiceC) container.lookup( ServiceC.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"first-instance"</span> );
+<a class="jxr_linenumber" name="L191" href="#L191">191</a>         <a name="DefaultServiceC" hre<a name="DefaultServiceC" href="../../../../org/codehaus/plexus/test/DefaultServiceC.html#DefaultServiceC">DefaultServiceC</a>org/codehaus/plexus/test/DefaultServiceC.html#DefaultServiceC">DefaultServiceC</a> serviceC2 = (<a name="DefaultServiceC" href="../../../../org/codehaus/plexus/test/DefaultServiceC.html#DefaultServiceC">DefaultServiceC</a>) container.lookup( ServiceC.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"first-instance"</span> );
 <a class="jxr_linenumber" name="L192" href="#L192">192</a> 
 <a class="jxr_linenumber" name="L193" href="#L193">193</a>         <em class="jxr_comment">// Make sure component is alive.</em>
 <a class="jxr_linenumber" name="L194" href="#L194">194</a>         assertNotNull( serviceC2 );
@@ -230,7 +230,7 @@
 <a class="jxr_linenumber" name="L222" href="#L222">222</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L223" href="#L223">223</a>     {
 <a class="jxr_linenumber" name="L224" href="#L224">224</a>         <em class="jxr_comment">// Retrieve an instance of component c.</em>
-<a class="jxr_linenumber" name="L225" href="#L225">225</a>         <a href="../../../../org/codehaus/plexus/test/DefaultServiceC.html">DefaultServiceC</a> serviceC1 = (DefaultServiceC) container.lookup( ServiceC.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"first-instance"</span> );
+<a class="jxr_linenumber" name="L225" href="#L225">225</a>         <a name="DefaultServiceC" hre<a name="DefaultServiceC" href="../../../../org/codehaus/plexus/test/DefaultServiceC.html#DefaultServiceC">DefaultServiceC</a>org/codehaus/plexus/test/DefaultServiceC.html#DefaultServiceC">DefaultServiceC</a> serviceC1 = (<a name="DefaultServiceC" href="../../../../org/codehaus/plexus/test/DefaultServiceC.html#DefaultServiceC">DefaultServiceC</a>) container.lookup( ServiceC.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"first-instance"</span> );
 <a class="jxr_linenumber" name="L226" href="#L226">226</a> 
 <a class="jxr_linenumber" name="L227" href="#L227">227</a>         <em class="jxr_comment">// Make sure the component is alive.</em>
 <a class="jxr_linenumber" name="L228" href="#L228">228</a>         assertNotNull( serviceC1 );
@@ -241,7 +241,7 @@
 <a class="jxr_linenumber" name="L233" href="#L233">233</a> 
 <a class="jxr_linenumber" name="L234" href="#L234">234</a>         <em class="jxr_comment">// Retrieve an instance of component c, with a different role hint.</em>
 <a class="jxr_linenumber" name="L235" href="#L235">235</a>         <em class="jxr_comment">// This should give us a different component instance.</em>
-<a class="jxr_linenumber" name="L236" href="#L236">236</a>         <a href="../../../../org/codehaus/plexus/test/DefaultServiceC.html">DefaultServiceC</a> serviceC2 = (DefaultServiceC) container.lookup( ServiceC.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"second-instance"</span> );
+<a class="jxr_linenumber" name="L236" href="#L236">236</a>         <a name="DefaultServiceC" hre<a name="DefaultServiceC" href="../../../../org/codehaus/plexus/test/DefaultServiceC.html#DefaultServiceC">DefaultServiceC</a>org/codehaus/plexus/test/DefaultServiceC.html#DefaultServiceC">DefaultServiceC</a> serviceC2 = (<a name="DefaultServiceC" href="../../../../org/codehaus/plexus/test/DefaultServiceC.html#DefaultServiceC">DefaultServiceC</a>) container.lookup( ServiceC.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"second-instance"</span> );
 <a class="jxr_linenumber" name="L237" href="#L237">237</a> 
 <a class="jxr_linenumber" name="L238" href="#L238">238</a>         <em class="jxr_comment">// Make sure component is alive.</em>
 <a class="jxr_linenumber" name="L239" href="#L239">239</a>         assertNotNull( serviceC2 );
@@ -281,7 +281,7 @@
 <a class="jxr_linenumber" name="L273" href="#L273">273</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L274" href="#L274">274</a>     {
 <a class="jxr_linenumber" name="L275" href="#L275">275</a>         <em class="jxr_comment">// Retrieve an manager of component H.</em>
-<a class="jxr_linenumber" name="L276" href="#L276">276</a>         <a href="../../../../org/codehaus/plexus/test/DefaultServiceH.html">DefaultServiceH</a> serviceH = (DefaultServiceH) container.lookup( ServiceH.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L276" href="#L276">276</a>         <a name="DefaultServiceH" hr<a name="DefaultServiceH" href="../../../../org/codehaus/plexus/test/DefaultServiceH.html#DefaultServiceH">DefaultServiceH</a>/org/codehaus/plexus/test/DefaultServiceH.html#DefaultServiceH">DefaultServiceH</a> serviceH = (<a name="DefaultServiceH" href="../../../../org/codehaus/plexus/test/DefaultServiceH.html#DefaultServiceH">DefaultServiceH</a>) container.lookup( ServiceH.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L277" href="#L277">277</a> 
 <a class="jxr_linenumber" name="L278" href="#L278">278</a>         <em class="jxr_comment">// Make sure the component is alive.</em>
 <a class="jxr_linenumber" name="L279" href="#L279">279</a>         assertNotNull( serviceH );
@@ -307,7 +307,7 @@
 <a class="jxr_linenumber" name="L299" href="#L299">299</a> 
 <a class="jxr_linenumber" name="L300" href="#L300">300</a>         assertEquals( 2, components.size() );
 <a class="jxr_linenumber" name="L301" href="#L301">301</a> 
-<a class="jxr_linenumber" name="L302" href="#L302">302</a>         <a href="../../../../org/codehaus/plexus/test/ServiceC.html">ServiceC</a> component = components.get( <span class="jxr_string">"first-instance"</span> );
+<a class="jxr_linenumber" name="L302" href="#L302">302</a>         <a name="ServiceC" href="../../../../org/codehaus/plexus/test/ServiceC.html#ServiceC">ServiceC</a> component = components.get( <span class="jxr_string">"first-instance"</span> );
 <a class="jxr_linenumber" name="L303" href="#L303">303</a> 
 <a class="jxr_linenumber" name="L304" href="#L304">304</a>         assertNotNull( component );
 <a class="jxr_linenumber" name="L305" href="#L305">305</a> 
@@ -321,7 +321,7 @@
 <a class="jxr_linenumber" name="L313" href="#L313">313</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testAutomatedComponentConfigurationUsingXStreamPoweredComponentConfigurator()
 <a class="jxr_linenumber" name="L314" href="#L314">314</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L315" href="#L315">315</a>     {
-<a class="jxr_linenumber" name="L316" href="#L316">316</a>         <a href="../../../../org/codehaus/plexus/test/Component.html">Component</a> component = container.lookup( Component.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L316" href="#L316">316</a>         <a name="Component" href="../../../../org/codehaus/plexus/test/Component.html#Component">Component</a> component = container.lookup( Component.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L317" href="#L317">317</a> 
 <a class="jxr_linenumber" name="L318" href="#L318">318</a>         assertNotNull( component );
 <a class="jxr_linenumber" name="L319" href="#L319">319</a> 
@@ -335,7 +335,7 @@
 <a class="jxr_linenumber" name="L327" href="#L327">327</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testAutomatedComponentComposition()
 <a class="jxr_linenumber" name="L328" href="#L328">328</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L329" href="#L329">329</a>     {
-<a class="jxr_linenumber" name="L330" href="#L330">330</a>         <a href="../../../../org/codehaus/plexus/test/ComponentA.html">ComponentA</a> componentA = container.lookup( ComponentA.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L330" href="#L330">330</a>         <a name="ComponentA" href="../../../../org/codehaus/plexus/test/ComponentA.html#ComponentA">ComponentA</a> componentA = container.lookup( ComponentA.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L331" href="#L331">331</a> 
 <a class="jxr_linenumber" name="L332" href="#L332">332</a>         assertNotNull( componentA );
 <a class="jxr_linenumber" name="L333" href="#L333">333</a> 
@@ -343,15 +343,15 @@
 <a class="jxr_linenumber" name="L335" href="#L335">335</a> 
 <a class="jxr_linenumber" name="L336" href="#L336">336</a>         assertEquals( 10000, componentA.getPort() );
 <a class="jxr_linenumber" name="L337" href="#L337">337</a> 
-<a class="jxr_linenumber" name="L338" href="#L338">338</a>         <a href="../../../../org/codehaus/plexus/test/ComponentB.html">ComponentB</a> componentB = componentA.getComponentB();
+<a class="jxr_linenumber" name="L338" href="#L338">338</a>         <a name="ComponentB" href="../../../../org/codehaus/plexus/test/ComponentB.html#ComponentB">ComponentB</a> componentB = componentA.getComponentB();
 <a class="jxr_linenumber" name="L339" href="#L339">339</a> 
 <a class="jxr_linenumber" name="L340" href="#L340">340</a>         assertNotNull( componentB );
 <a class="jxr_linenumber" name="L341" href="#L341">341</a> 
-<a class="jxr_linenumber" name="L342" href="#L342">342</a>         <a href="../../../../org/codehaus/plexus/test/ComponentC.html">ComponentC</a> componentC = componentA.getComponentC();
+<a class="jxr_linenumber" name="L342" href="#L342">342</a>         <a name="ComponentC" href="../../../../org/codehaus/plexus/test/ComponentC.html#ComponentC">ComponentC</a> componentC = componentA.getComponentC();
 <a class="jxr_linenumber" name="L343" href="#L343">343</a> 
 <a class="jxr_linenumber" name="L344" href="#L344">344</a>         assertNotNull( componentC );
 <a class="jxr_linenumber" name="L345" href="#L345">345</a> 
-<a class="jxr_linenumber" name="L346" href="#L346">346</a>         <a href="../../../../org/codehaus/plexus/test/ComponentD.html">ComponentD</a> componentD = componentC.getComponentD();
+<a class="jxr_linenumber" name="L346" href="#L346">346</a>         <a name="ComponentD" href="../../../../org/codehaus/plexus/test/ComponentD.html#ComponentD">ComponentD</a> componentD = componentC.getComponentD();
 <a class="jxr_linenumber" name="L347" href="#L347">347</a> 
 <a class="jxr_linenumber" name="L348" href="#L348">348</a>         assertNotNull( componentD );
 <a class="jxr_linenumber" name="L349" href="#L349">349</a> 
@@ -361,9 +361,9 @@
 <a class="jxr_linenumber" name="L353" href="#L353">353</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testComponentCompositionWhereTargetFieldIsAMap()
 <a class="jxr_linenumber" name="L354" href="#L354">354</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L355" href="#L355">355</a>     {
-<a class="jxr_linenumber" name="L356" href="#L356">356</a>         <a href="../../../../org/codehaus/plexus/test/map/ActivityManager.html">ActivityManager</a> am = container.lookup( ActivityManager.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L356" href="#L356">356</a>         <a name="ActivityManager" href="../../../../org/codehaus/plexus/test/map/ActivityManager.html#ActivityManager">ActivityManager</a> am = container.lookup( ActivityManager.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L357" href="#L357">357</a> 
-<a class="jxr_linenumber" name="L358" href="#L358">358</a>         <a href="../../../../org/codehaus/plexus/test/map/Activity.html">Activity</a> one = am.getActivity( <span class="jxr_string">"one"</span> );
+<a class="jxr_linenumber" name="L358" href="#L358">358</a>         <a name="Activity" href="../../../../org/codehaus/plexus/test/map/Activity.html#Activity">Activity</a> one = am.getActivity( <span class="jxr_string">"one"</span> );
 <a class="jxr_linenumber" name="L359" href="#L359">359</a> 
 <a class="jxr_linenumber" name="L360" href="#L360">360</a>         assertNotNull( one );
 <a class="jxr_linenumber" name="L361" href="#L361">361</a> 
@@ -376,7 +376,7 @@
 <a class="jxr_linenumber" name="L368" href="#L368">368</a> 
 <a class="jxr_linenumber" name="L369" href="#L369">369</a>         assertTrue( one.getState() );
 <a class="jxr_linenumber" name="L370" href="#L370">370</a> 
-<a class="jxr_linenumber" name="L371" href="#L371">371</a>         <a href="../../../../org/codehaus/plexus/test/map/Activity.html">Activity</a> two = am.getActivity( <span class="jxr_string">"two"</span> );
+<a class="jxr_linenumber" name="L371" href="#L371">371</a>         <a name="Activity" href="../../../../org/codehaus/plexus/test/map/Activity.html#Activity">Activity</a> two = am.getActivity( <span class="jxr_string">"two"</span> );
 <a class="jxr_linenumber" name="L372" href="#L372">372</a> 
 <a class="jxr_linenumber" name="L373" href="#L373">373</a>         assertNotNull( two );
 <a class="jxr_linenumber" name="L374" href="#L374">374</a> 
@@ -390,11 +390,11 @@
 <a class="jxr_linenumber" name="L382" href="#L382">382</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testComponentCompositionWhereTargetFieldIsAPartialMap()
 <a class="jxr_linenumber" name="L383" href="#L383">383</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L384" href="#L384">384</a>     {
-<a class="jxr_linenumber" name="L385" href="#L385">385</a>         <a href="../../../../org/codehaus/plexus/test/map/ActivityManager.html">ActivityManager</a> am = container.lookup( ActivityManager.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"slim"</span> );
+<a class="jxr_linenumber" name="L385" href="#L385">385</a>         <a name="ActivityManager" href="../../../../org/codehaus/plexus/test/map/ActivityManager.html#ActivityManager">ActivityManager</a> am = container.lookup( ActivityManager.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"slim"</span> );
 <a class="jxr_linenumber" name="L386" href="#L386">386</a> 
 <a class="jxr_linenumber" name="L387" href="#L387">387</a>         assertEquals( 1, am.getActivityCount() );
 <a class="jxr_linenumber" name="L388" href="#L388">388</a> 
-<a class="jxr_linenumber" name="L389" href="#L389">389</a>         <a href="../../../../org/codehaus/plexus/test/map/Activity.html">Activity</a> one = am.getActivity( <span class="jxr_string">"one"</span> );
+<a class="jxr_linenumber" name="L389" href="#L389">389</a>         <a name="Activity" href="../../../../org/codehaus/plexus/test/map/Activity.html#Activity">Activity</a> one = am.getActivity( <span class="jxr_string">"one"</span> );
 <a class="jxr_linenumber" name="L390" href="#L390">390</a> 
 <a class="jxr_linenumber" name="L391" href="#L391">391</a>         assertNotNull( one );
 <a class="jxr_linenumber" name="L392" href="#L392">392</a> 
@@ -408,7 +408,7 @@
 <a class="jxr_linenumber" name="L400" href="#L400">400</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testComponentCompositionWhereTargetFieldIsAList()
 <a class="jxr_linenumber" name="L401" href="#L401">401</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L402" href="#L402">402</a>     {
-<a class="jxr_linenumber" name="L403" href="#L403">403</a>         <a href="../../../../org/codehaus/plexus/test/list/Pipeline.html">Pipeline</a> pipeline = container.lookup( Pipeline.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L403" href="#L403">403</a>         <a name="Pipeline" href="../../../../org/codehaus/plexus/test/list/Pipeline.html#Pipeline">Pipeline</a> pipeline = container.lookup( Pipeline.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L404" href="#L404">404</a> 
 <a class="jxr_linenumber" name="L405" href="#L405">405</a>         List valves = pipeline.getValves();
 <a class="jxr_linenumber" name="L406" href="#L406">406</a> 
@@ -417,37 +417,37 @@
 <a class="jxr_linenumber" name="L409" href="#L409">409</a>             assertSame(valve, valve);
 <a class="jxr_linenumber" name="L410" href="#L410">410</a>         }
 <a class="jxr_linenumber" name="L411" href="#L411">411</a> 
-<a class="jxr_linenumber" name="L412" href="#L412">412</a>         assertFalse( ( (Valve) valves.get( 0 ) ).getState() );
+<a class="jxr_linenumber" name="L412" href="#L412">412</a>         assertFalse( ( (<a name="Valve" href="../../../../org/codehaus/plexus/test/list/Valve.html#Valve">Valve</a>) valves.get( 0 ) ).getState() );
 <a class="jxr_linenumber" name="L413" href="#L413">413</a> 
-<a class="jxr_linenumber" name="L414" href="#L414">414</a>         assertFalse( ( (Valve) valves.get( 1 ) ).getState() );
+<a class="jxr_linenumber" name="L414" href="#L414">414</a>         assertFalse( ( (<a name="Valve" href="../../../../org/codehaus/plexus/test/list/Valve.html#Valve">Valve</a>) valves.get( 1 ) ).getState() );
 <a class="jxr_linenumber" name="L415" href="#L415">415</a> 
 <a class="jxr_linenumber" name="L416" href="#L416">416</a>         pipeline.execute();
 <a class="jxr_linenumber" name="L417" href="#L417">417</a> 
-<a class="jxr_linenumber" name="L418" href="#L418">418</a>         assertTrue( ( (Valve) valves.get( 0 ) ).getState() );
+<a class="jxr_linenumber" name="L418" href="#L418">418</a>         assertTrue( ( (<a name="Valve" href="../../../../org/codehaus/plexus/test/list/Valve.html#Valve">Valve</a>) valves.get( 0 ) ).getState() );
 <a class="jxr_linenumber" name="L419" href="#L419">419</a> 
-<a class="jxr_linenumber" name="L420" href="#L420">420</a>         assertTrue( ( (Valve) valves.get( 1 ) ).getState() );
+<a class="jxr_linenumber" name="L420" href="#L420">420</a>         assertTrue( ( (<a name="Valve" href="../../../../org/codehaus/plexus/test/list/Valve.html#Valve">Valve</a>) valves.get( 1 ) ).getState() );
 <a class="jxr_linenumber" name="L421" href="#L421">421</a>     }
 <a class="jxr_linenumber" name="L422" href="#L422">422</a> 
 <a class="jxr_linenumber" name="L423" href="#L423">423</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testComponentCompositionWhereTargetFieldIsAPartialList()
 <a class="jxr_linenumber" name="L424" href="#L424">424</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L425" href="#L425">425</a>     {
-<a class="jxr_linenumber" name="L426" href="#L426">426</a>         <a href="../../../../org/codehaus/plexus/test/list/Pipeline.html">Pipeline</a> pipeline = container.lookup( Pipeline.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"slim"</span> );
+<a class="jxr_linenumber" name="L426" href="#L426">426</a>         <a name="Pipeline" href="../../../../org/codehaus/plexus/test/list/Pipeline.html#Pipeline">Pipeline</a> pipeline = container.lookup( Pipeline.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"slim"</span> );
 <a class="jxr_linenumber" name="L427" href="#L427">427</a> 
 <a class="jxr_linenumber" name="L428" href="#L428">428</a>         List valves = pipeline.getValves();
 <a class="jxr_linenumber" name="L429" href="#L429">429</a> 
 <a class="jxr_linenumber" name="L430" href="#L430">430</a>         assertEquals( valves.size(), 1 );
 <a class="jxr_linenumber" name="L431" href="#L431">431</a> 
-<a class="jxr_linenumber" name="L432" href="#L432">432</a>         assertFalse( ( (Valve) valves.get( 0 ) ).getState() );
+<a class="jxr_linenumber" name="L432" href="#L432">432</a>         assertFalse( ( (<a name="Valve" href="../../../../org/codehaus/plexus/test/list/Valve.html#Valve">Valve</a>) valves.get( 0 ) ).getState() );
 <a class="jxr_linenumber" name="L433" href="#L433">433</a> 
 <a class="jxr_linenumber" name="L434" href="#L434">434</a>         pipeline.execute();
 <a class="jxr_linenumber" name="L435" href="#L435">435</a> 
-<a class="jxr_linenumber" name="L436" href="#L436">436</a>         assertTrue( ( (Valve) valves.get( 0 ) ).getState() );
+<a class="jxr_linenumber" name="L436" href="#L436">436</a>         assertTrue( ( (<a name="Valve" href="../../../../org/codehaus/plexus/test/list/Valve.html#Valve">Valve</a>) valves.get( 0 ) ).getState() );
 <a class="jxr_linenumber" name="L437" href="#L437">437</a>     }
 <a class="jxr_linenumber" name="L438" href="#L438">438</a> 
 <a class="jxr_linenumber" name="L439" href="#L439">439</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testComponentCompositionWhereTargetFieldAMapThatMustRetainTheOrderOfComponentsGivenASetOfRoleHints()
 <a class="jxr_linenumber" name="L440" href="#L440">440</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L441" href="#L441">441</a>     {
-<a class="jxr_linenumber" name="L442" href="#L442">442</a>         <a href="../../../../org/codehaus/plexus/test/list/Pipeline.html">Pipeline</a> pipeline = container.lookup( Pipeline.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"chubby"</span> );
+<a class="jxr_linenumber" name="L442" href="#L442">442</a>         <a name="Pipeline" href="../../../../org/codehaus/plexus/test/list/Pipeline.html#Pipeline">Pipeline</a> pipeline = container.lookup( Pipeline.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"chubby"</span> );
 <a class="jxr_linenumber" name="L443" href="#L443">443</a> 
 <a class="jxr_linenumber" name="L444" href="#L444">444</a>         Map valveMap = pipeline.getValveMap();
 <a class="jxr_linenumber" name="L445" href="#L445">445</a> 
@@ -455,19 +455,19 @@
 <a class="jxr_linenumber" name="L447" href="#L447">447</a> 
 <a class="jxr_linenumber" name="L448" href="#L448">448</a>         assertEquals( <span class="jxr_string">"Expecting three valves."</span>, 4, valves.size() );
 <a class="jxr_linenumber" name="L449" href="#L449">449</a> 
-<a class="jxr_linenumber" name="L450" href="#L450">450</a>         assertTrue( <span class="jxr_string">"Expecting valve one."</span>, valves.get(0) instanceof ValveOne );
+<a class="jxr_linenumber" name="L450" href="#L450">450</a>         assertTrue( <span class="jxr_string">"Expecting valve one."</span>, valves.get(0) instanceof <a name="ValveOne" href="../../../../org/codehaus/plexus/test/list/ValveOne.html#ValveOne">ValveOne</a> );
 <a class="jxr_linenumber" name="L451" href="#L451">451</a> 
-<a class="jxr_linenumber" name="L452" href="#L452">452</a>         assertTrue( <span class="jxr_string">"Expecting valve two."</span>, valves.get(1) instanceof ValveTwo );
+<a class="jxr_linenumber" name="L452" href="#L452">452</a>         assertTrue( <span class="jxr_string">"Expecting valve two."</span>, valves.get(1) instanceof <a name="ValveTwo" href="../../../../org/codehaus/plexus/test/list/ValveTwo.html#ValveTwo">ValveTwo</a> );
 <a class="jxr_linenumber" name="L453" href="#L453">453</a> 
-<a class="jxr_linenumber" name="L454" href="#L454">454</a>         assertTrue( <span class="jxr_string">"Expecting valve three."</span>, valves.get(2) instanceof ValveThree );
+<a class="jxr_linenumber" name="L454" href="#L454">454</a>         assertTrue( <span class="jxr_string">"Expecting valve three."</span>, valves.get(2) instanceof <a name="ValveThree" href="../../../../org/codehaus/plexus/test/list/ValveThree.html#ValveThree">ValveThree</a> );
 <a class="jxr_linenumber" name="L455" href="#L455">455</a> 
-<a class="jxr_linenumber" name="L456" href="#L456">456</a>         assertTrue( <span class="jxr_string">"Expecting valve four."</span>, valves.get(3) instanceof ValveFour );        
+<a class="jxr_linenumber" name="L456" href="#L456">456</a>         assertTrue( <span class="jxr_string">"Expecting valve four."</span>, valves.get(3) instanceof <a name="ValveFour" href="../../../../org/codehaus/plexus/test/list/ValveFour.html#ValveFour">ValveFour</a> );        
 <a class="jxr_linenumber" name="L457" href="#L457">457</a>     }
 <a class="jxr_linenumber" name="L458" href="#L458">458</a> 
 <a class="jxr_linenumber" name="L459" href="#L459">459</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testLookupOfComponentThatShouldBeDiscovered()
 <a class="jxr_linenumber" name="L460" href="#L460">460</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L461" href="#L461">461</a>     {
-<a class="jxr_linenumber" name="L462" href="#L462">462</a>         <a href="../../../../org/codehaus/plexus/component/discovery/DiscoveredComponent.html">DiscoveredComponent</a> discoveredComponent = container.lookup( DiscoveredComponent.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L462" href="#L462">462</a>         <a name="DiscoveredComponent" href="../../../../org/codehaus/plexus/component/discovery/DiscoveredComponent.html#DiscoveredComponent">DiscoveredComponent</a> discoveredComponent = container.lookup( DiscoveredComponent.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L463" href="#L463">463</a> 
 <a class="jxr_linenumber" name="L464" href="#L464">464</a>         assertNotNull( discoveredComponent );
 <a class="jxr_linenumber" name="L465" href="#L465">465</a>     }
@@ -475,7 +475,7 @@
 <a class="jxr_linenumber" name="L467" href="#L467">467</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testStartableComponentSnake()
 <a class="jxr_linenumber" name="L468" href="#L468">468</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L469" href="#L469">469</a>     {
-<a class="jxr_linenumber" name="L470" href="#L470">470</a>         <a href="../../../../org/codehaus/plexus/test/StartableComponent.html">StartableComponent</a> ca = container.lookup( StartableComponent.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"A-snake"</span> );
+<a class="jxr_linenumber" name="L470" href="#L470">470</a>         <a name="StartableComponent" href="../../../../org/codehaus/plexus/test/StartableComponent.html#StartableComponent">StartableComponent</a> ca = container.lookup( StartableComponent.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"A-snake"</span> );
 <a class="jxr_linenumber" name="L471" href="#L471">471</a>         
 <a class="jxr_linenumber" name="L472" href="#L472">472</a>         assertNotNull( ca );
 <a class="jxr_linenumber" name="L473" href="#L473">473</a>         
@@ -489,7 +489,7 @@
 <a class="jxr_linenumber" name="L481" href="#L481">481</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testStartableComponentTree()
 <a class="jxr_linenumber" name="L482" href="#L482">482</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L483" href="#L483">483</a>     {
-<a class="jxr_linenumber" name="L484" href="#L484">484</a>         <a href="../../../../org/codehaus/plexus/test/StartableComponent.html">StartableComponent</a> ca = container.lookup( StartableComponent.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"A-tree"</span> );
+<a class="jxr_linenumber" name="L484" href="#L484">484</a>         <a name="StartableComponent" href="../../../../org/codehaus/plexus/test/StartableComponent.html#StartableComponent">StartableComponent</a> ca = container.lookup( StartableComponent.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"A-tree"</span> );
 <a class="jxr_linenumber" name="L485" href="#L485">485</a>     
 <a class="jxr_linenumber" name="L486" href="#L486">486</a>         assertNotNull( ca );
 <a class="jxr_linenumber" name="L487" href="#L487">487</a>     
@@ -517,11 +517,11 @@
 <a class="jxr_linenumber" name="L509" href="#L509">509</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testAddComponent()
 <a class="jxr_linenumber" name="L510" href="#L510">510</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L511" href="#L511">511</a>     {
-<a class="jxr_linenumber" name="L512" href="#L512">512</a>         <a href="../../../../org/codehaus/plexus/test/LiveComponent.html">LiveComponent</a> live = <strong class="jxr_keyword">new</strong> <a href="../../../../org/codehaus/plexus/test/LiveComponent.html">LiveComponent</a>();
+<a class="jxr_linenumber" name="L512" href="#L512">512</a>         <a name="LiveComponent" href="../../../../org/codehaus/plexus/<a name="LiveComponent" href="../../../../org/codehaus/plexus/test/LiveComponent.html#LiveComponent">LiveComponent</a>onent.html#LiveComponent">LiveComponent</a> live = <strong class="jxr_keyword">new</strong> <a name="LiveComponent" href="../../../../org/codehaus/plexus/test/LiveComponent.html#LiveComponent">LiveComponent</a>();
 <a class="jxr_linenumber" name="L513" href="#L513">513</a> 
 <a class="jxr_linenumber" name="L514" href="#L514">514</a>         container.addComponent( live, LiveComponent.<strong class="jxr_keyword">class</strong>.getName() );
 <a class="jxr_linenumber" name="L515" href="#L515">515</a> 
-<a class="jxr_linenumber" name="L516" href="#L516">516</a>         <a href="../../../../org/codehaus/plexus/test/LiveComponent.html">LiveComponent</a> c = container.lookup( LiveComponent.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L516" href="#L516">516</a>         <a name="LiveComponent" href="../../../../org/codehaus/plexus/test/LiveComponent.html#LiveComponent">LiveComponent</a> c = container.lookup( LiveComponent.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L517" href="#L517">517</a> 
 <a class="jxr_linenumber" name="L518" href="#L518">518</a>         assertSame( live, c );
 <a class="jxr_linenumber" name="L519" href="#L519">519</a>     }
@@ -531,9 +531,9 @@
 <a class="jxr_linenumber" name="L523" href="#L523">523</a>     {
 <a class="jxr_linenumber" name="L524" href="#L524">524</a>         assertNotNull( container.lookup( Component.<strong class="jxr_keyword">class</strong> ) );
 <a class="jxr_linenumber" name="L525" href="#L525">525</a> 
-<a class="jxr_linenumber" name="L526" href="#L526">526</a>         <a href="../../../../org/codehaus/plexus/test/Component.html">Component</a> live = <strong class="jxr_keyword">new</strong> <a href="../../../../org/codehaus/plexus/test/Component.html">Component</a>()
+<a class="jxr_linenumber" name="L526" href="#L526">526</a>         <a name="Component" href="../../../../org/codehaus/plexus/<a name="Component" href="../../../../org/codehaus/plexus/test/Component.html#Component">Component</a>onent.html#Component">Component</a> live = <strong class="jxr_keyword">new</strong> <a name="Component" href="../../../../org/codehaus/plexus/test/Component.html#Component">Component</a>()
 <a class="jxr_linenumber" name="L527" href="#L527">527</a>         {
-<a class="jxr_linenumber" name="L528" href="#L528">528</a>             <strong class="jxr_keyword">public</strong> <a href="../../../../org/codehaus/plexus/test/map/Activity.html">Activity</a> getActivity()
+<a class="jxr_linenumber" name="L528" href="#L528">528</a>             <strong class="jxr_keyword">public</strong> <a name="Activity" href="../../../../org/codehaus/plexus/test/map/Activity.html#Activity">Activity</a> getActivity()
 <a class="jxr_linenumber" name="L529" href="#L529">529</a>             {
 <a class="jxr_linenumber" name="L530" href="#L530">530</a>                 <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L531" href="#L531">531</a>             }
@@ -555,7 +555,7 @@
 <a class="jxr_linenumber" name="L547" href="#L547">547</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testUpdateOfActiveComponentCollectionUponChangeOfThreadContextClassLoader()
 <a class="jxr_linenumber" name="L548" href="#L548">548</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L549" href="#L549">549</a>     {
-<a class="jxr_linenumber" name="L550" href="#L550">550</a>         <a href="../../../../org/codehaus/plexus/test/ComponentManager.html">ComponentManager</a> manager = container.lookup( ComponentManager.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L550" href="#L550">550</a>         <a name="ComponentManager" href="../../../../org/codehaus/plexus/test/ComponentManager.html#ComponentManager">ComponentManager</a> manager = container.lookup( ComponentManager.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L551" href="#L551">551</a> 
 <a class="jxr_linenumber" name="L552" href="#L552">552</a>         Map&lt;String, ?&gt; map = manager.getMap();
 <a class="jxr_linenumber" name="L553" href="#L553">553</a>         assertNotNull( map );
@@ -616,7 +616,7 @@
 <a class="jxr_linenumber" name="L608" href="#L608">608</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testUpdateOfActiveComponentCollectionUponChangeOfThreadContextClassLoaderFromParentToChildRealm()
 <a class="jxr_linenumber" name="L609" href="#L609">609</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L610" href="#L610">610</a>     {
-<a class="jxr_linenumber" name="L611" href="#L611">611</a>         <a href="../../../../org/codehaus/plexus/test/ComponentManager.html">ComponentManager</a> manager = container.lookup( ComponentManager.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L611" href="#L611">611</a>         <a name="ComponentManager" href="../../../../org/codehaus/plexus/test/ComponentManager.html#ComponentManager">ComponentManager</a> manager = container.lookup( ComponentManager.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L612" href="#L612">612</a> 
 <a class="jxr_linenumber" name="L613" href="#L613">613</a>         Map&lt;String, ?&gt; map = manager.getMap();
 <a class="jxr_linenumber" name="L614" href="#L614">614</a>         assertNotNull( map );
@@ -681,7 +681,7 @@
 <a class="jxr_linenumber" name="L673" href="#L673">673</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testComponentLookupFromParentRealmOfImportedRealms()
 <a class="jxr_linenumber" name="L674" href="#L674">674</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L675" href="#L675">675</a>     {
-<a class="jxr_linenumber" name="L676" href="#L676">676</a>         <a href="../../../../org/codehaus/plexus/test/ComponentManager.html">ComponentManager</a> manager = container.lookup( ComponentManager.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L676" href="#L676">676</a>         <a name="ComponentManager" href="../../../../org/codehaus/plexus/test/ComponentManager.html#ComponentManager">ComponentManager</a> manager = container.lookup( ComponentManager.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L677" href="#L677">677</a> 
 <a class="jxr_linenumber" name="L678" href="#L678">678</a>         Map&lt;String, ?&gt; map = manager.getMap();
 <a class="jxr_linenumber" name="L679" href="#L679">679</a>         assertNotNull( map );
@@ -727,8 +727,8 @@
 <a class="jxr_linenumber" name="L719" href="#L719">719</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testOptionalComponentRequirement()
 <a class="jxr_linenumber" name="L720" href="#L720">720</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L721" href="#L721">721</a>     {
-<a class="jxr_linenumber" name="L722" href="#L722">722</a>         <a href="../../../../org/codehaus/plexus/test/DefaultComponentWithOptionalRequirement.html">DefaultComponentWithOptionalRequirement</a> ca =
-<a class="jxr_linenumber" name="L723" href="#L723">723</a>             (<a href="../../../../org/codehaus/plexus/test/DefaultComponentWithOptionalRequirement.html">DefaultComponentWithOptionalRequirement</a>) container.lookup( Component.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"with-optional"</span> );
+<a class="jxr_linenumber" name="L722" href="#L722">722</a>         <a name="DefaultComponentWithOptionalRequirement" href="../../../../org/codehaus/plexus/test/DefaultComponentWithOptionalRequirement.html#DefaultComponentWithOptionalRequirement">DefaultComponentWithOptionalRequirement</a> ca =
+<a class="jxr_linenumber" name="L723" href="#L723">723</a>             (<a name="DefaultComponentWithOptionalRequirement" href="../../../../org/codehaus/plexus/test/DefaultComponentWithOptionalRequirement.html#DefaultComponentWithOptionalRequirement">DefaultComponentWithOptionalRequirement</a>) container.lookup( Component.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"with-optional"</span> );
 <a class="jxr_linenumber" name="L724" href="#L724">724</a> 
 <a class="jxr_linenumber" name="L725" href="#L725">725</a>         assertNotNull( ca );
 <a class="jxr_linenumber" name="L726" href="#L726">726</a> 
@@ -740,7 +740,7 @@
 <a class="jxr_linenumber" name="L732" href="#L732">732</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testLookupOfComponentThatHasARequirementWithoutRoleHintAndTheOneAndOnlyImplHasNoDefaultHint()
 <a class="jxr_linenumber" name="L733" href="#L733">733</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L734" href="#L734">734</a>     {
-<a class="jxr_linenumber" name="L735" href="#L735">735</a>         <a href="../../../../org/codehaus/plexus/test/DefaultThingUser.html">DefaultThingUser</a> component = (DefaultThingUser) container.lookup( ThingUser.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L735" href="#L735">735</a>         <a name="DefaultThingUser" hre<a name="DefaultThingUser" href="../../../../org/codehaus/plexus/test/DefaultThingUser.html#DefaultThingUser">DefaultThingUser</a>rg/codehaus/plexus/test/DefaultThingUser.html#DefaultThingUser">DefaultThingUser</a> component = (<a name="DefaultThingUser" href="../../../../org/codehaus/plexus/test/DefaultThingUser.html#DefaultThingUser">DefaultThingUser</a>) container.lookup( ThingUser.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L736" href="#L736">736</a> 
 <a class="jxr_linenumber" name="L737" href="#L737">737</a>         assertNotNull( component.thing );
 <a class="jxr_linenumber" name="L738" href="#L738">738</a>     }
@@ -748,9 +748,9 @@
 <a class="jxr_linenumber" name="L740" href="#L740">740</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSingleLookupWithAndWithoutRoleHint()
 <a class="jxr_linenumber" name="L741" href="#L741">741</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L742" href="#L742">742</a>     {
-<a class="jxr_linenumber" name="L743" href="#L743">743</a>         <a href="../../../../org/codehaus/plexus/test/ComponentWithRoleDefault.html">ComponentWithRoleDefault</a> withRoleHint = container.lookup( ComponentWithRoleDefault.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"default"</span> );
+<a class="jxr_linenumber" name="L743" href="#L743">743</a>         <a name="ComponentWithRoleDefault" href="../../../../org/codehaus/plexus/test/ComponentWithRoleDefault.html#ComponentWithRoleDefault">ComponentWithRoleDefault</a> withRoleHint = container.lookup( ComponentWithRoleDefault.<strong class="jxr_keyword">class</strong>, <span class="jxr_string">"default"</span> );
 <a class="jxr_linenumber" name="L744" href="#L744">744</a> 
-<a class="jxr_linenumber" name="L745" href="#L745">745</a>         <a href="../../../../org/codehaus/plexus/test/ComponentWithRoleDefault.html">ComponentWithRoleDefault</a> withoutRoleHint = container.lookup( ComponentWithRoleDefault.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L745" href="#L745">745</a>         <a name="ComponentWithRoleDefault" href="../../../../org/codehaus/plexus/test/ComponentWithRoleDefault.html#ComponentWithRoleDefault">ComponentWithRoleDefault</a> withoutRoleHint = container.lookup( ComponentWithRoleDefault.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L746" href="#L746">746</a> 
 <a class="jxr_linenumber" name="L747" href="#L747">747</a>         assertSame( withRoleHint, withoutRoleHint );
 <a class="jxr_linenumber" name="L748" href="#L748">748</a>     }
@@ -805,7 +805,7 @@
 <a class="jxr_linenumber" name="L797" href="#L797">797</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSafeConcurrentAccessToActiveComponentCollection()
 <a class="jxr_linenumber" name="L798" href="#L798">798</a>         <strong class="jxr_keyword">throws</strong> Exception
 <a class="jxr_linenumber" name="L799" href="#L799">799</a>     {
-<a class="jxr_linenumber" name="L800" href="#L800">800</a>         <a href="../../../../org/codehaus/plexus/test/ComponentManager.html">ComponentManager</a> manager = container.lookup( ComponentManager.<strong class="jxr_keyword">class</strong> );
+<a class="jxr_linenumber" name="L800" href="#L800">800</a>         <a name="ComponentManager" href="../../../../org/codehaus/plexus/test/ComponentManager.html#ComponentManager">ComponentManager</a> manager = container.lookup( ComponentManager.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L801" href="#L801">801</a> 
 <a class="jxr_linenumber" name="L802" href="#L802">802</a>         <strong class="jxr_keyword">final</strong> Map&lt;String, ?&gt; map = manager.getMap();
 <a class="jxr_linenumber" name="L803" href="#L803">803</a>         assertNotNull( map );
@@ -874,6 +874,6 @@
 <a class="jxr_linenumber" name="L866" href="#L866">866</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2001&#x2013;2019 <a href="http://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2001&#x2013;2021 <a href="https://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
 </body>
 </html>

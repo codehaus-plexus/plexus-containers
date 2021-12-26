@@ -15,7 +15,7 @@
 <a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> * you may not use this file except in compliance with the License.</em>
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> * You may obtain a copy of the License at</em>
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *      <a href="http://www.apache.org/licenses/LICENSE-2." target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.</a>0</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *      <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS,</em>
@@ -90,7 +90,7 @@
 <a class="jxr_linenumber" name="L82" href="#L82">82</a>  
 <a class="jxr_linenumber" name="L83" href="#L83">83</a>      <em class="jxr_comment">// ----------------------------------------------------------------------</em>
 <a class="jxr_linenumber" name="L84" href="#L84">84</a>  
-<a class="jxr_linenumber" name="L85" href="#L85">85</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../org/codehaus/plexus/component/repository/ComponentSetDescriptor.html">ComponentSetDescriptor</a> componentSetDescriptor;
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>      <strong class="jxr_keyword">private</strong> <a name="ComponentSetDescriptor" href="../../../../../org/codehaus/plexus/component/repository/ComponentSetDescriptor.html#ComponentSetDescriptor">ComponentSetDescriptor</a> componentSetDescriptor;
 <a class="jxr_linenumber" name="L86" href="#L86">86</a>  
 <a class="jxr_linenumber" name="L87" href="#L87">87</a>      <strong class="jxr_keyword">private</strong> String source;
 <a class="jxr_linenumber" name="L88" href="#L88">88</a>  
@@ -98,11 +98,11 @@
 <a class="jxr_linenumber" name="L90" href="#L90">90</a>      <em class="jxr_comment">// Instance methods</em>
 <a class="jxr_linenumber" name="L91" href="#L91">91</a>      <em class="jxr_comment">// ----------------------------------------------------------------------</em>
 <a class="jxr_linenumber" name="L92" href="#L92">92</a>  
-<a class="jxr_linenumber" name="L93" href="#L93">93</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../org/codehaus/plexus/component/repository/ComponentDescriptor.html">ComponentDescriptor</a>()
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>      <strong class="jxr_keyword">public</strong> <a name="ComponentDescriptor" href="../../../../../org/codehaus/plexus/component/repository/ComponentDescriptor.html#ComponentDescriptor">ComponentDescriptor</a>()
 <a class="jxr_linenumber" name="L94" href="#L94">94</a>      {
 <a class="jxr_linenumber" name="L95" href="#L95">95</a>      }
 <a class="jxr_linenumber" name="L96" href="#L96">96</a>  
-<a class="jxr_linenumber" name="L97" href="#L97">97</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../org/codehaus/plexus/component/repository/ComponentDescriptor.html">ComponentDescriptor</a>( Class&lt;T&gt; implementationClass, ClassRealm realm )
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>      <strong class="jxr_keyword">public</strong> <a name="ComponentDescriptor" href="../../../../../org/codehaus/plexus/component/repository/ComponentDescriptor.html#ComponentDescriptor">ComponentDescriptor</a>( Class&lt;T&gt; implementationClass, ClassRealm realm )
 <a class="jxr_linenumber" name="L98" href="#L98">98</a>      {
 <a class="jxr_linenumber" name="L99" href="#L99">99</a>          <strong class="jxr_keyword">this</strong>.implementationClass = implementationClass;
 <a class="jxr_linenumber" name="L100" href="#L100">100</a>         <strong class="jxr_keyword">this</strong>.implementation = implementationClass.getName();
@@ -444,7 +444,7 @@
 <a class="jxr_linenumber" name="L436" href="#L436">436</a> <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="L437" href="#L437">437</a> <em class="jxr_javadoccomment">     * @param requirement the requirement to add</em>
 <a class="jxr_linenumber" name="L438" href="#L438">438</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L439" href="#L439">439</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> addRequirement( ComponentRequirement requirement )
+<a class="jxr_linenumber" name="L439" href="#L439">439</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> addRequirement( <a name="ComponentRequirement" href="../../../../../org/codehaus/plexus/component/repository/ComponentRequirement.html#ComponentRequirement">ComponentRequirement</a> requirement )
 <a class="jxr_linenumber" name="L440" href="#L440">440</a>     {
 <a class="jxr_linenumber" name="L441" href="#L441">441</a>         <strong class="jxr_keyword">this</strong>.requirements.add( requirement );
 <a class="jxr_linenumber" name="L442" href="#L442">442</a>     }
@@ -589,7 +589,7 @@
 <a class="jxr_linenumber" name="L581" href="#L581">581</a> <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="L582" href="#L582">582</a> <em class="jxr_javadoccomment">     * @param componentSetDescriptor the component set descriptor of components and dependencies</em>
 <a class="jxr_linenumber" name="L583" href="#L583">583</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L584" href="#L584">584</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setComponentSetDescriptor( ComponentSetDescriptor componentSetDescriptor )
+<a class="jxr_linenumber" name="L584" href="#L584">584</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setComponentSetDescriptor( <a name="ComponentSetDescriptor" href="../../../../../org/codehaus/plexus/component/repository/ComponentSetDescriptor.html#ComponentSetDescriptor">ComponentSetDescriptor</a> componentSetDescriptor )
 <a class="jxr_linenumber" name="L585" href="#L585">585</a>     {
 <a class="jxr_linenumber" name="L586" href="#L586">586</a>         <strong class="jxr_keyword">this</strong>.componentSetDescriptor = componentSetDescriptor;
 <a class="jxr_linenumber" name="L587" href="#L587">587</a>     }
@@ -599,7 +599,7 @@
 <a class="jxr_linenumber" name="L591" href="#L591">591</a> <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="L592" href="#L592">592</a> <em class="jxr_javadoccomment">     * @return the component set descriptor</em>
 <a class="jxr_linenumber" name="L593" href="#L593">593</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L594" href="#L594">594</a>     <strong class="jxr_keyword">public</strong> <a href="../../../../../org/codehaus/plexus/component/repository/ComponentSetDescriptor.html">ComponentSetDescriptor</a> getComponentSetDescriptor()
+<a class="jxr_linenumber" name="L594" href="#L594">594</a>     <strong class="jxr_keyword">public</strong> <a name="ComponentSetDescriptor" href="../../../../../org/codehaus/plexus/component/repository/ComponentSetDescriptor.html#ComponentSetDescriptor">ComponentSetDescriptor</a> getComponentSetDescriptor()
 <a class="jxr_linenumber" name="L595" href="#L595">595</a>     {
 <a class="jxr_linenumber" name="L596" href="#L596">596</a>         <strong class="jxr_keyword">return</strong> componentSetDescriptor;
 <a class="jxr_linenumber" name="L597" href="#L597">597</a>     }
@@ -666,7 +666,7 @@
 <a class="jxr_linenumber" name="L658" href="#L658">658</a>     <em class="jxr_comment">// Component identity established here!</em>
 <a class="jxr_linenumber" name="L659" href="#L659">659</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> equals( Object other )
 <a class="jxr_linenumber" name="L660" href="#L660">660</a>     {
-<a class="jxr_linenumber" name="L661" href="#L661">661</a>         <strong class="jxr_keyword">if</strong> ( !( other instanceof ComponentDescriptor ) )
+<a class="jxr_linenumber" name="L661" href="#L661">661</a>         <strong class="jxr_keyword">if</strong> ( !( other instanceof <a name="ComponentDescriptor" href="../../../../../org/codehaus/plexus/component/repository/ComponentDescriptor.html#ComponentDescriptor">ComponentDescriptor</a> ) )
 <a class="jxr_linenumber" name="L662" href="#L662">662</a>         {
 <a class="jxr_linenumber" name="L663" href="#L663">663</a>             <strong class="jxr_keyword">return</strong> false;
 <a class="jxr_linenumber" name="L664" href="#L664">664</a>         }
@@ -712,6 +712,6 @@
 <a class="jxr_linenumber" name="L704" href="#L704">704</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2001&#x2013;2019 <a href="http://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2001&#x2013;2021 <a href="https://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
 </body>
 </html>

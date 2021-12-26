@@ -15,7 +15,7 @@
 <a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> * you may not use this file except in compliance with the License.</em>
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> * You may obtain a copy of the License at</em>
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *      <a href="http://www.apache.org/licenses/LICENSE-2." target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.</a>0</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *      <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS,</em>
@@ -38,18 +38,18 @@
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>  <em class="jxr_javadoccomment"> * @author Jason van Zyl</em>
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>  <em class="jxr_javadoccomment"> * @author &lt;a href="<a href="mailto:mmaczka@interia.pl" target="alexandria_uri">mailto:mmaczka@interia.pl</a>"&gt;Michal Maczka&lt;/a&gt;</em>
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/codehaus/plexus/component/factory/java/JavaComponentFactory.html">JavaComponentFactory</a>
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>      <strong class="jxr_keyword">extends</strong> <a href="../../../../../../org/codehaus/plexus/component/factory/AbstractComponentFactory.html">AbstractComponentFactory</a>
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="JavaComponentFactory" href="../../../../../../org/codehaus/plexus/component/factory/java/JavaComponentFactory.html#JavaComponentFactory">JavaComponentFactory</a>
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>      <strong class="jxr_keyword">extends</strong> <a name="AbstractComponentFactory" href="../../../../../../org/codehaus/plexus/component/factory/AbstractComponentFactory.html#AbstractComponentFactory">AbstractComponentFactory</a>
 <a class="jxr_linenumber" name="L35" href="#L35">35</a>  {
 <a class="jxr_linenumber" name="L36" href="#L36">36</a>      <strong class="jxr_keyword">public</strong> String getId()
 <a class="jxr_linenumber" name="L37" href="#L37">37</a>      {
 <a class="jxr_linenumber" name="L38" href="#L38">38</a>          <strong class="jxr_keyword">return</strong> <span class="jxr_string">"java"</span>;
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>      }
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>  
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>      <strong class="jxr_keyword">public</strong> Object newInstance( ComponentDescriptor componentDescriptor,
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>      <strong class="jxr_keyword">public</strong> Object newInstance( <a name="ComponentDescriptor" href="../../../../../../org/codehaus/plexus/component/repository/ComponentDescriptor.html#ComponentDescriptor">ComponentDescriptor</a> componentDescriptor,
 <a class="jxr_linenumber" name="L42" href="#L42">42</a>                                 ClassRealm classRealm,
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>                                 <a href="../../../../../../org/codehaus/plexus/PlexusContainer.html">PlexusContainer</a> container )
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>          <strong class="jxr_keyword">throws</strong> <a href="../../../../../../org/codehaus/plexus/component/factory/ComponentInstantiationException.html">ComponentInstantiationException</a>
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>                                 <a name="PlexusContainer" href="../../../../../../org/codehaus/plexus/PlexusContainer.html#PlexusContainer">PlexusContainer</a> container )
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>          <strong class="jxr_keyword">throws</strong> <a name="ComponentInstantiationException" href="../../../../../../org/codehaus/plexus/component/factory/ComponentInstantiationException.html#ComponentInstantiationException">ComponentInstantiationException</a>
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>      {
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>          Class implementationClass = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>  
@@ -63,13 +63,13 @@
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>  
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>              <strong class="jxr_keyword">if</strong> ( Modifier.isInterface( modifiers ) )
 <a class="jxr_linenumber" name="L57" href="#L57">57</a>              {
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>                  <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/codehaus/plexus/component/factory/ComponentInstantiationException.html">ComponentInstantiationException</a>(
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>                  <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentInstantiationException" href="../../../../../../org/codehaus/plexus/component/factory/ComponentInstantiationException.html#ComponentInstantiationException">ComponentInstantiationException</a>(
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>                      <span class="jxr_string">"Cannot instantiate implementation '"</span> + implementation + <span class="jxr_string">"' because the class is a interface."</span> );
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>              }
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>  
 <a class="jxr_linenumber" name="L62" href="#L62">62</a>              <strong class="jxr_keyword">if</strong> ( Modifier.isAbstract( modifiers ) )
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>              {
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>                  <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/codehaus/plexus/component/factory/ComponentInstantiationException.html">ComponentInstantiationException</a>(
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>                  <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentInstantiationException" href="../../../../../../org/codehaus/plexus/component/factory/ComponentInstantiationException.html#ComponentInstantiationException">ComponentInstantiationException</a>(
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>                      <span class="jxr_string">"Cannot instantiate implementation '"</span> + implementation + <span class="jxr_string">"' because the class is abstract."</span> );
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>              }
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>  
@@ -97,8 +97,8 @@
 <a class="jxr_linenumber" name="L89" href="#L89">89</a>          }
 <a class="jxr_linenumber" name="L90" href="#L90">90</a>      }
 <a class="jxr_linenumber" name="L91" href="#L91">91</a>  
-<a class="jxr_linenumber" name="L92" href="#L92">92</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../../../org/codehaus/plexus/component/factory/ComponentInstantiationException.html">ComponentInstantiationException</a> makeException( ClassRealm componentClassRealm,
-<a class="jxr_linenumber" name="L93" href="#L93">93</a>                                                             <a href="../../../../../../org/codehaus/plexus/component/repository/ComponentDescriptor.html">ComponentDescriptor</a> componentDescriptor,
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>      <strong class="jxr_keyword">private</strong> <a name="ComponentInstantiationException" href="../../../../../../org/codehaus/plexus/component/factory/ComponentInstantiationException.html#ComponentInstantiationException">ComponentInstantiationException</a> makeException( ClassRealm componentClassRealm,
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>                                                             <a name="ComponentDescriptor" href="../../../../../../org/codehaus/plexus/component/repository/ComponentDescriptor.html#ComponentDescriptor">ComponentDescriptor</a> componentDescriptor,
 <a class="jxr_linenumber" name="L94" href="#L94">94</a>                                                             Class implementationClass,
 <a class="jxr_linenumber" name="L95" href="#L95">95</a>                                                             Throwable e )
 <a class="jxr_linenumber" name="L96" href="#L96">96</a>      {
@@ -119,11 +119,11 @@
 <a class="jxr_linenumber" name="L111" href="#L111">111</a>                 + componentClassRealm.getId();
 <a class="jxr_linenumber" name="L112" href="#L112">112</a>         }
 <a class="jxr_linenumber" name="L113" href="#L113">113</a> 
-<a class="jxr_linenumber" name="L114" href="#L114">114</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../../org/codehaus/plexus/component/factory/ComponentInstantiationException.html">ComponentInstantiationException</a>( msg, e );
+<a class="jxr_linenumber" name="L114" href="#L114">114</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentInstantiationException" href="../../../../../../org/codehaus/plexus/component/factory/ComponentInstantiationException.html#ComponentInstantiationException">ComponentInstantiationException</a>( msg, e );
 <a class="jxr_linenumber" name="L115" href="#L115">115</a>     }
 <a class="jxr_linenumber" name="L116" href="#L116">116</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2001&#x2013;2019 <a href="http://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2001&#x2013;2021 <a href="https://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
 </body>
 </html>

@@ -13,7 +13,7 @@
 <a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> * you may not use this file except in compliance with the License.</em>
 <a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_comment"> * You may obtain a copy of the License at</em>
 <a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> *      <a href="http://www.apache.org/licenses/LICENSE-2." target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.</a>0</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> *      <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS,</em>
@@ -83,10 +83,10 @@
 <a class="jxr_linenumber" name="L75" href="#L75">75</a>  
 <a class="jxr_linenumber" name="L76" href="#L76">76</a>      <strong class="jxr_keyword">private</strong> ComponentManager&lt;T&gt; componentManager;
 <a class="jxr_linenumber" name="L77" href="#L77">77</a>  
-<a class="jxr_linenumber" name="L78" href="#L78">78</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../org/codehaus/plexus/component/builder/XBeanComponentBuilder.html">XBeanComponentBuilder</a>() {
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>      <strong class="jxr_keyword">public</strong> <a name="XBeanComponentBuilder" href="../../../../../org/codehaus/plexus/component/builder/XBeanComponentBuilder.html#XBeanComponentBuilder">XBeanComponentBuilder</a>() {
 <a class="jxr_linenumber" name="L79" href="#L79">79</a>      }
 <a class="jxr_linenumber" name="L80" href="#L80">80</a>  
-<a class="jxr_linenumber" name="L81" href="#L81">81</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../org/codehaus/plexus/component/builder/XBeanComponentBuilder.html">XBeanComponentBuilder</a>(ComponentManager&lt;T&gt; componentManager) {
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>      <strong class="jxr_keyword">public</strong> <a name="XBeanComponentBuilder" href="../../../../../org/codehaus/plexus/component/builder/XBeanComponentBuilder.html#XBeanComponentBuilder">XBeanComponentBuilder</a>(ComponentManager&lt;T&gt; componentManager) {
 <a class="jxr_linenumber" name="L82" href="#L82">82</a>          setComponentManager(componentManager);
 <a class="jxr_linenumber" name="L83" href="#L83">83</a>      }
 <a class="jxr_linenumber" name="L84" href="#L84">84</a>  
@@ -98,12 +98,12 @@
 <a class="jxr_linenumber" name="L90" href="#L90">90</a>          <strong class="jxr_keyword">this</strong>.componentManager = componentManager;
 <a class="jxr_linenumber" name="L91" href="#L91">91</a>      }
 <a class="jxr_linenumber" name="L92" href="#L92">92</a>  
-<a class="jxr_linenumber" name="L93" href="#L93">93</a>      <strong class="jxr_keyword">protected</strong> <a href="../../../../../org/codehaus/plexus/MutablePlexusContainer.html">MutablePlexusContainer</a> getContainer() {
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>      <strong class="jxr_keyword">protected</strong> <a name="MutablePlexusContainer" href="../../../../../org/codehaus/plexus/MutablePlexusContainer.html#MutablePlexusContainer">MutablePlexusContainer</a> getContainer() {
 <a class="jxr_linenumber" name="L94" href="#L94">94</a>          <strong class="jxr_keyword">return</strong> componentManager.getContainer();
 <a class="jxr_linenumber" name="L95" href="#L95">95</a>      }
 <a class="jxr_linenumber" name="L96" href="#L96">96</a>  
-<a class="jxr_linenumber" name="L97" href="#L97">97</a>      <strong class="jxr_keyword">public</strong> T build( ComponentDescriptor&lt;T&gt; descriptor, ClassRealm realm, ComponentBuildListener listener )
-<a class="jxr_linenumber" name="L98" href="#L98">98</a>          <strong class="jxr_keyword">throws</strong> ComponentInstantiationException, <a href="../../../../../org/codehaus/plexus/component/repository/exception/ComponentLifecycleException.html">ComponentLifecycleException</a>
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>      <strong class="jxr_keyword">public</strong> T build( ComponentDescriptor&lt;T&gt; descriptor, ClassRealm realm, <a name="ComponentBuildListener" href="../../../../../org/codehaus/plexus/component/builder/ComponentBuildListener.html#ComponentBuildListener">ComponentBuildListener</a> listener )
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>          <strong class="jxr_keyword">throws</strong> ComponentInstantiationException, <a name="ComponentLifecycleException" href="../../../../../org/codehaus/plexus/component/repository/exception/ComponentLifecycleException.html#ComponentLifecycleException">ComponentLifecycleException</a>
 <a class="jxr_linenumber" name="L99" href="#L99">99</a>      {
 <a class="jxr_linenumber" name="L100" href="#L100">100</a>         LinkedHashSet&lt;ComponentDescriptor&lt;?&gt;&gt; stack = STACK.get();
 <a class="jxr_linenumber" name="L101" href="#L101">101</a>         <strong class="jxr_keyword">if</strong> ( stack.contains( descriptor ) )
@@ -119,7 +119,7 @@
 <a class="jxr_linenumber" name="L111" href="#L111">111</a>             {
 <a class="jxr_linenumber" name="L112" href="#L112">112</a>                 message += <span class="jxr_string">"\n\t["</span> + componentDescriptor.getRole() + <span class="jxr_string">", "</span> + componentDescriptor.getRoleHint() + <span class="jxr_string">"]"</span>;
 <a class="jxr_linenumber" name="L113" href="#L113">113</a>             }
-<a class="jxr_linenumber" name="L114" href="#L114">114</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/factory/ComponentInstantiationException.html">ComponentInstantiationException</a>( message );
+<a class="jxr_linenumber" name="L114" href="#L114">114</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentInstantiationException" href="../../../../../org/codehaus/plexus/component/factory/ComponentInstantiationException.html#ComponentInstantiationException">ComponentInstantiationException</a>( message );
 <a class="jxr_linenumber" name="L115" href="#L115">115</a>         }
 <a class="jxr_linenumber" name="L116" href="#L116">116</a>         stack.add( descriptor );
 <a class="jxr_linenumber" name="L117" href="#L117">117</a>         <strong class="jxr_keyword">try</strong>
@@ -148,8 +148,8 @@
 <a class="jxr_linenumber" name="L140" href="#L140">140</a>         }
 <a class="jxr_linenumber" name="L141" href="#L141">141</a>     }
 <a class="jxr_linenumber" name="L142" href="#L142">142</a> 
-<a class="jxr_linenumber" name="L143" href="#L143">143</a>     <strong class="jxr_keyword">protected</strong> T createComponentInstance(ComponentDescriptor&lt;T&gt; descriptor, ClassRealm realm) <strong class="jxr_keyword">throws</strong> ComponentInstantiationException, ComponentLifecycleException {
-<a class="jxr_linenumber" name="L144" href="#L144">144</a>         <a href="../../../../../org/codehaus/plexus/MutablePlexusContainer.html">MutablePlexusContainer</a> container = getContainer();
+<a class="jxr_linenumber" name="L143" href="#L143">143</a>     <strong class="jxr_keyword">protected</strong> T createComponentInstance(ComponentDescriptor&lt;T&gt; descriptor, ClassRealm realm) <strong class="jxr_keyword">throws</strong> ComponentInstantiationException, <a name="ComponentLifecycleException" href="../../../../../org/codehaus/plexus/component/repository/exception/ComponentLifecycleException.html#ComponentLifecycleException">ComponentLifecycleException</a> {
+<a class="jxr_linenumber" name="L144" href="#L144">144</a>         <a name="MutablePlexusContainer" href="../../../../../org/codehaus/plexus/MutablePlexusContainer.html#MutablePlexusContainer">MutablePlexusContainer</a> container = getContainer();
 <a class="jxr_linenumber" name="L145" href="#L145">145</a>         <strong class="jxr_keyword">if</strong> (realm == <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="L146" href="#L146">146</a>             realm = descriptor.getRealm();
 <a class="jxr_linenumber" name="L147" href="#L147">147</a>         }
@@ -160,7 +160,7 @@
 <a class="jxr_linenumber" name="L152" href="#L152">152</a>             ObjectRecipe recipe;
 <a class="jxr_linenumber" name="L153" href="#L153">153</a> 
 <a class="jxr_linenumber" name="L154" href="#L154">154</a>             T instance;
-<a class="jxr_linenumber" name="L155" href="#L155">155</a>             <a href="../../../../../org/codehaus/plexus/component/factory/ComponentFactory.html">ComponentFactory</a> componentFactory = container.getComponentFactoryManager().findComponentFactory(descriptor.getComponentFactory());
+<a class="jxr_linenumber" name="L155" href="#L155">155</a>             <a name="ComponentFactory" href="../../../../../org/codehaus/plexus/component/factory/ComponentFactory.html#ComponentFactory">ComponentFactory</a> componentFactory = container.getComponentFactoryManager().findComponentFactory(descriptor.getComponentFactory());
 <a class="jxr_linenumber" name="L156" href="#L156">156</a>             <strong class="jxr_keyword">if</strong> (JavaComponentFactory.<strong class="jxr_keyword">class</strong>.equals(componentFactory.getClass())) {
 <a class="jxr_linenumber" name="L157" href="#L157">157</a>                 <em class="jxr_comment">// xbean-reflect will create object and do injection</em>
 <a class="jxr_linenumber" name="L158" href="#L158">158</a>                 recipe = createObjectRecipe( <strong class="jxr_keyword">null</strong>, descriptor, realm );
@@ -174,22 +174,22 @@
 <a class="jxr_linenumber" name="L166" href="#L166">166</a>             }
 <a class="jxr_linenumber" name="L167" href="#L167">167</a> 
 <a class="jxr_linenumber" name="L168" href="#L168">168</a>             <em class="jxr_comment">// todo figure out how to easily let xbean do this map oriented stuff (if it is actually used in plexus)</em>
-<a class="jxr_linenumber" name="L169" href="#L169">169</a>             <strong class="jxr_keyword">if</strong> ( instance instanceof MapOrientedComponent) {
-<a class="jxr_linenumber" name="L170" href="#L170">170</a>                 <a href="../../../../../org/codehaus/plexus/component/MapOrientedComponent.html">MapOrientedComponent</a> mapOrientedComponent = (MapOrientedComponent) instance;
+<a class="jxr_linenumber" name="L169" href="#L169">169</a>             <strong class="jxr_keyword">if</strong> ( instance instanceof <a name="MapOrientedComponent" href="../../../../../org/codehaus/plexus/component/MapOrientedComponent.html#MapOrientedComponent">MapOrientedComponent</a>) {
+<a class="jxr_linenumber" name="L170" href="#L170">170</a>                 <a name="MapOrientedComponent" href="../../..<a name="MapOrientedComponent" href="../../../../../org/codehaus/plexus/component/MapOrientedComponent.html#MapOrientedComponent">MapOrientedComponent</a>plexus/component/MapOrientedComponent.html#MapOrientedComponent">MapOrientedComponent</a> mapOrientedComponent = (<a name="MapOrientedComponent" href="../../../../../org/codehaus/plexus/component/MapOrientedComponent.html#MapOrientedComponent">MapOrientedComponent</a>) instance;
 <a class="jxr_linenumber" name="L171" href="#L171">171</a>                 processMapOrientedComponent(descriptor, mapOrientedComponent, realm);
 <a class="jxr_linenumber" name="L172" href="#L172">172</a>             }
 <a class="jxr_linenumber" name="L173" href="#L173">173</a> 
 <a class="jxr_linenumber" name="L174" href="#L174">174</a>             <strong class="jxr_keyword">return</strong> instance;
 <a class="jxr_linenumber" name="L175" href="#L175">175</a>         } <strong class="jxr_keyword">catch</strong> (Exception e) {
-<a class="jxr_linenumber" name="L176" href="#L176">176</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/repository/exception/ComponentLifecycleException.html">ComponentLifecycleException</a>(<span class="jxr_string">"Error constructing component "</span> + descriptor.getHumanReadableKey(), e);
+<a class="jxr_linenumber" name="L176" href="#L176">176</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentLifecycleException" href="../../../../../org/codehaus/plexus/component/repository/exception/ComponentLifecycleException.html#ComponentLifecycleException">ComponentLifecycleException</a>(<span class="jxr_string">"Error constructing component "</span> + descriptor.getHumanReadableKey(), e);
 <a class="jxr_linenumber" name="L177" href="#L177">177</a>         } <strong class="jxr_keyword">catch</strong> (LinkageError e) {
-<a class="jxr_linenumber" name="L178" href="#L178">178</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/repository/exception/ComponentLifecycleException.html">ComponentLifecycleException</a>(<span class="jxr_string">"Error constructing component "</span> + descriptor.getHumanReadableKey(), e);
+<a class="jxr_linenumber" name="L178" href="#L178">178</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentLifecycleException" href="../../../../../org/codehaus/plexus/component/repository/exception/ComponentLifecycleException.html#ComponentLifecycleException">ComponentLifecycleException</a>(<span class="jxr_string">"Error constructing component "</span> + descriptor.getHumanReadableKey(), e);
 <a class="jxr_linenumber" name="L179" href="#L179">179</a>         } <strong class="jxr_keyword">finally</strong> {
 <a class="jxr_linenumber" name="L180" href="#L180">180</a>             Thread.currentThread().setContextClassLoader(oldClassLoader);
 <a class="jxr_linenumber" name="L181" href="#L181">181</a>         }
 <a class="jxr_linenumber" name="L182" href="#L182">182</a>     }
 <a class="jxr_linenumber" name="L183" href="#L183">183</a> 
-<a class="jxr_linenumber" name="L184" href="#L184">184</a>     <strong class="jxr_keyword">public</strong> ObjectRecipe createObjectRecipe(T instance, ComponentDescriptor&lt;T&gt; descriptor, ClassRealm realm) <strong class="jxr_keyword">throws</strong> ComponentInstantiationException, PlexusConfigurationException {
+<a class="jxr_linenumber" name="L184" href="#L184">184</a>     <strong class="jxr_keyword">public</strong> ObjectRecipe createObjectRecipe(T instance, ComponentDescriptor&lt;T&gt; descriptor, ClassRealm realm) <strong class="jxr_keyword">throws</strong> ComponentInstantiationException, <a name="PlexusConfigurationException" href="../../../../../org/codehaus/plexus/configuration/PlexusConfigurationException.html#PlexusConfigurationException">PlexusConfigurationException</a> {
 <a class="jxr_linenumber" name="L185" href="#L185">185</a>         String factoryMethod = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L186" href="#L186">186</a>         String[] constructorArgNames = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L187" href="#L187">187</a>         Class[] constructorArgTypes = <strong class="jxr_keyword">null</strong>;
@@ -205,12 +205,12 @@
 <a class="jxr_linenumber" name="L197" href="#L197">197</a>             }
 <a class="jxr_linenumber" name="L198" href="#L198">198</a>             <strong class="jxr_keyword">catch</strong> ( ClassNotFoundException e )
 <a class="jxr_linenumber" name="L199" href="#L199">199</a>             {
-<a class="jxr_linenumber" name="L200" href="#L200">200</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/factory/ComponentInstantiationException.html">ComponentInstantiationException</a>( <span class="jxr_string">"Could not load implementation class for component "</span>
+<a class="jxr_linenumber" name="L200" href="#L200">200</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentInstantiationException" href="../../../../../org/codehaus/plexus/component/factory/ComponentInstantiationException.html#ComponentInstantiationException">ComponentInstantiationException</a>( <span class="jxr_string">"Could not load implementation class for component "</span>
 <a class="jxr_linenumber" name="L201" href="#L201">201</a>                     + descriptor.getHumanReadableKey() + <span class="jxr_string">" from class realm "</span> + realm, e );
 <a class="jxr_linenumber" name="L202" href="#L202">202</a>             }
 <a class="jxr_linenumber" name="L203" href="#L203">203</a>             <strong class="jxr_keyword">catch</strong> ( LinkageError e )
 <a class="jxr_linenumber" name="L204" href="#L204">204</a>             {
-<a class="jxr_linenumber" name="L205" href="#L205">205</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/factory/ComponentInstantiationException.html">ComponentInstantiationException</a>( <span class="jxr_string">"Could not load implementation class for component "</span>
+<a class="jxr_linenumber" name="L205" href="#L205">205</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentInstantiationException" href="../../../../../org/codehaus/plexus/component/factory/ComponentInstantiationException.html#ComponentInstantiationException">ComponentInstantiationException</a>( <span class="jxr_string">"Could not load implementation class for component "</span>
 <a class="jxr_linenumber" name="L206" href="#L206">206</a>                     + descriptor.getHumanReadableKey() + <span class="jxr_string">" from class realm "</span> + realm, e );
 <a class="jxr_linenumber" name="L207" href="#L207">207</a>             }
 <a class="jxr_linenumber" name="L208" href="#L208">208</a>         }
@@ -224,9 +224,9 @@
 <a class="jxr_linenumber" name="L216" href="#L216">216</a> 
 <a class="jxr_linenumber" name="L217" href="#L217">217</a>         <em class="jxr_comment">// MapOrientedComponents don't get normal injection</em>
 <a class="jxr_linenumber" name="L218" href="#L218">218</a>         <strong class="jxr_keyword">if</strong> (!MapOrientedComponent.<strong class="jxr_keyword">class</strong>.isAssignableFrom( implClass )) {
-<a class="jxr_linenumber" name="L219" href="#L219">219</a>             <strong class="jxr_keyword">for</strong> (ComponentRequirement requirement : descriptor.getRequirements() ) {
+<a class="jxr_linenumber" name="L219" href="#L219">219</a>             <strong class="jxr_keyword">for</strong> (<a name="ComponentRequirement" href="../../../../../org/codehaus/plexus/component/repository/ComponentRequirement.html#ComponentRequirement">ComponentRequirement</a> requirement : descriptor.getRequirements() ) {
 <a class="jxr_linenumber" name="L220" href="#L220">220</a>                 String name = requirement.getFieldName();
-<a class="jxr_linenumber" name="L221" href="#L221">221</a>                 <a href="../../../../../org/codehaus/plexus/component/builder/XBeanComponentBuilder.html">RequirementRecipe</a> requirementRecipe = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/builder/XBeanComponentBuilder.html">RequirementRecipe</a>(descriptor, requirement, getContainer(), name == <strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="L221" href="#L221">221</a>                 RequirementRecipe requirementRecipe = <strong class="jxr_keyword">new</strong> RequirementRecipe(descriptor, requirement, getContainer(), name == <strong class="jxr_keyword">null</strong>);
 <a class="jxr_linenumber" name="L222" href="#L222">222</a> 
 <a class="jxr_linenumber" name="L223" href="#L223">223</a>                 <strong class="jxr_keyword">if</strong> (name != <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="L224" href="#L224">224</a>                     recipe.setProperty(name, requirementRecipe);
@@ -237,19 +237,19 @@
 <a class="jxr_linenumber" name="L229" href="#L229">229</a> 
 <a class="jxr_linenumber" name="L230" href="#L230">230</a>             <em class="jxr_comment">// add configuration data</em>
 <a class="jxr_linenumber" name="L231" href="#L231">231</a>             <strong class="jxr_keyword">if</strong> (shouldConfigure(descriptor )) {
-<a class="jxr_linenumber" name="L232" href="#L232">232</a>                 <a href="../../../../../org/codehaus/plexus/configuration/PlexusConfiguration.html">PlexusConfiguration</a> configuration = descriptor.getConfiguration();
+<a class="jxr_linenumber" name="L232" href="#L232">232</a>                 <a name="PlexusConfiguration" href="../../../../../org/codehaus/plexus/configuration/PlexusConfiguration.html#PlexusConfiguration">PlexusConfiguration</a> configuration = descriptor.getConfiguration();
 <a class="jxr_linenumber" name="L233" href="#L233">233</a>                 <strong class="jxr_keyword">if</strong> (configuration != <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="L234" href="#L234">234</a>                     <strong class="jxr_keyword">for</strong> (String name : configuration.getAttributeNames()) {
 <a class="jxr_linenumber" name="L235" href="#L235">235</a>                         String value;
 <a class="jxr_linenumber" name="L236" href="#L236">236</a>                         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L237" href="#L237">237</a>                             value = configuration.getAttribute(name);
-<a class="jxr_linenumber" name="L238" href="#L238">238</a>                         } <strong class="jxr_keyword">catch</strong> (PlexusConfigurationException e) {
-<a class="jxr_linenumber" name="L239" href="#L239">239</a>                             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/factory/ComponentInstantiationException.html">ComponentInstantiationException</a>(<span class="jxr_string">"Error getting value for attribute "</span> + name, e);
+<a class="jxr_linenumber" name="L238" href="#L238">238</a>                         } <strong class="jxr_keyword">catch</strong> (<a name="PlexusConfigurationException" href="../../../../../org/codehaus/plexus/configuration/PlexusConfigurationException.html#PlexusConfigurationException">PlexusConfigurationException</a> e) {
+<a class="jxr_linenumber" name="L239" href="#L239">239</a>                             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentInstantiationException" href="../../../../../org/codehaus/plexus/component/factory/ComponentInstantiationException.html#ComponentInstantiationException">ComponentInstantiationException</a>(<span class="jxr_string">"Error getting value for attribute "</span> + name, e);
 <a class="jxr_linenumber" name="L240" href="#L240">240</a>                         }
 <a class="jxr_linenumber" name="L241" href="#L241">241</a>                         name = fromXML(name);
 <a class="jxr_linenumber" name="L242" href="#L242">242</a>                         recipe.setProperty(name, value);
 <a class="jxr_linenumber" name="L243" href="#L243">243</a>                     }
-<a class="jxr_linenumber" name="L244" href="#L244">244</a>                     <strong class="jxr_keyword">for</strong> (PlexusConfiguration child : configuration.getChildren()) {
+<a class="jxr_linenumber" name="L244" href="#L244">244</a>                     <strong class="jxr_keyword">for</strong> (<a name="PlexusConfiguration" href="../../../../../org/codehaus/plexus/configuration/PlexusConfiguration.html#PlexusConfiguration">PlexusConfiguration</a> child : configuration.getChildren()) {
 <a class="jxr_linenumber" name="L245" href="#L245">245</a>                         String name = child.getName();
 <a class="jxr_linenumber" name="L246" href="#L246">246</a>                         name = fromXML(name);
 <a class="jxr_linenumber" name="L247" href="#L247">247</a>                         <strong class="jxr_keyword">if</strong> ( StringUtils.isNotEmpty( child.getValue( <strong class="jxr_keyword">null</strong> ) ) )
@@ -275,9 +275,9 @@
 <a class="jxr_linenumber" name="L267" href="#L267">267</a>         }
 <a class="jxr_linenumber" name="L268" href="#L268">268</a> 
 <a class="jxr_linenumber" name="L269" href="#L269">269</a>         <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="L270" href="#L270">270</a>             <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurator.html">ComponentConfigurator</a> componentConfigurator = getContainer().lookup(ComponentConfigurator.<strong class="jxr_keyword">class</strong>, configuratorId);
+<a class="jxr_linenumber" name="L270" href="#L270">270</a>             <a name="ComponentConfigurator" href="../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurator.html#ComponentConfigurator">ComponentConfigurator</a> componentConfigurator = getContainer().lookup(ComponentConfigurator.<strong class="jxr_keyword">class</strong>, configuratorId);
 <a class="jxr_linenumber" name="L271" href="#L271">271</a>             <strong class="jxr_keyword">return</strong> componentConfigurator == <strong class="jxr_keyword">null</strong> || componentConfigurator.getClass().equals(BasicComponentConfigurator.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="L272" href="#L272">272</a>         } <strong class="jxr_keyword">catch</strong> (ComponentLookupException e) {
+<a class="jxr_linenumber" name="L272" href="#L272">272</a>         } <strong class="jxr_keyword">catch</strong> (<a name="ComponentLookupException" href="../../../../../org/codehaus/plexus/component/repository/exception/ComponentLookupException.html#ComponentLookupException">ComponentLookupException</a> e) {
 <a class="jxr_linenumber" name="L273" href="#L273">273</a>         }
 <a class="jxr_linenumber" name="L274" href="#L274">274</a> 
 <a class="jxr_linenumber" name="L275" href="#L275">275</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
@@ -286,21 +286,21 @@
 <a class="jxr_linenumber" name="L278" href="#L278">278</a>         <strong class="jxr_keyword">return</strong> StringUtils.lowercaseFirstLetter(StringUtils.removeAndHump(elementName, <span class="jxr_string">"-"</span>));
 <a class="jxr_linenumber" name="L279" href="#L279">279</a>     }
 <a class="jxr_linenumber" name="L280" href="#L280">280</a> 
-<a class="jxr_linenumber" name="L281" href="#L281">281</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> startComponentLifecycle(Object component, ClassRealm realm) <strong class="jxr_keyword">throws</strong> ComponentLifecycleException {
+<a class="jxr_linenumber" name="L281" href="#L281">281</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> startComponentLifecycle(Object component, ClassRealm realm) <strong class="jxr_keyword">throws</strong> <a name="ComponentLifecycleException" href="../../../../../org/codehaus/plexus/component/repository/exception/ComponentLifecycleException.html#ComponentLifecycleException">ComponentLifecycleException</a> {
 <a class="jxr_linenumber" name="L282" href="#L282">282</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L283" href="#L283">283</a>             componentManager.start(component);
-<a class="jxr_linenumber" name="L284" href="#L284">284</a>         } <strong class="jxr_keyword">catch</strong> (PhaseExecutionException e) {
-<a class="jxr_linenumber" name="L285" href="#L285">285</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/repository/exception/ComponentLifecycleException.html">ComponentLifecycleException</a>(<span class="jxr_string">"Error starting component"</span>, e);
+<a class="jxr_linenumber" name="L284" href="#L284">284</a>         } <strong class="jxr_keyword">catch</strong> (<a name="PhaseExecutionException" href="../../../../../org/codehaus/plexus/personality/plexus/lifecycle/phase/PhaseExecutionException.html#PhaseExecutionException">PhaseExecutionException</a> e) {
+<a class="jxr_linenumber" name="L285" href="#L285">285</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentLifecycleException" href="../../../../../org/codehaus/plexus/component/repository/exception/ComponentLifecycleException.html#ComponentLifecycleException">ComponentLifecycleException</a>(<span class="jxr_string">"Error starting component"</span>, e);
 <a class="jxr_linenumber" name="L286" href="#L286">286</a>         }
 <a class="jxr_linenumber" name="L287" href="#L287">287</a>     }
 <a class="jxr_linenumber" name="L288" href="#L288">288</a> 
 <a class="jxr_linenumber" name="L289" href="#L289">289</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">class</strong> RequirementRecipe&lt;T&gt; <strong class="jxr_keyword">extends</strong> AbstractRecipe {
 <a class="jxr_linenumber" name="L290" href="#L290">290</a>         <strong class="jxr_keyword">private</strong> ComponentDescriptor&lt;T&gt; componentDescriptor;
-<a class="jxr_linenumber" name="L291" href="#L291">291</a>         <strong class="jxr_keyword">private</strong> <a href="../../../../../org/codehaus/plexus/component/repository/ComponentRequirement.html">ComponentRequirement</a> requirement;
-<a class="jxr_linenumber" name="L292" href="#L292">292</a>         <strong class="jxr_keyword">private</strong> <a href="../../../../../org/codehaus/plexus/MutablePlexusContainer.html">MutablePlexusContainer</a> container;
+<a class="jxr_linenumber" name="L291" href="#L291">291</a>         <strong class="jxr_keyword">private</strong> <a name="ComponentRequirement" href="../../../../../org/codehaus/plexus/component/repository/ComponentRequirement.html#ComponentRequirement">ComponentRequirement</a> requirement;
+<a class="jxr_linenumber" name="L292" href="#L292">292</a>         <strong class="jxr_keyword">private</strong> <a name="MutablePlexusContainer" href="../../../../../org/codehaus/plexus/MutablePlexusContainer.html#MutablePlexusContainer">MutablePlexusContainer</a> container;
 <a class="jxr_linenumber" name="L293" href="#L293">293</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">boolean</strong> autoMatch;
 <a class="jxr_linenumber" name="L294" href="#L294">294</a> 
-<a class="jxr_linenumber" name="L295" href="#L295">295</a>         <strong class="jxr_keyword">public</strong> <a href="../../../../../org/codehaus/plexus/component/builder/XBeanComponentBuilder.html">RequirementRecipe</a>(ComponentDescriptor&lt;T&gt; componentDescriptor, <a href="../../../../../org/codehaus/plexus/component/repository/ComponentRequirement.html">ComponentRequirement</a> requirement, <a href="../../../../../org/codehaus/plexus/MutablePlexusContainer.html">MutablePlexusContainer</a> container, <strong class="jxr_keyword">boolean</strong> autoMatch) {
+<a class="jxr_linenumber" name="L295" href="#L295">295</a>         <strong class="jxr_keyword">public</strong> RequirementRecipe(ComponentDescriptor&lt;T&gt; componentDescriptor, <a name="ComponentRequirement" href="../../../../../org/codehaus/plexus/component/repository/ComponentRequirement.html#ComponentRequirement">ComponentRequirement</a> requirement, <a name="MutablePlexusContainer" href="../../../../../org/codehaus/plexus/MutablePlexusContainer.html#MutablePlexusContainer">MutablePlexusContainer</a> container, <strong class="jxr_keyword">boolean</strong> autoMatch) {
 <a class="jxr_linenumber" name="L296" href="#L296">296</a>             <strong class="jxr_keyword">this</strong>.componentDescriptor = componentDescriptor;
 <a class="jxr_linenumber" name="L297" href="#L297">297</a>             <strong class="jxr_keyword">this</strong>.requirement = requirement;
 <a class="jxr_linenumber" name="L298" href="#L298">298</a>             <strong class="jxr_keyword">this</strong>.container = container;
@@ -316,13 +316,13 @@
 <a class="jxr_linenumber" name="L308" href="#L308">308</a>             Class&lt;?&gt; propertyType = toClass(expectedType);
 <a class="jxr_linenumber" name="L309" href="#L309">309</a> 
 <a class="jxr_linenumber" name="L310" href="#L310">310</a>             <em class="jxr_comment">// Never auto match array, map or collection</em>
-<a class="jxr_linenumber" name="L311" href="#L311">311</a>             <strong class="jxr_keyword">if</strong> (propertyType.isArray() || Map.<strong class="jxr_keyword">class</strong>.isAssignableFrom(propertyType) || Collection.<strong class="jxr_keyword">class</strong>.isAssignableFrom(propertyType) || requirement instanceof ComponentRequirementList) {
+<a class="jxr_linenumber" name="L311" href="#L311">311</a>             <strong class="jxr_keyword">if</strong> (propertyType.isArray() || Map.<strong class="jxr_keyword">class</strong>.isAssignableFrom(propertyType) || Collection.<strong class="jxr_keyword">class</strong>.isAssignableFrom(propertyType) || requirement instanceof <a name="ComponentRequirementList" href="../../../../../org/codehaus/plexus/component/repository/ComponentRequirementList.html#ComponentRequirementList">ComponentRequirementList</a>) {
 <a class="jxr_linenumber" name="L312" href="#L312">312</a>                 <strong class="jxr_keyword">return</strong> false;
 <a class="jxr_linenumber" name="L313" href="#L313">313</a>             }
 <a class="jxr_linenumber" name="L314" href="#L314">314</a> 
 <a class="jxr_linenumber" name="L315" href="#L315">315</a>             <em class="jxr_comment">// if the type to be created is an instance of the expected type, return true</em>
 <a class="jxr_linenumber" name="L316" href="#L316">316</a>             <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="L317" href="#L317">317</a>                 <a href="../../../../../org/codehaus/plexus/ComponentRegistry.html">ComponentRegistry</a> componentRegistry = container.getComponentRegistry();
+<a class="jxr_linenumber" name="L317" href="#L317">317</a>                 <a name="ComponentRegistry" href="../../../../../org/codehaus/plexus/ComponentRegistry.html#ComponentRegistry">ComponentRegistry</a> componentRegistry = container.getComponentRegistry();
 <a class="jxr_linenumber" name="L318" href="#L318">318</a> 
 <a class="jxr_linenumber" name="L319" href="#L319">319</a>                 <strong class="jxr_keyword">return</strong> componentRegistry.getComponentDescriptor(propertyType, requirement.getRole(), requirement.getRoleHint()) != <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L320" href="#L320">320</a>             } <strong class="jxr_keyword">catch</strong> (Exception e) {
@@ -338,8 +338,8 @@
 <a class="jxr_linenumber" name="L330" href="#L330">330</a>             <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L331" href="#L331">331</a>                 String role = requirement.getRole();
 <a class="jxr_linenumber" name="L332" href="#L332">332</a>                 List&lt;String&gt; roleHints = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L333" href="#L333">333</a>                 <strong class="jxr_keyword">if</strong> (requirement instanceof ComponentRequirementList) {
-<a class="jxr_linenumber" name="L334" href="#L334">334</a>                     roleHints = ((ComponentRequirementList) requirement).getRoleHints();
+<a class="jxr_linenumber" name="L333" href="#L333">333</a>                 <strong class="jxr_keyword">if</strong> (requirement instanceof <a name="ComponentRequirementList" href="../../../../../org/codehaus/plexus/component/repository/ComponentRequirementList.html#ComponentRequirementList">ComponentRequirementList</a>) {
+<a class="jxr_linenumber" name="L334" href="#L334">334</a>                     roleHints = ((<a name="ComponentRequirementList" href="../../../../../org/codehaus/plexus/component/repository/ComponentRequirementList.html#ComponentRequirementList">ComponentRequirementList</a>) requirement).getRoleHints();
 <a class="jxr_linenumber" name="L335" href="#L335">335</a>                 }
 <a class="jxr_linenumber" name="L336" href="#L336">336</a> 
 <a class="jxr_linenumber" name="L337" href="#L337">337</a>                 Object assignment;
@@ -368,7 +368,7 @@
 <a class="jxr_linenumber" name="L360" href="#L360">360</a> 
 <a class="jxr_linenumber" name="L361" href="#L361">361</a>                         <em class="jxr_comment">// todo verify key type is String</em>
 <a class="jxr_linenumber" name="L362" href="#L362">362</a> 
-<a class="jxr_linenumber" name="L363" href="#L363">363</a>                         assignment = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/collections/ComponentMap.html">ComponentMap</a>(container,
+<a class="jxr_linenumber" name="L363" href="#L363">363</a>                         assignment = <strong class="jxr_keyword">new</strong> <a name="ComponentMap" href="../../../../../org/codehaus/plexus/component/collections/ComponentMap.html#ComponentMap">ComponentMap</a>(container,
 <a class="jxr_linenumber" name="L364" href="#L364">364</a>                                 toClass(valueType),
 <a class="jxr_linenumber" name="L365" href="#L365">365</a>                                 role,
 <a class="jxr_linenumber" name="L366" href="#L366">366</a>                                 roleHints,
@@ -386,7 +386,7 @@
 <a class="jxr_linenumber" name="L378" href="#L378">378</a>                             componentType = typeParameters[0];
 <a class="jxr_linenumber" name="L379" href="#L379">379</a>                         }
 <a class="jxr_linenumber" name="L380" href="#L380">380</a> 
-<a class="jxr_linenumber" name="L381" href="#L381">381</a>                         assignment = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/collections/ComponentList.html">ComponentList</a>(container,
+<a class="jxr_linenumber" name="L381" href="#L381">381</a>                         assignment = <strong class="jxr_keyword">new</strong> <a name="ComponentList" href="../../../../../org/codehaus/plexus/component/collections/ComponentList.html#ComponentList">ComponentList</a>(container,
 <a class="jxr_linenumber" name="L382" href="#L382">382</a>                                 toClass( componentType ),
 <a class="jxr_linenumber" name="L383" href="#L383">383</a>                                 role,
 <a class="jxr_linenumber" name="L384" href="#L384">384</a>                                 roleHints,
@@ -412,7 +412,7 @@
 <a class="jxr_linenumber" name="L404" href="#L404">404</a>                 }
 <a class="jxr_linenumber" name="L405" href="#L405">405</a> 
 <a class="jxr_linenumber" name="L406" href="#L406">406</a>                 <strong class="jxr_keyword">return</strong> assignment;
-<a class="jxr_linenumber" name="L407" href="#L407">407</a>             } <strong class="jxr_keyword">catch</strong> (ComponentLookupException e) {
+<a class="jxr_linenumber" name="L407" href="#L407">407</a>             } <strong class="jxr_keyword">catch</strong> (<a name="ComponentLookupException" href="../../../../../org/codehaus/plexus/component/repository/exception/ComponentLookupException.html#ComponentLookupException">ComponentLookupException</a> e) {
 <a class="jxr_linenumber" name="L408" href="#L408">408</a>                 <strong class="jxr_keyword">if</strong> ( requirement.isOptional() )
 <a class="jxr_linenumber" name="L409" href="#L409">409</a>                 {
 <a class="jxr_linenumber" name="L410" href="#L410">410</a>                     <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
@@ -430,19 +430,19 @@
 <a class="jxr_linenumber" name="L422" href="#L422">422</a>         }
 <a class="jxr_linenumber" name="L423" href="#L423">423</a>     }
 <a class="jxr_linenumber" name="L424" href="#L424">424</a> 
-<a class="jxr_linenumber" name="L425" href="#L425">425</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/codehaus/plexus/component/builder/XBeanComponentBuilder.html">PlexusConfigurationRecipe</a> <strong class="jxr_keyword">extends</strong> AbstractRecipe {
-<a class="jxr_linenumber" name="L426" href="#L426">426</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../../org/codehaus/plexus/configuration/PlexusConfiguration.html">PlexusConfiguration</a> child;
+<a class="jxr_linenumber" name="L425" href="#L425">425</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">class</strong> PlexusConfigurationRecipe <strong class="jxr_keyword">extends</strong> AbstractRecipe {
+<a class="jxr_linenumber" name="L426" href="#L426">426</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a name="PlexusConfiguration" href="../../../../../org/codehaus/plexus/configuration/PlexusConfiguration.html#PlexusConfiguration">PlexusConfiguration</a> child;
 <a class="jxr_linenumber" name="L427" href="#L427">427</a> 
-<a class="jxr_linenumber" name="L428" href="#L428">428</a>         <strong class="jxr_keyword">public</strong> <a href="../../../../../org/codehaus/plexus/component/builder/XBeanComponentBuilder.html">PlexusConfigurationRecipe</a>(<a href="../../../../../org/codehaus/plexus/configuration/PlexusConfiguration.html">PlexusConfiguration</a> child) {
+<a class="jxr_linenumber" name="L428" href="#L428">428</a>         <strong class="jxr_keyword">public</strong> PlexusConfigurationRecipe(<a name="PlexusConfiguration" href="../../../../../org/codehaus/plexus/configuration/PlexusConfiguration.html#PlexusConfiguration">PlexusConfiguration</a> child) {
 <a class="jxr_linenumber" name="L429" href="#L429">429</a>             <strong class="jxr_keyword">this</strong>.child = child;
 <a class="jxr_linenumber" name="L430" href="#L430">430</a>         }
 <a class="jxr_linenumber" name="L431" href="#L431">431</a> 
 <a class="jxr_linenumber" name="L432" href="#L432">432</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> canCreate(Type type) {
 <a class="jxr_linenumber" name="L433" href="#L433">433</a>             <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="L434" href="#L434">434</a>                 <a href="../../../../../org/codehaus/plexus/component/configurator/converters/lookup/ConverterLookup.html">ConverterLookup</a> lookup = createConverterLookup();
+<a class="jxr_linenumber" name="L434" href="#L434">434</a>                 <a name="ConverterLookup" href="../../../../../org/codehaus/plexus/component/configurator/converters/lookup/ConverterLookup.html#ConverterLookup">ConverterLookup</a> lookup = createConverterLookup();
 <a class="jxr_linenumber" name="L435" href="#L435">435</a>                 lookup.lookupConverterForType(toClass(type));
 <a class="jxr_linenumber" name="L436" href="#L436">436</a>                 <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
-<a class="jxr_linenumber" name="L437" href="#L437">437</a>             } <strong class="jxr_keyword">catch</strong> (ComponentConfigurationException e) {
+<a class="jxr_linenumber" name="L437" href="#L437">437</a>             } <strong class="jxr_keyword">catch</strong> (<a name="ComponentConfigurationException" href="../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a> e) {
 <a class="jxr_linenumber" name="L438" href="#L438">438</a>                 <strong class="jxr_keyword">return</strong> false;
 <a class="jxr_linenumber" name="L439" href="#L439">439</a>             }
 <a class="jxr_linenumber" name="L440" href="#L440">440</a>         }
@@ -450,33 +450,33 @@
 <a class="jxr_linenumber" name="L442" href="#L442">442</a>         @Override
 <a class="jxr_linenumber" name="L443" href="#L443">443</a>         <strong class="jxr_keyword">protected</strong> Object internalCreate(Type expectedType, <strong class="jxr_keyword">boolean</strong> lazyRefAllowed) <strong class="jxr_keyword">throws</strong> ConstructionException {
 <a class="jxr_linenumber" name="L444" href="#L444">444</a>             <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="L445" href="#L445">445</a>                 <a href="../../../../../org/codehaus/plexus/component/configurator/converters/lookup/ConverterLookup.html">ConverterLookup</a> lookup = createConverterLookup();
-<a class="jxr_linenumber" name="L446" href="#L446">446</a>                 <a href="../../../../../org/codehaus/plexus/component/configurator/converters/ConfigurationConverter.html">ConfigurationConverter</a> converter = lookup.lookupConverterForType(toClass(expectedType));
+<a class="jxr_linenumber" name="L445" href="#L445">445</a>                 <a name="ConverterLookup" href="../../../../../org/codehaus/plexus/component/configurator/converters/lookup/ConverterLookup.html#ConverterLookup">ConverterLookup</a> lookup = createConverterLookup();
+<a class="jxr_linenumber" name="L446" href="#L446">446</a>                 <a name="ConfigurationConverter" href="../../../../../org/codehaus/plexus/component/configurator/converters/ConfigurationConverter.html#ConfigurationConverter">ConfigurationConverter</a> converter = lookup.lookupConverterForType(toClass(expectedType));
 <a class="jxr_linenumber" name="L447" href="#L447">447</a> 
 <a class="jxr_linenumber" name="L448" href="#L448">448</a>                 <em class="jxr_comment">// todo this will not work for static factories</em>
 <a class="jxr_linenumber" name="L449" href="#L449">449</a>                 ObjectRecipe caller = (ObjectRecipe) RecipeHelper.getCaller();
 <a class="jxr_linenumber" name="L450" href="#L450">450</a>                 Class parentClass = toClass(caller.getType());
 <a class="jxr_linenumber" name="L451" href="#L451">451</a> 
-<a class="jxr_linenumber" name="L452" href="#L452">452</a>                 Object value = converter.fromConfiguration(lookup, child, toClass(expectedType), parentClass, Thread.currentThread().getContextClassLoader(), <strong class="jxr_keyword">new</strong> DefaultExpressionEvaluator());
+<a class="jxr_linenumber" name="L452" href="#L452">452</a>                 Object value = converter.fromConfiguration(lookup, child, toClass(expectedType), parentClass, Thread.currentThread().getContextClassLoader(), <strong class="jxr_keyword">new</strong> <a name="DefaultExpressionEvaluator" href="../../../../../org/codehaus/plexus/component/configurator/expression/DefaultExpressionEvaluator.html#DefaultExpressionEvaluator">DefaultExpressionEvaluator</a>());
 <a class="jxr_linenumber" name="L453" href="#L453">453</a>                 <strong class="jxr_keyword">return</strong> value;
-<a class="jxr_linenumber" name="L454" href="#L454">454</a>             } <strong class="jxr_keyword">catch</strong> (ComponentConfigurationException e) {
+<a class="jxr_linenumber" name="L454" href="#L454">454</a>             } <strong class="jxr_keyword">catch</strong> (<a name="ComponentConfigurationException" href="../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a> e) {
 <a class="jxr_linenumber" name="L455" href="#L455">455</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> ConstructionException(<span class="jxr_string">"Unable to convert configuration for property "</span> + child.getName() + <span class="jxr_string">" to "</span> + toClass(expectedType).getName());
 <a class="jxr_linenumber" name="L456" href="#L456">456</a>             }
 <a class="jxr_linenumber" name="L457" href="#L457">457</a>         }
 <a class="jxr_linenumber" name="L458" href="#L458">458</a> 
-<a class="jxr_linenumber" name="L459" href="#L459">459</a>         <strong class="jxr_keyword">private</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/converters/lookup/ConverterLookup.html">ConverterLookup</a> createConverterLookup() {
+<a class="jxr_linenumber" name="L459" href="#L459">459</a>         <strong class="jxr_keyword">private</strong> <a name="ConverterLookup" href="../../../../../org/codehaus/plexus/component/configurator/converters/lookup/ConverterLookup.html#ConverterLookup">ConverterLookup</a> createConverterLookup() {
 <a class="jxr_linenumber" name="L460" href="#L460">460</a>             ClassRealm realm = (ClassRealm) Thread.currentThread().getContextClassLoader();
-<a class="jxr_linenumber" name="L461" href="#L461">461</a>             <a href="../../../../../org/codehaus/plexus/component/configurator/converters/lookup/ConverterLookup.html">ConverterLookup</a> lookup = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/converters/lookup/DefaultConverterLookup.html">DefaultConverterLookup</a>();
-<a class="jxr_linenumber" name="L462" href="#L462">462</a>             lookup.registerConverter( <strong class="jxr_keyword">new</strong> ClassRealmConverter(realm) );
+<a class="jxr_linenumber" name="L461" href="#L461">461</a>             <a name="ConverterLookup" href="../../../../../org/codehaus/plexus/component/configurator/converters/lookup/ConverterLookup.html#ConverterLookup">ConverterLookup</a> lookup = <strong class="jxr_keyword">new</strong> <a name="DefaultConverterLookup" href="../../../../../org/codehaus/plexus/component/configurator/converters/lookup/DefaultConverterLookup.html#DefaultConverterLookup">DefaultConverterLookup</a>();
+<a class="jxr_linenumber" name="L462" href="#L462">462</a>             lookup.registerConverter( <strong class="jxr_keyword">new</strong> <a name="ClassRealmConverter" href="../../../../../org/codehaus/plexus/component/configurator/converters/special/ClassRealmConverter.html#ClassRealmConverter">ClassRealmConverter</a>(realm) );
 <a class="jxr_linenumber" name="L463" href="#L463">463</a>             <strong class="jxr_keyword">return</strong> lookup;
 <a class="jxr_linenumber" name="L464" href="#L464">464</a>         }
 <a class="jxr_linenumber" name="L465" href="#L465">465</a>     }
 <a class="jxr_linenumber" name="L466" href="#L466">466</a> 
 <a class="jxr_linenumber" name="L467" href="#L467">467</a> 
-<a class="jxr_linenumber" name="L468" href="#L468">468</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> processMapOrientedComponent(ComponentDescriptor&lt;?&gt; descriptor, <a href="../../../../../org/codehaus/plexus/component/MapOrientedComponent.html">MapOrientedComponent</a> mapOrientedComponent, ClassRealm realm) <strong class="jxr_keyword">throws</strong> ComponentConfigurationException, ComponentLookupException {
-<a class="jxr_linenumber" name="L469" href="#L469">469</a>         <a href="../../../../../org/codehaus/plexus/MutablePlexusContainer.html">MutablePlexusContainer</a> container = getContainer();
+<a class="jxr_linenumber" name="L468" href="#L468">468</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> processMapOrientedComponent(ComponentDescriptor&lt;?&gt; descriptor, <a name="MapOrientedComponent" href="../../../../../org/codehaus/plexus/component/MapOrientedComponent.html#MapOrientedComponent">MapOrientedComponent</a> mapOrientedComponent, ClassRealm realm) <strong class="jxr_keyword">throws</strong> ComponentConfigurationException, <a name="ComponentLookupException" href="../../../../../org/codehaus/plexus/component/repository/exception/ComponentLookupException.html#ComponentLookupException">ComponentLookupException</a> {
+<a class="jxr_linenumber" name="L469" href="#L469">469</a>         <a name="MutablePlexusContainer" href="../../../../../org/codehaus/plexus/MutablePlexusContainer.html#MutablePlexusContainer">MutablePlexusContainer</a> container = getContainer();
 <a class="jxr_linenumber" name="L470" href="#L470">470</a> 
-<a class="jxr_linenumber" name="L471" href="#L471">471</a>         <strong class="jxr_keyword">for</strong> (ComponentRequirement requirement : descriptor.getRequirements()) {
+<a class="jxr_linenumber" name="L471" href="#L471">471</a>         <strong class="jxr_keyword">for</strong> (<a name="ComponentRequirement" href="../../../../../org/codehaus/plexus/component/repository/ComponentRequirement.html#ComponentRequirement">ComponentRequirement</a> requirement : descriptor.getRequirements()) {
 <a class="jxr_linenumber" name="L472" href="#L472">472</a>             String role = requirement.getRole();
 <a class="jxr_linenumber" name="L473" href="#L473">473</a>             String hint = requirement.getRoleHint();
 <a class="jxr_linenumber" name="L474" href="#L474">474</a>             String mappingType = requirement.getFieldMappingType();
@@ -500,10 +500,10 @@
 <a class="jxr_linenumber" name="L492" href="#L492">492</a>             mapOrientedComponent.addComponentRequirement(requirement, value);
 <a class="jxr_linenumber" name="L493" href="#L493">493</a>         }
 <a class="jxr_linenumber" name="L494" href="#L494">494</a> 
-<a class="jxr_linenumber" name="L495" href="#L495">495</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/converters/composite/MapConverter.html">MapConverter</a> converter = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/converters/composite/MapConverter.html">MapConverter</a>();
-<a class="jxr_linenumber" name="L496" href="#L496">496</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/converters/lookup/ConverterLookup.html">ConverterLookup</a> converterLookup = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/converters/lookup/DefaultConverterLookup.html">DefaultConverterLookup</a>();
-<a class="jxr_linenumber" name="L497" href="#L497">497</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/expression/DefaultExpressionEvaluator.html">DefaultExpressionEvaluator</a> expressionEvaluator = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/expression/DefaultExpressionEvaluator.html">DefaultExpressionEvaluator</a>();
-<a class="jxr_linenumber" name="L498" href="#L498">498</a>         <a href="../../../../../org/codehaus/plexus/configuration/PlexusConfiguration.html">PlexusConfiguration</a> configuration = container.getConfigurationSource().getConfiguration( descriptor );
+<a class="jxr_linenumber" name="L495" href="#L495">495</a>         <a name="MapConverter" href="../../../../../org/codehaus/plexus/co<a name="MapConverter" href="../../../../../org/codehaus/plexus/component/configurator/converters/composite/MapConverter.html#MapConverter">MapConverter</a>igurator/converters/composite/MapConverter.html#MapConverter">MapConverter</a> converter = <strong class="jxr_keyword">new</strong> <a name="MapConverter" href="../../../../../org/codehaus/plexus/component/configurator/converters/composite/MapConverter.html#MapConverter">MapConverter</a>();
+<a class="jxr_linenumber" name="L496" href="#L496">496</a>         <a name="ConverterLookup" href="../../../../../org/codehaus/plexus/component/configurator/converters/lookup/ConverterLookup.html#ConverterLookup">ConverterLookup</a> converterLookup = <strong class="jxr_keyword">new</strong> <a name="DefaultConverterLookup" href="../../../../../org/codehaus/plexus/component/configurator/converters/lookup/DefaultConverterLookup.html#DefaultConverterLookup">DefaultConverterLookup</a>();
+<a class="jxr_linenumber" name="L497" href="#L497">497</a>         <a name="DefaultExpressionEvaluator" href="../../../../../org/codehaus/plexus/component/co<a name="DefaultExpressionEvaluator" href="../../../../../org/codehaus/plexus/component/configurator/expression/DefaultExpressionEvaluator.html#DefaultExpressionEvaluator">DefaultExpressionEvaluator</a>ultExpressionEvaluator.html#DefaultExpressionEvaluator">DefaultExpressionEvaluator</a> expressionEvaluator = <strong class="jxr_keyword">new</strong> <a name="DefaultExpressionEvaluator" href="../../../../../org/codehaus/plexus/component/configurator/expression/DefaultExpressionEvaluator.html#DefaultExpressionEvaluator">DefaultExpressionEvaluator</a>();
+<a class="jxr_linenumber" name="L498" href="#L498">498</a>         <a name="PlexusConfiguration" href="../../../../../org/codehaus/plexus/configuration/PlexusConfiguration.html#PlexusConfiguration">PlexusConfiguration</a> configuration = container.getConfigurationSource().getConfiguration( descriptor );
 <a class="jxr_linenumber" name="L499" href="#L499">499</a> 
 <a class="jxr_linenumber" name="L500" href="#L500">500</a>         <strong class="jxr_keyword">if</strong> ( configuration != <strong class="jxr_keyword">null</strong> )
 <a class="jxr_linenumber" name="L501" href="#L501">501</a>         {
@@ -521,6 +521,6 @@
 <a class="jxr_linenumber" name="L513" href="#L513">513</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2001&#x2013;2019 <a href="http://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2001&#x2013;2021 <a href="https://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
 </body>
 </html>

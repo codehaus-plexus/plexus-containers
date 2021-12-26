@@ -53,12 +53,12 @@
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>  <em class="jxr_javadoccomment"> * @author &lt;a href="<a href="mailto:jason@maven.org" target="alexandria_uri">mailto:jason@maven.org</a>"&gt;Jason van Zyl&lt;/a&gt;</em>
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>  <em class="jxr_javadoccomment"> * @author &lt;a href="<a href="mailto:trygvis@inamo.no" target="alexandria_uri">mailto:trygvis@inamo.no</a>"&gt;Trygve Laugst&amp;oslash;l&lt;/a&gt;</em>
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../org/codehaus/plexus/metadata/DefaultComponentDescriptorWriter.html">DefaultComponentDescriptorWriter</a>
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>      <strong class="jxr_keyword">implements</strong> <a href="../../../../org/codehaus/plexus/metadata/ComponentDescriptorWriter.html">ComponentDescriptorWriter</a>
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="DefaultComponentDescriptorWriter" href="../../../../org/codehaus/plexus/metadata/DefaultComponentDescriptorWriter.html#DefaultComponentDescriptorWriter">DefaultComponentDescriptorWriter</a>
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>      <strong class="jxr_keyword">implements</strong> <a name="ComponentDescriptorWriter" href="../../../../org/codehaus/plexus/metadata/ComponentDescriptorWriter.html#ComponentDescriptorWriter">ComponentDescriptorWriter</a>
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>  {
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String LS = System.getProperty( <span class="jxr_string">"line.separator"</span> );
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>  
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> writeDescriptorSet( Writer writer, ComponentSetDescriptor componentSetDescriptor, <strong class="jxr_keyword">boolean</strong> containerDescriptor )
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> writeDescriptorSet( Writer writer, <a name="ComponentSetDescriptor" href="../../../../org/codehaus/plexus/component/repository/ComponentSetDescriptor.html#ComponentSetDescriptor">ComponentSetDescriptor</a> componentSetDescriptor, <strong class="jxr_keyword">boolean</strong> containerDescriptor )
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>          <strong class="jxr_keyword">throws</strong> ComponentDescriptorWriteException, IOException
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>      {
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>          <strong class="jxr_keyword">try</strong>
@@ -80,7 +80,7 @@
 <a class="jxr_linenumber" name="L72" href="#L72">72</a>          }
 <a class="jxr_linenumber" name="L73" href="#L73">73</a>          <strong class="jxr_keyword">catch</strong> ( PlexusConfigurationException e )
 <a class="jxr_linenumber" name="L74" href="#L74">74</a>          {
-<a class="jxr_linenumber" name="L75" href="#L75">75</a>              <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../org/codehaus/plexus/metadata/ComponentDescriptorWriteException.html">ComponentDescriptorWriteException</a>( <span class="jxr_string">"Internal error while writing out the configuration"</span>, e );
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>              <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentDescriptorWriteException" href="../../../../org/codehaus/plexus/metadata/ComponentDescriptorWriteException.html#ComponentDescriptorWriteException">ComponentDescriptorWriteException</a>( <span class="jxr_string">"Internal error while writing out the configuration"</span>, e );
 <a class="jxr_linenumber" name="L76" href="#L76">76</a>          }
 <a class="jxr_linenumber" name="L77" href="#L77">77</a>  
 <a class="jxr_linenumber" name="L78" href="#L78">78</a>      }
@@ -189,15 +189,15 @@
 <a class="jxr_linenumber" name="L181" href="#L181">181</a> 
 <a class="jxr_linenumber" name="L182" href="#L182">182</a>         w.startElement( <span class="jxr_string">"requirements"</span> );
 <a class="jxr_linenumber" name="L183" href="#L183">183</a>         
-<a class="jxr_linenumber" name="L184" href="#L184">184</a>         <strong class="jxr_keyword">for</strong> ( ComponentRequirement cr : requirements )
+<a class="jxr_linenumber" name="L184" href="#L184">184</a>         <strong class="jxr_keyword">for</strong> ( <a name="ComponentRequirement" href="../../../../org/codehaus/plexus/component/repository/ComponentRequirement.html#ComponentRequirement">ComponentRequirement</a> cr : requirements )
 <a class="jxr_linenumber" name="L185" href="#L185">185</a>         {
 <a class="jxr_linenumber" name="L186" href="#L186">186</a>             w.startElement( <span class="jxr_string">"requirement"</span> );
 <a class="jxr_linenumber" name="L187" href="#L187">187</a> 
 <a class="jxr_linenumber" name="L188" href="#L188">188</a>             element( w, <span class="jxr_string">"role"</span>, cr.getRole() );
 <a class="jxr_linenumber" name="L189" href="#L189">189</a> 
-<a class="jxr_linenumber" name="L190" href="#L190">190</a>             <strong class="jxr_keyword">if</strong> ( cr instanceof ComponentRequirementList )
+<a class="jxr_linenumber" name="L190" href="#L190">190</a>             <strong class="jxr_keyword">if</strong> ( cr instanceof <a name="ComponentRequirementList" href="../../../../org/codehaus/plexus/component/repository/ComponentRequirementList.html#ComponentRequirementList">ComponentRequirementList</a> )
 <a class="jxr_linenumber" name="L191" href="#L191">191</a>             {
-<a class="jxr_linenumber" name="L192" href="#L192">192</a>                 List&lt;String&gt; hints = ( (ComponentRequirementList) cr ).getRoleHints();
+<a class="jxr_linenumber" name="L192" href="#L192">192</a>                 List&lt;String&gt; hints = ( (<a name="ComponentRequirementList" href="../../../../org/codehaus/plexus/component/repository/ComponentRequirementList.html#ComponentRequirementList">ComponentRequirementList</a>) cr ).getRoleHints();
 <a class="jxr_linenumber" name="L193" href="#L193">193</a> 
 <a class="jxr_linenumber" name="L194" href="#L194">194</a>                 <strong class="jxr_keyword">if</strong> ( hints != <strong class="jxr_keyword">null</strong> )
 <a class="jxr_linenumber" name="L195" href="#L195">195</a>                 {
@@ -241,7 +241,7 @@
 <a class="jxr_linenumber" name="L233" href="#L233">233</a> 
 <a class="jxr_linenumber" name="L234" href="#L234">234</a>         <strong class="jxr_keyword">if</strong> ( !configuration.getName().equals( <span class="jxr_string">"configuration"</span> ) )
 <a class="jxr_linenumber" name="L235" href="#L235">235</a>         {
-<a class="jxr_linenumber" name="L236" href="#L236">236</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../org/codehaus/plexus/metadata/ComponentDescriptorWriteException.html">ComponentDescriptorWriteException</a>( <span class="jxr_string">"The root node of the configuration must be 'configuration'."</span>);
+<a class="jxr_linenumber" name="L236" href="#L236">236</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentDescriptorWriteException" href="../../../../org/codehaus/plexus/metadata/ComponentDescriptorWriteException.html#ComponentDescriptorWriteException">ComponentDescriptorWriteException</a>( <span class="jxr_string">"The root node of the configuration must be 'configuration'."</span>);
 <a class="jxr_linenumber" name="L237" href="#L237">237</a>         }
 <a class="jxr_linenumber" name="L238" href="#L238">238</a> 
 <a class="jxr_linenumber" name="L239" href="#L239">239</a>         writePlexusConfiguration( w, configuration );
@@ -311,6 +311,6 @@
 <a class="jxr_linenumber" name="L303" href="#L303">303</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2001&#x2013;2019 <a href="http://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2001&#x2013;2021 <a href="https://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
 </body>
 </html>

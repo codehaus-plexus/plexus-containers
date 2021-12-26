@@ -58,7 +58,7 @@
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>  <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>  <em class="jxr_javadoccomment"> * @author &lt;a href="<a href="mailto:michal@codehaus.org" target="alexandria_uri">mailto:michal@codehaus.org</a>"&gt;Michal Maczka&lt;/a&gt;</em>
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">abstract</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/AbstractComponentConfiguratorTest.html">AbstractComponentConfiguratorTest</a>
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">abstract</strong> <strong class="jxr_keyword">class</strong> <a name="AbstractComponentConfiguratorTest" href="../../../../../org/codehaus/plexus/component/configurator/AbstractComponentConfiguratorTest.html#AbstractComponentConfiguratorTest">AbstractComponentConfiguratorTest</a>
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>      <strong class="jxr_keyword">extends</strong> PlexusTestCase
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>  {
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>      <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> configureComponent(Object component, ComponentDescriptor descriptor, ClassRealm realm) <strong class="jxr_keyword">throws</strong> Exception {
@@ -101,7 +101,7 @@
 <a class="jxr_linenumber" name="L93" href="#L93">93</a>  
 <a class="jxr_linenumber" name="L94" href="#L94">94</a>          PlexusConfiguration configuration = PlexusTools.buildConfiguration( <span class="jxr_string">"&lt;Test&gt;"</span>, <strong class="jxr_keyword">new</strong> StringReader( xml ) );
 <a class="jxr_linenumber" name="L95" href="#L95">95</a>  
-<a class="jxr_linenumber" name="L96" href="#L96">96</a>          <a href="../../../../../org/codehaus/plexus/component/configurator/ConfigurableComponent.html">ConfigurableComponent</a> component = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ConfigurableComponent.html">ConfigurableComponent</a>();
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>          <a name="ConfigurableComponent" href="../../../../../org/codehaus/plexus/co<a name="ConfigurableComponent" href="../../../../../org/codehaus/plexus/component/configurator/ConfigurableComponent.html#ConfigurableComponent">ConfigurableComponent</a>ConfigurableComponent.html#ConfigurableComponent">ConfigurableComponent</a> component = <strong class="jxr_keyword">new</strong> <a name="ConfigurableComponent" href="../../../../../org/codehaus/plexus/component/configurator/ConfigurableComponent.html#ConfigurableComponent">ConfigurableComponent</a>();
 <a class="jxr_linenumber" name="L97" href="#L97">97</a>  
 <a class="jxr_linenumber" name="L98" href="#L98">98</a>          ComponentDescriptor descriptor = <strong class="jxr_keyword">new</strong> ComponentDescriptor();
 <a class="jxr_linenumber" name="L99" href="#L99">99</a>  
@@ -145,9 +145,9 @@
 <a class="jxr_linenumber" name="L137" href="#L137">137</a> 
 <a class="jxr_linenumber" name="L138" href="#L138">138</a>         assertEquals( 2, list.size() );
 <a class="jxr_linenumber" name="L139" href="#L139">139</a> 
-<a class="jxr_linenumber" name="L140" href="#L140">140</a>         assertEquals( <span class="jxr_string">"jason"</span>, ( (ImportantThing) list.get( 0 ) ).getName() );
+<a class="jxr_linenumber" name="L140" href="#L140">140</a>         assertEquals( <span class="jxr_string">"jason"</span>, ( (<a name="ImportantThing" href="../../../../../org/codehaus/plexus/component/configurator/ImportantThing.html#ImportantThing">ImportantThing</a>) list.get( 0 ) ).getName() );
 <a class="jxr_linenumber" name="L141" href="#L141">141</a> 
-<a class="jxr_linenumber" name="L142" href="#L142">142</a>         assertEquals( <span class="jxr_string">"tess"</span>, ( (ImportantThing) list.get( 1 ) ).getName() );
+<a class="jxr_linenumber" name="L142" href="#L142">142</a>         assertEquals( <span class="jxr_string">"tess"</span>, ( (<a name="ImportantThing" href="../../../../../org/codehaus/plexus/component/configurator/ImportantThing.html#ImportantThing">ImportantThing</a>) list.get( 1 ) ).getName() );
 <a class="jxr_linenumber" name="L143" href="#L143">143</a> 
 <a class="jxr_linenumber" name="L144" href="#L144">144</a>         <em class="jxr_comment">// Embedded Configuration</em>
 <a class="jxr_linenumber" name="L145" href="#L145">145</a> 
@@ -168,7 +168,7 @@
 <a class="jxr_linenumber" name="L160" href="#L160">160</a> 
 <a class="jxr_linenumber" name="L161" href="#L161">161</a>         PlexusConfiguration configuration = PlexusTools.buildConfiguration( <span class="jxr_string">"&lt;Test&gt;"</span>, <strong class="jxr_keyword">new</strong> StringReader( xml ) );
 <a class="jxr_linenumber" name="L162" href="#L162">162</a> 
-<a class="jxr_linenumber" name="L163" href="#L163">163</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithSetters.html">ComponentWithSetters</a> component = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithSetters.html">ComponentWithSetters</a>();
+<a class="jxr_linenumber" name="L163" href="#L163">163</a>         <a name="ComponentWithSetters" href="../../../../../org/codehaus/plexus/co<a name="ComponentWithSetters" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithSetters.html#ComponentWithSetters">ComponentWithSetters</a>/ComponentWithSetters.html#ComponentWithSetters">ComponentWithSetters</a> component = <strong class="jxr_keyword">new</strong> <a name="ComponentWithSetters" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithSetters.html#ComponentWithSetters">ComponentWithSetters</a>();
 <a class="jxr_linenumber" name="L164" href="#L164">164</a> 
 <a class="jxr_linenumber" name="L165" href="#L165">165</a>         ComponentDescriptor descriptor = <strong class="jxr_keyword">new</strong> ComponentDescriptor();
 <a class="jxr_linenumber" name="L166" href="#L166">166</a> 
@@ -208,9 +208,9 @@
 <a class="jxr_linenumber" name="L200" href="#L200">200</a> 
 <a class="jxr_linenumber" name="L201" href="#L201">201</a>         assertEquals( 2, list.size() );
 <a class="jxr_linenumber" name="L202" href="#L202">202</a> 
-<a class="jxr_linenumber" name="L203" href="#L203">203</a>         assertEquals( <span class="jxr_string">"jason"</span>, ( (ImportantThing) list.get( 0 ) ).getName() );
+<a class="jxr_linenumber" name="L203" href="#L203">203</a>         assertEquals( <span class="jxr_string">"jason"</span>, ( (<a name="ImportantThing" href="../../../../../org/codehaus/plexus/component/configurator/ImportantThing.html#ImportantThing">ImportantThing</a>) list.get( 0 ) ).getName() );
 <a class="jxr_linenumber" name="L204" href="#L204">204</a> 
-<a class="jxr_linenumber" name="L205" href="#L205">205</a>         assertEquals( <span class="jxr_string">"tess"</span>, ( (ImportantThing) list.get( 1 ) ).getName() );
+<a class="jxr_linenumber" name="L205" href="#L205">205</a>         assertEquals( <span class="jxr_string">"tess"</span>, ( (<a name="ImportantThing" href="../../../../../org/codehaus/plexus/component/configurator/ImportantThing.html#ImportantThing">ImportantThing</a>) list.get( 1 ) ).getName() );
 <a class="jxr_linenumber" name="L206" href="#L206">206</a> 
 <a class="jxr_linenumber" name="L207" href="#L207">207</a>         assertTrue( component.importantThingsValueSet );
 <a class="jxr_linenumber" name="L208" href="#L208">208</a> 
@@ -230,7 +230,7 @@
 <a class="jxr_linenumber" name="L222" href="#L222">222</a> 
 <a class="jxr_linenumber" name="L223" href="#L223">223</a>         PlexusConfiguration configuration = PlexusTools.buildConfiguration( <span class="jxr_string">"&lt;Test&gt;"</span>, <strong class="jxr_keyword">new</strong> StringReader( xml ) );
 <a class="jxr_linenumber" name="L224" href="#L224">224</a> 
-<a class="jxr_linenumber" name="L225" href="#L225">225</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/DefaultComponent.html">DefaultComponent</a> component = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/DefaultComponent.html">DefaultComponent</a>();
+<a class="jxr_linenumber" name="L225" href="#L225">225</a>         <a name="DefaultComponent" href="../../../../../org/codehaus/plexus/co<a name="DefaultComponent" href="../../../../../org/codehaus/plexus/component/configurator/DefaultComponent.html#DefaultComponent">DefaultComponent</a>ator/DefaultComponent.html#DefaultComponent">DefaultComponent</a> component = <strong class="jxr_keyword">new</strong> <a name="DefaultComponent" href="../../../../../org/codehaus/plexus/component/configurator/DefaultComponent.html#DefaultComponent">DefaultComponent</a>();
 <a class="jxr_linenumber" name="L226" href="#L226">226</a> 
 <a class="jxr_linenumber" name="L227" href="#L227">227</a>         ComponentDescriptor descriptor = <strong class="jxr_keyword">new</strong> ComponentDescriptor();
 <a class="jxr_linenumber" name="L228" href="#L228">228</a> 
@@ -271,7 +271,7 @@
 <a class="jxr_linenumber" name="L263" href="#L263">263</a> 
 <a class="jxr_linenumber" name="L264" href="#L264">264</a>         PlexusConfiguration configuration = PlexusTools.buildConfiguration( <span class="jxr_string">"&lt;Test&gt;"</span>, <strong class="jxr_keyword">new</strong> StringReader( xml ) );
 <a class="jxr_linenumber" name="L265" href="#L265">265</a> 
-<a class="jxr_linenumber" name="L266" href="#L266">266</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithCollectionFields.html">ComponentWithCollectionFields</a> component = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithCollectionFields.html">ComponentWithCollectionFields</a>();
+<a class="jxr_linenumber" name="L266" href="#L266">266</a>         <a name="ComponentWithCollectionFields" href="../../../../../org/codehaus/plexus/co<a name="ComponentWithCollectionFields" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithCollectionFields.html#ComponentWithCollectionFields">ComponentWithCollectionFields</a>tWithCollectionFields.html#ComponentWithCollectionFields">ComponentWithCollectionFields</a> component = <strong class="jxr_keyword">new</strong> <a name="ComponentWithCollectionFields" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithCollectionFields.html#ComponentWithCollectionFields">ComponentWithCollectionFields</a>();
 <a class="jxr_linenumber" name="L267" href="#L267">267</a> 
 <a class="jxr_linenumber" name="L268" href="#L268">268</a>         ComponentDescriptor descriptor = <strong class="jxr_keyword">new</strong> ComponentDescriptor();
 <a class="jxr_linenumber" name="L269" href="#L269">269</a> 
@@ -289,7 +289,7 @@
 <a class="jxr_linenumber" name="L281" href="#L281">281</a> 
 <a class="jxr_linenumber" name="L282" href="#L282">282</a>         Vector vector = component.getVector();
 <a class="jxr_linenumber" name="L283" href="#L283">283</a> 
-<a class="jxr_linenumber" name="L284" href="#L284">284</a>         assertEquals( <span class="jxr_string">"life"</span>, ( (ImportantThing) vector.get( 0 ) ).getName() );
+<a class="jxr_linenumber" name="L284" href="#L284">284</a>         assertEquals( <span class="jxr_string">"life"</span>, ( (<a name="ImportantThing" href="../../../../../org/codehaus/plexus/component/configurator/ImportantThing.html#ImportantThing">ImportantThing</a>) vector.get( 0 ) ).getName() );
 <a class="jxr_linenumber" name="L285" href="#L285">285</a> 
 <a class="jxr_linenumber" name="L286" href="#L286">286</a>         assertEquals( 1, vector.size() );
 <a class="jxr_linenumber" name="L287" href="#L287">287</a> 
@@ -299,13 +299,13 @@
 <a class="jxr_linenumber" name="L291" href="#L291">291</a> 
 <a class="jxr_linenumber" name="L292" href="#L292">292</a>         Object[] setContents = set.toArray();
 <a class="jxr_linenumber" name="L293" href="#L293">293</a> 
-<a class="jxr_linenumber" name="L294" href="#L294">294</a>         assertEquals( <span class="jxr_string">"life"</span>, ( (ImportantThing) setContents[0] ).getName() );
+<a class="jxr_linenumber" name="L294" href="#L294">294</a>         assertEquals( <span class="jxr_string">"life"</span>, ( (<a name="ImportantThing" href="../../../../../org/codehaus/plexus/component/configurator/ImportantThing.html#ImportantThing">ImportantThing</a>) setContents[0] ).getName() );
 <a class="jxr_linenumber" name="L295" href="#L295">295</a> 
 <a class="jxr_linenumber" name="L296" href="#L296">296</a>         List list = component.getList();
 <a class="jxr_linenumber" name="L297" href="#L297">297</a> 
 <a class="jxr_linenumber" name="L298" href="#L298">298</a>         assertEquals( list.getClass(), LinkedList.<strong class="jxr_keyword">class</strong> );
 <a class="jxr_linenumber" name="L299" href="#L299">299</a> 
-<a class="jxr_linenumber" name="L300" href="#L300">300</a>         assertEquals( <span class="jxr_string">"life"</span>, ( (ImportantThing) list.get( 0 ) ).getName() );
+<a class="jxr_linenumber" name="L300" href="#L300">300</a>         assertEquals( <span class="jxr_string">"life"</span>, ( (<a name="ImportantThing" href="../../../../../org/codehaus/plexus/component/configurator/ImportantThing.html#ImportantThing">ImportantThing</a>) list.get( 0 ) ).getName() );
 <a class="jxr_linenumber" name="L301" href="#L301">301</a> 
 <a class="jxr_linenumber" name="L302" href="#L302">302</a>         assertEquals( 1, list.size() );
 <a class="jxr_linenumber" name="L303" href="#L303">303</a> 
@@ -343,7 +343,7 @@
 <a class="jxr_linenumber" name="L335" href="#L335">335</a> 
 <a class="jxr_linenumber" name="L336" href="#L336">336</a>         PlexusConfiguration configuration = PlexusTools.buildConfiguration( <span class="jxr_string">"&lt;Test&gt;"</span>, <strong class="jxr_keyword">new</strong> StringReader( xml ) );
 <a class="jxr_linenumber" name="L337" href="#L337">337</a> 
-<a class="jxr_linenumber" name="L338" href="#L338">338</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithArrayFields.html">ComponentWithArrayFields</a> component = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithArrayFields.html">ComponentWithArrayFields</a>();
+<a class="jxr_linenumber" name="L338" href="#L338">338</a>         <a name="ComponentWithArrayFields" href="../../../../../org/codehaus/plexus/co<a name="ComponentWithArrayFields" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithArrayFields.html#ComponentWithArrayFields">ComponentWithArrayFields</a>ponentWithArrayFields.html#ComponentWithArrayFields">ComponentWithArrayFields</a> component = <strong class="jxr_keyword">new</strong> <a name="ComponentWithArrayFields" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithArrayFields.html#ComponentWithArrayFields">ComponentWithArrayFields</a>();
 <a class="jxr_linenumber" name="L339" href="#L339">339</a> 
 <a class="jxr_linenumber" name="L340" href="#L340">340</a>         ComponentDescriptor descriptor = <strong class="jxr_keyword">new</strong> ComponentDescriptor();
 <a class="jxr_linenumber" name="L341" href="#L341">341</a> 
@@ -375,7 +375,7 @@
 <a class="jxr_linenumber" name="L367" href="#L367">367</a> 
 <a class="jxr_linenumber" name="L368" href="#L368">368</a>         assertEquals( <strong class="jxr_keyword">new</strong> Integer( 69 ), integerArray[1] );
 <a class="jxr_linenumber" name="L369" href="#L369">369</a> 
-<a class="jxr_linenumber" name="L370" href="#L370">370</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/ImportantThing.html">ImportantThing</a>[] importantThingArray = component.getImportantThingArray();
+<a class="jxr_linenumber" name="L370" href="#L370">370</a>         <a name="ImportantThing" href="../../../../../org/codehaus/plexus/component/configurator/ImportantThing.html#ImportantThing">ImportantThing</a>[] importantThingArray = component.getImportantThingArray();
 <a class="jxr_linenumber" name="L371" href="#L371">371</a> 
 <a class="jxr_linenumber" name="L372" href="#L372">372</a>         assertEquals( 2, importantThingArray.length );
 <a class="jxr_linenumber" name="L373" href="#L373">373</a> 
@@ -389,7 +389,7 @@
 <a class="jxr_linenumber" name="L381" href="#L381">381</a> 
 <a class="jxr_linenumber" name="L382" href="#L382">382</a>         assertEquals( <span class="jxr_string">"some string"</span>, objectArray[0] );
 <a class="jxr_linenumber" name="L383" href="#L383">383</a> 
-<a class="jxr_linenumber" name="L384" href="#L384">384</a>         assertEquals( <span class="jxr_string">"something important"</span>, ( (ImportantThing) objectArray[1] ).getName() );
+<a class="jxr_linenumber" name="L384" href="#L384">384</a>         assertEquals( <span class="jxr_string">"something important"</span>, ( (<a name="ImportantThing" href="../../../../../org/codehaus/plexus/component/configurator/ImportantThing.html#ImportantThing">ImportantThing</a>) objectArray[1] ).getName() );
 <a class="jxr_linenumber" name="L385" href="#L385">385</a> 
 <a class="jxr_linenumber" name="L386" href="#L386">386</a>         assertEquals(303, objectArray[2] );
 <a class="jxr_linenumber" name="L387" href="#L387">387</a> 
@@ -416,7 +416,7 @@
 <a class="jxr_linenumber" name="L408" href="#L408">408</a> 
 <a class="jxr_linenumber" name="L409" href="#L409">409</a>         PlexusConfiguration configuration = PlexusTools.buildConfiguration( <span class="jxr_string">"&lt;Test&gt;"</span>, <strong class="jxr_keyword">new</strong> StringReader( xml ) );
 <a class="jxr_linenumber" name="L410" href="#L410">410</a> 
-<a class="jxr_linenumber" name="L411" href="#L411">411</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithCompositeFields.html">ComponentWithCompositeFields</a> component = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithCompositeFields.html">ComponentWithCompositeFields</a>();
+<a class="jxr_linenumber" name="L411" href="#L411">411</a>         <a name="ComponentWithCompositeFields" href="../../../../../org/codehaus/plexus/co<a name="ComponentWithCompositeFields" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithCompositeFields.html#ComponentWithCompositeFields">ComponentWithCompositeFields</a>ntWithCompositeFields.html#ComponentWithCompositeFields">ComponentWithCompositeFields</a> component = <strong class="jxr_keyword">new</strong> <a name="ComponentWithCompositeFields" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithCompositeFields.html#ComponentWithCompositeFields">ComponentWithCompositeFields</a>();
 <a class="jxr_linenumber" name="L412" href="#L412">412</a> 
 <a class="jxr_linenumber" name="L413" href="#L413">413</a>         ComponentDescriptor descriptor = <strong class="jxr_keyword">new</strong> ComponentDescriptor();
 <a class="jxr_linenumber" name="L414" href="#L414">414</a> 
@@ -472,7 +472,7 @@
 <a class="jxr_linenumber" name="L464" href="#L464">464</a> 
 <a class="jxr_linenumber" name="L465" href="#L465">465</a>         PlexusConfiguration configuration = PlexusTools.buildConfiguration( <span class="jxr_string">"&lt;Test&gt;"</span>, <strong class="jxr_keyword">new</strong> StringReader( xml ) );
 <a class="jxr_linenumber" name="L466" href="#L466">466</a> 
-<a class="jxr_linenumber" name="L467" href="#L467">467</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithPropertiesField.html">ComponentWithPropertiesField</a> component = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithPropertiesField.html">ComponentWithPropertiesField</a>();
+<a class="jxr_linenumber" name="L467" href="#L467">467</a>         <a name="ComponentWithPropertiesField" href="../../../../../org/codehaus/plexus/co<a name="ComponentWithPropertiesField" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithPropertiesField.html#ComponentWithPropertiesField">ComponentWithPropertiesField</a>ntWithPropertiesField.html#ComponentWithPropertiesField">ComponentWithPropertiesField</a> component = <strong class="jxr_keyword">new</strong> <a name="ComponentWithPropertiesField" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithPropertiesField.html#ComponentWithPropertiesField">ComponentWithPropertiesField</a>();
 <a class="jxr_linenumber" name="L468" href="#L468">468</a> 
 <a class="jxr_linenumber" name="L469" href="#L469">469</a>         ComponentDescriptor descriptor = <strong class="jxr_keyword">new</strong> ComponentDescriptor();
 <a class="jxr_linenumber" name="L470" href="#L470">470</a> 
@@ -523,7 +523,7 @@
 <a class="jxr_linenumber" name="L515" href="#L515">515</a> 
 <a class="jxr_linenumber" name="L516" href="#L516">516</a>         PlexusConfiguration configuration = PlexusTools.buildConfiguration( <span class="jxr_string">"&lt;Test&gt;"</span>, <strong class="jxr_keyword">new</strong> StringReader( xml ) );
 <a class="jxr_linenumber" name="L517" href="#L517">517</a> 
-<a class="jxr_linenumber" name="L518" href="#L518">518</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithPropertiesField.html">ComponentWithPropertiesField</a> component = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithPropertiesField.html">ComponentWithPropertiesField</a>();
+<a class="jxr_linenumber" name="L518" href="#L518">518</a>         <a name="ComponentWithPropertiesField" href="../../../../../org/codehaus/plexus/co<a name="ComponentWithPropertiesField" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithPropertiesField.html#ComponentWithPropertiesField">ComponentWithPropertiesField</a>ntWithPropertiesField.html#ComponentWithPropertiesField">ComponentWithPropertiesField</a> component = <strong class="jxr_keyword">new</strong> <a name="ComponentWithPropertiesField" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithPropertiesField.html#ComponentWithPropertiesField">ComponentWithPropertiesField</a>();
 <a class="jxr_linenumber" name="L519" href="#L519">519</a> 
 <a class="jxr_linenumber" name="L520" href="#L520">520</a>         ComponentDescriptor descriptor = <strong class="jxr_keyword">new</strong> ComponentDescriptor();
 <a class="jxr_linenumber" name="L521" href="#L521">521</a> 
@@ -577,7 +577,7 @@
 <a class="jxr_linenumber" name="L569" href="#L569">569</a> 
 <a class="jxr_linenumber" name="L570" href="#L570">570</a>         PlexusConfiguration configuration = PlexusTools.buildConfiguration( <span class="jxr_string">"&lt;Test&gt;"</span>, <strong class="jxr_keyword">new</strong> StringReader( xml ) );
 <a class="jxr_linenumber" name="L571" href="#L571">571</a> 
-<a class="jxr_linenumber" name="L572" href="#L572">572</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithPropertiesField.html">ComponentWithPropertiesField</a> component = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithPropertiesField.html">ComponentWithPropertiesField</a>();
+<a class="jxr_linenumber" name="L572" href="#L572">572</a>         <a name="ComponentWithPropertiesField" href="../../../../../org/codehaus/plexus/co<a name="ComponentWithPropertiesField" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithPropertiesField.html#ComponentWithPropertiesField">ComponentWithPropertiesField</a>ntWithPropertiesField.html#ComponentWithPropertiesField">ComponentWithPropertiesField</a> component = <strong class="jxr_keyword">new</strong> <a name="ComponentWithPropertiesField" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithPropertiesField.html#ComponentWithPropertiesField">ComponentWithPropertiesField</a>();
 <a class="jxr_linenumber" name="L573" href="#L573">573</a> 
 <a class="jxr_linenumber" name="L574" href="#L574">574</a>         ComponentDescriptor descriptor = <strong class="jxr_keyword">new</strong> ComponentDescriptor();
 <a class="jxr_linenumber" name="L575" href="#L575">575</a> 
@@ -609,7 +609,7 @@
 <a class="jxr_linenumber" name="L601" href="#L601">601</a> 
 <a class="jxr_linenumber" name="L602" href="#L602">602</a>         PlexusConfiguration configuration = PlexusTools.buildConfiguration( <span class="jxr_string">"&lt;Test&gt;"</span>, <strong class="jxr_keyword">new</strong> StringReader( xml ) );
 <a class="jxr_linenumber" name="L603" href="#L603">603</a> 
-<a class="jxr_linenumber" name="L604" href="#L604">604</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithMapField.html">ComponentWithMapField</a> component = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithMapField.html">ComponentWithMapField</a>();
+<a class="jxr_linenumber" name="L604" href="#L604">604</a>         <a name="ComponentWithMapField" href="../../../../../org/codehaus/plexus/co<a name="ComponentWithMapField" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithMapField.html#ComponentWithMapField">ComponentWithMapField</a>ComponentWithMapField.html#ComponentWithMapField">ComponentWithMapField</a> component = <strong class="jxr_keyword">new</strong> <a name="ComponentWithMapField" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithMapField.html#ComponentWithMapField">ComponentWithMapField</a>();
 <a class="jxr_linenumber" name="L605" href="#L605">605</a> 
 <a class="jxr_linenumber" name="L606" href="#L606">606</a>         ComponentDescriptor descriptor = <strong class="jxr_keyword">new</strong> ComponentDescriptor();
 <a class="jxr_linenumber" name="L607" href="#L607">607</a> 
@@ -644,7 +644,7 @@
 <a class="jxr_linenumber" name="L636" href="#L636">636</a> 
 <a class="jxr_linenumber" name="L637" href="#L637">637</a>         PlexusConfiguration configuration = PlexusTools.buildConfiguration( <span class="jxr_string">"&lt;Test&gt;"</span>, <strong class="jxr_keyword">new</strong> StringReader( xml ) );
 <a class="jxr_linenumber" name="L638" href="#L638">638</a> 
-<a class="jxr_linenumber" name="L639" href="#L639">639</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithArrayFields.html">ComponentWithArrayFields</a> component = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithArrayFields.html">ComponentWithArrayFields</a>();
+<a class="jxr_linenumber" name="L639" href="#L639">639</a>         <a name="ComponentWithArrayFields" href="../../../../../org/codehaus/plexus/co<a name="ComponentWithArrayFields" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithArrayFields.html#ComponentWithArrayFields">ComponentWithArrayFields</a>ponentWithArrayFields.html#ComponentWithArrayFields">ComponentWithArrayFields</a> component = <strong class="jxr_keyword">new</strong> <a name="ComponentWithArrayFields" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithArrayFields.html#ComponentWithArrayFields">ComponentWithArrayFields</a>();
 <a class="jxr_linenumber" name="L640" href="#L640">640</a> 
 <a class="jxr_linenumber" name="L641" href="#L641">641</a>         ComponentDescriptor descriptor = <strong class="jxr_keyword">new</strong> ComponentDescriptor();
 <a class="jxr_linenumber" name="L642" href="#L642">642</a> 
@@ -678,7 +678,7 @@
 <a class="jxr_linenumber" name="L670" href="#L670">670</a> 
 <a class="jxr_linenumber" name="L671" href="#L671">671</a>         PlexusConfiguration configuration = PlexusTools.buildConfiguration( <span class="jxr_string">"&lt;Test&gt;"</span>, <strong class="jxr_keyword">new</strong> StringReader( xml ) );
 <a class="jxr_linenumber" name="L672" href="#L672">672</a> 
-<a class="jxr_linenumber" name="L673" href="#L673">673</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithEnumFields.html">ComponentWithEnumFields</a> component = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithEnumFields.html">ComponentWithEnumFields</a>();
+<a class="jxr_linenumber" name="L673" href="#L673">673</a>         <a name="ComponentWithEnumFields" href="../../../../../org/codehaus/plexus/co<a name="ComponentWithEnumFields" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithEnumFields.html#ComponentWithEnumFields">ComponentWithEnumFields</a>mponentWithEnumFields.html#ComponentWithEnumFields">ComponentWithEnumFields</a> component = <strong class="jxr_keyword">new</strong> <a name="ComponentWithEnumFields" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithEnumFields.html#ComponentWithEnumFields">ComponentWithEnumFields</a>();
 <a class="jxr_linenumber" name="L674" href="#L674">674</a> 
 <a class="jxr_linenumber" name="L675" href="#L675">675</a>         ComponentDescriptor descriptor = <strong class="jxr_keyword">new</strong> ComponentDescriptor();
 <a class="jxr_linenumber" name="L676" href="#L676">676</a> 
@@ -708,7 +708,7 @@
 <a class="jxr_linenumber" name="L700" href="#L700">700</a> 
 <a class="jxr_linenumber" name="L701" href="#L701">701</a>         PlexusConfiguration configuration = PlexusTools.buildConfiguration( <span class="jxr_string">"&lt;Test&gt;"</span>, <strong class="jxr_keyword">new</strong> StringReader( xml ) );
 <a class="jxr_linenumber" name="L702" href="#L702">702</a> 
-<a class="jxr_linenumber" name="L703" href="#L703">703</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/DefaultComponent.html">DefaultComponent</a> component = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/DefaultComponent.html">DefaultComponent</a>();
+<a class="jxr_linenumber" name="L703" href="#L703">703</a>         <a name="DefaultComponent" href="../../../../../org/codehaus/plexus/co<a name="DefaultComponent" href="../../../../../org/codehaus/plexus/component/configurator/DefaultComponent.html#DefaultComponent">DefaultComponent</a>ator/DefaultComponent.html#DefaultComponent">DefaultComponent</a> component = <strong class="jxr_keyword">new</strong> <a name="DefaultComponent" href="../../../../../org/codehaus/plexus/component/configurator/DefaultComponent.html#DefaultComponent">DefaultComponent</a>();
 <a class="jxr_linenumber" name="L704" href="#L704">704</a> 
 <a class="jxr_linenumber" name="L705" href="#L705">705</a>         ExpressionEvaluator expressionEvaluator = <strong class="jxr_keyword">new</strong> TypeAwareExpressionEvaluator()
 <a class="jxr_linenumber" name="L706" href="#L706">706</a>         {
@@ -763,7 +763,7 @@
 <a class="jxr_linenumber" name="L755" href="#L755">755</a> 
 <a class="jxr_linenumber" name="L756" href="#L756">756</a>         PlexusConfiguration configuration = PlexusTools.buildConfiguration( <span class="jxr_string">"&lt;Test&gt;"</span>, <strong class="jxr_keyword">new</strong> StringReader( xml ) );
 <a class="jxr_linenumber" name="L757" href="#L757">757</a> 
-<a class="jxr_linenumber" name="L758" href="#L758">758</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/ConfigurableComponent.html">ConfigurableComponent</a> component = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ConfigurableComponent.html">ConfigurableComponent</a>();
+<a class="jxr_linenumber" name="L758" href="#L758">758</a>         <a name="ConfigurableComponent" href="../../../../../org/codehaus/plexus/co<a name="ConfigurableComponent" href="../../../../../org/codehaus/plexus/component/configurator/ConfigurableComponent.html#ConfigurableComponent">ConfigurableComponent</a>ConfigurableComponent.html#ConfigurableComponent">ConfigurableComponent</a> component = <strong class="jxr_keyword">new</strong> <a name="ConfigurableComponent" href="../../../../../org/codehaus/plexus/component/configurator/ConfigurableComponent.html#ConfigurableComponent">ConfigurableComponent</a>();
 <a class="jxr_linenumber" name="L759" href="#L759">759</a> 
 <a class="jxr_linenumber" name="L760" href="#L760">760</a>         ExpressionEvaluator expressionEvaluator = <strong class="jxr_keyword">new</strong> TypeAwareExpressionEvaluator()
 <a class="jxr_linenumber" name="L761" href="#L761">761</a>         {
@@ -812,7 +812,7 @@
 <a class="jxr_linenumber" name="L804" href="#L804">804</a> 
 <a class="jxr_linenumber" name="L805" href="#L805">805</a>         PlexusConfiguration configuration = PlexusTools.buildConfiguration( <span class="jxr_string">"&lt;Test&gt;"</span>, <strong class="jxr_keyword">new</strong> StringReader( xml ) );
 <a class="jxr_linenumber" name="L806" href="#L806">806</a> 
-<a class="jxr_linenumber" name="L807" href="#L807">807</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/DefaultComponent.html">DefaultComponent</a> component = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/DefaultComponent.html">DefaultComponent</a>();
+<a class="jxr_linenumber" name="L807" href="#L807">807</a>         <a name="DefaultComponent" href="../../../../../org/codehaus/plexus/co<a name="DefaultComponent" href="../../../../../org/codehaus/plexus/component/configurator/DefaultComponent.html#DefaultComponent">DefaultComponent</a>ator/DefaultComponent.html#DefaultComponent">DefaultComponent</a> component = <strong class="jxr_keyword">new</strong> <a name="DefaultComponent" href="../../../../../org/codehaus/plexus/component/configurator/DefaultComponent.html#DefaultComponent">DefaultComponent</a>();
 <a class="jxr_linenumber" name="L808" href="#L808">808</a> 
 <a class="jxr_linenumber" name="L809" href="#L809">809</a>         ComponentDescriptor descriptor = <strong class="jxr_keyword">new</strong> ComponentDescriptor();
 <a class="jxr_linenumber" name="L810" href="#L810">810</a> 
@@ -840,7 +840,7 @@
 <a class="jxr_linenumber" name="L832" href="#L832">832</a> 
 <a class="jxr_linenumber" name="L833" href="#L833">833</a>         PlexusConfiguration configuration = PlexusTools.buildConfiguration( <span class="jxr_string">"&lt;Test&gt;"</span>, <strong class="jxr_keyword">new</strong> StringReader( xml ) );
 <a class="jxr_linenumber" name="L834" href="#L834">834</a> 
-<a class="jxr_linenumber" name="L835" href="#L835">835</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithCompositeFields.html">ComponentWithCompositeFields</a> component = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithCompositeFields.html">ComponentWithCompositeFields</a>();
+<a class="jxr_linenumber" name="L835" href="#L835">835</a>         <a name="ComponentWithCompositeFields" href="../../../../../org/codehaus/plexus/co<a name="ComponentWithCompositeFields" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithCompositeFields.html#ComponentWithCompositeFields">ComponentWithCompositeFields</a>ntWithCompositeFields.html#ComponentWithCompositeFields">ComponentWithCompositeFields</a> component = <strong class="jxr_keyword">new</strong> <a name="ComponentWithCompositeFields" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithCompositeFields.html#ComponentWithCompositeFields">ComponentWithCompositeFields</a>();
 <a class="jxr_linenumber" name="L836" href="#L836">836</a> 
 <a class="jxr_linenumber" name="L837" href="#L837">837</a>         ComponentDescriptor descriptor = <strong class="jxr_keyword">new</strong> ComponentDescriptor();
 <a class="jxr_linenumber" name="L838" href="#L838">838</a> 
@@ -868,7 +868,7 @@
 <a class="jxr_linenumber" name="L860" href="#L860">860</a> 
 <a class="jxr_linenumber" name="L861" href="#L861">861</a>         PlexusConfiguration configuration = PlexusTools.buildConfiguration( <span class="jxr_string">"&lt;Test&gt;"</span>, <strong class="jxr_keyword">new</strong> StringReader( xml ) );
 <a class="jxr_linenumber" name="L862" href="#L862">862</a> 
-<a class="jxr_linenumber" name="L863" href="#L863">863</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithCompositeFields.html">ComponentWithCompositeFields</a> component = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithCompositeFields.html">ComponentWithCompositeFields</a>();
+<a class="jxr_linenumber" name="L863" href="#L863">863</a>         <a name="ComponentWithCompositeFields" href="../../../../../org/codehaus/plexus/co<a name="ComponentWithCompositeFields" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithCompositeFields.html#ComponentWithCompositeFields">ComponentWithCompositeFields</a>ntWithCompositeFields.html#ComponentWithCompositeFields">ComponentWithCompositeFields</a> component = <strong class="jxr_keyword">new</strong> <a name="ComponentWithCompositeFields" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithCompositeFields.html#ComponentWithCompositeFields">ComponentWithCompositeFields</a>();
 <a class="jxr_linenumber" name="L864" href="#L864">864</a> 
 <a class="jxr_linenumber" name="L865" href="#L865">865</a>         ExpressionEvaluator expressionEvaluator = <strong class="jxr_keyword">new</strong> ExpressionEvaluator()
 <a class="jxr_linenumber" name="L866" href="#L866">866</a>         {
@@ -911,7 +911,7 @@
 <a class="jxr_linenumber" name="L903" href="#L903">903</a> 
 <a class="jxr_linenumber" name="L904" href="#L904">904</a>         PlexusConfiguration configuration = PlexusTools.buildConfiguration( <span class="jxr_string">"&lt;Test&gt;"</span>, <strong class="jxr_keyword">new</strong> StringReader( xml ) );
 <a class="jxr_linenumber" name="L905" href="#L905">905</a> 
-<a class="jxr_linenumber" name="L906" href="#L906">906</a>         <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithArrayFields.html">ComponentWithArrayFields</a> component = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithArrayFields.html">ComponentWithArrayFields</a>();
+<a class="jxr_linenumber" name="L906" href="#L906">906</a>         <a name="ComponentWithArrayFields" href="../../../../../org/codehaus/plexus/co<a name="ComponentWithArrayFields" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithArrayFields.html#ComponentWithArrayFields">ComponentWithArrayFields</a>ponentWithArrayFields.html#ComponentWithArrayFields">ComponentWithArrayFields</a> component = <strong class="jxr_keyword">new</strong> <a name="ComponentWithArrayFields" href="../../../../../org/codehaus/plexus/component/configurator/ComponentWithArrayFields.html#ComponentWithArrayFields">ComponentWithArrayFields</a>();
 <a class="jxr_linenumber" name="L907" href="#L907">907</a> 
 <a class="jxr_linenumber" name="L908" href="#L908">908</a>         ComponentDescriptor descriptor = <strong class="jxr_keyword">new</strong> ComponentDescriptor();
 <a class="jxr_linenumber" name="L909" href="#L909">909</a> 
@@ -934,6 +934,6 @@
 <a class="jxr_linenumber" name="L926" href="#L926">926</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2001&#x2013;2019 <a href="http://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2001&#x2013;2021 <a href="https://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
 </body>
 </html>

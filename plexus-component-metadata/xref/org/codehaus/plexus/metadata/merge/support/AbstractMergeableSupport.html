@@ -53,8 +53,8 @@
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>  <em class="jxr_javadoccomment"> * @author khmarbaise</em>
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>  <em class="jxr_javadoccomment"> *</em>
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">abstract</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../org/codehaus/plexus/metadata/merge/support/AbstractMergeableSupport.html">AbstractMergeableSupport</a>
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>      <strong class="jxr_keyword">implements</strong> <a href="../../../../../../org/codehaus/plexus/metadata/merge/support/Mergeable.html">Mergeable</a>
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">abstract</strong> <strong class="jxr_keyword">class</strong> <a name="AbstractMergeableSupport" href="../../../../../../org/codehaus/plexus/metadata/merge/support/AbstractMergeableSupport.html#AbstractMergeableSupport">AbstractMergeableSupport</a>
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>      <strong class="jxr_keyword">implements</strong> <a name="Mergeable" href="../../../../../../org/codehaus/plexus/metadata/merge/support/Mergeable.html#Mergeable">Mergeable</a>
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>  {
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>  <em class="jxr_javadoccomment">     * Wrapped JDOM element.</em>
@@ -64,18 +64,18 @@
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L57" href="#L57">57</a>  <em class="jxr_javadoccomment">     * The default merging strategy used.</em>
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../../../org/codehaus/plexus/metadata/merge/MergeStrategy.html">MergeStrategy</a> DEFAULT_MERGE_STRATEGY = MergeStrategies.DEEP;
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <a name="MergeStrategy" href="../../../../../../org/codehaus/plexus/metadata/merge/MergeStrategy.html#MergeStrategy">MergeStrategy</a> DEFAULT_MERGE_STRATEGY = MergeStrategies.DEEP;
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>  
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L62" href="#L62">62</a>  <em class="jxr_javadoccomment">     * @param element {@link Element}</em>
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../../org/codehaus/plexus/metadata/merge/support/AbstractMergeableSupport.html">AbstractMergeableSupport</a>( Element element )
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>      <strong class="jxr_keyword">public</strong> <a name="AbstractMergeableSupport" href="../../../../../../org/codehaus/plexus/metadata/merge/support/AbstractMergeableSupport.html#AbstractMergeableSupport">AbstractMergeableSupport</a>( Element element )
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>      {
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>          <strong class="jxr_keyword">this</strong>.element = element;
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>      }
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>  
 <a class="jxr_linenumber" name="L69" href="#L69">69</a>      <em class="jxr_javadoccomment">/** {@inheritDoc} */</em>
-<a class="jxr_linenumber" name="L70" href="#L70">70</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">abstract</strong> <strong class="jxr_keyword">void</strong> merge( Mergeable me )
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">abstract</strong> <strong class="jxr_keyword">void</strong> merge( <a name="Mergeable" href="../../../../../../org/codehaus/plexus/metadata/merge/support/Mergeable.html#Mergeable">Mergeable</a> me )
 <a class="jxr_linenumber" name="L71" href="#L71">71</a>          <strong class="jxr_keyword">throws</strong> MergeException;
 <a class="jxr_linenumber" name="L72" href="#L72">72</a>  
 <a class="jxr_linenumber" name="L73" href="#L73">73</a>      <em class="jxr_javadoccomment">/**</em>
@@ -86,7 +86,7 @@
 <a class="jxr_linenumber" name="L78" href="#L78">78</a>  <em class="jxr_javadoccomment">     * @return &lt;code&gt;true&lt;/code&gt; if the passed in Mergeable can be merged with</em>
 <a class="jxr_linenumber" name="L79" href="#L79">79</a>  <em class="jxr_javadoccomment">     *         the current Mergeable.</em>
 <a class="jxr_linenumber" name="L80" href="#L80">80</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L81" href="#L81">81</a>      <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">abstract</strong> <strong class="jxr_keyword">boolean</strong> isExpectedElementType( Mergeable me );
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>      <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">abstract</strong> <strong class="jxr_keyword">boolean</strong> isExpectedElementType( <a name="Mergeable" href="../../../../../../org/codehaus/plexus/metadata/merge/support/Mergeable.html#Mergeable">Mergeable</a> me );
 <a class="jxr_linenumber" name="L82" href="#L82">82</a>  
 <a class="jxr_linenumber" name="L83" href="#L83">83</a>      <em class="jxr_comment">// ----------------------------------------------------------------------</em>
 <a class="jxr_linenumber" name="L84" href="#L84">84</a>      <em class="jxr_comment">// Methods delegated on wrapped JDOM element.</em>
@@ -841,7 +841,7 @@
 <a class="jxr_linenumber" name="L833" href="#L833">833</a> <em class="jxr_javadoccomment">     * Returns the default {@link MergeStrategy} instance.</em>
 <a class="jxr_linenumber" name="L834" href="#L834">834</a> <em class="jxr_javadoccomment">     * @return {@link MergeStrategy}</em>
 <a class="jxr_linenumber" name="L835" href="#L835">835</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L836" href="#L836">836</a>     <strong class="jxr_keyword">protected</strong> <a href="../../../../../../org/codehaus/plexus/metadata/merge/MergeStrategy.html">MergeStrategy</a> getDefaultMergeStrategy()
+<a class="jxr_linenumber" name="L836" href="#L836">836</a>     <strong class="jxr_keyword">protected</strong> <a name="MergeStrategy" href="../../../../../../org/codehaus/plexus/metadata/merge/MergeStrategy.html#MergeStrategy">MergeStrategy</a> getDefaultMergeStrategy()
 <a class="jxr_linenumber" name="L837" href="#L837">837</a>     {
 <a class="jxr_linenumber" name="L838" href="#L838">838</a>         <strong class="jxr_keyword">return</strong> DEFAULT_MERGE_STRATEGY;
 <a class="jxr_linenumber" name="L839" href="#L839">839</a>     }
@@ -849,6 +849,6 @@
 <a class="jxr_linenumber" name="L841" href="#L841">841</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2001&#x2013;2019 <a href="http://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2001&#x2013;2021 <a href="https://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
 </body>
 </html>

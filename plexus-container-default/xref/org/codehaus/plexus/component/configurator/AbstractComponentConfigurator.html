@@ -46,8 +46,8 @@
 <a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment"> * @author &lt;a href="<a href="mailto:brett@codehaus.org" target="alexandria_uri">mailto:brett@codehaus.org</a>"&gt;Brett Porter&lt;/a&gt;</em>
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">abstract</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/AbstractComponentConfigurator.html">AbstractComponentConfigurator</a>
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>      <strong class="jxr_keyword">implements</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurator.html">ComponentConfigurator</a>
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">abstract</strong> <strong class="jxr_keyword">class</strong> <a name="AbstractComponentConfigurator" href="../../../../../org/codehaus/plexus/component/configurator/AbstractComponentConfigurator.html#AbstractComponentConfigurator">AbstractComponentConfigurator</a>
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>      <strong class="jxr_keyword">implements</strong> <a name="ComponentConfigurator" href="../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurator.html#ComponentConfigurator">ComponentConfigurator</a>
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>  {
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>  <em class="jxr_javadoccomment">     * This is being instantiated here because there are old component factories (beanshell) that directly access</em>
@@ -56,29 +56,29 @@
 <a class="jxr_linenumber" name="L48" href="#L48">48</a>  <em class="jxr_javadoccomment">     * converter lookup here and we can let the container do it.</em>
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>  <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>      <strong class="jxr_keyword">protected</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/converters/lookup/ConverterLookup.html">ConverterLookup</a> converterLookup = <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/converters/lookup/DefaultConverterLookup.html">DefaultConverterLookup</a>();
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>      <strong class="jxr_keyword">protected</strong> <a name="ConverterLookup" href="../../../../../org/codehaus/plexus/component/configurator/converters/lookup/ConverterLookup.html#ConverterLookup">ConverterLookup</a> converterLookup = <strong class="jxr_keyword">new</strong> <a name="DefaultConverterLookup" href="../../../../../org/codehaus/plexus/component/configurator/converters/lookup/DefaultConverterLookup.html#DefaultConverterLookup">DefaultConverterLookup</a>();
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>  
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> configureComponent( Object component,
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>                                      <a href="../../../../../org/codehaus/plexus/configuration/PlexusConfiguration.html">PlexusConfiguration</a> configuration,
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>                                      <a name="PlexusConfiguration" href="../../../../../org/codehaus/plexus/configuration/PlexusConfiguration.html#PlexusConfiguration">PlexusConfiguration</a> configuration,
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>                                      ClassRealm containerRealm )
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>          <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html">ComponentConfigurationException</a>
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>          <strong class="jxr_keyword">throws</strong> <a name="ComponentConfigurationException" href="../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a>
 <a class="jxr_linenumber" name="L57" href="#L57">57</a>      {
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>          configureComponent( component, configuration, <strong class="jxr_keyword">new</strong> DefaultExpressionEvaluator(), containerRealm );
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>          configureComponent( component, configuration, <strong class="jxr_keyword">new</strong> <a name="DefaultExpressionEvaluator" href="../../../../../org/codehaus/plexus/component/configurator/expression/DefaultExpressionEvaluator.html#DefaultExpressionEvaluator">DefaultExpressionEvaluator</a>(), containerRealm );
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>      }
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>  
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> configureComponent( Object component,
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>                                      <a href="../../../../../org/codehaus/plexus/configuration/PlexusConfiguration.html">PlexusConfiguration</a> configuration,
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>                                      <a href="../../../../../org/codehaus/plexus/component/configurator/expression/ExpressionEvaluator.html">ExpressionEvaluator</a> expressionEvaluator,
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>                                      <a name="PlexusConfiguration" href="../../../../../org/codehaus/plexus/configuration/PlexusConfiguration.html#PlexusConfiguration">PlexusConfiguration</a> configuration,
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>                                      <a name="ExpressionEvaluator" href="../../../../../org/codehaus/plexus/component/configurator/expression/ExpressionEvaluator.html#ExpressionEvaluator">ExpressionEvaluator</a> expressionEvaluator,
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>                                      ClassRealm containerRealm )
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>          <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html">ComponentConfigurationException</a>
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>          <strong class="jxr_keyword">throws</strong> <a name="ComponentConfigurationException" href="../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a>
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>      {
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>          configureComponent( component, configuration, expressionEvaluator, containerRealm, <strong class="jxr_keyword">null</strong> );
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>      }
 <a class="jxr_linenumber" name="L69" href="#L69">69</a>  
-<a class="jxr_linenumber" name="L70" href="#L70">70</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> configureComponent( <strong class="jxr_keyword">final</strong> Object component, <strong class="jxr_keyword">final</strong> PlexusConfiguration configuration,
-<a class="jxr_linenumber" name="L71" href="#L71">71</a>                                      <strong class="jxr_keyword">final</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/expression/ExpressionEvaluator.html">ExpressionEvaluator</a> expressionEvaluator, <strong class="jxr_keyword">final</strong> ClassRealm containerRealm,
-<a class="jxr_linenumber" name="L72" href="#L72">72</a>                                      <strong class="jxr_keyword">final</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ConfigurationListener.html">ConfigurationListener</a> listener )
-<a class="jxr_linenumber" name="L73" href="#L73">73</a>          <strong class="jxr_keyword">throws</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html">ComponentConfigurationException</a>
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> configureComponent( <strong class="jxr_keyword">final</strong> Object component, <strong class="jxr_keyword">final</strong> <a name="PlexusConfiguration" href="../../../../../org/codehaus/plexus/configuration/PlexusConfiguration.html#PlexusConfiguration">PlexusConfiguration</a> configuration,
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>                                      <strong class="jxr_keyword">final</strong> <a name="ExpressionEvaluator" href="../../../../../org/codehaus/plexus/component/configurator/expression/ExpressionEvaluator.html#ExpressionEvaluator">ExpressionEvaluator</a> expressionEvaluator, <strong class="jxr_keyword">final</strong> ClassRealm containerRealm,
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>                                      <strong class="jxr_keyword">final</strong> <a name="ConfigurationListener" href="../../../../../org/codehaus/plexus/component/configurator/ConfigurationListener.html#ConfigurationListener">ConfigurationListener</a> listener )
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>          <strong class="jxr_keyword">throws</strong> <a name="ComponentConfigurationException" href="../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a>
 <a class="jxr_linenumber" name="L74" href="#L74">74</a>      {
 <a class="jxr_linenumber" name="L75" href="#L75">75</a>          <em class="jxr_comment">// ----------------------------------------------------------------------------</em>
 <a class="jxr_linenumber" name="L76" href="#L76">76</a>          <em class="jxr_comment">// For compatibility with old ComponentFactories that use old ClassWorlds</em>
@@ -108,9 +108,9 @@
 <a class="jxr_linenumber" name="L100" href="#L100">100</a>         }
 <a class="jxr_linenumber" name="L101" href="#L101">101</a>         <strong class="jxr_keyword">catch</strong> ( <strong class="jxr_keyword">final</strong> InvocationTargetException e )
 <a class="jxr_linenumber" name="L102" href="#L102">102</a>         {
-<a class="jxr_linenumber" name="L103" href="#L103">103</a>             <strong class="jxr_keyword">if</strong> ( e.getCause() instanceof ComponentConfigurationException )
+<a class="jxr_linenumber" name="L103" href="#L103">103</a>             <strong class="jxr_keyword">if</strong> ( e.getCause() instanceof <a name="ComponentConfigurationException" href="../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a> )
 <a class="jxr_linenumber" name="L104" href="#L104">104</a>             {
-<a class="jxr_linenumber" name="L105" href="#L105">105</a>                 <strong class="jxr_keyword">throw</strong> (ComponentConfigurationException) e.getCause();
+<a class="jxr_linenumber" name="L105" href="#L105">105</a>                 <strong class="jxr_keyword">throw</strong> (<a name="ComponentConfigurationException" href="../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a>) e.getCause();
 <a class="jxr_linenumber" name="L106" href="#L106">106</a>             }
 <a class="jxr_linenumber" name="L107" href="#L107">107</a>             <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> ( e.getCause() instanceof RuntimeException )
 <a class="jxr_linenumber" name="L108" href="#L108">108</a>             {
@@ -120,17 +120,17 @@
 <a class="jxr_linenumber" name="L112" href="#L112">112</a>             {
 <a class="jxr_linenumber" name="L113" href="#L113">113</a>                 <strong class="jxr_keyword">throw</strong> (Error) e.getCause();
 <a class="jxr_linenumber" name="L114" href="#L114">114</a>             }
-<a class="jxr_linenumber" name="L115" href="#L115">115</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html">ComponentConfigurationException</a>( <span class="jxr_string">"Incompatible configurator "</span> + getClass().getName(), e );
+<a class="jxr_linenumber" name="L115" href="#L115">115</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentConfigurationException" href="../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a>( <span class="jxr_string">"Incompatible configurator "</span> + getClass().getName(), e );
 <a class="jxr_linenumber" name="L116" href="#L116">116</a>         }
 <a class="jxr_linenumber" name="L117" href="#L117">117</a>         <strong class="jxr_keyword">catch</strong> ( <strong class="jxr_keyword">final</strong> Exception e )
 <a class="jxr_linenumber" name="L118" href="#L118">118</a>         {
-<a class="jxr_linenumber" name="L119" href="#L119">119</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html">ComponentConfigurationException</a>( <span class="jxr_string">"Incompatible configurator "</span> + getClass().getName(), e );
+<a class="jxr_linenumber" name="L119" href="#L119">119</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentConfigurationException" href="../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a>( <span class="jxr_string">"Incompatible configurator "</span> + getClass().getName(), e );
 <a class="jxr_linenumber" name="L120" href="#L120">120</a>         }
 <a class="jxr_linenumber" name="L121" href="#L121">121</a>     }
 <a class="jxr_linenumber" name="L122" href="#L122">122</a> 
 <a class="jxr_linenumber" name="L123" href="#L123">123</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2001&#x2013;2019 <a href="http://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2001&#x2013;2021 <a href="https://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
 </body>
 </html>

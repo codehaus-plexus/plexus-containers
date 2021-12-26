@@ -15,7 +15,7 @@
 <a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> * you may not use this file except in compliance with the License.</em>
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> * You may obtain a copy of the License at</em>
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> *</em>
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *      <a href="http://www.apache.org/licenses/LICENSE-2." target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.</a>0</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *      <a href="http://www.apache.org/licenses/LICENSE-2.0" target="alexandria_uri">http://www.apache.org/licenses/LICENSE-2.0</a></em>
 <a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> *</em>
 <a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> * Unless required by applicable law or agreed to in writing, software</em>
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * distributed under the License is distributed on an "AS IS" BASIS,</em>
@@ -45,7 +45,7 @@
 <a class="jxr_linenumber" name="L37" href="#L37">37</a>  {
 <a class="jxr_linenumber" name="L38" href="#L38">38</a>      <strong class="jxr_keyword">private</strong> List&lt;T&gt; components;
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>  
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../org/codehaus/plexus/component/collections/ComponentList.html">ComponentList</a>( MutablePlexusContainer container, Class&lt;T&gt; type, String role, List&lt;String&gt; roleHints, String hostComponent )
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>      <strong class="jxr_keyword">public</strong> <a name="ComponentList" href="../../../../../org/codehaus/plexus/component/collections/ComponentList.html#ComponentList">ComponentList</a>( <a name="MutablePlexusContainer" href="../../../../../org/codehaus/plexus/MutablePlexusContainer.html#MutablePlexusContainer">MutablePlexusContainer</a> container, Class&lt;T&gt; type, String role, List&lt;String&gt; roleHints, String hostComponent )
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>      {
 <a class="jxr_linenumber" name="L42" href="#L42">42</a>          <strong class="jxr_keyword">super</strong>( container, type, role, roleHints, hostComponent );
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>      }
@@ -261,7 +261,7 @@
 <a class="jxr_linenumber" name="L253" href="#L253">253</a>             {
 <a class="jxr_linenumber" name="L254" href="#L254">254</a>                 container.releaseAll( components );
 <a class="jxr_linenumber" name="L255" href="#L255">255</a>             }
-<a class="jxr_linenumber" name="L256" href="#L256">256</a>             <strong class="jxr_keyword">catch</strong> ( ComponentLifecycleException e )
+<a class="jxr_linenumber" name="L256" href="#L256">256</a>             <strong class="jxr_keyword">catch</strong> ( <a name="ComponentLifecycleException" href="../../../../../org/codehaus/plexus/component/repository/exception/ComponentLifecycleException.html#ComponentLifecycleException">ComponentLifecycleException</a> e )
 <a class="jxr_linenumber" name="L257" href="#L257">257</a>             {
 <a class="jxr_linenumber" name="L258" href="#L258">258</a>                 logger.debug( <span class="jxr_string">"Error releasing components in active collection: "</span> + e.getMessage(), e );
 <a class="jxr_linenumber" name="L259" href="#L259">259</a>             }
@@ -272,6 +272,6 @@
 <a class="jxr_linenumber" name="L264" href="#L264">264</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2001&#x2013;2019 <a href="http://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2001&#x2013;2021 <a href="https://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
 </body>
 </html>

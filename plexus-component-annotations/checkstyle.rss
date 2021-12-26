@@ -20,19 +20,19 @@ under the License.
 <rss version="0.91">
   <channel>
     <title>Plexus :: Component Annotations - Checkstyle report</title>
-    <link>http://codehaus-plexus.github.io/plexus-containers/plexus-component-annotations/</link>
+    <link>https://codehaus-plexus.github.io/plexus-containers/plexus-component-annotations/</link>
     <description>Plexus :: Component Annotations - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2001 - 2019 Codehaus Plexus</copyright>
+    <copyright>&#169;2001 - 2021 Codehaus Plexus</copyright>
     <item>
       <title>File: 3,
              Errors: 15,
-             Warnings: 19,
+             Warnings: 0,
              Infos: 0
       </title>
-            <link>http://codehaus-plexus.github.io/plexus-containers/plexus-component-annotations//checkstyle.html</link>
+            <link>https://codehaus-plexus.github.io/plexus-containers/plexus-component-annotations//checkstyle.html</link>
       <description>
-        <p>Click <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-annotations//checkstyle.html">here</a> for the full Checkstyle report.</p>
+        <p>Click <a href="https://codehaus-plexus.github.io/plexus-containers/plexus-component-annotations//checkstyle.html">here</a> for the full Checkstyle report.</p>
 
         <table summary="Files" boder="1">
           <thead>
@@ -46,13 +46,13 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-annotations//checkstyle.html#org.codehaus.plexus.component.annotations.Requirement.java">org/codehaus/plexus/component/annotations/Requirement.java</a>
+                  <a href="https://codehaus-plexus.github.io/plexus-containers/plexus-component-annotations//checkstyle.html#org.codehaus.plexus.component.annotations.Requirement.java">org/codehaus/plexus/component/annotations/Requirement.java</a>
                 </td>
                 <td>
                   0
                 </td>
                 <td>
-                  4
+                  0
                 </td>
                 <td>
                   5
@@ -60,13 +60,13 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-annotations//checkstyle.html#org.codehaus.plexus.component.annotations.Configuration.java">org/codehaus/plexus/component/annotations/Configuration.java</a>
+                  <a href="https://codehaus-plexus.github.io/plexus-containers/plexus-component-annotations//checkstyle.html#org.codehaus.plexus.component.annotations.Configuration.java">org/codehaus/plexus/component/annotations/Configuration.java</a>
                 </td>
                 <td>
                   0
                 </td>
                 <td>
-                  2
+                  0
                 </td>
                 <td>
                   5
@@ -74,13 +74,13 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://codehaus-plexus.github.io/plexus-containers/plexus-component-annotations//checkstyle.html#org.codehaus.plexus.component.annotations.Component.java">org/codehaus/plexus/component/annotations/Component.java</a>
+                  <a href="https://codehaus-plexus.github.io/plexus-containers/plexus-component-annotations//checkstyle.html#org.codehaus.plexus.component.annotations.Component.java">org/codehaus/plexus/component/annotations/Component.java</a>
                 </td>
                 <td>
                   0
                 </td>
                 <td>
-                  13
+                  0
                 </td>
                 <td>
                   5
