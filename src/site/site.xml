@@ -1,9 +1,12 @@
 <?xml version="1.0"?>
 
-<project name="Plexus Container" xmlns="http://maven.apache.org/DECORATION/1.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project name="Plexus Container" xmlns="http://maven.apache.org/DECORATION/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
   <body>
+    <links>
+      <item name="Eclipse Sisu" href="https://projects.eclipse.org/projects/technology.sisu" />
+    </links>
+
     <menu ref="modules" />
   </body>
 </project>

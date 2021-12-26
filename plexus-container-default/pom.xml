@@ -9,7 +9,7 @@
 
   <artifactId>plexus-container-default</artifactId>
 
-  <name>Plexus :: Default Container</name>
+  <name>Plexus :: Default Container (deprecated)</name>
   <description>
     The Plexus IoC container API and its default implementation.
   </description>
