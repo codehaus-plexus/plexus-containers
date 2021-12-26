@@ -32,3 +32,9 @@ Overview
   programmatically too or extended to read configuration from any source. It is used for example in Maven 2 to
   read plugins configuration from <<<META-INF/maven/plugin.xml>>> and instanciate Mojos downloaded from
   Maven repositories.
+
+* Deprecated
+
+  <<<plexus-default-container>>> is replaced by {{{https://github.com/eclipse/sisu.inject}Sisu container}}
+  and its {{{https://github.com/eclipse/sisu.plexus}Plexus shim <<<org.eclipse.sisu.plexus>>>}}
+  ({{{https://eclipse.github.io/sisu.plexus/apidocs/reference/packages.html}javadoc}}).

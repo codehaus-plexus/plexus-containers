@@ -27,3 +27,7 @@ Overview
 
 
   <<<plexus-containers>>>' structure has evolved over time: see {{{./history.html}history}} to understand its changes.
+  
+* Deprecated
+
+  Plexus Containers is deprecated, replaced by {{{https://www.eclipse.org/sisu/}Eclipse Sisu}}: see each component documentation for more details.

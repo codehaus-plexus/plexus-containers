@@ -5,6 +5,10 @@ Plexus Containers
 
 Plexus IoC Container core with companion tools.
 
+## Deprecated
+
+Plexus IoC Container is replaced by [Eclipse Sisu](https://www.eclipse.org/sisu/).
+
 ## Attention
 
 We have changed the default branch in GitHub repository from `plexus-containers-1.x` to `master`

@@ -8,16 +8,20 @@
 
 About Plexus :: Component Annotations
 
-  Plexus Component "Java 5" Annotations, to describe plexus components properties in java sources with standard annotations instead of javadoc annotations.
+  Plexus Component "Java 5" Annotations, to describe Plexus components properties in java sources with standard annotations instead of Javadoc annotations.
 
   3 "Java 5" annotations are provided to replace javadoc annotations:
 
-*-----------------------------+----------------------+
-| <<old javadoc annotation>>  | <<new "Java 5" annotation>> |
-*-----------------------------+----------------------+
-| <<<@plexus.component>>>     | {{{./apidocs/org/codehaus/plexus/component/annotations/Component.html}<<<@Component>>>}} |
-*-----------------------------+----------------------+
-| <<<@plexus.requirement>>>   | {{{./apidocs/org/codehaus/plexus/component/annotations/Requirement.html}<<<@Requirement>>>}} |
-*-----------------------------+----------------------+
-| <<<@plexus.configuration>>> | {{{./apidocs/org/codehaus/plexus/component/annotations/Configuration.html}<<<@Configuration>>>}} |
-*-----------------------------+----------------------+
+*-----------------------------+------------------------------------+-----------+
+| <<old javadoc annotation>>  | <<new Plexus "Java 5" annotation>> | JSR-330 <<<javax.inject>>> target
+*-----------------------------+------------------------------------+-----------+
+| <<<@plexus.component>>>     | {{{./apidocs/org/codehaus/plexus/component/annotations/Component.html}<<<@Component>>>}} | {{{https://wiki.eclipse.org/Sisu/PlexusMigration#.40Component}<<<@Named>>> + ...}}
+*-----------------------------+----------------------+-------------+-----------+
+| <<<@plexus.requirement>>>   | {{{./apidocs/org/codehaus/plexus/component/annotations/Requirement.html}<<<@Requirement>>>}} | {{{https://wiki.eclipse.org/Sisu/PlexusMigration#.40Requirement}<<<@Inject>>> + ...}}
+*-----------------------------+----------------------+-------------+-----------+
+| <<<@plexus.configuration>>> | {{{./apidocs/org/codehaus/plexus/component/annotations/Configuration.html}<<<@Configuration>>>}} | {{{https://wiki.eclipse.org/Sisu/PlexusMigration#.40Configuration}...}}
+*-----------------------------+----------------------+-------------+-----------+
+
+* Deprecated
+
+  Once using {{{https://www.eclipse.org/sisu/}Eclipse Sisu}} instead of {{{../plexus-default-container/}Plexus Default Container}}, Plexus annotations are expected to be migrated to {{{https://wiki.eclipse.org/Sisu/PlexusMigration}JSR-330 <<<javax.inject>>> annotations}}.
