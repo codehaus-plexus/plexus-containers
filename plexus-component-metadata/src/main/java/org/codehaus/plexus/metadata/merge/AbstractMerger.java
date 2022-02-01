@@ -26,8 +26,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+import org.codehaus.plexus.metadata.CachingWriter;
 import org.codehaus.plexus.util.IOUtil;
 import org.jdom2.Document;
 import org.jdom2.JDOMException;
@@ -61,7 +63,7 @@ public abstract class AbstractMerger
         Writer fw = null;
         try
         {
-            fw = new OutputStreamWriter( new FileOutputStream( file ), "UTF-8" );
+            fw = new CachingWriter( file.toPath(), StandardCharsets.UTF_8 );
             out.output( mergedDocument, fw );
         }
         finally

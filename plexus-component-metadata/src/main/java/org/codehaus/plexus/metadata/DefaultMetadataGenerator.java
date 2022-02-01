@@ -25,6 +25,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -185,7 +187,7 @@ public class DefaultMetadataGenerator
 
         FileUtils.forceMkdir( outputFile.getParentFile() );
 
-        BufferedWriter output = new BufferedWriter( new OutputStreamWriter( new FileOutputStream( outputFile ), "UTF-8" ) );
+        Writer output = new CachingWriter( outputFile.toPath(), StandardCharsets.UTF_8 );
 
         try
         {
