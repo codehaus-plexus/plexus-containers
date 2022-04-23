@@ -15,13 +15,14 @@ About Plexus :: Component Annotations
 *-----------------------------+------------------------------------+-----------+
 | <<old javadoc annotation>>  | <<new Plexus "Java 5" annotation>> | JSR-330 <<<javax.inject>>> target
 *-----------------------------+------------------------------------+-----------+
-| <<<@plexus.component>>>     | {{{./apidocs/org/codehaus/plexus/component/annotations/Component.html}<<<@Component>>>}} | {{{https://wiki.eclipse.org/Sisu/PlexusMigration#.40Component}<<<@Named>>> + ...}}
+| <<<@plexus.component>>>     | {{{./apidocs/org/codehaus/plexus/component/annotations/Component.html}<<<@Component>>>}} | {{{https://github.com/eclipse/sisu.plexus/wiki/Plexus-to-JSR330#component}<<<@Named>>> + ...}}
 *-----------------------------+----------------------+-------------+-----------+
-| <<<@plexus.requirement>>>   | {{{./apidocs/org/codehaus/plexus/component/annotations/Requirement.html}<<<@Requirement>>>}} | {{{https://wiki.eclipse.org/Sisu/PlexusMigration#.40Requirement}<<<@Inject>>> + ...}}
+| <<<@plexus.requirement>>>   | {{{./apidocs/org/codehaus/plexus/component/annotations/Requirement.html}<<<@Requirement>>>}} | {{{https://github.com/eclipse/sisu.plexus/wiki/Plexus-to-JSR330#requirement}<<<@Inject>>> + ...}}
 *-----------------------------+----------------------+-------------+-----------+
-| <<<@plexus.configuration>>> | {{{./apidocs/org/codehaus/plexus/component/annotations/Configuration.html}<<<@Configuration>>>}} | {{{https://wiki.eclipse.org/Sisu/PlexusMigration#.40Configuration}...}}
+| <<<@plexus.configuration>>> | {{{./apidocs/org/codehaus/plexus/component/annotations/Configuration.html}<<<@Configuration>>>}} | {{{https://github.com/eclipse/sisu.plexus/wiki/Plexus-to-JSR330#configuration}...}}
 *-----------------------------+----------------------+-------------+-----------+
 
 * Deprecated
 
-  Once using {{{https://www.eclipse.org/sisu/}Eclipse Sisu}} instead of {{{../plexus-default-container/}Plexus Default Container}}, Plexus annotations are expected to be migrated to {{{https://wiki.eclipse.org/Sisu/PlexusMigration}JSR-330 <<<javax.inject>>> annotations}}.
+  Once using {{{https://www.eclipse.org/sisu/}Eclipse Sisu}} instead of {{{../plexus-default-container/}Plexus Default Container}},
+  Plexus annotations are expected to be migrated to {{{https://github.com/eclipse/sisu.plexus/wiki/Plexus-to-JSR330}JSR-330 <<<javax.inject>>> annotations}}.
