@@ -23,7 +23,7 @@ under the License.
     <link>https://codehaus-plexus.github.io/plexus-containers/plexus-component-annotations/</link>
     <description>Plexus :: Component Annotations (deprecated) - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2001 - 2021 Codehaus Plexus</copyright>
+    <copyright>&#169;2001 - 2022 Codehaus Plexus</copyright>
     <item>
       <title>File: 3,
              Errors: 15,
