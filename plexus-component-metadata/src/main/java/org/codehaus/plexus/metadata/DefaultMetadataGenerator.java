@@ -119,7 +119,7 @@ public class DefaultMetadataGenerator
         //
         if ( descriptors.size() > 0 )
         {
-            getLogger().info( "Discovered " + descriptors.size() + " component descriptors(s)" );
+            getLogger().info( "Discovered " + descriptors.size() + " component descriptor(s)" );
 
             ComponentSetDescriptor set = new ComponentSetDescriptor();
             set.setComponents( descriptors );
