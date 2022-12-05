@@ -1,0 +1,8 @@
+name: Release Drafter
+on:
+  push:
+    branches:
+      - master
+jobs:
+   update_release_draft:
+      uses: codehaus-plexus/.github/.github/workflows/release-drafter.yml@master
