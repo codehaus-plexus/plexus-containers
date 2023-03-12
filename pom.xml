@@ -45,7 +45,7 @@
     <classWorldsVersion>2.7.0</classWorldsVersion>
     <plexusUtilsVersion>3.5.0</plexusUtilsVersion>
     <xbeanReflectVersion>4.22</xbeanReflectVersion>
-    <mavenVersion>3.2.5</mavenVersion>
+    <mavenVersion>3.9.0</mavenVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <javaVersion>7</javaVersion>
   </properties>
