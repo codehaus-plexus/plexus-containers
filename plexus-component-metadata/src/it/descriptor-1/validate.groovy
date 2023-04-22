@@ -21,7 +21,7 @@
 def file = new File(basedir, 'target/classes/META-INF/plexus/components.xml')
 assert file.exists()
 
-def componentSet = new XmlParser().parse(file)
+def componentSet = new groovy.xml.XmlParser().parse(file)
 
 assert componentSet.components.component.size() == 2
 
