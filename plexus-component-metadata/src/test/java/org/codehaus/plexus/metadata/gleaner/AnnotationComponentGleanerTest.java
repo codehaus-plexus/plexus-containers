@@ -20,6 +20,7 @@ import java.util.List;
 
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
 import org.codehaus.plexus.component.repository.ComponentRequirement;
+import org.codehaus.plexus.component.repository.ComponentRequirementList;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 import org.codehaus.plexus.metadata.gleaner.ann.AnnotatedComponent;
 import org.codehaus.plexus.metadata.gleaner.ann.AnnotatedComponentRole;
@@ -48,7 +49,9 @@ public class AnnotationComponentGleanerTest extends TestCase {
 
     ComponentRequirement requirement2 = requirements.get(1);
     assertEquals("dependency2", requirement2.getFieldName());
-    assertEquals("release,latest,snapshot", requirement2.getRoleHint());
+    assertTrue(requirement2 instanceof ComponentRequirementList);
+    assertEquals("release,latest,snapshot",
+            String.join(",", ((ComponentRequirementList) requirement2).getRoleHints()));
 
     PlexusConfiguration configuration = descriptor.getConfiguration();
     assertEquals(1, configuration.getChildCount());
