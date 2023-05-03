@@ -27,11 +27,13 @@ import java.lang.annotation.Target;
  * Marks a class as a Plexus component.
  *
  * @since 1.0-alpha-33
+ * @deprecated see <a href="https://github.com/eclipse/sisu.plexus/wiki/Plexus-to-JSR330">Plexus-to-JSR330</a> instead.
  */
 @Documented
 @Retention(RUNTIME)
 @Target(TYPE)
 @Inherited
+@Deprecated
 public @interface Component
 {
     Class<?> role();

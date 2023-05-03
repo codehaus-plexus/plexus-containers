@@ -27,12 +27,14 @@ import java.lang.annotation.Target;
 /**
  * Configures a requirement.
  *
+ * @deprecated see <a href="https://github.com/eclipse/sisu.plexus/wiki/Plexus-to-JSR330">Plexus-to-JSR330</a> instead.
  * @since 1.0-alpha-33
  */
 @Documented
 @Retention(RUNTIME)
 @Target({ FIELD, METHOD })
 @Inherited
+@Deprecated
 public @interface Requirement
 {
     Class<?> role() default Object.class;

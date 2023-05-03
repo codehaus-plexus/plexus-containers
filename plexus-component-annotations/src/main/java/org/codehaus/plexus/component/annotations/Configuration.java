@@ -26,12 +26,14 @@ import java.lang.annotation.Target;
 /**
  * Marks a field as a configuration element with a default value.
  *
+ * @deprecated see <a href="https://github.com/eclipse/sisu.plexus/wiki/Plexus-to-JSR330">Plexus-to-JSR330</a> instead.
  * @since 1.0-alpha-33
  */
 @Documented
 @Retention(RUNTIME)
 @Target(FIELD)
 @Inherited
+@Deprecated
 public @interface Configuration
 {
     String name() default "";
