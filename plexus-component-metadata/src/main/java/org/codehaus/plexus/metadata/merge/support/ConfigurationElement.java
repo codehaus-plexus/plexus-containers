@@ -31,21 +31,16 @@ import org.jdom2.Element;
  *
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
  */
-public class ConfigurationElement
-    extends AbstractMergeableElement
-{
-    public ConfigurationElement( Element element )
-    {
-        super( element );
+public class ConfigurationElement extends AbstractMergeableElement {
+    public ConfigurationElement(Element element) {
+        super(element);
     }
 
-    protected boolean isExpectedElementType( Mergeable me )
-    {
+    protected boolean isExpectedElementType(Mergeable me) {
         return me instanceof ConfigurationElement;
     }
 
-    public DescriptorTag[] getAllowedTags()
-    {
+    public DescriptorTag[] getAllowedTags() {
         // TODO Implement!
         return new DescriptorTag[0];
     }

@@ -18,11 +18,10 @@ package org.codehaus.plexus.component.discovery;
 
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public interface DiscoveredComponent
-{
+public interface DiscoveredComponent {
     String ROLE = DiscoveredComponent.class.getName();
 }

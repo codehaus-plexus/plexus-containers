@@ -1,6 +1,5 @@
 package org.codehaus.plexus.test;
 
-public interface CircularComponent
-{
+public interface CircularComponent {
     static String ROLE = CircularComponent.class.getName();
 }

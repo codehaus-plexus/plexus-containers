@@ -20,27 +20,22 @@ import java.util.Map;
 
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public class DefaultActivityManager
-    implements ActivityManager
-{
+public class DefaultActivityManager implements ActivityManager {
     private Map activities;
 
-    public void execute( String id )
-    {
-        getActivity( id ).execute();
+    public void execute(String id) {
+        getActivity(id).execute();
     }
 
-    public Activity getActivity( String id )
-    {
-        return (Activity) activities.get( id );
+    public Activity getActivity(String id) {
+        return (Activity) activities.get(id);
     }
-    
-    public int getActivityCount()
-    {
-    	return activities.size();
+
+    public int getActivityCount() {
+        return activities.size();
     }
 }

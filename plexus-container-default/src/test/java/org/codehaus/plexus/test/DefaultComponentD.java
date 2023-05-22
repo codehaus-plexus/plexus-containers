@@ -16,13 +16,10 @@ package org.codehaus.plexus.test;
  * limitations under the License.
  */
 
-public class DefaultComponentD
-    implements ComponentD
-{
+public class DefaultComponentD implements ComponentD {
     private String name;
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 }

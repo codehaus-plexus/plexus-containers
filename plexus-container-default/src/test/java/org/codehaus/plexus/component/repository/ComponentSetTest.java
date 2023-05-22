@@ -16,12 +16,12 @@ package org.codehaus.plexus.component.repository;
  * limitations under the License.
  */
 
+import java.util.List;
+
 import junit.framework.TestCase;
-import org.codehaus.plexus.component.repository.io.PlexusTools;
 import org.codehaus.plexus.classworlds.ClassWorld;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
-
-import java.util.List;
+import org.codehaus.plexus.component.repository.io.PlexusTools;
 
 /**
  *
@@ -29,83 +29,72 @@ import java.util.List;
  * @author Jason van Zyl
  *
  */
-public class ComponentSetTest
-    extends TestCase
-{
-    public void testSimpleComponentResolution()
-        throws Exception
-    {
-        String xml =
-            "<component-set>" +
-            "  <components>" +
-            "    <component>" +
-            "      <implementation>java.lang.String</implementation>" +
-            "      <role>c1</role>" +
-            "      <role-hint>role-hint</role-hint>" +
-            "      <component-profile>component-profile</component-profile>" +
-            "      <requirements>" +
-            "        <requirement>" +
-            "          <role>c2</role>" +
-            "        </requirement>" +
-            "        <requirement>" +
-            "          <role>c3</role>" +
-            "        </requirement>" +
-            "      </requirements>" +
-            "    </component>" +
-            "  </components>" +
-            "  <dependencies>" +
-            "    <dependency>" +
-            "      <group-id>plexus</group-id>" +
-            "      <artifact-id>wedgy</artifact-id>" +
-            "      <version>1.0</version>" +
-            "    </dependency>" +
-            "  </dependencies>" +
-            "</component-set>";
+public class ComponentSetTest extends TestCase {
+    public void testSimpleComponentResolution() throws Exception {
+        String xml = "<component-set>" + "  <components>"
+                + "    <component>"
+                + "      <implementation>java.lang.String</implementation>"
+                + "      <role>c1</role>"
+                + "      <role-hint>role-hint</role-hint>"
+                + "      <component-profile>component-profile</component-profile>"
+                + "      <requirements>"
+                + "        <requirement>"
+                + "          <role>c2</role>"
+                + "        </requirement>"
+                + "        <requirement>"
+                + "          <role>c3</role>"
+                + "        </requirement>"
+                + "      </requirements>"
+                + "    </component>"
+                + "  </components>"
+                + "  <dependencies>"
+                + "    <dependency>"
+                + "      <group-id>plexus</group-id>"
+                + "      <artifact-id>wedgy</artifact-id>"
+                + "      <version>1.0</version>"
+                + "    </dependency>"
+                + "  </dependencies>"
+                + "</component-set>";
 
-        ClassWorld classWorld = new ClassWorld( "test", Thread.currentThread().getContextClassLoader() );
-        ClassRealm realm = classWorld.getRealm( "test" );
+        ClassWorld classWorld = new ClassWorld("test", Thread.currentThread().getContextClassLoader());
+        ClassRealm realm = classWorld.getRealm("test");
 
-        ComponentSetDescriptor cs = PlexusTools.buildComponentSet( PlexusTools.buildConfiguration( xml ), realm );
+        ComponentSetDescriptor cs = PlexusTools.buildComponentSet(PlexusTools.buildConfiguration(xml), realm);
 
-        ComponentDescriptor<?> c1 = cs.getComponents().get( 0 );
+        ComponentDescriptor<?> c1 = cs.getComponents().get(0);
 
-        assertEquals( "c1", c1.getRole() );
+        assertEquals("c1", c1.getRole());
 
-        assertEquals( "role-hint", c1.getRoleHint() );
+        assertEquals("role-hint", c1.getRoleHint());
 
-        assertEquals( "component-profile", c1.getComponentProfile() );
+        assertEquals("component-profile", c1.getComponentProfile());
 
         List<ComponentRequirement> requirements = c1.getRequirements();
 
-        assertEquals( 2, requirements.size() );
+        assertEquals(2, requirements.size());
 
         boolean containsC2 = false;
 
         boolean containsC3 = false;
 
-        for ( ComponentRequirement requirement : requirements )
-        {
-            if ( requirement.getRole().equals( "c2" ) )
-            {
+        for (ComponentRequirement requirement : requirements) {
+            if (requirement.getRole().equals("c2")) {
                 containsC2 = true;
-            }
-            else if ( requirement.getRole().equals( "c3" ) )
-            {
+            } else if (requirement.getRole().equals("c3")) {
                 containsC3 = true;
             }
-
         }
 
-        assertTrue( containsC2 );
+        assertTrue(containsC2);
 
-        assertTrue( containsC3 );
+        assertTrue(containsC3);
 
-        ComponentDependency d1 = cs.getDependencies().get( 0 );
+        ComponentDependency d1 = cs.getDependencies().get(0);
 
-        assertEquals( "plexus", d1.getGroupId() );
+        assertEquals("plexus", d1.getGroupId());
 
-        assertEquals( "wedgy", d1.getArtifactId() );
+        assertEquals("wedgy", d1.getArtifactId());
 
-        assertEquals( "1.0", d1.getVersion() );
+        assertEquals("1.0", d1.getVersion());
     }
 }

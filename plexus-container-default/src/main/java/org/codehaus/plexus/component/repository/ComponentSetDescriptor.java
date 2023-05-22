@@ -25,8 +25,7 @@ import java.util.List;
  * @author Jason van Zyl
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
  */
-public class ComponentSetDescriptor
-{
+public class ComponentSetDescriptor {
     // This field is not currently used in Maven, or Plexus
     private String id;
 
@@ -35,19 +34,18 @@ public class ComponentSetDescriptor
 
     /** Flag to indicate whether this component should be loaded in a realm/classloader of its own. */
     private boolean isolatedRealm;
-    
+
     /** The component descriptors that can be found within this component set descriptor. */
     private final List<ComponentDescriptor<?>> components = new ArrayList<ComponentDescriptor<?>>();
 
     /** The dependencies that are required by the set of components found in this component set descriptor. */
     private final List<ComponentDependency> dependencies = new ArrayList<ComponentDependency>();
-    
+
     /**
      * Returns a list of components in this set.
      * @return a list of components
      */
-    public List<ComponentDescriptor<?>> getComponents()
-    {
+    public List<ComponentDescriptor<?>> getComponents() {
         return components;
     }
 
@@ -55,17 +53,15 @@ public class ComponentSetDescriptor
      * Add a new ComponentDescriptor to this set.
      * @param cd the ComponentDescriptor to add
      */
-    public void addComponentDescriptor( ComponentDescriptor<?> cd )
-    {
-        components.add( cd );
+    public void addComponentDescriptor(ComponentDescriptor<?> cd) {
+        components.add(cd);
     }
 
     /**
      * Sets a List of components as this set's contents.
      * @param components the List of components to set
      */
-    public void setComponents( List<ComponentDescriptor<?>> components )
-    {
+    public void setComponents(List<ComponentDescriptor<?>> components) {
         this.components.clear();
         this.components.addAll(components);
     }
@@ -74,8 +70,7 @@ public class ComponentSetDescriptor
      * Returns a List of dependencies of this set of components.
      * @return a List of dependencies of this set of components
      */
-    public List<ComponentDependency> getDependencies()
-    {
+    public List<ComponentDependency> getDependencies() {
         return dependencies;
     }
 
@@ -83,17 +78,15 @@ public class ComponentSetDescriptor
      * Add a depenency to this set's contents.
      * @param cd the ComponentDependency to add
      */
-    public void addDependency( ComponentDependency cd )
-    {
-        dependencies.add( cd );
+    public void addDependency(ComponentDependency cd) {
+        dependencies.add(cd);
     }
 
     /**
      * Sets a List of dependencies as this set's component dependencies.
      * @param dependencies the List of components to set
      */
-    public void setDependencies( List<ComponentDependency> dependencies )
-    {
+    public void setDependencies(List<ComponentDependency> dependencies) {
         this.dependencies.clear();
         this.dependencies.addAll(dependencies);
     }
@@ -103,8 +96,7 @@ public class ComponentSetDescriptor
      * @param isolatedRealm true if this set of components may be in an
      *  isolated classrealm
      */
-    public void setIsolatedRealm( boolean isolatedRealm )
-    {
+    public void setIsolatedRealm(boolean isolatedRealm) {
         this.isolatedRealm = isolatedRealm;
     }
 
@@ -112,8 +104,7 @@ public class ComponentSetDescriptor
      * Returns true if this set may be in an isolated classrealm.
      * @return true if this set may be in an isolated classrealm
      */
-    public boolean isIsolatedRealm()
-    {
+    public boolean isIsolatedRealm() {
         return isolatedRealm;
     }
 
@@ -121,8 +112,7 @@ public class ComponentSetDescriptor
      * Returns the identifier of this set.
      * @return the identifier of this set
      */
-    public String getId()
-    {
+    public String getId() {
         return id;
     }
 
@@ -130,34 +120,29 @@ public class ComponentSetDescriptor
      * Sets the identifier of this set.
      * @param id the identifier to set
      */
-    public void setId( String id )
-    {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String toString()
-    {
+    public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append( "Component Descriptor: " );
+        sb.append("Component Descriptor: ");
 
-        for ( ComponentDescriptor<?> cd : components )
-        {
-            sb.append( cd.getHumanReadableKey() ).append( "\n" );
+        for (ComponentDescriptor<?> cd : components) {
+            sb.append(cd.getHumanReadableKey()).append("\n");
         }
 
-        sb.append( "---" );
+        sb.append("---");
 
         return sb.toString();
     }
 
-    public String getSource()
-    {
+    public String getSource() {
         return source;
     }
 
-    public void setSource( String source )
-    {
+    public void setSource(String source) {
         this.source = source;
     }
 }

@@ -21,31 +21,26 @@ import java.util.Map;
 
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public class DefaultPipeline
-    implements Pipeline
-{
+public class DefaultPipeline implements Pipeline {
     private List valves;
 
     private Map valveMap;
 
-    public void execute()
-    {
+    public void execute() {
         for (Object valve : valves) {
             ((Valve) valve).execute();
         }
     }
 
-    public List getValves()
-    {
+    public List getValves() {
         return valves;
     }
 
-    public Map getValveMap()
-    {
+    public Map getValveMap() {
         return valveMap;
     }
 }

@@ -16,9 +16,7 @@ import org.codehaus.plexus.configuration.PlexusConfiguration;
  *
  * @author <a href="mailto:kenney@neonics.com">Kenney Westerhof</a>
  */
-public class ClassRealmConverter
-    extends AbstractConfigurationConverter
-{
+public class ClassRealmConverter extends AbstractConfigurationConverter {
     public static final String ROLE = ConfigurationConverter.class.getName();
 
     private ClassRealm classRealm;
@@ -30,61 +28,54 @@ public class ClassRealmConverter
      *
      * @param classRealm {@link ClassRealm}.
      */
-    public ClassRealmConverter( ClassRealm classRealm )
-    {
-        setClassRealm( classRealm );
+    public ClassRealmConverter(ClassRealm classRealm) {
+        setClassRealm(classRealm);
     }
 
     @Deprecated
-    public ClassRealmConverter( final org.codehaus.classworlds.ClassRealm classRealm )
-    {
-        setClassRealm( classRealm );
+    public ClassRealmConverter(final org.codehaus.classworlds.ClassRealm classRealm) {
+        setClassRealm(classRealm);
     }
 
-    public void setClassRealm( final ClassRealm classRealm )
-    {
+    public void setClassRealm(final ClassRealm classRealm) {
         this.classRealm = classRealm;
     }
 
     @Deprecated
-    public void setClassRealm( final org.codehaus.classworlds.ClassRealm classRealm )
-    {
-        if ( classRealm.getClassLoader() instanceof ClassRealm )
-        {
-            setClassRealm( (ClassRealm) classRealm.getClassLoader() );
-        }
-        else
-        {
-            setClassRealm( ClassRealmReverseAdapter.getInstance( classRealm ) );
+    public void setClassRealm(final org.codehaus.classworlds.ClassRealm classRealm) {
+        if (classRealm.getClassLoader() instanceof ClassRealm) {
+            setClassRealm((ClassRealm) classRealm.getClassLoader());
+        } else {
+            setClassRealm(ClassRealmReverseAdapter.getInstance(classRealm));
         }
     }
 
-    public boolean canConvert( Class type )
-    {
+    public boolean canConvert(Class type) {
         // backwards compatibility for old ClassWorld fields
-        return org.codehaus.classworlds.ClassRealm.class.isAssignableFrom( type )
-            || ClassRealm.class.isAssignableFrom( type );
+        return org.codehaus.classworlds.ClassRealm.class.isAssignableFrom(type)
+                || ClassRealm.class.isAssignableFrom(type);
     }
 
-    public Object fromConfiguration( ConverterLookup converterLookup, PlexusConfiguration configuration, Class type,
-                                     Class baseType, ClassLoader classLoader, ExpressionEvaluator expressionEvaluator,
-                                     ConfigurationListener listener )
-        throws ComponentConfigurationException
-    {
-        Object retValue = fromExpression( configuration, expressionEvaluator, type );
+    public Object fromConfiguration(
+            ConverterLookup converterLookup,
+            PlexusConfiguration configuration,
+            Class type,
+            Class baseType,
+            ClassLoader classLoader,
+            ExpressionEvaluator expressionEvaluator,
+            ConfigurationListener listener)
+            throws ComponentConfigurationException {
+        Object retValue = fromExpression(configuration, expressionEvaluator, type);
 
-        if ( retValue == null )
-        {
+        if (retValue == null) {
             retValue = classRealm;
         }
 
         // backwards compatibility for old ClassWorld fields
-        if ( retValue instanceof ClassRealm && org.codehaus.classworlds.ClassRealm.class.isAssignableFrom( type ) )
-        {
-            retValue = ClassRealmAdapter.getInstance( (ClassRealm) retValue );
+        if (retValue instanceof ClassRealm && org.codehaus.classworlds.ClassRealm.class.isAssignableFrom(type)) {
+            retValue = ClassRealmAdapter.getInstance((ClassRealm) retValue);
         }
 
         return retValue;
     }
-
 }

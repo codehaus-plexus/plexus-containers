@@ -4,8 +4,7 @@ import org.codehaus.plexus.MutablePlexusContainer;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
 import org.codehaus.plexus.lifecycle.LifecycleHandler;
 
-public interface ComponentManagerFactory
-{
+public interface ComponentManagerFactory {
     /**
      * Gets the unique identifier of this ComponentManagerFactory.  This id is the instantiation strategy specified
      * in a component descriptor.
@@ -23,9 +22,10 @@ public interface ComponentManagerFactory
      * @param <T> The type.
      * @return {@link ComponentManager}
      */
-    <T> ComponentManager<T> createComponentManager( MutablePlexusContainer container,
-                                             LifecycleHandler lifecycleHandler,
-                                             ComponentDescriptor<T> componentDescriptor,
-                                             String role,
-                                             String roleHint );
+    <T> ComponentManager<T> createComponentManager(
+            MutablePlexusContainer container,
+            LifecycleHandler lifecycleHandler,
+            ComponentDescriptor<T> componentDescriptor,
+            String role,
+            String roleHint);
 }

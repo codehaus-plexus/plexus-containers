@@ -16,8 +16,7 @@ package org.codehaus.plexus.personality.plexus.lifecycle.phase;
  * limitations under the License.
  */
 
-public interface Suspendable
-{
+public interface Suspendable {
     void suspend();
 
     void resume();

@@ -20,6 +20,4 @@ package org.codehaus.plexus.metadata.gleaner;
  * ???
  *
  */
-public class NoAnnotationsClass
-{
-}
+public class NoAnnotationsClass {}

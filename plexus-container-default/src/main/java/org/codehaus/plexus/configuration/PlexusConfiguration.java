@@ -21,8 +21,7 @@ package org.codehaus.plexus.configuration;
  * example, to populate a ComponentDescriptor. Implementation of
  * PlexusConfiguration may be populated by any means, for example, by XML file.
  */
-public interface PlexusConfiguration
-{
+public interface PlexusConfiguration {
     // ----------------------------------------------------------------------
     // Name handling
     // ----------------------------------------------------------------------
@@ -32,7 +31,7 @@ public interface PlexusConfiguration
      * @return the name of this configuration
      */
     String getName();
-    
+
     /**
      * Sets the name of this configuration.
      * @param name The name of the configuration.
@@ -48,8 +47,7 @@ public interface PlexusConfiguration
      * @return the value of this configuration
      * @throws PlexusConfigurationException in case of an error.
      */
-    String getValue()
-        throws PlexusConfigurationException;
+    String getValue() throws PlexusConfigurationException;
 
     /**
      * Returns the value of this configuration, or default if one cannot be
@@ -57,13 +55,13 @@ public interface PlexusConfiguration
      * @param defaultValue value to return if none is found
      * @return the value of this configuration
      */
-    String getValue( String defaultValue );
+    String getValue(String defaultValue);
 
     /**
      * Set the value of a configuration element.
      * @param value The value of the configuration element.
      */
-    void setValue( String value );
+    void setValue(String value);
 
     /**
      * Set the value of a configuration element and return the PlexusConfiguration object
@@ -71,18 +69,18 @@ public interface PlexusConfiguration
      * @param value set the value.
      * @return {@link PlexusConfiguration}
      */
-    PlexusConfiguration setValueAndGetSelf( String value );
+    PlexusConfiguration setValueAndGetSelf(String value);
 
     // ----------------------------------------------------------------------
     // Attribute handling
     // ----------------------------------------------------------------------
-    
+
     /**
      * Sets an attribute on this configuration.
      * @param name name of the attribute
      * @param value the value of the attribute.
      */
-    void setAttribute( String name, String value );
+    void setAttribute(String name, String value);
 
     /**
      * Returns an array of attribute names.
@@ -96,8 +94,7 @@ public interface PlexusConfiguration
      * @return the value of the named attribute
      * @throws PlexusConfigurationException in case of an error.
      */
-    String getAttribute( String paramName )
-        throws PlexusConfigurationException;
+    String getAttribute(String paramName) throws PlexusConfigurationException;
 
     /**
      * Returns the value of the named attribute, or default if one cannot be
@@ -106,7 +103,7 @@ public interface PlexusConfiguration
      * @param defaultValue value to return if none is found
      * @return the value of the named attribute
      */
-    String getAttribute( String name, String defaultValue );
+    String getAttribute(String name, String defaultValue);
 
     // ----------------------------------------------------------------------
     // Child handling
@@ -117,14 +114,14 @@ public interface PlexusConfiguration
      * @param child the name of the child to return
      * @return the child configuration of the given name
      */
-    PlexusConfiguration getChild( String child );
+    PlexusConfiguration getChild(String child);
 
     /**
      * Returns the child configuration at the given location.
      * @param i the position of the child under this configuration
      * @return the child configuration at the given location
      */
-    PlexusConfiguration getChild( int i );
+    PlexusConfiguration getChild(int i);
 
     /**
      * Returns the child configuration of the given name.
@@ -133,7 +130,7 @@ public interface PlexusConfiguration
      * @return the child configuration of the given name, or new child if
      *  created
      */
-    PlexusConfiguration getChild( String child, boolean createChild );
+    PlexusConfiguration getChild(String child, boolean createChild);
 
     /**
      * Returns an array of all child configurations.
@@ -146,21 +143,21 @@ public interface PlexusConfiguration
      * @param name the name of the children configurations to return
      * @return an array of all child configurations with the given name
      */
-    PlexusConfiguration[] getChildren( String name );
+    PlexusConfiguration[] getChildren(String name);
 
     /**
      * Adds a configuration under this configuration, which acts as
      * a parent.
      * @param configuration the child configuration to add
      */
-    void addChild( PlexusConfiguration configuration );
+    void addChild(PlexusConfiguration configuration);
 
     /**
      * Add a child element with a given name and return the newly created element.
      * @param name The name of the element.
      * @return {@link PlexusConfiguration}
      */
-    PlexusConfiguration addChild( String name );
+    PlexusConfiguration addChild(String name);
 
     /**
      * Add a child element with a given name, and given value and return the
@@ -169,7 +166,7 @@ public interface PlexusConfiguration
      * @param value The value of the child element.
      * @return {@link PlexusConfiguration}
      */
-    PlexusConfiguration addChild( String name, String value );
+    PlexusConfiguration addChild(String name, String value);
 
     /**
      * Returns the number of directly children under this configuration.

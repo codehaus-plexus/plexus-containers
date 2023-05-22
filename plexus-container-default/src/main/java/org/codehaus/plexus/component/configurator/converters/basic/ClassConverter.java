@@ -21,24 +21,16 @@ import org.codehaus.plexus.component.configurator.ComponentConfigurationExceptio
 /**
  * @author <a href="mailto:brett@codehaus.org">Brett Porter</a>
  */
-public class ClassConverter
-    extends AbstractBasicConverter
-{
-    public boolean canConvert( Class type )
-    {
-        return type.equals( Class.class );
+public class ClassConverter extends AbstractBasicConverter {
+    public boolean canConvert(Class type) {
+        return type.equals(Class.class);
     }
 
-    public Object fromString( String str )
-        throws ComponentConfigurationException
-    {
-        try
-        {
-            return Class.forName( str );
-        }
-        catch ( ClassNotFoundException e )
-        {
-            throw new ComponentConfigurationException( "Unable to find class in conversion", e );
+    public Object fromString(String str) throws ComponentConfigurationException {
+        try {
+            return Class.forName(str);
+        } catch (ClassNotFoundException e) {
+            throw new ComponentConfigurationException("Unable to find class in conversion", e);
         }
     }
 }

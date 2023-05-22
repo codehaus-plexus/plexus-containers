@@ -21,14 +21,11 @@ import org.codehaus.plexus.configuration.PlexusConfiguration;
 /**
  * @author Jason van Zyl
  */
-public class InitializeSystemPropertiesPhase
-    extends AbstractContainerInitializationPhase
-{
-    public void execute( ContainerInitializationContext context )
-        throws ContainerInitializationException
-    {
-        PlexusConfiguration[] systemProperties =
-            context.getContainerXmlConfiguration().getChild( "system-properties" ).getChildren( "property" );
+public class InitializeSystemPropertiesPhase extends AbstractContainerInitializationPhase {
+    public void execute(ContainerInitializationContext context) throws ContainerInitializationException {
+        PlexusConfiguration[] systemProperties = context.getContainerXmlConfiguration()
+                .getChild("system-properties")
+                .getChildren("property");
 
         for (PlexusConfiguration systemProperty : systemProperties) {
             String name = systemProperty.getAttribute("name", null);

@@ -20,19 +20,15 @@ package org.codehaus.plexus.component.composition;
  * @author Jason van Zyl
  *
  */
-public class DefaultComponentB
-    implements ComponentB
-{
+public class DefaultComponentB implements ComponentB {
     private ComponentC componentC;
 
-    public ComponentC getComponentC()
-    {
+    public ComponentC getComponentC() {
         return componentC;
     }
 
-    public void setComponentC( ComponentC componentC )
-    {
-        System.out.println( "Setting componentC:" + componentC );
+    public void setComponentC(ComponentC componentC) {
+        System.out.println("Setting componentC:" + componentC);
 
         this.componentC = componentC;
     }

@@ -16,8 +16,7 @@ package org.codehaus.plexus;
  * limitations under the License.
  */
 
-public abstract class PlexusConstants
-{
+public abstract class PlexusConstants {
     /** Key used to retrieve the plexus container from the containerContext. */
     public static final String PLEXUS_KEY = "plexus";
 

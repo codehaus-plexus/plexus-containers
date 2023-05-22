@@ -16,11 +16,8 @@ package org.codehaus.plexus.configuration;
  * limitations under the License.
  */
 
-public class PlexusConfigurationResourceException
-    extends Exception
-{
-    public PlexusConfigurationResourceException( String message )
-    {
-        super( message );
+public class PlexusConfigurationResourceException extends Exception {
+    public PlexusConfigurationResourceException(String message) {
+        super(message);
     }
 }

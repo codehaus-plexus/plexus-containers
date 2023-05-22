@@ -26,42 +26,30 @@ import org.codehaus.plexus.util.StringUtils;
 import org.codehaus.plexus.util.dag.CycleDetectedException;
 import org.codehaus.plexus.util.dag.DAG;
 
-
 /**
  * @author Jason van Zyl
  * @author <a href="mailto:michal.maczka@dimatics.com">Michal Maczka</a>
  */
-public class DefaultCompositionResolver
-    implements CompositionResolver
-{
+public class DefaultCompositionResolver implements CompositionResolver {
     private DAG dag = new DAG();
 
-    public void addComponentDescriptor( ComponentDescriptor<?> componentDescriptor )
-        throws CycleDetectedInComponentGraphException
-    {
-        String key = getDAGKey( componentDescriptor.getRole(), componentDescriptor.getRoleHint() );
+    public void addComponentDescriptor(ComponentDescriptor<?> componentDescriptor)
+            throws CycleDetectedInComponentGraphException {
+        String key = getDAGKey(componentDescriptor.getRole(), componentDescriptor.getRoleHint());
 
         List<ComponentRequirement> requirements = componentDescriptor.getRequirements();
 
-        for ( ComponentRequirement requirement : requirements )
-        {
-            try
-            {
-                if ( requirement instanceof ComponentRequirementList )
-                {
-                    for ( String hint : ( (ComponentRequirementList) requirement ).getRoleHints() )
-                    {
-                        dag.addEdge( key, getDAGKey( requirement.getRole(), hint ) );
+        for (ComponentRequirement requirement : requirements) {
+            try {
+                if (requirement instanceof ComponentRequirementList) {
+                    for (String hint : ((ComponentRequirementList) requirement).getRoleHints()) {
+                        dag.addEdge(key, getDAGKey(requirement.getRole(), hint));
                     }
+                } else {
+                    dag.addEdge(key, getDAGKey(requirement.getRole(), requirement.getRoleHint()));
                 }
-                else
-                {
-                    dag.addEdge( key, getDAGKey( requirement.getRole(), requirement.getRoleHint() ) );
-                }
-            }
-            catch ( CycleDetectedException e )
-            {
-                throw new CycleDetectedInComponentGraphException( "Cyclic requirement detected", e );
+            } catch (CycleDetectedException e) {
+                throw new CycleDetectedInComponentGraphException("Cyclic requirement detected", e);
             }
         }
     }
@@ -69,23 +57,20 @@ public class DefaultCompositionResolver
     /**
      * @see org.codehaus.plexus.component.composition.CompositionResolver#getRequirements(String,String)
      */
-    public List getRequirements( String role, String roleHint )
-    {
-        return dag.getChildLabels( getDAGKey( role, roleHint ) );
+    public List getRequirements(String role, String roleHint) {
+        return dag.getChildLabels(getDAGKey(role, roleHint));
     }
-
 
     /**
      * @see org.codehaus.plexus.component.composition.CompositionResolver#findRequirements(String,String)
      */
-    public List findRequirements( String role, String roleHint )
-    {
-        return dag.getParentLabels( getDAGKey( role, roleHint ) );
+    public List findRequirements(String role, String roleHint) {
+        return dag.getParentLabels(getDAGKey(role, roleHint));
     }
 
-    private String getDAGKey( String role, String roleHint )
-    {
-        return role + SEPARATOR_CHAR
-            + ( StringUtils.isNotEmpty( roleHint ) ? roleHint : PlexusConstants.PLEXUS_DEFAULT_HINT );
+    private String getDAGKey(String role, String roleHint) {
+        return role
+                + SEPARATOR_CHAR
+                + (StringUtils.isNotEmpty(roleHint) ? roleHint : PlexusConstants.PLEXUS_DEFAULT_HINT);
     }
 }

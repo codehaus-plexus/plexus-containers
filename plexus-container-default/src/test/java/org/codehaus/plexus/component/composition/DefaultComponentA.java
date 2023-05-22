@@ -22,9 +22,7 @@ package org.codehaus.plexus.component.composition;
  * @author Jason van Zyl
  *
  */
-public class DefaultComponentA
-    implements ComponentA
-{
+public class DefaultComponentA implements ComponentA {
     private ComponentB componentB;
 
     private String host;
@@ -32,9 +30,7 @@ public class DefaultComponentA
     private String port;
 
     // Just so we can retrieve the value of componentB for testing. */
-    public ComponentB getComponentB()
-    {
+    public ComponentB getComponentB() {
         return componentB;
     }
-
 }

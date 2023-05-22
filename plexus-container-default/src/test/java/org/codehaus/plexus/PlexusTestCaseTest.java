@@ -16,69 +16,54 @@ package org.codehaus.plexus;
  * limitations under the License.
  */
 
+import java.io.File;
+
 import junit.framework.TestCase;
 import org.codehaus.plexus.component.discovery.DiscoveredComponent;
 import org.codehaus.plexus.component.repository.exception.ComponentLookupException;
 import org.codehaus.plexus.test.DefaultLoadOnStartService;
 
-import java.io.File;
-
 /**
  * @author <a href="mailto:jason@maven.org">Jason van Zyl</a>
  */
-public class PlexusTestCaseTest
-    extends TestCase
-{
+public class PlexusTestCaseTest extends TestCase {
     private String basedir;
 
-    public void setUp()
-    {
-        basedir = System.getProperty( "basedir" );
+    public void setUp() {
+        basedir = System.getProperty("basedir");
 
-        if ( basedir == null )
-        {
-            basedir = new File( "." ).getAbsolutePath();
+        if (basedir == null) {
+            basedir = new File(".").getAbsolutePath();
         }
     }
 
-    public void testPlexusTestCase()
-        throws Exception
-    {
-        PlexusTestCase tc = new PlexusTestCase()
-        {
-        };
+    public void testPlexusTestCase() throws Exception {
+        PlexusTestCase tc = new PlexusTestCase() {};
 
         tc.setUp();
 
-        try
-        {
-            tc.lookup( DiscoveredComponent.class, "unknown" );
+        try {
+            tc.lookup(DiscoveredComponent.class, "unknown");
 
-            fail( "Expected ComponentLookupException." );
-        }
-        catch ( ComponentLookupException ex )
-        {
-            assertTrue( true );
+            fail("Expected ComponentLookupException.");
+        } catch (ComponentLookupException ex) {
+            assertTrue(true);
         }
 
         // This component is discovered from src/test/META-INF/plexus/components.xml
-        DiscoveredComponent component = tc.lookup( DiscoveredComponent.class );
+        DiscoveredComponent component = tc.lookup(DiscoveredComponent.class);
 
-        assertNotNull( component );
+        assertNotNull(component);
 
-        assertNotNull( tc.getClassLoader() );
+        assertNotNull(tc.getClassLoader());
 
         tc.tearDown();
     }
 
-    public void testLoadOnStartComponents()
-        throws Exception
-    {
-        PlexusTestCase tc = new PlexusTestCase()
-        {
-            protected String getCustomConfigurationName()
-            {
-                return PlexusTestCase.getTestConfiguration( getClass() );
+    public void testLoadOnStartComponents() throws Exception {
+        PlexusTestCase tc = new PlexusTestCase() {
+            protected String getCustomConfigurationName() {
+                return PlexusTestCase.getTestConfiguration(getClass());
             }
         };
 
@@ -86,30 +71,28 @@ public class PlexusTestCaseTest
 
         // Assert that the load on start component has started.
 
-        assertTrue( "The load on start components haven't been started.", DefaultLoadOnStartService.isStarted );
+        assertTrue("The load on start components haven't been started.", DefaultLoadOnStartService.isStarted);
 
         tc.tearDown();
     }
 
-    public void testGetFile()
-    {
-        File file = PlexusTestCase.getTestFile( "pom.xml" );
+    public void testGetFile() {
+        File file = PlexusTestCase.getTestFile("pom.xml");
 
-        assertTrue( file.exists() );
+        assertTrue(file.exists());
 
-        file = PlexusTestCase.getTestFile( basedir, "pom.xml" );
+        file = PlexusTestCase.getTestFile(basedir, "pom.xml");
 
-        assertTrue( file.exists() );
+        assertTrue(file.exists());
     }
 
-    public void testGetPath()
-    {
-        File file = new File( PlexusTestCase.getTestPath( "pom.xml" ) );
+    public void testGetPath() {
+        File file = new File(PlexusTestCase.getTestPath("pom.xml"));
 
-        assertTrue( file.exists() );
+        assertTrue(file.exists());
 
-        file = new File( PlexusTestCase.getTestPath( basedir, "pom.xml" ) );
+        file = new File(PlexusTestCase.getTestPath(basedir, "pom.xml"));
 
-        assertTrue( file.exists() );
+        assertTrue(file.exists());
     }
 }

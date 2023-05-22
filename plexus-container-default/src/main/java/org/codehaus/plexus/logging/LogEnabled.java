@@ -18,7 +18,6 @@ package org.codehaus.plexus.logging;
 
 /**
  */
-public interface LogEnabled
-{
-    void enableLogging( Logger logger );
+public interface LogEnabled {
+    void enableLogging(Logger logger);
 }

@@ -18,17 +18,14 @@ package org.codehaus.plexus.component.composition;
 
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public class AbstractComponent
-    implements Component
-{
+public class AbstractComponent implements Component {
     private ComponentA componentA;
 
-    public ComponentA getComponentA()
-    {
+    public ComponentA getComponentA() {
         return componentA;
     }
 }

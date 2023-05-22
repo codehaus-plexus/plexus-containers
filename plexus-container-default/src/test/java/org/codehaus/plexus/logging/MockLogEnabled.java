@@ -21,7 +21,4 @@ package org.codehaus.plexus.logging;
  * @author <a href="mailto:peter at realityforge.org">Peter Donald</a>
  * @version $Revision$ $Date$
  */
-class MockLogEnabled
-    extends AbstractLogEnabled
-{
-}
+class MockLogEnabled extends AbstractLogEnabled {}

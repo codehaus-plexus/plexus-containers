@@ -21,29 +21,25 @@ import org.codehaus.plexus.logging.Logger;
 import org.codehaus.plexus.logging.LoggerManager;
 
 /**
- * Test for {@link org.codehaus.plexus.logging.console.ConsoleLoggerManager} and 
+ * Test for {@link org.codehaus.plexus.logging.console.ConsoleLoggerManager} and
  * {@link org.codehaus.plexus.logging.console.ConsoleLogger}.
  *
  * @author Mark H. Wilkinson
  * @version $Revision$
  */
-public final class ConsoleLoggerManagerTest
-    extends AbstractLoggerManagerTest
-{
-    protected LoggerManager createLoggerManager() throws Exception
-    {
+public final class ConsoleLoggerManagerTest extends AbstractLoggerManagerTest {
+    protected LoggerManager createLoggerManager() throws Exception {
         return lookup(LoggerManager.class);
     }
 
-    public void testSetAllThresholds() throws Exception
-    {
+    public void testSetAllThresholds() throws Exception {
         LoggerManager manager = createLoggerManager();
-        manager.setThreshold( Logger.LEVEL_ERROR );
+        manager.setThreshold(Logger.LEVEL_ERROR);
 
-        Logger logger = manager.getLoggerForComponent( "test" );
-        assertEquals( logger.getThreshold(), Logger.LEVEL_ERROR );
+        Logger logger = manager.getLoggerForComponent("test");
+        assertEquals(logger.getThreshold(), Logger.LEVEL_ERROR);
 
-        manager.setThresholds( Logger.LEVEL_DEBUG );
-        assertEquals( logger.getThreshold(), Logger.LEVEL_DEBUG );
+        manager.setThresholds(Logger.LEVEL_DEBUG);
+        assertEquals(logger.getThreshold(), Logger.LEVEL_DEBUG);
     }
 }

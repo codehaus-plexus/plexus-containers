@@ -22,7 +22,6 @@ package org.codehaus.plexus.personality.plexus.lifecycle.phase;
  * @author Jason van Zyl
  *
  */
-public interface Disposable
-{
+public interface Disposable {
     public void dispose();
 }

@@ -20,21 +20,14 @@ import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.codehaus.plexus.component.manager.ComponentManager;
 import org.codehaus.plexus.lifecycle.phase.AbstractPhase;
 
-public class InitializePhase
-    extends AbstractPhase
-{
-    public void execute( Object object, ComponentManager manager, ClassRealm lookupRealm )
-        throws PhaseExecutionException
-    {
-        if ( object instanceof Initializable )
-        {
-            try
-            {
-                ( (Initializable) object ).initialize();
-            }
-            catch ( InitializationException e )
-            {
-                throw new PhaseExecutionException( "Error initialising component", e );
+public class InitializePhase extends AbstractPhase {
+    public void execute(Object object, ComponentManager manager, ClassRealm lookupRealm)
+            throws PhaseExecutionException {
+        if (object instanceof Initializable) {
+            try {
+                ((Initializable) object).initialize();
+            } catch (InitializationException e) {
+                throw new PhaseExecutionException("Error initialising component", e);
             }
         }
     }

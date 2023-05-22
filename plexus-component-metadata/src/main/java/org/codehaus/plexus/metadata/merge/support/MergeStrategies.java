@@ -36,18 +36,14 @@ import org.codehaus.plexus.metadata.merge.MergeStrategy;
  *
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
  */
-public class MergeStrategies
-{
+public class MergeStrategies {
     /**
      * {@link MergeStrategy} implementation wherein the elements are merged
      * down to the deepest available {@link Mergeable} instance in the DOM tree.
      */
-    public static final MergeStrategy DEEP = new MergeStrategy()
-    {
-        public void apply( Mergeable dElt, Mergeable rElt )
-            throws MergeException
-        {
-            dElt.merge( rElt );
+    public static final MergeStrategy DEEP = new MergeStrategy() {
+        public void apply(Mergeable dElt, Mergeable rElt) throws MergeException {
+            dElt.merge(rElt);
         }
     };
 
@@ -56,25 +52,21 @@ public class MergeStrategies
      * which the merge operation is called is 'merged'. The merge does not
      * traverse the DOM tree any further.
      */
-    public static final MergeStrategy SHALLOW = new MergeStrategy()
-    {
+    public static final MergeStrategy SHALLOW = new MergeStrategy() {
         /**
          * @throws MergeException
          * @see org.codehaus.plexus.metadata.merge.MergeStrategy#apply(Mergeable,Mergeable)
          */
-        public void apply( Mergeable dElt, Mergeable rElt )
-            throws MergeException
-        {
+        public void apply(Mergeable dElt, Mergeable rElt) throws MergeException {
             AbstractMergeableElement dame = (AbstractMergeableElement) dElt;
             AbstractMergeableElement rame = (AbstractMergeableElement) rElt;
 
             // check if the dominant was in conflict with recessive.
-            List elementNames = dame.getElementNamesForConflictResolution( Collections.EMPTY_LIST );
+            List elementNames = dame.getElementNamesForConflictResolution(Collections.EMPTY_LIST);
 
-            if ( !dame.isRecessiveElementInConflict( rame, elementNames ) )
-            {
+            if (!dame.isRecessiveElementInConflict(rame, elementNames)) {
                 // no conflict, simply add recessive to dominant's parent
-                dame.getElement().addContent( rame.getElement() );
+                dame.getElement().addContent(rame.getElement());
             }
         }
     };

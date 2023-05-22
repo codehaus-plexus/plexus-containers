@@ -8,33 +8,25 @@ import java.util.List;
  * @author Andrew Williams
  * @since 1.0
  */
-public class ComponentRequirementList
-    extends ComponentRequirement 
-{
+public class ComponentRequirementList extends ComponentRequirement {
     private List<String> roleHints;
 
-    public List<String> getRoleHints()
-    {
+    public List<String> getRoleHints() {
         return roleHints;
     }
 
-    public void setRoleHints(List<String> roleHints)
-    {
+    public void setRoleHints(List<String> roleHints) {
         this.roleHints = roleHints;
     }
 
-    public String getRoleHint()
-    {
+    public String getRoleHint() {
         StringBuilder buffer = new StringBuilder();
-        for ( String hint : roleHints )
-        {
-            if (buffer.length() > 0)
-            {
+        for (String hint : roleHints) {
+            if (buffer.length() > 0) {
                 buffer.append(",");
             }
 
             buffer.append(hint);
-
         }
 
         return buffer.toString();

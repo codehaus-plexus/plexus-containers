@@ -20,15 +20,13 @@ import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.codehaus.plexus.component.manager.ComponentManager;
 import org.codehaus.plexus.personality.plexus.lifecycle.phase.PhaseExecutionException;
 
-public interface Phase
-{
-    /** 
+public interface Phase {
+    /**
      * Execute the phase.
      * @param component The component.
      * @param manager {@link ComponentManager}
      * @param realm {@link ClassRealm}
      * @throws PhaseExecutionException in case of an error.
      */
-    public void execute( Object component, ComponentManager manager, ClassRealm realm )
-        throws PhaseExecutionException;
+    public void execute(Object component, ComponentManager manager, ClassRealm realm) throws PhaseExecutionException;
 }

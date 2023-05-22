@@ -16,8 +16,7 @@ package org.codehaus.plexus.test;
  * limitations under the License.
  */
 
-public interface ComponentD
-{
+public interface ComponentD {
     static String ROLE = ComponentD.class.getName();
 
     String getName();

@@ -18,11 +18,8 @@ package org.codehaus.plexus.test.map;
 
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public class ActivityTwo
-    extends AbstractActivity
-{
-}
+public class ActivityTwo extends AbstractActivity {}

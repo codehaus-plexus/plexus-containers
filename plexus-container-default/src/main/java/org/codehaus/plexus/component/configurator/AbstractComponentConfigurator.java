@@ -24,6 +24,9 @@ package org.codehaus.plexus.component.configurator;
  * SOFTWARE.
  */
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import org.codehaus.classworlds.ClassRealmAdapter;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.codehaus.plexus.component.configurator.converters.lookup.ConverterLookup;
@@ -32,15 +35,10 @@ import org.codehaus.plexus.component.configurator.expression.DefaultExpressionEv
 import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluator;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 /**
  * @author <a href="mailto:brett@codehaus.org">Brett Porter</a>
  */
-public abstract class AbstractComponentConfigurator
-    implements ComponentConfigurator
-{
+public abstract class AbstractComponentConfigurator implements ComponentConfigurator {
     /**
      * This is being instantiated here because there are old component factories (beanshell) that directly access
      * the converterLookup but do not yet state the ConverterLookup as a requirement in the component metadata.
@@ -50,74 +48,69 @@ public abstract class AbstractComponentConfigurator
      */
     protected ConverterLookup converterLookup = new DefaultConverterLookup();
 
-    public void configureComponent( Object component,
-                                    PlexusConfiguration configuration,
-                                    ClassRealm containerRealm )
-        throws ComponentConfigurationException
-    {
-        configureComponent( component, configuration, new DefaultExpressionEvaluator(), containerRealm );
+    public void configureComponent(Object component, PlexusConfiguration configuration, ClassRealm containerRealm)
+            throws ComponentConfigurationException {
+        configureComponent(component, configuration, new DefaultExpressionEvaluator(), containerRealm);
     }
 
-    public void configureComponent( Object component,
-                                    PlexusConfiguration configuration,
-                                    ExpressionEvaluator expressionEvaluator,
-                                    ClassRealm containerRealm )
-        throws ComponentConfigurationException
-    {
-        configureComponent( component, configuration, expressionEvaluator, containerRealm, null );
+    public void configureComponent(
+            Object component,
+            PlexusConfiguration configuration,
+            ExpressionEvaluator expressionEvaluator,
+            ClassRealm containerRealm)
+            throws ComponentConfigurationException {
+        configureComponent(component, configuration, expressionEvaluator, containerRealm, null);
     }
 
-    public void configureComponent( final Object component, final PlexusConfiguration configuration,
-                                    final ExpressionEvaluator expressionEvaluator, final ClassRealm containerRealm,
-                                    final ConfigurationListener listener )
-        throws ComponentConfigurationException
-    {
+    public void configureComponent(
+            final Object component,
+            final PlexusConfiguration configuration,
+            final ExpressionEvaluator expressionEvaluator,
+            final ClassRealm containerRealm,
+            final ConfigurationListener listener)
+            throws ComponentConfigurationException {
         // ----------------------------------------------------------------------------
         // For compatibility with old ComponentFactories that use old ClassWorlds
         // ----------------------------------------------------------------------------
 
-        final org.codehaus.classworlds.ClassRealm cr = ClassRealmAdapter.getInstance( containerRealm );
+        final org.codehaus.classworlds.ClassRealm cr = ClassRealmAdapter.getInstance(containerRealm);
 
         Method method;
 
-        try
-        {
-            try
-            {
-                method =
-                    getClass().getMethod( "configureComponent", Object.class, PlexusConfiguration.class,
-                                          ExpressionEvaluator.class, org.codehaus.classworlds.ClassRealm.class,
-                                          ConfigurationListener.class );
-                method.invoke( this, component, configuration, expressionEvaluator, cr, listener );
+        try {
+            try {
+                method = getClass()
+                        .getMethod(
+                                "configureComponent",
+                                Object.class,
+                                PlexusConfiguration.class,
+                                ExpressionEvaluator.class,
+                                org.codehaus.classworlds.ClassRealm.class,
+                                ConfigurationListener.class);
+                method.invoke(this, component, configuration, expressionEvaluator, cr, listener);
+            } catch (final NoSuchMethodException e) {
+                method = getClass()
+                        .getMethod(
+                                "configureComponent",
+                                Object.class,
+                                PlexusConfiguration.class,
+                                ExpressionEvaluator.class,
+                                org.codehaus.classworlds.ClassRealm.class);
+                method.invoke(this, component, configuration, expressionEvaluator, cr);
             }
-            catch ( final NoSuchMethodException e )
-            {
-                method =
-                    getClass().getMethod( "configureComponent", Object.class, PlexusConfiguration.class,
-                                          ExpressionEvaluator.class, org.codehaus.classworlds.ClassRealm.class );
-                method.invoke( this, component, configuration, expressionEvaluator, cr );
-            }
-        }
-        catch ( final InvocationTargetException e )
-        {
-            if ( e.getCause() instanceof ComponentConfigurationException )
-            {
+        } catch (final InvocationTargetException e) {
+            if (e.getCause() instanceof ComponentConfigurationException) {
                 throw (ComponentConfigurationException) e.getCause();
-            }
-            else if ( e.getCause() instanceof RuntimeException )
-            {
+            } else if (e.getCause() instanceof RuntimeException) {
                 throw (RuntimeException) e.getCause();
-            }
-            else if ( e.getCause() instanceof Error )
-            {
+            } else if (e.getCause() instanceof Error) {
                 throw (Error) e.getCause();
             }
-            throw new ComponentConfigurationException( "Incompatible configurator " + getClass().getName(), e );
-        }
-        catch ( final Exception e )
-        {
-            throw new ComponentConfigurationException( "Incompatible configurator " + getClass().getName(), e );
+            throw new ComponentConfigurationException(
+                    "Incompatible configurator " + getClass().getName(), e);
+        } catch (final Exception e) {
+            throw new ComponentConfigurationException(
+                    "Incompatible configurator " + getClass().getName(), e);
         }
     }
-
 }

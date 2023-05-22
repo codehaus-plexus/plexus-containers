@@ -22,18 +22,15 @@ package org.codehaus.plexus.component.repository.exception;
  *
  * @author Jason van Zyl
  */
-public class ComponentDescriptorUnmarshallingException
-    extends Exception
-{
+public class ComponentDescriptorUnmarshallingException extends Exception {
     private static final long serialVersionUID = 6991583130117543536L;
 
     /**
      * Construct a new <code>ComponentDescriptorUnmarshallingException</code> instance.
      * @param message exception message
      */
-    public ComponentDescriptorUnmarshallingException( String message )
-    {
-        super( message );
+    public ComponentDescriptorUnmarshallingException(String message) {
+        super(message);
     }
 
     /**
@@ -41,8 +38,7 @@ public class ComponentDescriptorUnmarshallingException
      * @param message exception message
      * @param cause causing exception to chain
      */
-    public ComponentDescriptorUnmarshallingException( String message, Throwable cause )
-    {
-        super( message, cause );
+    public ComponentDescriptorUnmarshallingException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

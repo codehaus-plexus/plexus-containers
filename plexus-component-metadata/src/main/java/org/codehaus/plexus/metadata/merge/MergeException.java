@@ -27,16 +27,12 @@ package org.codehaus.plexus.metadata.merge;
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
  */
-public class MergeException
-    extends Exception
-{
-    public MergeException( String message, Throwable cause )
-    {
-        super( message, cause );
+public class MergeException extends Exception {
+    public MergeException(String message, Throwable cause) {
+        super(message, cause);
     }
 
-    public MergeException( String message )
-    {
-        super( message );
+    public MergeException(String message) {
+        super(message);
     }
 }

@@ -29,9 +29,8 @@ package org.codehaus.plexus.component.configurator.converters.basic;
  * an instance of the class and vice versa
  *
  */
-public interface Converter
-{
-    boolean canConvert( Class type );
+public interface Converter {
+    boolean canConvert(Class type);
 
     /**
      * Parses a given String  and return
@@ -39,7 +38,7 @@ public interface Converter
      * @param str String representation of the class
      * @return  an instance of the class
      */
-    Object fromString( String str );
+    Object fromString(String str);
 
-    String toString( Object obj );
+    String toString(Object obj);
 }

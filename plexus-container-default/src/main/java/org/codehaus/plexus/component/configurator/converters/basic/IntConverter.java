@@ -26,27 +26,17 @@ import org.codehaus.plexus.component.configurator.ComponentConfigurationExceptio
  * SOFTWARE.
  */
 
-public class IntConverter extends AbstractBasicConverter
-{
+public class IntConverter extends AbstractBasicConverter {
 
-    public boolean canConvert( Class type )
-    {
-        return type.equals( int.class ) || type.equals( Integer.class );
+    public boolean canConvert(Class type) {
+        return type.equals(int.class) || type.equals(Integer.class);
     }
 
-    public Object fromString( String str )
-        throws ComponentConfigurationException
-    {
-        try
-        {
-            return Integer.valueOf( str );
-        }
-        catch ( NumberFormatException e )
-        {
-            throw new ComponentConfigurationException(
-                "Not a number: '" + str + "'", e
-            );
+    public Object fromString(String str) throws ComponentConfigurationException {
+        try {
+            return Integer.valueOf(str);
+        } catch (NumberFormatException e) {
+            throw new ComponentConfigurationException("Not a number: '" + str + "'", e);
         }
     }
-
 }

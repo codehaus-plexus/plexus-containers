@@ -23,8 +23,7 @@ package org.codehaus.plexus.metadata.gleaner;
  *
  * @version $Rev: 7691 $ $Date$
  */
-public class MyComponent
-{
+public class MyComponent {
     /**
      * @plexus.requirement
      */

@@ -29,21 +29,16 @@ import org.jdom2.Element;
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
  */
-public class ComponentSetElement
-    extends AbstractMergeableElement
-{
-    public ComponentSetElement( Element element )
-    {
-        super( element );
+public class ComponentSetElement extends AbstractMergeableElement {
+    public ComponentSetElement(Element element) {
+        super(element);
     }
 
-    public DescriptorTag[] getAllowedTags()
-    {
-        return new DescriptorTag[]{ComponentsElement.TAG};
+    public DescriptorTag[] getAllowedTags() {
+        return new DescriptorTag[] {ComponentsElement.TAG};
     }
 
-    protected boolean isExpectedElementType( Mergeable me )
-    {
+    protected boolean isExpectedElementType(Mergeable me) {
         return me instanceof ComponentSetElement;
     }
 }

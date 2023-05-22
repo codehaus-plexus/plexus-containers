@@ -16,17 +16,15 @@ package org.codehaus.plexus.lifecycle;
  * limitations under the License.
  */
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.codehaus.plexus.component.manager.ComponentManager;
 import org.codehaus.plexus.lifecycle.phase.Phase;
 import org.codehaus.plexus.personality.plexus.lifecycle.phase.PhaseExecutionException;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public abstract class AbstractLifecycleHandler
-    implements LifecycleHandler
-{
+public abstract class AbstractLifecycleHandler implements LifecycleHandler {
     private List beginSegment;
 
     private List endSegment;
@@ -35,33 +33,27 @@ public abstract class AbstractLifecycleHandler
     // Begin Segment
     // ----------------------------------------------------------------------
 
-    public void addBeginSegment( Phase phase )
-    {
-        if ( beginSegment == null )
-        {
+    public void addBeginSegment(Phase phase) {
+        if (beginSegment == null) {
             beginSegment = new ArrayList();
         }
 
-        beginSegment.add( phase );
+        beginSegment.add(phase);
     }
 
-    public List getBeginSegment()
-    {
+    public List getBeginSegment() {
         return beginSegment;
     }
 
-    public void addEndSegment( Phase phase )
-    {
-        if ( endSegment == null )
-        {
+    public void addEndSegment(Phase phase) {
+        if (endSegment == null) {
             endSegment = new ArrayList();
         }
 
-        endSegment.add( phase );
+        endSegment.add(phase);
     }
 
-    public List getEndSegment()
-    {
+    public List getEndSegment() {
         return endSegment;
     }
 
@@ -72,20 +64,15 @@ public abstract class AbstractLifecycleHandler
     /**
      * @deprecated
      */
-    public void start( Object component, ComponentManager manager )
-        throws PhaseExecutionException
-    {
-        start( component, manager, manager.getContainer().getLookupRealm( component ) );
+    public void start(Object component, ComponentManager manager) throws PhaseExecutionException {
+        start(component, manager, manager.getContainer().getLookupRealm(component));
     }
 
     /**
      * Start a component's lifecycle.
      */
-    public void start( Object component, ComponentManager manager, ClassRealm realm  )
-        throws PhaseExecutionException
-    {
-        if ( segmentIsEmpty( getBeginSegment() ) )
-        {
+    public void start(Object component, ComponentManager manager, ClassRealm realm) throws PhaseExecutionException {
+        if (segmentIsEmpty(getBeginSegment())) {
             return;
         }
 
@@ -100,20 +87,16 @@ public abstract class AbstractLifecycleHandler
      * End a component's lifecycle.
      * @deprecated
      */
-    public void end( Object component, ComponentManager manager )
-        throws PhaseExecutionException
-    {
-        end( component, manager, manager.getContainer().getLookupRealm( component ) );
+    public void end(Object component, ComponentManager manager) throws PhaseExecutionException {
+        end(component, manager, manager.getContainer().getLookupRealm(component));
     }
 
     /**
      * End a component's lifecycle.
      */
-    public void end( Object component, ComponentManager manager, ClassRealm contextRealm )
-        throws PhaseExecutionException
-    {
-        if ( segmentIsEmpty( getEndSegment() ) )
-        {
+    public void end(Object component, ComponentManager manager, ClassRealm contextRealm)
+            throws PhaseExecutionException {
+        if (segmentIsEmpty(getEndSegment())) {
             return;
         }
 
@@ -124,10 +107,8 @@ public abstract class AbstractLifecycleHandler
         }
     }
 
-    private boolean segmentIsEmpty( List segment )
-    {
-        if ( segment == null || segment.size() == 0 )
-        {
+    private boolean segmentIsEmpty(List segment) {
+        if (segment == null || segment.size() == 0) {
             return true;
         }
 

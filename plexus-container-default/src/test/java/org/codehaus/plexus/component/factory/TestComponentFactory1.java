@@ -20,19 +20,14 @@ import org.codehaus.plexus.PlexusContainer;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
 
-public class TestComponentFactory1
-    implements ComponentFactory
-{
+public class TestComponentFactory1 implements ComponentFactory {
 
-    public String getId()
-    {
+    public String getId() {
         return "testFactory1";
     }
 
-    public Object newInstance( ComponentDescriptor componentDescriptor, ClassRealm classRealm, PlexusContainer container )
-        throws ComponentInstantiationException
-    {
+    public Object newInstance(ComponentDescriptor componentDescriptor, ClassRealm classRealm, PlexusContainer container)
+            throws ComponentInstantiationException {
         return new TestFactoryResultComponent(getId());
     }
-
 }

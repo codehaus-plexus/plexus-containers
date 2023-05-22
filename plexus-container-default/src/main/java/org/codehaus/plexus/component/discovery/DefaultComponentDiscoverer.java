@@ -16,70 +16,64 @@ package org.codehaus.plexus.component.discovery;
  * limitations under the License.
  */
 
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
 import org.codehaus.plexus.component.repository.ComponentSetDescriptor;
 import org.codehaus.plexus.component.repository.io.PlexusTools;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 import org.codehaus.plexus.configuration.PlexusConfigurationException;
-import org.codehaus.plexus.classworlds.realm.ClassRealm;
-
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Jason van Zyl
  */
-public class DefaultComponentDiscoverer
-    extends AbstractResourceBasedComponentDiscoverer
-{
-    public String getComponentDescriptorLocation()
-    {
+public class DefaultComponentDiscoverer extends AbstractResourceBasedComponentDiscoverer {
+    public String getComponentDescriptorLocation() {
         return "META-INF/plexus/components.xml";
     }
 
-    public ComponentSetDescriptor createComponentDescriptors( Reader componentDescriptorReader, String source, ClassRealm realm )
-        throws PlexusConfigurationException
-    {
-        PlexusConfiguration componentDescriptorConfiguration = PlexusTools.buildConfiguration( source, componentDescriptorReader );
+    public ComponentSetDescriptor createComponentDescriptors(
+            Reader componentDescriptorReader, String source, ClassRealm realm) throws PlexusConfigurationException {
+        PlexusConfiguration componentDescriptorConfiguration =
+                PlexusTools.buildConfiguration(source, componentDescriptorReader);
 
         ComponentSetDescriptor componentSetDescriptor = new ComponentSetDescriptor();
 
         List<ComponentDescriptor<?>> componentDescriptors = new ArrayList<ComponentDescriptor<?>>();
 
-        PlexusConfiguration[] componentConfigurations = componentDescriptorConfiguration.getChild( "components" ).getChildren( "component" );
+        PlexusConfiguration[] componentConfigurations =
+                componentDescriptorConfiguration.getChild("components").getChildren("component");
 
-        for ( PlexusConfiguration componentConfiguration : componentConfigurations )
-        {
+        for (PlexusConfiguration componentConfiguration : componentConfigurations) {
             ComponentDescriptor<?> componentDescriptor;
-            try
-            {
-                componentDescriptor = PlexusTools.buildComponentDescriptor( componentConfiguration, realm );
-            }
-            catch ( PlexusConfigurationException e )
-            {
-               	// This is not the most accurate of exceptions as the only real case where this exception
-            	// will be thrown is when the implementation class of the component sited cannot be loaded.
-            	// In the case where role and implementation classes do not exist then we just shouldn't
-            	// create the component descriptor. All information should be taken from annotations which
-            	// will be correct, so in the case we can't load the class it must be coming from and older
-            	// hand written descriptor which is incorrect.
-            	
-            	continue;            	
+            try {
+                componentDescriptor = PlexusTools.buildComponentDescriptor(componentConfiguration, realm);
+            } catch (PlexusConfigurationException e) {
+                // This is not the most accurate of exceptions as the only real case where this exception
+                // will be thrown is when the implementation class of the component sited cannot be loaded.
+                // In the case where role and implementation classes do not exist then we just shouldn't
+                // create the component descriptor. All information should be taken from annotations which
+                // will be correct, so in the case we can't load the class it must be coming from and older
+                // hand written descriptor which is incorrect.
+
+                continue;
             }
 
-            componentDescriptor.setSource( source );
+            componentDescriptor.setSource(source);
 
-            componentDescriptor.setComponentType( "plexus" );
+            componentDescriptor.setComponentType("plexus");
 
-            componentDescriptor.setComponentSetDescriptor( componentSetDescriptor );
+            componentDescriptor.setComponentSetDescriptor(componentSetDescriptor);
 
-            componentDescriptors.add( componentDescriptor );
+            componentDescriptors.add(componentDescriptor);
         }
 
-        componentSetDescriptor.setComponents( componentDescriptors );
+        componentSetDescriptor.setComponents(componentDescriptors);
 
-        componentSetDescriptor.setSource( source );
+        componentSetDescriptor.setSource(source);
 
         return componentSetDescriptor;
     }

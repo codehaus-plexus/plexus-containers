@@ -17,15 +17,11 @@ package org.codehaus.plexus.container.initialization;
  */
 
 /** @author Jason van Zyl */
-public abstract class AbstractCoreComponentInitializationPhase
-    extends AbstractContainerInitializationPhase
-{
-    public void execute( ContainerInitializationContext context )
-        throws ContainerInitializationException
-    {
-        initializeCoreComponent( context );
+public abstract class AbstractCoreComponentInitializationPhase extends AbstractContainerInitializationPhase {
+    public void execute(ContainerInitializationContext context) throws ContainerInitializationException {
+        initializeCoreComponent(context);
     }
 
-    protected abstract void initializeCoreComponent( ContainerInitializationContext context )
-        throws ContainerInitializationException;
+    protected abstract void initializeCoreComponent(ContainerInitializationContext context)
+            throws ContainerInitializationException;
 }

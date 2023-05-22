@@ -22,61 +22,50 @@ import java.util.Map;
 /**
  * @author <a href="mailto:mmaczka@interia.p">Michal Maczka</a>
  */
-public class ComponentF
-{
+public class ComponentF {
     private ComponentA componentA;
     private ComponentB componentB;
     private ComponentC[] componentC;
     private List componentD;
     private Map componentE;
 
-    public ComponentA getComponentA()
-    {
+    public ComponentA getComponentA() {
         return componentA;
     }
 
-    public void setComponentA( ComponentA componentA )
-    {
+    public void setComponentA(ComponentA componentA) {
         this.componentA = componentA;
     }
 
-    public ComponentB getComponentB()
-    {
+    public ComponentB getComponentB() {
         return componentB;
     }
 
-    public void setComponentB( ComponentB componentB )
-    {
+    public void setComponentB(ComponentB componentB) {
         this.componentB = componentB;
     }
 
-    public ComponentC[] getComponentC()
-    {
+    public ComponentC[] getComponentC() {
         return componentC;
     }
 
-    public void setComponentC( ComponentC[] componentC )
-    {
+    public void setComponentC(ComponentC[] componentC) {
         this.componentC = componentC;
     }
 
-    public List getComponentD()
-    {
+    public List getComponentD() {
         return componentD;
     }
 
-    public void setComponentD( List componentD )
-    {
+    public void setComponentD(List componentD) {
         this.componentD = componentD;
     }
 
-    public Map getComponentE()
-    {
+    public Map getComponentE() {
         return componentE;
     }
 
-    public void setComponentE( Map componentE )
-    {
+    public void setComponentE(Map componentE) {
         this.componentE = componentE;
     }
 }

@@ -19,22 +19,17 @@ package org.codehaus.plexus.test;
 import java.util.List;
 import java.util.Map;
 
-public class DefaultComponentManager
-    implements ComponentManager
-{
+public class DefaultComponentManager implements ComponentManager {
 
     private List<?> list;
 
     private Map<String, ?> map;
 
-    public List<?> getList()
-    {
+    public List<?> getList() {
         return list;
     }
 
-    public Map<String, ?> getMap()
-    {
+    public Map<String, ?> getMap() {
         return map;
     }
-
 }

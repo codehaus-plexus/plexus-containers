@@ -20,19 +20,16 @@ package org.codehaus.plexus.component.discovery;
  * @author Jason van Zyl
  *
  */
-public class DiscoveryListenerDescriptor
-{
+public class DiscoveryListenerDescriptor {
     private String role;
 
     private String roleHint;
 
-    public String getRole()
-    {
+    public String getRole() {
         return role;
     }
 
-    public String getRoleHint()
-    {
+    public String getRoleHint() {
         return roleHint;
     }
 }

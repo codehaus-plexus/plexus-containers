@@ -29,53 +29,52 @@ import org.objectweb.asm.Type;
  * @author Eugene Kuleshov
  */
 public class AnnInvocationHandler implements InvocationHandler {
-  private final Ann ann;
-  private final ClassLoader cl;
-  private final Class<?> c;
+    private final Ann ann;
+    private final ClassLoader cl;
+    private final Class<?> c;
 
-  public AnnInvocationHandler(Ann ann, ClassLoader cl, Class<?> c) {
-    this.ann = ann;
-    this.cl = cl;
-    this.c = c;
-  }
-
-  public Object invoke(Object proxy, Method m, Object[] args) throws Throwable {
-    String name = m.getName();
-
-    if("toString".equals(name)) {
-      StringBuilder sb = new StringBuilder(ann.getType());
-      sb.append("[");
-      String sep = "";
-      for(Map.Entry<String, Object> e : ann.getParams().entrySet()) {
-        // TODO conversion for class, array, enum, and annotation types
-        sb.append(sep).append(e.getKey()).append("=").append(e.getValue());
-        sep = "; ";
-      }
-      sb.append("]");
-      return sb.toString();
+    public AnnInvocationHandler(Ann ann, ClassLoader cl, Class<?> c) {
+        this.ann = ann;
+        this.cl = cl;
+        this.c = c;
     }
-    
-    Object value = ann.getParams().get(name);
-    if(value!=null) {
-      if(value instanceof Type) {
-        String className = ((Type) value).getClassName();
-        try {
-          return Class.forName(className, false, cl);
-        } catch(ClassNotFoundException ex) {
-          if(cl instanceof URLClassLoader) {
-            URL[] urls = ((URLClassLoader) cl).getURLs();
-            throw new RuntimeException("Unable to load class " + className + " from " + Arrays.toString(urls), ex);
-          }
-          throw new RuntimeException("Unable to load class " + className + " from " + cl, ex);
+
+    public Object invoke(Object proxy, Method m, Object[] args) throws Throwable {
+        String name = m.getName();
+
+        if ("toString".equals(name)) {
+            StringBuilder sb = new StringBuilder(ann.getType());
+            sb.append("[");
+            String sep = "";
+            for (Map.Entry<String, Object> e : ann.getParams().entrySet()) {
+                // TODO conversion for class, array, enum, and annotation types
+                sb.append(sep).append(e.getKey()).append("=").append(e.getValue());
+                sep = "; ";
+            }
+            sb.append("]");
+            return sb.toString();
         }
-      }
-      // TODO conversion for class, array, enum, and annotation types
-      return value;
-    } else {
-      Method am = c.getDeclaredMethod(m.getName(), m.getParameterTypes());
-      return am.getDefaultValue();
+
+        Object value = ann.getParams().get(name);
+        if (value != null) {
+            if (value instanceof Type) {
+                String className = ((Type) value).getClassName();
+                try {
+                    return Class.forName(className, false, cl);
+                } catch (ClassNotFoundException ex) {
+                    if (cl instanceof URLClassLoader) {
+                        URL[] urls = ((URLClassLoader) cl).getURLs();
+                        throw new RuntimeException(
+                                "Unable to load class " + className + " from " + Arrays.toString(urls), ex);
+                    }
+                    throw new RuntimeException("Unable to load class " + className + " from " + cl, ex);
+                }
+            }
+            // TODO conversion for class, array, enum, and annotation types
+            return value;
+        } else {
+            Method am = c.getDeclaredMethod(m.getName(), m.getParameterTypes());
+            return am.getDefaultValue();
+        }
     }
-  }
-
 }
-

@@ -20,43 +20,34 @@ package org.codehaus.plexus.logging;
  * @author Jason van Zyl
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
  */
-public abstract class AbstractLogEnabled
-    implements LogEnabled
-{
+public abstract class AbstractLogEnabled implements LogEnabled {
     private Logger logger;
 
-    public void enableLogging( Logger logger )
-    {
+    public void enableLogging(Logger logger) {
         this.logger = logger;
     }
 
-    protected Logger getLogger()
-    {
+    protected Logger getLogger() {
         return logger;
     }
 
-    protected void setupLogger( Object component )
-    {
-        setupLogger( component, logger );
+    protected void setupLogger(Object component) {
+        setupLogger(component, logger);
     }
 
-    protected void setupLogger( Object component, String subCategory )
-    {
-        if ( subCategory == null )
-        {
-            throw new IllegalStateException( "Logging category must be defined." );
+    protected void setupLogger(Object component, String subCategory) {
+        if (subCategory == null) {
+            throw new IllegalStateException("Logging category must be defined.");
         }
 
-        Logger logger = this.logger.getChildLogger( subCategory );
+        Logger logger = this.logger.getChildLogger(subCategory);
 
-        setupLogger( component, logger );
+        setupLogger(component, logger);
     }
 
-    protected void setupLogger( Object component, Logger logger )
-    {
-        if ( component instanceof LogEnabled )
-        {
-            ( (LogEnabled) component ).enableLogging( logger );
+    protected void setupLogger(Object component, Logger logger) {
+        if (component instanceof LogEnabled) {
+            ((LogEnabled) component).enableLogging(logger);
         }
     }
 }

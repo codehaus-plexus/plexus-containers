@@ -22,33 +22,29 @@ import org.codehaus.plexus.component.discovery.ComponentDiscoveryListener;
 /**
  * @author Jason van Zyl
  */
-public class InitializeComponentDiscovererManagerPhase
-    extends AbstractCoreComponentInitializationPhase
-{
-    public void initializeCoreComponent( ContainerInitializationContext context )
-        throws ContainerInitializationException
-    {
-        ComponentDiscovererManager componentDiscovererManager = context.getContainerConfiguration().getComponentDiscovererManager();
+public class InitializeComponentDiscovererManagerPhase extends AbstractCoreComponentInitializationPhase {
+    public void initializeCoreComponent(ContainerInitializationContext context)
+            throws ContainerInitializationException {
+        ComponentDiscovererManager componentDiscovererManager =
+                context.getContainerConfiguration().getComponentDiscovererManager();
 
-        context.getContainer().setComponentDiscovererManager( componentDiscovererManager );
+        context.getContainer().setComponentDiscovererManager(componentDiscovererManager);
 
-        for ( ComponentDiscoveryListener listener : componentDiscovererManager.getComponentDiscoveryListeners().keySet() )
-        {
-            try
-            {
+        for (ComponentDiscoveryListener listener :
+                componentDiscovererManager.getComponentDiscoveryListeners().keySet()) {
+            try {
                 // This is a hack until we have completely live components
 
-                context.getContainer().addComponent( listener, listener.getClass().getName() );
+                context.getContainer()
+                        .addComponent(listener, listener.getClass().getName());
 
-                context.getContainer().getComponentDiscovererManager().removeComponentDiscoveryListener( listener );
+                context.getContainer().getComponentDiscovererManager().removeComponentDiscoveryListener(listener);
 
-                ComponentDiscoveryListener cdl = context.getContainer().lookup( listener.getClass() );
+                ComponentDiscoveryListener cdl = context.getContainer().lookup(listener.getClass());
 
-                context.getContainer().getComponentDiscovererManager().registerComponentDiscoveryListener( cdl );
-            }
-            catch ( Exception e )
-            {
-                throw new ContainerInitializationException( "Error initializing component discovery listener.", e );
+                context.getContainer().getComponentDiscovererManager().registerComponentDiscoveryListener(cdl);
+            } catch (Exception e) {
+                throw new ContainerInitializationException("Error initializing component discovery listener.", e);
             }
         }
     }

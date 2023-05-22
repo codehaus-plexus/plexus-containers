@@ -18,22 +18,18 @@ package org.codehaus.plexus.test.list;
 
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public abstract class AbstractValve
-    implements Valve
-{
+public abstract class AbstractValve implements Valve {
     private boolean state;
 
-    public boolean getState()
-    {
+    public boolean getState() {
         return state;
     }
 
-    public void execute()
-    {
+    public void execute() {
         state = true;
     }
 }

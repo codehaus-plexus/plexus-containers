@@ -24,14 +24,8 @@ import junit.framework.TestCase;
  * @author Jason van Zyl
  *
  */
-public class DefaultComponentRepositoryTest
-    extends TestCase
-{
-    private static String configuration =
-        "<component-repository>" +
-        "</component-repository>";
+public class DefaultComponentRepositoryTest extends TestCase {
+    private static String configuration = "<component-repository>" + "</component-repository>";
 
-    public void testDefaultComponentRepository()
-    {
-    }
+    public void testDefaultComponentRepository() {}
 }

@@ -21,10 +21,8 @@ package org.codehaus.plexus.personality.plexus.lifecycle.phase;
  *
  * @author <a href="mailto:brett@codehaus.org">Brett Porter</a>
  */
-public class PhaseExecutionException extends Exception
-{
-    public PhaseExecutionException( String message, Throwable throwable )
-    {
-        super( message, throwable );
+public class PhaseExecutionException extends Exception {
+    public PhaseExecutionException(String message, Throwable throwable) {
+        super(message, throwable);
     }
 }

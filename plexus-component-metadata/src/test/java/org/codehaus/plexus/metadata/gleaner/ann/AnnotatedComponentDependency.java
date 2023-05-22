@@ -19,6 +19,4 @@ package org.codehaus.plexus.metadata.gleaner.ann;
 /**
  * @author Eugene Kuleshov
  */
-public class AnnotatedComponentDependency {
-
-}
+public class AnnotatedComponentDependency {}

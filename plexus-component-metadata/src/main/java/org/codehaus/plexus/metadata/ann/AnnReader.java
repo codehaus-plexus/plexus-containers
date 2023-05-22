@@ -32,119 +32,118 @@ import org.objectweb.asm.Opcodes;
  */
 public class AnnReader extends ClassVisitor {
 
-  private final AnnClass annClass;
+    private final AnnClass annClass;
 
-  private AnnReader(AnnClass annClass) {
-    super(Opcodes.ASM9);
-    this.annClass = annClass;
-  }
+    private AnnReader(AnnClass annClass) {
+        super(Opcodes.ASM9);
+        this.annClass = annClass;
+    }
 
-  public static AnnClass read(InputStream is, ClassLoader cl) throws IOException {
-    AnnClass annClass = new AnnClass(cl);
-    AnnReader cv = new AnnReader(annClass);
-    ClassReader r = new ClassReader(is);
-    r.accept(cv, ClassReader.SKIP_FRAMES | ClassReader.SKIP_CODE);
-    return annClass;
-  }
+    public static AnnClass read(InputStream is, ClassLoader cl) throws IOException {
+        AnnClass annClass = new AnnClass(cl);
+        AnnReader cv = new AnnReader(annClass);
+        ClassReader r = new ClassReader(is);
+        r.accept(cv, ClassReader.SKIP_FRAMES | ClassReader.SKIP_CODE);
+        return annClass;
+    }
 
-  public void visit(int version, int access, String name, String signature,
-      String superName, String[] interfaces) {
-    annClass.setName(name);
-    annClass.setAccess(access);
-    annClass.setSuperName(superName);
-    annClass.setInterfaces(interfaces);
-  }
-  
-  public AnnotationVisitor visitAnnotation(final String desc, boolean visible) {
-    Ann ann = new Ann(desc);
-    annClass.addAnn(ann);
-    return new AnnAnnReader(ann);
-  }
-  
-  public FieldVisitor visitField(int access, final String name, final String desc, String signature, Object value) {
-    final AnnField field = new AnnField(annClass, access, name, desc);
-    annClass.addField(field);
-    return new FieldVisitor(Opcodes.ASM9) {
+    public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
+        annClass.setName(name);
+        annClass.setAccess(access);
+        annClass.setSuperName(superName);
+        annClass.setInterfaces(interfaces);
+    }
 
-      public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
+    public AnnotationVisitor visitAnnotation(final String desc, boolean visible) {
         Ann ann = new Ann(desc);
-        field.addAnn(ann);
+        annClass.addAnn(ann);
         return new AnnAnnReader(ann);
-      }
-    };
-  }
-
-  public MethodVisitor visitMethod(int access, final String mname, final String mdesc,
-      String signature, String[] exceptions) {
-    final AnnMethod method = new AnnMethod(annClass, access, mname, mdesc);
-    annClass.addMethod(method);
-    
-    return new MethodVisitor(Opcodes.ASM9) {
-
-      public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
-        Ann ann = new Ann(desc);
-        method.addAnn(ann);
-        return new AnnAnnReader(ann);
-      }
-
-      public AnnotationVisitor visitParameterAnnotation(int parameter, String desc, boolean visible) {
-        Ann ann = new Ann(desc);
-        method.addParamAnn(parameter, ann);
-        return new AnnAnnReader(ann);
-      }
-    };
-  }
-
-  static class AnnAnnReader extends AnnotationVisitor {
-    private Ann ann;
-
-    public AnnAnnReader(Ann ann) {
-      super(Opcodes.ASM9);
-      this.ann = ann;
     }
 
-    public void visit(String name, Object value) {
-      ann.addParam(name, value);
+    public FieldVisitor visitField(int access, final String name, final String desc, String signature, Object value) {
+        final AnnField field = new AnnField(annClass, access, name, desc);
+        annClass.addField(field);
+        return new FieldVisitor(Opcodes.ASM9) {
+
+            public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
+                Ann ann = new Ann(desc);
+                field.addAnn(ann);
+                return new AnnAnnReader(ann);
+            }
+        };
     }
 
-    public void visitEnum(String name, String desc, String value) {
-      ann.addParam(name, new AnnEnum(desc, value));
-    }
-    
-    public AnnotationVisitor visitAnnotation(String name, String desc) {
-      Ann ann = new Ann(desc);
-      this.ann.addParam(name, ann);
-      return new AnnAnnReader(ann);
-    }
+    public MethodVisitor visitMethod(
+            int access, final String mname, final String mdesc, String signature, String[] exceptions) {
+        final AnnMethod method = new AnnMethod(annClass, access, mname, mdesc);
+        annClass.addMethod(method);
 
-    public AnnotationVisitor visitArray(String name) {
-      return new AnnAnnArrayReader(ann, name);
-    }
-  }
-  
-  static class AnnAnnArrayReader extends AnnotationVisitor {
+        return new MethodVisitor(Opcodes.ASM9) {
 
-    private Ann ann;
+            public AnnotationVisitor visitAnnotation(String desc, boolean visible) {
+                Ann ann = new Ann(desc);
+                method.addAnn(ann);
+                return new AnnAnnReader(ann);
+            }
 
-    private String name;
-
-    // TODO good enough for now, but does not cover general case
-    private ArrayList<String> array = new ArrayList<String>();
-
-    public AnnAnnArrayReader(Ann ann, String name) {
-      super(Opcodes.ASM9);
-      this.ann = ann;
-      this.name = name;
+            public AnnotationVisitor visitParameterAnnotation(int parameter, String desc, boolean visible) {
+                Ann ann = new Ann(desc);
+                method.addParamAnn(parameter, ann);
+                return new AnnAnnReader(ann);
+            }
+        };
     }
 
-    public void visit(String name, Object value) {
-      if(value instanceof String) {
-        array.add((String) value);
-      }
+    static class AnnAnnReader extends AnnotationVisitor {
+        private Ann ann;
+
+        public AnnAnnReader(Ann ann) {
+            super(Opcodes.ASM9);
+            this.ann = ann;
+        }
+
+        public void visit(String name, Object value) {
+            ann.addParam(name, value);
+        }
+
+        public void visitEnum(String name, String desc, String value) {
+            ann.addParam(name, new AnnEnum(desc, value));
+        }
+
+        public AnnotationVisitor visitAnnotation(String name, String desc) {
+            Ann ann = new Ann(desc);
+            this.ann.addParam(name, ann);
+            return new AnnAnnReader(ann);
+        }
+
+        public AnnotationVisitor visitArray(String name) {
+            return new AnnAnnArrayReader(ann, name);
+        }
     }
 
-    public void visitEnd() {
-      ann.addParam(name, array.toArray(new String[array.size()]));
+    static class AnnAnnArrayReader extends AnnotationVisitor {
+
+        private Ann ann;
+
+        private String name;
+
+        // TODO good enough for now, but does not cover general case
+        private ArrayList<String> array = new ArrayList<String>();
+
+        public AnnAnnArrayReader(Ann ann, String name) {
+            super(Opcodes.ASM9);
+            this.ann = ann;
+            this.name = name;
+        }
+
+        public void visit(String name, Object value) {
+            if (value instanceof String) {
+                array.add((String) value);
+            }
+        }
+
+        public void visitEnd() {
+            ann.addParam(name, array.toArray(new String[array.size()]));
+        }
     }
-  }
 }

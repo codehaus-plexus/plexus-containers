@@ -22,16 +22,12 @@ package org.codehaus.plexus.component.repository.exception;
  *
  * @author Kristian Rosenvold
  */
-public class ComponentLookupRuntimeException
-    extends RuntimeException
-{
-    public ComponentLookupRuntimeException( ComponentLookupException cause )
-    {
-        super( cause );
+public class ComponentLookupRuntimeException extends RuntimeException {
+    public ComponentLookupRuntimeException(ComponentLookupException cause) {
+        super(cause);
     }
 
-    public String getMessage()
-    {
+    public String getMessage() {
         return getCause().getMessage();
     }
 }

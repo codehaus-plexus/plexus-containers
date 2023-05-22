@@ -24,29 +24,24 @@ import org.codehaus.plexus.personality.plexus.lifecycle.phase.Contextualizable;
 /**
  * @author Jason van Zyl
  */
-public class InitializeComponentFactoryManagerPhase
-    extends AbstractCoreComponentInitializationPhase
-{
-    public void initializeCoreComponent( ContainerInitializationContext context )
-        throws ContainerInitializationException
-    {
-        ComponentFactoryManager componentFactoryManager = context.getContainerConfiguration().getComponentFactoryManager();
+public class InitializeComponentFactoryManagerPhase extends AbstractCoreComponentInitializationPhase {
+    public void initializeCoreComponent(ContainerInitializationContext context)
+            throws ContainerInitializationException {
+        ComponentFactoryManager componentFactoryManager =
+                context.getContainerConfiguration().getComponentFactoryManager();
 
-        if ( componentFactoryManager instanceof Contextualizable )
-        {
-            //TODO: this is wrong here jvz.
-            context.getContainer().getContext().put( PlexusConstants.PLEXUS_KEY, context.getContainer() );
+        if (componentFactoryManager instanceof Contextualizable) {
+            // TODO: this is wrong here jvz.
+            context.getContainer().getContext().put(PlexusConstants.PLEXUS_KEY, context.getContainer());
 
-            try
-            {
-                ( (Contextualizable) componentFactoryManager).contextualize( context.getContainer().getContext() );
-            }
-            catch ( ContextException e )
-            {
-                throw new ContainerInitializationException( "Error contextualization component factory manager.", e );
+            try {
+                ((Contextualizable) componentFactoryManager)
+                        .contextualize(context.getContainer().getContext());
+            } catch (ContextException e) {
+                throw new ContainerInitializationException("Error contextualization component factory manager.", e);
             }
         }
 
-        context.getContainer().setComponentFactoryManager( componentFactoryManager );
+        context.getContainer().setComponentFactoryManager(componentFactoryManager);
     }
 }

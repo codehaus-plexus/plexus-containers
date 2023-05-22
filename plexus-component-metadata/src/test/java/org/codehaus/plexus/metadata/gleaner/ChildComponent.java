@@ -22,6 +22,4 @@ package org.codehaus.plexus.metadata.gleaner;
  * @plexus.component role="org.codehaus.plexus.metadata.gleaner.ChildComponent"
  *
  */
-public class ChildComponent
-{
-}
+public class ChildComponent {}

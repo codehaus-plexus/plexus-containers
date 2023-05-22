@@ -27,10 +27,8 @@ import org.codehaus.plexus.personality.plexus.lifecycle.phase.Startable;
 /**
  * A simple native plexus component implementing the manual configuration phase.
  */
-public class DefaultServiceE
-    extends AbstractLogEnabled
-    implements ServiceE, Contextualizable, Initializable, Startable
-{
+public class DefaultServiceE extends AbstractLogEnabled
+        implements ServiceE, Contextualizable, Initializable, Startable {
     public boolean enableLogging;
     public boolean configured;
     public boolean contextualize;
@@ -39,29 +37,23 @@ public class DefaultServiceE
     public boolean stop;
     public boolean serviced;
 
-    public void enableLogging( Logger logger )
-    {
+    public void enableLogging(Logger logger) {
         enableLogging = true;
     }
 
-    public void contextualize( Context context )
-        throws ContextException
-    {
+    public void contextualize(Context context) throws ContextException {
         contextualize = true;
     }
 
-    public void initialize()
-    {
+    public void initialize() {
         initialize = true;
     }
 
-    public void start()
-    {
+    public void start() {
         start = true;
     }
 
-    public void stop()
-    {
+    public void stop() {
         stop = true;
     }
 }

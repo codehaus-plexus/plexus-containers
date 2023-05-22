@@ -24,46 +24,43 @@ package org.codehaus.plexus.component.configurator.converters.basic;
  * SOFTWARE.
  */
 
+import java.io.File;
+
 import org.codehaus.plexus.component.configurator.ComponentConfigurationException;
 import org.codehaus.plexus.component.configurator.ConfigurationListener;
 import org.codehaus.plexus.component.configurator.converters.lookup.ConverterLookup;
 import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluator;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 
-import java.io.File;
-
 /**
  * @author <a href="mailto:brett@codehaus.org">Brett Porter</a>
  */
-public class FileConverter
-    extends AbstractBasicConverter
-{
-    public boolean canConvert( Class type )
-    {
-        return type.equals( File.class );
+public class FileConverter extends AbstractBasicConverter {
+    public boolean canConvert(Class type) {
+        return type.equals(File.class);
     }
 
-    public Object fromString( String str )
-    {
-        str = str.replace( '\\', File.separatorChar ).replace( '/', File.separatorChar );
-        return new File( str );
+    public Object fromString(String str) {
+        str = str.replace('\\', File.separatorChar).replace('/', File.separatorChar);
+        return new File(str);
     }
 
-    public Object fromConfiguration( ConverterLookup converterLookup, PlexusConfiguration configuration, Class type,
-                                     Class baseType, ClassLoader classLoader, ExpressionEvaluator expressionEvaluator,
-                                     ConfigurationListener listener )
-        throws ComponentConfigurationException
-    {
-        File f = (File) super.fromConfiguration( converterLookup, configuration, type, baseType, classLoader,
-                                                 expressionEvaluator, listener );
+    public Object fromConfiguration(
+            ConverterLookup converterLookup,
+            PlexusConfiguration configuration,
+            Class type,
+            Class baseType,
+            ClassLoader classLoader,
+            ExpressionEvaluator expressionEvaluator,
+            ConfigurationListener listener)
+            throws ComponentConfigurationException {
+        File f = (File) super.fromConfiguration(
+                converterLookup, configuration, type, baseType, classLoader, expressionEvaluator, listener);
 
-        if ( f != null )
-        {
+        if (f != null) {
             // Hmmm... is this cheating? Can't think of a better way right now
-            return expressionEvaluator.alignToBaseDirectory( f );
-        }
-        else
-        {
+            return expressionEvaluator.alignToBaseDirectory(f);
+        } else {
             return null;
         }
     }

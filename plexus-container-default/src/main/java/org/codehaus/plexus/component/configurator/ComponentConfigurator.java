@@ -31,19 +31,24 @@ import org.codehaus.plexus.configuration.PlexusConfiguration;
 /**
  * @author Jason van Zyl
  */
-public interface ComponentConfigurator
-{
+public interface ComponentConfigurator {
     String ROLE = ComponentConfigurator.class.getName();
 
-    void configureComponent( Object component, PlexusConfiguration configuration, ClassRealm containerRealm )
-        throws ComponentConfigurationException;
+    void configureComponent(Object component, PlexusConfiguration configuration, ClassRealm containerRealm)
+            throws ComponentConfigurationException;
 
-    void configureComponent( Object component, PlexusConfiguration configuration,
-                             ExpressionEvaluator expressionEvaluator, ClassRealm containerRealm )
-        throws ComponentConfigurationException;
+    void configureComponent(
+            Object component,
+            PlexusConfiguration configuration,
+            ExpressionEvaluator expressionEvaluator,
+            ClassRealm containerRealm)
+            throws ComponentConfigurationException;
 
-    void configureComponent( Object component, PlexusConfiguration configuration,
-                             ExpressionEvaluator expressionEvaluator, ClassRealm containerRealm,
-                             ConfigurationListener listener )
-        throws ComponentConfigurationException;
+    void configureComponent(
+            Object component,
+            PlexusConfiguration configuration,
+            ExpressionEvaluator expressionEvaluator,
+            ClassRealm containerRealm,
+            ConfigurationListener listener)
+            throws ComponentConfigurationException;
 }

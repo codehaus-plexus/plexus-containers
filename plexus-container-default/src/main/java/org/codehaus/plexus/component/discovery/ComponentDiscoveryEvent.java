@@ -23,8 +23,7 @@ import org.codehaus.plexus.component.repository.ComponentSetDescriptor;
  * involving a set of components. It is up to the Listener to decide what
  * to do with that information.
  */
-public class ComponentDiscoveryEvent
-{
+public class ComponentDiscoveryEvent {
     private ComponentSetDescriptor componentSetDescriptor;
 
     private Object data;
@@ -34,13 +33,11 @@ public class ComponentDiscoveryEvent
      * ComponentDescriptors.
      * @param componentSetDescriptor a set of ComponentDescriptors
      */
-    public ComponentDiscoveryEvent( ComponentSetDescriptor componentSetDescriptor )
-    {
+    public ComponentDiscoveryEvent(ComponentSetDescriptor componentSetDescriptor) {
         this.componentSetDescriptor = componentSetDescriptor;
     }
 
-    public ComponentDiscoveryEvent( ComponentSetDescriptor componentSetDescriptor, Object data )
-    {
+    public ComponentDiscoveryEvent(ComponentSetDescriptor componentSetDescriptor, Object data) {
         this.componentSetDescriptor = componentSetDescriptor;
         this.data = data;
     }
@@ -49,13 +46,11 @@ public class ComponentDiscoveryEvent
      * Returns this event's set of ComponentDescriptors.
      * @return this event's set of ComponentDescriptors
      */
-    public ComponentSetDescriptor getComponentSetDescriptor()
-    {
+    public ComponentSetDescriptor getComponentSetDescriptor() {
         return componentSetDescriptor;
     }
 
-    public Object getData()
-    {
+    public Object getData() {
         return data;
     }
 }

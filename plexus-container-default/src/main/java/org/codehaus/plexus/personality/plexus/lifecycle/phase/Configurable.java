@@ -21,10 +21,9 @@ import org.codehaus.plexus.configuration.PlexusConfigurationException;
 
 /**
  * Configures a component.
- * 
+ *
  * @author <a href="mailto:dan@envoisolutions.com">Dan Diephouse</a>
  */
-public interface Configurable
-{
-	void configure( PlexusConfiguration configuration ) throws PlexusConfigurationException;
+public interface Configurable {
+    void configure(PlexusConfiguration configuration) throws PlexusConfigurationException;
 }

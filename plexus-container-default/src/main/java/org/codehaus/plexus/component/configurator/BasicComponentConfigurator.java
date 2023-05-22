@@ -30,30 +30,28 @@ import org.codehaus.plexus.component.configurator.converters.special.ClassRealmC
 import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluator;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 
-
 /**
  * @author Jason van Zyl
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
  */
-public class BasicComponentConfigurator
-    extends AbstractComponentConfigurator
-{
-    public void configureComponent( Object component,
-                                    PlexusConfiguration configuration,
-                                    ExpressionEvaluator expressionEvaluator,
-                                    ClassRealm containerRealm,
-                                    ConfigurationListener listener )
-        throws ComponentConfigurationException
-    {
+public class BasicComponentConfigurator extends AbstractComponentConfigurator {
+    public void configureComponent(
+            Object component,
+            PlexusConfiguration configuration,
+            ExpressionEvaluator expressionEvaluator,
+            ClassRealm containerRealm,
+            ConfigurationListener listener)
+            throws ComponentConfigurationException {
         // ----------------------------------------------------------------------
         // We should probably take into consideration the realm that the component
         // came from in order to load the correct classes.
         // ----------------------------------------------------------------------
 
-        converterLookup.registerConverter( new ClassRealmConverter( containerRealm ) );
+        converterLookup.registerConverter(new ClassRealmConverter(containerRealm));
 
         ObjectWithFieldsConverter converter = new ObjectWithFieldsConverter();
 
-        converter.processConfiguration( converterLookup, component, containerRealm, configuration, expressionEvaluator, listener );
+        converter.processConfiguration(
+                converterLookup, component, containerRealm, configuration, expressionEvaluator, listener);
     }
 }

@@ -16,6 +16,10 @@ package org.codehaus.plexus.component.configurator.converters;
  * limitations under the License.
  */
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import org.codehaus.plexus.component.configurator.ComponentConfigurationException;
 import org.codehaus.plexus.component.configurator.ConfigurationListener;
 import org.codehaus.plexus.component.configurator.converters.lookup.ConverterLookup;
@@ -23,14 +27,8 @@ import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluator
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 import org.codehaus.plexus.util.ReflectionUtils;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
-
 /** @author <a href="mailto:kenney@codehaus.org">Kenney Westerhof</a> */
-public class ComponentValueSetter
-{
+public class ComponentValueSetter {
     private Object object;
 
     private String fieldName;
@@ -51,185 +49,140 @@ public class ComponentValueSetter
 
     private ConfigurationListener listener;
 
-    public ComponentValueSetter( String fieldName,
-                                 Object object,
-                                 ConverterLookup lookup )
-        throws ComponentConfigurationException
-    {
-        this( fieldName, object, lookup, null );
+    public ComponentValueSetter(String fieldName, Object object, ConverterLookup lookup)
+            throws ComponentConfigurationException {
+        this(fieldName, object, lookup, null);
     }
 
-    public ComponentValueSetter( String fieldName,
-                                 Object object,
-                                 ConverterLookup lookup,
-                                 ConfigurationListener listener )
-        throws ComponentConfigurationException
-    {
+    public ComponentValueSetter(String fieldName, Object object, ConverterLookup lookup, ConfigurationListener listener)
+            throws ComponentConfigurationException {
         this.fieldName = fieldName;
         this.object = object;
         this.lookup = lookup;
         this.listener = listener;
 
-        if ( object == null )
-        {
-            throw new ComponentConfigurationException( "Component is null" );
+        if (object == null) {
+            throw new ComponentConfigurationException("Component is null");
         }
 
         initSetter();
 
         initField();
 
-        if ( setter == null && field == null )
-        {
+        if (setter == null && field == null) {
             throw new ComponentConfigurationException(
-                "Cannot find setter nor field in " + object.getClass().getName() + " for '" + fieldName + "'" );
+                    "Cannot find setter nor field in " + object.getClass().getName() + " for '" + fieldName + "'");
         }
 
-        if ( setterTypeConverter == null && fieldTypeConverter == null )
-        {
-            throw new ComponentConfigurationException(
-                "Cannot find converter for " + setterParamType.getName() + ( fieldType != null && !fieldType.equals(
-                    setterParamType ) ? " or " + fieldType.getName() : "" ) );
+        if (setterTypeConverter == null && fieldTypeConverter == null) {
+            throw new ComponentConfigurationException("Cannot find converter for " + setterParamType.getName()
+                    + (fieldType != null && !fieldType.equals(setterParamType) ? " or " + fieldType.getName() : ""));
         }
     }
 
-    private void initSetter()
-    {
-        setter = ReflectionUtils.getSetter( fieldName, object.getClass() );
+    private void initSetter() {
+        setter = ReflectionUtils.getSetter(fieldName, object.getClass());
 
-        if ( setter == null )
-        {
+        if (setter == null) {
             return;
         }
 
         setterParamType = setter.getParameterTypes()[0];
 
-        try
-        {
-            setterTypeConverter = lookup.lookupConverterForType( setterParamType );
-        }
-        catch ( ComponentConfigurationException e )
-        {
+        try {
+            setterTypeConverter = lookup.lookupConverterForType(setterParamType);
+        } catch (ComponentConfigurationException e) {
             // ignore, handle later
         }
     }
 
-    private void initField()
-    {
-        field = ReflectionUtils.getFieldByNameIncludingSuperclasses( fieldName, object.getClass() );
+    private void initField() {
+        field = ReflectionUtils.getFieldByNameIncludingSuperclasses(fieldName, object.getClass());
 
-        if ( field == null )
-        {
+        if (field == null) {
             return;
         }
 
         fieldType = field.getType();
 
-        try
-        {
-            fieldTypeConverter = lookup.lookupConverterForType( fieldType );
-        }
-        catch ( ComponentConfigurationException e )
-        {
+        try {
+            fieldTypeConverter = lookup.lookupConverterForType(fieldType);
+        } catch (ComponentConfigurationException e) {
             // ignore, handle later
         }
     }
 
-    private void setValueUsingField( Object value )
-        throws ComponentConfigurationException
-    {
-        try
-        {
+    private void setValueUsingField(Object value) throws ComponentConfigurationException {
+        try {
             boolean wasAccessible = field.isAccessible();
 
-            if ( !wasAccessible )
-            {
-                field.setAccessible( true );
+            if (!wasAccessible) {
+                field.setAccessible(true);
             }
 
-            if ( listener != null )
-            {
-                listener.notifyFieldChangeUsingReflection( fieldName, value, object );
+            if (listener != null) {
+                listener.notifyFieldChangeUsingReflection(fieldName, value, object);
             }
 
-            field.set( object, value );
+            field.set(object, value);
 
-            if ( !wasAccessible )
-            {
-                field.setAccessible( false );
+            if (!wasAccessible) {
+                field.setAccessible(false);
             }
-        }
-        catch ( IllegalAccessException e )
-        {
-            throw new ComponentConfigurationException( "Cannot access field: " + field, e );
-        }
-        catch ( IllegalArgumentException e )
-        {
-            throw new ComponentConfigurationException( "Cannot assign value '" + value + "' (type: "
-                + value.getClass() + ") to " + field, e );
-        }
-    }
-
-    private void setValueUsingSetter( Object value )
-        throws ComponentConfigurationException
-    {
-        if ( setterParamType == null || setter == null )
-        {
-            throw new ComponentConfigurationException( "No setter found" );
-        }
-
-        String exceptionInfo = object.getClass().getName() + "." + setter.getName() + "( " + setterParamType.getClass().getName() + " )";
-
-        if ( listener != null )
-        {
-            listener.notifyFieldChangeUsingSetter( fieldName, value, object );
-        }
-
-        try
-        {
-            setter.invoke( object, new Object[]{value} );
-        }
-        catch ( IllegalAccessException e )
-        {
-            throw new ComponentConfigurationException( "Cannot access method: " + exceptionInfo, e );
-        }
-        catch ( IllegalArgumentException e )
-        {
+        } catch (IllegalAccessException e) {
+            throw new ComponentConfigurationException("Cannot access field: " + field, e);
+        } catch (IllegalArgumentException e) {
             throw new ComponentConfigurationException(
-                "Invalid parameter supplied while setting '" + value + "' to " + exceptionInfo, e );
-        }
-        catch ( InvocationTargetException e )
-        {
-            throw new ComponentConfigurationException( "Setter " + exceptionInfo +
-                " threw exception when called with parameter '" + value + "': " + e.getTargetException().getMessage(),
-                e );
+                    "Cannot assign value '" + value + "' (type: " + value.getClass() + ") to " + field, e);
         }
     }
 
-    public void configure( PlexusConfiguration config, ClassLoader classLoader, ExpressionEvaluator evaluator )
-        throws ComponentConfigurationException
-    {
+    private void setValueUsingSetter(Object value) throws ComponentConfigurationException {
+        if (setterParamType == null || setter == null) {
+            throw new ComponentConfigurationException("No setter found");
+        }
+
+        String exceptionInfo = object.getClass().getName() + "." + setter.getName() + "( "
+                + setterParamType.getClass().getName() + " )";
+
+        if (listener != null) {
+            listener.notifyFieldChangeUsingSetter(fieldName, value, object);
+        }
+
+        try {
+            setter.invoke(object, new Object[] {value});
+        } catch (IllegalAccessException e) {
+            throw new ComponentConfigurationException("Cannot access method: " + exceptionInfo, e);
+        } catch (IllegalArgumentException e) {
+            throw new ComponentConfigurationException(
+                    "Invalid parameter supplied while setting '" + value + "' to " + exceptionInfo, e);
+        } catch (InvocationTargetException e) {
+            throw new ComponentConfigurationException(
+                    "Setter " + exceptionInfo + " threw exception when called with parameter '" + value + "': "
+                            + e.getTargetException().getMessage(),
+                    e);
+        }
+    }
+
+    public void configure(PlexusConfiguration config, ClassLoader classLoader, ExpressionEvaluator evaluator)
+            throws ComponentConfigurationException {
         Object value = null;
 
         // try setter converter + method first
 
-        if ( setterTypeConverter != null )
-        {
-            try
-            {
-                value = setterTypeConverter.fromConfiguration( lookup, config, setterParamType, object.getClass(), classLoader, evaluator, listener );
+        if (setterTypeConverter != null) {
+            try {
+                value = setterTypeConverter.fromConfiguration(
+                        lookup, config, setterParamType, object.getClass(), classLoader, evaluator, listener);
 
-                if ( value != null )
-                {
-                    setValueUsingSetter( value );
+                if (value != null) {
+                    setValueUsingSetter(value);
 
                     return;
                 }
-            }
-            catch ( ComponentConfigurationException e )
-            {
-                if ( fieldTypeConverter == null || fieldTypeConverter.getClass().equals( setterTypeConverter.getClass() ) )
-                {
+            } catch (ComponentConfigurationException e) {
+                if (fieldTypeConverter == null
+                        || fieldTypeConverter.getClass().equals(setterTypeConverter.getClass())) {
                     throw e;
                 }
             }
@@ -240,15 +193,11 @@ public class ComponentValueSetter
 
         ComponentConfigurationException savedEx = null;
 
-        if ( value != null )
-        {
-            try
-            {
-                setValueUsingField( value );
+        if (value != null) {
+            try {
+                setValueUsingField(value);
                 return;
-            }
-            catch ( ComponentConfigurationException e )
-            {
+            } catch (ComponentConfigurationException e) {
                 savedEx = e;
             }
         }
@@ -256,17 +205,15 @@ public class ComponentValueSetter
         // either no value or setting went wrong. Try
         // new converter.
 
-        value = fieldTypeConverter.fromConfiguration( lookup, config, fieldType, object.getClass(), classLoader, evaluator, listener );
+        value = fieldTypeConverter.fromConfiguration(
+                lookup, config, fieldType, object.getClass(), classLoader, evaluator, listener);
 
-        if ( value != null )
-        {
-            setValueUsingField( value );
+        if (value != null) {
+            setValueUsingField(value);
         }
         // FIXME: need this?
-        else if ( savedEx != null )
-        {
+        else if (savedEx != null) {
             throw savedEx;
         }
     }
-
 }

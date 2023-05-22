@@ -1,25 +1,25 @@
 package org.codehaus.plexus.metadata.merge.support;
 
-/* 
+/*
  * ========================================================================
- * 
- * Copyright 2003 The Apache Software Foundation. Code from this file 
+ *
+ * Copyright 2003 The Apache Software Foundation. Code from this file
  * was originally imported from the Jakarta Cactus project.
- * 
+ *
  * Copyright 2004-2006 Vincent Massol.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  * ========================================================================
  */
 
@@ -31,8 +31,7 @@ import org.jdom2.Element;
  * Represents the various top-level tags in a deployment descriptor as a typesafe enumeration.
  *
  */
-public class DescriptorTag
-{
+public class DescriptorTag {
     /**
      * The tag name.
      */
@@ -53,9 +52,8 @@ public class DescriptorTag
      *
      * @param tagName           The tag name of the element
      */
-    public DescriptorTag( String tagName )
-    {
-        this( tagName, false, null );
+    public DescriptorTag(String tagName) {
+        this(tagName, false, null);
     }
 
     /**
@@ -65,9 +63,8 @@ public class DescriptorTag
      * @param isMultipleAllowed Whether the element may occur multiple times in the descriptor
      * @deprecated Use {@link #DescriptorTag(String,boolean,Class)} instead
      */
-    public DescriptorTag( String tagName, boolean isMultipleAllowed )
-    {
-        this( tagName, isMultipleAllowed, null );
+    public DescriptorTag(String tagName, boolean isMultipleAllowed) {
+        this(tagName, isMultipleAllowed, null);
     }
 
     /**
@@ -77,34 +74,28 @@ public class DescriptorTag
      * @param isMultipleAllowed Whether the element may occur multiple times in the descriptor
      * @param mergeableClass    Concrete implementation of {@link Mergeable} that is bound this tag.
      */
-    public DescriptorTag( String tagName, boolean isMultipleAllowed, Class mergeableClass )
-    {
+    public DescriptorTag(String tagName, boolean isMultipleAllowed, Class mergeableClass) {
         this.tagName = tagName;
         this.multipleAllowed = isMultipleAllowed;
         this.mergeableClass = mergeableClass;
     }
 
-    public boolean equals( Object other )
-    {
+    public boolean equals(Object other) {
         boolean eq = false;
-        if ( other instanceof DescriptorTag )
-        {
+        if (other instanceof DescriptorTag) {
             DescriptorTag tag = (DescriptorTag) other;
-            if ( tag.getTagName().equals( this.tagName ) )
-            {
+            if (tag.getTagName().equals(this.tagName)) {
                 eq = true;
             }
         }
         return eq;
     }
 
-    public int hashCode()
-    {
+    public int hashCode() {
         return this.getTagName().hashCode();
     }
 
-    public String getTagName()
-    {
+    public String getTagName() {
         return this.tagName;
     }
 
@@ -113,8 +104,7 @@ public class DescriptorTag
      *
      * @return Whether multiple occurrences are allowed
      */
-    public boolean isMultipleAllowed()
-    {
+    public boolean isMultipleAllowed() {
         return this.multipleAllowed;
     }
 
@@ -125,13 +115,11 @@ public class DescriptorTag
      *
      * @return <code>true</code> if this tag is mergeable.
      */
-    public boolean isMergeable()
-    {
+    public boolean isMergeable() {
         return null != this.mergeableClass;
     }
 
-    public String toString()
-    {
+    public String toString() {
         return getTagName();
     }
 
@@ -143,26 +131,20 @@ public class DescriptorTag
      * @return instance of {@link Mergeable}.
      * @throws Exception if there was an error creating an instance.
      */
-    public Mergeable createMergeable( Element element )
-        throws Exception
-    {
-        Constructor cons = this.mergeableClass.getConstructor( new Class[] { Element.class } );
+    public Mergeable createMergeable(Element element) throws Exception {
+        Constructor cons = this.mergeableClass.getConstructor(new Class[] {Element.class});
         // XXX Is there a better way to determine this?
-        if ( this.mergeableClass.getSuperclass().equals( AbstractMergeableElementList.class ) )
-        {
-            return (AbstractMergeableElementList) cons.newInstance( new Object[] { element } );
-        }
-        else if ( this.mergeableClass.getSuperclass().equals( AbstractMergeableElement.class ) )
-        {
-            return (AbstractMergeableElement) cons.newInstance( new Object[] { element } );
-        }
-        else
-        {
+        if (this.mergeableClass.getSuperclass().equals(AbstractMergeableElementList.class)) {
+            return (AbstractMergeableElementList) cons.newInstance(new Object[] {element});
+        } else if (this.mergeableClass.getSuperclass().equals(AbstractMergeableElement.class)) {
+            return (AbstractMergeableElement) cons.newInstance(new Object[] {element});
+        } else {
             // TODO set up Logger
             // if (getLogger ().isErrorEnabled ())
-            //     getLogger.error ( "Could not create Mergeable instance for specified class '" + this.mergeableClass + "'" );
-            throw new Exception( "Could not create Mergeable instance for specified class " + "'" + this.mergeableClass
-                + "'" );
+            //     getLogger.error ( "Could not create Mergeable instance for specified class '" + this.mergeableClass +
+            // "'" );
+            throw new Exception(
+                    "Could not create Mergeable instance for specified class " + "'" + this.mergeableClass + "'");
         }
     }
 }

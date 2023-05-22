@@ -25,16 +25,12 @@ import org.codehaus.plexus.logging.LoggerManager;
 /**
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
  */
-public class LogDisablePhase
-    extends AbstractPhase
-{
-    public void execute( Object object, ComponentManager componentManager, ClassRealm lookupRealm )
-        throws PhaseExecutionException
-    {
-        if ( object instanceof LogEnabled )
-        {
+public class LogDisablePhase extends AbstractPhase {
+    public void execute(Object object, ComponentManager componentManager, ClassRealm lookupRealm)
+            throws PhaseExecutionException {
+        if (object instanceof LogEnabled) {
             LoggerManager loggerManager = componentManager.getContainer().getLoggerManager();
-            loggerManager.returnComponentLogger( componentManager.getRole(), componentManager.getRoleHint() );
+            loggerManager.returnComponentLogger(componentManager.getRole(), componentManager.getRoleHint());
         }
     }
 }

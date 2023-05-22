@@ -24,21 +24,20 @@ package org.codehaus.plexus.component.configurator;
  * SOFTWARE.
  */
 
-import org.codehaus.plexus.configuration.PlexusConfiguration;
-
 import java.io.File;
 import java.net.URI;
 import java.net.URL;
 import java.util.List;
 
+import org.codehaus.plexus.configuration.PlexusConfiguration;
+
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public class ConfigurableComponent
-{
+public class ConfigurableComponent {
     private boolean booleanValue;
     private byte byteValue;
     private short shortValue;
@@ -54,73 +53,59 @@ public class ConfigurableComponent
     private List importantThings;
     private PlexusConfiguration configuration;
 
-    public boolean getBooleanValue()
-    {
+    public boolean getBooleanValue() {
         return booleanValue;
     }
 
-    public int getByteValue()
-    {
+    public int getByteValue() {
         return byteValue;
     }
 
-    public int getShortValue()
-    {
+    public int getShortValue() {
         return shortValue;
     }
 
-    public int getIntValue()
-    {
+    public int getIntValue() {
         return intValue;
     }
 
-    public float getFloatValue()
-    {
+    public float getFloatValue() {
         return floatValue;
     }
 
-    public long getLongValue()
-    {
+    public long getLongValue() {
         return longValue;
     }
 
-    public double getDoubleValue()
-    {
+    public double getDoubleValue() {
         return doubleValue;
     }
 
-    public char getCharValue()
-    {
+    public char getCharValue() {
         return charValue;
     }
 
-    public String getStringValue()
-    {
+    public String getStringValue() {
         return stringValue;
     }
 
-    public File getFileValue()
-    {
+    public File getFileValue() {
         return fileValue;
     }
 
-    public URI getUriValue()
-    {
+    public URI getUriValue() {
         return uriValue;
     }
 
-    public URL getUrlValue()
-    {
+    public URL getUrlValue() {
         return urlValue;
     }
 
-    public List getImportantThings()
-    {
+    public List getImportantThings() {
         return importantThings;
     }
 
-    public PlexusConfiguration getConfiguration()
-    {
+    public PlexusConfiguration getConfiguration() {
         return configuration;
     }
 }

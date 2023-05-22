@@ -24,19 +24,16 @@ package org.codehaus.plexus.component.configurator;
  * SOFTWARE.
  */
 
-
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public class ImportantThing extends AbstractThing implements ThingInterface
-{
+public class ImportantThing extends AbstractThing implements ThingInterface {
     private String name;
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 }

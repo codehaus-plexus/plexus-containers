@@ -22,68 +22,51 @@ import junit.framework.TestCase;
  *
  * @author peter at realityforge.org Peter Donald
  */
-public class LogEnabledTest
-    extends TestCase
-{
-    public void testGetLogger()
-        throws Exception
-    {
+public class LogEnabledTest extends TestCase {
+    public void testGetLogger() throws Exception {
         MockLogEnabled logEnabled = new MockLogEnabled();
-        MockLogger logger = new MockLogger( "base" );
-        logEnabled.enableLogging( logger );
-        assertEquals( "logger", logger, logEnabled.getLogger() );
+        MockLogger logger = new MockLogger("base");
+        logEnabled.enableLogging(logger);
+        assertEquals("logger", logger, logEnabled.getLogger());
     }
 
-    public void testSetupLoggerOnLogEnabled()
-        throws Exception
-    {
+    public void testSetupLoggerOnLogEnabled() throws Exception {
         MockLogEnabled logEnabled = new MockLogEnabled();
         MockLogEnabled childLogEnabled = new MockLogEnabled();
-        MockLogger logger = new MockLogger( "base" );
-        logEnabled.enableLogging( logger );
-        logEnabled.setupLogger( childLogEnabled );
-        assertEquals( "logEnabled.logger", logger, logEnabled.getLogger() );
-        assertEquals( "childLogEnabled.logger", logger, childLogEnabled.getLogger() );
+        MockLogger logger = new MockLogger("base");
+        logEnabled.enableLogging(logger);
+        logEnabled.setupLogger(childLogEnabled);
+        assertEquals("logEnabled.logger", logger, logEnabled.getLogger());
+        assertEquals("childLogEnabled.logger", logger, childLogEnabled.getLogger());
     }
 
-    public void testSetupLoggerOnNonLogEnabled()
-        throws Exception
-    {
+    public void testSetupLoggerOnNonLogEnabled() throws Exception {
         MockLogEnabled logEnabled = new MockLogEnabled();
-        MockLogger logger = new MockLogger( "base" );
-        logEnabled.enableLogging( logger );
-        logEnabled.setupLogger( new Object() );
+        MockLogger logger = new MockLogger("base");
+        logEnabled.enableLogging(logger);
+        logEnabled.setupLogger(new Object());
     }
 
-    public void testSetupLoggerWithNameOnLogEnabled()
-        throws Exception
-    {
+    public void testSetupLoggerWithNameOnLogEnabled() throws Exception {
         MockLogEnabled logEnabled = new MockLogEnabled();
         MockLogEnabled childLogEnabled = new MockLogEnabled();
-        MockLogger logger = new MockLogger( "base" );
-        logEnabled.enableLogging( logger );
-        logEnabled.setupLogger( childLogEnabled, "child" );
-        assertEquals( "logEnabled.logger", logger, logEnabled.getLogger() );
-        assertEquals( "childLogEnabled.logger.name",
-                      "base.child",
-                      ( (MockLogger) childLogEnabled.getLogger() ).getName() );
+        MockLogger logger = new MockLogger("base");
+        logEnabled.enableLogging(logger);
+        logEnabled.setupLogger(childLogEnabled, "child");
+        assertEquals("logEnabled.logger", logger, logEnabled.getLogger());
+        assertEquals("childLogEnabled.logger.name", "base.child", ((MockLogger) childLogEnabled.getLogger()).getName());
     }
 
-    public void testSetupLoggerWithNullName()
-        throws Exception
-    {
+    public void testSetupLoggerWithNullName() throws Exception {
         MockLogEnabled logEnabled = new MockLogEnabled();
         MockLogEnabled childLogEnabled = new MockLogEnabled();
-        MockLogger logger = new MockLogger( "base" );
-        logEnabled.enableLogging( logger );
-        try
-        {
-            logEnabled.setupLogger( childLogEnabled, (String) null );
-        }
-        catch ( IllegalStateException npe )
-        {
+        MockLogger logger = new MockLogger("base");
+        logEnabled.enableLogging(logger);
+        try {
+            logEnabled.setupLogger(childLogEnabled, (String) null);
+        } catch (IllegalStateException npe) {
             return;
         }
-        fail( "Expected to fail setting up child logger with null name" );
+        fail("Expected to fail setting up child logger with null name");
     }
 }

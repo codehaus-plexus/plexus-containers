@@ -24,28 +24,21 @@ package org.codehaus.plexus.component.configurator;
  * SOFTWARE.
  */
 
-
 /**
  *
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
  *
  */
-public class ComponentWithCompositeFields
-{
+public class ComponentWithCompositeFields {
     private ThingInterface thing;
 
     private DefaultComponent bean;
 
-    public ThingInterface getThing()
-    {
+    public ThingInterface getThing() {
         return thing;
     }
 
-    public DefaultComponent getBean()
-    {
+    public DefaultComponent getBean() {
         return bean;
     }
-
 }
-
-

@@ -16,14 +16,10 @@ package org.codehaus.plexus.test;
  * limitations under the License.
  */
 
-
 /**
  *
  *
  * @author Jason van Zyl
  *
  */
-public class DefaultLoadOnStartServiceWithRoleHint
-    implements LoadOnStartService
-{
-}
+public class DefaultLoadOnStartServiceWithRoleHint implements LoadOnStartService {}

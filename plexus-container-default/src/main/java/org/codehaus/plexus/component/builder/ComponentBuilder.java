@@ -16,13 +16,12 @@
 package org.codehaus.plexus.component.builder;
 
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
+import org.codehaus.plexus.component.factory.ComponentInstantiationException;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
 import org.codehaus.plexus.component.repository.exception.ComponentLifecycleException;
-import org.codehaus.plexus.component.factory.ComponentInstantiationException;
 
 public interface ComponentBuilder<T> {
 
     T build(ComponentDescriptor<T> descriptor, ClassRealm realm, ComponentBuildListener listener)
             throws ComponentInstantiationException, ComponentLifecycleException;
-    
 }

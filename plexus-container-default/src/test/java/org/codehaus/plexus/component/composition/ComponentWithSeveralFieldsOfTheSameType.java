@@ -19,19 +19,16 @@ package org.codehaus.plexus.component.composition;
 /**
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
  */
-public class ComponentWithSeveralFieldsOfTheSameType
-{
+public class ComponentWithSeveralFieldsOfTheSameType {
     private ComponentE one;
 
     private ComponentE two;
 
-    public ComponentE getOne()
-    {
+    public ComponentE getOne() {
         return one;
     }
 
-    public ComponentE getTwo()
-    {
+    public ComponentE getTwo() {
         return two;
     }
 }

@@ -19,11 +19,8 @@ package org.codehaus.plexus.component.manager;
 /**
  * @author Jason van Zyl
  */
-public class UndefinedComponentManagerException
-    extends Exception
-{
-    public UndefinedComponentManagerException( String message )
-    {
-        super( message );
+public class UndefinedComponentManagerException extends Exception {
+    public UndefinedComponentManagerException(String message) {
+        super(message);
     }
 }

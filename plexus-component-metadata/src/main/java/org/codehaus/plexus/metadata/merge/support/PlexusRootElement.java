@@ -29,22 +29,17 @@ import org.jdom2.Element;
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
  */
-public class PlexusRootElement
-    extends AbstractMergeableElement
-{
-    public PlexusRootElement( Element element )
-    {
-        super( element );
+public class PlexusRootElement extends AbstractMergeableElement {
+    public PlexusRootElement(Element element) {
+        super(element);
     }
 
-    public DescriptorTag[] getAllowedTags()
-    {
+    public DescriptorTag[] getAllowedTags() {
         // TODO: add the managers, etc
-        return new DescriptorTag[]{ComponentsElement.TAG};
+        return new DescriptorTag[] {ComponentsElement.TAG};
     }
 
-    protected boolean isExpectedElementType( Mergeable me )
-    {
+    protected boolean isExpectedElementType(Mergeable me) {
         return me instanceof PlexusRootElement;
     }
 }

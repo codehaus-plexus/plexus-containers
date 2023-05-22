@@ -26,6 +26,10 @@ package org.codehaus.plexus.metadata.gleaner;
 
 import java.util.*;
 
+import com.thoughtworks.qdox.JavaProjectBuilder;
+import com.thoughtworks.qdox.model.DocletTag;
+import com.thoughtworks.qdox.model.JavaClass;
+import com.thoughtworks.qdox.model.JavaField;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
 import org.codehaus.plexus.component.repository.ComponentRequirement;
 import org.codehaus.plexus.component.repository.ComponentRequirementList;
@@ -34,20 +38,12 @@ import org.codehaus.plexus.logging.LogEnabled;
 import org.codehaus.plexus.personality.plexus.lifecycle.phase.*;
 import org.codehaus.plexus.util.StringUtils;
 
-import com.thoughtworks.qdox.JavaProjectBuilder;
-import com.thoughtworks.qdox.model.DocletTag;
-import com.thoughtworks.qdox.model.JavaClass;
-import com.thoughtworks.qdox.model.JavaField;
-
 /**
  * A source component gleaner which uses QDox to discover Javadoc annotations.
- * 
+ *
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
  */
-public class QDoxComponentGleaner
-    extends ComponentGleanerSupport
-    implements SourceComponentGleaner
-{
+public class QDoxComponentGleaner extends ComponentGleanerSupport implements SourceComponentGleaner {
     public static final String PLEXUS_COMPONENT_TAG = "plexus.component";
 
     public static final String PLEXUS_REQUIREMENT_TAG = "plexus.requirement";
@@ -78,13 +74,11 @@ public class QDoxComponentGleaner
     // ComponentGleaner Implementation
     // ----------------------------------------------------------------------
 
-    public ComponentDescriptor<?> glean( JavaProjectBuilder classCache, JavaClass javaClass )
-        throws ComponentGleanerException
-    {
-        DocletTag tag = javaClass.getTagByName( PLEXUS_COMPONENT_TAG );
+    public ComponentDescriptor<?> glean(JavaProjectBuilder classCache, JavaClass javaClass)
+            throws ComponentGleanerException {
+        DocletTag tag = javaClass.getTagByName(PLEXUS_COMPONENT_TAG);
 
-        if ( tag == null )
-        {
+        if (tag == null) {
             return null;
         }
 
@@ -96,24 +90,22 @@ public class QDoxComponentGleaner
 
         String fqn = javaClass.getFullyQualifiedName();
 
-        //log.debug( "Creating descriptor for component: {}", fqn );
+        // log.debug( "Creating descriptor for component: {}", fqn );
 
         ComponentDescriptor<?> componentDescriptor = new ComponentDescriptor<Object>();
 
-        componentDescriptor.setImplementation( fqn );
+        componentDescriptor.setImplementation(fqn);
 
         // ----------------------------------------------------------------------
         // Role
         // ----------------------------------------------------------------------
 
-        String role = getParameter( parameters, PLEXUS_ROLE_PARAMETER );
+        String role = getParameter(parameters, PLEXUS_ROLE_PARAMETER);
 
-        if ( role == null )
-        {
-            role = findRole( javaClass );
+        if (role == null) {
+            role = findRole(javaClass);
 
-            if ( role == null )
-            {
+            if (role == null) {
                 /*
                 log.warn( "Could not figure out a role for the component '" + fqn + "'. " +
                     "Please specify a role with a parameter '" + PLEXUS_ROLE_PARAMETER + "' " + "on the @" +
@@ -124,62 +116,61 @@ public class QDoxComponentGleaner
             }
         }
 
-        componentDescriptor.setRole( role );
+        componentDescriptor.setRole(role);
 
         // ----------------------------------------------------------------------
         // Role hint
         // ----------------------------------------------------------------------
 
-        String roleHint = getParameter( parameters, PLEXUS_ROLE_HINT_PARAMETER );
+        String roleHint = getParameter(parameters, PLEXUS_ROLE_HINT_PARAMETER);
 
-        if ( roleHint != null )
-        {
+        if (roleHint != null) {
             // getLogger().debug( " Role hint: " + roleHint );
         }
 
-        componentDescriptor.setRoleHint( roleHint );
+        componentDescriptor.setRoleHint(roleHint);
 
         // ----------------------------------------------------------------------
         // Version
         // ----------------------------------------------------------------------
 
-        String version = getParameter( parameters, PLEXUS_VERSION_PARAMETER );
+        String version = getParameter(parameters, PLEXUS_VERSION_PARAMETER);
 
-        componentDescriptor.setVersion( version );
-
-        // ----------------------------------------------------------------------
-        // Lifecycle handler
-        // ----------------------------------------------------------------------
-
-        String lifecycleHandler = getParameter( parameters, PLEXUS_LIFECYCLE_HANDLER_PARAMETER );
-
-        componentDescriptor.setLifecycleHandler( lifecycleHandler );
+        componentDescriptor.setVersion(version);
 
         // ----------------------------------------------------------------------
         // Lifecycle handler
         // ----------------------------------------------------------------------
 
-        String instatiationStrategy = getParameter( parameters, PLEXUS_INSTANTIATION_STARTEGY_PARAMETER );
+        String lifecycleHandler = getParameter(parameters, PLEXUS_LIFECYCLE_HANDLER_PARAMETER);
 
-        componentDescriptor.setInstantiationStrategy( instatiationStrategy );
+        componentDescriptor.setLifecycleHandler(lifecycleHandler);
+
+        // ----------------------------------------------------------------------
+        // Lifecycle handler
+        // ----------------------------------------------------------------------
+
+        String instatiationStrategy = getParameter(parameters, PLEXUS_INSTANTIATION_STARTEGY_PARAMETER);
+
+        componentDescriptor.setInstantiationStrategy(instatiationStrategy);
 
         // ----------------------------------------------------------------------
         // Alias
         // ----------------------------------------------------------------------
 
-        componentDescriptor.setAlias( getParameter( parameters, PLEXUS_ALIAS_PARAMETER ) );
+        componentDescriptor.setAlias(getParameter(parameters, PLEXUS_ALIAS_PARAMETER));
 
         // ----------------------------------------------------------------------
         //
         // ----------------------------------------------------------------------
 
-        findExtraParameters( PLEXUS_COMPONENT_TAG, parameters );
+        findExtraParameters(PLEXUS_COMPONENT_TAG, parameters);
 
         // ----------------------------------------------------------------------
         // Requirements
         // ----------------------------------------------------------------------
 
-        findRequirements( classCache, componentDescriptor, javaClass );
+        findRequirements(classCache, componentDescriptor, javaClass);
 
         // ----------------------------------------------------------------------
         // Description
@@ -187,27 +178,25 @@ public class QDoxComponentGleaner
 
         String comment = javaClass.getComment();
 
-        if ( comment != null )
-        {
-            int i = comment.indexOf( '.' );
+        if (comment != null) {
+            int i = comment.indexOf('.');
 
-            if ( i > 0 )
-            {
-                comment = comment.substring( 0, i + 1 ); // include the dot
+            if (i > 0) {
+                comment = comment.substring(0, i + 1); // include the dot
             }
         }
 
-        componentDescriptor.setDescription( comment );
+        componentDescriptor.setDescription(comment);
 
         // ----------------------------------------------------------------------
         // Configuration
         // ----------------------------------------------------------------------
 
-        XmlPlexusConfiguration configuration = new XmlPlexusConfiguration( "configuration" );
+        XmlPlexusConfiguration configuration = new XmlPlexusConfiguration("configuration");
 
-        findConfiguration( configuration, javaClass );
+        findConfiguration(configuration, javaClass);
 
-        componentDescriptor.setConfiguration( configuration );
+        componentDescriptor.setConfiguration(configuration);
 
         return componentDescriptor;
     }
@@ -216,41 +205,34 @@ public class QDoxComponentGleaner
     //
     // ----------------------------------------------------------------------
 
-    private final static List<String> IGNORED_INTERFACES = Collections.unmodifiableList( Arrays.asList( new String[]{
+    private static final List<String> IGNORED_INTERFACES = Collections.unmodifiableList(Arrays.asList(new String[] {
         LogEnabled.class.getName(),
         Initializable.class.getName(),
         Configurable.class.getName(),
         Contextualizable.class.getName(),
         Disposable.class.getName(),
         Startable.class.getName(),
-    } ) );
+    }));
 
-    private static String getPackage( JavaClass javaClass )
-    {
-        if ( javaClass.getPackage() != null )
-        {
+    private static String getPackage(JavaClass javaClass) {
+        if (javaClass.getPackage() != null) {
             return javaClass.getPackage().getName();
-        }
-        else
-        {
+        } else {
             return "";
         }
     }
 
-    private String findRole( JavaClass javaClass )
-    {
+    private String findRole(JavaClass javaClass) {
         // ----------------------------------------------------------------------
         // Remove any Plexus specific interfaces from the calculation
         // ----------------------------------------------------------------------
 
-        List<JavaClass> interfaces = new ArrayList<JavaClass>(  javaClass.getInterfaces() );
+        List<JavaClass> interfaces = new ArrayList<JavaClass>(javaClass.getInterfaces());
 
-        for ( Iterator<JavaClass> it = interfaces.iterator(); it.hasNext(); )
-        {
+        for (Iterator<JavaClass> it = interfaces.iterator(); it.hasNext(); ) {
             JavaClass ifc = it.next();
 
-            if ( IGNORED_INTERFACES.contains( ifc.getFullyQualifiedName() ) )
-            {
+            if (IGNORED_INTERFACES.contains(ifc.getFullyQualifiedName())) {
                 it.remove();
             }
         }
@@ -309,31 +291,27 @@ public class QDoxComponentGleaner
             }
         }
 
-        if ( role == null )
-        {
+        if (role == null) {
             JavaClass superClass = javaClass.getSuperJavaClass();
 
-            if ( superClass != null )
-            {
-                role = findRole( superClass );
+            if (superClass != null) {
+                role = findRole(superClass);
             }
         }
 
         return role;
     }
 
-    private void findRequirements( JavaProjectBuilder classCache, ComponentDescriptor<?> componentDescriptor,
-                                   JavaClass javaClass )
-    {
+    private void findRequirements(
+            JavaProjectBuilder classCache, ComponentDescriptor<?> componentDescriptor, JavaClass javaClass) {
         List<JavaField> fields = javaClass.getFields();
 
         // ----------------------------------------------------------------------
         // Search the super class for requirements
         // ----------------------------------------------------------------------
 
-        if ( javaClass.getSuperJavaClass() != null )
-        {
-            findRequirements( classCache, componentDescriptor, javaClass.getSuperJavaClass() );
+        if (javaClass.getSuperJavaClass() != null) {
+            findRequirements(classCache, componentDescriptor, javaClass.getSuperJavaClass());
         }
 
         // ----------------------------------------------------------------------
@@ -355,8 +333,8 @@ public class QDoxComponentGleaner
 
             String requirementClass = field.getType().getFullyQualifiedName();
 
-            boolean isMap = requirementClass.equals(Map.class.getName()) ||
-                    requirementClass.equals(Collection.class.getName());
+            boolean isMap =
+                    requirementClass.equals(Map.class.getName()) || requirementClass.equals(Collection.class.getName());
 
             try {
                 isMap = isMap || Collection.class.isAssignableFrom(Class.forName(requirementClass));
@@ -440,18 +418,16 @@ public class QDoxComponentGleaner
         }
     }
 
-    private void findConfiguration( XmlPlexusConfiguration configuration, JavaClass javaClass )
-        throws ComponentGleanerException
-    {
+    private void findConfiguration(XmlPlexusConfiguration configuration, JavaClass javaClass)
+            throws ComponentGleanerException {
         List<JavaField> fields = javaClass.getFields();
 
         // ----------------------------------------------------------------------
         // Search the super class for configurable fields.
         // ----------------------------------------------------------------------
 
-        if ( javaClass.getSuperJavaClass() != null )
-        {
-            findConfiguration( configuration, javaClass.getSuperJavaClass() );
+        if (javaClass.getSuperJavaClass() != null) {
+            findConfiguration(configuration, javaClass.getSuperJavaClass());
         }
 
         // ----------------------------------------------------------------------
@@ -487,7 +463,7 @@ public class QDoxComponentGleaner
 
             c.setValue(defaultValue);
 
-            //log.debug( " Configuration: {}={}", name, defaultValue );
+            // log.debug( " Configuration: {}={}", name, defaultValue );
 
             configuration.addChild(c);
 
@@ -499,19 +475,16 @@ public class QDoxComponentGleaner
     //
     // ----------------------------------------------------------------------
 
-    private void findExtraParameters( String tagName, Map<String, String> parameters )
-    {
+    private void findExtraParameters(String tagName, Map<String, String> parameters) {
         for (String s : parameters.keySet()) {
-            //log.warn( "Extra parameter on the '" + tagName + "' tag: '" + s + "'." );
+            // log.warn( "Extra parameter on the '" + tagName + "' tag: '" + s + "'." );
         }
     }
 
-    private String getParameter( Map<String, String> parameters, String parameter )
-    {
-        String value = parameters.remove( parameter );
+    private String getParameter(Map<String, String> parameters, String parameter) {
+        String value = parameters.remove(parameter);
 
-        if ( StringUtils.isEmpty( value ) )
-        {
+        if (StringUtils.isEmpty(value)) {
             return null;
         }
 

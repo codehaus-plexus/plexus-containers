@@ -22,99 +22,78 @@ import org.codehaus.plexus.PlexusTestCase;
 /**
  * @author Ben Walding
  */
-public class SlowComponentClassicSingletonComponentManagerTest
-    extends PlexusTestCase
-{
-    public void testThreads1()
-        throws Exception
-    {
-        test( 1 );
+public class SlowComponentClassicSingletonComponentManagerTest extends PlexusTestCase {
+    public void testThreads1() throws Exception {
+        test(1);
     }
 
     /**
      * Tests that multiple concurrent threads don't acquire different components.
      * @throws Exception in case of an error.
      */
-    public void testThreads1000()
-        throws Exception
-    {
-        test( 1000 );
+    public void testThreads1000() throws Exception {
+        test(1000);
     }
 
-    private void test( int count )
-        throws Exception
-    {
-        ComponentLookupThread components[] = new ComponentLookupThread[ count ];
-        //Create them
-        for ( int i = 0; i < count; i++ )
-        {
-            components[ i ] = new ComponentLookupThread( getContainer() );
+    private void test(int count) throws Exception {
+        ComponentLookupThread components[] = new ComponentLookupThread[count];
+        // Create them
+        for (int i = 0; i < count; i++) {
+            components[i] = new ComponentLookupThread(getContainer());
         }
-        //Start them
-        for ( int i = 0; i < count; i++ )
-        {
+        // Start them
+        for (int i = 0; i < count; i++) {
             components[i].start();
         }
 
-        //Wait for them to finish
-        for ( int i = 0; i < count; i++ )
-        {
-            components[i].join( 10000 );
+        // Wait for them to finish
+        for (int i = 0; i < count; i++) {
+            components[i].join(10000);
         }
 
-        //Get master component
-        SlowComponent masterComponent = lookup( SlowComponent.class );
+        // Get master component
+        SlowComponent masterComponent = lookup(SlowComponent.class);
 
-        //Verify them
-        for ( int i = 0; i < count; i++ )
-        {
-            assertSame( i + ":" + components[i].getComponent() + " == " + masterComponent,
-                        masterComponent,
-                        components[i].getComponent() );
+        // Verify them
+        for (int i = 0; i < count; i++) {
+            assertSame(
+                    i + ":" + components[i].getComponent() + " == " + masterComponent,
+                    masterComponent,
+                    components[i].getComponent());
         }
     }
 
-    class ComponentLookupThread
-        extends Thread
-    {
+    class ComponentLookupThread extends Thread {
         final PlexusContainer container;
 
         private SlowComponent component;
 
-        public ComponentLookupThread( PlexusContainer container )
-        {
+        public ComponentLookupThread(PlexusContainer container) {
             /*
              * NOTE: A high priority seems to increase the likelihood of exhibiting missing synchronization.
              */
-            setPriority( MAX_PRIORITY );
+            setPriority(MAX_PRIORITY);
             this.container = container;
         }
 
-        public void run()
-        {
-            try
-            {
-//            DefaultPlexusContainer.setLookupRealm( lookupRealm );
-                SlowComponent tmpComponent = container.lookup( SlowComponent.class );
+        public void run() {
+            try {
+                //            DefaultPlexusContainer.setLookupRealm( lookupRealm );
+                SlowComponent tmpComponent = container.lookup(SlowComponent.class);
 
-                synchronized ( this )
-                {
+                synchronized (this) {
                     this.component = tmpComponent;
                 }
-            }
-            catch ( Exception e )
-            {
+            } catch (Exception e) {
                 container.getLookupRealm().display();
                 e.printStackTrace();
             }
         }
 
-        public SlowComponent getComponent()
-        {
-            synchronized ( this )
-            {
+        public SlowComponent getComponent() {
+            synchronized (this) {
                 return component;
             }
         }
-    }    
+    }
 }

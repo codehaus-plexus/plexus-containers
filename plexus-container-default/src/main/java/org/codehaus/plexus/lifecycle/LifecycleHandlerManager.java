@@ -1,8 +1,5 @@
 package org.codehaus.plexus.lifecycle;
 
-
-
-
 /*
  * Copyright 2001-2006 Codehaus Foundation.
  *
@@ -25,12 +22,10 @@ package org.codehaus.plexus.lifecycle;
  * @author Jason van Zyl
  *
  */
-public interface LifecycleHandlerManager
-{
+public interface LifecycleHandlerManager {
     void initialize();
 
-    void addLifecycleHandler( LifecycleHandler lifecycleHandler );
+    void addLifecycleHandler(LifecycleHandler lifecycleHandler);
 
-    LifecycleHandler getLifecycleHandler( String id )
-        throws UndefinedLifecycleHandlerException;
+    LifecycleHandler getLifecycleHandler(String id) throws UndefinedLifecycleHandlerException;
 }

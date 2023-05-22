@@ -16,7 +16,6 @@ package org.codehaus.plexus.test;
  * limitations under the License.
  */
 
-public interface ServiceC
-{
+public interface ServiceC {
     static String ROLE = ServiceC.class.getName();
 }

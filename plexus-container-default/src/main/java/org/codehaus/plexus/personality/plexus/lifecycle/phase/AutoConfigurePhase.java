@@ -26,45 +26,36 @@ import org.codehaus.plexus.configuration.PlexusConfiguration;
 import org.codehaus.plexus.lifecycle.phase.AbstractPhase;
 import org.codehaus.plexus.util.StringUtils;
 
-public class AutoConfigurePhase
-    extends AbstractPhase
-{
+public class AutoConfigurePhase extends AbstractPhase {
     public static final String DEFAULT_CONFIGURATOR_ID = "default";
 
-    public void execute( Object object,
-                         ComponentManager manager,
-                         ClassRealm lookupRealm )
-        throws PhaseExecutionException
-    {
-        try
-        {
+    public void execute(Object object, ComponentManager manager, ClassRealm lookupRealm)
+            throws PhaseExecutionException {
+        try {
             ComponentDescriptor<?> descriptor = manager.getComponentDescriptor();
 
             String configuratorId = descriptor.getComponentConfigurator();
 
-            if ( StringUtils.isEmpty( configuratorId ) )
-            {
+            if (StringUtils.isEmpty(configuratorId)) {
                 configuratorId = DEFAULT_CONFIGURATOR_ID;
             }
 
-            ComponentConfigurator componentConfigurator = manager.getContainer().lookup( ComponentConfigurator.class, configuratorId );
+            ComponentConfigurator componentConfigurator =
+                    manager.getContainer().lookup(ComponentConfigurator.class, configuratorId);
 
-            PlexusConfiguration configuration = manager.getContainer().getConfigurationSource().getConfiguration( descriptor );
+            PlexusConfiguration configuration =
+                    manager.getContainer().getConfigurationSource().getConfiguration(descriptor);
 
-            if ( configuration != null )
-            {
+            if (configuration != null) {
                 ClassRealm realm = manager.getRealm();
 
-                componentConfigurator.configureComponent( object, configuration, realm );
+                componentConfigurator.configureComponent(object, configuration, realm);
             }
-        }
-        catch ( ComponentLookupException e )
-        {
-            throw new PhaseExecutionException( "Unable to auto-configure component as its configurator could not be found", e );
-        }
-        catch ( ComponentConfigurationException e )
-        {
-            throw new PhaseExecutionException( "Unable to auto-configure component", e );
+        } catch (ComponentLookupException e) {
+            throw new PhaseExecutionException(
+                    "Unable to auto-configure component as its configurator could not be found", e);
+        } catch (ComponentConfigurationException e) {
+            throw new PhaseExecutionException("Unable to auto-configure component", e);
         }
     }
 }

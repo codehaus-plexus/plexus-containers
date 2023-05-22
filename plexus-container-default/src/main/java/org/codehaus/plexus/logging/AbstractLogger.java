@@ -23,113 +23,89 @@ package org.codehaus.plexus.logging;
 /**
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
  */
-public abstract class AbstractLogger
-        implements Logger
-{
+public abstract class AbstractLogger implements Logger {
     private int threshold;
 
     private String name;
 
-    public AbstractLogger( int threshold, String name )
-    {
-        if ( !isValidThreshold( threshold ) )
-        {
-            throw new IllegalArgumentException( "Threshold " + threshold + " is not valid" );
+    public AbstractLogger(int threshold, String name) {
+        if (!isValidThreshold(threshold)) {
+            throw new IllegalArgumentException("Threshold " + threshold + " is not valid");
         }
 
         this.threshold = threshold;
         this.name = name;
     }
 
-    public int getThreshold()
-    {
+    public int getThreshold() {
         return threshold;
     }
 
-    public void setThreshold( int threshold )
-    {
+    public void setThreshold(int threshold) {
         this.threshold = threshold;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void debug( String message )
-    {
-        debug( message, null );
+    public void debug(String message) {
+        debug(message, null);
     }
 
-    public boolean isDebugEnabled()
-    {
+    public boolean isDebugEnabled() {
         return threshold <= LEVEL_DEBUG;
     }
 
-    public void info( String message )
-    {
-        info( message, null );
+    public void info(String message) {
+        info(message, null);
     }
 
-    public boolean isInfoEnabled()
-    {
+    public boolean isInfoEnabled() {
         return threshold <= LEVEL_INFO;
     }
 
-    public void warn( String message )
-    {
-        warn( message, null );
+    public void warn(String message) {
+        warn(message, null);
     }
 
-    public boolean isWarnEnabled()
-    {
+    public boolean isWarnEnabled() {
         return threshold <= LEVEL_WARN;
     }
 
-    public void error( String message )
-    {
-        error( message, null );
+    public void error(String message) {
+        error(message, null);
     }
 
-    public boolean isErrorEnabled()
-    {
+    public boolean isErrorEnabled() {
         return threshold <= LEVEL_ERROR;
     }
 
-    public void fatalError( String message )
-    {
-        fatalError( message, null );
+    public void fatalError(String message) {
+        fatalError(message, null);
     }
 
-    public boolean isFatalErrorEnabled()
-    {
+    public boolean isFatalErrorEnabled() {
         return threshold <= LEVEL_FATAL;
     }
 
-    protected boolean isValidThreshold( int threshold )
-    {
-        if ( threshold == LEVEL_DEBUG )
-        {
+    protected boolean isValidThreshold(int threshold) {
+        if (threshold == LEVEL_DEBUG) {
             return true;
         }
-        if ( threshold == LEVEL_INFO )
-        {
+        if (threshold == LEVEL_INFO) {
             return true;
         }
-        if ( threshold == LEVEL_WARN )
-        {
+        if (threshold == LEVEL_WARN) {
             return true;
         }
-        if ( threshold == LEVEL_ERROR )
-        {
+        if (threshold == LEVEL_ERROR) {
             return true;
         }
-        if ( threshold == LEVEL_FATAL )
-        {
+        if (threshold == LEVEL_FATAL) {
             return true;
         }
-        if ( threshold == LEVEL_DISABLED )
-        {
+        if (threshold == LEVEL_DISABLED) {
             return true;
         }
 

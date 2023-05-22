@@ -16,10 +16,7 @@ package org.codehaus.plexus.test;
  * limitations under the License.
  */
 
-public class DefaultThingUser
-    implements ThingUser
-{
+public class DefaultThingUser implements ThingUser {
 
     public Thing thing;
-
 }

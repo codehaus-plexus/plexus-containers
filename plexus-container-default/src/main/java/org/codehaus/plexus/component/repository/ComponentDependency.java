@@ -20,14 +20,13 @@ package org.codehaus.plexus.component.repository;
  * This represents a project which this component depends upon to function
  * properly, for example, a required jar file. See Apache Maven for an
  * example of a dependency in action.
- * 
+ *
  * @author Jason van Zyl
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
  */
-public class ComponentDependency
-{
+public class ComponentDependency {
     private static final String DEAULT_DEPENDENCY_TYPE = "jar";
-    
+
     private String groupId;
 
     private String artifactId;
@@ -41,8 +40,7 @@ public class ComponentDependency
      * project timeline in a group.
      * @return a key for an artifact
      */
-    public String getArtifactId()
-    {
+    public String getArtifactId() {
         return artifactId;
     }
 
@@ -50,8 +48,7 @@ public class ComponentDependency
      * Sets the dependency's artifact ID.
      * @param artifactId the artifact ID
      */
-    public void setArtifactId(String artifactId)
-    {
+    public void setArtifactId(String artifactId) {
         this.artifactId = artifactId;
     }
 
@@ -59,8 +56,7 @@ public class ComponentDependency
      * Gets a key for a group, which represents a set of artifacts timelines.
      * @return a key for a group
      */
-    public String getGroupId()
-    {
+    public String getGroupId() {
         return groupId;
     }
 
@@ -68,8 +64,7 @@ public class ComponentDependency
      * Sets the dependency's group ID.
      * @param groupId the group ID
      */
-    public void setGroupId(String groupId)
-    {
+    public void setGroupId(String groupId) {
         this.groupId = groupId;
     }
 
@@ -77,8 +72,7 @@ public class ComponentDependency
      * Gets the type of dependency, for example a "jar".
      * @return the type of dependency
      */
-    public String getType()
-    {
+    public String getType() {
         return type;
     }
 
@@ -86,8 +80,7 @@ public class ComponentDependency
      * Sets the dependency project's type.
      * @param type the dependency's type
      */
-    public void setType(String type)
-    {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -96,8 +89,7 @@ public class ComponentDependency
      * i.e. version 1, or 2.1.4
      * @return a specific point in a project's timeline
      */
-    public String getVersion()
-    {
+    public String getVersion() {
         return version;
     }
 
@@ -105,19 +97,21 @@ public class ComponentDependency
      * Sets the point in a project's development timeline
      * @param version the project's version
      */
-    public void setVersion(String version)
-    {
+    public void setVersion(String version) {
         this.version = version;
     }
 
-    public String toString()
-    {
+    public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append( "groupId = " ).append( groupId ).
-            append( ", artifactId = " ).append( artifactId ).
-            append( ", version = " ).append( version ).
-            append( ", type = " ).append( type );
+        sb.append("groupId = ")
+                .append(groupId)
+                .append(", artifactId = ")
+                .append(artifactId)
+                .append(", version = ")
+                .append(version)
+                .append(", type = ")
+                .append(type);
 
         return sb.toString();
     }

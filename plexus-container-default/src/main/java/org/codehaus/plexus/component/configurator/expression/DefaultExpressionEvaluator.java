@@ -23,22 +23,18 @@ import java.io.File;
  *
  * @author <a href="mailto:brett@codehaus.org">Brett Porter</a>
  */
-public class DefaultExpressionEvaluator
-    implements ExpressionEvaluator
-{
+public class DefaultExpressionEvaluator implements ExpressionEvaluator {
     /**
      * Evaluate an expression.
      *
      * @param expression the expression
      * @return the value of the expression
      */
-    public Object evaluate( String expression )
-    {
+    public Object evaluate(String expression) {
         return expression;
     }
 
-    public File alignToBaseDirectory( File file )
-    {
+    public File alignToBaseDirectory(File file) {
         return file;
     }
 }

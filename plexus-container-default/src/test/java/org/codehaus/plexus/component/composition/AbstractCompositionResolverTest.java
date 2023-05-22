@@ -16,13 +16,13 @@ package org.codehaus.plexus.component.composition;
  * limitations under the License.
  */
 
+import java.util.List;
+
 import junit.framework.TestCase;
-import org.codehaus.plexus.component.repository.ComponentDescriptor;
-import org.codehaus.plexus.component.repository.io.PlexusTools;
 import org.codehaus.plexus.classworlds.ClassWorld;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
-
-import java.util.List;
+import org.codehaus.plexus.component.repository.ComponentDescriptor;
+import org.codehaus.plexus.component.repository.io.PlexusTools;
 
 /**
  *
@@ -30,16 +30,13 @@ import java.util.List;
  * @author Jason van Zyl
  *
  */
-public abstract class AbstractCompositionResolverTest
-    extends TestCase           
-{
+public abstract class AbstractCompositionResolverTest extends TestCase {
 
     /**
      *
      * @return {@link CompositionResolver}
      */
     protected abstract CompositionResolver getCompositionResolver();
-
 
     // ------------------------------------------------------------------------
     //
@@ -54,61 +51,53 @@ public abstract class AbstractCompositionResolverTest
     //     +-------+
     //
     // ------------------------------------------------------------------------
-    public void testSimpleComponentResolution()
-        throws Exception
-    {
-        String cc1 =
-            "<component>" +
-            "  <implementation>java.lang.String</implementation>" +
-            "  <role>c1</role>" +
-            "  <requirements>" +
-            "    <requirement>" +
-            "      <role>c2</role>" +
-            "   </requirement>" +
-            "    <requirement>" +
-            "      <role>c3</role>" +
-            "   </requirement>" +
-            "  </requirements>" +
-            "</component>";
+    public void testSimpleComponentResolution() throws Exception {
+        String cc1 = "<component>" + "  <implementation>java.lang.String</implementation>"
+                + "  <role>c1</role>"
+                + "  <requirements>"
+                + "    <requirement>"
+                + "      <role>c2</role>"
+                + "   </requirement>"
+                + "    <requirement>"
+                + "      <role>c3</role>"
+                + "   </requirement>"
+                + "  </requirements>"
+                + "</component>";
 
-        String cc2 =
-            "<component>" +
-            "  <implementation>java.lang.String</implementation>" +
-            "  <role>c2</role>" +
-            "</component>";
+        String cc2 = "<component>" + "  <implementation>java.lang.String</implementation>"
+                + "  <role>c2</role>"
+                + "</component>";
 
-        String cc3 =
-            "<component>" +
-            "  <implementation>java.lang.String</implementation>" +
-            "  <role>c3</role>" +
-            "</component>";
+        String cc3 = "<component>" + "  <implementation>java.lang.String</implementation>"
+                + "  <role>c3</role>"
+                + "</component>";
 
-        ClassWorld classWorld = new ClassWorld( "test", Thread.currentThread().getContextClassLoader() );
-        ClassRealm realm = classWorld.getRealm( "test" );
+        ClassWorld classWorld = new ClassWorld("test", Thread.currentThread().getContextClassLoader());
+        ClassRealm realm = classWorld.getRealm("test");
 
         CompositionResolver compositionResolver = getCompositionResolver();
 
-        ComponentDescriptor<?> c1 = PlexusTools.buildComponentDescriptor( cc1, realm );
+        ComponentDescriptor<?> c1 = PlexusTools.buildComponentDescriptor(cc1, realm);
 
-        ComponentDescriptor<?> c2 = PlexusTools.buildComponentDescriptor( cc2, realm );
+        ComponentDescriptor<?> c2 = PlexusTools.buildComponentDescriptor(cc2, realm);
 
-        ComponentDescriptor<?> c3 = PlexusTools.buildComponentDescriptor( cc3, realm );
+        ComponentDescriptor<?> c3 = PlexusTools.buildComponentDescriptor(cc3, realm);
 
-        compositionResolver.addComponentDescriptor( c1 );
+        compositionResolver.addComponentDescriptor(c1);
 
-        compositionResolver.addComponentDescriptor( c2 );
+        compositionResolver.addComponentDescriptor(c2);
 
-        compositionResolver.addComponentDescriptor( c3 );
+        compositionResolver.addComponentDescriptor(c3);
 
-        List dependencies = compositionResolver.getRequirements( c1.getRole(), c1.getRoleHint() );
+        List dependencies = compositionResolver.getRequirements(c1.getRole(), c1.getRoleHint());
 
-        assertEquals( 2, dependencies.size() );
+        assertEquals(2, dependencies.size());
 
-        assertTrue( dependencies.contains( c2.getRole() + CompositionResolver.SEPARATOR_CHAR + c2.getRoleHint() ) );
+        assertTrue(dependencies.contains(c2.getRole() + CompositionResolver.SEPARATOR_CHAR + c2.getRoleHint()));
 
-        assertTrue( dependencies.contains( c3.getRole() + CompositionResolver.SEPARATOR_CHAR + c2.getRoleHint() ) );
+        assertTrue(dependencies.contains(c3.getRole() + CompositionResolver.SEPARATOR_CHAR + c2.getRoleHint()));
 
-        assertEquals( 2, dependencies.size() );
+        assertEquals(2, dependencies.size());
     }
 
     // ------------------------------------------------------------------------
@@ -130,83 +119,71 @@ public abstract class AbstractCompositionResolverTest
     //     +-------+
     //
     // ------------------------------------------------------------------------
-    public void testComplexComponentResolution()
-        throws Exception
-    {
-        String cc1 =
-            "<component>" +
-            "  <implementation>java.lang.String</implementation>" +
-            "  <role>c1</role>" +
-            "  <requirements>" +
-            "    <requirement>" +
-            "      <role>c2</role>" +
-            "   </requirement>" +
-            "   <requirement>" +
-            "      <role>c3</role>" +
-            "   </requirement>" +
-            "  </requirements>" +
-            "</component>";
+    public void testComplexComponentResolution() throws Exception {
+        String cc1 = "<component>" + "  <implementation>java.lang.String</implementation>"
+                + "  <role>c1</role>"
+                + "  <requirements>"
+                + "    <requirement>"
+                + "      <role>c2</role>"
+                + "   </requirement>"
+                + "   <requirement>"
+                + "      <role>c3</role>"
+                + "   </requirement>"
+                + "  </requirements>"
+                + "</component>";
 
-        String cc2 =
-            "<component>" +
-            "  <implementation>java.lang.String</implementation>" +
-            "  <role>c2</role>" +
-            "</component>";
+        String cc2 = "<component>" + "  <implementation>java.lang.String</implementation>"
+                + "  <role>c2</role>"
+                + "</component>";
 
-        String cc3 =
-            "<component>" +
-            "  <implementation>java.lang.String</implementation>" +
-            "  <role>c3</role>" +
-            "  <requirements>" +
-            "    <requirement>" +
-            "      <role>c4</role>" +
-            "   </requirement>" +
-            "    <requirement>" +
-            "      <role>c5</role>" +
-            "   </requirement>" +
-            "  </requirements>" +
-            "</component>";
+        String cc3 = "<component>" + "  <implementation>java.lang.String</implementation>"
+                + "  <role>c3</role>"
+                + "  <requirements>"
+                + "    <requirement>"
+                + "      <role>c4</role>"
+                + "   </requirement>"
+                + "    <requirement>"
+                + "      <role>c5</role>"
+                + "   </requirement>"
+                + "  </requirements>"
+                + "</component>";
 
-        String cc4 =
-            "<component>" +
-            "  <implementation>java.lang.String</implementation>" +
-            "  <role>c4</role>" +
-            "</component>";
+        String cc4 = "<component>" + "  <implementation>java.lang.String</implementation>"
+                + "  <role>c4</role>"
+                + "</component>";
 
-        String cc5 =
-            "<component>" +
-            "  <implementation>java.lang.String</implementation>" +
-            "  <role>c5</role>" +
-            "</component>";
+        String cc5 = "<component>" + "  <implementation>java.lang.String</implementation>"
+                + "  <role>c5</role>"
+                + "</component>";
 
-        ClassWorld classWorld = new ClassWorld( "test", Thread.currentThread().getContextClassLoader() );
-        ClassRealm realm = classWorld.getRealm( "test" );
+        ClassWorld classWorld = new ClassWorld("test", Thread.currentThread().getContextClassLoader());
+        ClassRealm realm = classWorld.getRealm("test");
 
         CompositionResolver compositionResolver = getCompositionResolver();
 
-        ComponentDescriptor<?> c1 = PlexusTools.buildComponentDescriptor( cc1, realm );
+        ComponentDescriptor<?> c1 = PlexusTools.buildComponentDescriptor(cc1, realm);
 
-        ComponentDescriptor<?> c2 = PlexusTools.buildComponentDescriptor( cc2, realm );
+        ComponentDescriptor<?> c2 = PlexusTools.buildComponentDescriptor(cc2, realm);
 
-        ComponentDescriptor<?> c3 = PlexusTools.buildComponentDescriptor( cc3, realm );
+        ComponentDescriptor<?> c3 = PlexusTools.buildComponentDescriptor(cc3, realm);
 
-        ComponentDescriptor<?> c4 = PlexusTools.buildComponentDescriptor( cc4, realm );
+        ComponentDescriptor<?> c4 = PlexusTools.buildComponentDescriptor(cc4, realm);
 
-        ComponentDescriptor<?> c5 = PlexusTools.buildComponentDescriptor( cc5, realm );
+        ComponentDescriptor<?> c5 = PlexusTools.buildComponentDescriptor(cc5, realm);
 
-        compositionResolver.addComponentDescriptor( c1 );
+        compositionResolver.addComponentDescriptor(c1);
 
-        compositionResolver.addComponentDescriptor( c2 );
+        compositionResolver.addComponentDescriptor(c2);
 
-        compositionResolver.addComponentDescriptor( c3 );
+        compositionResolver.addComponentDescriptor(c3);
 
-        compositionResolver.addComponentDescriptor( c4 );
+        compositionResolver.addComponentDescriptor(c4);
 
-        compositionResolver.addComponentDescriptor( c5 );
+        compositionResolver.addComponentDescriptor(c5);
 
-        List dependencies = compositionResolver.getRequirements( c1.getRole(), c1.getRoleHint() );
+        List dependencies = compositionResolver.getRequirements(c1.getRole(), c1.getRoleHint());
 
-        assertEquals( 2, dependencies.size() );
+        assertEquals(2, dependencies.size());
 
         // I just leave this at the moment as I am just 99% sure that this is not needed and not
         // correct. compositionResolver.getComponentDependencies() should return only direct dependencies
@@ -221,11 +198,11 @@ public abstract class AbstractCompositionResolverTest
         // if there are cycles.
 
         /**
-        // c5 must come before c3
-        assertTrue( dependencies.indexOf( "c5" ) < dependencies.indexOf( "c3" ) );
-
-        // c4 must come before c3
-        assertTrue( dependencies.indexOf( "c4" ) < dependencies.indexOf( "c3" ) );
-        */
+         * // c5 must come before c3
+         * assertTrue( dependencies.indexOf( "c5" ) < dependencies.indexOf( "c3" ) );
+         *
+         * // c4 must come before c3
+         * assertTrue( dependencies.indexOf( "c4" ) < dependencies.indexOf( "c3" ) );
+         */
     }
 }

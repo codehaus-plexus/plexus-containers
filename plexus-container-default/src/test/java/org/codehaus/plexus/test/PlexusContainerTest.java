@@ -28,7 +28,6 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import junit.framework.TestCase;
-
 import org.codehaus.plexus.ContainerConfiguration;
 import org.codehaus.plexus.DefaultContainerConfiguration;
 import org.codehaus.plexus.DefaultPlexusContainer;
@@ -50,9 +49,7 @@ import org.codehaus.plexus.test.list.ValveTwo;
 import org.codehaus.plexus.test.map.Activity;
 import org.codehaus.plexus.test.map.ActivityManager;
 
-public class PlexusContainerTest
-    extends TestCase
-{
+public class PlexusContainerTest extends TestCase {
     private String basedir;
 
     private ClassLoader classLoader;
@@ -61,21 +58,18 @@ public class PlexusContainerTest
 
     private DefaultPlexusContainer container;
 
-    public PlexusContainerTest( String name )
-    {
-        super( name );
+    public PlexusContainerTest(String name) {
+        super(name);
     }
 
-    public void setUp()
-        throws Exception
-    {
-        basedir = System.getProperty( "basedir" );
+    public void setUp() throws Exception {
+        basedir = System.getProperty("basedir");
 
         classLoader = getClass().getClassLoader();
 
-        configuration = "/" + getClass().getName().replace( '.', '/' ) + ".xml";
+        configuration = "/" + getClass().getName().replace('.', '/') + ".xml";
 
-        assertNotNull( classLoader );
+        assertNotNull(classLoader);
 
         // ----------------------------------------------------------------------------
         // Context
@@ -83,37 +77,33 @@ public class PlexusContainerTest
 
         Map<Object, Object> context = new HashMap<Object, Object>();
 
-        context.put( "basedir", basedir );
+        context.put("basedir", basedir);
 
-        context.put( "plexus.home", basedir + "/target/plexus-home" );
+        context.put("plexus.home", basedir + "/target/plexus-home");
 
-        LifecycleHandler arbitrary = new BasicLifecycleHandler( "arbitrary" );
-        arbitrary.addBeginSegment( new EenyPhase() );
-        arbitrary.addBeginSegment( new MeenyPhase() );
-        arbitrary.addBeginSegment( new MinyPhase() );
-        arbitrary.addBeginSegment( new MoPhase() );
+        LifecycleHandler arbitrary = new BasicLifecycleHandler("arbitrary");
+        arbitrary.addBeginSegment(new EenyPhase());
+        arbitrary.addBeginSegment(new MeenyPhase());
+        arbitrary.addBeginSegment(new MinyPhase());
+        arbitrary.addBeginSegment(new MoPhase());
 
         ContainerConfiguration containerConfiguration = new DefaultContainerConfiguration()
-            .setName( "test" )
-            .setContext( context )
-            .setContainerConfiguration( configuration )
-            .addLifecycleHandler( arbitrary );
+                .setName("test")
+                .setContext(context)
+                .setContainerConfiguration(configuration)
+                .addLifecycleHandler(arbitrary);
 
-        container = new DefaultPlexusContainer( containerConfiguration );
+        container = new DefaultPlexusContainer(containerConfiguration);
     }
 
-    public void tearDown()
-        throws Exception
-    {
+    public void tearDown() throws Exception {
         container.dispose();
 
         container = null;
     }
 
-    public void testDefaultPlexusContainerSetup()
-        throws Exception
-    {
-        assertEquals( "bar", System.getProperty( "foo" ) );
+    public void testDefaultPlexusContainerSetup() throws Exception {
+        assertEquals("bar", System.getProperty("foo"));
     }
 
     // ----------------------------------------------------------------------
@@ -122,285 +112,263 @@ public class PlexusContainerTest
     // the native lifecycle is available after configuration merging.
     // ----------------------------------------------------------------------
 
-    public void testNativeLifecyclePassage()
-        throws Exception
-    {
-        DefaultServiceB serviceB = (DefaultServiceB) container.lookup( ServiceB.class );
+    public void testNativeLifecyclePassage() throws Exception {
+        DefaultServiceB serviceB = (DefaultServiceB) container.lookup(ServiceB.class);
 
         // Make sure the component is alive.
-        assertNotNull( serviceB );
+        assertNotNull(serviceB);
 
         // Make sure the component went through all the lifecycle phases
-        assertEquals( true, serviceB.enableLogging );
+        assertEquals(true, serviceB.enableLogging);
 
-        assertEquals( true, serviceB.contextualize );
+        assertEquals(true, serviceB.contextualize);
 
-        assertEquals( true, serviceB.initialize );
+        assertEquals(true, serviceB.initialize);
 
-        assertEquals( true, serviceB.start );
+        assertEquals(true, serviceB.start);
 
-        assertEquals( false, serviceB.stop );
+        assertEquals(false, serviceB.stop);
 
-        container.release( serviceB );
+        container.release(serviceB);
 
-        assertEquals( true, serviceB.stop );
+        assertEquals(true, serviceB.stop);
     }
 
-    public void testConfigurableLifecyclePassage()
-        throws Exception
-    {
-        DefaultServiceE serviceE = (DefaultServiceE) container.lookup( ServiceE.class );
+    public void testConfigurableLifecyclePassage() throws Exception {
+        DefaultServiceE serviceE = (DefaultServiceE) container.lookup(ServiceE.class);
 
         // Make sure the component is alive.
-        assertNotNull( serviceE );
+        assertNotNull(serviceE);
 
         // Make sure the component went through all the lifecycle phases
-        assertEquals( true, serviceE.enableLogging );
+        assertEquals(true, serviceE.enableLogging);
 
-        assertEquals( true, serviceE.contextualize );
+        assertEquals(true, serviceE.contextualize);
 
-        assertEquals( true, serviceE.initialize );
+        assertEquals(true, serviceE.initialize);
 
-        assertEquals( true, serviceE.start );
+        assertEquals(true, serviceE.start);
 
-        assertEquals( false, serviceE.stop );
+        assertEquals(false, serviceE.stop);
 
-        container.release( serviceE );
+        container.release(serviceE);
 
-        assertEquals( true, serviceE.stop );
+        assertEquals(true, serviceE.stop);
     }
 
     /*
      * Check that we can get references to a single component with a role
      * hint.
      */
-    public void testSingleComponentLookupWithRoleHint()
-        throws Exception
-    {
+    public void testSingleComponentLookupWithRoleHint() throws Exception {
         // Retrieve an instance of component c.
-        DefaultServiceC serviceC1 = (DefaultServiceC) container.lookup( ServiceC.class, "first-instance" );
+        DefaultServiceC serviceC1 = (DefaultServiceC) container.lookup(ServiceC.class, "first-instance");
 
         // Make sure the component is alive.
-        assertNotNull( serviceC1 );
+        assertNotNull(serviceC1);
 
-        assertTrue( serviceC1.started );
+        assertTrue(serviceC1.started);
 
-        assertFalse( serviceC1.stopped );
+        assertFalse(serviceC1.stopped);
 
         // Retrieve a second reference to the same component.
-        DefaultServiceC serviceC2 = (DefaultServiceC) container.lookup( ServiceC.class, "first-instance" );
+        DefaultServiceC serviceC2 = (DefaultServiceC) container.lookup(ServiceC.class, "first-instance");
 
         // Make sure component is alive.
-        assertNotNull( serviceC2 );
+        assertNotNull(serviceC2);
 
-        assertTrue( serviceC2.started );
+        assertTrue(serviceC2.started);
 
-        assertFalse( serviceC2.stopped );
+        assertFalse(serviceC2.stopped);
 
         // Let's make sure it gave us back the same component.
-        assertSame( serviceC1, serviceC2 );
+        assertSame(serviceC1, serviceC2);
 
-        container.release( serviceC1 );
+        container.release(serviceC1);
 
         // The component should still be alive.
-        assertTrue( serviceC2.started );
+        assertTrue(serviceC2.started);
 
-        assertTrue( serviceC2.stopped );
+        assertTrue(serviceC2.stopped);
 
-        container.release( serviceC2 );
+        container.release(serviceC2);
 
         // The component should now have been stopped.
-        assertTrue( serviceC2.started );
+        assertTrue(serviceC2.started);
 
-        assertTrue( serviceC2.stopped );
+        assertTrue(serviceC2.stopped);
     }
 
     /*
      * Check that distinct components with the same implementation are managed correctly.
      */
-    public void testMultipleSingletonComponentInstances()
-        throws Exception
-    {
+    public void testMultipleSingletonComponentInstances() throws Exception {
         // Retrieve an instance of component c.
-        DefaultServiceC serviceC1 = (DefaultServiceC) container.lookup( ServiceC.class, "first-instance" );
+        DefaultServiceC serviceC1 = (DefaultServiceC) container.lookup(ServiceC.class, "first-instance");
 
         // Make sure the component is alive.
-        assertNotNull( serviceC1 );
+        assertNotNull(serviceC1);
 
-        assertTrue( serviceC1.started ); 
+        assertTrue(serviceC1.started);
 
-        assertFalse( serviceC1.stopped );
+        assertFalse(serviceC1.stopped);
 
         // Retrieve an instance of component c, with a different role hint.
         // This should give us a different component instance.
-        DefaultServiceC serviceC2 = (DefaultServiceC) container.lookup( ServiceC.class, "second-instance" );
+        DefaultServiceC serviceC2 = (DefaultServiceC) container.lookup(ServiceC.class, "second-instance");
 
         // Make sure component is alive.
-        assertNotNull( serviceC2 );
+        assertNotNull(serviceC2);
 
-        assertTrue( serviceC2.started );
+        assertTrue(serviceC2.started);
 
-        assertFalse( serviceC2.stopped );
+        assertFalse(serviceC2.stopped);
 
         // The components should be distinct.
-        assertNotSame( serviceC1, serviceC2 );
+        assertNotSame(serviceC1, serviceC2);
 
-        container.release( serviceC1 );
+        container.release(serviceC1);
 
         // The first component should now have been stopped, the second
         // one should still be alive.
-        assertTrue( serviceC1.started );
+        assertTrue(serviceC1.started);
 
-        assertTrue( serviceC1.stopped );
+        assertTrue(serviceC1.stopped);
 
-        assertTrue( serviceC2.started );
+        assertTrue(serviceC2.started);
 
-        assertFalse( serviceC2.stopped );
+        assertFalse(serviceC2.stopped);
 
-        container.release( serviceC2 );
+        container.release(serviceC2);
 
         // The second component should now have been stopped.
-        assertTrue( serviceC2.started );
+        assertTrue(serviceC2.started);
 
-        assertTrue( serviceC2.stopped );
+        assertTrue(serviceC2.stopped);
     }
 
     // ----------------------------------------------------------------------
     // Test using an arbitrary component lifecycle handler
     // ----------------------------------------------------------------------
 
-    public void testArbitraryLifecyclePassageUsingFourArbitraryPhases()
-        throws Exception
-    {
+    public void testArbitraryLifecyclePassageUsingFourArbitraryPhases() throws Exception {
         // Retrieve an manager of component H.
-        DefaultServiceH serviceH = (DefaultServiceH) container.lookup( ServiceH.class );
+        DefaultServiceH serviceH = (DefaultServiceH) container.lookup(ServiceH.class);
 
         // Make sure the component is alive.
-        assertNotNull( serviceH );
+        assertNotNull(serviceH);
 
         // Make sure the component went through all the lifecycle phases
-        assertEquals( true, serviceH.eeny );
+        assertEquals(true, serviceH.eeny);
 
-        assertEquals( true, serviceH.meeny );
+        assertEquals(true, serviceH.meeny);
 
-        assertEquals( true, serviceH.miny );
+        assertEquals(true, serviceH.miny);
 
-        assertEquals( true, serviceH.mo );
+        assertEquals(true, serviceH.mo);
 
-        container.release( serviceH );
+        container.release(serviceH);
     }
 
-    public void testLookupAll()
-        throws Exception
-    {
-        Map<String, ServiceC> components = container.lookupMap( ServiceC.class );
+    public void testLookupAll() throws Exception {
+        Map<String, ServiceC> components = container.lookupMap(ServiceC.class);
 
-        assertNotNull( components );
+        assertNotNull(components);
 
-        assertEquals( 2, components.size() );
+        assertEquals(2, components.size());
 
-        ServiceC component = components.get( "first-instance" );
+        ServiceC component = components.get("first-instance");
 
-        assertNotNull( component );
+        assertNotNull(component);
 
-        component = components.get( "second-instance" );
+        component = components.get("second-instance");
 
-        assertNotNull( component );
+        assertNotNull(component);
 
-        container.releaseAll( components );
+        container.releaseAll(components);
     }
 
-    public void testAutomatedComponentConfigurationUsingXStreamPoweredComponentConfigurator()
-        throws Exception
-    {
-        Component component = container.lookup( Component.class );
+    public void testAutomatedComponentConfigurationUsingXStreamPoweredComponentConfigurator() throws Exception {
+        Component component = container.lookup(Component.class);
 
-        assertNotNull( component );
+        assertNotNull(component);
 
-        assertNotNull( component.getActivity() );
+        assertNotNull(component.getActivity());
 
-        assertEquals( "localhost", component.getHost() );
+        assertEquals("localhost", component.getHost());
 
-        assertEquals( 10000, component.getPort() );
+        assertEquals(10000, component.getPort());
     }
 
-    public void testAutomatedComponentComposition()
-        throws Exception
-    {
-        ComponentA componentA = container.lookup( ComponentA.class );
+    public void testAutomatedComponentComposition() throws Exception {
+        ComponentA componentA = container.lookup(ComponentA.class);
 
-        assertNotNull( componentA );
+        assertNotNull(componentA);
 
-        assertEquals( "localhost", componentA.getHost() );
+        assertEquals("localhost", componentA.getHost());
 
-        assertEquals( 10000, componentA.getPort() );
+        assertEquals(10000, componentA.getPort());
 
         ComponentB componentB = componentA.getComponentB();
 
-        assertNotNull( componentB );
+        assertNotNull(componentB);
 
         ComponentC componentC = componentA.getComponentC();
 
-        assertNotNull( componentC );
+        assertNotNull(componentC);
 
         ComponentD componentD = componentC.getComponentD();
 
-        assertNotNull( componentD );
+        assertNotNull(componentD);
 
-        assertEquals( "jason", componentD.getName() );
+        assertEquals("jason", componentD.getName());
     }
 
-    public void testComponentCompositionWhereTargetFieldIsAMap()
-        throws Exception
-    {
-        ActivityManager am = container.lookup( ActivityManager.class );
+    public void testComponentCompositionWhereTargetFieldIsAMap() throws Exception {
+        ActivityManager am = container.lookup(ActivityManager.class);
 
-        Activity one = am.getActivity( "one" );
+        Activity one = am.getActivity("one");
 
-        assertNotNull( one );
+        assertNotNull(one);
 
         // repeated retrieval from map should not cause re-lookup even if instantiation strategy is per-lookup
-        assertSame( one, am.getActivity( "one" ) );
+        assertSame(one, am.getActivity("one"));
 
-        assertFalse( one.getState() );
+        assertFalse(one.getState());
 
-        am.execute( "one" );
+        am.execute("one");
 
-        assertTrue( one.getState() );
+        assertTrue(one.getState());
 
-        Activity two = am.getActivity( "two" );
+        Activity two = am.getActivity("two");
 
-        assertNotNull( two );
+        assertNotNull(two);
 
-        assertFalse( two.getState() );
+        assertFalse(two.getState());
 
-        am.execute( "two" );
+        am.execute("two");
 
-        assertTrue( two.getState() );
+        assertTrue(two.getState());
     }
 
-    public void testComponentCompositionWhereTargetFieldIsAPartialMap()
-        throws Exception
-    {
-        ActivityManager am = container.lookup( ActivityManager.class, "slim" );
+    public void testComponentCompositionWhereTargetFieldIsAPartialMap() throws Exception {
+        ActivityManager am = container.lookup(ActivityManager.class, "slim");
 
-        assertEquals( 1, am.getActivityCount() );
+        assertEquals(1, am.getActivityCount());
 
-        Activity one = am.getActivity( "one" );
+        Activity one = am.getActivity("one");
 
-        assertNotNull( one );
+        assertNotNull(one);
 
-        assertFalse( one.getState() );
+        assertFalse(one.getState());
 
-        am.execute( "one" );
+        am.execute("one");
 
-        assertTrue( one.getState() );
+        assertTrue(one.getState());
     }
 
-    public void testComponentCompositionWhereTargetFieldIsAList()
-        throws Exception
-    {
-        Pipeline pipeline = container.lookup( Pipeline.class );
+    public void testComponentCompositionWhereTargetFieldIsAList() throws Exception {
+        Pipeline pipeline = container.lookup(Pipeline.class);
 
         List valves = pipeline.getValves();
 
@@ -409,82 +377,61 @@ public class PlexusContainerTest
             assertSame(valve, valve);
         }
 
-        assertFalse( ( (Valve) valves.get( 0 ) ).getState() );
+        assertFalse(((Valve) valves.get(0)).getState());
 
-        assertFalse( ( (Valve) valves.get( 1 ) ).getState() );
+        assertFalse(((Valve) valves.get(1)).getState());
 
         pipeline.execute();
 
-        assertTrue( ( (Valve) valves.get( 0 ) ).getState() );
+        assertTrue(((Valve) valves.get(0)).getState());
 
-        assertTrue( ( (Valve) valves.get( 1 ) ).getState() );
+        assertTrue(((Valve) valves.get(1)).getState());
     }
 
-    public void testComponentCompositionWhereTargetFieldIsAPartialList()
-        throws Exception
-    {
-        Pipeline pipeline = container.lookup( Pipeline.class, "slim" );
+    public void testComponentCompositionWhereTargetFieldIsAPartialList() throws Exception {
+        Pipeline pipeline = container.lookup(Pipeline.class, "slim");
 
         List valves = pipeline.getValves();
 
-        assertEquals( valves.size(), 1 );
+        assertEquals(valves.size(), 1);
 
-        assertFalse( ( (Valve) valves.get( 0 ) ).getState() );
+        assertFalse(((Valve) valves.get(0)).getState());
 
         pipeline.execute();
 
-        assertTrue( ( (Valve) valves.get( 0 ) ).getState() );
+        assertTrue(((Valve) valves.get(0)).getState());
     }
 
     public void testComponentCompositionWhereTargetFieldAMapThatMustRetainTheOrderOfComponentsGivenASetOfRoleHints()
-        throws Exception
-    {
-        Pipeline pipeline = container.lookup( Pipeline.class, "chubby" );
+            throws Exception {
+        Pipeline pipeline = container.lookup(Pipeline.class, "chubby");
 
         Map valveMap = pipeline.getValveMap();
 
-        List valves = new ArrayList( valveMap.values() );
+        List valves = new ArrayList(valveMap.values());
 
-        assertEquals( "Expecting three valves.", 4, valves.size() );
+        assertEquals("Expecting three valves.", 4, valves.size());
 
-        assertTrue( "Expecting valve one.", valves.get(0) instanceof ValveOne );
+        assertTrue("Expecting valve one.", valves.get(0) instanceof ValveOne);
 
-        assertTrue( "Expecting valve two.", valves.get(1) instanceof ValveTwo );
+        assertTrue("Expecting valve two.", valves.get(1) instanceof ValveTwo);
 
-        assertTrue( "Expecting valve three.", valves.get(2) instanceof ValveThree );
+        assertTrue("Expecting valve three.", valves.get(2) instanceof ValveThree);
 
-        assertTrue( "Expecting valve four.", valves.get(3) instanceof ValveFour );        
+        assertTrue("Expecting valve four.", valves.get(3) instanceof ValveFour);
     }
 
-    public void testLookupOfComponentThatShouldBeDiscovered()
-        throws Exception
-    {
-        DiscoveredComponent discoveredComponent = container.lookup( DiscoveredComponent.class );
+    public void testLookupOfComponentThatShouldBeDiscovered() throws Exception {
+        DiscoveredComponent discoveredComponent = container.lookup(DiscoveredComponent.class);
 
-        assertNotNull( discoveredComponent );
+        assertNotNull(discoveredComponent);
     }
-    
-    public void testStartableComponentSnake()
-        throws Exception
-    {
-        StartableComponent ca = container.lookup( StartableComponent.class, "A-snake" );
-        
-        assertNotNull( ca );
-        
-        ca.assertStartOrderCorrect();
-        
-        container.dispose();
-        
-        ca.assertStopOrderCorrect();
-    }
-    
-    public void testStartableComponentTree()
-        throws Exception
-    {
-        StartableComponent ca = container.lookup( StartableComponent.class, "A-tree" );
-    
-        assertNotNull( ca );
-    
+
+    public void testStartableComponentSnake() throws Exception {
+        StartableComponent ca = container.lookup(StartableComponent.class, "A-snake");
+
+        assertNotNull(ca);
+
         ca.assertStartOrderCorrect();
 
         container.dispose();
@@ -492,70 +439,69 @@ public class PlexusContainerTest
         ca.assertStopOrderCorrect();
     }
 
-    public void testLookupCircularity()
-        throws Exception
-    {
-        try
-        {
-            container.lookup( CircularComponent.class, "A" );
+    public void testStartableComponentTree() throws Exception {
+        StartableComponent ca = container.lookup(StartableComponent.class, "A-tree");
+
+        assertNotNull(ca);
+
+        ca.assertStartOrderCorrect();
+
+        container.dispose();
+
+        ca.assertStopOrderCorrect();
+    }
+
+    public void testLookupCircularity() throws Exception {
+        try {
+            container.lookup(CircularComponent.class, "A");
             fail("Expected ComponentLookupException due to circularity");
-        }
-        catch ( ComponentLookupException e )
-        {
-            // todo actually test nested exception is as expected when 
+        } catch (ComponentLookupException e) {
+            // todo actually test nested exception is as expected when
         }
     }
 
-    public void testAddComponent()
-        throws Exception
-    {
+    public void testAddComponent() throws Exception {
         LiveComponent live = new LiveComponent();
 
-        container.addComponent( live, LiveComponent.class.getName() );
+        container.addComponent(live, LiveComponent.class.getName());
 
-        LiveComponent c = container.lookup( LiveComponent.class );
+        LiveComponent c = container.lookup(LiveComponent.class);
 
-        assertSame( live, c );
+        assertSame(live, c);
     }
 
-    public void testComponentOverride() 
-        throws Exception
-    {
-        assertNotNull( container.lookup( Component.class ) );
+    public void testComponentOverride() throws Exception {
+        assertNotNull(container.lookup(Component.class));
 
-        Component live = new Component()
-        {
-            public Activity getActivity()
-            {
+        Component live = new Component() {
+            public Activity getActivity() {
                 return null;
             }
-            public String getHost()
-            {
+
+            public String getHost() {
                 return null;
             }
-            public int getPort()
-            {
+
+            public int getPort() {
                 return 0;
             }
         };
 
-        container.addComponent( live, Component.class, null );
+        container.addComponent(live, Component.class, null);
 
-        assertSame( live, container.lookup( Component.class ) );
+        assertSame(live, container.lookup(Component.class));
     }
 
-    public void testUpdateOfActiveComponentCollectionUponChangeOfThreadContextClassLoader()
-        throws Exception
-    {
-        ComponentManager manager = container.lookup( ComponentManager.class );
+    public void testUpdateOfActiveComponentCollectionUponChangeOfThreadContextClassLoader() throws Exception {
+        ComponentManager manager = container.lookup(ComponentManager.class);
 
         Map<String, ?> map = manager.getMap();
-        assertNotNull( map );
-        assertEquals( 0, map.size() );
+        assertNotNull(map);
+        assertEquals(0, map.size());
 
         List<?> list = manager.getList();
-        assertNotNull( list );
-        assertEquals( 0, list.size() );
+        assertNotNull(list);
+        assertEquals(0, list.size());
 
         /*
          * Below we're creating two realms which basically contain the same components, only their bytecode/version
@@ -563,60 +509,60 @@ public class PlexusContainerTest
          * manager must accurately reflect the components from the current realm (and not from a previous realm).
          */
 
-        ClassRealm realmA = container.createChildRealm( "realm-a" );
-        realmA.addURL( new File( "src/test/test-components/component-a-1.0-SNAPSHOT.jar" ).toURI().toURL() );
-        container.discoverComponents( realmA );
+        ClassRealm realmA = container.createChildRealm("realm-a");
+        realmA.addURL(new File("src/test/test-components/component-a-1.0-SNAPSHOT.jar")
+                .toURI()
+                .toURL());
+        container.discoverComponents(realmA);
 
-        ClassRealm realmB = container.createChildRealm( "realm-b" );
-        realmB.addURL( new File( "src/test/test-components/component-a-2.0-SNAPSHOT.jar" ).toURI().toURL() );
-        container.discoverComponents( realmB );
+        ClassRealm realmB = container.createChildRealm("realm-b");
+        realmB.addURL(new File("src/test/test-components/component-a-2.0-SNAPSHOT.jar")
+                .toURI()
+                .toURL());
+        container.discoverComponents(realmB);
 
         ClassLoader oldClassLoader = Thread.currentThread().getContextClassLoader();
 
-        try
-        {
-            Thread.currentThread().setContextClassLoader( realmA );
+        try {
+            Thread.currentThread().setContextClassLoader(realmA);
 
             map = manager.getMap();
-            assertNotNull( map );
-            assertEquals( 1, map.size() );
-            assertSame( realmA, map.values().iterator().next().getClass().getClassLoader() );
+            assertNotNull(map);
+            assertEquals(1, map.size());
+            assertSame(realmA, map.values().iterator().next().getClass().getClassLoader());
 
             list = manager.getList();
-            assertNotNull( list );
-            assertEquals( 1, list.size() );
-            assertSame( realmA, list.iterator().next().getClass().getClassLoader() );
+            assertNotNull(list);
+            assertEquals(1, list.size());
+            assertSame(realmA, list.iterator().next().getClass().getClassLoader());
 
-            Thread.currentThread().setContextClassLoader( realmB );
+            Thread.currentThread().setContextClassLoader(realmB);
 
             map = manager.getMap();
-            assertNotNull( map );
-            assertEquals( 1, map.size() );
-            assertSame( realmB, map.values().iterator().next().getClass().getClassLoader() );
+            assertNotNull(map);
+            assertEquals(1, map.size());
+            assertSame(realmB, map.values().iterator().next().getClass().getClassLoader());
 
             list = manager.getList();
-            assertNotNull( list );
-            assertEquals( 1, list.size() );
-            assertSame( realmB, list.iterator().next().getClass().getClassLoader() );
-        }
-        finally
-        {
-            Thread.currentThread().setContextClassLoader( oldClassLoader );
+            assertNotNull(list);
+            assertEquals(1, list.size());
+            assertSame(realmB, list.iterator().next().getClass().getClassLoader());
+        } finally {
+            Thread.currentThread().setContextClassLoader(oldClassLoader);
         }
     }
 
     public void testUpdateOfActiveComponentCollectionUponChangeOfThreadContextClassLoaderFromParentToChildRealm()
-        throws Exception
-    {
-        ComponentManager manager = container.lookup( ComponentManager.class );
+            throws Exception {
+        ComponentManager manager = container.lookup(ComponentManager.class);
 
         Map<String, ?> map = manager.getMap();
-        assertNotNull( map );
-        assertEquals( 0, map.size() );
+        assertNotNull(map);
+        assertEquals(0, map.size());
 
         List<?> list = manager.getList();
-        assertNotNull( list );
-        assertEquals( 0, list.size() );
+        assertNotNull(list);
+        assertEquals(0, list.size());
 
         /*
          * Below we're creating two realms which basically contain the same components, only their bytecode/version
@@ -626,130 +572,121 @@ public class PlexusContainerTest
          * current realm (and not from a previous realm).
          */
 
-        ClassRealm realmA = container.createChildRealm( "realm-a" );
-        realmA.addURL( new File( "src/test/test-components/component-a-1.0-SNAPSHOT.jar" ).toURI().toURL() );
-        container.discoverComponents( realmA );
+        ClassRealm realmA = container.createChildRealm("realm-a");
+        realmA.addURL(new File("src/test/test-components/component-a-1.0-SNAPSHOT.jar")
+                .toURI()
+                .toURL());
+        container.discoverComponents(realmA);
 
-        ClassRealm realmB = realmA.createChildRealm( "realm-b" );
-        realmB.importFrom( realmA, "org.codehaus.plexus.components.A" );
-        realmB.importFromParent( "nothing" );
-        realmB.addURL( new File( "src/test/test-components/component-a-2.0-SNAPSHOT.jar" ).toURI().toURL() );
-        container.discoverComponents( realmB );
+        ClassRealm realmB = realmA.createChildRealm("realm-b");
+        realmB.importFrom(realmA, "org.codehaus.plexus.components.A");
+        realmB.importFromParent("nothing");
+        realmB.addURL(new File("src/test/test-components/component-a-2.0-SNAPSHOT.jar")
+                .toURI()
+                .toURL());
+        container.discoverComponents(realmB);
 
         ClassLoader oldClassLoader = Thread.currentThread().getContextClassLoader();
 
-        try
-        {
-            Thread.currentThread().setContextClassLoader( realmA );
+        try {
+            Thread.currentThread().setContextClassLoader(realmA);
 
             map = manager.getMap();
-            assertNotNull( map );
-            assertEquals( 1, map.size() );
-            assertSame( realmA, map.values().iterator().next().getClass().getClassLoader() );
+            assertNotNull(map);
+            assertEquals(1, map.size());
+            assertSame(realmA, map.values().iterator().next().getClass().getClassLoader());
 
             list = manager.getList();
-            assertNotNull( list );
-            assertEquals( 1, list.size() );
-            assertSame( realmA, list.iterator().next().getClass().getClassLoader() );
+            assertNotNull(list);
+            assertEquals(1, list.size());
+            assertSame(realmA, list.iterator().next().getClass().getClassLoader());
 
-            Thread.currentThread().setContextClassLoader( realmB );
+            Thread.currentThread().setContextClassLoader(realmB);
 
             map = manager.getMap();
-            assertNotNull( map );
-            assertEquals( 1, map.size() );
-            assertSame( realmB, map.values().iterator().next().getClass().getClassLoader() );
+            assertNotNull(map);
+            assertEquals(1, map.size());
+            assertSame(realmB, map.values().iterator().next().getClass().getClassLoader());
 
             list = manager.getList();
-            assertNotNull( list );
-            assertEquals( 1, list.size() );
-            assertSame( realmB, list.iterator().next().getClass().getClassLoader() );
-        }
-        finally
-        {
-            Thread.currentThread().setContextClassLoader( oldClassLoader );
+            assertNotNull(list);
+            assertEquals(1, list.size());
+            assertSame(realmB, list.iterator().next().getClass().getClassLoader());
+        } finally {
+            Thread.currentThread().setContextClassLoader(oldClassLoader);
         }
     }
 
-    public void testComponentLookupFromParentRealmOfImportedRealms()
-        throws Exception
-    {
-        ComponentManager manager = container.lookup( ComponentManager.class );
+    public void testComponentLookupFromParentRealmOfImportedRealms() throws Exception {
+        ComponentManager manager = container.lookup(ComponentManager.class);
 
         Map<String, ?> map = manager.getMap();
-        assertNotNull( map );
-        assertEquals( 0, map.size() );
+        assertNotNull(map);
+        assertEquals(0, map.size());
 
         List<?> list = manager.getList();
-        assertNotNull( list );
-        assertEquals( 0, list.size() );
+        assertNotNull(list);
+        assertEquals(0, list.size());
 
-        URL componentUrl = new File( "src/test/test-components/component-a-1.0-SNAPSHOT.jar" ).toURI().toURL();
+        URL componentUrl = new File("src/test/test-components/component-a-1.0-SNAPSHOT.jar")
+                .toURI()
+                .toURL();
 
-        ClassRealm realmP = container.createChildRealm( "parent-of-imported-realm" );
-        realmP.addURL( componentUrl );
-        container.discoverComponents( realmP );
+        ClassRealm realmP = container.createChildRealm("parent-of-imported-realm");
+        realmP.addURL(componentUrl);
+        container.discoverComponents(realmP);
 
-        ClassRealm realmI = realmP.createChildRealm( "imported-realm" );
+        ClassRealm realmI = realmP.createChildRealm("imported-realm");
 
-        ClassRealm realmL = container.createChildRealm( "lookup-realm" );
-        realmL.importFrom( realmI, "org.something" );
+        ClassRealm realmL = container.createChildRealm("lookup-realm");
+        realmL.importFrom(realmI, "org.something");
 
         ClassLoader oldClassLoader = Thread.currentThread().getContextClassLoader();
 
-        try
-        {
-            Thread.currentThread().setContextClassLoader( realmL );
+        try {
+            Thread.currentThread().setContextClassLoader(realmL);
 
             map = manager.getMap();
-            assertNotNull( map );
-            assertEquals( 1, map.size() );
-            assertSame( realmP, map.values().iterator().next().getClass().getClassLoader() );
+            assertNotNull(map);
+            assertEquals(1, map.size());
+            assertSame(realmP, map.values().iterator().next().getClass().getClassLoader());
 
             list = manager.getList();
-            assertNotNull( list );
-            assertEquals( 1, list.size() );
-            assertSame( realmP, list.iterator().next().getClass().getClassLoader() );
-        }
-        finally
-        {
-            Thread.currentThread().setContextClassLoader( oldClassLoader );
+            assertNotNull(list);
+            assertEquals(1, list.size());
+            assertSame(realmP, list.iterator().next().getClass().getClassLoader());
+        } finally {
+            Thread.currentThread().setContextClassLoader(oldClassLoader);
         }
     }
 
-    public void testOptionalComponentRequirement()
-        throws Exception
-    {
+    public void testOptionalComponentRequirement() throws Exception {
         DefaultComponentWithOptionalRequirement ca =
-            (DefaultComponentWithOptionalRequirement) container.lookup( Component.class, "with-optional" );
+                (DefaultComponentWithOptionalRequirement) container.lookup(Component.class, "with-optional");
 
-        assertNotNull( ca );
+        assertNotNull(ca);
 
-        assertNotNull( ca.getActivity() );
+        assertNotNull(ca.getActivity());
 
-        assertNull( ca.optionalComponent );
+        assertNull(ca.optionalComponent);
     }
 
     public void testLookupOfComponentThatHasARequirementWithoutRoleHintAndTheOneAndOnlyImplHasNoDefaultHint()
-        throws Exception
-    {
-        DefaultThingUser component = (DefaultThingUser) container.lookup( ThingUser.class );
+            throws Exception {
+        DefaultThingUser component = (DefaultThingUser) container.lookup(ThingUser.class);
 
-        assertNotNull( component.thing );
+        assertNotNull(component.thing);
     }
 
-    public void testSingleLookupWithAndWithoutRoleHint()
-        throws Exception
-    {
-        ComponentWithRoleDefault withRoleHint = container.lookup( ComponentWithRoleDefault.class, "default" );
+    public void testSingleLookupWithAndWithoutRoleHint() throws Exception {
+        ComponentWithRoleDefault withRoleHint = container.lookup(ComponentWithRoleDefault.class, "default");
 
-        ComponentWithRoleDefault withoutRoleHint = container.lookup( ComponentWithRoleDefault.class );
+        ComponentWithRoleDefault withoutRoleHint = container.lookup(ComponentWithRoleDefault.class);
 
-        assertSame( withRoleHint, withoutRoleHint );
+        assertSame(withRoleHint, withoutRoleHint);
     }
 
-    public void testLookupUponChangeOfThreadContextClassLoaderFromParentToChildRealm()
-        throws Exception
-    {
+    public void testLookupUponChangeOfThreadContextClassLoaderFromParentToChildRealm() throws Exception {
         /*
          * Below we're creating two realms which basically contain the same components, only their bytecode/version
          * differs. The realms form a parent-child relationship where the child imports the component role from the
@@ -758,109 +695,98 @@ public class PlexusContainerTest
          * realm).
          */
 
-        ClassRealm realmA = container.createChildRealm( "realm-a" );
-        realmA.addURL( new File( "src/test/test-components/component-a-1.0-SNAPSHOT.jar" ).toURI().toURL() );
-        container.discoverComponents( realmA );
+        ClassRealm realmA = container.createChildRealm("realm-a");
+        realmA.addURL(new File("src/test/test-components/component-a-1.0-SNAPSHOT.jar")
+                .toURI()
+                .toURL());
+        container.discoverComponents(realmA);
 
-        ClassRealm realmB = realmA.createChildRealm( "realm-b" );
-        realmB.importFrom( realmA, "org.codehaus.plexus.components.A" );
-        realmB.importFromParent( "nothing" );
-        realmB.addURL( new File( "src/test/test-components/component-a-2.0-SNAPSHOT.jar" ).toURI().toURL() );
-        container.discoverComponents( realmB );
+        ClassRealm realmB = realmA.createChildRealm("realm-b");
+        realmB.importFrom(realmA, "org.codehaus.plexus.components.A");
+        realmB.importFromParent("nothing");
+        realmB.addURL(new File("src/test/test-components/component-a-2.0-SNAPSHOT.jar")
+                .toURI()
+                .toURL());
+        container.discoverComponents(realmB);
 
-        Class<?> role = realmA.loadClass( "org.codehaus.plexus.components.A" );
+        Class<?> role = realmA.loadClass("org.codehaus.plexus.components.A");
 
         ClassLoader oldClassLoader = Thread.currentThread().getContextClassLoader();
 
-        try
-        {
-            Thread.currentThread().setContextClassLoader( realmA );
+        try {
+            Thread.currentThread().setContextClassLoader(realmA);
 
-            Object comp1 = container.lookup( role, "default" );
+            Object comp1 = container.lookup(role, "default");
 
-            Thread.currentThread().setContextClassLoader( realmB );
+            Thread.currentThread().setContextClassLoader(realmB);
 
-            Object comp2 = container.lookup( role, "default" );
+            Object comp2 = container.lookup(role, "default");
 
-            assertNotNull( comp1 );
-            assertNotNull( comp2 );
-            assertNotSame( comp1, comp2 );
-            assertSame( realmA, comp1.getClass().getClassLoader() );
-            assertSame( realmB, comp2.getClass().getClassLoader() );
-        }
-        finally
-        {
-            Thread.currentThread().setContextClassLoader( oldClassLoader );
+            assertNotNull(comp1);
+            assertNotNull(comp2);
+            assertNotSame(comp1, comp2);
+            assertSame(realmA, comp1.getClass().getClassLoader());
+            assertSame(realmB, comp2.getClass().getClassLoader());
+        } finally {
+            Thread.currentThread().setContextClassLoader(oldClassLoader);
         }
     }
 
-    public void testSafeConcurrentAccessToActiveComponentCollection()
-        throws Exception
-    {
-        ComponentManager manager = container.lookup( ComponentManager.class );
+    public void testSafeConcurrentAccessToActiveComponentCollection() throws Exception {
+        ComponentManager manager = container.lookup(ComponentManager.class);
 
         final Map<String, ?> map = manager.getMap();
-        assertNotNull( map );
-        assertEquals( 0, map.size() );
+        assertNotNull(map);
+        assertEquals(0, map.size());
 
         final List<?> list = manager.getList();
-        assertNotNull( list );
-        assertEquals( 0, list.size() );
+        assertNotNull(list);
+        assertEquals(0, list.size());
 
-        final AtomicBoolean go = new AtomicBoolean( false );
+        final AtomicBoolean go = new AtomicBoolean(false);
 
         final List<Exception> exceptions = new CopyOnWriteArrayList<Exception>();
         Thread[] threads = new Thread[64];
-        final CountDownLatch latch = new CountDownLatch( threads.length );
-        for ( int i = 0; i < threads.length; i++ )
-        {
-            threads[i] = new Thread()
-            {
+        final CountDownLatch latch = new CountDownLatch(threads.length);
+        for (int i = 0; i < threads.length; i++) {
+            threads[i] = new Thread() {
                 @Override
-                public void run()
-                {
-                    try
-                    {
-                        ClassRealm realm = container.createChildRealm( "realm-" + UUID.randomUUID().toString() );
-                        realm.addURL( new File( "src/test/test-components/component-a-1.0-SNAPSHOT.jar" ).toURI().toURL() );
-                        container.discoverComponents( realm );
-                        Thread.currentThread().setContextClassLoader( realm );
+                public void run() {
+                    try {
+                        ClassRealm realm = container.createChildRealm(
+                                "realm-" + UUID.randomUUID().toString());
+                        realm.addURL(new File("src/test/test-components/component-a-1.0-SNAPSHOT.jar")
+                                .toURI()
+                                .toURL());
+                        container.discoverComponents(realm);
+                        Thread.currentThread().setContextClassLoader(realm);
 
-                        while ( !go.get() )
-                        {
+                        while (!go.get()) {
                             // just wait
                         }
 
-                        for ( int j = 0; j < 1000; j++ )
-                        {
+                        for (int j = 0; j < 1000; j++) {
                             // this just must not die with some exception
-                            for ( Object value : map.values() )
-                            {
+                            for (Object value : map.values()) {
                                 value.toString();
                             }
-                            for ( Object value : list )
-                            {
+                            for (Object value : list) {
                                 value.toString();
                             }
                         }
-                    }
-                    catch ( Exception e )
-                    {
+                    } catch (Exception e) {
                         e.printStackTrace();
-                        exceptions.add( e );
-                    }
-                    finally
-                    {
+                        exceptions.add(e);
+                    } finally {
                         latch.countDown();
                     }
                 }
             };
             threads[i].start();
         }
-        go.set( true );
+        go.set(true);
         latch.await();
 
-        assertTrue( exceptions.toString(), exceptions.isEmpty() );
+        assertTrue(exceptions.toString(), exceptions.isEmpty());
     }
-
 }

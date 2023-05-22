@@ -16,19 +16,15 @@ package org.codehaus.plexus.component.factory;
  * limitations under the License.
  */
 
-public class TestFactoryResultComponent
-{
+public class TestFactoryResultComponent {
 
     private final String factoryId;
 
-    public TestFactoryResultComponent( String factoryId )
-    {
+    public TestFactoryResultComponent(String factoryId) {
         this.factoryId = factoryId;
     }
 
-    public String getFactoryId()
-    {
+    public String getFactoryId() {
         return factoryId;
     }
-
 }

@@ -16,14 +16,14 @@ package org.codehaus.plexus.logging.console;
  * limitations under the License.
  */
 
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
 import org.codehaus.plexus.logging.AbstractLoggerManager;
 import org.codehaus.plexus.logging.Logger;
 import org.codehaus.plexus.logging.LoggerManager;
 import org.codehaus.plexus.personality.plexus.lifecycle.phase.Initializable;
-
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
 
 /**
  * This is a simple logger manager that will only write the logging statements to the console.
@@ -37,17 +37,14 @@ import java.util.Map;
  *   </logger>
  * </logging>
  * }</pre>
- * 
+ *
  * @author Jason van Zyl
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
  */
-public class ConsoleLoggerManager
-    extends AbstractLoggerManager
-    implements LoggerManager, Initializable
-{
+public class ConsoleLoggerManager extends AbstractLoggerManager implements LoggerManager, Initializable {
     /**
-     * Message of this level or higher will be logged. 
-     * 
+     * Message of this level or higher will be logged.
+     *
      * This field is set by the plexus container thus the name is 'threshold'. The field
      * currentThreshold contains the current setting of the threshold.
      */
@@ -62,16 +59,13 @@ public class ConsoleLoggerManager
 
     private boolean bootTimeLogger = false;
 
-    public ConsoleLoggerManager()
-    {
-    }
+    public ConsoleLoggerManager() {}
 
     /**
      * This special constructor is called directly when the container is bootstrapping itself.
      * @param threshold The threshold.
      */
-    public ConsoleLoggerManager( String threshold )
-    {
+    public ConsoleLoggerManager(String threshold) {
         this.threshold = threshold;
 
         bootTimeLogger = true;
@@ -79,29 +73,25 @@ public class ConsoleLoggerManager
         initialize();
     }
 
-    public void initialize()
-    {
-        debug( "Initializing ConsoleLoggerManager: " + this.hashCode() + "." );
-//        if ( !bootTimeLogger )
-//            new Throwable().printStackTrace(System.err);
-        currentThreshold = parseThreshold( threshold );
+    public void initialize() {
+        debug("Initializing ConsoleLoggerManager: " + this.hashCode() + ".");
+        //        if ( !bootTimeLogger )
+        //            new Throwable().printStackTrace(System.err);
+        currentThreshold = parseThreshold(threshold);
 
-        if ( currentThreshold == -1 )
-        {
-            debug( "Could not parse the threshold level: '" + threshold + "', setting to debug." );
+        if (currentThreshold == -1) {
+            debug("Could not parse the threshold level: '" + threshold + "', setting to debug.");
             currentThreshold = Logger.LEVEL_DEBUG;
         }
 
         loggers = new HashMap();
     }
 
-    public void setThreshold( int currentThreshold )
-    {
+    public void setThreshold(int currentThreshold) {
         this.currentThreshold = currentThreshold;
     }
 
-    public void setThresholds( int currentThreshold )
-    {
+    public void setThresholds(int currentThreshold) {
         this.currentThreshold = currentThreshold;
 
         for (Object o : loggers.values()) {
@@ -113,127 +103,114 @@ public class ConsoleLoggerManager
     /**
      * @return Returns the threshold.
      */
-    public int getThreshold()
-    {
+    public int getThreshold() {
         return currentThreshold;
     }
 
     // new stuff
 
-    public void setThreshold( String role, String roleHint, int threshold ) {
+    public void setThreshold(String role, String roleHint, int threshold) {
         ConsoleLogger logger;
         String name;
 
-        name = toMapKey( role, roleHint );
-        logger = (ConsoleLogger)loggers.get( name );
+        name = toMapKey(role, roleHint);
+        logger = (ConsoleLogger) loggers.get(name);
 
-        if(logger == null) {
-            debug( "Trying to set the threshold of a unknown logger '" + name + "'." );
+        if (logger == null) {
+            debug("Trying to set the threshold of a unknown logger '" + name + "'.");
             return; // nothing to do
         }
 
-        logger.setThreshold( threshold );
+        logger.setThreshold(threshold);
     }
 
-    public int getThreshold( String role, String roleHint ) {
+    public int getThreshold(String role, String roleHint) {
         ConsoleLogger logger;
         String name;
 
-        name = toMapKey( role, roleHint );
-        logger = (ConsoleLogger)loggers.get( name );
+        name = toMapKey(role, roleHint);
+        logger = (ConsoleLogger) loggers.get(name);
 
-        if(logger == null) {
-            debug( "Trying to get the threshold of a unknown logger '" + name + "'." );
+        if (logger == null) {
+            debug("Trying to get the threshold of a unknown logger '" + name + "'.");
             return Logger.LEVEL_DEBUG; // does not return null because that could create a NPE
         }
 
         return logger.getThreshold();
     }
 
-    public Logger createLogger(int threshold, String name)
-    {
-        return new ConsoleLogger( threshold, name );
+    public Logger createLogger(int threshold, String name) {
+        return new ConsoleLogger(threshold, name);
     }
 
-    public Logger getLoggerForComponent( String role, String roleHint )
-    {
+    public Logger getLoggerForComponent(String role, String roleHint) {
         Logger logger;
         String name;
 
-        name = toMapKey( role, roleHint );
-        logger = (Logger)loggers.get( name );
+        name = toMapKey(role, roleHint);
+        logger = (Logger) loggers.get(name);
 
-        if ( logger != null )
-            return logger;
+        if (logger != null) return logger;
 
-        debug( "Creating logger '" + name + "' " + this.hashCode() + "." );
-        logger = createLogger( getThreshold(), name );
-        loggers.put( name, logger );
+        debug("Creating logger '" + name + "' " + this.hashCode() + ".");
+        logger = createLogger(getThreshold(), name);
+        loggers.put(name, logger);
 
         return logger;
     }
 
-    public void returnComponentLogger( String role, String roleHint )
-    {
+    public void returnComponentLogger(String role, String roleHint) {
         Object obj;
         String name;
 
-        name = toMapKey( role, roleHint );
-        obj = loggers.remove( name );
+        name = toMapKey(role, roleHint);
+        obj = loggers.remove(name);
 
-        if ( obj == null )
-        {
-            debug( "There was no such logger '" + name + "' " + this.hashCode() + ".");
-        }
-        else
-        {
-            debug( "Removed logger '" + name + "' " + this.hashCode() + ".");
+        if (obj == null) {
+            debug("There was no such logger '" + name + "' " + this.hashCode() + ".");
+        } else {
+            debug("Removed logger '" + name + "' " + this.hashCode() + ".");
         }
     }
 
-    public int getActiveLoggerCount()
-    {
+    public int getActiveLoggerCount() {
         return loggers.size();
     }
 
-    private int parseThreshold( String text )
-    {
-        text = text.trim().toLowerCase( Locale.ENGLISH );
+    private int parseThreshold(String text) {
+        text = text.trim().toLowerCase(Locale.ENGLISH);
 
-        if ( text.equals( "debug" ) )
-        {
+        if (text.equals("debug")) {
             return ConsoleLogger.LEVEL_DEBUG;
-        }
-        else if ( text.equals( "info" ) )
-        {
+        } else if (text.equals("info")) {
             return ConsoleLogger.LEVEL_INFO;
-        }
-        else if ( text.equals( "warn" ) )
-        {
+        } else if (text.equals("warn")) {
             return ConsoleLogger.LEVEL_WARN;
-        }
-        else if ( text.equals( "error" ) )
-        {
+        } else if (text.equals("error")) {
             return ConsoleLogger.LEVEL_ERROR;
-        }
-        else if ( text.equals( "fatal" ) )
-        {
+        } else if (text.equals("fatal")) {
             return ConsoleLogger.LEVEL_FATAL;
         }
 
         return -1;
     }
 
-    private String decodeLogLevel( int logLevel )
-    {
-        switch(logLevel) {
-        case ConsoleLogger.LEVEL_DEBUG: return "debug";
-        case ConsoleLogger.LEVEL_INFO: return "info";
-        case ConsoleLogger.LEVEL_WARN: return "warn";
-        case ConsoleLogger.LEVEL_ERROR: return "error";
-        case ConsoleLogger.LEVEL_FATAL: return "fatal";
-        case ConsoleLogger.LEVEL_DISABLED: return "disabled";
-        default: return "unknown";
+    private String decodeLogLevel(int logLevel) {
+        switch (logLevel) {
+            case ConsoleLogger.LEVEL_DEBUG:
+                return "debug";
+            case ConsoleLogger.LEVEL_INFO:
+                return "info";
+            case ConsoleLogger.LEVEL_WARN:
+                return "warn";
+            case ConsoleLogger.LEVEL_ERROR:
+                return "error";
+            case ConsoleLogger.LEVEL_FATAL:
+                return "fatal";
+            case ConsoleLogger.LEVEL_DISABLED:
+                return "disabled";
+            default:
+                return "unknown";
         }
     }
 
@@ -242,9 +219,8 @@ public class ConsoleLoggerManager
      *
      * @param msg
      */
-    private void debug( String msg )
-    {
-//        if ( !bootTimeLogger )
-//            System.out.println( "[Console] " + msg );
+    private void debug(String msg) {
+        //        if ( !bootTimeLogger )
+        //            System.out.println( "[Console] " + msg );
     }
 }

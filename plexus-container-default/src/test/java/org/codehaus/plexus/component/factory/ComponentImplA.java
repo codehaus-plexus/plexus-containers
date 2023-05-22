@@ -22,6 +22,4 @@ package org.codehaus.plexus.component.factory;
  * @author Jason van Zyl
  *
  */
-public class ComponentImplA implements Component
-{
-}
+public class ComponentImplA implements Component {}

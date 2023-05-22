@@ -19,7 +19,4 @@ package org.codehaus.plexus.test;
 /**
  * 2.0
  */
-public class DefaultComponentB
-    implements ComponentB
-{
-}
+public class DefaultComponentB implements ComponentB {}

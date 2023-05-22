@@ -26,20 +26,15 @@ package org.codehaus.plexus.component.configurator;
 
 import java.util.Properties;
 
-
 /**
  *
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
  *
  */
-public class ComponentWithPropertiesField
-{
+public class ComponentWithPropertiesField {
     private Properties someProperties;
 
-    public Properties getSomeProperties()
-    {
+    public Properties getSomeProperties() {
         return someProperties;
     }
 }
-
-

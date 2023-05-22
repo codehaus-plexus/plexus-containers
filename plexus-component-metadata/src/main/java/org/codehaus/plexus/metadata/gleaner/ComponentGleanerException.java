@@ -27,21 +27,16 @@ package org.codehaus.plexus.metadata.gleaner;
 /**
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
  */
-public class ComponentGleanerException
-    extends Exception
-{
-    public ComponentGleanerException( String message )
-    {
-        super( message );
+public class ComponentGleanerException extends Exception {
+    public ComponentGleanerException(String message) {
+        super(message);
     }
 
-    public ComponentGleanerException( String message, Throwable cause )
-    {
-        super( message, cause );
+    public ComponentGleanerException(String message, Throwable cause) {
+        super(message, cause);
     }
 
-    public ComponentGleanerException( Throwable cause )
-    {
-        super( cause );
+    public ComponentGleanerException(Throwable cause) {
+        super(cause);
     }
 }

@@ -21,15 +21,14 @@ import java.util.Map;
 /**
  * Context is a Map of arbitrary data associated with the container.
  */
-public interface Context
-{
+public interface Context {
     /**
      * Returns true if this context contains a value for the specified key.
      *
      * @param key the key to search
      * @return true if the key was found; false otherwise
      */
-    boolean contains( Object key );
+    boolean contains(Object key);
 
     /**
      * Returns the value of the key. If the key can't be found it will throw a exception.
@@ -38,8 +37,7 @@ public interface Context
      * @return returns the value associated with the key
      * @throws ContextException if the key doesn't exist
      */
-    Object get( Object key )
-        throws ContextException;
+    Object get(Object key) throws ContextException;
 
     /**
      * Utility method to retrieve containerContext data.
@@ -56,8 +54,7 @@ public interface Context
      * @param value the item
      * @throws IllegalStateException if this context is read-only
      */
-    public void put( Object key, Object value )
-        throws IllegalStateException;
+    public void put(Object key, Object value) throws IllegalStateException;
 
     // todo [dain] this isn't needed anymore since containers are no longer nestable
     /**
@@ -69,8 +66,7 @@ public interface Context
      * @param key the items key
      * @throws IllegalStateException if this context is read-only
      */
-    void hide( Object key )
-        throws IllegalStateException;
+    void hide(Object key) throws IllegalStateException;
 
     /**
      * Make the containerContext read-only.

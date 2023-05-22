@@ -33,32 +33,28 @@ import org.jdom2.Document;
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
  */
-public interface Merger
-{
+public interface Merger {
     String ROLE = Merger.class.getName();
 
     /**
      * Merge with the recessive document.
-     * 
+     *
      * @param dDocument the dominant document.
      * @param rDocument the recessive document.
      * @return the merged {@link Document} instance.
      *
      * @throws MergeException if there was an error in merge.
      */
-    Document merge( Document dDocument, Document rDocument )
-        throws MergeException;
+    Document merge(Document dDocument, Document rDocument) throws MergeException;
 
     /**
      * Allows writing out a merged JDom Document to the specified file.
-     * 
+     *
      * @param mergedDocument the merged {@link Document} instance.
      * @param file File to write the merged contents to.
      * @throws IOException if there was an error while writing merged contents to the specified file.
      */
-    void writeMergedDocument( Document mergedDocument, File file )
-        throws IOException;
-    
-    void mergeDescriptors( File outputDescriptor, List<File> descriptors )
-        throws IOException;    
+    void writeMergedDocument(Document mergedDocument, File file) throws IOException;
+
+    void mergeDescriptors(File outputDescriptor, List<File> descriptors) throws IOException;
 }

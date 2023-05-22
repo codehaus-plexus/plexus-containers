@@ -25,26 +25,18 @@ import org.codehaus.plexus.personality.plexus.lifecycle.phase.Startable;
  *   delay - number of milliseconds to sleep during start()
  * @author Ben Walding
  */
-public class  SlowComponent
-    implements Startable
-{
+public class SlowComponent implements Startable {
     public static final String ROLE = SlowComponent.class.getName();
 
     /* Number of ms to sleep during start() */
     private long delay;
 
-    public void start()
-    {
-        try
-        {
-            Thread.sleep( delay );
-        }
-        catch ( InterruptedException e )
-        {
+    public void start() {
+        try {
+            Thread.sleep(delay);
+        } catch (InterruptedException e) {
         }
     }
 
-    public void stop()
-    {
-    }
+    public void stop() {}
 }

@@ -20,6 +20,4 @@ package org.codehaus.plexus.metadata.gleaner;
  * ???
  *
  */
-public interface NoAnnotationsIntf
-{
-}
+public interface NoAnnotationsIntf {}

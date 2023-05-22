@@ -24,15 +24,10 @@ import org.codehaus.plexus.lifecycle.AbstractLifecycleHandler;
  * @author Jason van Zyl
  *
  */
-public class SimpleLifecycleHandler
-    extends AbstractLifecycleHandler
-{
-    public String getId()
-    {
+public class SimpleLifecycleHandler extends AbstractLifecycleHandler {
+    public String getId() {
         return "simple";
     }
 
-    public void initialize()
-    {
-    }
+    public void initialize() {}
 }

@@ -1,6 +1,5 @@
 package org.codehaus.plexus.context;
 
-
 /*
  * Copyright 2001-2006 Codehaus Foundation.
  *
@@ -27,9 +26,7 @@ package org.codehaus.plexus.context;
  * @author <a href="mailto:dev@avalon.apache.org">Avalon Development Team</a>
  * @version CVS $Revision$ $Date$
  */
-public class ContextException
-    extends Exception
-{
+public class ContextException extends Exception {
     private static final long serialVersionUID = 2030206863811644180L;
 
     /**
@@ -37,9 +34,8 @@ public class ContextException
      *
      * @param message The detail message for this exception.
      */
-    public ContextException( final String message )
-    {
-        this( message, null );
+    public ContextException(final String message) {
+        this(message, null);
     }
 
     /**
@@ -48,8 +44,7 @@ public class ContextException
      * @param message The detail message for this exception.
      * @param throwable the root cause of the exception
      */
-    public ContextException( final String message, final Throwable throwable )
-    {
-        super( message, throwable );
+    public ContextException(final String message, final Throwable throwable) {
+        super(message, throwable);
     }
 }

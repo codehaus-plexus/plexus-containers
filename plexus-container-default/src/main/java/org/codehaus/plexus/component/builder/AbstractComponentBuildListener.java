@@ -15,16 +15,13 @@
  */
 package org.codehaus.plexus.component.builder;
 
-import org.codehaus.plexus.component.repository.ComponentDescriptor;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
+import org.codehaus.plexus.component.repository.ComponentDescriptor;
 
 public abstract class AbstractComponentBuildListener implements ComponentBuildListener {
-    public void beforeComponentCreate(ComponentDescriptor<?> componentDescriptor, ClassRealm realm) {
-    }
+    public void beforeComponentCreate(ComponentDescriptor<?> componentDescriptor, ClassRealm realm) {}
 
-    public void componentCreated(ComponentDescriptor<?> componentDescriptor, Object component, ClassRealm realm) {
-    }
+    public void componentCreated(ComponentDescriptor<?> componentDescriptor, Object component, ClassRealm realm) {}
 
-    public void componentConfigured(ComponentDescriptor<?> componentDescriptor, Object component, ClassRealm realm) {
-    }
+    public void componentConfigured(ComponentDescriptor<?> componentDescriptor, Object component, ClassRealm realm) {}
 }

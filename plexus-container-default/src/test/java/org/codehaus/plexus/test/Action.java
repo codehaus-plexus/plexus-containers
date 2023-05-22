@@ -18,10 +18,8 @@ package org.codehaus.plexus.test;
 
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public interface Action
-{
-}
+public interface Action {}

@@ -30,10 +30,8 @@ import org.codehaus.plexus.component.configurator.converters.lookup.ConverterLoo
 import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluator;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 
-
-public interface ConfigurationConverter
-{
-    boolean canConvert( Class type );
+public interface ConfigurationConverter {
+    boolean canConvert(Class type);
 
     /**
      * @param converterLookup Repository of available converters
@@ -46,9 +44,14 @@ public interface ConfigurationConverter
      * @throws ComponentConfigurationException in case of an error.
      * TODO: a better way, instead of baseType, would be to pass in a factory for new classes that could be based from the given package
      */
-    Object fromConfiguration( ConverterLookup converterLookup, PlexusConfiguration configuration, Class type,
-                              Class baseType, ClassLoader classLoader, ExpressionEvaluator expressionEvaluator )
-        throws ComponentConfigurationException;
+    Object fromConfiguration(
+            ConverterLookup converterLookup,
+            PlexusConfiguration configuration,
+            Class type,
+            Class baseType,
+            ClassLoader classLoader,
+            ExpressionEvaluator expressionEvaluator)
+            throws ComponentConfigurationException;
 
     /**
      * @param converterLookup Repository of available converters
@@ -62,8 +65,13 @@ public interface ConfigurationConverter
      * @throws ComponentConfigurationException in case of an error.
      * TODO: a better way, instead of baseType, would be to pass in a factory for new classes that could be based from the given package
      */
-    Object fromConfiguration( ConverterLookup converterLookup, PlexusConfiguration configuration, Class type,
-                              Class baseType, ClassLoader classLoader, ExpressionEvaluator expressionEvaluator,
-                              ConfigurationListener listener )
-        throws ComponentConfigurationException;
+    Object fromConfiguration(
+            ConverterLookup converterLookup,
+            PlexusConfiguration configuration,
+            Class type,
+            Class baseType,
+            ClassLoader classLoader,
+            ExpressionEvaluator expressionEvaluator,
+            ConfigurationListener listener)
+            throws ComponentConfigurationException;
 }

@@ -18,13 +18,11 @@ package org.codehaus.plexus.component.composition;
 
 /**
  * Thrown when component composition goes awry.
- * 
- * @author Jason van Zyl 
+ *
+ * @author Jason van Zyl
  * @author <a href="mmaczka@interia.pl">Michal Maczka</a>
  */
-public class CycleDetectedInComponentGraphException
-    extends Exception
-{
+public class CycleDetectedInComponentGraphException extends Exception {
     private static final long serialVersionUID = -5587124702588800322L;
 
     /**
@@ -32,9 +30,8 @@ public class CycleDetectedInComponentGraphException
      *
      * @param message The detail message for this exception.
      */
-    public CycleDetectedInComponentGraphException( String message )
-    {
-        super( message );
+    public CycleDetectedInComponentGraphException(String message) {
+        super(message);
     }
 
     /**
@@ -43,8 +40,7 @@ public class CycleDetectedInComponentGraphException
      * @param message   The detail message for this exception.
      * @param throwable the root cause of the exception
      */
-    public CycleDetectedInComponentGraphException( String message, Throwable throwable )
-    {
-        super( message, throwable );
+    public CycleDetectedInComponentGraphException(String message, Throwable throwable) {
+        super(message, throwable);
     }
 }

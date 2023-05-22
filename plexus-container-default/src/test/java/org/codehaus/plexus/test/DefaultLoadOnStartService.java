@@ -24,17 +24,12 @@ import org.codehaus.plexus.personality.plexus.lifecycle.phase.Startable;
  * @author Jason van Zyl
  *
  */
-public class DefaultLoadOnStartService
-    implements LoadOnStartService, Startable
-{
+public class DefaultLoadOnStartService implements LoadOnStartService, Startable {
     public static boolean isStarted = false;
 
-    public void start()
-    {
+    public void start() {
         isStarted = true;
     }
 
-    public void stop()
-    {
-    }
+    public void stop() {}
 }

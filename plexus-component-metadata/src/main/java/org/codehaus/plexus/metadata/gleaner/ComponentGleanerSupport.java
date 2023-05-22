@@ -27,8 +27,7 @@ import org.codehaus.plexus.configuration.xml.XmlPlexusConfiguration;
  * Support for component gleaner implementations.
  *
  */
-public abstract class ComponentGleanerSupport
-{
+public abstract class ComponentGleanerSupport {
     private static final String EMPTY_STRING = "";
 
     protected String filterEmptyAsNull(final String value) {

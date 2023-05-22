@@ -16,7 +16,4 @@ package org.codehaus.plexus.test;
  * limitations under the License.
  */
 
-public interface Thing
-{
-
-}
+public interface Thing {}

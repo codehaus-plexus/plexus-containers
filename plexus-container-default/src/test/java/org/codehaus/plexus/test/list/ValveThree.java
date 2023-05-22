@@ -22,7 +22,4 @@ package org.codehaus.plexus.test.list;
  * @author Jason van Zyl
  *
  */
-public class ValveThree
-    extends AbstractValve
-{
-}
+public class ValveThree extends AbstractValve {}

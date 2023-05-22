@@ -25,8 +25,7 @@ import org.codehaus.plexus.configuration.PlexusConfiguration;
 /**
  * @author Jason van Zyl
  */
-public class ContainerInitializationContext
-{
+public class ContainerInitializationContext {
     private DefaultPlexusContainer container;
 
     ClassWorld classWorld;
@@ -37,12 +36,12 @@ public class ContainerInitializationContext
 
     ContainerConfiguration containerConfiguration;
 
-    public ContainerInitializationContext( DefaultPlexusContainer container,
-                                           ClassWorld classWorld,
-                                           ClassRealm containerRealm,
-                                           PlexusConfiguration configuration,
-                                           ContainerConfiguration containerConfiguration )
-    {
+    public ContainerInitializationContext(
+            DefaultPlexusContainer container,
+            ClassWorld classWorld,
+            ClassRealm containerRealm,
+            PlexusConfiguration configuration,
+            ContainerConfiguration containerConfiguration) {
         this.container = container;
 
         this.classWorld = classWorld;
@@ -54,28 +53,23 @@ public class ContainerInitializationContext
         this.containerConfiguration = containerConfiguration;
     }
 
-    public DefaultPlexusContainer getContainer()
-    {
+    public DefaultPlexusContainer getContainer() {
         return container;
     }
 
-    public ClassWorld getClassWorld()
-    {
+    public ClassWorld getClassWorld() {
         return classWorld;
     }
 
-    public ClassRealm getContainerRealm()
-    {
+    public ClassRealm getContainerRealm() {
         return containerRealm;
     }
 
-    public PlexusConfiguration getContainerXmlConfiguration()
-    {
+    public PlexusConfiguration getContainerXmlConfiguration() {
         return containerXmlConfiguration;
     }
 
-    public ContainerConfiguration getContainerConfiguration()
-    {
+    public ContainerConfiguration getContainerConfiguration() {
         return containerConfiguration;
     }
 }

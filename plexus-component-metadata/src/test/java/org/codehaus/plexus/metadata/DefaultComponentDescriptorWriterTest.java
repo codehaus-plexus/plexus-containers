@@ -43,9 +43,7 @@ import org.jdom2.input.SAXBuilder;
  *
  * @version $Rev$ $Date$
  */
-public class DefaultComponentDescriptorWriterTest
-    extends PlexusTestCase
-{
+public class DefaultComponentDescriptorWriterTest extends PlexusTestCase {
     private DefaultComponentDescriptorWriter descriptorWriter;
 
     // @Override
@@ -78,16 +76,16 @@ public class DefaultComponentDescriptorWriterTest
         descriptorWriter.writeDescriptorSet(writer, set, false);
         writer.flush();
         writer.close();
-        
+
         String xml = writer.toString();
 
         assertTrue(xml.length() != 0);
 
         PlexusConfiguration config = new XmlPlexusConfiguration(Xpp3DomBuilder.build(new StringReader(xml)));
         assertNotNull(config);
-        
-        ClassWorld classWorld = new ClassWorld( "test", Thread.currentThread().getContextClassLoader() );
-        ClassRealm realm = classWorld.getRealm( "test" );
+
+        ClassWorld classWorld = new ClassWorld("test", Thread.currentThread().getContextClassLoader());
+        ClassRealm realm = classWorld.getRealm("test");
         ComponentSetDescriptor set2 = buildComponentSet(config, realm);
         assertNotNull(set2);
 
@@ -97,7 +95,7 @@ public class DefaultComponentDescriptorWriterTest
 
         ComponentDescriptor<?> component2 = components.get(0);
         assertNotNull(component2);
-        
+
         assertEquals(component.getRole(), component2.getRole());
         assertEquals(component.getRoleHint(), component2.getRoleHint());
         assertEquals(component.getComponentFactory(), component2.getComponentFactory());
@@ -128,34 +126,63 @@ public class DefaultComponentDescriptorWriterTest
         List<Element> components = doc.getRootElement().getChild("components").getChildren();
         assertEquals("Number of components", 5, components.size());
 
-        assertEquals("Component 1 role", ComponentDescriptorExtractor.class.getName(), components.get(0).getChild("role").getText());
-        assertEquals("Component 1 impl", ClassComponentDescriptorExtractor.class.getName(), components.get(0).getChild("implementation").getText());
+        assertEquals(
+                "Component 1 role",
+                ComponentDescriptorExtractor.class.getName(),
+                components.get(0).getChild("role").getText());
+        assertEquals(
+                "Component 1 impl",
+                ClassComponentDescriptorExtractor.class.getName(),
+                components.get(0).getChild("implementation").getText());
 
-        assertEquals("Component 2 role", ComponentDescriptorExtractor.class.getName(), components.get(1).getChild("role").getText());
-        assertEquals("Component 2 impl", SourceComponentDescriptorExtractor.class.getName(), components.get(1).getChild("implementation").getText());
+        assertEquals(
+                "Component 2 role",
+                ComponentDescriptorExtractor.class.getName(),
+                components.get(1).getChild("role").getText());
+        assertEquals(
+                "Component 2 impl",
+                SourceComponentDescriptorExtractor.class.getName(),
+                components.get(1).getChild("implementation").getText());
 
-        assertEquals("Component 3 role", MetadataGenerator.class.getName(), components.get(2).getChild("role").getText());
-        assertEquals("Component 3 impl", DefaultMetadataGenerator.class.getName(), components.get(2).getChild("implementation").getText());
+        assertEquals(
+                "Component 3 role",
+                MetadataGenerator.class.getName(),
+                components.get(2).getChild("role").getText());
+        assertEquals(
+                "Component 3 impl",
+                DefaultMetadataGenerator.class.getName(),
+                components.get(2).getChild("implementation").getText());
 
-        assertEquals("Component 4 role", Merger.class.getName(), components.get(3).getChild("role").getText());
-        assertEquals("Component 4 impl", ComponentsXmlMerger.class.getName(), components.get(3).getChild("implementation").getText());
+        assertEquals(
+                "Component 4 role",
+                Merger.class.getName(),
+                components.get(3).getChild("role").getText());
+        assertEquals(
+                "Component 4 impl",
+                ComponentsXmlMerger.class.getName(),
+                components.get(3).getChild("implementation").getText());
 
-        assertEquals("Component 5 role", Merger.class.getName(), components.get(4).getChild("role").getText());
-        assertEquals("Component 5 impl", PlexusXmlMerger.class.getName(), components.get(4).getChild("implementation").getText());
+        assertEquals(
+                "Component 5 role",
+                Merger.class.getName(),
+                components.get(4).getChild("role").getText());
+        assertEquals(
+                "Component 5 impl",
+                PlexusXmlMerger.class.getName(),
+                components.get(4).getChild("implementation").getText());
     }
 
     // TODO copied from PlexusTools.buildConfiguration() - find a better way to do this
     // we have duplication here, but we don't want to depend on plexus-container-default
     // similar code in AnnotationComponentGleaner.glean() and QDoxComponentGleaner.findRequirements()
-    private static ComponentSetDescriptor buildComponentSet( PlexusConfiguration c, ClassRealm realm )
-            throws PlexusConfigurationException
-    {
+    private static ComponentSetDescriptor buildComponentSet(PlexusConfiguration c, ClassRealm realm)
+            throws PlexusConfigurationException {
         ComponentSetDescriptor csd = new ComponentSetDescriptor();
-        for (PlexusConfiguration component : c.getChild( "components" ).getChildren( "component" )) {
+        for (PlexusConfiguration component : c.getChild("components").getChildren("component")) {
             csd.addComponentDescriptor(buildComponentDescriptorImpl(component, realm));
         }
 
-        for (PlexusConfiguration d : c.getChild( "dependencies" ).getChildren( "dependency" )) {
+        for (PlexusConfiguration d : c.getChild("dependencies").getChildren("dependency")) {
             ComponentDependency cd = new ComponentDependency();
             cd.setArtifactId(d.getChild("artifact-id").getValue());
             cd.setGroupId(d.getChild("group-id").getValue());
@@ -169,51 +196,43 @@ public class DefaultComponentDescriptorWriterTest
         return csd;
     }
 
-    private static ComponentDescriptor<?> buildComponentDescriptorImpl( PlexusConfiguration configuration,
-                                                                        ClassRealm realm )
-            throws PlexusConfigurationException
-    {
-        String implementation = configuration.getChild( "implementation" ).getValue();
-        if (implementation == null)
-        {
-            throw new PlexusConfigurationException( "implementation is null" );
+    private static ComponentDescriptor<?> buildComponentDescriptorImpl(
+            PlexusConfiguration configuration, ClassRealm realm) throws PlexusConfigurationException {
+        String implementation = configuration.getChild("implementation").getValue();
+        if (implementation == null) {
+            throw new PlexusConfigurationException("implementation is null");
         }
 
         ComponentDescriptor<?> cd;
-        try
-        {
-            if ( realm != null )
-            {
-                Class<?> implementationClass = realm.loadClass( implementation );
+        try {
+            if (realm != null) {
+                Class<?> implementationClass = realm.loadClass(implementation);
                 cd = new ComponentDescriptor<>(implementationClass, realm);
-            }
-            else
-            {
+            } else {
                 cd = new ComponentDescriptor<>();
-                cd.setImplementation( implementation );
+                cd.setImplementation(implementation);
             }
+        } catch (Throwable e) {
+            throw new PlexusConfigurationException(
+                    "Can not load implementation class " + implementation + " from realm " + realm, e);
         }
-        catch ( Throwable e )
-        {
-            throw new PlexusConfigurationException("Can not load implementation class " + implementation +
-                    " from realm " + realm, e);
-        }
-        cd.setRole( configuration.getChild( "role" ).getValue() );
-        cd.setRoleHint( configuration.getChild( "role-hint" ).getValue() );
-        cd.setVersion( configuration.getChild( "version" ).getValue() );
-        cd.setComponentType( configuration.getChild( "component-type" ).getValue() );
-        cd.setInstantiationStrategy( configuration.getChild( "instantiation-strategy" ).getValue() );
-        cd.setLifecycleHandler( configuration.getChild( "lifecycle-handler" ).getValue() );
-        cd.setComponentProfile( configuration.getChild( "component-profile" ).getValue() );
-        cd.setComponentComposer( configuration.getChild( "component-composer" ).getValue() );
-        cd.setComponentConfigurator( configuration.getChild( "component-configurator" ).getValue() );
-        cd.setComponentFactory( configuration.getChild( "component-factory" ).getValue() );
-        cd.setDescription( configuration.getChild( "description" ).getValue() );
-        cd.setAlias( configuration.getChild( "alias" ).getValue() );
-        String s = configuration.getChild( "isolated-realm" ).getValue();
+        cd.setRole(configuration.getChild("role").getValue());
+        cd.setRoleHint(configuration.getChild("role-hint").getValue());
+        cd.setVersion(configuration.getChild("version").getValue());
+        cd.setComponentType(configuration.getChild("component-type").getValue());
+        cd.setInstantiationStrategy(
+                configuration.getChild("instantiation-strategy").getValue());
+        cd.setLifecycleHandler(configuration.getChild("lifecycle-handler").getValue());
+        cd.setComponentProfile(configuration.getChild("component-profile").getValue());
+        cd.setComponentComposer(configuration.getChild("component-composer").getValue());
+        cd.setComponentConfigurator(
+                configuration.getChild("component-configurator").getValue());
+        cd.setComponentFactory(configuration.getChild("component-factory").getValue());
+        cd.setDescription(configuration.getChild("description").getValue());
+        cd.setAlias(configuration.getChild("alias").getValue());
+        String s = configuration.getChild("isolated-realm").getValue();
 
-        if ( s != null )
-        {
+        if (s != null) {
             cd.setIsolatedRealm(s.equals("true"));
         }
 
@@ -221,12 +240,12 @@ public class DefaultComponentDescriptorWriterTest
         // Here we want to look for directives for inlining external
         // configurations. we probably want to take them from files or URLs.
         // ----------------------------------------------------------------------
-        cd.setConfiguration( configuration.getChild( "configuration" ) );
+        cd.setConfiguration(configuration.getChild("configuration"));
         // ----------------------------------------------------------------------
         // Requirements
         // ----------------------------------------------------------------------
-        for (PlexusConfiguration requirement : configuration.getChild( "requirements" )
-                .getChildren( "requirement" )) {
+        for (PlexusConfiguration requirement :
+                configuration.getChild("requirements").getChildren("requirement")) {
             ComponentRequirement cr;
 
             PlexusConfiguration[] hints = requirement.getChild("role-hints").getChildren("role-hint");

@@ -19,11 +19,9 @@ package org.codehaus.plexus.test;
 import java.util.List;
 import java.util.Map;
 
-public interface ComponentManager
-{
+public interface ComponentManager {
 
     List<?> getList();
 
     Map<String, ?> getMap();
-
 }

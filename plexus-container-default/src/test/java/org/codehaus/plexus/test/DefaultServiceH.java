@@ -30,10 +30,7 @@ import org.codehaus.plexus.test.lifecycle.phase.Mo;
  *  Mo
  *
  */
-public class DefaultServiceH
-    extends AbstractLogEnabled
-    implements ServiceH, Eeny, Meeny, Miny, Mo
-{
+public class DefaultServiceH extends AbstractLogEnabled implements ServiceH, Eeny, Meeny, Miny, Mo {
     public boolean eeny;
     public boolean meeny;
     public boolean miny;
@@ -43,23 +40,19 @@ public class DefaultServiceH
     // Lifecycle Management
     // ----------------------------------------------------------------------
 
-    public void eeny()
-    {
+    public void eeny() {
         eeny = true;
     }
 
-    public void meeny()
-    {
+    public void meeny() {
         meeny = true;
     }
 
-    public void miny()
-    {
+    public void miny() {
         miny = true;
     }
 
-    public void mo()
-    {
+    public void mo() {
         mo = true;
     }
 }

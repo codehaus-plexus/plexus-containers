@@ -32,8 +32,7 @@ import org.codehaus.plexus.component.repository.ComponentSetDescriptor;
 /**
  * @author <a href="mailto:kenney@neonics.com">Kenney Westerhof</a>
  */
-public interface ComponentDescriptorWriter
-{
-    void writeDescriptorSet( Writer writer, ComponentSetDescriptor componentSetDescriptor, boolean containerDescriptor )
-        throws ComponentDescriptorWriteException, IOException;
+public interface ComponentDescriptorWriter {
+    void writeDescriptorSet(Writer writer, ComponentSetDescriptor componentSetDescriptor, boolean containerDescriptor)
+            throws ComponentDescriptorWriteException, IOException;
 }

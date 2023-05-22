@@ -34,42 +34,39 @@ import org.codehaus.plexus.configuration.PlexusConfiguration;
 /**
  * @author Benjamin Bentmann
  */
-public class EnumConverter
-    extends AbstractConfigurationConverter
-{
+public class EnumConverter extends AbstractConfigurationConverter {
 
-    public boolean canConvert( Class type )
-    {
+    public boolean canConvert(Class type) {
         return type.isEnum();
     }
 
-    public Object fromConfiguration( ConverterLookup converterLookup, PlexusConfiguration configuration, Class type,
-                                     Class baseType, ClassLoader classLoader, ExpressionEvaluator expressionEvaluator,
-                                     ConfigurationListener listener )
-        throws ComponentConfigurationException
-    {
-        if ( configuration.getChildCount() > 0 )
-        {
-            throw new ComponentConfigurationException( "When configuring a basic element the configuration cannot "
-                + "contain any child elements. " + "Configuration element '" + configuration.getName() + "'." );
+    public Object fromConfiguration(
+            ConverterLookup converterLookup,
+            PlexusConfiguration configuration,
+            Class type,
+            Class baseType,
+            ClassLoader classLoader,
+            ExpressionEvaluator expressionEvaluator,
+            ConfigurationListener listener)
+            throws ComponentConfigurationException {
+        if (configuration.getChildCount() > 0) {
+            throw new ComponentConfigurationException("When configuring a basic element the configuration cannot "
+                    + "contain any child elements. " + "Configuration element '" + configuration.getName() + "'.");
         }
 
-        Object retValue = fromExpression( configuration, expressionEvaluator );
+        Object retValue = fromExpression(configuration, expressionEvaluator);
 
-        if ( retValue instanceof String )
-        {
-            try
-            {
-                retValue = Enum.valueOf( type, (String) retValue );
-            }
-            catch ( RuntimeException e )
-            {
-                throw new ComponentConfigurationException( "Cannot assign value " + retValue + " to property "
-                    + configuration.getName() + " of " + baseType.getName() + ": " + e.getMessage(), e );
+        if (retValue instanceof String) {
+            try {
+                retValue = Enum.valueOf(type, (String) retValue);
+            } catch (RuntimeException e) {
+                throw new ComponentConfigurationException(
+                        "Cannot assign value " + retValue + " to property " + configuration.getName() + " of "
+                                + baseType.getName() + ": " + e.getMessage(),
+                        e);
             }
         }
 
         return retValue;
     }
-
 }

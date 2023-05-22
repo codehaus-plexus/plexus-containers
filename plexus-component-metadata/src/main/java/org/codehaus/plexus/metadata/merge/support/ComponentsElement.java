@@ -32,48 +32,40 @@ import org.jdom2.Element;
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
  */
-public class ComponentsElement
-    extends AbstractMergeableElementList
-{
-    static final DescriptorTag TAG = new DescriptorTag( "components", true, ComponentsElement.class );
+public class ComponentsElement extends AbstractMergeableElementList {
+    static final DescriptorTag TAG = new DescriptorTag("components", true, ComponentsElement.class);
 
     private List conflictVerificationkeys = new ArrayList();
 
-    public ComponentsElement( Element element )
-    {
-        super( element );
+    public ComponentsElement(Element element) {
+        super(element);
 
-        conflictVerificationkeys.add( ComponentElement.ROLE.getTagName() );
-        conflictVerificationkeys.add( ComponentElement.ROLE_HINT.getTagName() );
+        conflictVerificationkeys.add(ComponentElement.ROLE.getTagName());
+        conflictVerificationkeys.add(ComponentElement.ROLE_HINT.getTagName());
     }
 
-    public DescriptorTag[] getAllowedTags()
-    {
-        return new DescriptorTag[]{ComponentElement.TAG};
+    public DescriptorTag[] getAllowedTags() {
+        return new DescriptorTag[] {ComponentElement.TAG};
     }
 
-    protected boolean isExpectedElementType( Mergeable me )
-    {
-        return ( me instanceof ComponentsElement );
+    protected boolean isExpectedElementType(Mergeable me) {
+        return (me instanceof ComponentsElement);
     }
 
-    protected List getElementNamesForConflictChecks( List defaultList )
-    {
+    protected List getElementNamesForConflictChecks(List defaultList) {
         // Allow to return custom keys for conflict checks/resolution.
         return this.conflictVerificationkeys;
     }
 
-    protected String getTagNameForRecurringMergeable()
-    {
+    protected String getTagNameForRecurringMergeable() {
         return ComponentElement.TAG.getTagName();
     }
 
-    protected List getElementNamesForConflictResolution( List defaultList )
-    {
+    protected List getElementNamesForConflictResolution(List defaultList) {
         // TODO: how is this different from getElementNamesForConflictChecks?
         List l = new ArrayList();
-        l.add( ComponentElement.ROLE.getTagName() );
-        l.add( ComponentElement.ROLE_HINT.getTagName() );
+        l.add(ComponentElement.ROLE.getTagName());
+        l.add(ComponentElement.ROLE_HINT.getTagName());
         return l;
     }
 }

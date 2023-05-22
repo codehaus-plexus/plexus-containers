@@ -12,31 +12,20 @@ import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.Xpp3DomBuilder;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 
-public class XmlPlexusConfigurationReader
-    implements PlexusConfigurationReader
-{
+public class XmlPlexusConfigurationReader implements PlexusConfigurationReader {
 
-    public PlexusConfiguration read( InputStream inputStream )
-        throws IOException,
-            PlexusConfigurationException
-    {
-        return read( new InputStreamReader( inputStream ) );
+    public PlexusConfiguration read(InputStream inputStream) throws IOException, PlexusConfigurationException {
+        return read(new InputStreamReader(inputStream));
     }
 
-    public PlexusConfiguration read( Reader reader )
-        throws IOException,
-            PlexusConfigurationException
-    {
-        try
-        {
-            Xpp3Dom dom = Xpp3DomBuilder.build( reader );
+    public PlexusConfiguration read(Reader reader) throws IOException, PlexusConfigurationException {
+        try {
+            Xpp3Dom dom = Xpp3DomBuilder.build(reader);
 
-            return new XmlPlexusConfiguration( dom );
-        }
-        catch ( XmlPullParserException e )
-        {
-            throw new PlexusConfigurationException( "Failed to parse configuration resource!\nError was: \'"
-                + e.getLocalizedMessage() + "\'", e );
+            return new XmlPlexusConfiguration(dom);
+        } catch (XmlPullParserException e) {
+            throw new PlexusConfigurationException(
+                    "Failed to parse configuration resource!\nError was: \'" + e.getLocalizedMessage() + "\'", e);
         }
     }
 }

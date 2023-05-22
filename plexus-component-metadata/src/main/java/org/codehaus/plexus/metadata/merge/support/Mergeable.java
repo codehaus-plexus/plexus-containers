@@ -35,16 +35,14 @@ import org.jdom2.Element;
  *
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
  */
-public interface Mergeable
-{
+public interface Mergeable {
     /**
      * Merges an element of same type.
      *
      * @param me Another entity that is mergeable.
      * @throws MergeException if there was an error merging the mergeables.
      */
-    void merge( Mergeable me )
-        throws MergeException;
+    void merge(Mergeable me) throws MergeException;
 
     /**
      * Applies the passed in {@link MergeStrategy} to merge two {@link Mergeable} instance.<p>
@@ -53,8 +51,7 @@ public interface Mergeable
      * @param strategy {@link MergeStrategy} to apply for merging.
      * @throws MergeException if there was an error while merging.
      */
-    void merge( Mergeable me, MergeStrategy strategy )
-        throws MergeException;
+    void merge(Mergeable me, MergeStrategy strategy) throws MergeException;
 
     /**
      * Returns the wrapped up JDom {@link Element} instance that was used to create this Mergeable.
