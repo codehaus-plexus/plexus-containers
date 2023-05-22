@@ -34,63 +34,54 @@ import org.codehaus.plexus.util.IOUtil;
 import org.codehaus.plexus.util.InterpolationFilterReader;
 import org.codehaus.plexus.util.ReaderFactory;
 
-//TODO: this should be a default strategy of searching through classloaders. a discoverer should really not have to be
+// TODO: this should be a default strategy of searching through classloaders. a discoverer should really not have to be
 // concerned finding a particular resource and how to turn it into a set of component descriptors.
 
 /**
  * @author Jason van Zyl
  */
-public abstract class AbstractResourceBasedComponentDiscoverer
-    implements ComponentDiscoverer
-{
+public abstract class AbstractResourceBasedComponentDiscoverer implements ComponentDiscoverer {
     protected abstract String getComponentDescriptorLocation();
 
-    protected abstract ComponentSetDescriptor createComponentDescriptors( Reader reader, String source, ClassRealm realm )
-        throws PlexusConfigurationException;
+    protected abstract ComponentSetDescriptor createComponentDescriptors(Reader reader, String source, ClassRealm realm)
+            throws PlexusConfigurationException;
 
-    public List<ComponentSetDescriptor> findComponents( Context context, ClassRealm realm )
-        throws PlexusConfigurationException
-    {
+    public List<ComponentSetDescriptor> findComponents(Context context, ClassRealm realm)
+            throws PlexusConfigurationException {
         List<ComponentSetDescriptor> componentSetDescriptors = new ArrayList<ComponentSetDescriptor>();
 
         Enumeration<URL> resources;
-        
-        try
-        {
-            resources = realm.getResources( getComponentDescriptorLocation() );
-        }
-        catch ( IOException e )
-        {
-            throw new PlexusConfigurationException( "Unable to retrieve resources for: " + getComponentDescriptorLocation() + " in class realm: " + realm.getId() );
+
+        try {
+            resources = realm.getResources(getComponentDescriptorLocation());
+        } catch (IOException e) {
+            throw new PlexusConfigurationException("Unable to retrieve resources for: "
+                    + getComponentDescriptorLocation() + " in class realm: " + realm.getId());
         }
 
-        for ( URL url : Collections.list( resources ))
-        {
+        for (URL url : Collections.list(resources)) {
             Reader reader = null;
-            
-            try
-            {
+
+            try {
                 URLConnection conn = url.openConnection();
 
-                conn.setUseCaches( false );
+                conn.setUseCaches(false);
 
                 conn.connect();
 
-                reader = ReaderFactory.newXmlReader( conn.getInputStream() );
+                reader = ReaderFactory.newXmlReader(conn.getInputStream());
 
-                InterpolationFilterReader interpolationFilterReader = new InterpolationFilterReader( reader, new ContextMapAdapter( context ) );
+                InterpolationFilterReader interpolationFilterReader =
+                        new InterpolationFilterReader(reader, new ContextMapAdapter(context));
 
-                ComponentSetDescriptor componentSetDescriptor = createComponentDescriptors( interpolationFilterReader, url.toString(), realm );
+                ComponentSetDescriptor componentSetDescriptor =
+                        createComponentDescriptors(interpolationFilterReader, url.toString(), realm);
 
-                componentSetDescriptors.add( componentSetDescriptor );
-            }
-            catch ( IOException ex )
-            {
-                throw new PlexusConfigurationException( "Error reading configuration " + url, ex );
-            }
-            finally
-            {
-                IOUtil.close( reader );
+                componentSetDescriptors.add(componentSetDescriptor);
+            } catch (IOException ex) {
+                throw new PlexusConfigurationException("Error reading configuration " + url, ex);
+            } finally {
+                IOUtil.close(reader);
             }
         }
 

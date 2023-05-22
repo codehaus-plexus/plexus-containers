@@ -21,8 +21,7 @@ package org.codehaus.plexus.component.repository;
  *
  * @author <a href="mmaczka@interia.pl">Michal Maczka</a>
  */
-public class ComponentRequirement
-{
+public class ComponentRequirement {
     private String role;
 
     private String roleHint = "";
@@ -37,8 +36,7 @@ public class ComponentRequirement
      * Returns the field name that this component requirement will inject.
      * @return the field name that this component requirement will inject
      */
-    public String getFieldName()
-    {
+    public String getFieldName() {
         return fieldName;
     }
 
@@ -47,8 +45,7 @@ public class ComponentRequirement
      * component.
      * @param fieldName the name of the field to be populated
      */
-    public void setFieldName( String fieldName )
-    {
+    public void setFieldName(String fieldName) {
         this.fieldName = fieldName;
     }
 
@@ -56,8 +53,7 @@ public class ComponentRequirement
      * Returns the role of the required component.
      * @return the role of the required component
      */
-    public String getRole()
-    {
+    public String getRole() {
         return role;
     }
 
@@ -65,8 +61,7 @@ public class ComponentRequirement
      * Sets the role of the require component.
      * @param role the required component's role
      */
-    public void setRole( String role )
-    {
+    public void setRole(String role) {
         this.role = role;
     }
 
@@ -74,8 +69,7 @@ public class ComponentRequirement
      * Returns the role-hint of the required component.
      * @return the role-hint of the required component
      */
-    public String getRoleHint()
-    {
+    public String getRoleHint() {
         return roleHint;
     }
 
@@ -84,17 +78,15 @@ public class ComponentRequirement
      * Passing null or an empty string will match any available implementation.
      * @param roleHint the required component's role-hint
      */
-    public void setRoleHint( String roleHint )
-    {
-        this.roleHint = ( roleHint != null ) ? roleHint : "";
+    public void setRoleHint(String roleHint) {
+        this.roleHint = (roleHint != null) ? roleHint : "";
     }
 
     /**
      * Returns the type of the field this component requirement will inject.
      * @return the type of the field this component requirement will inject
      */
-    public String getFieldMappingType()
-    {
+    public String getFieldMappingType() {
         return fieldMappingType;
     }
 
@@ -103,8 +95,7 @@ public class ComponentRequirement
      * component.
      * @param fieldType the type of the field to be populated
      */
-    public void setFieldMappingType( String fieldType )
-    {
+    public void setFieldMappingType(String fieldType) {
         this.fieldMappingType = fieldType;
     }
 
@@ -114,8 +105,7 @@ public class ComponentRequirement
      * @return {@code true} if the requested component may be missing, {@code false} if the component is mandatory.
      * @since 1.3.0
      */
-    public boolean isOptional()
-    {
+    public boolean isOptional() {
         return optional;
     }
 
@@ -127,60 +117,51 @@ public class ComponentRequirement
      *            mandatory.
      * @since 1.3.0
      */
-    public void setOptional( boolean optional )
-    {
+    public void setOptional(boolean optional) {
         this.optional = optional;
     }
 
-    public String toString()
-    {
-        return "ComponentRequirement{" +
-            "role='" + getRole() + "'" + ", " +
-            "roleHint='" + getRoleHint() + "', " +
-            "fieldName='" + getFieldName() + "'" +
-            "}";
+    public String toString() {
+        return "ComponentRequirement{" + "role='"
+                + getRole() + "'" + ", " + "roleHint='"
+                + getRoleHint() + "', " + "fieldName='"
+                + getFieldName() + "'" + "}";
     }
 
     /**
      * Returns a human-friendly key, suitable for display.
      * @return a human-friendly key
      */
-    public String getHumanReadableKey()
-    {
+    public String getHumanReadableKey() {
         StringBuilder key = new StringBuilder();
 
-        key.append( "role: '").append( getRole() ).append( "'" );
+        key.append("role: '").append(getRole()).append("'");
 
-        if ( getRoleHint() != null )
-        {
-            key.append( ", role-hint: '" ).append( getRoleHint() ).append( "'. " );
+        if (getRoleHint() != null) {
+            key.append(", role-hint: '").append(getRoleHint()).append("'. ");
         }
 
-        if ( getFieldName() != null )
-        {
-            key.append( ", field name: '" ).append( getFieldName() ).append( "' " );
+        if (getFieldName() != null) {
+            key.append(", field name: '").append(getFieldName()).append("' ");
         }
 
         return key.toString();
     }
 
-    public boolean equals( Object other )
-    {
-        if ( other instanceof ComponentRequirement )
-        {
+    public boolean equals(Object other) {
+        if (other instanceof ComponentRequirement) {
             String myId = role + ":" + roleHint;
 
             ComponentRequirement req = (ComponentRequirement) other;
             String otherId = req.role + ":" + req.roleHint;
 
-            return myId.equals( otherId );
+            return myId.equals(otherId);
         }
 
         return false;
     }
 
-    public int hashCode()
-    {
-        return ( role + ":" + roleHint ).hashCode();
+    public int hashCode() {
+        return (role + ":" + roleHint).hashCode();
     }
 }

@@ -32,39 +32,32 @@ import org.jdom2.Element;
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
  */
-public class RequirementsElement
-    extends AbstractMergeableElementList
-{
-    public static final DescriptorTag TAG = new DescriptorTag( "requirements", true, RequirementsElement.class );
+public class RequirementsElement extends AbstractMergeableElementList {
+    public static final DescriptorTag TAG = new DescriptorTag("requirements", true, RequirementsElement.class);
 
-    public RequirementsElement( Element element )
-    {
-        super( element );
+    public RequirementsElement(Element element) {
+        super(element);
     }
 
-    protected boolean isExpectedElementType( Mergeable me )
-    {
+    protected boolean isExpectedElementType(Mergeable me) {
         return me instanceof RequirementsElement;
     }
 
-    public DescriptorTag[] getAllowedTags()
-    {
-        return new DescriptorTag[]{RequirementElement.TAG};
+    public DescriptorTag[] getAllowedTags() {
+        return new DescriptorTag[] {RequirementElement.TAG};
     }
 
-    protected List getElementNamesForConflictResolution( List defaultList )
-    {
+    protected List getElementNamesForConflictResolution(List defaultList) {
         // we return the keys that we know we want to lookup to identify and
         // resolve conflicts.
         List l = new ArrayList();
-        l.add( ComponentElement.ROLE.getTagName() );
+        l.add(ComponentElement.ROLE.getTagName());
         // TODO: add this back, but a test will fail (based on a role with no hint, which shouldn't be legal)
-//        l.add( ComponentElement.ROLE_HINT.getTagName() );
+        //        l.add( ComponentElement.ROLE_HINT.getTagName() );
         return l;
     }
 
-    protected String getTagNameForRecurringMergeable()
-    {
+    protected String getTagNameForRecurringMergeable() {
         return RequirementElement.TAG.getTagName();
     }
 }

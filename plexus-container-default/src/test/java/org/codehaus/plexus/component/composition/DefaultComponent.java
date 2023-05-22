@@ -18,11 +18,8 @@ package org.codehaus.plexus.component.composition;
 
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public class DefaultComponent
-    extends AbstractComponent
-{
-}
+public class DefaultComponent extends AbstractComponent {}

@@ -1,6 +1,5 @@
 package org.codehaus.plexus.component.manager;
 
-
 /*
  * Copyright 2001-2006 Codehaus Foundation.
  *
@@ -17,15 +16,15 @@ package org.codehaus.plexus.component.manager;
  * limitations under the License.
  */
 
+import java.util.concurrent.atomic.AtomicLong;
+
 import org.codehaus.plexus.MutablePlexusContainer;
-import org.codehaus.plexus.personality.plexus.lifecycle.phase.PhaseExecutionException;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.codehaus.plexus.component.factory.ComponentInstantiationException;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
 import org.codehaus.plexus.component.repository.exception.ComponentLifecycleException;
 import org.codehaus.plexus.lifecycle.LifecycleHandler;
-
-import java.util.concurrent.atomic.AtomicLong;
+import org.codehaus.plexus.personality.plexus.lifecycle.phase.PhaseExecutionException;
 
 /**
  * Manages a component manager.
@@ -36,14 +35,13 @@ import java.util.concurrent.atomic.AtomicLong;
  * @author Jason van Zyl
  *
  */
-public interface ComponentManager<T>
-{
+public interface ComponentManager<T> {
     String ROLE = ComponentManager.class.getName();
 
     /**
      * @deprecated for internal use only.. will be removed
      */
-    AtomicLong NEXT_START_ID = new AtomicLong( 1 );
+    AtomicLong NEXT_START_ID = new AtomicLong(1);
 
     int getConnections();
 
@@ -53,11 +51,9 @@ public interface ComponentManager<T>
      */
     LifecycleHandler getLifecycleHandler();
 
-    void dispose()
-        throws ComponentLifecycleException;
+    void dispose() throws ComponentLifecycleException;
 
-    void release( Object component )
-        throws ComponentLifecycleException;
+    void release(Object component) throws ComponentLifecycleException;
 
     T getComponent() throws ComponentInstantiationException, ComponentLifecycleException;
 
@@ -71,8 +67,7 @@ public interface ComponentManager<T>
 
     MutablePlexusContainer getContainer();
 
-    void dissociateComponentRealm( ClassRealm realm )
-        throws ComponentLifecycleException;
+    void dissociateComponentRealm(ClassRealm realm) throws ComponentLifecycleException;
 
     ClassRealm getRealm();
 

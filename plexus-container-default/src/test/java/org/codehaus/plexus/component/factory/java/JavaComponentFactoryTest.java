@@ -33,84 +33,71 @@ import org.codehaus.plexus.component.repository.ComponentDescriptor;
  * @author Jason van Zyl
  * @author <a href="mailto:mmaczka@interia.pl">Michal Maczka</a>
  */
-public class JavaComponentFactoryTest
-    extends TestCase
-{
-    public void testComponentCreation()
-        throws Exception
-    {
+public class JavaComponentFactoryTest extends TestCase {
+    public void testComponentCreation() throws Exception {
         JavaComponentFactory factory = new JavaComponentFactory();
 
         ComponentDescriptor componentDescriptor = new ComponentDescriptor();
 
-        componentDescriptor.setRole( Component.class.getName() );
+        componentDescriptor.setRole(Component.class.getName());
 
-        componentDescriptor.setImplementation( ComponentImplA.class.getName() );
+        componentDescriptor.setImplementation(ComponentImplA.class.getName());
 
         ClassWorld classWorld = new ClassWorld();
 
-        classWorld.newRealm( "core", Thread.currentThread().getContextClassLoader() );
+        classWorld.newRealm("core", Thread.currentThread().getContextClassLoader());
 
-        PlexusContainer container = new DefaultPlexusContainer( containerConfiguration( classWorld ));
+        PlexusContainer container = new DefaultPlexusContainer(containerConfiguration(classWorld));
 
-        Object component = factory.newInstance( componentDescriptor, classWorld.getRealm( "core" ), container );
+        Object component = factory.newInstance(componentDescriptor, classWorld.getRealm("core"), container);
 
-        assertNotNull( component );
+        assertNotNull(component);
     }
 
-    public void testComponentCreationWithNotMatchingRoleAndImplemenation()
-        throws Exception
-    {
+    public void testComponentCreationWithNotMatchingRoleAndImplemenation() throws Exception {
         JavaComponentFactory factory = new JavaComponentFactory();
 
         ComponentDescriptor componentDescriptor = new ComponentDescriptor();
 
-        componentDescriptor.setRole( Component.class.getName() );
+        componentDescriptor.setRole(Component.class.getName());
 
-        componentDescriptor.setImplementation( ComponentImplB.class.getName() );
+        componentDescriptor.setImplementation(ComponentImplB.class.getName());
 
         ClassWorld classWorld = new ClassWorld();
 
-        classWorld.newRealm( "core", Thread.currentThread().getContextClassLoader() );
+        classWorld.newRealm("core", Thread.currentThread().getContextClassLoader());
 
-        PlexusContainer container = new DefaultPlexusContainer( containerConfiguration( classWorld ));
+        PlexusContainer container = new DefaultPlexusContainer(containerConfiguration(classWorld));
 
-        factory.newInstance( componentDescriptor, classWorld.getRealm( "core" ), container );
+        factory.newInstance(componentDescriptor, classWorld.getRealm("core"), container);
     }
 
-    public void testInstanciationOfAAbstractComponent()
-        throws Exception
-    {
+    public void testInstanciationOfAAbstractComponent() throws Exception {
         JavaComponentFactory factory = new JavaComponentFactory();
 
         ComponentDescriptor componentDescriptor = new ComponentDescriptor();
 
-        componentDescriptor.setRole( Component.class.getName() );
+        componentDescriptor.setRole(Component.class.getName());
 
-        componentDescriptor.setImplementation( ComponentImplC.class.getName() );
+        componentDescriptor.setImplementation(ComponentImplC.class.getName());
 
         ClassWorld classWorld = new ClassWorld();
 
-        classWorld.newRealm( "core", Thread.currentThread().getContextClassLoader() );
+        classWorld.newRealm("core", Thread.currentThread().getContextClassLoader());
 
-        PlexusContainer container = new DefaultPlexusContainer( containerConfiguration( classWorld ) );
+        PlexusContainer container = new DefaultPlexusContainer(containerConfiguration(classWorld));
 
-        try
-        {
-            factory.newInstance( componentDescriptor, classWorld.getRealm( "core" ), container );
+        try {
+            factory.newInstance(componentDescriptor, classWorld.getRealm("core"), container);
 
-            fail( "Expected ComponentInstantiationException when instanciating a abstract class." );
-        }
-        catch( ComponentInstantiationException ex )
-        {
-            assertTrue( true );
+            fail("Expected ComponentInstantiationException when instanciating a abstract class.");
+        } catch (ComponentInstantiationException ex) {
+            assertTrue(true);
         }
     }
 
-    private ContainerConfiguration containerConfiguration( ClassWorld classWorld )
-    {
-        ContainerConfiguration c = new DefaultContainerConfiguration()
-            .setClassWorld( classWorld );
+    private ContainerConfiguration containerConfiguration(ClassWorld classWorld) {
+        ContainerConfiguration c = new DefaultContainerConfiguration().setClassWorld(classWorld);
 
         return c;
     }

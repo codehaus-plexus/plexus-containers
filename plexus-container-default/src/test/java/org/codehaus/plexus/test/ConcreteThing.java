@@ -16,8 +16,4 @@ package org.codehaus.plexus.test;
  * limitations under the License.
  */
 
-public class ConcreteThing
-    implements Thing
-{
-
-}
+public class ConcreteThing implements Thing {}

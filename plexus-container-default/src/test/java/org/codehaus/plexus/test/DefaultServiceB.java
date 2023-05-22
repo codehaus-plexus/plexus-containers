@@ -27,39 +27,31 @@ import org.codehaus.plexus.personality.plexus.lifecycle.phase.Startable;
 /**
  * A simple native plexus component.
  */
-public class DefaultServiceB
-    extends AbstractLogEnabled
-    implements ServiceB, Contextualizable, Initializable, Startable
-{
+public class DefaultServiceB extends AbstractLogEnabled
+        implements ServiceB, Contextualizable, Initializable, Startable {
     public boolean enableLogging;
     public boolean contextualize;
     public boolean initialize;
     public boolean start;
     public boolean stop;
 
-    public void enableLogging( Logger logger )
-    {
+    public void enableLogging(Logger logger) {
         enableLogging = true;
     }
 
-    public void contextualize( Context context )
-        throws ContextException
-    {
+    public void contextualize(Context context) throws ContextException {
         contextualize = true;
     }
 
-    public void initialize()
-    {
+    public void initialize() {
         initialize = true;
     }
 
-    public void start()
-    {
+    public void start() {
         start = true;
     }
 
-    public void stop()
-    {
+    public void stop() {
         stop = true;
     }
 }

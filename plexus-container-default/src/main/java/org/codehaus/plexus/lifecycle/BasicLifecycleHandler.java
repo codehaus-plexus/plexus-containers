@@ -16,23 +16,17 @@ package org.codehaus.plexus.lifecycle;
  * limitations under the License.
  */
 
-public class BasicLifecycleHandler
-    extends AbstractLifecycleHandler
-{
+public class BasicLifecycleHandler extends AbstractLifecycleHandler {
     protected String id;
 
-    public BasicLifecycleHandler( String id )
-    {
+    public BasicLifecycleHandler(String id) {
         this.id = id;
     }
 
-    public String getId()
-    {
+    public String getId() {
         return id;
     }
 
     /** @see org.codehaus.plexus.personality.plexus.lifecycle.phase.Initializable#initialize */
-    public void initialize()
-    {
-    }
+    public void initialize() {}
 }

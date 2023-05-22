@@ -16,6 +16,4 @@
 
 package org.codehaus.plexus.metadata.gleaner.ann;
 
-public interface AnnotatedComponentRole {
-
-}
+public interface AnnotatedComponentRole {}

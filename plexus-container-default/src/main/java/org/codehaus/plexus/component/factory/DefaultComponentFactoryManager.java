@@ -27,34 +27,24 @@ import org.codehaus.plexus.personality.plexus.lifecycle.phase.Contextualizable;
 /**
  * @author Jason van Zyl
  */
-public class DefaultComponentFactoryManager
-    implements ComponentFactoryManager, Contextualizable
-{
+public class DefaultComponentFactoryManager implements ComponentFactoryManager, Contextualizable {
     private ComponentFactory defaultComponentFactory = new JavaComponentFactory();
 
     private PlexusContainer container;
 
-    public ComponentFactory findComponentFactory( String id )
-        throws UndefinedComponentFactoryException
-    {
-        if ( id == null || id.equals( "java" ) ) 
-        {
+    public ComponentFactory findComponentFactory(String id) throws UndefinedComponentFactoryException {
+        if (id == null || id.equals("java")) {
             return defaultComponentFactory;
         }
 
-        try
-        {
-            return container.lookup( ComponentFactory.class, id );
-        }
-        catch ( ComponentLookupException e )
-        {
-            throw new UndefinedComponentFactoryException( "Specified component factory cannot be found: " + id );
+        try {
+            return container.lookup(ComponentFactory.class, id);
+        } catch (ComponentLookupException e) {
+            throw new UndefinedComponentFactoryException("Specified component factory cannot be found: " + id);
         }
     }
 
-    public void contextualize( Context context )
-        throws ContextException
-    {
-        container = (PlexusContainer) context.get( PlexusConstants.PLEXUS_KEY );
+    public void contextualize(Context context) throws ContextException {
+        container = (PlexusContainer) context.get(PlexusConstants.PLEXUS_KEY);
     }
 }

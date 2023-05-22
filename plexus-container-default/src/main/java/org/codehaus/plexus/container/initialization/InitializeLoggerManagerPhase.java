@@ -26,12 +26,9 @@ import org.codehaus.plexus.logging.LoggerManager;
 import org.codehaus.plexus.logging.console.ConsoleLoggerManager;
 
 /** @author Jason van Zyl */
-public class InitializeLoggerManagerPhase
-    extends AbstractCoreComponentInitializationPhase
-{
-    public void initializeCoreComponent( ContainerInitializationContext context )
-        throws ContainerInitializationException
-    {
+public class InitializeLoggerManagerPhase extends AbstractCoreComponentInitializationPhase {
+    public void initializeCoreComponent(ContainerInitializationContext context)
+            throws ContainerInitializationException {
         LoggerManager loggerManager = context.getContainer().getLoggerManager();
 
         // ----------------------------------------------------------------------
@@ -41,39 +38,32 @@ public class InitializeLoggerManagerPhase
         // work then we'll programmatcially stuff in the console logger.
         // ----------------------------------------------------------------------
 
-        if ( loggerManager == null )
-        {
-            try
-            {
-                loggerManager = context.getContainer().lookup( LoggerManager.class );
-            }
-            catch ( ComponentLookupException e )
-            {
+        if (loggerManager == null) {
+            try {
+                loggerManager = context.getContainer().lookup(LoggerManager.class);
+            } catch (ComponentLookupException e) {
                 ComponentDescriptor cd = new ComponentDescriptor();
 
-                cd.setRole( LoggerManager.ROLE );
+                cd.setRole(LoggerManager.ROLE);
 
-                cd.setRoleHint( PlexusConstants.PLEXUS_DEFAULT_HINT );
+                cd.setRoleHint(PlexusConstants.PLEXUS_DEFAULT_HINT);
 
-                cd.setImplementation( ConsoleLoggerManager.class.getName() );
+                cd.setImplementation(ConsoleLoggerManager.class.getName());
 
-                try
-                {
-                    context.getContainer().addComponentDescriptor( cd );
-                }
-                catch ( CycleDetectedInComponentGraphException cre )
-                {
-                    throw new ContainerInitializationException( "Error setting up logging manager.", cre );
+                try {
+                    context.getContainer().addComponentDescriptor(cd);
+                } catch (CycleDetectedInComponentGraphException cre) {
+                    throw new ContainerInitializationException("Error setting up logging manager.", cre);
                 }
 
-                loggerManager = new ConsoleLoggerManager( "info" );
+                loggerManager = new ConsoleLoggerManager("info");
             }
 
-            context.getContainer().setLoggerManager( loggerManager );
+            context.getContainer().setLoggerManager(loggerManager);
         }
 
-        Logger logger = loggerManager.getLoggerForComponent( PlexusContainer.class.getName() );
+        Logger logger = loggerManager.getLoggerForComponent(PlexusContainer.class.getName());
 
-        context.getContainer().enableLogging( logger );
+        context.getContainer().enableLogging(logger);
     }
 }

@@ -26,17 +26,14 @@ package org.codehaus.plexus.component.configurator;
 
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public class AbstractComponent
-    implements Component
-{
+public class AbstractComponent implements Component {
     private String name;
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 }

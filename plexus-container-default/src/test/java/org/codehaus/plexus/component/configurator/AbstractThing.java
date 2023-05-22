@@ -24,7 +24,4 @@ package org.codehaus.plexus.component.configurator;
  * SOFTWARE.
  */
 
-
-public abstract class AbstractThing
-{
-}
+public abstract class AbstractThing {}

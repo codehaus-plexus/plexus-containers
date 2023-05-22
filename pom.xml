@@ -13,9 +13,7 @@
   <packaging>pom</packaging>
 
   <name>Plexus Containers (deprecated)</name>
-  <description>
-    Plexus IoC Container core with companion tools.
-  </description>
+  <description>Plexus IoC Container core with companion tools.</description>
 
   <modules>
     <module>plexus-component-annotations</module>
@@ -26,8 +24,8 @@
   <scm>
     <connection>scm:git:https://github.com/codehaus-plexus/plexus-containers.git</connection>
     <developerConnection>scm:git:https://github.com/codehaus-plexus/plexus-containers.git</developerConnection>
-    <url>https://github.com/codehaus-plexus/plexus-containers/tree/${project.scm.tag}/</url>
     <tag>master</tag>
+    <url>https://github.com/codehaus-plexus/plexus-containers/tree/${project.scm.tag}/</url>
   </scm>
   <issueManagement>
     <system>github</system>

@@ -16,30 +16,25 @@ package org.codehaus.plexus;
  * limitations under the License.
  */
 
-public class DuplicateChildContainerException
-    extends PlexusContainerException
-{
+public class DuplicateChildContainerException extends PlexusContainerException {
 
     private final String parent;
     private final String child;
 
-    public DuplicateChildContainerException( String parent, String child )
-    {
-        super( "Cannot create child container, because child named \'" + child + "\' already exists in parent \'" + parent + "\'." );
+    public DuplicateChildContainerException(String parent, String child) {
+        super("Cannot create child container, because child named \'" + child + "\' already exists in parent \'"
+                + parent + "\'.");
 
         this.parent = parent;
 
         this.child = child;
     }
-    
-    public String getParent()
-    {
+
+    public String getParent() {
         return parent;
     }
-    
-    public String getChild()
-    {
+
+    public String getChild() {
         return child;
     }
-    
 }

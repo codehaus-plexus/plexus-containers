@@ -22,11 +22,8 @@ import org.codehaus.plexus.component.repository.ComponentDescriptor;
  * Interface for component gleaners which glean off of compiled classes..
  *
  */
-public interface ClassComponentGleaner
-{
+public interface ClassComponentGleaner {
     String ROLE = ClassComponentGleaner.class.getName();
 
-    ComponentDescriptor<?> glean(String className, ClassLoader cl) 
-        throws ComponentGleanerException;
-    
+    ComponentDescriptor<?> glean(String className, ClassLoader cl) throws ComponentGleanerException;
 }

@@ -21,107 +21,93 @@ import junit.framework.TestCase;
 /**
  * @author <a href="mailto:rantene@hotmail.com">Ran Tene</a>
  */
-public final class DefaultPlexusConfigurationTest
-    extends TestCase
-{
+public final class DefaultPlexusConfigurationTest extends TestCase {
     private DefaultPlexusConfiguration configuration;
 
-    public void setUp()
-    {
-        configuration = new DefaultPlexusConfiguration( "a" );
+    public void setUp() {
+        configuration = new DefaultPlexusConfiguration("a");
     }
 
-    public void testWithHelper()
-        throws Exception
-    {
+    public void testWithHelper() throws Exception {
         PlexusConfiguration c = ConfigurationTestHelper.getTestConfiguration();
 
-        ConfigurationTestHelper.testConfiguration( c );
+        ConfigurationTestHelper.testConfiguration(c);
     }
 
-    public void testGetValue()
-        throws Exception
-    {
+    public void testGetValue() throws Exception {
         String orgValue = "Original String";
-        configuration.setValue( orgValue );
-        assertEquals( orgValue, configuration.getValue() );
+        configuration.setValue(orgValue);
+        assertEquals(orgValue, configuration.getValue());
     }
 
-    public void testGetAttribute()
-        throws Exception
-    {
+    public void testGetAttribute() throws Exception {
         String key = "key";
         String value = "original value";
         String defaultStr = "default";
-        configuration.setAttribute( key, value );
-        assertEquals( value, configuration.getAttribute( key, defaultStr ) );
-        assertEquals( defaultStr, configuration.getAttribute( "newKey", defaultStr ) );
+        configuration.setAttribute(key, value);
+        assertEquals(value, configuration.getAttribute(key, defaultStr));
+        assertEquals(defaultStr, configuration.getAttribute("newKey", defaultStr));
     }
 
-    public void testGetChild()
-        throws Exception
-    {
-        DefaultPlexusConfiguration child = (DefaultPlexusConfiguration) configuration.getChild( "child" );
+    public void testGetChild() throws Exception {
+        DefaultPlexusConfiguration child = (DefaultPlexusConfiguration) configuration.getChild("child");
 
-        assertNotNull( child );
+        assertNotNull(child);
 
-        child.setValue( "child value" );
+        child.setValue("child value");
 
-        assertEquals( 1, configuration.getChildCount() );
+        assertEquals(1, configuration.getChildCount());
 
-        child = (DefaultPlexusConfiguration) configuration.getChild( "child" );
+        child = (DefaultPlexusConfiguration) configuration.getChild("child");
 
-        assertNotNull( child );
+        assertNotNull(child);
 
-        assertEquals( "child value", child.getValue() );
+        assertEquals("child value", child.getValue());
 
-        assertEquals( 1, configuration.getChildCount() );
+        assertEquals(1, configuration.getChildCount());
     }
 
-    public void testToString()
-        throws Exception
-    {
+    public void testToString() throws Exception {
         // TODO: this currently works since getTestConfiguration() invokes PlexusTools.buildConfiguration()
         // and it returns XmlPlexusConfiguration actually.
         PlexusConfiguration c = ConfigurationTestHelper.getTestConfiguration();
 
-        assertEquals( "<string string=\"string\">string</string>\n", c.getChild( "string" ).toString() );
+        assertEquals(
+                "<string string=\"string\">string</string>\n",
+                c.getChild("string").toString());
 
         // TODO: uncomment once maven can test the latest plexus-utils
-        assertEquals( "<singleton attribute=\"attribute\"/>\n", c.getChild( "singleton" ).toString() );
+        assertEquals(
+                "<singleton attribute=\"attribute\"/>\n",
+                c.getChild("singleton").toString());
     }
 
-    public void testProgrammaticConfigurationCreation()
-        throws Exception
-    {
+    public void testProgrammaticConfigurationCreation() throws Exception {
         String viewRoot = "/path/to/viewRoot";
 
-        PlexusConfiguration c = new DefaultPlexusConfiguration( "configuration" ).addChild( "viewRoot", viewRoot );
+        PlexusConfiguration c = new DefaultPlexusConfiguration("configuration").addChild("viewRoot", viewRoot);
 
-        assertEquals( viewRoot, c.getChild( "viewRoot" ).getValue() );
+        assertEquals(viewRoot, c.getChild("viewRoot").getValue());
     }
 
-    public void testChildOrdering()
-        throws Exception
-    {
-        PlexusConfiguration child0 = new DefaultPlexusConfiguration( "child" );
-        PlexusConfiguration child1 = new DefaultPlexusConfiguration( "child" );
-        PlexusConfiguration child2 = new DefaultPlexusConfiguration( "special-child" );
-        PlexusConfiguration child3 = new DefaultPlexusConfiguration( "child" );
-        PlexusConfiguration child4 = new DefaultPlexusConfiguration( "child" );
+    public void testChildOrdering() throws Exception {
+        PlexusConfiguration child0 = new DefaultPlexusConfiguration("child");
+        PlexusConfiguration child1 = new DefaultPlexusConfiguration("child");
+        PlexusConfiguration child2 = new DefaultPlexusConfiguration("special-child");
+        PlexusConfiguration child3 = new DefaultPlexusConfiguration("child");
+        PlexusConfiguration child4 = new DefaultPlexusConfiguration("child");
 
-        configuration.addChild( child0 );
-        configuration.addChild( child1 );
-        configuration.addChild( child2 );
-        configuration.addChild( child3 );
-        configuration.addChild( child4 );
+        configuration.addChild(child0);
+        configuration.addChild(child1);
+        configuration.addChild(child2);
+        configuration.addChild(child3);
+        configuration.addChild(child4);
 
-        assertEquals( 5, configuration.getChildCount() );
-        assertSame( child0, configuration.getChild( 0 ) );
-        assertSame( child1, configuration.getChild( 1 ) );
-        assertSame( child2, configuration.getChild( 2 ) );
-        assertSame( child3, configuration.getChild( 3 ) );
-        assertSame( child4, configuration.getChild( 4 ) );
+        assertEquals(5, configuration.getChildCount());
+        assertSame(child0, configuration.getChild(0));
+        assertSame(child1, configuration.getChild(1));
+        assertSame(child2, configuration.getChild(2));
+        assertSame(child3, configuration.getChild(3));
+        assertSame(child4, configuration.getChild(4));
     }
-
 }

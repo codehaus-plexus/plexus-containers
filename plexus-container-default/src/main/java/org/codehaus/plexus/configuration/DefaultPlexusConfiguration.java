@@ -23,9 +23,7 @@ import java.util.Map;
 
 /**
  */
-public class DefaultPlexusConfiguration
-    implements PlexusConfiguration
-{
+public class DefaultPlexusConfiguration implements PlexusConfiguration {
 
     private String name;
 
@@ -37,18 +35,15 @@ public class DefaultPlexusConfiguration
 
     private List<PlexusConfiguration> childList;
 
-    protected DefaultPlexusConfiguration()
-    {
-        this( "configuration" );
+    protected DefaultPlexusConfiguration() {
+        this("configuration");
     }
 
-    protected DefaultPlexusConfiguration( String name )
-    {
-        this( name, null );
+    protected DefaultPlexusConfiguration(String name) {
+        this(name, null);
     }
 
-    protected DefaultPlexusConfiguration( String name, String value )
-    {
+    protected DefaultPlexusConfiguration(String name, String value) {
         super();
 
         this.name = name;
@@ -66,13 +61,11 @@ public class DefaultPlexusConfiguration
     // Name handling
     // ----------------------------------------------------------------------
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName( String name )
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -80,31 +73,26 @@ public class DefaultPlexusConfiguration
     // Value handling
     // ----------------------------------------------------------------------
 
-    public String getValue()
-    {
+    public String getValue() {
         return value;
     }
 
-    public String getValue( String defaultValue )
-    {
+    public String getValue(String defaultValue) {
         String value = getValue();
 
-        if ( value == null )
-        {
+        if (value == null) {
             value = defaultValue;
         }
 
         return value;
     }
 
-    public void setValue( String val )
-    {
+    public void setValue(String val) {
         value = val;
     }
 
-    public PlexusConfiguration setValueAndGetSelf( String val )
-    {
-        setValue( val );
+    public PlexusConfiguration setValueAndGetSelf(String val) {
+        setValue(val);
 
         return this;
     }
@@ -112,137 +100,112 @@ public class DefaultPlexusConfiguration
     // ----------------------------------------------------------------------
     // Attribute handling
     // ----------------------------------------------------------------------
-    public void setAttribute( String name, String value )
-    {
-        attributes.put( name, value );
+    public void setAttribute(String name, String value) {
+        attributes.put(name, value);
     }
 
-    public String getAttribute( String name )
-    {
-        return attributes.get( name );
+    public String getAttribute(String name) {
+        return attributes.get(name);
     }
 
-    public String getAttribute( String name, String defaultValue )
-    {
-        String value = getAttribute( name );
+    public String getAttribute(String name, String defaultValue) {
+        String value = getAttribute(name);
 
-        if ( value == null )
-        {
+        if (value == null) {
             value = defaultValue;
         }
 
         return value;
     }
 
-    public String[] getAttributeNames()
-    {
-        return attributes.keySet().toArray( new String[attributes.size()] );
+    public String[] getAttributeNames() {
+        return attributes.keySet().toArray(new String[attributes.size()]);
     }
 
     // ----------------------------------------------------------------------
     // Child handling
     // ----------------------------------------------------------------------
 
-    public PlexusConfiguration getChild( String name )
-    {
-        return getChild( name, true );
+    public PlexusConfiguration getChild(String name) {
+        return getChild(name, true);
     }
 
-    public PlexusConfiguration getChild( int i )
-    {
-        return childList.get( i );
+    public PlexusConfiguration getChild(int i) {
+        return childList.get(i);
     }
 
-    public PlexusConfiguration getChild( String name, boolean createChild )
-    {
-        List<PlexusConfiguration> childs = childMap.get( name );
+    public PlexusConfiguration getChild(String name, boolean createChild) {
+        List<PlexusConfiguration> childs = childMap.get(name);
 
-        boolean noneFound = ( childs == null || childs.size() == 0 );
+        boolean noneFound = (childs == null || childs.size() == 0);
 
-        if ( noneFound && createChild )
-        {
-            addChild( name );
+        if (noneFound && createChild) {
+            addChild(name);
 
-            return getChild( name, false );
-        }
-        else if ( noneFound && !createChild )
-        {
+            return getChild(name, false);
+        } else if (noneFound && !createChild) {
             return null;
-        }
-        else
-        {
-            return childs.get( 0 );
+        } else {
+            return childs.get(0);
         }
     }
 
-    public PlexusConfiguration[] getChildren()
-    {
-        return childList.toArray( new PlexusConfiguration[childList.size()] );
+    public PlexusConfiguration[] getChildren() {
+        return childList.toArray(new PlexusConfiguration[childList.size()]);
     }
 
-    public PlexusConfiguration[] getChildren( String name )
-    {
+    public PlexusConfiguration[] getChildren(String name) {
         List<PlexusConfiguration> childs = new ArrayList<PlexusConfiguration>();
 
-        List<PlexusConfiguration> childList = childMap.get( name );
+        List<PlexusConfiguration> childList = childMap.get(name);
 
-        if ( childList != null )
-        {
-            childs.addAll( childList );
+        if (childList != null) {
+            childs.addAll(childList);
         }
 
-        return childs.toArray( new PlexusConfiguration[childs.size()] );
+        return childs.toArray(new PlexusConfiguration[childs.size()]);
     }
 
-    public void addChild( PlexusConfiguration child )
-    {
-        childList.add( child );
+    public void addChild(PlexusConfiguration child) {
+        childList.add(child);
 
-        List<PlexusConfiguration> children = childMap.get( child.getName() );
-        if ( children == null )
-        {
-            childMap.put( child.getName(), children = new ArrayList<PlexusConfiguration>() );
+        List<PlexusConfiguration> children = childMap.get(child.getName());
+        if (children == null) {
+            childMap.put(child.getName(), children = new ArrayList<PlexusConfiguration>());
         }
 
-        children.add( child );
+        children.add(child);
     }
 
-    public PlexusConfiguration addChild( String name )
-    {
+    public PlexusConfiguration addChild(String name) {
         // we are using reflection to try to create same class childs as parent is,
         // since many Maven and Maven plugins stuff casts the incoming result of this call
         // to the evil XmlPlexusConfiguration
         PlexusConfiguration child = null;
 
-        try
-        {
+        try {
             child = getClass().newInstance();
 
-            child.setName( name );
-        }
-        catch ( Exception e )
-        {
+            child.setName(name);
+        } catch (Exception e) {
             // we have a PlexusConfiguration that has no constructor(name)
-            child = new DefaultPlexusConfiguration( name );
+            child = new DefaultPlexusConfiguration(name);
         }
 
-        addChild( child );
+        addChild(child);
 
         return this;
     }
 
-    public PlexusConfiguration addChild( String name, String value )
-    {
-        PlexusConfiguration child = new DefaultPlexusConfiguration( name, value );
+    public PlexusConfiguration addChild(String name, String value) {
+        PlexusConfiguration child = new DefaultPlexusConfiguration(name, value);
 
-        addChild( child );
+        addChild(child);
 
         return this;
     }
 
-    public int getChildCount()
-    {
+    public int getChildCount() {
         return this.childList.size();
     }
-
 }

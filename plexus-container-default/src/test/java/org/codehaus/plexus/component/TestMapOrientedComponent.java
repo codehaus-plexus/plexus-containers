@@ -16,32 +16,26 @@ package org.codehaus.plexus.component;
  * limitations under the License.
  */
 
-import org.codehaus.plexus.component.repository.ComponentRequirement;
-
 import java.util.Map;
 import java.util.TreeMap;
 
-public class TestMapOrientedComponent
-    implements MapOrientedComponent
-{
-    
+import org.codehaus.plexus.component.repository.ComponentRequirement;
+
+public class TestMapOrientedComponent implements MapOrientedComponent {
+
     public static final String ROLE = TestMapOrientedComponent.class.getName();
 
     private Map context = new TreeMap();
 
-    public void addComponentRequirement( ComponentRequirement requirementDescriptor, Object requirementValue )
-    {
-        context.put( requirementDescriptor.getFieldName(), requirementValue );
+    public void addComponentRequirement(ComponentRequirement requirementDescriptor, Object requirementValue) {
+        context.put(requirementDescriptor.getFieldName(), requirementValue);
     }
 
-    public void setComponentConfiguration( Map componentConfiguration )
-    {
-        context.putAll( componentConfiguration );
+    public void setComponentConfiguration(Map componentConfiguration) {
+        context.putAll(componentConfiguration);
     }
-    
-    public Map getContext()
-    {
+
+    public Map getContext() {
         return context;
     }
-
 }

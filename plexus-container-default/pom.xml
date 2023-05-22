@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
@@ -10,9 +11,7 @@
   <artifactId>plexus-container-default</artifactId>
 
   <name>Plexus :: Default Container (deprecated)</name>
-  <description>
-    The Plexus IoC container API and its default implementation.
-  </description>
+  <description>The Plexus IoC container API and its default implementation.</description>
 
   <dependencies>
     <dependency>
@@ -59,20 +58,20 @@
         <executions>
           <execution>
             <id>xsd-site</id>
-            <phase>pre-site</phase>
             <goals>
               <goal>xsd</goal>
             </goals>
+            <phase>pre-site</phase>
             <configuration>
               <outputDirectory>${basedir}/target/generated-site/resources/xsd</outputDirectory>
             </configuration>
           </execution>
           <execution>
             <id>descriptor-site</id>
-            <phase>pre-site</phase>
             <goals>
               <goal>xdoc</goal>
             </goals>
+            <phase>pre-site</phase>
             <configuration>
               <firstVersion>1.0.0</firstVersion>
             </configuration>
@@ -89,7 +88,7 @@
           <additionalparam>-Xdoclint:none</additionalparam>
           <failOnError>false</failOnError>
         </configuration>
-        </plugin>
+      </plugin>
     </plugins>
   </reporting>
 </project>

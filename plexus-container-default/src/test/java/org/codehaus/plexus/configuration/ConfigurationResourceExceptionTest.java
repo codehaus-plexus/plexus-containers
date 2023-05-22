@@ -24,13 +24,10 @@ import junit.framework.TestCase;
  * @author Jason van Zyl
  *
  */
-public class ConfigurationResourceExceptionTest
-    extends TestCase
-{
-    public void testException()
-    {
-        PlexusConfigurationResourceException e = new PlexusConfigurationResourceException( "bad doggy!" );
+public class ConfigurationResourceExceptionTest extends TestCase {
+    public void testException() {
+        PlexusConfigurationResourceException e = new PlexusConfigurationResourceException("bad doggy!");
 
-        assertEquals( "bad doggy!", e.getMessage() );
+        assertEquals("bad doggy!", e.getMessage());
     }
 }

@@ -24,17 +24,13 @@ package org.codehaus.plexus.component.configurator.converters.basic;
  * SOFTWARE.
  */
 
-public class CharConverter extends AbstractBasicConverter
-{
+public class CharConverter extends AbstractBasicConverter {
 
-    public boolean canConvert( Class type )
-    {
-        return type.equals( char.class ) || type.equals( Character.class );
+    public boolean canConvert(Class type) {
+        return type.equals(char.class) || type.equals(Character.class);
     }
 
-    public Object fromString( String str )
-    {
+    public Object fromString(String str) {
         return str.charAt(0);
     }
-
 }

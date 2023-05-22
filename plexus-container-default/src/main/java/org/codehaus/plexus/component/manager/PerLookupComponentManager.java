@@ -16,10 +16,10 @@ package org.codehaus.plexus.component.manager;
  * limitations under the License.
  */
 
-import org.codehaus.plexus.component.factory.ComponentInstantiationException;
-import org.codehaus.plexus.component.repository.exception.ComponentLifecycleException;
-import org.codehaus.plexus.component.repository.ComponentDescriptor;
 import org.codehaus.plexus.MutablePlexusContainer;
+import org.codehaus.plexus.component.factory.ComponentInstantiationException;
+import org.codehaus.plexus.component.repository.ComponentDescriptor;
+import org.codehaus.plexus.component.repository.exception.ComponentLifecycleException;
 import org.codehaus.plexus.lifecycle.LifecycleHandler;
 
 /**
@@ -28,36 +28,28 @@ import org.codehaus.plexus.lifecycle.LifecycleHandler;
  * @author Jason van Zyl
  *
  */
-public class PerLookupComponentManager<T>
-    extends AbstractComponentManager<T>
-{
-    public PerLookupComponentManager( MutablePlexusContainer container,
-                                      LifecycleHandler lifecycleHandler,
-                                      ComponentDescriptor<T> componentDescriptor,
-                                      String role,
-                                      String roleHint )
-    {
-        super( container, lifecycleHandler, componentDescriptor, role, roleHint );
+public class PerLookupComponentManager<T> extends AbstractComponentManager<T> {
+    public PerLookupComponentManager(
+            MutablePlexusContainer container,
+            LifecycleHandler lifecycleHandler,
+            ComponentDescriptor<T> componentDescriptor,
+            String role,
+            String roleHint) {
+        super(container, lifecycleHandler, componentDescriptor, role, roleHint);
     }
 
-    public void dispose()
-    {
-    }
+    public void dispose() {}
 
-    public T getComponent( )
-        throws ComponentInstantiationException, ComponentLifecycleException
-    {
+    public T getComponent() throws ComponentInstantiationException, ComponentLifecycleException {
         T component = createComponentInstance();
 
         return component;
     }
 
-    public void release( Object component )
-        throws ComponentLifecycleException
-    {
+    public void release(Object component) throws ComponentLifecycleException {
         decrementConnectionCount();
-        endComponentLifecycle( component );
+        endComponentLifecycle(component);
         // non cleanup map references for per-lookup cause leak
-        componentContextRealms.remove( component );
+        componentContextRealms.remove(component);
     }
 }

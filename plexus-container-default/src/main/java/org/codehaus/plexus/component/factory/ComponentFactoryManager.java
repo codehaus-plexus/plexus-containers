@@ -22,8 +22,6 @@ package org.codehaus.plexus.component.factory;
  * @author Jason van Zyl
  *
  */
-public interface ComponentFactoryManager
-{
-    ComponentFactory findComponentFactory( String id )
-        throws UndefinedComponentFactoryException;
+public interface ComponentFactoryManager {
+    ComponentFactory findComponentFactory(String id) throws UndefinedComponentFactoryException;
 }

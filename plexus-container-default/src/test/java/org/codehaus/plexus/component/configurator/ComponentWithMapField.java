@@ -26,20 +26,15 @@ package org.codehaus.plexus.component.configurator;
 
 import java.util.Map;
 
-
 /**
  *
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
  *
  */
-public class ComponentWithMapField
-{
+public class ComponentWithMapField {
     private Map map;
 
-    public Map getMap()
-    {
+    public Map getMap() {
         return map;
     }
 }
-
-

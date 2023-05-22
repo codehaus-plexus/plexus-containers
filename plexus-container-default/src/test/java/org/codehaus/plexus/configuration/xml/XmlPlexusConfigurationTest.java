@@ -23,83 +23,68 @@ import org.codehaus.plexus.configuration.PlexusConfiguration;
 /**
  * @author <a href="mailto:rantene@hotmail.com">Ran Tene</a>
  */
-public final class XmlPlexusConfigurationTest
-    extends TestCase
-{
+public final class XmlPlexusConfigurationTest extends TestCase {
     private XmlPlexusConfiguration configuration;
 
-    public void setUp()
-    {
-        configuration = new XmlPlexusConfiguration( "a" );
+    public void setUp() {
+        configuration = new XmlPlexusConfiguration("a");
     }
 
-    public void testWithHelper()
-        throws Exception
-    {
+    public void testWithHelper() throws Exception {
         PlexusConfiguration c = ConfigurationTestHelper.getTestConfiguration();
 
-        ConfigurationTestHelper.testConfiguration( c );
+        ConfigurationTestHelper.testConfiguration(c);
     }
 
-    public void testGetValue()
-        throws Exception
-    {
+    public void testGetValue() throws Exception {
         String orgValue = "Original String";
-        configuration.setValue( orgValue );
-        assertEquals( orgValue, configuration.getValue() );
+        configuration.setValue(orgValue);
+        assertEquals(orgValue, configuration.getValue());
     }
 
-    public void testGetAttribute()
-        throws Exception
-    {
+    public void testGetAttribute() throws Exception {
         String key = "key";
         String value = "original value";
         String defaultStr = "default";
-        configuration.setAttribute( key, value );
-        assertEquals( value, configuration.getAttribute( key, defaultStr ) );
-        assertEquals( defaultStr, configuration.getAttribute( "newKey", defaultStr ) );
+        configuration.setAttribute(key, value);
+        assertEquals(value, configuration.getAttribute(key, defaultStr));
+        assertEquals(defaultStr, configuration.getAttribute("newKey", defaultStr));
     }
 
-    public void testGetChild()
-        throws Exception
-    {
-        PlexusConfiguration child = (XmlPlexusConfiguration) configuration.getChild( "child" );
+    public void testGetChild() throws Exception {
+        PlexusConfiguration child = (XmlPlexusConfiguration) configuration.getChild("child");
 
-        assertNotNull( child );
+        assertNotNull(child);
 
-        child.setValue( "child value" );
+        child.setValue("child value");
 
-        assertEquals( 1, configuration.getChildCount() );
+        assertEquals(1, configuration.getChildCount());
 
-        child = (XmlPlexusConfiguration) configuration.getChild( "child" );
+        child = (XmlPlexusConfiguration) configuration.getChild("child");
 
-        assertNotNull( child );
+        assertNotNull(child);
 
-        assertEquals( "child value", child.getValue() );
+        assertEquals("child value", child.getValue());
 
-        assertEquals( 1, configuration.getChildCount() );
+        assertEquals(1, configuration.getChildCount());
     }
 
-    public void testToString()
-       throws Exception
-    {
+    public void testToString() throws Exception {
         PlexusConfiguration c = ConfigurationTestHelper.getTestConfiguration();
 
-        assertEquals( "<string string=\"string\">string</string>\n", c.getChild( "string" ).toString() );
+        assertEquals(
+                "<string string=\"string\">string</string>\n",
+                c.getChild("string").toString());
 
-// TODO: uncomment once maven can test the latest plexus-utils
-//        assertEquals( "<singleton attribute=\"attribute\"/>\n", c.getChild( "singleton" ).toString() );
+        // TODO: uncomment once maven can test the latest plexus-utils
+        //        assertEquals( "<singleton attribute=\"attribute\"/>\n", c.getChild( "singleton" ).toString() );
     }
 
-    public void testProgrammaticConfigurationCreation()
-        throws Exception
-    {
+    public void testProgrammaticConfigurationCreation() throws Exception {
         String viewRoot = "/path/to/viewRoot";
-        
-        PlexusConfiguration c = new XmlPlexusConfiguration( "configuration" )
-            .addChild( "viewRoot", viewRoot );
 
-        assertEquals( viewRoot, c.getChild( "viewRoot" ).getValue() );
+        PlexusConfiguration c = new XmlPlexusConfiguration("configuration").addChild("viewRoot", viewRoot);
+
+        assertEquals(viewRoot, c.getChild("viewRoot").getValue());
     }
 }
-

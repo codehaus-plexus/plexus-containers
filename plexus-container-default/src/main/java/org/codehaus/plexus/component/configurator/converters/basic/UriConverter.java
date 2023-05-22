@@ -25,9 +25,7 @@ import org.codehaus.plexus.component.configurator.ComponentConfigurationExceptio
  * Converter for {@link URI} objects.
  *
  */
-public class UriConverter
-    extends AbstractBasicConverter
-{
+public class UriConverter extends AbstractBasicConverter {
     public boolean canConvert(final Class type) {
         assert type != null;
 
@@ -39,8 +37,7 @@ public class UriConverter
 
         try {
             return new URI(str);
-        }
-        catch (URISyntaxException e) {
+        } catch (URISyntaxException e) {
             throw new ComponentConfigurationException("Unable to convert to URI: " + str, e);
         }
     }

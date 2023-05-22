@@ -16,7 +16,6 @@ package org.codehaus.plexus.test;
  * limitations under the License.
  */
 
-public interface ServiceE
-{
+public interface ServiceE {
     static String ROLE = ServiceE.class.getName();
 }

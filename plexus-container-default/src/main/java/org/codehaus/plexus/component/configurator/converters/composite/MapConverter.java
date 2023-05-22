@@ -24,6 +24,10 @@ package org.codehaus.plexus.component.configurator.converters.composite;
  * SOFTWARE.
  */
 
+import java.util.Map;
+import java.util.Properties;
+import java.util.TreeMap;
+
 import org.codehaus.plexus.component.configurator.ComponentConfigurationException;
 import org.codehaus.plexus.component.configurator.ConfigurationListener;
 import org.codehaus.plexus.component.configurator.converters.AbstractConfigurationConverter;
@@ -31,39 +35,34 @@ import org.codehaus.plexus.component.configurator.converters.lookup.ConverterLoo
 import org.codehaus.plexus.component.configurator.expression.ExpressionEvaluator;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 
-import java.util.Map;
-import java.util.Properties;
-import java.util.TreeMap;
-
 /**
  * Converter for <code>java.util.Properties</code>.
  *
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
  */
-public class MapConverter
-    extends AbstractConfigurationConverter
-{
-    public boolean canConvert( Class type )
-    {
-        return Map.class.isAssignableFrom( type ) && !Properties.class.isAssignableFrom( type );
+public class MapConverter extends AbstractConfigurationConverter {
+    public boolean canConvert(Class type) {
+        return Map.class.isAssignableFrom(type) && !Properties.class.isAssignableFrom(type);
     }
 
-    public Object fromConfiguration( ConverterLookup converterLookup, PlexusConfiguration configuration, Class type,
-                                     Class baseType, ClassLoader classLoader, ExpressionEvaluator expressionEvaluator,
-                                     ConfigurationListener listener )
-        throws ComponentConfigurationException
-    {
+    public Object fromConfiguration(
+            ConverterLookup converterLookup,
+            PlexusConfiguration configuration,
+            Class type,
+            Class baseType,
+            ClassLoader classLoader,
+            ExpressionEvaluator expressionEvaluator,
+            ConfigurationListener listener)
+            throws ComponentConfigurationException {
         Object retValue;
 
-        String expression = configuration.getValue( null );
+        String expression = configuration.getValue(null);
 
-        if ( expression == null )
-        {
-            expression = configuration.getAttribute( "default-value", null );
+        if (expression == null) {
+            expression = configuration.getAttribute("default-value", null);
         }
 
-        if ( expression == null )
-        {
+        if (expression == null) {
             Map map = new TreeMap();
 
             PlexusConfiguration[] children = configuration.getChildren();
@@ -74,12 +73,9 @@ public class MapConverter
                 map.put(name, fromExpression(child, expressionEvaluator));
             }
             retValue = map;
-        }
-        else
-        {
-            retValue = fromExpression( configuration, expressionEvaluator );
+        } else {
+            retValue = fromExpression(configuration, expressionEvaluator);
         }
         return retValue;
     }
-
 }

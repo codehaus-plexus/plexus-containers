@@ -17,12 +17,13 @@
 package org.codehaus.plexus.component.annotations;
 
 import java.lang.annotation.Documented;
-import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.METHOD;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Target;
+
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * Configures a requirement.
@@ -32,11 +33,10 @@ import java.lang.annotation.Target;
  */
 @Documented
 @Retention(RUNTIME)
-@Target({ FIELD, METHOD })
+@Target({FIELD, METHOD})
 @Inherited
 @Deprecated
-public @interface Requirement
-{
+public @interface Requirement {
     Class<?> role() default Object.class;
 
     String hint() default "";
@@ -48,5 +48,4 @@ public @interface Requirement
     String[] hints() default {};
 
     boolean optional() default false;
-
 }

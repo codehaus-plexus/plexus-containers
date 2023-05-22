@@ -22,11 +22,8 @@ package org.codehaus.plexus.component.composition;
  * @author Jason van Zyl
  *
  */
-public class DefaultCompositionResolverTest
-    extends AbstractCompositionResolverTest
-{
-    protected CompositionResolver getCompositionResolver()
-    {
+public class DefaultCompositionResolverTest extends AbstractCompositionResolverTest {
+    protected CompositionResolver getCompositionResolver() {
         return new DefaultCompositionResolver();
     }
 }

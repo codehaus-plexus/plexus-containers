@@ -30,8 +30,7 @@ import java.net.URL;
 /**
  * @author <a href="mailto:kenney@codehaus.org">Kenney Westerhof</a>
  */
-public class ComponentWithArrayFields
-{
+public class ComponentWithArrayFields {
     private String[] stringArray;
 
     private Integer[] integerArray;
@@ -46,38 +45,31 @@ public class ComponentWithArrayFields
 
     private File[] fileArray;
 
-    public String [] getStringArray()
-    {
+    public String[] getStringArray() {
         return stringArray;
     }
 
-    public Integer [] getIntegerArray()
-    {
+    public Integer[] getIntegerArray() {
         return integerArray;
     }
 
-    public ImportantThing [] getImportantThingArray()
-    {
+    public ImportantThing[] getImportantThingArray() {
         return importantThingArray;
     }
 
-    public Object [] getObjectArray()
-    {
+    public Object[] getObjectArray() {
         return objectArray;
     }
 
-    public AbstractThing [] getAbstractThingArray()
-    {
+    public AbstractThing[] getAbstractThingArray() {
         return abstractArray;
     }
 
-    public URL[] getUrlArray()
-    {
+    public URL[] getUrlArray() {
         return urlArray;
     }
 
-    public File[] getFileArray()
-    {
+    public File[] getFileArray() {
         return fileArray;
     }
 }

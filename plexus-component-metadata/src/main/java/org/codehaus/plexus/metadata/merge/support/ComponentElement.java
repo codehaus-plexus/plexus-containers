@@ -29,9 +29,7 @@ import org.jdom2.Element;
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
  */
-public class ComponentElement
-    extends AbstractMergeableElement
-{
+public class ComponentElement extends AbstractMergeableElement {
     /**
      * Allowed elements/tags that we can expect under this element.
      */
@@ -45,40 +43,38 @@ public class ComponentElement
         DESCRIPTION,
         ISOLATION_REALM,
         CONFIGURATION,
-        RequirementsElement.TAG };
+        RequirementsElement.TAG
+    };
 
-    static final DescriptorTag TAG = new DescriptorTag( "component", true, ComponentElement.class );
+    static final DescriptorTag TAG = new DescriptorTag("component", true, ComponentElement.class);
 
-    static final DescriptorTag ROLE = new DescriptorTag( "role" );
+    static final DescriptorTag ROLE = new DescriptorTag("role");
 
-    static final DescriptorTag ROLE_HINT = new DescriptorTag( "role-hint" );
+    static final DescriptorTag ROLE_HINT = new DescriptorTag("role-hint");
 
-    static final DescriptorTag OPTIONAL = new DescriptorTag( "optional" );
-    
-    static final DescriptorTag ISOLATION_REALM = new DescriptorTag( "isolated-realm" );
+    static final DescriptorTag OPTIONAL = new DescriptorTag("optional");
 
-    private static final DescriptorTag DESCRIPTION = new DescriptorTag( "description" );
-    
-    private static final DescriptorTag CONFIGURATION = new DescriptorTag( "configuration" );
+    static final DescriptorTag ISOLATION_REALM = new DescriptorTag("isolated-realm");
 
-    static final DescriptorTag FIELD_NAME = new DescriptorTag( "field-name" );
+    private static final DescriptorTag DESCRIPTION = new DescriptorTag("description");
 
-    private static final DescriptorTag IMPLEMENTATION = new DescriptorTag( "implementation" );
+    private static final DescriptorTag CONFIGURATION = new DescriptorTag("configuration");
 
-    private static final DescriptorTag LIFECYCLE_HANDLER = new DescriptorTag( "lifecycle-handler", false, null );
+    static final DescriptorTag FIELD_NAME = new DescriptorTag("field-name");
 
-    public ComponentElement( Element element )
-    {
-        super( element );
+    private static final DescriptorTag IMPLEMENTATION = new DescriptorTag("implementation");
+
+    private static final DescriptorTag LIFECYCLE_HANDLER = new DescriptorTag("lifecycle-handler", false, null);
+
+    public ComponentElement(Element element) {
+        super(element);
     }
 
-    protected boolean isExpectedElementType( Mergeable me )
-    {
+    protected boolean isExpectedElementType(Mergeable me) {
         return me instanceof ComponentElement;
     }
 
-    public DescriptorTag[] getAllowedTags()
-    {
+    public DescriptorTag[] getAllowedTags() {
         return allowedTags;
     }
 }

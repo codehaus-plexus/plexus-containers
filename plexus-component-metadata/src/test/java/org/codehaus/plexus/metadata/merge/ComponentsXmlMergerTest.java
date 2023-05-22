@@ -44,87 +44,84 @@ import org.jdom2.input.SAXBuilder;
  *
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
  */
-public class ComponentsXmlMergerTest
-    extends PlexusTestCase
-{
-    public void testBasic()
-        throws Exception
-    {
-        ComponentsXmlMerger merger = (ComponentsXmlMerger) lookup( Merger.class, "componentsXml" );
-        assertNotNull( merger );
+public class ComponentsXmlMergerTest extends PlexusTestCase {
+    public void testBasic() throws Exception {
+        ComponentsXmlMerger merger = (ComponentsXmlMerger) lookup(Merger.class, "componentsXml");
+        assertNotNull(merger);
     }
 
-    public void testComponentsXmlFileMerge()
-        throws Exception
-    {
-        File dominantXml = getTestFile( "src/test/resources/org/codehaus/plexus/metadata/merge/dominant.xml" );
-        File recessiveXml = getTestFile( "src/test/resources/org/codehaus/plexus/metadata/merge/recessive.xml" );
-        Document dDoc = new SAXBuilder().build( dominantXml );
-        Document rDoc = new SAXBuilder().build( recessiveXml );
+    public void testComponentsXmlFileMerge() throws Exception {
+        File dominantXml = getTestFile("src/test/resources/org/codehaus/plexus/metadata/merge/dominant.xml");
+        File recessiveXml = getTestFile("src/test/resources/org/codehaus/plexus/metadata/merge/recessive.xml");
+        Document dDoc = new SAXBuilder().build(dominantXml);
+        Document rDoc = new SAXBuilder().build(recessiveXml);
         // ComponentsXmlMerger merger = new ComponentsXmlMerger (dDoc);
-        Merger merger = lookup( Merger.class, "componentsXml" );
-        assertNotNull( merger );
-        merger.merge( dDoc, rDoc );
+        Merger merger = lookup(Merger.class, "componentsXml");
+        assertNotNull(merger);
+        merger.merge(dDoc, rDoc);
 
-        File merged_xml = getTestFile( "target/merged.xml" );
-        if ( merged_xml.exists() )
-        {
-            FileUtils.forceDelete( merged_xml );
+        File merged_xml = getTestFile("target/merged.xml");
+        if (merged_xml.exists()) {
+            FileUtils.forceDelete(merged_xml);
         }
-        merger.writeMergedDocument( dDoc, merged_xml );
-        assertTrue( merged_xml.exists() );
-        // read merged xml and verify it was merged as expected 
-        Document mDoc = new SAXBuilder().build( merged_xml );
+        merger.writeMergedDocument(dDoc, merged_xml);
+        assertTrue(merged_xml.exists());
+        // read merged xml and verify it was merged as expected
+        Document mDoc = new SAXBuilder().build(merged_xml);
         Element mRootElt = mDoc.getRootElement();
-        assertTrue( mRootElt.getName().equals( "component-set" ) );
-        assertEquals( 1, mRootElt.getChildren( "components" ).size() );
-        List componentEltList = mRootElt.getChild( "components" ).getChildren( "component" );
-        assertEquals( 2, componentEltList.size() );
-        Element cElt = (Element) componentEltList.get( 0 );
+        assertTrue(mRootElt.getName().equals("component-set"));
+        assertEquals(1, mRootElt.getChildren("components").size());
+        List componentEltList = mRootElt.getChild("components").getChildren("component");
+        assertEquals(2, componentEltList.size());
+        Element cElt = (Element) componentEltList.get(0);
 
-        assertEquals( "org.codehaus.plexus.metadata.component.IComponent", cElt.getChildTextTrim( "role" ) );
-        assertEquals( "org.codehaus.plexus.metadata.component.DominantComponent", cElt.getChildTextTrim( "implementation" ) );
+        assertEquals("org.codehaus.plexus.metadata.component.IComponent", cElt.getChildTextTrim("role"));
+        assertEquals(
+                "org.codehaus.plexus.metadata.component.DominantComponent", cElt.getChildTextTrim("implementation"));
 
-        assertEquals( "Should only have 1 description element.", 1, cElt.getChildren( "description" ).size() );
-        assertEquals( "Description for Dominant component", cElt.getChildTextTrim( "description" ) );
+        assertEquals(
+                "Should only have 1 description element.",
+                1,
+                cElt.getChildren("description").size());
+        assertEquals("Description for Dominant component", cElt.getChildTextTrim("description"));
 
-        assertEquals( "Should only have 1 configuration element.", 1, cElt.getChildren( "configuration" ).size() );
+        assertEquals(
+                "Should only have 1 configuration element.",
+                1,
+                cElt.getChildren("configuration").size());
         // assert Merged configuration properties
-        Element configurationElt = cElt.getChild( "configuration" );
-        assertNotNull( configurationElt );
-        assertEquals( 1, configurationElt.getChildren( "prop1" ).size() );
-        assertEquals( "Dominant Property1 value", configurationElt.getChildTextTrim( "prop1" ) );
-        assertEquals( 1, configurationElt.getChildren( "prop2" ).size() );
-        assertEquals( 0, configurationElt.getChildren( "prop3" ).size() );
+        Element configurationElt = cElt.getChild("configuration");
+        assertNotNull(configurationElt);
+        assertEquals(1, configurationElt.getChildren("prop1").size());
+        assertEquals("Dominant Property1 value", configurationElt.getChildTextTrim("prop1"));
+        assertEquals(1, configurationElt.getChildren("prop2").size());
+        assertEquals(0, configurationElt.getChildren("prop3").size());
 
         // now for the second component
-        cElt = (Element) componentEltList.get( 1 );
-        assertEquals( "org.codehaus.plexus.metadata.component.INonConflictingComponent", cElt.getChildTextTrim( "role" ) );
-        assertEquals( "org.codehaus.plexus.metadata.component.RecessiveComponent", cElt.getChildTextTrim( "implementation" ) );
+        cElt = (Element) componentEltList.get(1);
+        assertEquals("org.codehaus.plexus.metadata.component.INonConflictingComponent", cElt.getChildTextTrim("role"));
+        assertEquals(
+                "org.codehaus.plexus.metadata.component.RecessiveComponent", cElt.getChildTextTrim("implementation"));
 
-        assertEquals( 1, mRootElt.getChildren( "lifecycle-handler-manager" ).size() );
-        assertEquals( "org.codehaus.plexus.lifecycle.DefaultLifecycleHandlerManager", mRootElt
-            .getChild( "lifecycle-handler-manager" ).getAttributeValue( "implementation" ) );
+        assertEquals(1, mRootElt.getChildren("lifecycle-handler-manager").size());
+        assertEquals(
+                "org.codehaus.plexus.lifecycle.DefaultLifecycleHandlerManager",
+                mRootElt.getChild("lifecycle-handler-manager").getAttributeValue("implementation"));
     }
 
-    public void testInvalidMergeableElements()
-        throws Exception
-    {
+    public void testInvalidMergeableElements() throws Exception {
         // dominant Component Element
-        AbstractMergeableElement dCE = new ComponentElement( new Element( "component" ) );
-        Element roleElt = new Element( "role" );
-        roleElt.setText( "org.codehaus.plexus.ISampleRole" );
-        dCE.addContent( roleElt );
+        AbstractMergeableElement dCE = new ComponentElement(new Element("component"));
+        Element roleElt = new Element("role");
+        roleElt.setText("org.codehaus.plexus.ISampleRole");
+        dCE.addContent(roleElt);
 
-        AbstractMergeableElementList reqElt = new RequirementsElement( new Element( "requirement" ) );
+        AbstractMergeableElementList reqElt = new RequirementsElement(new Element("requirement"));
         // attempt and invalid merge
-        try
-        {
-            dCE.merge( reqElt );
-            fail( "Expected MergeException!" );
-        }
-        catch ( MergeException e )
-        {
+        try {
+            dCE.merge(reqElt);
+            fail("Expected MergeException!");
+        } catch (MergeException e) {
             // do nothing.
         }
     }
@@ -134,63 +131,67 @@ public class ComponentsXmlMergerTest
      *
      * @throws Exception if there was an unexpected error.
      */
-    public void testComponentsMerge()
-        throws Exception
-    {
+    public void testComponentsMerge() throws Exception {
         // dominant Components Element
-        AbstractMergeableElement dParent = new ComponentsElement( new Element( "components" ) );
-        Element dCE = new Element( "component" );
-        dParent.addContent( dCE );
-        Element roleElt = new Element( "role" );
-        roleElt.setText( "org.codehaus.plexus.ISampleRole" );
-        dCE.addContent( roleElt );
-        Element roleHintElt = new Element( "role-hint" );
-        roleHintElt.setText( "sample-role-hint" );
-        dCE.addContent( roleHintElt );
-        Element implElt = new Element( "implementation" );
-        implElt.setText( "org.codehaus.plexus.DominantImplementation" );
-        dCE.addContent( implElt );
-        Element requirementsElt = new Element( "requirements" );
-        Element reqElt = new Element( "requirement" );
-        Element reqRoleElt = new Element( "role" );
-        reqRoleElt.setText( "org.codehaus.plexus.IRequiredRole" );
-        reqElt.addContent( reqRoleElt );
-        requirementsElt.addContent( reqElt );
-        dCE.addContent( requirementsElt );
+        AbstractMergeableElement dParent = new ComponentsElement(new Element("components"));
+        Element dCE = new Element("component");
+        dParent.addContent(dCE);
+        Element roleElt = new Element("role");
+        roleElt.setText("org.codehaus.plexus.ISampleRole");
+        dCE.addContent(roleElt);
+        Element roleHintElt = new Element("role-hint");
+        roleHintElt.setText("sample-role-hint");
+        dCE.addContent(roleHintElt);
+        Element implElt = new Element("implementation");
+        implElt.setText("org.codehaus.plexus.DominantImplementation");
+        dCE.addContent(implElt);
+        Element requirementsElt = new Element("requirements");
+        Element reqElt = new Element("requirement");
+        Element reqRoleElt = new Element("role");
+        reqRoleElt.setText("org.codehaus.plexus.IRequiredRole");
+        reqElt.addContent(reqRoleElt);
+        requirementsElt.addContent(reqElt);
+        dCE.addContent(requirementsElt);
 
         // recessive Component Element
-        AbstractMergeableElement rParent = new ComponentsElement( new Element( "components" ) );
-        Element rCE = new Element( "component" );
-        rParent.addContent( rCE );
-        roleElt = new Element( "role" );
-        roleElt.setText( "org.codehaus.plexus.ISampleRole" );
-        rCE.addContent( roleElt );
-        roleHintElt = new Element( "role-hint" );
-        roleHintElt.setText( "sample-role-hint" );
-        rCE.addContent( roleHintElt );
-        implElt = new Element( "implementation" );
-        implElt.setText( "org.codehaus.plexus.RecessiveImplementation" );
-        rCE.addContent( implElt );
-        Element lifecycleHandlerElt = new Element( "lifecycle-handler" );
-        rCE.addContent( lifecycleHandlerElt );
-        lifecycleHandlerElt.setText( "plexus-configurable" );
-        requirementsElt = new Element( "requirements" );
-        reqElt = new Element( "requirement" );
-        reqRoleElt = new Element( "role" );
-        reqRoleElt.setText( "org.codehaus.plexus.IRequiredRole" );
-        reqElt.addContent( reqRoleElt );
-        requirementsElt.addContent( reqElt );
-        Element reqRoleHintElt = new Element( "role-hint" );
-        reqRoleHintElt.setText( "recessive-required-role-hint" );
-        reqElt.addContent( reqRoleHintElt );
-        rCE.addContent( requirementsElt );
+        AbstractMergeableElement rParent = new ComponentsElement(new Element("components"));
+        Element rCE = new Element("component");
+        rParent.addContent(rCE);
+        roleElt = new Element("role");
+        roleElt.setText("org.codehaus.plexus.ISampleRole");
+        rCE.addContent(roleElt);
+        roleHintElt = new Element("role-hint");
+        roleHintElt.setText("sample-role-hint");
+        rCE.addContent(roleHintElt);
+        implElt = new Element("implementation");
+        implElt.setText("org.codehaus.plexus.RecessiveImplementation");
+        rCE.addContent(implElt);
+        Element lifecycleHandlerElt = new Element("lifecycle-handler");
+        rCE.addContent(lifecycleHandlerElt);
+        lifecycleHandlerElt.setText("plexus-configurable");
+        requirementsElt = new Element("requirements");
+        reqElt = new Element("requirement");
+        reqRoleElt = new Element("role");
+        reqRoleElt.setText("org.codehaus.plexus.IRequiredRole");
+        reqElt.addContent(reqRoleElt);
+        requirementsElt.addContent(reqElt);
+        Element reqRoleHintElt = new Element("role-hint");
+        reqRoleHintElt.setText("recessive-required-role-hint");
+        reqElt.addContent(reqRoleHintElt);
+        rCE.addContent(requirementsElt);
 
         // attempt to merge
-        dParent.merge( rParent );
-        assertEquals( 1, dParent.getChildren( "component" ).size() );
-        assertEquals( "org.codehaus.plexus.DominantImplementation", dParent.getChild( "component" )
-            .getChildText( "implementation" ) );
-        assertEquals( 1, dParent.getChild( "component" ).getChild( "requirements" ).getChildren( "requirement" ).size() );
+        dParent.merge(rParent);
+        assertEquals(1, dParent.getChildren("component").size());
+        assertEquals(
+                "org.codehaus.plexus.DominantImplementation",
+                dParent.getChild("component").getChildText("implementation"));
+        assertEquals(
+                1,
+                dParent.getChild("component")
+                        .getChild("requirements")
+                        .getChildren("requirement")
+                        .size());
     }
 
     /**
@@ -200,109 +201,107 @@ public class ComponentsXmlMergerTest
      *
      * @throws Exception in case of an error.
      */
-    public void testDeepComponentsMerge()
-        throws Exception
-    {
+    public void testDeepComponentsMerge() throws Exception {
         // FIXME: Review this after MergeStrategies are in place.
-        if ( true )
-        {
+        if (true) {
             return;
         }
 
         // dominant Component Element
-        AbstractMergeableElement dCE = new ComponentElement( new Element( "component" ) );
-        Element roleElt = new Element( "role" );
-        roleElt.setText( "org.codehaus.plexus.ISampleRole" );
-        dCE.addContent( roleElt );
+        AbstractMergeableElement dCE = new ComponentElement(new Element("component"));
+        Element roleElt = new Element("role");
+        roleElt.setText("org.codehaus.plexus.ISampleRole");
+        dCE.addContent(roleElt);
         Element roleHintElt;
         // roleHintElt = new Element ("role-hint");
         // roleHintElt.setText ("sample-hint");
         // dCE.addContent (roleHintElt);
-        Element implElt = new Element( "implementation" );
-        implElt.setText( "org.codehaus.plexus.DominantImplementation" );
-        dCE.addContent( implElt );
-        Element requirementsElt = new Element( "requirements" );
-        Element reqElt = new Element( "requirement" );
-        Element reqRoleElt = new Element( "role" );
-        reqRoleElt.setText( "org.codehaus.plexus.IRequiredRole" );
-        reqElt.addContent( reqRoleElt );
-        requirementsElt.addContent( reqElt );
-        dCE.addContent( requirementsElt );
+        Element implElt = new Element("implementation");
+        implElt.setText("org.codehaus.plexus.DominantImplementation");
+        dCE.addContent(implElt);
+        Element requirementsElt = new Element("requirements");
+        Element reqElt = new Element("requirement");
+        Element reqRoleElt = new Element("role");
+        reqRoleElt.setText("org.codehaus.plexus.IRequiredRole");
+        reqElt.addContent(reqRoleElt);
+        requirementsElt.addContent(reqElt);
+        dCE.addContent(requirementsElt);
 
         // recessive Component Element
-        AbstractMergeableElement rCE = new ComponentElement( new Element( "component" ) );
-        roleElt = new Element( "role" );
-        roleElt.setText( "org.codehaus.plexus.ISampleRole" );
-        rCE.addContent( roleElt );
-        roleHintElt = new Element( "role-hint" );
-        roleHintElt.setText( "recessive-hint" );
-        rCE.addContent( roleHintElt );
-        implElt = new Element( "implementation" );
-        implElt.setText( "org.codehaus.plexus.RecessiveImplementation" );
-        rCE.addContent( implElt );
-        Element lifecycleHandlerElt = new Element( "lifecycle-handler" );
-        rCE.addContent( lifecycleHandlerElt );
-        lifecycleHandlerElt.setText( "plexus-configurable" );
-        requirementsElt = new Element( "requirements" );
-        reqElt = new Element( "requirement" );
-        reqRoleElt = new Element( "role" );
-        reqRoleElt.setText( "org.codehaus.plexus.IRequiredRole" );
-        reqElt.addContent( reqRoleElt );
-        requirementsElt.addContent( reqElt );
-        Element reqRoleHintElt = new Element( "role-hint" );
-        reqRoleHintElt.setText( "recessive-required-role-hint" );
-        reqElt.addContent( reqRoleHintElt );
-        rCE.addContent( requirementsElt );
+        AbstractMergeableElement rCE = new ComponentElement(new Element("component"));
+        roleElt = new Element("role");
+        roleElt.setText("org.codehaus.plexus.ISampleRole");
+        rCE.addContent(roleElt);
+        roleHintElt = new Element("role-hint");
+        roleHintElt.setText("recessive-hint");
+        rCE.addContent(roleHintElt);
+        implElt = new Element("implementation");
+        implElt.setText("org.codehaus.plexus.RecessiveImplementation");
+        rCE.addContent(implElt);
+        Element lifecycleHandlerElt = new Element("lifecycle-handler");
+        rCE.addContent(lifecycleHandlerElt);
+        lifecycleHandlerElt.setText("plexus-configurable");
+        requirementsElt = new Element("requirements");
+        reqElt = new Element("requirement");
+        reqRoleElt = new Element("role");
+        reqRoleElt.setText("org.codehaus.plexus.IRequiredRole");
+        reqElt.addContent(reqRoleElt);
+        requirementsElt.addContent(reqElt);
+        Element reqRoleHintElt = new Element("role-hint");
+        reqRoleHintElt.setText("recessive-required-role-hint");
+        reqElt.addContent(reqRoleHintElt);
+        rCE.addContent(requirementsElt);
 
         // attempt to merge
-        dCE.merge( rCE );
+        dCE.merge(rCE);
 
         // verify the merge
-        assertTrue( null != dCE.getChild( "role" ) );
-        assertEquals( "org.codehaus.plexus.ISampleRole", dCE.getChildText( "role" ) );
-        assertTrue( null != dCE.getChild( "role-hint" ) );
-        assertEquals( "recessive-hint", dCE.getChildText( "role-hint" ) );
-        assertTrue( null != dCE.getChild( "lifecycle-handler" ) );
-        assertEquals( "plexus-configurable", dCE.getChildText( "lifecycle-handler" ) );
-        assertTrue( null != dCE.getChild( "requirements" ) );
-        assertEquals( 1, dCE.getChild( "requirements" ).getChildren( "requirement" ).size() );
-        assertEquals( "recessive-required-role-hint", ( (Element) dCE.getChild( "requirements" )
-            .getChildren( "requirement" ).get( 0 ) ).getChildText( "role-hint" ) );
+        assertTrue(null != dCE.getChild("role"));
+        assertEquals("org.codehaus.plexus.ISampleRole", dCE.getChildText("role"));
+        assertTrue(null != dCE.getChild("role-hint"));
+        assertEquals("recessive-hint", dCE.getChildText("role-hint"));
+        assertTrue(null != dCE.getChild("lifecycle-handler"));
+        assertEquals("plexus-configurable", dCE.getChildText("lifecycle-handler"));
+        assertTrue(null != dCE.getChild("requirements"));
+        assertEquals(1, dCE.getChild("requirements").getChildren("requirement").size());
+        assertEquals(
+                "recessive-required-role-hint",
+                ((Element) dCE.getChild("requirements")
+                                .getChildren("requirement")
+                                .get(0))
+                        .getChildText("role-hint"));
     }
-    
-    public void testMergeRoleComponents() throws Exception
-    {
+
+    public void testMergeRoleComponents() throws Exception {
         SAXBuilder saxBuilder = new SAXBuilder();
 
-        String source1 = "<component-set>\n" + 
-            "  <components>\n" + 
-            "    <component>\n" + 
-            "      <role>org.codehaus.plexus.metadata.component.DockerComposeConfigHandler</role>\n" + 
-            "      <implementation>org.codehaus.plexus.metadata.component.DominantComponent</implementation>\n" + 
-            "    </component>\n" + 
-            "    <component>\n" + 
-            "      <role>org.codehaus.plexus.metadata.component.PropertyConfigHandler</role>\n" + 
-            "      <implementation>org.codehaus.plexus.metadata.component.DominantComponent</implementation>\n" + 
-            "    </component>\n" + 
-            "  </components>\n" + 
-            "</component-set>";
-        Document doc1 = saxBuilder.build( new StringReader( source1 ) );
-        
-        String source2 = "<component-set>\n" + 
-            "  <components>\n" + 
-            "    <component>\n" + 
-            "      <role>org.codehaus.plexus.metadata.component.ExternalConfigHandler</role>\n" + 
-            "      <implementation>org.codehaus.plexus.metadata.component.DominantComponent</implementation>\n" + 
-            "    </component>\n" + 
-            "  </components>\n" + 
-            "</component-set>";
-        Document doc2 = saxBuilder.build( new StringReader( source2 ) );
-        
+        String source1 = "<component-set>\n" + "  <components>\n"
+                + "    <component>\n"
+                + "      <role>org.codehaus.plexus.metadata.component.DockerComposeConfigHandler</role>\n"
+                + "      <implementation>org.codehaus.plexus.metadata.component.DominantComponent</implementation>\n"
+                + "    </component>\n"
+                + "    <component>\n"
+                + "      <role>org.codehaus.plexus.metadata.component.PropertyConfigHandler</role>\n"
+                + "      <implementation>org.codehaus.plexus.metadata.component.DominantComponent</implementation>\n"
+                + "    </component>\n"
+                + "  </components>\n"
+                + "</component-set>";
+        Document doc1 = saxBuilder.build(new StringReader(source1));
+
+        String source2 = "<component-set>\n" + "  <components>\n"
+                + "    <component>\n"
+                + "      <role>org.codehaus.plexus.metadata.component.ExternalConfigHandler</role>\n"
+                + "      <implementation>org.codehaus.plexus.metadata.component.DominantComponent</implementation>\n"
+                + "    </component>\n"
+                + "  </components>\n"
+                + "</component-set>";
+        Document doc2 = saxBuilder.build(new StringReader(source2));
+
         PlexusXmlMerger merger = new PlexusXmlMerger();
-        Document mergedDoc = merger.merge( doc1, doc2 );
-        
-        List<Element> components = mergedDoc.detachRootElement().getChild( "components" ).getChildren();
-        assertEquals( 3, components.size() );
+        Document mergedDoc = merger.merge(doc1, doc2);
+
+        List<Element> components =
+                mergedDoc.detachRootElement().getChild("components").getChildren();
+        assertEquals(3, components.size());
     }
-    
 }

@@ -43,25 +43,20 @@ import org.codehaus.plexus.util.IOUtil;
  * and when found translates them into a {@link ComponentDescriptor}.
  *
  */
-public class AnnotationComponentGleaner
-    extends ComponentGleanerSupport
-    implements ClassComponentGleaner
-{
+public class AnnotationComponentGleaner extends ComponentGleanerSupport implements ClassComponentGleaner {
     private static final String OBJECT_SLASHED_NAME = Object.class.getName().replace('.', '/');
 
-    public ComponentDescriptor<?> glean(String className, ClassLoader cl) throws ComponentGleanerException 
-    {
+    public ComponentDescriptor<?> glean(String className, ClassLoader cl) throws ComponentGleanerException {
         assert className != null;
         assert cl != null;
 
         AnnClass annClass = readClass(className.replace('.', '/'), cl);
-        
+
         // Skip abstract classes
         if (Modifier.isAbstract(annClass.getAccess())) {
             return null;
         }
-        
-        
+
         Component anno = annClass.getAnnotation(Component.class);
 
         if (anno == null) {
@@ -69,7 +64,7 @@ public class AnnotationComponentGleaner
         }
 
         ComponentDescriptor<?> component = new ComponentDescriptor<Object>();
-        
+
         component.setRole(anno.role().getName());
 
         component.setRoleHint(filterEmptyAsNull(anno.hint()));
@@ -121,52 +116,39 @@ public class AnnotationComponentGleaner
         return component;
     }
 
-    private AnnClass readClass(String className, ClassLoader cl) throws ComponentGleanerException 
-    {
-    	InputStream is = null;
-    	
-    	try 
-    	{
-    		// only read annotation from project classes (not jars)
-    		Enumeration<URL> en = cl.getResources( className + ".class" );
-    		while ( en.hasMoreElements() ) {
-				URL url = en.nextElement();
-				if( url.toString().startsWith( "file:" ) ) 
-				{
-					is = url.openStream();
-					return AnnReader.read( is, cl );
-				}	
-			}
-    		throw new ComponentGleanerException("Can't find class " + className);
-        } 
-        catch (IOException ex) 
-        {
-        	throw new ComponentGleanerException("Can't read class " + className, ex);
-        }
-        finally
-        {
-        	IOUtil.close(is);
+    private AnnClass readClass(String className, ClassLoader cl) throws ComponentGleanerException {
+        InputStream is = null;
+
+        try {
+            // only read annotation from project classes (not jars)
+            Enumeration<URL> en = cl.getResources(className + ".class");
+            while (en.hasMoreElements()) {
+                URL url = en.nextElement();
+                if (url.toString().startsWith("file:")) {
+                    is = url.openStream();
+                    return AnnReader.read(is, cl);
+                }
+            }
+            throw new ComponentGleanerException("Can't find class " + className);
+        } catch (IOException ex) {
+            throw new ComponentGleanerException("Can't read class " + className, ex);
+        } finally {
+            IOUtil.close(is);
         }
     }
 
-    private AnnClass readClass2(String className, ClassLoader cl) throws ComponentGleanerException 
-    {
+    private AnnClass readClass2(String className, ClassLoader cl) throws ComponentGleanerException {
         InputStream is = null;
-        try 
-        {
-          is = cl.getResourceAsStream(className + ".class");
-          return AnnReader.read(is, cl);
-        } 
-        catch (IOException ex) 
-        {
-          throw new ComponentGleanerException("Can't read class " + className, ex);
-        }
-        finally
-        {
-          IOUtil.close(is);
+        try {
+            is = cl.getResourceAsStream(className + ".class");
+            return AnnReader.read(is, cl);
+        } catch (IOException ex) {
+            throw new ComponentGleanerException("Can't read class " + className, ex);
+        } finally {
+            IOUtil.close(is);
         }
     }
-    
+
     /**
      * Returns a list of all of the classes which the given type inherits from.
      */
@@ -175,13 +157,13 @@ public class AnnotationComponentGleaner
 
         List<AnnClass> classes = new ArrayList<AnnClass>();
 
-        while(annClass!=null) {
+        while (annClass != null) {
             classes.add(annClass);
             String superName = annClass.getSuperName();
-            if(superName!=null && !superName.equals(OBJECT_SLASHED_NAME)) {
-              annClass = readClass2(superName, cl);
+            if (superName != null && !superName.equals(OBJECT_SLASHED_NAME)) {
+                annClass = readClass2(superName, cl);
             } else {
-              break;
+                break;
             }
 
             //
@@ -192,26 +174,25 @@ public class AnnotationComponentGleaner
         return classes;
     }
 
-    private ComponentRequirement findRequirement(final AnnField field, AnnClass annClass, ClassLoader cl) 
-        throws ComponentGleanerException 
-    {
+    private ComponentRequirement findRequirement(final AnnField field, AnnClass annClass, ClassLoader cl)
+            throws ComponentGleanerException {
         assert field != null;
 
         Requirement anno = field.getAnnotation(Requirement.class);
-        
+
         if (anno == null) {
             return null;
         }
 
         String fieldType = field.getType();
-        
+
         // TODO implement type resolution without loading classes
         Class<?> type;
         try {
-          type = Class.forName(fieldType, false, cl);
+            type = Class.forName(fieldType, false, cl);
         } catch (ClassNotFoundException ex) {
-          // TODO Auto-generated catch block
-          throw new ComponentGleanerException("Can't load class " + fieldType);
+            // TODO Auto-generated catch block
+            throw new ComponentGleanerException("Can't load class " + fieldType);
         }
 
         ComponentRequirement requirement;
@@ -222,25 +203,23 @@ public class AnnotationComponentGleaner
             String[] hints = anno.hints();
 
             if (hints != null && hints.length > 0) {
-                ((ComponentRequirementList)requirement).setRoleHints(Arrays.asList(hints));
+                ((ComponentRequirementList) requirement).setRoleHints(Arrays.asList(hints));
             }
 
             //
             // TODO: See if we can glean any type details out of any generic information from the map or collection
             //
-        }
-        else {
+        } else {
             requirement = new ComponentRequirement();
 
             requirement.setRoleHint(filterEmptyAsNull(anno.hint()));
         }
 
-        // TODO need to read default annotation values 
+        // TODO need to read default annotation values
         // if (anno.role()==null || anno.role().isAssignableFrom(Object.class)) {
         if (anno.role().isAssignableFrom(Object.class)) {
             requirement.setRole(type.getName());
-        }
-        else {
+        } else {
             requirement.setRole(anno.role().getName());
         }
 
@@ -248,7 +227,7 @@ public class AnnotationComponentGleaner
 
         requirement.setFieldMappingType(type.getName());
 
-        requirement.setOptional( anno.optional() );
+        requirement.setOptional(anno.optional());
 
         return requirement;
     }
@@ -267,7 +246,7 @@ public class AnnotationComponentGleaner
             name = field.getName();
         }
         name = deHump(name);
-        
+
         XmlPlexusConfiguration config = new XmlPlexusConfiguration(name);
 
         String value = filterEmptyAsNull(anno.value());

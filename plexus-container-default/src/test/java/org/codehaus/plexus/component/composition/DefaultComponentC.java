@@ -22,6 +22,4 @@ package org.codehaus.plexus.component.composition;
  * @author Jason van Zyl
  *
  */
-public class DefaultComponentC implements ComponentC
-{    
-}
+public class DefaultComponentC implements ComponentC {}

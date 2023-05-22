@@ -22,6 +22,4 @@ package org.codehaus.plexus.component.composition;
  * @author Jason van Zyl
  *
  */
-public interface ComponentC
-{
-}
+public interface ComponentC {}

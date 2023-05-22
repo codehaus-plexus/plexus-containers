@@ -31,39 +31,34 @@ import org.codehaus.plexus.component.repository.exception.ComponentLookupExcepti
  * @author Kenney Westerhof
  * @author Dain Sundstrom
  */
-public interface ComponentRegistry
-{
-    void registerComponentManagerFactory( ComponentManagerFactory componentManagerFactory );
+public interface ComponentRegistry {
+    void registerComponentManagerFactory(ComponentManagerFactory componentManagerFactory);
 
-    void addComponentDescriptor( ComponentDescriptor<?> componentDescriptor )
-        throws CycleDetectedInComponentGraphException;
+    void addComponentDescriptor(ComponentDescriptor<?> componentDescriptor)
+            throws CycleDetectedInComponentGraphException;
 
-    <T> ComponentDescriptor<T> getComponentDescriptor( Class<T> type, String role, String roleHint );
+    <T> ComponentDescriptor<T> getComponentDescriptor(Class<T> type, String role, String roleHint);
 
     @Deprecated
-    ComponentDescriptor<?> getComponentDescriptor( String role, String roleHint, ClassRealm realm );
+    ComponentDescriptor<?> getComponentDescriptor(String role, String roleHint, ClassRealm realm);
 
-    <T> List<ComponentDescriptor<T>> getComponentDescriptorList( Class<T> type, String role );
+    <T> List<ComponentDescriptor<T>> getComponentDescriptorList(Class<T> type, String role);
 
-    <T> Map<String, ComponentDescriptor<T>> getComponentDescriptorMap( Class<T> type, String role );
+    <T> Map<String, ComponentDescriptor<T>> getComponentDescriptorMap(Class<T> type, String role);
 
-    <T> T lookup( Class<T> type, String role, String roleHint )
-        throws ComponentLookupException;
+    <T> T lookup(Class<T> type, String role, String roleHint) throws ComponentLookupException;
 
-    <T> T lookup( ComponentDescriptor<T> componentDescriptor )
-        throws ComponentLookupException;
+    <T> T lookup(ComponentDescriptor<T> componentDescriptor) throws ComponentLookupException;
 
-    <T> List<T> lookupList( Class<T> type, String role, List<String> hints )
-        throws ComponentLookupException;
+    <T> List<T> lookupList(Class<T> type, String role, List<String> hints) throws ComponentLookupException;
 
-    <T> Map<String, T> lookupMap( Class<T> type, String role, List<String> hints )
-        throws ComponentLookupException;
+    <T> Map<String, T> lookupMap(Class<T> type, String role, List<String> hints) throws ComponentLookupException;
 
-    void release( Object component ) throws ComponentLifecycleException;
+    void release(Object component) throws ComponentLifecycleException;
 
-    void removeComponentRealm( ClassRealm classRealm ) throws PlexusContainerException;
+    void removeComponentRealm(ClassRealm classRealm) throws PlexusContainerException;
 
     void dispose();
 
-    <T> void addComponent( T component, String role, String roleHint );
+    <T> void addComponent(T component, String role, String roleHint);
 }

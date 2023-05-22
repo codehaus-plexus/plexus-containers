@@ -19,49 +19,40 @@ package org.codehaus.plexus.component.factory;
 import org.codehaus.plexus.PlexusTestCase;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
 
-public class DiscoveredComponentFactoryTest
-    extends PlexusTestCase
-{
-    public void testShouldFindComponentFactoriesDefinedInBothPlexusXmlAndComponentsXml()
-        throws Exception
-    {
-        assertNotNull( "Cannot find test component factory from plexus.xml test resource.",
-                       lookup( ComponentFactory.class, "testFactory1" ) );
+public class DiscoveredComponentFactoryTest extends PlexusTestCase {
+    public void testShouldFindComponentFactoriesDefinedInBothPlexusXmlAndComponentsXml() throws Exception {
+        assertNotNull(
+                "Cannot find test component factory from plexus.xml test resource.",
+                lookup(ComponentFactory.class, "testFactory1"));
 
-        assertNotNull( "Cannot find test component factory from components.xml test resource.",
-                       lookup( ComponentFactory.class, "testFactory2" ) );
+        assertNotNull(
+                "Cannot find test component factory from components.xml test resource.",
+                lookup(ComponentFactory.class, "testFactory2"));
     }
 
-    public void testShouldInstantiateComponentUsingFactoryDiscoveredInPlexusXml()
-        throws Exception
-    {
+    public void testShouldInstantiateComponentUsingFactoryDiscoveredInPlexusXml() throws Exception {}
+
+    public void testShouldInstantiateComponentUsingFactoryDiscoveredInComponentsXml() throws Exception {
+        lookupTestComponent("testFactory2");
     }
 
-    public void testShouldInstantiateComponentUsingFactoryDiscoveredInComponentsXml()
-        throws Exception
-    {
-        lookupTestComponent( "testFactory2" );
-    }
-
-    private void lookupTestComponent( String factoryId )
-        throws Exception
-    {
+    private void lookupTestComponent(String factoryId) throws Exception {
         ComponentDescriptor descriptor = new ComponentDescriptor();
 
-        descriptor.setComponentFactory( factoryId );
+        descriptor.setComponentFactory(factoryId);
 
-        descriptor.setRole( "role" );
+        descriptor.setRole("role");
 
-        descriptor.setRoleHint( "hint" );
+        descriptor.setRoleHint("hint");
 
-        descriptor.setImplementation( "something interesting" );
+        descriptor.setImplementation("something interesting");
 
-        getContainer().addComponentDescriptor( descriptor );
+        getContainer().addComponentDescriptor(descriptor);
 
-        Object component = lookup( "role", "hint" );
+        Object component = lookup("role", "hint");
 
-        assertTrue( component instanceof TestFactoryResultComponent );
+        assertTrue(component instanceof TestFactoryResultComponent);
 
-        assertEquals( factoryId, ( (TestFactoryResultComponent) component ).getFactoryId() );
+        assertEquals(factoryId, ((TestFactoryResultComponent) component).getFactoryId());
     }
 }

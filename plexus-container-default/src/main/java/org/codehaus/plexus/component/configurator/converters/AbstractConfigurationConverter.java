@@ -34,9 +34,7 @@ import org.codehaus.plexus.util.StringUtils;
 /**
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
  */
-public abstract class AbstractConfigurationConverter
-    implements ConfigurationConverter
-{
+public abstract class AbstractConfigurationConverter implements ConfigurationConverter {
     private static final String IMPLEMENTATION = "implementation";
 
     /**
@@ -50,169 +48,136 @@ public abstract class AbstractConfigurationConverter
      * @return The class.
      * @throws ComponentConfigurationException in case of an error.
      */
-    protected Class getClassForImplementationHint( Class type, PlexusConfiguration configuration,
-                                                   ClassLoader classLoader )
-        throws ComponentConfigurationException
-    {
+    protected Class getClassForImplementationHint(
+            Class type, PlexusConfiguration configuration, ClassLoader classLoader)
+            throws ComponentConfigurationException {
         Class retValue = type;
 
-        String implementation = configuration.getAttribute( IMPLEMENTATION, null );
+        String implementation = configuration.getAttribute(IMPLEMENTATION, null);
 
-        if ( implementation != null )
-        {
-            try
-            {
-                retValue = classLoader.loadClass( implementation );
+        if (implementation != null) {
+            try {
+                retValue = classLoader.loadClass(implementation);
 
-            }
-            catch ( ClassNotFoundException e )
-            {
+            } catch (ClassNotFoundException e) {
                 String msg = "ClassNotFoundException: Class name which was explicitly given in configuration using"
-                    + " 'implementation' attribute: '" + implementation + "' cannot be loaded";
+                        + " 'implementation' attribute: '" + implementation + "' cannot be loaded";
 
-                throw new ComponentConfigurationException( msg, e );
-            }
-            catch ( UnsupportedClassVersionError e )
-            {
+                throw new ComponentConfigurationException(msg, e);
+            } catch (UnsupportedClassVersionError e) {
                 String msg = "UnsupportedClassVersionError: Class name which was explicitly given in configuration"
-                    + " using 'implementation' attribute: '" + implementation + "' cannot be loaded";
+                        + " using 'implementation' attribute: '" + implementation + "' cannot be loaded";
 
-                throw new ComponentConfigurationException( msg, e );
-            }
-            catch ( LinkageError e )
-            {
+                throw new ComponentConfigurationException(msg, e);
+            } catch (LinkageError e) {
                 String msg = "LinkageError: Class name which was explicitly given in configuration using"
-                    + " 'implementation' attribute: '" + implementation + "' cannot be loaded";
+                        + " 'implementation' attribute: '" + implementation + "' cannot be loaded";
 
-                throw new ComponentConfigurationException( msg, e );
+                throw new ComponentConfigurationException(msg, e);
             }
         }
 
         return retValue;
     }
 
-
-    protected Class loadClass( String classname, ClassLoader classLoader )
-        throws ComponentConfigurationException
-    {
+    protected Class loadClass(String classname, ClassLoader classLoader) throws ComponentConfigurationException {
         Class retValue;
 
-        try
-        {
-            retValue = classLoader.loadClass( classname );
-        }
-        catch ( ClassNotFoundException e )
-        {
-            throw new ComponentConfigurationException( "Error loading class '" + classname + "'", e );
+        try {
+            retValue = classLoader.loadClass(classname);
+        } catch (ClassNotFoundException e) {
+            throw new ComponentConfigurationException("Error loading class '" + classname + "'", e);
         }
 
         return retValue;
     }
 
-    protected Object instantiateObject( String classname, ClassLoader classLoader )
-        throws ComponentConfigurationException
-    {
-        Class clazz = loadClass( classname, classLoader );
+    protected Object instantiateObject(String classname, ClassLoader classLoader)
+            throws ComponentConfigurationException {
+        Class clazz = loadClass(classname, classLoader);
 
-        return instantiateObject( clazz );
+        return instantiateObject(clazz);
     }
 
-    protected Object instantiateObject( Class clazz )
-        throws ComponentConfigurationException
-    {
+    protected Object instantiateObject(Class clazz) throws ComponentConfigurationException {
         Object retValue;
 
-        try
-        {
+        try {
             retValue = clazz.newInstance();
 
             return retValue;
-        }
-        catch ( IllegalAccessException e )
-        {
-            throw new ComponentConfigurationException( "Class '" + clazz.getName() + "' cannot be instantiated", e );
-        }
-        catch ( InstantiationException e )
-        {
-            throw new ComponentConfigurationException( "Class '" + clazz.getName() + "' cannot be instantiated", e );
+        } catch (IllegalAccessException e) {
+            throw new ComponentConfigurationException("Class '" + clazz.getName() + "' cannot be instantiated", e);
+        } catch (InstantiationException e) {
+            throw new ComponentConfigurationException("Class '" + clazz.getName() + "' cannot be instantiated", e);
         }
     }
 
-
     // first-name --> firstName
-    protected String fromXML( String elementName )
-    {
-        return StringUtils.lowercaseFirstLetter( StringUtils.removeAndHump( elementName, "-" ) );
+    protected String fromXML(String elementName) {
+        return StringUtils.lowercaseFirstLetter(StringUtils.removeAndHump(elementName, "-"));
     }
 
     // firstName --> first-name
-    protected String toXML( String fieldName )
-    {
-        return StringUtils.addAndDeHump( fieldName );
+    protected String toXML(String fieldName) {
+        return StringUtils.addAndDeHump(fieldName);
     }
 
-    protected Object fromExpression( PlexusConfiguration configuration, ExpressionEvaluator expressionEvaluator, Class type )
-        throws ComponentConfigurationException
-    {
-        Object v = fromExpression( configuration, expressionEvaluator );
-        
-        if ( v != null )
-        {
-            if ( !type.isAssignableFrom( v.getClass() ) )
-            {
-                String msg = "Cannot assign configuration entry '" + configuration.getName() + "' to '" + type +
-                    "' from '" + configuration.getValue( null ) + "', which is of type " + v.getClass();
-                throw new ComponentConfigurationException( configuration, msg );
+    protected Object fromExpression(
+            PlexusConfiguration configuration, ExpressionEvaluator expressionEvaluator, Class type)
+            throws ComponentConfigurationException {
+        Object v = fromExpression(configuration, expressionEvaluator);
+
+        if (v != null) {
+            if (!type.isAssignableFrom(v.getClass())) {
+                String msg = "Cannot assign configuration entry '" + configuration.getName() + "' to '" + type
+                        + "' from '" + configuration.getValue(null) + "', which is of type " + v.getClass();
+                throw new ComponentConfigurationException(configuration, msg);
             }
         }
         return v;
     }
 
-    protected Object fromExpression( PlexusConfiguration configuration, ExpressionEvaluator expressionEvaluator )
-        throws ComponentConfigurationException
-    {
+    protected Object fromExpression(PlexusConfiguration configuration, ExpressionEvaluator expressionEvaluator)
+            throws ComponentConfigurationException {
         Object v = null;
-        String value = configuration.getValue( null );
-        if ( value != null && value.length() > 0 )
-        {
+        String value = configuration.getValue(null);
+        if (value != null && value.length() > 0) {
             // Object is provided by an expression
             // This seems a bit ugly... canConvert really should return false in this instance, but it doesn't have the
             //   configuration to know better
-            try
-            {
-                v = expressionEvaluator.evaluate( value );
-            }
-            catch ( ExpressionEvaluationException e )
-            {
-                String msg = "Error evaluating the expression '" + value + "' for configuration value '" +
-                    configuration.getName() + "'";
-                throw new ComponentConfigurationException( configuration, msg, e );
+            try {
+                v = expressionEvaluator.evaluate(value);
+            } catch (ExpressionEvaluationException e) {
+                String msg = "Error evaluating the expression '" + value + "' for configuration value '"
+                        + configuration.getName() + "'";
+                throw new ComponentConfigurationException(configuration, msg, e);
             }
         }
-        if ( v == null )
-        {
-            value = configuration.getAttribute( "default-value", null );
-            if ( value != null && value.length() > 0 )
-            {
-                try
-                {
-                    v = expressionEvaluator.evaluate( value );
-                }
-                catch ( ExpressionEvaluationException e )
-                {
-                    String msg = "Error evaluating the expression '" + value + "' for configuration value '" +
-                        configuration.getName() + "'";
-                    throw new ComponentConfigurationException( configuration, msg, e );
+        if (v == null) {
+            value = configuration.getAttribute("default-value", null);
+            if (value != null && value.length() > 0) {
+                try {
+                    v = expressionEvaluator.evaluate(value);
+                } catch (ExpressionEvaluationException e) {
+                    String msg = "Error evaluating the expression '" + value + "' for configuration value '"
+                            + configuration.getName() + "'";
+                    throw new ComponentConfigurationException(configuration, msg, e);
                 }
             }
         }
         return v;
     }
 
-    public Object fromConfiguration( ConverterLookup converterLookup, PlexusConfiguration configuration, Class type,
-                                     Class baseType, ClassLoader classLoader, ExpressionEvaluator expressionEvaluator )
-        throws ComponentConfigurationException
-    {
-        return fromConfiguration( converterLookup, configuration, type, baseType, classLoader, expressionEvaluator, null );
+    public Object fromConfiguration(
+            ConverterLookup converterLookup,
+            PlexusConfiguration configuration,
+            Class type,
+            Class baseType,
+            ClassLoader classLoader,
+            ExpressionEvaluator expressionEvaluator)
+            throws ComponentConfigurationException {
+        return fromConfiguration(
+                converterLookup, configuration, type, baseType, classLoader, expressionEvaluator, null);
     }
 }

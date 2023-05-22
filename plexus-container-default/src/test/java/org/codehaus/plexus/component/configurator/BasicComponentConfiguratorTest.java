@@ -24,13 +24,8 @@ package org.codehaus.plexus.component.configurator;
  * SOFTWARE.
  */
 
-public class BasicComponentConfiguratorTest
-    extends AbstractComponentConfiguratorTest
-{
-    protected ComponentConfigurator getComponentConfigurator()
-        throws Exception
-    {
-         return new BasicComponentConfigurator();
+public class BasicComponentConfiguratorTest extends AbstractComponentConfiguratorTest {
+    protected ComponentConfigurator getComponentConfigurator() throws Exception {
+        return new BasicComponentConfigurator();
     }
-
 }

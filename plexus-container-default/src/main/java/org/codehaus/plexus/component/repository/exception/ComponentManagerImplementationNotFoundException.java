@@ -22,18 +22,15 @@ package org.codehaus.plexus.component.repository.exception;
  *
  * @author Jason van Zyl
  */
-public class ComponentManagerImplementationNotFoundException
-    extends Exception
-{
+public class ComponentManagerImplementationNotFoundException extends Exception {
     private static final long serialVersionUID = 2365017114180373632L;
 
     /**
      * Construct a new <code>ComponentManagerImplementationNotFoundException</code> instance.
      * @param message exception message
      */
-    public ComponentManagerImplementationNotFoundException( String message )
-    {
-        super( message );
+    public ComponentManagerImplementationNotFoundException(String message) {
+        super(message);
     }
 
     /**
@@ -41,8 +38,7 @@ public class ComponentManagerImplementationNotFoundException
      * @param message exception message
      * @param cause causing exception to chain
      */
-    public ComponentManagerImplementationNotFoundException( String message, Throwable cause )
-    {
-        super( message, cause );
+    public ComponentManagerImplementationNotFoundException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

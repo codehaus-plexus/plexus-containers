@@ -21,8 +21,7 @@ package org.codehaus.plexus;
  *
  * @author <a href="mailto:brett@codehaus.org">Brett Porter</a>
  */
-public class PlexusContainerException extends Exception
-{
+public class PlexusContainerException extends Exception {
     private static final long serialVersionUID = 2213861902264275451L;
 
     /**
@@ -30,17 +29,15 @@ public class PlexusContainerException extends Exception
      * @param message exception message
      * @param throwable causing exception to chain
      */
-    public PlexusContainerException( String message, Throwable throwable )
-    {
-        super( message, throwable );
+    public PlexusContainerException(String message, Throwable throwable) {
+        super(message, throwable);
     }
 
     /**
      * Construct a new <code>PlexusContainerException</code> instance.
      * @param message exception message
      */
-    public PlexusContainerException( String message )
-    {
-        super( message );
+    public PlexusContainerException(String message) {
+        super(message);
     }
 }

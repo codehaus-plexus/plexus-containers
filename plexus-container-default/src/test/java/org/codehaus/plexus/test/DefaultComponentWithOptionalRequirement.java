@@ -16,10 +16,7 @@ package org.codehaus.plexus.test;
  * limitations under the License.
  */
 
-public class DefaultComponentWithOptionalRequirement
-    extends DefaultComponent
-{
+public class DefaultComponentWithOptionalRequirement extends DefaultComponent {
 
     public Object optionalComponent;
-
 }

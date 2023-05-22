@@ -15,17 +15,24 @@
  */
 package org.codehaus.plexus.component.builder;
 
-import static org.apache.xbean.recipe.RecipeHelper.toClass;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.apache.xbean.recipe.AbstractRecipe;
 import org.apache.xbean.recipe.ConstructionException;
 import org.apache.xbean.recipe.ObjectRecipe;
 import org.apache.xbean.recipe.Option;
 import org.apache.xbean.recipe.RecipeHelper;
+import org.codehaus.plexus.ComponentRegistry;
 import org.codehaus.plexus.MutablePlexusContainer;
 import org.codehaus.plexus.PlexusConstants;
 import org.codehaus.plexus.PlexusContainer;
-import org.codehaus.plexus.ComponentRegistry;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.codehaus.plexus.component.MapOrientedComponent;
 import org.codehaus.plexus.component.collections.ComponentList;
@@ -54,29 +61,19 @@ import org.codehaus.plexus.logging.Logger;
 import org.codehaus.plexus.personality.plexus.lifecycle.phase.PhaseExecutionException;
 import org.codehaus.plexus.util.StringUtils;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.LinkedHashSet;
+import static org.apache.xbean.recipe.RecipeHelper.toClass;
 
 public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
     private static final ThreadLocal<LinkedHashSet<ComponentDescriptor<?>>> STACK =
-        new ThreadLocal<LinkedHashSet<ComponentDescriptor<?>>>()
-        {
-            protected LinkedHashSet<ComponentDescriptor<?>> initialValue()
-            {
-                return new LinkedHashSet<ComponentDescriptor<?>>();
-            }
-        };
+            new ThreadLocal<LinkedHashSet<ComponentDescriptor<?>>>() {
+                protected LinkedHashSet<ComponentDescriptor<?>> initialValue() {
+                    return new LinkedHashSet<ComponentDescriptor<?>>();
+                }
+            };
 
     private ComponentManager<T> componentManager;
 
-    public XBeanComponentBuilder() {
-    }
+    public XBeanComponentBuilder() {}
 
     public XBeanComponentBuilder(ComponentManager<T> componentManager) {
         setComponentManager(componentManager);
@@ -94,28 +91,24 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
         return componentManager.getContainer();
     }
 
-    public T build( ComponentDescriptor<T> descriptor, ClassRealm realm, ComponentBuildListener listener )
-        throws ComponentInstantiationException, ComponentLifecycleException
-    {
+    public T build(ComponentDescriptor<T> descriptor, ClassRealm realm, ComponentBuildListener listener)
+            throws ComponentInstantiationException, ComponentLifecycleException {
         LinkedHashSet<ComponentDescriptor<?>> stack = STACK.get();
-        if ( stack.contains( descriptor ) )
-        {
+        if (stack.contains(descriptor)) {
             // create list of circularity
-            List<ComponentDescriptor<?>> circularity = new ArrayList<ComponentDescriptor<?>>( stack );
-            circularity.subList( circularity.indexOf( descriptor ), circularity.size() );
-            circularity.add( descriptor );
+            List<ComponentDescriptor<?>> circularity = new ArrayList<ComponentDescriptor<?>>(stack);
+            circularity.subList(circularity.indexOf(descriptor), circularity.size());
+            circularity.add(descriptor);
 
             // nice circularity message
             String message = "Creation circularity: ";
-            for ( ComponentDescriptor<?> componentDescriptor : circularity )
-            {
+            for (ComponentDescriptor<?> componentDescriptor : circularity) {
                 message += "\n\t[" + componentDescriptor.getRole() + ", " + componentDescriptor.getRoleHint() + "]";
             }
-            throw new ComponentInstantiationException( message );
+            throw new ComponentInstantiationException(message);
         }
-        stack.add( descriptor );
-        try
-        {
+        stack.add(descriptor);
+        try {
             if (listener != null) {
                 listener.beforeComponentCreate(descriptor, realm);
             }
@@ -133,14 +126,13 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
             }
 
             return component;
-        }
-        finally
-        {
-            stack.remove( descriptor );
+        } finally {
+            stack.remove(descriptor);
         }
     }
 
-    protected T createComponentInstance(ComponentDescriptor<T> descriptor, ClassRealm realm) throws ComponentInstantiationException, ComponentLifecycleException {
+    protected T createComponentInstance(ComponentDescriptor<T> descriptor, ClassRealm realm)
+            throws ComponentInstantiationException, ComponentLifecycleException {
         MutablePlexusContainer container = getContainer();
         if (realm == null) {
             realm = descriptor.getRealm();
@@ -152,73 +144,73 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
             ObjectRecipe recipe;
 
             T instance;
-            ComponentFactory componentFactory = container.getComponentFactoryManager().findComponentFactory(descriptor.getComponentFactory());
+            ComponentFactory componentFactory =
+                    container.getComponentFactoryManager().findComponentFactory(descriptor.getComponentFactory());
             if (JavaComponentFactory.class.equals(componentFactory.getClass())) {
                 // xbean-reflect will create object and do injection
-                recipe = createObjectRecipe( null, descriptor, realm );
+                recipe = createObjectRecipe(null, descriptor, realm);
                 instance = (T) recipe.create();
             } else {
                 // todo figure out how to easily let xbean use the factory to construct the component
                 // use object factory to construct component and then inject into that object
                 instance = (T) componentFactory.newInstance(descriptor, realm, container);
-                recipe = createObjectRecipe( instance, descriptor, realm );
-                recipe.setProperties( instance );
+                recipe = createObjectRecipe(instance, descriptor, realm);
+                recipe.setProperties(instance);
             }
 
             // todo figure out how to easily let xbean do this map oriented stuff (if it is actually used in plexus)
-            if ( instance instanceof MapOrientedComponent) {
+            if (instance instanceof MapOrientedComponent) {
                 MapOrientedComponent mapOrientedComponent = (MapOrientedComponent) instance;
                 processMapOrientedComponent(descriptor, mapOrientedComponent, realm);
             }
 
             return instance;
         } catch (Exception e) {
-            throw new ComponentLifecycleException("Error constructing component " + descriptor.getHumanReadableKey(), e);
+            throw new ComponentLifecycleException(
+                    "Error constructing component " + descriptor.getHumanReadableKey(), e);
         } catch (LinkageError e) {
-            throw new ComponentLifecycleException("Error constructing component " + descriptor.getHumanReadableKey(), e);
+            throw new ComponentLifecycleException(
+                    "Error constructing component " + descriptor.getHumanReadableKey(), e);
         } finally {
             Thread.currentThread().setContextClassLoader(oldClassLoader);
         }
     }
 
-    public ObjectRecipe createObjectRecipe(T instance, ComponentDescriptor<T> descriptor, ClassRealm realm) throws ComponentInstantiationException, PlexusConfigurationException {
+    public ObjectRecipe createObjectRecipe(T instance, ComponentDescriptor<T> descriptor, ClassRealm realm)
+            throws ComponentInstantiationException, PlexusConfigurationException {
         String factoryMethod = null;
         String[] constructorArgNames = null;
         Class[] constructorArgTypes = null;
 
-        Class<?> implClass = ( instance != null ) ? instance.getClass() : descriptor.getImplementationClass();
+        Class<?> implClass = (instance != null) ? instance.getClass() : descriptor.getImplementationClass();
 
-        if ( implClass == null || implClass == Object.class )
-        {
+        if (implClass == null || implClass == Object.class) {
             // if the descriptor could not load the class, it's time to report this up to the caller now
-            try
-            {
-                realm.loadClass( descriptor.getImplementation() );
-            }
-            catch ( ClassNotFoundException e )
-            {
-                throw new ComponentInstantiationException( "Could not load implementation class for component "
-                    + descriptor.getHumanReadableKey() + " from class realm " + realm, e );
-            }
-            catch ( LinkageError e )
-            {
-                throw new ComponentInstantiationException( "Could not load implementation class for component "
-                    + descriptor.getHumanReadableKey() + " from class realm " + realm, e );
+            try {
+                realm.loadClass(descriptor.getImplementation());
+            } catch (ClassNotFoundException e) {
+                throw new ComponentInstantiationException(
+                        "Could not load implementation class for component " + descriptor.getHumanReadableKey()
+                                + " from class realm " + realm,
+                        e);
+            } catch (LinkageError e) {
+                throw new ComponentInstantiationException(
+                        "Could not load implementation class for component " + descriptor.getHumanReadableKey()
+                                + " from class realm " + realm,
+                        e);
             }
         }
 
-        ObjectRecipe recipe = new ObjectRecipe( implClass,
-                factoryMethod,
-                constructorArgNames,
-                constructorArgTypes);
+        ObjectRecipe recipe = new ObjectRecipe(implClass, factoryMethod, constructorArgNames, constructorArgTypes);
         recipe.allow(Option.FIELD_INJECTION);
         recipe.allow(Option.PRIVATE_PROPERTIES);
 
         // MapOrientedComponents don't get normal injection
-        if (!MapOrientedComponent.class.isAssignableFrom( implClass )) {
-            for (ComponentRequirement requirement : descriptor.getRequirements() ) {
+        if (!MapOrientedComponent.class.isAssignableFrom(implClass)) {
+            for (ComponentRequirement requirement : descriptor.getRequirements()) {
                 String name = requirement.getFieldName();
-                RequirementRecipe requirementRecipe = new RequirementRecipe(descriptor, requirement, getContainer(), name == null);
+                RequirementRecipe requirementRecipe =
+                        new RequirementRecipe(descriptor, requirement, getContainer(), name == null);
 
                 if (name != null) {
                     recipe.setProperty(name, requirementRecipe);
@@ -228,7 +220,7 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
             }
 
             // add configuration data
-            if (shouldConfigure(descriptor )) {
+            if (shouldConfigure(descriptor)) {
                 PlexusConfiguration configuration = descriptor.getConfiguration();
                 if (configuration != null) {
                     for (String name : configuration.getAttributeNames()) {
@@ -244,13 +236,10 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
                     for (PlexusConfiguration child : configuration.getChildren()) {
                         String name = child.getName();
                         name = fromXML(name);
-                        if ( StringUtils.isNotEmpty( child.getValue( null ) ) )
-                        {
-                            recipe.setProperty( name, child.getValue() );
-                        }
-                        else
-                        {
-                            recipe.setProperty( name, new PlexusConfigurationRecipe( child ) );
+                        if (StringUtils.isNotEmpty(child.getValue(null))) {
+                            recipe.setProperty(name, child.getValue());
+                        } else {
+                            recipe.setProperty(name, new PlexusConfigurationRecipe(child));
                         }
                     }
                 }
@@ -259,7 +248,7 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
         return recipe;
     }
 
-    protected boolean shouldConfigure( ComponentDescriptor<T> descriptor ) {
+    protected boolean shouldConfigure(ComponentDescriptor<T> descriptor) {
         String configuratorId = descriptor.getComponentConfigurator();
 
         if (StringUtils.isEmpty(configuratorId)) {
@@ -267,13 +256,16 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
         }
 
         try {
-            ComponentConfigurator componentConfigurator = getContainer().lookup(ComponentConfigurator.class, configuratorId);
-            return componentConfigurator == null || componentConfigurator.getClass().equals(BasicComponentConfigurator.class);
+            ComponentConfigurator componentConfigurator =
+                    getContainer().lookup(ComponentConfigurator.class, configuratorId);
+            return componentConfigurator == null
+                    || componentConfigurator.getClass().equals(BasicComponentConfigurator.class);
         } catch (ComponentLookupException e) {
         }
 
         return true;
     }
+
     protected String fromXML(String elementName) {
         return StringUtils.lowercaseFirstLetter(StringUtils.removeAndHump(elementName, "-"));
     }
@@ -292,7 +284,11 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
         private MutablePlexusContainer container;
         private boolean autoMatch;
 
-        public RequirementRecipe(ComponentDescriptor<T> componentDescriptor, ComponentRequirement requirement, MutablePlexusContainer container, boolean autoMatch) {
+        public RequirementRecipe(
+                ComponentDescriptor<T> componentDescriptor,
+                ComponentRequirement requirement,
+                MutablePlexusContainer container,
+                boolean autoMatch) {
             this.componentDescriptor = componentDescriptor;
             this.requirement = requirement;
             this.container = container;
@@ -300,15 +296,17 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
         }
 
         public boolean canCreate(Type expectedType) {
-            if (!autoMatch)
-            {
+            if (!autoMatch) {
                 return true;
             }
 
             Class<?> propertyType = toClass(expectedType);
 
             // Never auto match array, map or collection
-            if (propertyType.isArray() || Map.class.isAssignableFrom(propertyType) || Collection.class.isAssignableFrom(propertyType) || requirement instanceof ComponentRequirementList) {
+            if (propertyType.isArray()
+                    || Map.class.isAssignableFrom(propertyType)
+                    || Collection.class.isAssignableFrom(propertyType)
+                    || requirement instanceof ComponentRequirementList) {
                 return false;
             }
 
@@ -316,7 +314,9 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
             try {
                 ComponentRegistry componentRegistry = container.getComponentRegistry();
 
-                return componentRegistry.getComponentDescriptor(propertyType, requirement.getRole(), requirement.getRoleHint()) != null;
+                return componentRegistry.getComponentDescriptor(
+                                propertyType, requirement.getRole(), requirement.getRoleHint())
+                        != null;
             } catch (Exception e) {
             }
 
@@ -360,7 +360,8 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
 
                         // todo verify key type is String
 
-                        assignment = new ComponentMap(container,
+                        assignment = new ComponentMap(
+                                container,
                                 toClass(valueType),
                                 role,
                                 roleHints,
@@ -374,12 +375,15 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
                         // get component type
                         Type[] typeParameters = RecipeHelper.getTypeParameters(Collection.class, expectedType);
                         Type componentType = Object.class;
-                        if (typeParameters != null && typeParameters.length == 1 && typeParameters[0] instanceof Class) {
+                        if (typeParameters != null
+                                && typeParameters.length == 1
+                                && typeParameters[0] instanceof Class) {
                             componentType = typeParameters[0];
                         }
 
-                        assignment = new ComponentList(container,
-                                toClass( componentType ),
+                        assignment = new ComponentList(
+                                container,
+                                toClass(componentType),
                                 role,
                                 roleHints,
                                 componentDescriptor.getHumanReadableKey());
@@ -405,20 +409,23 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
 
                 return assignment;
             } catch (ComponentLookupException e) {
-                if ( requirement.isOptional() )
-                {
+                if (requirement.isOptional()) {
                     return null;
                 }
 
-                throw new ConstructionException("Composition failed of field " + requirement.getFieldName() + " "
-                        + "in object of type " + componentDescriptor.getImplementation() + " because the requirement "
-                        + requirement + " was missing)", e);
+                throw new ConstructionException(
+                        "Composition failed of field " + requirement.getFieldName() + " "
+                                + "in object of type " + componentDescriptor.getImplementation()
+                                + " because the requirement "
+                                + requirement + " was missing)",
+                        e);
             }
         }
 
         @Override
         public String toString() {
-            return "RequirementRecipe[fieldName=" + requirement.getFieldName() + ", role=" + componentDescriptor.getRole() + "]";
+            return "RequirementRecipe[fieldName=" + requirement.getFieldName() + ", role="
+                    + componentDescriptor.getRole() + "]";
         }
     }
 
@@ -449,23 +456,31 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
                 ObjectRecipe caller = (ObjectRecipe) RecipeHelper.getCaller();
                 Class parentClass = toClass(caller.getType());
 
-                Object value = converter.fromConfiguration(lookup, child, toClass(expectedType), parentClass, Thread.currentThread().getContextClassLoader(), new DefaultExpressionEvaluator());
+                Object value = converter.fromConfiguration(
+                        lookup,
+                        child,
+                        toClass(expectedType),
+                        parentClass,
+                        Thread.currentThread().getContextClassLoader(),
+                        new DefaultExpressionEvaluator());
                 return value;
             } catch (ComponentConfigurationException e) {
-                throw new ConstructionException("Unable to convert configuration for property " + child.getName() + " to " + toClass(expectedType).getName());
+                throw new ConstructionException("Unable to convert configuration for property " + child.getName()
+                        + " to " + toClass(expectedType).getName());
             }
         }
 
         private ConverterLookup createConverterLookup() {
             ClassRealm realm = (ClassRealm) Thread.currentThread().getContextClassLoader();
             ConverterLookup lookup = new DefaultConverterLookup();
-            lookup.registerConverter( new ClassRealmConverter(realm) );
+            lookup.registerConverter(new ClassRealmConverter(realm));
             return lookup;
         }
     }
 
-
-    private void processMapOrientedComponent(ComponentDescriptor<?> descriptor, MapOrientedComponent mapOrientedComponent, ClassRealm realm) throws ComponentConfigurationException, ComponentLookupException {
+    private void processMapOrientedComponent(
+            ComponentDescriptor<?> descriptor, MapOrientedComponent mapOrientedComponent, ClassRealm realm)
+            throws ComponentConfigurationException, ComponentLookupException {
         MutablePlexusContainer container = getContainer();
 
         for (ComponentRequirement requirement : descriptor.getRequirements()) {
@@ -495,19 +510,13 @@ public class XBeanComponentBuilder<T> implements ComponentBuilder<T> {
         MapConverter converter = new MapConverter();
         ConverterLookup converterLookup = new DefaultConverterLookup();
         DefaultExpressionEvaluator expressionEvaluator = new DefaultExpressionEvaluator();
-        PlexusConfiguration configuration = container.getConfigurationSource().getConfiguration( descriptor );
+        PlexusConfiguration configuration = container.getConfigurationSource().getConfiguration(descriptor);
 
-        if ( configuration != null )
-        {
-            Map context = (Map) converter.fromConfiguration(converterLookup,
-                                                            configuration,
-                                                            null,
-                                                            null,
-                                                            realm,
-                                                            expressionEvaluator,
-                                                            null );
+        if (configuration != null) {
+            Map context = (Map) converter.fromConfiguration(
+                    converterLookup, configuration, null, null, realm, expressionEvaluator, null);
 
-            mapOrientedComponent.setComponentConfiguration( context );
+            mapOrientedComponent.setComponentConfiguration(context);
         }
     }
 }

@@ -27,33 +27,34 @@ import org.objectweb.asm.Type;
  */
 public class Ann {
 
-  private String desc;
-  private Map<String, Object> params = new LinkedHashMap<String, Object>();
-  
-  public Ann(String desc) {
-    this.desc = desc;
-  }
+    private String desc;
+    private Map<String, Object> params = new LinkedHashMap<String, Object>();
 
-  public void addParam(String name, Object value) {
-    params.put(name, value);
-  }
-  
-  public String getDesc() {
-    return desc;
-  }
-  
-  public String getType() {
-    return Type.getType(desc).getClassName();
-  }
+    public Ann(String desc) {
+        this.desc = desc;
+    }
 
-  public Map<String, Object> getParams() {
-    return params;
-  }
+    public void addParam(String name, Object value) {
+        params.put(name, value);
+    }
 
-  @SuppressWarnings("unchecked")
-  public <T> T getAnnotation(Class<T> c, ClassLoader cl) {
-    return (T) Proxy.newProxyInstance(Ann.class.getClassLoader(), new Class[] { c }, //
-        new AnnInvocationHandler(this, cl, c));
-  }
-  
+    public String getDesc() {
+        return desc;
+    }
+
+    public String getType() {
+        return Type.getType(desc).getClassName();
+    }
+
+    public Map<String, Object> getParams() {
+        return params;
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> T getAnnotation(Class<T> c, ClassLoader cl) {
+        return (T) Proxy.newProxyInstance(
+                Ann.class.getClassLoader(),
+                new Class[] {c}, //
+                new AnnInvocationHandler(this, cl, c));
+    }
 }

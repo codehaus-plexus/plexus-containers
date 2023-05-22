@@ -24,17 +24,13 @@ package org.codehaus.plexus.component.configurator.converters.basic;
  * SOFTWARE.
  */
 
-public class ByteConverter extends AbstractBasicConverter
-{
+public class ByteConverter extends AbstractBasicConverter {
 
-    public boolean canConvert( Class type )
-    {
-        return type.equals( byte.class ) || type.equals( Byte.class );
+    public boolean canConvert(Class type) {
+        return type.equals(byte.class) || type.equals(Byte.class);
     }
 
-    public Object fromString( String str )
-    {
+    public Object fromString(String str) {
         return (byte) Integer.parseInt(str);
     }
-
 }

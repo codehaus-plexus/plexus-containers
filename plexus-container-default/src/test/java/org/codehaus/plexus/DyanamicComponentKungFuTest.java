@@ -25,9 +25,7 @@ import junit.framework.TestCase;
  * @author Jason van Zyl
  *
  */
-public class DyanamicComponentKungFuTest
-    extends TestCase
-{
+public class DyanamicComponentKungFuTest extends TestCase {
     /**
      * Component additions during container operation.
      *
@@ -70,13 +68,10 @@ public class DyanamicComponentKungFuTest
      *
      * <li>Release the component</li>
      * </ol>
-     * 
+     *
      * @throws Exception in case of a failure.
      */
-    public void testAdditionOfComponentDuringContainerOperation()
-        throws Exception
-    {
-    }
+    public void testAdditionOfComponentDuringContainerOperation() throws Exception {}
 
     /**
      * Component replacement during container operation.
@@ -95,12 +90,8 @@ public class DyanamicComponentKungFuTest
      * and error but until much field testing has occurred I'm sure there will be
      * instances where miscalculations happen simply due to lack of experience and
      * usage with dynamic component replacement.
-     * 
+     *
      * @throws Exception in case of a failure.
      */
-    public void testComponentReplacementDuringContainerOperation()
-        throws Exception
-    {
-
-    }
+    public void testComponentReplacementDuringContainerOperation() throws Exception {}
 }

@@ -20,6 +20,4 @@ package org.codehaus.plexus.metadata.gleaner;
  * ???
  *
  */
-public abstract class AbstractClass
-{
-}
+public abstract class AbstractClass {}

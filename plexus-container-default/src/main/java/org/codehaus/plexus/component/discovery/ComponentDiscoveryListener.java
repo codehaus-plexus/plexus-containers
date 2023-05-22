@@ -19,11 +19,10 @@ package org.codehaus.plexus.component.discovery;
 /**
  * A listener which responds in some way to component discovery by a PlexusContainer.
  */
-public interface ComponentDiscoveryListener
-{
+public interface ComponentDiscoveryListener {
     /**
      * Signals to this listener that a component has been discovered.
      * @param event the event that signals what components have been discovered
      */
-    void componentDiscovered( ComponentDiscoveryEvent event );
+    void componentDiscovered(ComponentDiscoveryEvent event);
 }

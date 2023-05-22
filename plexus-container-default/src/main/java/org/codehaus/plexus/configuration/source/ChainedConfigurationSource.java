@@ -10,21 +10,17 @@ import org.codehaus.plexus.configuration.PlexusConfiguration;
  * author and want to create a custom source of configuration for the components in your application then you would most
  * likely want to create a chained configuration source where you can decide the order of processing, but still have the
  * container perform its default behavior.
- * 
+ *
  * @author Jason van Zyl
  */
-public class ChainedConfigurationSource
-    implements ConfigurationSource
-{
+public class ChainedConfigurationSource implements ConfigurationSource {
     private List configurationSources;
 
-    public ChainedConfigurationSource( List configurationSources )
-    {
+    public ChainedConfigurationSource(List configurationSources) {
         this.configurationSources = configurationSources;
     }
 
-    public PlexusConfiguration getConfiguration( ComponentDescriptor componentDescriptor )
-    {
+    public PlexusConfiguration getConfiguration(ComponentDescriptor componentDescriptor) {
         for (Object configurationSource1 : configurationSources) {
             ConfigurationSource configurationSource = (ConfigurationSource) configurationSource1;
 
@@ -38,8 +34,7 @@ public class ChainedConfigurationSource
         return null;
     }
 
-    public List getConfigurationSources()
-    {
+    public List getConfigurationSources() {
         return configurationSources;
     }
 }

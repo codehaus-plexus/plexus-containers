@@ -29,8 +29,7 @@ import org.codehaus.plexus.metadata.merge.support.Mergeable;
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
  */
-public interface MergeStrategy
-{
+public interface MergeStrategy {
     /**
      * Merges a <b>dominant</b> {@link Mergeable} instance with a <b>recessive</b> one.
      *
@@ -38,6 +37,5 @@ public interface MergeStrategy
      * @param rElt Recessive {@link Mergeable} instance.
      * @throws MergeException TODO
      */
-    void apply( Mergeable dElt, Mergeable rElt )
-        throws MergeException;
+    void apply(Mergeable dElt, Mergeable rElt) throws MergeException;
 }

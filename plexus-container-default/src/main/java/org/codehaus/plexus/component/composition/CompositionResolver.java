@@ -16,24 +16,23 @@ package org.codehaus.plexus.component.composition;
  * limitations under the License.
  */
 
-import org.codehaus.plexus.component.repository.ComponentDescriptor;
-
 import java.util.List;
+
+import org.codehaus.plexus.component.repository.ComponentDescriptor;
 
 /**
  * @author Jason van Zyl
  * @author <a href="mailto:mmaczka@interia.pl">Michal Maczka</a>
  */
-public interface CompositionResolver
-{
+public interface CompositionResolver {
     public static final char SEPARATOR_CHAR = ':';
 
     /**
      * @param componentDescriptor {@link ComponentDescriptor}.
      * @throws CycleDetectedInComponentGraphException when cycle is detected
      */
-    void addComponentDescriptor( ComponentDescriptor<?> componentDescriptor ) 
-        throws CycleDetectedInComponentGraphException;
+    void addComponentDescriptor(ComponentDescriptor<?> componentDescriptor)
+            throws CycleDetectedInComponentGraphException;
 
     /**
      * Returns the list of names of components which are required
@@ -44,8 +43,7 @@ public interface CompositionResolver
      * @param roleHint The implementation hint of the component
      * @return The list of components which are required by given component
      */
-    List getRequirements( String role, String roleHint );
-
+    List getRequirements(String role, String roleHint);
 
     /**
      * Returns the list of names of components which are using the component.
@@ -56,7 +54,5 @@ public interface CompositionResolver
      * @param roleHint The implementation hint of the component
      * @return The list of components which are requiring given component
      */
-    List findRequirements( String role, String roleHint );
-
-
+    List findRequirements(String role, String roleHint);
 }

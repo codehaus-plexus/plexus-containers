@@ -26,47 +26,45 @@ import org.objectweb.asm.Type;
  */
 public class AnnField {
 
-  private final AnnClass owner;
-  private final int access;
-  private final String name;
-  private final String desc;
-  private Map<String, Ann> anns = new LinkedHashMap<String,Ann>();
-  
-  public AnnField(AnnClass owner, int access, String name, String desc) {
-    this.owner = owner;
-    this.access = access;
-    this.desc = desc;
-    this.name = name;
-  }
+    private final AnnClass owner;
+    private final int access;
+    private final String name;
+    private final String desc;
+    private Map<String, Ann> anns = new LinkedHashMap<String, Ann>();
 
-  public int getAccess() {
-    return access;
-  }
-  
-  public String getName() {
-    return name;
-  }
-  
-  public String getDesc() {
-    return desc;
-  }
-  
-  public Map<String, Ann> getAnns() {
-    return anns;
-  }
-  
-  public String getType() {
-    return Type.getType(desc).getClassName();
-  }
+    public AnnField(AnnClass owner, int access, String name, String desc) {
+        this.owner = owner;
+        this.access = access;
+        this.desc = desc;
+        this.name = name;
+    }
 
-  public void addAnn(Ann ann) {
-    anns.put(ann.getDesc(), ann);
-  }
-  
-  public <T> T getAnnotation(Class<T> c) {
-    Ann ann = anns.get(Type.getDescriptor(c));
-    return ann == null ? null : ann.getAnnotation(c, owner.getClassLoader());
-  }
+    public int getAccess() {
+        return access;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public Map<String, Ann> getAnns() {
+        return anns;
+    }
+
+    public String getType() {
+        return Type.getType(desc).getClassName();
+    }
+
+    public void addAnn(Ann ann) {
+        anns.put(ann.getDesc(), ann);
+    }
+
+    public <T> T getAnnotation(Class<T> c) {
+        Ann ann = anns.get(Type.getDescriptor(c));
+        return ann == null ? null : ann.getAnnotation(c, owner.getClassLoader());
+    }
 }
-

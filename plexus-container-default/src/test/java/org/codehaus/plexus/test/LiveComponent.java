@@ -16,8 +16,4 @@ package org.codehaus.plexus.test;
  * limitations under the License.
  */
 
-
-public class LiveComponent
-{
-
-}
+public class LiveComponent {}

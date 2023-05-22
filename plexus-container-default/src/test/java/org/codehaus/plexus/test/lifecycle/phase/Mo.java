@@ -22,7 +22,6 @@ package org.codehaus.plexus.test.lifecycle.phase;
  * @author Jason van Zyl
  *
  */
-public interface Mo
-{
+public interface Mo {
     void mo();
 }

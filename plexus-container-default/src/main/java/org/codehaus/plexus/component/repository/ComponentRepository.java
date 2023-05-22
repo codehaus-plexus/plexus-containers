@@ -16,25 +16,24 @@ package org.codehaus.plexus.component.repository;
  * limitations under the License.
  */
 
-import org.codehaus.plexus.classworlds.realm.ClassRealm;
-import org.codehaus.plexus.component.composition.CycleDetectedInComponentGraphException;
-
 import java.util.List;
 import java.util.Map;
 
-public interface ComponentRepository
-{
-    void addComponentDescriptor( ComponentDescriptor<?> componentDescriptor )
-        throws CycleDetectedInComponentGraphException;
+import org.codehaus.plexus.classworlds.realm.ClassRealm;
+import org.codehaus.plexus.component.composition.CycleDetectedInComponentGraphException;
 
-    <T> ComponentDescriptor<T> getComponentDescriptor( Class<T> type, String role, String roleHint );
+public interface ComponentRepository {
+    void addComponentDescriptor(ComponentDescriptor<?> componentDescriptor)
+            throws CycleDetectedInComponentGraphException;
+
+    <T> ComponentDescriptor<T> getComponentDescriptor(Class<T> type, String role, String roleHint);
 
     @Deprecated
-    ComponentDescriptor<?> getComponentDescriptor( String role, String roleHint, ClassRealm realm );
+    ComponentDescriptor<?> getComponentDescriptor(String role, String roleHint, ClassRealm realm);
 
-    <T> Map<String, ComponentDescriptor<T>> getComponentDescriptorMap( Class<T> type, String role );
+    <T> Map<String, ComponentDescriptor<T>> getComponentDescriptorMap(Class<T> type, String role);
 
-    <T> List<ComponentDescriptor<T>> getComponentDescriptorList( Class<T> type, String role );
+    <T> List<ComponentDescriptor<T>> getComponentDescriptorList(Class<T> type, String role);
 
-    void removeComponentRealm( ClassRealm classRealm );
+    void removeComponentRealm(ClassRealm classRealm);
 }

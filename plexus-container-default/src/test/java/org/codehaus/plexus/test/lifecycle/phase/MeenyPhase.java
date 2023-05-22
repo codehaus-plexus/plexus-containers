@@ -20,14 +20,10 @@ import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.codehaus.plexus.component.manager.ComponentManager;
 import org.codehaus.plexus.lifecycle.phase.AbstractPhase;
 
-public class MeenyPhase
-    extends AbstractPhase
-{
-    public void execute( Object object, ComponentManager manager, ClassRealm lookupRealm )
-    {
-        if ( object instanceof Meeny )
-        {
-            ( (Meeny) object ).meeny();
+public class MeenyPhase extends AbstractPhase {
+    public void execute(Object object, ComponentManager manager, ClassRealm lookupRealm) {
+        if (object instanceof Meeny) {
+            ((Meeny) object).meeny();
         }
     }
 }

@@ -21,16 +21,12 @@ package org.codehaus.plexus.component.configurator.expression;
  *
  * @author <a href="mailto:brett@codehaus.org">Brett Porter</a>
  */
-public class ExpressionEvaluationException
-    extends Exception
-{
-    public ExpressionEvaluationException( String message )
-    {
-        super( message );
+public class ExpressionEvaluationException extends Exception {
+    public ExpressionEvaluationException(String message) {
+        super(message);
     }
 
-    public ExpressionEvaluationException( String message, Throwable cause )
-    {
-        super( message, cause );
+    public ExpressionEvaluationException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

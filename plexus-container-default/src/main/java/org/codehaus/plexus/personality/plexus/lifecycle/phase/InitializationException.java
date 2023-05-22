@@ -21,15 +21,12 @@ package org.codehaus.plexus.personality.plexus.lifecycle.phase;
  *
  * @author <a href="mailto:brett@apache.org">Brett Porter</a>
  */
-public class InitializationException extends Exception
-{
-    public InitializationException( String message )
-    {
-        super( message );
+public class InitializationException extends Exception {
+    public InitializationException(String message) {
+        super(message);
     }
 
-    public InitializationException( String message, Throwable cause )
-    {
-        super( message, cause );
+    public InitializationException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

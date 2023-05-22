@@ -18,21 +18,17 @@ package org.codehaus.plexus.logging;
 
 import org.codehaus.plexus.PlexusTestCase;
 
-//TODO: this test will get nuked, this needs to be done programmatically
+// TODO: this test will get nuked, this needs to be done programmatically
 
 /**
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
  */
-public class CustomLoggerManagerTest
-    extends PlexusTestCase
-{
-    public void testBasic()
-        throws Exception
-    {
-        LoggerManager manager = lookup( LoggerManager.class );
+public class CustomLoggerManagerTest extends PlexusTestCase {
+    public void testBasic() throws Exception {
+        LoggerManager manager = lookup(LoggerManager.class);
 
-        assertNotNull( manager );
+        assertNotNull(manager);
 
-        assertEquals( MockLoggerManager.class.getName(), manager.getClass().getName() );
+        assertEquals(MockLoggerManager.class.getName(), manager.getClass().getName());
     }
 }

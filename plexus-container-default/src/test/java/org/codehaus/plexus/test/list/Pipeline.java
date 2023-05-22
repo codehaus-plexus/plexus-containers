@@ -23,8 +23,7 @@ import java.util.Map;
  * @author Jason van Zyl
  *
  */
-public interface Pipeline
-{
+public interface Pipeline {
     static String ROLE = Pipeline.class.getName();
 
     void execute();

@@ -24,21 +24,19 @@ package org.codehaus.plexus.component.configurator;
  * SOFTWARE.
  */
 
-
 /**
  * Listen for configuration changes on an object.
  *
  * @author <a href="mailto:brett@apache.org">Brett Porter</a>
  */
-public interface ConfigurationListener
-{
+public interface ConfigurationListener {
     /**
      * Notify the listener that a field has been set using its setter.
      * @param fieldName the field
      * @param value the value set
      * @param target the target object
      */
-    void notifyFieldChangeUsingSetter( String fieldName, Object value, Object target );
+    void notifyFieldChangeUsingSetter(String fieldName, Object value, Object target);
 
     /**
      * Notify the listener that a field has been set using private field injection.
@@ -46,5 +44,5 @@ public interface ConfigurationListener
      * @param value the value set
      * @param target the target object
      */
-    void notifyFieldChangeUsingReflection( String fieldName, Object value, Object target );
+    void notifyFieldChangeUsingReflection(String fieldName, Object value, Object target);
 }

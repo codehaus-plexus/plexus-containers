@@ -22,7 +22,6 @@ package org.codehaus.plexus.test;
  * @author Jason van Zyl
  *
  */
-public interface LoadOnStartServiceWithRoleHint
-{
+public interface LoadOnStartServiceWithRoleHint {
     String ROLE = LoadOnStartServiceWithRoleHint.class.getName();
 }

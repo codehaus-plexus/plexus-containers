@@ -22,41 +22,33 @@ import java.util.concurrent.ConcurrentMap;
 /**
  * @author Jason van Zyl
  */
-public class DefaultLifecycleHandlerManager
-    implements LifecycleHandlerManager
-{
-    private final ConcurrentMap<String, LifecycleHandler> lifecycleHandlers = new ConcurrentHashMap<String, LifecycleHandler>();
+public class DefaultLifecycleHandlerManager implements LifecycleHandlerManager {
+    private final ConcurrentMap<String, LifecycleHandler> lifecycleHandlers =
+            new ConcurrentHashMap<String, LifecycleHandler>();
 
     private String defaultLifecycleHandlerId = "plexus";
 
-    public void addLifecycleHandler( LifecycleHandler lifecycleHandler )
-    {
-        lifecycleHandlers.put( lifecycleHandler.getId(), lifecycleHandler );
+    public void addLifecycleHandler(LifecycleHandler lifecycleHandler) {
+        lifecycleHandlers.put(lifecycleHandler.getId(), lifecycleHandler);
     }
 
-    public void initialize()
-    {
-        for ( LifecycleHandler lifecycleHandler : lifecycleHandlers.values() )
-        {
+    public void initialize() {
+        for (LifecycleHandler lifecycleHandler : lifecycleHandlers.values()) {
             lifecycleHandler.initialize();
         }
     }
 
-    public LifecycleHandler getLifecycleHandler( String id )
-        throws UndefinedLifecycleHandlerException
-    {
-        if ( id == null )
-        {
+    public LifecycleHandler getLifecycleHandler(String id) throws UndefinedLifecycleHandlerException {
+        if (id == null) {
             id = defaultLifecycleHandlerId;
         }
 
-        LifecycleHandler lifecycleHandler = lifecycleHandlers.get( id );
+        LifecycleHandler lifecycleHandler = lifecycleHandlers.get(id);
 
-        if ( lifecycleHandler == null )
-        {
-            throw new UndefinedLifecycleHandlerException( "Specified lifecycle handler cannot be found: " + id );
+        if (lifecycleHandler == null) {
+            throw new UndefinedLifecycleHandlerException("Specified lifecycle handler cannot be found: " + id);
         }
 
         return lifecycleHandler;
-    }   
+    }
 }

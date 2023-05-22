@@ -6,32 +6,24 @@ import org.codehaus.plexus.test.ComponentA;
 /**
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
  */
-public class DefaultComponentLookupManagerTest
-    extends PlexusTestCase
-{
-    public void testLookupsWithAndWithoutRoleHint()
-        throws Exception
-    {
-        String resource = getConfigurationName( "components.xml" );
+public class DefaultComponentLookupManagerTest extends PlexusTestCase {
+    public void testLookupsWithAndWithoutRoleHint() throws Exception {
+        String resource = getConfigurationName("components.xml");
 
-        System.out.println( "resource = " + resource );
+        System.out.println("resource = " + resource);
 
-        assertNotNull( resource );
+        assertNotNull(resource);
 
-        ContainerConfiguration c = new DefaultContainerConfiguration()
-            .setName( "test" )
-            .setContainerConfiguration( resource );
+        ContainerConfiguration c =
+                new DefaultContainerConfiguration().setName("test").setContainerConfiguration(resource);
 
-        DefaultPlexusContainer container = new DefaultPlexusContainer( c );
+        DefaultPlexusContainer container = new DefaultPlexusContainer(c);
 
-        try
-        {
-            container.lookup( ComponentA.class );
+        try {
+            container.lookup(ComponentA.class);
 
-            fail( "Expected exception" );
-        }
-        catch ( ComponentLookupException e )
-        {
+            fail("Expected exception");
+        } catch (ComponentLookupException e) {
             // expected
         }
     }

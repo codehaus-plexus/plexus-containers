@@ -19,7 +19,6 @@ package org.codehaus.plexus.component;
 import java.util.Map;
 
 import junit.framework.TestCase;
-
 import org.codehaus.plexus.DefaultPlexusContainer;
 import org.codehaus.plexus.PlexusContainer;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
@@ -28,55 +27,50 @@ import org.codehaus.plexus.configuration.PlexusConfiguration;
 import org.codehaus.plexus.configuration.xml.XmlPlexusConfiguration;
 import org.codehaus.plexus.logging.LoggerManager;
 
-public class MapOrientedComponentProcessingTest
-    extends TestCase
-{
+public class MapOrientedComponentProcessingTest extends TestCase {
 
-    public void testShouldFindAndInitializeMapOrientedComponent()
-        throws Exception
-    {
+    public void testShouldFindAndInitializeMapOrientedComponent() throws Exception {
         PlexusContainer embedder = new DefaultPlexusContainer();
 
         ComponentDescriptor<TestMapOrientedComponent> descriptor =
-            new ComponentDescriptor(TestMapOrientedComponent.class, embedder.getContainerRealm());
+                new ComponentDescriptor(TestMapOrientedComponent.class, embedder.getContainerRealm());
 
-        descriptor.setRole( TestMapOrientedComponent.ROLE );
+        descriptor.setRole(TestMapOrientedComponent.ROLE);
 
-        descriptor.setImplementation( TestMapOrientedComponent.ROLE );
+        descriptor.setImplementation(TestMapOrientedComponent.ROLE);
 
-        descriptor.setComponentComposer( "map-oriented" );
+        descriptor.setComponentComposer("map-oriented");
 
-        descriptor.setComponentConfigurator( "map-oriented" );
+        descriptor.setComponentConfigurator("map-oriented");
 
         ComponentRequirement requirement = new ComponentRequirement();
 
-        requirement.setFieldName( "testRequirement" );
+        requirement.setFieldName("testRequirement");
 
-        requirement.setRole( LoggerManager.ROLE );
+        requirement.setRole(LoggerManager.ROLE);
 
-        descriptor.addRequirement( requirement );
+        descriptor.addRequirement(requirement);
 
-        PlexusConfiguration param = new XmlPlexusConfiguration( "testParameter" );
+        PlexusConfiguration param = new XmlPlexusConfiguration("testParameter");
 
-        param.setValue( "testValue" );
+        param.setValue("testValue");
 
-        PlexusConfiguration configuration = new XmlPlexusConfiguration( "configuration" );
+        PlexusConfiguration configuration = new XmlPlexusConfiguration("configuration");
 
-        configuration.addChild( param );
+        configuration.addChild(param);
 
-        descriptor.setConfiguration( configuration );
+        descriptor.setConfiguration(configuration);
 
+        embedder.addComponentDescriptor(descriptor);
 
-        embedder.addComponentDescriptor( descriptor );
-
-        TestMapOrientedComponent component = embedder.lookup( TestMapOrientedComponent.class );
+        TestMapOrientedComponent component = embedder.lookup(TestMapOrientedComponent.class);
 
         Map context = component.getContext();
 
-        assertTrue( "requirement (LogManager) missing from containerContext.",
-                    ( context.get( "testRequirement" ) instanceof LoggerManager ) );
+        assertTrue(
+                "requirement (LogManager) missing from containerContext.",
+                (context.get("testRequirement") instanceof LoggerManager));
 
-        assertEquals( "parameter missing from containerContext.", "testValue", context.get( "testParameter" ) );
+        assertEquals("parameter missing from containerContext.", "testValue", context.get("testParameter"));
     }
-
 }

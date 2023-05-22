@@ -1,6 +1,3 @@
 package org.codehaus.plexus.test;
 
-public class DefaultStartableComponentE
-    extends AbstractStartableComponent
-{
-}
+public class DefaultStartableComponentE extends AbstractStartableComponent {}

@@ -21,16 +21,12 @@ package org.codehaus.plexus.personality.plexus.lifecycle.phase;
  *
  * @author <a href="mailto:brett@codehaus.org">Brett Porter</a>
  */
-public class StoppingException
-    extends Exception
-{
-    public StoppingException( String message )
-    {
-        super( message );
+public class StoppingException extends Exception {
+    public StoppingException(String message) {
+        super(message);
     }
 
-    public StoppingException( String message, Throwable cause )
-    {
-        super( message, cause );
+    public StoppingException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

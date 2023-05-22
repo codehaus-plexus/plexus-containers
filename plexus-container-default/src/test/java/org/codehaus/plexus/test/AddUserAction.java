@@ -18,11 +18,8 @@ package org.codehaus.plexus.test;
 
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public class AddUserAction
-    implements Action
-{
-}
+public class AddUserAction implements Action {}

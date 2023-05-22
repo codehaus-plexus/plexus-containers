@@ -35,65 +35,47 @@ import org.codehaus.plexus.configuration.PlexusConfiguration;
 
 /**
  */
-public abstract class AbstractBasicConverter
-    extends AbstractConfigurationConverter
-{
-    protected abstract Object fromString( String str )
-        throws ComponentConfigurationException;
+public abstract class AbstractBasicConverter extends AbstractConfigurationConverter {
+    protected abstract Object fromString(String str) throws ComponentConfigurationException;
 
-    protected Object fromExpression( PlexusConfiguration configuration, ExpressionEvaluator expressionEvaluator, Class type )
-        throws ComponentConfigurationException
-    {
+    protected Object fromExpression(
+            PlexusConfiguration configuration, ExpressionEvaluator expressionEvaluator, Class type)
+            throws ComponentConfigurationException {
         Object v = null;
 
-        String value = configuration.getValue( null );
+        String value = configuration.getValue(null);
 
-        if ( value != null && value.length() > 0 )
-        {
+        if (value != null && value.length() > 0) {
             // Object is provided by an expression
             // This seems a bit ugly... canConvert really should return false in this instance, but it doesn't have the
             //   configuration to know better
-            try
-            {
-                if ( expressionEvaluator instanceof TypeAwareExpressionEvaluator )
-                {
-                    v = ( (TypeAwareExpressionEvaluator) expressionEvaluator ).evaluate( value, type );
+            try {
+                if (expressionEvaluator instanceof TypeAwareExpressionEvaluator) {
+                    v = ((TypeAwareExpressionEvaluator) expressionEvaluator).evaluate(value, type);
+                } else {
+                    v = expressionEvaluator.evaluate(value);
                 }
-                else
-                {
-                    v = expressionEvaluator.evaluate( value );
-                }
-            }
-            catch ( ExpressionEvaluationException e )
-            {
-                String msg = "Error evaluating the expression '" + value + "' for configuration value '" +
-                    configuration.getName() + "'";
-                throw new ComponentConfigurationException( configuration, msg, e );
+            } catch (ExpressionEvaluationException e) {
+                String msg = "Error evaluating the expression '" + value + "' for configuration value '"
+                        + configuration.getName() + "'";
+                throw new ComponentConfigurationException(configuration, msg, e);
             }
         }
 
-        if ( v == null )
-        {
-            value = configuration.getAttribute( "default-value", null );
+        if (v == null) {
+            value = configuration.getAttribute("default-value", null);
 
-            if ( value != null && value.length() > 0 )
-            {
-                try
-                {
-                    if ( expressionEvaluator instanceof TypeAwareExpressionEvaluator )
-                    {
-                        v = ( (TypeAwareExpressionEvaluator) expressionEvaluator ).evaluate( value, type );
+            if (value != null && value.length() > 0) {
+                try {
+                    if (expressionEvaluator instanceof TypeAwareExpressionEvaluator) {
+                        v = ((TypeAwareExpressionEvaluator) expressionEvaluator).evaluate(value, type);
+                    } else {
+                        v = expressionEvaluator.evaluate(value);
                     }
-                    else
-                    {
-                        v = expressionEvaluator.evaluate( value );
-                    }
-                }
-                catch ( ExpressionEvaluationException e )
-                {
-                    String msg = "Error evaluating the expression '" + value + "' for configuration value '" +
-                        configuration.getName() + "'";
-                    throw new ComponentConfigurationException( configuration, msg, e );
+                } catch (ExpressionEvaluationException e) {
+                    String msg = "Error evaluating the expression '" + value + "' for configuration value '"
+                            + configuration.getName() + "'";
+                    throw new ComponentConfigurationException(configuration, msg, e);
                 }
             }
         }
@@ -106,30 +88,28 @@ public abstract class AbstractBasicConverter
         return v;
     }
 
-    public Object fromConfiguration( ConverterLookup converterLookup, PlexusConfiguration configuration, Class type,
-                                     Class baseType, ClassLoader classLoader, ExpressionEvaluator expressionEvaluator,
-                                     ConfigurationListener listener )
-        throws ComponentConfigurationException
-    {
-        if ( configuration.getChildCount() > 0 )
-        {
-            throw new ComponentConfigurationException( "When configuring a basic element the configuration cannot " +
-                "contain any child elements. " + "Configuration element '" + configuration.getName() + "'." );
+    public Object fromConfiguration(
+            ConverterLookup converterLookup,
+            PlexusConfiguration configuration,
+            Class type,
+            Class baseType,
+            ClassLoader classLoader,
+            ExpressionEvaluator expressionEvaluator,
+            ConfigurationListener listener)
+            throws ComponentConfigurationException {
+        if (configuration.getChildCount() > 0) {
+            throw new ComponentConfigurationException("When configuring a basic element the configuration cannot "
+                    + "contain any child elements. " + "Configuration element '" + configuration.getName() + "'.");
         }
 
-        Object retValue = fromExpression( configuration, expressionEvaluator, type );
+        Object retValue = fromExpression(configuration, expressionEvaluator, type);
 
-        if ( retValue instanceof String )
-        {
-            try
-            {
-                retValue = fromString( (String) retValue );
-            }
-            catch ( ComponentConfigurationException e )
-            {
-                if ( e.getFailedConfiguration() == null )
-                {
-                    e.setFailedConfiguration( configuration );
+        if (retValue instanceof String) {
+            try {
+                retValue = fromString((String) retValue);
+            } catch (ComponentConfigurationException e) {
+                if (e.getFailedConfiguration() == null) {
+                    e.setFailedConfiguration(configuration);
                 }
 
                 throw e;

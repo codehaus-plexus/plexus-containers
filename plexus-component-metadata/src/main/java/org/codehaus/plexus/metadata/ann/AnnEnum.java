@@ -23,56 +23,55 @@ import org.objectweb.asm.Type;
  */
 public class AnnEnum {
 
-  private final String desc;
-  private final String value;
+    private final String desc;
+    private final String value;
 
-  public AnnEnum(String desc, String value) {
-    this.desc = desc;
-    this.value = value;
-  }
+    public AnnEnum(String desc, String value) {
+        this.desc = desc;
+        this.value = value;
+    }
 
-  public String getDesc() {
-    return desc;
-  }
+    public String getDesc() {
+        return desc;
+    }
 
-  public String getValue() {
-    return value;
-  }
-  
-  public String getType() {
-    return Type.getType(desc).getClassName(); 
-  }
+    public String getValue() {
+        return value;
+    }
 
-  public int hashCode() {
-    return 31 * (31 + desc.hashCode()) + value.hashCode();
-  }
+    public String getType() {
+        return Type.getType(desc).getClassName();
+    }
 
-  public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
+    public int hashCode() {
+        return 31 * (31 + desc.hashCode()) + value.hashCode();
     }
-    if (obj == null) {
-      return false;
+
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        AnnEnum other = (AnnEnum) obj;
+        if (desc == null) {
+            if (other.desc != null) {
+                return false;
+            }
+        } else if (!desc.equals(other.desc)) {
+            return false;
+        }
+        if (value == null) {
+            if (other.value != null) {
+                return false;
+            }
+        } else if (!value.equals(other.value)) {
+            return false;
+        }
+        return true;
     }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    AnnEnum other = (AnnEnum) obj;
-    if (desc == null) {
-      if (other.desc != null) {
-        return false;
-      }
-    } else if (!desc.equals(other.desc)) {
-      return false;
-    }
-    if (value == null) {
-      if (other.value != null) {
-        return false;
-      }
-    } else if (!value.equals(other.value)) {
-      return false;
-    }
-    return true;
-  }
-  
 }

@@ -1,28 +1,27 @@
 package org.codehaus.plexus;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
 import static org.junit.Assert.*;
 
-public class PlexusJUnit4TestCaseTest
-{
+public class PlexusJUnit4TestCaseTest {
 
-    private static AtomicBoolean run = new AtomicBoolean( false );
-    public static class MyTest
-        extends PlexusJUnit4TestCase {
+    private static AtomicBoolean run = new AtomicBoolean(false);
+
+    public static class MyTest extends PlexusJUnit4TestCase {
 
         @Test
-        public void yeah(){
-            run.set( true );
+        public void yeah() {
+            run.set(true);
         }
     }
 
     @Test
-    public void runMytest(){
+    public void runMytest() {
         JUnitCore.runClasses(MyTest.class);
-        assertTrue( run.get() );
+        assertTrue(run.get());
     }
 }

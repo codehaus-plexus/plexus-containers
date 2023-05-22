@@ -18,12 +18,11 @@ package org.codehaus.plexus.test.map;
 
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public interface Activity
-{
+public interface Activity {
     static String ROLE = Activity.class.getName();
 
     void execute();

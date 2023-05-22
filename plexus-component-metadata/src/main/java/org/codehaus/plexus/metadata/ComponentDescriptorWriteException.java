@@ -27,21 +27,16 @@ package org.codehaus.plexus.metadata;
 /**
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
  */
-public class ComponentDescriptorWriteException
-    extends Exception
-{
-    public ComponentDescriptorWriteException( String message )
-    {
-        super( message );
+public class ComponentDescriptorWriteException extends Exception {
+    public ComponentDescriptorWriteException(String message) {
+        super(message);
     }
 
-    public ComponentDescriptorWriteException( String message, Throwable cause )
-    {
-        super( message, cause );
+    public ComponentDescriptorWriteException(String message, Throwable cause) {
+        super(message, cause);
     }
 
-    public ComponentDescriptorWriteException( Throwable cause )
-    {
-        super( cause );
+    public ComponentDescriptorWriteException(Throwable cause) {
+        super(cause);
     }
 }

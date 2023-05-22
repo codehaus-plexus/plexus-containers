@@ -16,11 +16,8 @@ package org.codehaus.plexus.lifecycle;
  * limitations under the License.
  */
 
-public class UndefinedLifecycleHandlerException
-    extends Exception
-{
-    public UndefinedLifecycleHandlerException( String message )
-    {
-        super( message );
+public class UndefinedLifecycleHandlerException extends Exception {
+    public UndefinedLifecycleHandlerException(String message) {
+        super(message);
     }
 }

@@ -18,12 +18,11 @@ package org.codehaus.plexus.test.list;
 
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public interface Valve
-{
+public interface Valve {
     static String ROLE = Valve.class.getName();
 
     void execute();

@@ -33,8 +33,7 @@ import java.util.Vector;
 /**
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
  */
-public class ComponentWithCollectionFields
-{
+public class ComponentWithCollectionFields {
     private Vector vector;
 
     private HashSet hashSet;
@@ -47,33 +46,27 @@ public class ComponentWithCollectionFields
 
     private SortedSet sortedSet;
 
-    public Vector getVector()
-    {
+    public Vector getVector() {
         return vector;
     }
 
-    public HashSet getHashSet()
-    {
+    public HashSet getHashSet() {
         return hashSet;
     }
 
-    public List getList()
-    {
+    public List getList() {
         return list;
     }
 
-    public List getStringList()
-    {
+    public List getStringList() {
         return stringList;
     }
 
-    public Set getSet()
-    {
+    public Set getSet() {
         return set;
     }
 
-    public SortedSet getSortedSet()
-    {
+    public SortedSet getSortedSet() {
         return sortedSet;
     }
 }

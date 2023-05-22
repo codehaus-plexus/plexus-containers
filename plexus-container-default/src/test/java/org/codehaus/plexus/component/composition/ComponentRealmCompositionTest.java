@@ -1,19 +1,18 @@
 package org.codehaus.plexus.component.composition;
 
-import org.codehaus.plexus.PlexusTestCase;
-import static org.codehaus.plexus.PlexusConstants.PLEXUS_DEFAULT_HINT;
-import org.codehaus.plexus.classworlds.realm.ClassRealm;
-
 import java.io.File;
 import java.net.URL;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 
+import org.codehaus.plexus.PlexusTestCase;
+import org.codehaus.plexus.classworlds.realm.ClassRealm;
+
+import static org.codehaus.plexus.PlexusConstants.PLEXUS_DEFAULT_HINT;
+
 /** @author Jason van Zyl */
-public class ComponentRealmCompositionTest
-    extends PlexusTestCase
-{
+public class ComponentRealmCompositionTest extends PlexusTestCase {
     //
     // Component archives
     //
@@ -36,122 +35,97 @@ public class ComponentRealmCompositionTest
     private static final String PLUGIN_0_REALM = "plugin0Realm";
     private static final String PLUGIN_1_REALM = "plugin1Realm";
 
-    protected void setUp() throws Exception
-    {
+    protected void setUp() throws Exception {
         super.setUp();
 
         // Create ClassRealm plugin0 with plugin0 -> A, plugin0 -> B
-        createClassRealm( PLUGIN_0_REALM,
-            PLUGIN_0_JAR,
-            COMPONENT_A_JAR,
-            COMPONENT_B_JAR,
-            ARCHIVER_JAR );
+        createClassRealm(PLUGIN_0_REALM, PLUGIN_0_JAR, COMPONENT_A_JAR, COMPONENT_B_JAR, ARCHIVER_JAR);
 
         // Create ClassRealm plugin1 with plugin1 -> A, plugin1 -> C
-        createClassRealm( PLUGIN_1_REALM,
-            PLUGIN_1_JAR,
-            COMPONENT_A_JAR,
-            COMPONENT_C_JAR,
-            ARCHIVER_JAR );
+        createClassRealm(PLUGIN_1_REALM, PLUGIN_1_JAR, COMPONENT_A_JAR, COMPONENT_C_JAR, ARCHIVER_JAR);
     }
 
     /*
-    * We are testing that when the same component implementation exists in more then one
-    * realm and components depend on those implementations, that the right realm is used
-    * to wire up the components.
-    *
-    * An example of this in practice are Maven plugins where each plugin is loaded into
-    * a separate realm and the plugin may have dependencies on other components. We want
-    * to make sure that a requirement, say a JarArchiver, for a given component, say the
-    * maven-jar-plugin, is wired up with a JarArchiver taken from the same realm as the
-    * maven-jar-plugin and not a different realm.
-    */
+     * We are testing that when the same component implementation exists in more then one
+     * realm and components depend on those implementations, that the right realm is used
+     * to wire up the components.
+     *
+     * An example of this in practice are Maven plugins where each plugin is loaded into
+     * a separate realm and the plugin may have dependencies on other components. We want
+     * to make sure that a requirement, say a JarArchiver, for a given component, say the
+     * maven-jar-plugin, is wired up with a JarArchiver taken from the same realm as the
+     * maven-jar-plugin and not a different realm.
+     */
 
-    public void testCompositionWhereTheSameImplementationExistsInDifferentRealms()
-        throws Exception
-    {
+    public void testCompositionWhereTheSameImplementationExistsInDifferentRealms() throws Exception {
         // Plugin0
-        getContainer().lookup( PLUGIN_0_ROLE );
-
+        getContainer().lookup(PLUGIN_0_ROLE);
 
         // Plugin1
-        getContainer().lookup( PLUGIN_1_ROLE );
+        getContainer().lookup(PLUGIN_1_ROLE);
 
         // Plugin0(alt)
-        getContainer().lookup( PLUGIN_0_ROLE, "alt" );
-
+        getContainer().lookup(PLUGIN_0_ROLE, "alt");
 
         // Plugin1(alt)
-        getContainer().lookup( PLUGIN_1_ROLE, "alt" );
+        getContainer().lookup(PLUGIN_1_ROLE, "alt");
     }
 
     public void testThatASingletonComponentIntheCoreRealmWhenLookedUpInComponentRealmsYieldsTheSameInstance()
-        throws Exception
-    {
-    }
+            throws Exception {}
 
-    public void testMultiRealmLookupMap()
-        throws Exception
-    {
-        Map<String,Object> plugin0Map = getContainer().lookupMap( PLUGIN_0_ROLE );
-        assertNotNull("plugin0Map is null", plugin0Map );
-        assertNotNull("plugin0Map does not contain a DefaultPlugin0", plugin0Map.get( PLEXUS_DEFAULT_HINT));
-        assertNotNull("plugin0Map does not contain a AltPlugin0", plugin0Map.get( "alt"));
+    public void testMultiRealmLookupMap() throws Exception {
+        Map<String, Object> plugin0Map = getContainer().lookupMap(PLUGIN_0_ROLE);
+        assertNotNull("plugin0Map is null", plugin0Map);
+        assertNotNull("plugin0Map does not contain a DefaultPlugin0", plugin0Map.get(PLEXUS_DEFAULT_HINT));
+        assertNotNull("plugin0Map does not contain a AltPlugin0", plugin0Map.get("alt"));
         assertEquals("Expected only 2 components in plugin0Map", 2, plugin0Map.size());
 
-        Map<String,Object> plugin1Map = getContainer().lookupMap( PLUGIN_1_ROLE );
+        Map<String, Object> plugin1Map = getContainer().lookupMap(PLUGIN_1_ROLE);
         assertNotNull("plugin1Map is null", plugin1Map);
-        assertNotNull("plugin1Map does not contain a DefaultPlugin1", plugin1Map.get( PLEXUS_DEFAULT_HINT));
-        assertNotNull("plugin1Map does not contain a AltPlugin1", plugin1Map.get( "alt"));
+        assertNotNull("plugin1Map does not contain a DefaultPlugin1", plugin1Map.get(PLEXUS_DEFAULT_HINT));
+        assertNotNull("plugin1Map does not contain a AltPlugin1", plugin1Map.get("alt"));
         assertEquals("Expected only 2 components in plugin1Map", 2, plugin1Map.size());
-
     }
 
-    public void testMultiRealmLookupList()
-        throws Exception
-    {
-        List<Object> plugin0List = getContainer().lookupList( PLUGIN_0_ROLE );
-        assertNotNull("plugin0List is null", plugin0List );
-        Map<String, Object> plugin0Map = mapByClassSimpleName( plugin0List );
-        assertNotNull("plugin0List does not contain a DefaultPlugin0", plugin0Map.get( "DefaultPlugin0"));
-        assertNotNull("plugin0List does not contain a AltPlugin0", plugin0Map.get( "AltPlugin0"));
+    public void testMultiRealmLookupList() throws Exception {
+        List<Object> plugin0List = getContainer().lookupList(PLUGIN_0_ROLE);
+        assertNotNull("plugin0List is null", plugin0List);
+        Map<String, Object> plugin0Map = mapByClassSimpleName(plugin0List);
+        assertNotNull("plugin0List does not contain a DefaultPlugin0", plugin0Map.get("DefaultPlugin0"));
+        assertNotNull("plugin0List does not contain a AltPlugin0", plugin0Map.get("AltPlugin0"));
         assertEquals("Expected only 2 components in plugin0Map", 2, plugin0Map.size());
 
-        List<Object> plugin1List = getContainer().lookupList( PLUGIN_1_ROLE );
-        assertNotNull("plugin1List is null", plugin1List );
-        Map<String, Object> plugin1Map = mapByClassSimpleName( plugin1List );
-        assertNotNull("plugin1List does not contain a DefaultPlugin1", plugin1Map.get( "DefaultPlugin1"));
-        assertNotNull("plugin1List does not contain a AltPlugin1", plugin1Map.get( "AltPlugin1"));
+        List<Object> plugin1List = getContainer().lookupList(PLUGIN_1_ROLE);
+        assertNotNull("plugin1List is null", plugin1List);
+        Map<String, Object> plugin1Map = mapByClassSimpleName(plugin1List);
+        assertNotNull("plugin1List does not contain a DefaultPlugin1", plugin1Map.get("DefaultPlugin1"));
+        assertNotNull("plugin1List does not contain a AltPlugin1", plugin1Map.get("AltPlugin1"));
         assertEquals("Expected only 2 components in plugin0Map", 2, plugin1Map.size());
     }
 
-    private ClassRealm createClassRealm(String id, String... jars)
-        throws Exception
-    {
+    private ClassRealm createClassRealm(String id, String... jars) throws Exception {
         // create the realm
-        ClassRealm classRealm = getContainer().createChildRealm( id );
+        ClassRealm classRealm = getContainer().createChildRealm(id);
 
         // populate the realm
-        for ( String jar : jars )
-        {
+        for (String jar : jars) {
             File file = new File(jar);
-            assertTrue( jar + " is not a file", file.isFile() );
+            assertTrue(jar + " is not a file", file.isFile());
 
             URL url = file.toURI().toURL();
-            classRealm.addURL( url );
+            classRealm.addURL(url);
         }
 
         // descover all component definitions in the realm and register them with the repository
-        getContainer().discoverComponents( classRealm );
+        getContainer().discoverComponents(classRealm);
 
         return classRealm;
     }
 
-    private Map<String, Object> mapByClassSimpleName(List<Object> objects)
-    {
+    private Map<String, Object> mapByClassSimpleName(List<Object> objects) {
         Map<String, Object> map = new TreeMap<String, Object>();
-        for ( Object object : objects )
-        {
+        for (Object object : objects) {
             map.put(object.getClass().getSimpleName(), object);
         }
         return map;

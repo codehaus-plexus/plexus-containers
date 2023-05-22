@@ -16,6 +16,11 @@ package org.codehaus.plexus.component.discovery;
  * limitations under the License.
  */
 
+import java.io.File;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
 import org.codehaus.plexus.PlexusTestCase;
 import org.codehaus.plexus.classworlds.ClassWorld;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
@@ -23,52 +28,45 @@ import org.codehaus.plexus.component.repository.ComponentDescriptor;
 import org.codehaus.plexus.component.repository.ComponentSetDescriptor;
 import org.codehaus.plexus.context.DefaultContext;
 
-import java.io.File;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-
 /**
  * @author Jason van Zyl
  *
  */
-public class ComponentDiscovererTest
-    extends PlexusTestCase
-{
-    public void testDefaultComponentDiscoverer()
-        throws Exception
-    {
+public class ComponentDiscovererTest extends PlexusTestCase {
+    public void testDefaultComponentDiscoverer() throws Exception {
         ComponentDiscoverer componentDiscoverer = new DefaultComponentDiscoverer();
 
         ClassWorld classWorld = new ClassWorld();
 
-        ClassRealm core = classWorld.newRealm( "core" );
+        ClassRealm core = classWorld.newRealm("core");
 
-        File testClasses = new File( getBasedir(), "target/test-classes" );
+        File testClasses = new File(getBasedir(), "target/test-classes");
 
-        core.addURL( testClasses.toURL() );
+        core.addURL(testClasses.toURL());
 
-        File classes = new File( getBasedir(), "target/classes" );
+        File classes = new File(getBasedir(), "target/classes");
 
-        core.addURL( classes.toURL() );
+        core.addURL(classes.toURL());
 
-        List<ComponentSetDescriptor> componentSetDescriptors = componentDiscoverer.findComponents( new DefaultContext(), core );
+        List<ComponentSetDescriptor> componentSetDescriptors =
+                componentDiscoverer.findComponents(new DefaultContext(), core);
 
-        ComponentDescriptor<?> componentDescriptor = byImplementation(componentSetDescriptors).get( "org.codehaus.plexus.component.discovery.DefaultDiscoveredComponent" );
+        ComponentDescriptor<?> componentDescriptor = byImplementation(componentSetDescriptors)
+                .get("org.codehaus.plexus.component.discovery.DefaultDiscoveredComponent");
 
-        assertNotNull("componentDescriptor is null", componentDescriptor );
+        assertNotNull("componentDescriptor is null", componentDescriptor);
 
-        assertEquals( "org.codehaus.plexus.component.discovery.DiscoveredComponent", componentDescriptor.getRole() );
+        assertEquals("org.codehaus.plexus.component.discovery.DiscoveredComponent", componentDescriptor.getRole());
 
-        assertEquals( "org.codehaus.plexus.component.discovery.DefaultDiscoveredComponent", componentDescriptor.getImplementation() );
+        assertEquals(
+                "org.codehaus.plexus.component.discovery.DefaultDiscoveredComponent",
+                componentDescriptor.getImplementation());
     }
 
     private static Map<String, ComponentDescriptor<?>> byImplementation(List<ComponentSetDescriptor> descriptorSets) {
         TreeMap<String, ComponentDescriptor<?>> index = new TreeMap<String, ComponentDescriptor<?>>();
-        for ( ComponentSetDescriptor descriptorSet : descriptorSets )
-        {
-            for ( ComponentDescriptor<?> descriptor : descriptorSet.getComponents() )
-            {
+        for (ComponentSetDescriptor descriptorSet : descriptorSets) {
+            for (ComponentDescriptor<?> descriptor : descriptorSet.getComponents()) {
                 index.put(descriptor.getImplementation(), descriptor);
             }
         }

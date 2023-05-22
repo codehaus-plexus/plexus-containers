@@ -18,11 +18,8 @@ package org.codehaus.plexus.test.list;
 
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public class ValveTwo
-    extends AbstractValve
-{
-}
+public class ValveTwo extends AbstractValve {}

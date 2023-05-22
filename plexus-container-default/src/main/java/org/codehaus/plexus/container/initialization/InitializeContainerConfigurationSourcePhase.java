@@ -23,12 +23,9 @@ import org.codehaus.plexus.configuration.source.ContainerConfigurationSource;
  * @author Jason van Zyl
  * @author cstamas
  */
-public class InitializeContainerConfigurationSourcePhase
-    extends AbstractCoreComponentInitializationPhase
-{
-    public void initializeCoreComponent( ContainerInitializationContext context )
-        throws ContainerInitializationException
-    {
+public class InitializeContainerConfigurationSourcePhase extends AbstractCoreComponentInitializationPhase {
+    public void initializeCoreComponent(ContainerInitializationContext context)
+            throws ContainerInitializationException {
         ConfigurationSource configurationSource = context.getContainer().getConfigurationSource();
 
         // ----------------------------------------------------------------------
@@ -36,10 +33,9 @@ public class InitializeContainerConfigurationSourcePhase
         // to check. If it hasn't then we will add the default container config source.
         // ----------------------------------------------------------------------
 
-        if ( configurationSource == null )
-        {
+        if (configurationSource == null) {
             // adding default source for container to enable lookups
-            context.getContainer().setConfigurationSource( new ContainerConfigurationSource() );
+            context.getContainer().setConfigurationSource(new ContainerConfigurationSource());
         }
     }
 }

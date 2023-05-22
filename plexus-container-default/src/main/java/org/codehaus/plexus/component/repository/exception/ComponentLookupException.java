@@ -27,10 +27,8 @@ import org.codehaus.plexus.classworlds.realm.ClassRealm;
  *
  * @author Jason van Zyl
  */
-public class ComponentLookupException
-    extends Exception
-{
-    private String LS = System.getProperty( "line.separator" );
+public class ComponentLookupException extends Exception {
+    private String LS = System.getProperty("line.separator");
 
     private String role;
 
@@ -38,38 +36,24 @@ public class ComponentLookupException
 
     private ClassRealm realm;
 
-    public ComponentLookupException( String message, String role, String roleHint )
-    {
-        super( message );
+    public ComponentLookupException(String message, String role, String roleHint) {
+        super(message);
 
         this.role = role;
 
         this.roleHint = roleHint;
     }
 
-    public ComponentLookupException( String message, String role, String roleHint, Throwable cause )
-    {
-        super( message, cause );
+    public ComponentLookupException(String message, String role, String roleHint, Throwable cause) {
+        super(message, cause);
 
         this.role = role;
 
         this.roleHint = roleHint;
     }
 
-    public ComponentLookupException( String message, String role, String roleHint, ClassRealm realm )
-    {
-        super( message );
-
-        this.role = role;
-
-        this.roleHint = roleHint;
-
-        this.realm = realm;
-    }
-
-    public ComponentLookupException( String message, String role, String roleHint, ClassRealm realm, Throwable cause )
-    {
-        super( message, cause );
+    public ComponentLookupException(String message, String role, String roleHint, ClassRealm realm) {
+        super(message);
 
         this.role = role;
 
@@ -78,25 +62,36 @@ public class ComponentLookupException
         this.realm = realm;
     }
 
-    public String getMessage()
-    {
+    public ComponentLookupException(String message, String role, String roleHint, ClassRealm realm, Throwable cause) {
+        super(message, cause);
+
+        this.role = role;
+
+        this.roleHint = roleHint;
+
+        this.realm = realm;
+    }
+
+    public String getMessage() {
         StringBuilder sb = new StringBuilder()
-            .append( super.getMessage() ).append( LS )
-            .append( "      role: ").append( role ).append( LS )
-            .append( "  roleHint: ").append( roleHint ).append( LS )
-            .append("classRealm: ");
+                .append(super.getMessage())
+                .append(LS)
+                .append("      role: ")
+                .append(role)
+                .append(LS)
+                .append("  roleHint: ")
+                .append(roleHint)
+                .append(LS)
+                .append("classRealm: ");
 
-        if ( realm != null )
-        {
-            sb.append( realm.getId() ).append( LS );
-            ByteArrayOutputStream os = new ByteArrayOutputStream( 1024 );
-            PrintStream ps = new PrintStream( os );
-            realm.display( ps );
-            sb.append( os.toString() );
-        }
-        else
-        {
-            sb.append( "none specified" );
+        if (realm != null) {
+            sb.append(realm.getId()).append(LS);
+            ByteArrayOutputStream os = new ByteArrayOutputStream(1024);
+            PrintStream ps = new PrintStream(os);
+            realm.display(ps);
+            sb.append(os.toString());
+        } else {
+            sb.append("none specified");
         }
 
         return sb.toString();

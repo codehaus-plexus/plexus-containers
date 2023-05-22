@@ -33,21 +33,17 @@ import org.jdom2.Document;
  *
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
  */
-@Component(role=Merger.class,hint="plexusXml")
-public class PlexusXmlMerger
-    extends AbstractMerger
-{
+@Component(role = Merger.class, hint = "plexusXml")
+public class PlexusXmlMerger extends AbstractMerger {
     /** {@inheritDoc} */
-    public Document merge( Document dDocument, Document rDocument )
-        throws MergeException
-    {
+    public Document merge(Document dDocument, Document rDocument) throws MergeException {
         // TODO: Ideally we don't want to manipulate the original
-        // dominant document but use its copy for merge. 
-        //Document mDoc = (Document) dDocument.clone();        // doesn't merge properly
+        // dominant document but use its copy for merge.
+        // Document mDoc = (Document) dDocument.clone();        // doesn't merge properly
         Document mDoc = dDocument;
-        PlexusRootElement dCSE = new PlexusRootElement( mDoc.getRootElement() );
-        PlexusRootElement rCSE = new PlexusRootElement( rDocument.getRootElement() );
-        dCSE.merge( rCSE );
+        PlexusRootElement dCSE = new PlexusRootElement(mDoc.getRootElement());
+        PlexusRootElement rCSE = new PlexusRootElement(rDocument.getRootElement());
+        dCSE.merge(rCSE);
         // the contents are merged into the dominant document DOM.
         return mDoc;
     }

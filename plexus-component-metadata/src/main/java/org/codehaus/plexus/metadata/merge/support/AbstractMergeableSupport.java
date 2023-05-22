@@ -45,9 +45,7 @@ import org.jdom2.filter.Filter;
  * @author khmarbaise
  *
  */
-public abstract class AbstractMergeableSupport
-    implements Mergeable
-{
+public abstract class AbstractMergeableSupport implements Mergeable {
     /**
      * Wrapped JDOM element.
      */
@@ -61,14 +59,12 @@ public abstract class AbstractMergeableSupport
     /**
      * @param element {@link Element}
      */
-    public AbstractMergeableSupport( Element element )
-    {
+    public AbstractMergeableSupport(Element element) {
         this.element = element;
     }
 
     /** {@inheritDoc} */
-    public abstract void merge( Mergeable me )
-        throws MergeException;
+    public abstract void merge(Mergeable me) throws MergeException;
 
     /**
      * Determines if the passed in {@link Mergeable} was of same type as this
@@ -78,7 +74,7 @@ public abstract class AbstractMergeableSupport
      * @return <code>true</code> if the passed in Mergeable can be merged with
      *         the current Mergeable.
      */
-    protected abstract boolean isExpectedElementType( Mergeable me );
+    protected abstract boolean isExpectedElementType(Mergeable me);
 
     // ----------------------------------------------------------------------
     // Methods delegated on wrapped JDOM element.
@@ -88,18 +84,16 @@ public abstract class AbstractMergeableSupport
      * @param collection {@link Collection}
      * @return {@link Element}.
      */
-    public Element addContent( Collection collection )
-    {
-        return element.addContent( collection );
+    public Element addContent(Collection collection) {
+        return element.addContent(collection);
     }
 
     /**
      * @param child {@link Content}
      * @return {@link Element}.
      */
-    public Element addContent( Content child )
-    {
-        return element.addContent( child );
+    public Element addContent(Content child) {
+        return element.addContent(child);
     }
 
     /**
@@ -107,9 +101,8 @@ public abstract class AbstractMergeableSupport
      * @param c {@link Collection}
      * @return {@link Element}.
      */
-    public Element addContent( int index, Collection c )
-    {
-        return element.addContent( index, c );
+    public Element addContent(int index, Collection c) {
+        return element.addContent(index, c);
     }
 
     /**
@@ -117,54 +110,46 @@ public abstract class AbstractMergeableSupport
      * @param child {@link Content}
      * @return {@link Element}.
      */
-    public Element addContent( int index, Content child )
-    {
-        return element.addContent( index, child );
+    public Element addContent(int index, Content child) {
+        return element.addContent(index, child);
     }
 
     /**
      * @param str The content to be added.
      * @return {@link Element}.
      */
-    public Element addContent( String str )
-    {
-        return element.addContent( str );
+    public Element addContent(String str) {
+        return element.addContent(str);
     }
 
     /**
      * @param additional {@link Namespace}
      */
-    public void addNamespaceDeclaration( Namespace additional )
-    {
-        element.addNamespaceDeclaration( additional );
+    public void addNamespaceDeclaration(Namespace additional) {
+        element.addNamespaceDeclaration(additional);
     }
 
-    public Object clone()
-    {
+    public Object clone() {
         return element.clone();
     }
 
-    public List cloneContent()
-    {
+    public List cloneContent() {
         return element.cloneContent();
     }
 
-    public Content detach()
-    {
+    public Content detach() {
         return element.detach();
     }
 
     /** {@inheritDoc} */
-    public boolean equals( Object obj )
-    {
-        return element.equals( obj );
+    public boolean equals(Object obj) {
+        return element.equals(obj);
     }
 
     /**
      * @return list of Namespaces.
      */
-    public List getAdditionalNamespaces()
-    {
+    public List getAdditionalNamespaces() {
         return element.getAdditionalNamespaces();
     }
 
@@ -173,25 +158,22 @@ public abstract class AbstractMergeableSupport
      * @param ns {@link Namespace}
      * @return {@link Attribute}
      */
-    public Attribute getAttribute( String name, Namespace ns )
-    {
-        return element.getAttribute( name, ns );
+    public Attribute getAttribute(String name, Namespace ns) {
+        return element.getAttribute(name, ns);
     }
 
     /**
      * @param name The name of the attribute.
      * @return {@link Attribute}
      */
-    public Attribute getAttribute( String name )
-    {
-        return element.getAttribute( name );
+    public Attribute getAttribute(String name) {
+        return element.getAttribute(name);
     }
 
     /**
      * @return list {@link Attribute}
      */
-    public List getAttributes()
-    {
+    public List getAttributes() {
         return element.getAttributes();
     }
 
@@ -202,9 +184,8 @@ public abstract class AbstractMergeableSupport
      * @param def the default value.
      * @return The value of the attribute.
      */
-    public String getAttributeValue( String name, Namespace ns, String def )
-    {
-        return element.getAttributeValue( name, ns, def );
+    public String getAttributeValue(String name, Namespace ns, String def) {
+        return element.getAttributeValue(name, ns, def);
     }
 
     /**
@@ -213,9 +194,8 @@ public abstract class AbstractMergeableSupport
      * @param ns The {@link Namespace}
      * @return The value of the attribute.
      */
-    public String getAttributeValue( String name, Namespace ns )
-    {
-        return element.getAttributeValue( name, ns );
+    public String getAttributeValue(String name, Namespace ns) {
+        return element.getAttributeValue(name, ns);
     }
 
     /**
@@ -224,9 +204,8 @@ public abstract class AbstractMergeableSupport
      * @param def the default value.
      * @return The value of the attribute.
      */
-    public String getAttributeValue( String name, String def )
-    {
-        return element.getAttributeValue( name, def );
+    public String getAttributeValue(String name, String def) {
+        return element.getAttributeValue(name, def);
     }
 
     /**
@@ -234,9 +213,8 @@ public abstract class AbstractMergeableSupport
      * @param name The name of the attribute.
      * @return The value of the attribute.
      */
-    public String getAttributeValue( String name )
-    {
-        return element.getAttributeValue( name );
+    public String getAttributeValue(String name) {
+        return element.getAttributeValue(name);
     }
 
     /**
@@ -245,9 +223,8 @@ public abstract class AbstractMergeableSupport
      * @return {@link Element}
      * @see org.jdom2.Element#getChild(java.lang.String,org.jdom2.Namespace)
      */
-    public Element getChild( String name, Namespace ns )
-    {
-        return element.getChild( name, ns );
+    public Element getChild(String name, Namespace ns) {
+        return element.getChild(name, ns);
     }
 
     /**
@@ -255,17 +232,15 @@ public abstract class AbstractMergeableSupport
      * @return {@link Element}
      * @see org.jdom2.Element#getChild(java.lang.String)
      */
-    public Element getChild( String name )
-    {
-        return element.getChild( name );
+    public Element getChild(String name) {
+        return element.getChild(name);
     }
 
     /**
      * @return list of {@link Element}
      * @see org.jdom2.Element#getChildren()
      */
-    public List getChildren()
-    {
+    public List getChildren() {
         return element.getChildren();
     }
 
@@ -275,9 +250,8 @@ public abstract class AbstractMergeableSupport
      * @return list {@link Element}
      * @see org.jdom2.Element#getChildren(java.lang.String,org.jdom2.Namespace)
      */
-    public List getChildren( String name, Namespace ns )
-    {
-        return element.getChildren( name, ns );
+    public List getChildren(String name, Namespace ns) {
+        return element.getChildren(name, ns);
     }
 
     /**
@@ -285,9 +259,8 @@ public abstract class AbstractMergeableSupport
      * @return list {@link Element}
      * @see org.jdom2.Element#getChildren(java.lang.String)
      */
-    public List getChildren( String name )
-    {
-        return element.getChildren( name );
+    public List getChildren(String name) {
+        return element.getChildren(name);
     }
 
     /**
@@ -296,9 +269,8 @@ public abstract class AbstractMergeableSupport
      * @return the child text.
      * @see org.jdom2.Element#getChildText(java.lang.String,org.jdom2.Namespace)
      */
-    public String getChildText( String name, Namespace ns )
-    {
-        return element.getChildText( name, ns );
+    public String getChildText(String name, Namespace ns) {
+        return element.getChildText(name, ns);
     }
 
     /**
@@ -306,9 +278,8 @@ public abstract class AbstractMergeableSupport
      * @return the child text.
      * @see org.jdom2.Element#getChildText(java.lang.String)
      */
-    public String getChildText( String name )
-    {
-        return element.getChildText( name );
+    public String getChildText(String name) {
+        return element.getChildText(name);
     }
 
     /**
@@ -317,9 +288,8 @@ public abstract class AbstractMergeableSupport
      * @return the child text.
      * @see org.jdom2.Element#getChildTextNormalize(java.lang.String,org.jdom2.Namespace)
      */
-    public String getChildTextNormalize( String name, Namespace ns )
-    {
-        return element.getChildTextNormalize( name, ns );
+    public String getChildTextNormalize(String name, Namespace ns) {
+        return element.getChildTextNormalize(name, ns);
     }
 
     /**
@@ -327,9 +297,8 @@ public abstract class AbstractMergeableSupport
      * @return the child text.
      * @see org.jdom2.Element#getChildTextNormalize(java.lang.String)
      */
-    public String getChildTextNormalize( String name )
-    {
-        return element.getChildTextNormalize( name );
+    public String getChildTextNormalize(String name) {
+        return element.getChildTextNormalize(name);
     }
 
     /**
@@ -338,9 +307,8 @@ public abstract class AbstractMergeableSupport
      * @return the child text.
      * @see org.jdom2.Element#getChildTextTrim(java.lang.String,org.jdom2.Namespace)
      */
-    public String getChildTextTrim( String name, Namespace ns )
-    {
-        return element.getChildTextTrim( name, ns );
+    public String getChildTextTrim(String name, Namespace ns) {
+        return element.getChildTextTrim(name, ns);
     }
 
     /**
@@ -348,17 +316,15 @@ public abstract class AbstractMergeableSupport
      * @return the child text.
      * @see org.jdom2.Element#getChildTextTrim(java.lang.String)
      */
-    public String getChildTextTrim( String name )
-    {
-        return element.getChildTextTrim( name );
+    public String getChildTextTrim(String name) {
+        return element.getChildTextTrim(name);
     }
 
     /**
      * @see org.jdom2.Element#getContent()
      * @return list of content.
      */
-    public List getContent()
-    {
+    public List getContent() {
         return element.getContent();
     }
 
@@ -367,9 +333,8 @@ public abstract class AbstractMergeableSupport
      * @return list of content.
      * @see org.jdom2.Element#getContent(org.jdom2.filter.Filter)
      */
-    public List getContent( Filter filter )
-    {
-        return element.getContent( filter );
+    public List getContent(Filter filter) {
+        return element.getContent(filter);
     }
 
     /**
@@ -377,17 +342,15 @@ public abstract class AbstractMergeableSupport
      * @return the content.
      * @see org.jdom2.Element#getContent(int)
      */
-    public Content getContent( int index )
-    {
-        return element.getContent( index );
+    public Content getContent(int index) {
+        return element.getContent(index);
     }
 
     /**
      * @return The content size.
      * @see org.jdom2.Element#getContentSize()
      */
-    public int getContentSize()
-    {
+    public int getContentSize() {
         return element.getContentSize();
     }
 
@@ -395,8 +358,7 @@ public abstract class AbstractMergeableSupport
      * @return {@link Iterator} of descendants.
      * @see org.jdom2.Element#getDescendants()
      */
-    public Iterator getDescendants()
-    {
+    public Iterator getDescendants() {
         return element.getDescendants();
     }
 
@@ -405,17 +367,15 @@ public abstract class AbstractMergeableSupport
      * @return {@link Iterator} of descendants.
      * @see org.jdom2.Element#getDescendants(org.jdom2.filter.Filter)
      */
-    public Iterator getDescendants( Filter filter )
-    {
-        return element.getDescendants( filter );
+    public Iterator getDescendants(Filter filter) {
+        return element.getDescendants(filter);
     }
 
     /**
      * @return the document.
      * @see org.jdom2.Content#getDocument()
      */
-    public Document getDocument()
-    {
+    public Document getDocument() {
         return element.getDocument();
     }
 
@@ -423,8 +383,7 @@ public abstract class AbstractMergeableSupport
      * @return The name of the element.
      * @see org.jdom2.Element#getName()
      */
-    public String getName()
-    {
+    public String getName() {
         return element.getName();
     }
 
@@ -432,8 +391,7 @@ public abstract class AbstractMergeableSupport
      * @return {@link Namespace}
      * @see org.jdom2.Element#getNamespace()
      */
-    public Namespace getNamespace()
-    {
+    public Namespace getNamespace() {
         return element.getNamespace();
     }
 
@@ -442,17 +400,15 @@ public abstract class AbstractMergeableSupport
      * @return {@link Namespace}
      * @see org.jdom2.Element#getNamespace(java.lang.String)
      */
-    public Namespace getNamespace( String prefix )
-    {
-        return element.getNamespace( prefix );
+    public Namespace getNamespace(String prefix) {
+        return element.getNamespace(prefix);
     }
 
     /**
      * @return the namespace prefix.
      * @see org.jdom2.Element#getNamespacePrefix()
      */
-    public String getNamespacePrefix()
-    {
+    public String getNamespacePrefix() {
         return element.getNamespacePrefix();
     }
 
@@ -460,8 +416,7 @@ public abstract class AbstractMergeableSupport
      * @return the namespace URI.
      * @see org.jdom2.Element#getNamespaceURI()
      */
-    public String getNamespaceURI()
-    {
+    public String getNamespaceURI() {
         return element.getNamespaceURI();
     }
 
@@ -469,8 +424,7 @@ public abstract class AbstractMergeableSupport
      * @return The parent.
      * @see org.jdom2.Content#getParent()
      */
-    public Parent getParent()
-    {
+    public Parent getParent() {
         return element.getParent();
     }
 
@@ -478,8 +432,7 @@ public abstract class AbstractMergeableSupport
      * @return the parent {@link Element}
      * @see org.jdom2.Content#getParentElement()
      */
-    public Element getParentElement()
-    {
+    public Element getParentElement() {
         return element.getParentElement();
     }
 
@@ -487,8 +440,7 @@ public abstract class AbstractMergeableSupport
      * @return The qualified name.
      * @see org.jdom2.Element#getQualifiedName()
      */
-    public String getQualifiedName()
-    {
+    public String getQualifiedName() {
         return element.getQualifiedName();
     }
 
@@ -496,8 +448,7 @@ public abstract class AbstractMergeableSupport
      * @return The text.
      * @see org.jdom2.Element#getText()
      */
-    public String getText()
-    {
+    public String getText() {
         return element.getText();
     }
 
@@ -505,8 +456,7 @@ public abstract class AbstractMergeableSupport
      * @return the normalized text.
      * @see org.jdom2.Element#getTextNormalize()
      */
-    public String getTextNormalize()
-    {
+    public String getTextNormalize() {
         return element.getTextNormalize();
     }
 
@@ -514,8 +464,7 @@ public abstract class AbstractMergeableSupport
      * @return the trimmed text.
      * @see org.jdom2.Element#getTextTrim()
      */
-    public String getTextTrim()
-    {
+    public String getTextTrim() {
         return element.getTextTrim();
     }
 
@@ -523,16 +472,14 @@ public abstract class AbstractMergeableSupport
      * @return the element value.
      * @see org.jdom2.Element#getValue()
      */
-    public String getValue()
-    {
+    public String getValue() {
         return element.getValue();
     }
 
     /**
      * @see java.lang.Object#hashCode()
      */
-    public int hashCode()
-    {
+    public int hashCode() {
         return element.hashCode();
     }
 
@@ -541,9 +488,8 @@ public abstract class AbstractMergeableSupport
      * @return the index.
      * @see org.jdom2.Element#indexOf(org.jdom2.Content)
      */
-    public int indexOf( Content child )
-    {
-        return element.indexOf( child );
+    public int indexOf(Content child) {
+        return element.indexOf(child);
     }
 
     /**
@@ -551,17 +497,15 @@ public abstract class AbstractMergeableSupport
      * @param element {@link Element}.
      * @return true/false.
      */
-    public boolean isAncestor( Element element )
-    {
-        return element.isAncestor( element );
+    public boolean isAncestor(Element element) {
+        return element.isAncestor(element);
     }
 
     /**
      * @see org.jdom2.Element#isRootElement()
      * @return true/false.
      */
-    public boolean isRootElement()
-    {
+    public boolean isRootElement() {
         return element.isRootElement();
     }
 
@@ -570,9 +514,8 @@ public abstract class AbstractMergeableSupport
      * @param attribute {@link Attribute}
      * @return true/false.
      */
-    public boolean removeAttribute( Attribute attribute )
-    {
-        return element.removeAttribute( attribute );
+    public boolean removeAttribute(Attribute attribute) {
+        return element.removeAttribute(attribute);
     }
 
     /**
@@ -581,9 +524,8 @@ public abstract class AbstractMergeableSupport
      * @param ns The {@link Namespace}
      * @return true/false.
      */
-    public boolean removeAttribute( String name, Namespace ns )
-    {
-        return element.removeAttribute( name, ns );
+    public boolean removeAttribute(String name, Namespace ns) {
+        return element.removeAttribute(name, ns);
     }
 
     /**
@@ -591,9 +533,8 @@ public abstract class AbstractMergeableSupport
      * @param name The mame of the attribute.
      * @return true/false.
      */
-    public boolean removeAttribute( String name )
-    {
-        return element.removeAttribute( name );
+    public boolean removeAttribute(String name) {
+        return element.removeAttribute(name);
     }
 
     /**
@@ -602,9 +543,8 @@ public abstract class AbstractMergeableSupport
      * @param ns {@link Namespace}
      * @return true/false.
      */
-    public boolean removeChild( String name, Namespace ns )
-    {
-        return element.removeChild( name, ns );
+    public boolean removeChild(String name, Namespace ns) {
+        return element.removeChild(name, ns);
     }
 
     /**
@@ -612,9 +552,8 @@ public abstract class AbstractMergeableSupport
      * @param name The name of the child.
      * @return true/false.
      */
-    public boolean removeChild( String name )
-    {
-        return element.removeChild( name );
+    public boolean removeChild(String name) {
+        return element.removeChild(name);
     }
 
     /**
@@ -623,9 +562,8 @@ public abstract class AbstractMergeableSupport
      * @param ns {@link Namespace}
      * @return true/false.
      */
-    public boolean removeChildren( String name, Namespace ns )
-    {
-        return element.removeChildren( name, ns );
+    public boolean removeChildren(String name, Namespace ns) {
+        return element.removeChildren(name, ns);
     }
 
     /**
@@ -633,17 +571,15 @@ public abstract class AbstractMergeableSupport
      * @param name name of the child.
      * @return true/false.
      */
-    public boolean removeChildren( String name )
-    {
-        return element.removeChildren( name );
+    public boolean removeChildren(String name) {
+        return element.removeChildren(name);
     }
 
     /**
      * @see org.jdom2.Element#removeContent()
      * @return list of elements.
      */
-    public List removeContent()
-    {
+    public List removeContent() {
         return element.removeContent();
     }
 
@@ -652,9 +588,8 @@ public abstract class AbstractMergeableSupport
      * @param child {@link Content}
      * @return true/false.
      */
-    public boolean removeContent( Content child )
-    {
-        return element.removeContent( child );
+    public boolean removeContent(Content child) {
+        return element.removeContent(child);
     }
 
     /**
@@ -662,9 +597,8 @@ public abstract class AbstractMergeableSupport
      * @param filter {@link Filter}.
      * @return list of elements.
      */
-    public List removeContent( Filter filter )
-    {
-        return element.removeContent( filter );
+    public List removeContent(Filter filter) {
+        return element.removeContent(filter);
     }
 
     /**
@@ -672,18 +606,16 @@ public abstract class AbstractMergeableSupport
      * @param index The index.
      * @return {@link Content}
      */
-    public Content removeContent( int index )
-    {
-        return element.removeContent( index );
+    public Content removeContent(int index) {
+        return element.removeContent(index);
     }
 
     /**
      * @see org.jdom2.Element#removeNamespaceDeclaration(org.jdom2.Namespace)
      * @param additionalNamespace {@link Namespace}.
      */
-    public void removeNamespaceDeclaration( Namespace additionalNamespace )
-    {
-        element.removeNamespaceDeclaration( additionalNamespace );
+    public void removeNamespaceDeclaration(Namespace additionalNamespace) {
+        element.removeNamespaceDeclaration(additionalNamespace);
     }
 
     /**
@@ -691,9 +623,8 @@ public abstract class AbstractMergeableSupport
      * @return {@link Element}.
      * @see org.jdom2.Element#setAttribute(org.jdom2.Attribute)
      */
-    public Element setAttribute( Attribute attribute )
-    {
-        return element.setAttribute( attribute );
+    public Element setAttribute(Attribute attribute) {
+        return element.setAttribute(attribute);
     }
 
     /**
@@ -703,9 +634,8 @@ public abstract class AbstractMergeableSupport
      * @param ns {@link Namespace}.
      * @return {@link Element}
      */
-    public Element setAttribute( String name, String value, Namespace ns )
-    {
-        return element.setAttribute( name, value, ns );
+    public Element setAttribute(String name, String value, Namespace ns) {
+        return element.setAttribute(name, value, ns);
     }
 
     /**
@@ -714,18 +644,16 @@ public abstract class AbstractMergeableSupport
      * @return {@link Element}
      * @see org.jdom2.Element#setAttribute(java.lang.String,java.lang.String)
      */
-    public Element setAttribute( String name, String value )
-    {
-        return element.setAttribute( name, value );
+    public Element setAttribute(String name, String value) {
+        return element.setAttribute(name, value);
     }
 
     /**
-     * @param newAttributes list of new attributes. 
+     * @param newAttributes list of new attributes.
      * @return {@link Element}
      */
-    public Element setAttributes( List newAttributes )
-    {
-        return element.setAttributes( newAttributes );
+    public Element setAttributes(List newAttributes) {
+        return element.setAttributes(newAttributes);
     }
 
     /**
@@ -733,9 +661,8 @@ public abstract class AbstractMergeableSupport
      * @return {@link Element}
      * @see org.jdom2.Element#setContent(java.util.Collection)
      */
-    public Element setContent( Collection newContent )
-    {
-        return element.setContent( newContent );
+    public Element setContent(Collection newContent) {
+        return element.setContent(newContent);
     }
 
     /**
@@ -743,9 +670,8 @@ public abstract class AbstractMergeableSupport
      * @return {@link Element}
      * @see org.jdom2.Element#setContent(org.jdom2.Content)
      */
-    public Element setContent( Content child )
-    {
-        return element.setContent( child );
+    public Element setContent(Content child) {
+        return element.setContent(child);
     }
 
     /**
@@ -754,9 +680,8 @@ public abstract class AbstractMergeableSupport
      * @return {@link Parent}
      * @see org.jdom2.Element#setContent(int,java.util.Collection)
      */
-    public Parent setContent( int index, Collection collection )
-    {
-        return element.setContent( index, collection );
+    public Parent setContent(int index, Collection collection) {
+        return element.setContent(index, collection);
     }
 
     /**
@@ -765,9 +690,8 @@ public abstract class AbstractMergeableSupport
      * @return {@link Element}
      * @see org.jdom2.Element#setContent(int,org.jdom2.Content)
      */
-    public Element setContent( int index, Content child )
-    {
-        return element.setContent( index, child );
+    public Element setContent(int index, Content child) {
+        return element.setContent(index, child);
     }
 
     /**
@@ -775,9 +699,8 @@ public abstract class AbstractMergeableSupport
      * @return {@link Element}
      * @see org.jdom2.Element#setName(java.lang.String)
      */
-    public Element setName( String name )
-    {
-        return element.setName( name );
+    public Element setName(String name) {
+        return element.setName(name);
     }
 
     /**
@@ -785,9 +708,8 @@ public abstract class AbstractMergeableSupport
      * @see org.jdom2.Element#setNamespace(org.jdom2.Namespace)
      * @return {@link Element}
      */
-    public Element setNamespace( Namespace namespace )
-    {
-        return element.setNamespace( namespace );
+    public Element setNamespace(Namespace namespace) {
+        return element.setNamespace(namespace);
     }
 
     /**
@@ -795,17 +717,15 @@ public abstract class AbstractMergeableSupport
      * @param text The text to be set.
      * @return {@link Element}
      */
-    public Element setText( String text )
-    {
-        return element.setText( text );
+    public Element setText(String text) {
+        return element.setText(text);
     }
 
     /**
      * {@link org.jdom2.Element#toString()}
      * {@inheritDoc}
      */
-    public String toString()
-    {
+    public String toString() {
         return element.toString();
     }
 
@@ -813,19 +733,17 @@ public abstract class AbstractMergeableSupport
      * Returns the wrapped up JDom {@link Element} instance.
      * {@inheritDoc}
      */
-    public Element getElement()
-    {
+    public Element getElement() {
         return this.element;
     }
 
     /**
      * Sub classes should override if they wish to provide a different
      * combination of composite keys for determining conflicts.
-     * @param defaultList the default list. 
+     * @param defaultList the default list.
      * @return the default list.
      */
-    protected List getElementNamesForConflictResolution( List defaultList )
-    {
+    protected List getElementNamesForConflictResolution(List defaultList) {
         return defaultList;
     }
 
@@ -833,9 +751,7 @@ public abstract class AbstractMergeableSupport
      * Returns the default {@link MergeStrategy} instance.
      * @return {@link MergeStrategy}
      */
-    protected MergeStrategy getDefaultMergeStrategy()
-    {
+    protected MergeStrategy getDefaultMergeStrategy() {
         return DEFAULT_MERGE_STRATEGY;
     }
-
 }

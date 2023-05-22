@@ -30,72 +30,60 @@ import org.codehaus.plexus.configuration.source.ConfigurationSource;
  * @author Jason van Zyl
  * @author cstamas
  */
-public class InitializeUserConfigurationSourcePhase
-    extends AbstractCoreComponentInitializationPhase
-{
-    public void initializeCoreComponent( ContainerInitializationContext context )
-        throws ContainerInitializationException
-    {
+public class InitializeUserConfigurationSourcePhase extends AbstractCoreComponentInitializationPhase {
+    public void initializeCoreComponent(ContainerInitializationContext context)
+            throws ContainerInitializationException {
         ConfigurationSource existingConfigurationSource = context.getContainer().getConfigurationSource();
 
-        try
-        {
+        try {
             // is the user overriding the ConfigurationSource (role-hint: default) or only extending it?
-            if ( context.getContainer().hasComponent( ConfigurationSource.class, PlexusConstants.PLEXUS_DEFAULT_HINT ) )
-            {
+            if (context.getContainer().hasComponent(ConfigurationSource.class, PlexusConstants.PLEXUS_DEFAULT_HINT)) {
                 // overriding
 
-                ConfigurationSource cs = context.getContainer().lookup( ConfigurationSource.class );
+                ConfigurationSource cs = context.getContainer().lookup(ConfigurationSource.class);
 
                 // swap the user provided configuration source with current one
-                context.getContainer().setConfigurationSource( cs );
-            }
-            else
-            {
+                context.getContainer().setConfigurationSource(cs);
+            } else {
                 // extending
-                List<ConfigurationSource> userConfigurationSources = context.getContainer().lookupList( ConfigurationSource.class );
+                List<ConfigurationSource> userConfigurationSources =
+                        context.getContainer().lookupList(ConfigurationSource.class);
 
-                if ( userConfigurationSources.size() > 0 )
-                {
+                if (userConfigurationSources.size() > 0) {
                     List<ConfigurationSource> configurationSources =
-                        new ArrayList<ConfigurationSource>( userConfigurationSources.size() + 1 );
+                            new ArrayList<ConfigurationSource>(userConfigurationSources.size() + 1);
 
                     // adding user provied ones to be able to interfere
-                    configurationSources.addAll( userConfigurationSources );
+                    configurationSources.addAll(userConfigurationSources);
 
                     // at the end adding the container source, to make sure config will be returned
                     // from plexus.xml if no user interference is given
-                    configurationSources.add( existingConfigurationSource );
+                    configurationSources.add(existingConfigurationSource);
 
-                    ConfigurationSource configurationSource = new ChainedConfigurationSource( configurationSources );
+                    ConfigurationSource configurationSource = new ChainedConfigurationSource(configurationSources);
 
-                    context.getContainer().setConfigurationSource( configurationSource );
-
+                    context.getContainer().setConfigurationSource(configurationSource);
                 }
 
                 // register the default source, either the chained or the existing one as default
                 ComponentDescriptor<ConfigurationSource> cd = new ComponentDescriptor<ConfigurationSource>();
 
-                cd.setRole( ConfigurationSource.ROLE );
+                cd.setRole(ConfigurationSource.ROLE);
 
-                cd.setRoleHint( PlexusConstants.PLEXUS_DEFAULT_HINT );
+                cd.setRoleHint(PlexusConstants.PLEXUS_DEFAULT_HINT);
 
-                cd.setImplementationClass( context.getContainer().getConfigurationSource().getClass() );
+                cd.setImplementationClass(
+                        context.getContainer().getConfigurationSource().getClass());
 
-                try
-                {
-                    context.getContainer().addComponentDescriptor( cd );
-                }
-                catch ( CycleDetectedInComponentGraphException cre )
-                {
-                    throw new ContainerInitializationException( "Error setting up configuration source.", cre );
+                try {
+                    context.getContainer().addComponentDescriptor(cd);
+                } catch (CycleDetectedInComponentGraphException cre) {
+                    throw new ContainerInitializationException("Error setting up configuration source.", cre);
                 }
             }
 
-        }
-        catch ( ComponentLookupException e )
-        {
-            throw new ContainerInitializationException( "Error setting up user configuration source.", e );
+        } catch (ComponentLookupException e) {
+            throw new ContainerInitializationException("Error setting up user configuration source.", e);
         }
     }
 }

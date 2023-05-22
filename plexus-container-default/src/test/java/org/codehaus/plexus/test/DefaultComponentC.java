@@ -16,13 +16,10 @@ package org.codehaus.plexus.test;
  * limitations under the License.
  */
 
-public class DefaultComponentC
-    implements ComponentC
-{
+public class DefaultComponentC implements ComponentC {
     private ComponentD componentD;
 
-    public ComponentD getComponentD()
-    {
+    public ComponentD getComponentD() {
         return componentD;
     }
 }

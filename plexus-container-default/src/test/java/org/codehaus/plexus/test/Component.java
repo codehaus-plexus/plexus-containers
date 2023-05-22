@@ -20,12 +20,11 @@ import org.codehaus.plexus.test.map.Activity;
 
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public interface Component
-{
+public interface Component {
     static String ROLE = Component.class.getName();
 
     String getHost();

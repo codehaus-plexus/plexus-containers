@@ -26,109 +26,107 @@ import org.objectweb.asm.Type;
  * @author Eugene Kuleshov
  */
 public class AnnClass {
-  
-  private int access;
-  private String name;
-  private String superName;
-  private String[] interfaces;
-  
-  private Map<String, Ann> anns = new LinkedHashMap<String, Ann>();
-  private Map<String, AnnField> fields = new LinkedHashMap<String, AnnField>();
-  private Map<String, AnnMethod> methods = new LinkedHashMap<String, AnnMethod>();
-  private ClassLoader cl;
 
-  // setters
-  
-  public AnnClass(ClassLoader cl) {
-    this.cl = cl;
-  }
+    private int access;
+    private String name;
+    private String superName;
+    private String[] interfaces;
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    private Map<String, Ann> anns = new LinkedHashMap<String, Ann>();
+    private Map<String, AnnField> fields = new LinkedHashMap<String, AnnField>();
+    private Map<String, AnnMethod> methods = new LinkedHashMap<String, AnnMethod>();
+    private ClassLoader cl;
 
-  public void setAccess(int access) {
-    this.access = access;
-  }
+    // setters
 
-  public void setSuperName(String superName) {
-    this.superName = superName;
-  }
+    public AnnClass(ClassLoader cl) {
+        this.cl = cl;
+    }
 
-  public void setInterfaces(String[] interfaces) {
-    this.interfaces = interfaces;
-  }
-  
-  public void addAnn(Ann ann) {
-    anns.put(ann.getDesc(), ann);
-  }
-  
-  public void addField(AnnField field) {
-    fields.put(field.getName(), field);
-  }
-  
-  public void addMethod(AnnMethod method) {
-    methods.put(method.getName() + method.getDesc(), method);
-  }
-  
-  // getters
-  
-  public ClassLoader getClassLoader() {
-    return cl;
-  }
-  
-  public int getAccess() {
-    return access;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public String getName() {
-    return name;
-  }
-  
-  public String getSuperName() {
-    return superName;
-  }
+    public void setAccess(int access) {
+        this.access = access;
+    }
 
-  public String[] getInterfaces() {
-    return interfaces;
-  }
+    public void setSuperName(String superName) {
+        this.superName = superName;
+    }
 
-  public Map<String, Ann> getAnns() {
-    return anns;
-  }
+    public void setInterfaces(String[] interfaces) {
+        this.interfaces = interfaces;
+    }
 
-  public Map<String, AnnField> getFields() {
-    return fields;
-  }
+    public void addAnn(Ann ann) {
+        anns.put(ann.getDesc(), ann);
+    }
 
-  public Map<String, AnnMethod> getMethods() {
-    return methods;
-  }
+    public void addField(AnnField field) {
+        fields.put(field.getName(), field);
+    }
 
-  public Set<String> getFieldNames() {
-    return fields.keySet();
-  }
-  
-  public Set<String> getMethodKeys() {
-    return methods.keySet();
-  }
-  
-  // conversion to java.lang.Annotation
-  
-  public <T> T getAnnotation(Class<T> c) {
-    Ann ann = anns.get(Type.getDescriptor(c));
-    return ann == null ? null : ann.getAnnotation(c, cl);
-  }
+    public void addMethod(AnnMethod method) {
+        methods.put(method.getName() + method.getDesc(), method);
+    }
 
-  public <T> T getFieldAnnotation(String fieldName, Class<T> c) {
-    AnnField field = fields.get(fieldName);
-    return field==null ? null : field.getAnnotation(c);
-  }
-  
-  public <T> T getMethodAnnotation(String methodKey, Class<T> c) {
-    AnnMethod method = methods.get(methodKey);
-    return method==null ? null : method.getAnnotation(c);
-  }
+    // getters
 
+    public ClassLoader getClassLoader() {
+        return cl;
+    }
+
+    public int getAccess() {
+        return access;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSuperName() {
+        return superName;
+    }
+
+    public String[] getInterfaces() {
+        return interfaces;
+    }
+
+    public Map<String, Ann> getAnns() {
+        return anns;
+    }
+
+    public Map<String, AnnField> getFields() {
+        return fields;
+    }
+
+    public Map<String, AnnMethod> getMethods() {
+        return methods;
+    }
+
+    public Set<String> getFieldNames() {
+        return fields.keySet();
+    }
+
+    public Set<String> getMethodKeys() {
+        return methods.keySet();
+    }
+
+    // conversion to java.lang.Annotation
+
+    public <T> T getAnnotation(Class<T> c) {
+        Ann ann = anns.get(Type.getDescriptor(c));
+        return ann == null ? null : ann.getAnnotation(c, cl);
+    }
+
+    public <T> T getFieldAnnotation(String fieldName, Class<T> c) {
+        AnnField field = fields.get(fieldName);
+        return field == null ? null : field.getAnnotation(c);
+    }
+
+    public <T> T getMethodAnnotation(String methodKey, Class<T> c) {
+        AnnMethod method = methods.get(methodKey);
+        return method == null ? null : method.getAnnotation(c);
+    }
 }
-

@@ -22,18 +22,17 @@ import java.util.Map;
 /**
  * ComponentDiscovererManager is a simple index (registry) of ComponentDiscovers and ComponentDiscoveryListener.
  */
-public interface ComponentDiscovererManager
-{
-    void addComponentDiscoverer( ComponentDiscoverer componentDiscoverer );
+public interface ComponentDiscovererManager {
+    void addComponentDiscoverer(ComponentDiscoverer componentDiscoverer);
 
     List<ComponentDiscoverer> getComponentDiscoverers();
 
     // todo dain change this to Set<ComponentDiscoveryListener> (requires change to maven)
     Map<ComponentDiscoveryListener, Object> getComponentDiscoveryListeners();
 
-    void registerComponentDiscoveryListener( ComponentDiscoveryListener listener);
+    void registerComponentDiscoveryListener(ComponentDiscoveryListener listener);
 
-    void removeComponentDiscoveryListener( ComponentDiscoveryListener listener );
+    void removeComponentDiscoveryListener(ComponentDiscoveryListener listener);
 
-    void fireComponentDiscoveryEvent( ComponentDiscoveryEvent event );
+    void fireComponentDiscoveryEvent(ComponentDiscoveryEvent event);
 }

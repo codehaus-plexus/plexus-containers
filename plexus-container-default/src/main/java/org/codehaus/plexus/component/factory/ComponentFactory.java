@@ -27,13 +27,12 @@ import org.codehaus.plexus.component.repository.ComponentDescriptor;
  *
  *  @version $Id$
  */
-public interface ComponentFactory
-{
+public interface ComponentFactory {
     /** Component role. */
     static String ROLE = ComponentFactory.class.getName();
 
     String getId();
 
-    Object newInstance( ComponentDescriptor componentDescriptor, ClassRealm classRealm, PlexusContainer container )
-        throws ComponentInstantiationException;
+    Object newInstance(ComponentDescriptor componentDescriptor, ClassRealm classRealm, PlexusContainer container)
+            throws ComponentInstantiationException;
 }

@@ -16,58 +16,44 @@ package org.codehaus.plexus.logging;
  * limitations under the License.
  */
 
-import org.codehaus.plexus.personality.plexus.lifecycle.phase.Initializable;
-
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+
+import org.codehaus.plexus.personality.plexus.lifecycle.phase.Initializable;
 
 /**
  * Base class for all LoggerManagers which use cache of Loggers.
  *
  * @author <a href="mailto:michal@codehaus.org">Michal Maczka</a>
  */
-public abstract class BaseLoggerManager
-        extends AbstractLoggerManager implements Initializable
-{
+public abstract class BaseLoggerManager extends AbstractLoggerManager implements Initializable {
     private Map loggerCache = new HashMap();
 
     private String threshold = "info";
 
     private int currentThreshold;
 
-    public void initialize()
-    {
-        currentThreshold = parseThreshold( threshold );
+    public void initialize() {
+        currentThreshold = parseThreshold(threshold);
 
-        if ( currentThreshold == -1 )
-        {
+        if (currentThreshold == -1) {
             currentThreshold = Logger.LEVEL_DEBUG;
         }
     }
 
-    protected int parseThreshold( String text )
-    {
-        text = text.trim().toLowerCase( Locale.ENGLISH );
+    protected int parseThreshold(String text) {
+        text = text.trim().toLowerCase(Locale.ENGLISH);
 
-        if ( text.equals( "debug" ) )
-        {
+        if (text.equals("debug")) {
             return Logger.LEVEL_DEBUG;
-        }
-        else if ( text.equals( "info" ) )
-        {
+        } else if (text.equals("info")) {
             return Logger.LEVEL_INFO;
-        }
-        else if ( text.equals( "warn" ) )
-        {
+        } else if (text.equals("warn")) {
             return Logger.LEVEL_WARN;
-        }
-        else if ( text.equals( "error" ) )
-        {
+        } else if (text.equals("error")) {
             return Logger.LEVEL_ERROR;
-        }
-        else if ( text.equals( "fatal" ) )
-        {
+        } else if (text.equals("fatal")) {
             return Logger.LEVEL_FATAL;
         }
 
@@ -80,8 +66,7 @@ public abstract class BaseLoggerManager
      *
      * @param currentThreshold The new threshold.
      */
-    public void setThreshold( int currentThreshold )
-    {
+    public void setThreshold(int currentThreshold) {
         this.currentThreshold = currentThreshold;
     }
 
@@ -91,8 +76,7 @@ public abstract class BaseLoggerManager
      *
      * @param currentThreshold The new threshold.
      */
-    public void setThresholds( int currentThreshold )
-    {
+    public void setThresholds(int currentThreshold) {
         this.currentThreshold = currentThreshold;
 
         for (Object o : loggerCache.values()) {
@@ -106,88 +90,76 @@ public abstract class BaseLoggerManager
      *
      * @return Returns the current threshold for all new loggers.
      */
-    public int getThreshold()
-    {
+    public int getThreshold() {
         return currentThreshold;
     }
 
-    public void setThreshold( String role, String roleHint, int threshold )
-    {
+    public void setThreshold(String role, String roleHint, int threshold) {
         AbstractLogger logger;
 
-        String key = toMapKey( role, roleHint );
+        String key = toMapKey(role, roleHint);
 
-        logger = ( AbstractLogger ) loggerCache.get( key );
+        logger = (AbstractLogger) loggerCache.get(key);
 
-        if ( logger == null )
-        {
+        if (logger == null) {
             return; // nothing to do
         }
 
-        logger.setThreshold( threshold );
+        logger.setThreshold(threshold);
     }
 
-    public int getThreshold( String role, String roleHint )
-    {
+    public int getThreshold(String role, String roleHint) {
         AbstractLogger logger;
 
-        String key = toMapKey( role, roleHint );
+        String key = toMapKey(role, roleHint);
 
-        logger = ( AbstractLogger ) loggerCache.get( key );
+        logger = (AbstractLogger) loggerCache.get(key);
 
-        if ( logger == null )
-        {
+        if (logger == null) {
             return Logger.LEVEL_DEBUG; // does not return null because that could create a NPE
         }
 
         return logger.getThreshold();
     }
 
-    public Logger getLoggerForComponent( String role, String roleHint )
-    {
+    public Logger getLoggerForComponent(String role, String roleHint) {
         Logger logger;
 
-        String key = toMapKey( role, roleHint );
+        String key = toMapKey(role, roleHint);
 
-        logger = ( Logger ) loggerCache.get( key );
+        logger = (Logger) loggerCache.get(key);
 
-        if ( logger != null )
-        {
+        if (logger != null) {
             return logger;
         }
 
-        logger = createLogger( key );
+        logger = createLogger(key);
 
-        loggerCache.put( key, logger );
+        loggerCache.put(key, logger);
 
         return logger;
     }
 
-    protected abstract Logger createLogger( String key );
+    protected abstract Logger createLogger(String key);
 
-    public void returnComponentLogger( String role, String roleHint )
-    {
+    public void returnComponentLogger(String role, String roleHint) {
         Object obj;
 
-        String key = toMapKey( role, roleHint );
+        String key = toMapKey(role, roleHint);
 
-        obj = loggerCache.remove( key );
+        obj = loggerCache.remove(key);
 
-        if ( obj == null )
-        {
+        if (obj == null) {
             // TODO: use a logger!
-            System.err.println( "There was no such logger '" + key + "' " + hashCode() + "." );
+            System.err.println("There was no such logger '" + key + "' " + hashCode() + ".");
         }
     }
 
-    public int getActiveLoggerCount()
-    {
+    public int getActiveLoggerCount() {
         return loggerCache.size();
     }
 
-    public String getThresholdAsString()
-    {
+    public String getThresholdAsString() {
         return threshold;
     }
-
 }

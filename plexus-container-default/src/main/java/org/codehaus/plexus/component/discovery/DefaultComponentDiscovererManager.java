@@ -17,62 +17,52 @@ package org.codehaus.plexus.component.discovery;
  */
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.Map;
 import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class DefaultComponentDiscovererManager
-    implements ComponentDiscovererManager
-{
+public class DefaultComponentDiscovererManager implements ComponentDiscovererManager {
     private final List<ComponentDiscoverer> componentDiscoverers = new ArrayList<ComponentDiscoverer>();
 
     // todo dain change this to LinkedHashSet<ComponentDiscoveryListener> (requires change to maven)
-    private final Map<ComponentDiscoveryListener, Object> listeners = new LinkedHashMap<ComponentDiscoveryListener, Object>();
+    private final Map<ComponentDiscoveryListener, Object> listeners =
+            new LinkedHashMap<ComponentDiscoveryListener, Object>();
 
-    public synchronized void addComponentDiscoverer( ComponentDiscoverer discoverer )
-    {
-        componentDiscoverers.add( discoverer );
+    public synchronized void addComponentDiscoverer(ComponentDiscoverer discoverer) {
+        componentDiscoverers.add(discoverer);
     }
 
     // todo this is not thread safe... we are returning the raw collection
-    public synchronized List<ComponentDiscoverer> getComponentDiscoverers()
-    {
+    public synchronized List<ComponentDiscoverer> getComponentDiscoverers() {
         return componentDiscoverers;
     }
 
     // Listeners
 
     // todo this is not thread safe... we are returning the raw collection
-    public synchronized Map<ComponentDiscoveryListener, Object> getComponentDiscoveryListeners()
-    {
+    public synchronized Map<ComponentDiscoveryListener, Object> getComponentDiscoveryListeners() {
         return listeners;
     }
 
-    public synchronized void registerComponentDiscoveryListener( ComponentDiscoveryListener listener )
-    {
-        if ( !listeners.containsKey( listener ) )
-        {
-            listeners.put( listener, new Object() );
+    public synchronized void registerComponentDiscoveryListener(ComponentDiscoveryListener listener) {
+        if (!listeners.containsKey(listener)) {
+            listeners.put(listener, new Object());
         }
     }
 
-    public synchronized void removeComponentDiscoveryListener( ComponentDiscoveryListener listener )
-    {
-        listeners.remove( listener );
+    public synchronized void removeComponentDiscoveryListener(ComponentDiscoveryListener listener) {
+        listeners.remove(listener);
     }
 
-    public void fireComponentDiscoveryEvent( ComponentDiscoveryEvent event )
-    {
+    public void fireComponentDiscoveryEvent(ComponentDiscoveryEvent event) {
         Set<ComponentDiscoveryListener> listeners;
-        synchronized ( this )
-        {
+        synchronized (this) {
             listeners = this.listeners.keySet();
         }
 
-        for ( ComponentDiscoveryListener listener : listeners )
-        {
-            listener.componentDiscovered( event );
+        for (ComponentDiscoveryListener listener : listeners) {
+            listener.componentDiscovered(event);
         }
     }
 }

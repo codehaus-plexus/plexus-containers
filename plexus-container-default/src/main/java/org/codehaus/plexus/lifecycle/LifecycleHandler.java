@@ -21,19 +21,18 @@ import org.codehaus.plexus.component.manager.ComponentManager;
 import org.codehaus.plexus.lifecycle.phase.Phase;
 import org.codehaus.plexus.personality.plexus.lifecycle.phase.PhaseExecutionException;
 
-public interface LifecycleHandler
-{
+public interface LifecycleHandler {
     String getId();
 
     /**
      * @param phase {@link Phase}
      */
-    void addBeginSegment( Phase phase );
+    void addBeginSegment(Phase phase);
 
     /**
      * @param phase {@link Phase}
      */
-    void addEndSegment( Phase phase );
+    void addEndSegment(Phase phase);
 
     /**
      * @param component The component.
@@ -41,8 +40,7 @@ public interface LifecycleHandler
      * @throws PhaseExecutionException in case of an error.
      * @deprecated
      */
-    void start( Object component, ComponentManager manager )
-        throws PhaseExecutionException;
+    void start(Object component, ComponentManager manager) throws PhaseExecutionException;
 
     /**
      * @param component The component.
@@ -50,8 +48,7 @@ public interface LifecycleHandler
      * @param realm The {@link ClassRealm}.
      * @throws PhaseExecutionException in case of an error.
      */
-    void start( Object component, ComponentManager manager, ClassRealm realm )
-        throws PhaseExecutionException;
+    void start(Object component, ComponentManager manager, ClassRealm realm) throws PhaseExecutionException;
 
     /**
      * @param component The component.
@@ -59,8 +56,7 @@ public interface LifecycleHandler
      * @throws PhaseExecutionException in case of an error.
      * @deprecated
      */
-    void end( Object component, ComponentManager manager )
-        throws PhaseExecutionException;
+    void end(Object component, ComponentManager manager) throws PhaseExecutionException;
 
     /**
      *
@@ -71,8 +67,8 @@ public interface LifecycleHandler
      *            used to lookup the same manager components that were used to start the component.
      * @throws PhaseExecutionException in case of an error.
      */
-    void end( Object component, ComponentManager manager, ClassRealm componentContextRealm )
-        throws PhaseExecutionException;
+    void end(Object component, ComponentManager manager, ClassRealm componentContextRealm)
+            throws PhaseExecutionException;
 
     /**
      * initialize.

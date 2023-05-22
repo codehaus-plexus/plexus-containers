@@ -26,52 +26,42 @@ import java.util.Set;
 import org.codehaus.plexus.classworlds.ClassWorld;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
 
-public class ClassRealmUtil
-{
+public class ClassRealmUtil {
 
-    public static Set<ClassRealm> getContextRealms( ClassWorld world )
-    {
+    public static Set<ClassRealm> getContextRealms(ClassWorld world) {
         Set<ClassRealm> realms = new LinkedHashSet<ClassRealm>();
 
-        for ( ClassLoader classLoader = Thread.currentThread().getContextClassLoader(); classLoader != null; classLoader =
-            classLoader.getParent() )
-        {
-            if ( classLoader instanceof ClassRealm )
-            {
-                realms.add( (ClassRealm) classLoader );
+        for (ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+                classLoader != null;
+                classLoader = classLoader.getParent()) {
+            if (classLoader instanceof ClassRealm) {
+                realms.add((ClassRealm) classLoader);
 
                 Queue<ClassRealm> queue = new LinkedList<ClassRealm>();
-                queue.add( (ClassRealm) classLoader );
+                queue.add((ClassRealm) classLoader);
 
-                while ( !queue.isEmpty() )
-                {
+                while (!queue.isEmpty()) {
                     ClassRealm realm = queue.remove();
 
                     Collection<ClassRealm> importRealms = realm.getImportRealms();
-                    for ( ClassRealm importRealm : importRealms )
-                    {
-                        if ( realms.add( importRealm ) )
-                        {
-                            queue.add( importRealm );
+                    for (ClassRealm importRealm : importRealms) {
+                        if (realms.add(importRealm)) {
+                            queue.add(importRealm);
                         }
                     }
 
                     ClassRealm parentRealm = realm.getParentRealm();
-                    if ( parentRealm != null && realms.add( parentRealm ) )
-                    {
-                        queue.add( parentRealm );
+                    if (parentRealm != null && realms.add(parentRealm)) {
+                        queue.add(parentRealm);
                     }
                 }
             }
         }
 
-        if ( world != null )
-        {
-            for ( Iterator<ClassRealm> it = realms.iterator(); it.hasNext(); )
-            {
+        if (world != null) {
+            for (Iterator<ClassRealm> it = realms.iterator(); it.hasNext(); ) {
                 ClassRealm realm = it.next();
-                if ( realm.getWorld() != world )
-                {
+                if (realm.getWorld() != world) {
                     it.remove();
                 }
             }
@@ -79,5 +69,4 @@ public class ClassRealmUtil
 
         return realms;
     }
-
 }

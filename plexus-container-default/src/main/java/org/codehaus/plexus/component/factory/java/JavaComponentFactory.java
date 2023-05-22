@@ -16,13 +16,13 @@ package org.codehaus.plexus.component.factory.java;
  * limitations under the License.
  */
 
+import java.lang.reflect.Modifier;
+
 import org.codehaus.plexus.PlexusContainer;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.codehaus.plexus.component.factory.AbstractComponentFactory;
 import org.codehaus.plexus.component.factory.ComponentInstantiationException;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
-
-import java.lang.reflect.Modifier;
 
 /**
  * Component Factory for components written in Java Language which have default no parameter constructor
@@ -30,70 +30,53 @@ import java.lang.reflect.Modifier;
  * @author Jason van Zyl
  * @author <a href="mailto:mmaczka@interia.pl">Michal Maczka</a>
  */
-public class JavaComponentFactory
-    extends AbstractComponentFactory
-{
-    public String getId()
-    {
+public class JavaComponentFactory extends AbstractComponentFactory {
+    public String getId() {
         return "java";
     }
 
-    public Object newInstance( ComponentDescriptor componentDescriptor,
-                               ClassRealm classRealm,
-                               PlexusContainer container )
-        throws ComponentInstantiationException
-    {
+    public Object newInstance(ComponentDescriptor componentDescriptor, ClassRealm classRealm, PlexusContainer container)
+            throws ComponentInstantiationException {
         Class implementationClass = null;
 
-        try
-        {
+        try {
             String implementation = componentDescriptor.getImplementation();
 
-            implementationClass = classRealm.loadClass( implementation );
+            implementationClass = classRealm.loadClass(implementation);
 
             int modifiers = implementationClass.getModifiers();
 
-            if ( Modifier.isInterface( modifiers ) )
-            {
+            if (Modifier.isInterface(modifiers)) {
                 throw new ComponentInstantiationException(
-                    "Cannot instantiate implementation '" + implementation + "' because the class is a interface." );
+                        "Cannot instantiate implementation '" + implementation + "' because the class is a interface.");
             }
 
-            if ( Modifier.isAbstract( modifiers ) )
-            {
+            if (Modifier.isAbstract(modifiers)) {
                 throw new ComponentInstantiationException(
-                    "Cannot instantiate implementation '" + implementation + "' because the class is abstract." );
+                        "Cannot instantiate implementation '" + implementation + "' because the class is abstract.");
             }
 
             Object instance = implementationClass.newInstance();
 
             return instance;
-        }
-        catch ( InstantiationException e )
-        {
-            //PLXAPI: most probably cause of this is the implementation class not having
+        } catch (InstantiationException e) {
+            // PLXAPI: most probably cause of this is the implementation class not having
             //        a default constructor.
-            throw makeException( classRealm, componentDescriptor, implementationClass, e );
-        }
-        catch ( ClassNotFoundException e )
-        {
-            throw makeException( classRealm, componentDescriptor, implementationClass, e );
-        }
-        catch ( IllegalAccessException e )
-        {
-            throw makeException( classRealm, componentDescriptor, implementationClass, e );
-        }
-        catch ( LinkageError e )
-        {
-            throw makeException( classRealm, componentDescriptor, implementationClass, e );
+            throw makeException(classRealm, componentDescriptor, implementationClass, e);
+        } catch (ClassNotFoundException e) {
+            throw makeException(classRealm, componentDescriptor, implementationClass, e);
+        } catch (IllegalAccessException e) {
+            throw makeException(classRealm, componentDescriptor, implementationClass, e);
+        } catch (LinkageError e) {
+            throw makeException(classRealm, componentDescriptor, implementationClass, e);
         }
     }
 
-    private ComponentInstantiationException makeException( ClassRealm componentClassRealm,
-                                                           ComponentDescriptor componentDescriptor,
-                                                           Class implementationClass,
-                                                           Throwable e )
-    {
+    private ComponentInstantiationException makeException(
+            ClassRealm componentClassRealm,
+            ComponentDescriptor componentDescriptor,
+            Class implementationClass,
+            Throwable e) {
         // ----------------------------------------------------------------------
         // Display the realm when there is an error, We should probably return a string here so we
         // can incorporate this into the error message for easy debugging.
@@ -101,16 +84,13 @@ public class JavaComponentFactory
 
         String msg;
 
-        if ( componentClassRealm == null )
-        {
+        if (componentClassRealm == null) {
             msg = "classRealm is null for " + componentDescriptor;
-        }
-        else
-        {
+        } else {
             msg = "Could not instantiate component: " + componentDescriptor.getHumanReadableKey() + " realm: "
-                + componentClassRealm.getId();
+                    + componentClassRealm.getId();
         }
 
-        return new ComponentInstantiationException( msg, e );
+        return new ComponentInstantiationException(msg, e);
     }
 }

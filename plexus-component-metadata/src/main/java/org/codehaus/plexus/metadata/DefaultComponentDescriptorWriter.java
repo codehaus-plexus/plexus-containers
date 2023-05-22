@@ -45,83 +45,74 @@ import org.codehaus.plexus.util.xml.XMLWriter;
  * @author <a href="mailto:jason@maven.org">Jason van Zyl</a>
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
  */
-public class DefaultComponentDescriptorWriter
-    implements ComponentDescriptorWriter
-{
-    private static final String LS = System.getProperty( "line.separator" );
+public class DefaultComponentDescriptorWriter implements ComponentDescriptorWriter {
+    private static final String LS = System.getProperty("line.separator");
 
-    public void writeDescriptorSet( Writer writer, ComponentSetDescriptor componentSetDescriptor, boolean containerDescriptor )
-        throws ComponentDescriptorWriteException, IOException
-    {
-        try
-        {
-            XMLWriter w = new PrettyPrintXMLWriter( writer );
+    public void writeDescriptorSet(
+            Writer writer, ComponentSetDescriptor componentSetDescriptor, boolean containerDescriptor)
+            throws ComponentDescriptorWriteException, IOException {
+        try {
+            XMLWriter w = new PrettyPrintXMLWriter(writer);
 
-            w.startElement( containerDescriptor ? "plexus" : "component-set" );
+            w.startElement(containerDescriptor ? "plexus" : "component-set");
 
-            writeComponents( w, componentSetDescriptor.getComponents() );
+            writeComponents(w, componentSetDescriptor.getComponents());
 
-            writeDependencies( w, componentSetDescriptor.getDependencies() );
+            writeDependencies(w, componentSetDescriptor.getDependencies());
 
             w.endElement();
 
-            writer.write( LS );
+            writer.write(LS);
 
             // Flush, but don't close the writer... we are not its owner
             writer.flush();
+        } catch (PlexusConfigurationException e) {
+            throw new ComponentDescriptorWriteException("Internal error while writing out the configuration", e);
         }
-        catch ( PlexusConfigurationException e )
-        {
-            throw new ComponentDescriptorWriteException( "Internal error while writing out the configuration", e );
-        }
-
     }
 
-    private void writeComponents( XMLWriter w, List<ComponentDescriptor<?>> componentDescriptors )
-        throws ComponentDescriptorWriteException, PlexusConfigurationException
-    {
-        if ( componentDescriptors == null )
-        {
+    private void writeComponents(XMLWriter w, List<ComponentDescriptor<?>> componentDescriptors)
+            throws ComponentDescriptorWriteException, PlexusConfigurationException {
+        if (componentDescriptors == null) {
             return;
         }
 
-        w.startElement( "components" );
+        w.startElement("components");
 
-        for ( ComponentDescriptor<?> cd : componentDescriptors )
-        {
-            w.startElement( "component" );
+        for (ComponentDescriptor<?> cd : componentDescriptors) {
+            w.startElement("component");
 
-            element( w, "role", cd.getRole() );
-            
-            element( w, "role-hint", cd.getRoleHint() );
+            element(w, "role", cd.getRole());
 
-            element( w, "implementation", cd.getImplementation() );
+            element(w, "role-hint", cd.getRoleHint());
 
-            element( w, "version", cd.getVersion() );
+            element(w, "implementation", cd.getImplementation());
 
-            element( w, "component-type", cd.getComponentType() );
+            element(w, "version", cd.getVersion());
 
-            element( w, "instantiation-strategy", cd.getInstantiationStrategy() );
+            element(w, "component-type", cd.getComponentType());
 
-            element( w, "lifecycle-handler", cd.getLifecycleHandler() );
+            element(w, "instantiation-strategy", cd.getInstantiationStrategy());
 
-            element( w, "component-profile", cd.getComponentProfile() );
+            element(w, "lifecycle-handler", cd.getLifecycleHandler());
 
-            element( w, "component-composer", cd.getComponentComposer() );
+            element(w, "component-profile", cd.getComponentProfile());
 
-            element( w, "component-configurator", cd.getComponentConfigurator() );
+            element(w, "component-composer", cd.getComponentComposer());
 
-            element( w, "component-factory", cd.getComponentFactory() );
+            element(w, "component-configurator", cd.getComponentConfigurator());
 
-            element( w, "description", cd.getDescription() );
+            element(w, "component-factory", cd.getComponentFactory());
 
-            element( w, "alias", cd.getAlias() );
+            element(w, "description", cd.getDescription());
 
-            element( w, "isolated-realm", Boolean.toString( cd.isIsolatedRealm() ) );
+            element(w, "alias", cd.getAlias());
 
-            writeRequirements( w, cd.getRequirements() );
+            element(w, "isolated-realm", Boolean.toString(cd.isIsolatedRealm()));
 
-            writeConfiguration( w, cd.getConfiguration() );
+            writeRequirements(w, cd.getRequirements());
+
+            writeConfiguration(w, cd.getConfiguration());
 
             w.endElement();
         }
@@ -129,93 +120,80 @@ public class DefaultComponentDescriptorWriter
         w.endElement();
     }
 
-    public void writeDependencies( XMLWriter w, List<ComponentDependency> deps )
-    {
-        if ( deps == null || deps.size() == 0 )
-        {
+    public void writeDependencies(XMLWriter w, List<ComponentDependency> deps) {
+        if (deps == null || deps.size() == 0) {
             return;
         }
 
-        w.startElement( "dependencies" );
+        w.startElement("dependencies");
 
-        for ( ComponentDependency dep : deps )
-        {
-            writeDependencyElement( dep, w );
+        for (ComponentDependency dep : deps) {
+            writeDependencyElement(dep, w);
         }
 
         w.endElement();
     }
 
-    private void writeDependencyElement( ComponentDependency dependency, XMLWriter w )
-    {
-        w.startElement( "dependency" );
+    private void writeDependencyElement(ComponentDependency dependency, XMLWriter w) {
+        w.startElement("dependency");
 
         String groupId = dependency.getGroupId();
 
-        element( w, "groupId", groupId );
+        element(w, "groupId", groupId);
 
         String artifactId = dependency.getArtifactId();
 
-        element( w, "artifactId", artifactId );
+        element(w, "artifactId", artifactId);
 
         String type = dependency.getType();
 
-        if ( type != null )
-        {
-            element( w, "type", type );
+        if (type != null) {
+            element(w, "type", type);
         }
 
         String version = dependency.getVersion();
 
-        element( w, "version", version );
+        element(w, "version", version);
 
         w.endElement();
     }
 
-    private void writeRequirements( XMLWriter w, List<ComponentRequirement> requirements )
-    {
-        if ( requirements == null || requirements.size() == 0 )
-        {
+    private void writeRequirements(XMLWriter w, List<ComponentRequirement> requirements) {
+        if (requirements == null || requirements.size() == 0) {
             return;
         }
 
-        w.startElement( "requirements" );
-        
-        for ( ComponentRequirement cr : requirements )
-        {
-            w.startElement( "requirement" );
+        w.startElement("requirements");
 
-            element( w, "role", cr.getRole() );
+        for (ComponentRequirement cr : requirements) {
+            w.startElement("requirement");
 
-            if ( cr instanceof ComponentRequirementList )
-            {
-                List<String> hints = ( (ComponentRequirementList) cr ).getRoleHints();
+            element(w, "role", cr.getRole());
 
-                if ( hints != null )
-                {
-                    w.startElement( "role-hints" );
+            if (cr instanceof ComponentRequirementList) {
+                List<String> hints = ((ComponentRequirementList) cr).getRoleHints();
 
-                    for ( String roleHint : hints )
-                    {
-                        w.startElement( "role-hint" );
+                if (hints != null) {
+                    w.startElement("role-hints");
 
-                        w.writeText( roleHint );
+                    for (String roleHint : hints) {
+                        w.startElement("role-hint");
+
+                        w.writeText(roleHint);
 
                         w.endElement();
                     }
 
                     w.endElement();
                 }
-            }
-            else
-            {
+            } else {
                 // ensure there's no <role-hint/> written, which causes ComponentLookupException
-                element( w, "role-hint", "".equals( cr.getRoleHint() ) ? null : cr.getRoleHint() );
+                element(w, "role-hint", "".equals(cr.getRoleHint()) ? null : cr.getRoleHint());
             }
 
-            element( w, "field-name", cr.getFieldName() );
+            element(w, "field-name", cr.getFieldName());
 
-            element( w, "optional", cr.isOptional() ? Boolean.TRUE.toString() : null );
+            element(w, "optional", cr.isOptional() ? Boolean.TRUE.toString() : null);
 
             w.endElement();
         }
@@ -223,31 +201,26 @@ public class DefaultComponentDescriptorWriter
         w.endElement();
     }
 
-    private void writeConfiguration( XMLWriter w, PlexusConfiguration configuration )
-        throws ComponentDescriptorWriteException, PlexusConfigurationException
-    {
-        if ( configuration == null || configuration.getChildCount() == 0 )
-        {
+    private void writeConfiguration(XMLWriter w, PlexusConfiguration configuration)
+            throws ComponentDescriptorWriteException, PlexusConfigurationException {
+        if (configuration == null || configuration.getChildCount() == 0) {
             return;
         }
 
-        if ( !configuration.getName().equals( "configuration" ) )
-        {
-            throw new ComponentDescriptorWriteException( "The root node of the configuration must be 'configuration'.");
+        if (!configuration.getName().equals("configuration")) {
+            throw new ComponentDescriptorWriteException("The root node of the configuration must be 'configuration'.");
         }
 
-        writePlexusConfiguration( w, configuration );
+        writePlexusConfiguration(w, configuration);
     }
 
-    private void writePlexusConfiguration( XMLWriter xmlWriter, PlexusConfiguration c )
-        throws PlexusConfigurationException
-    {
-        if ( c.getAttributeNames().length == 0 && c.getChildCount() == 0 && c.getValue() == null )
-        {
+    private void writePlexusConfiguration(XMLWriter xmlWriter, PlexusConfiguration c)
+            throws PlexusConfigurationException {
+        if (c.getAttributeNames().length == 0 && c.getChildCount() == 0 && c.getValue() == null) {
             return;
         }
 
-        xmlWriter.startElement( c.getName() );
+        xmlWriter.startElement(c.getName());
 
         // ----------------------------------------------------------------------
         // Write the attributes
@@ -255,9 +228,8 @@ public class DefaultComponentDescriptorWriter
 
         String[] attributeNames = c.getAttributeNames();
 
-        for ( String attributeName : attributeNames )
-        {
-            xmlWriter.addAttribute( attributeName, c.getAttribute( attributeName ) );
+        for (String attributeName : attributeNames) {
+            xmlWriter.addAttribute(attributeName, c.getAttribute(attributeName));
         }
 
         // ----------------------------------------------------------------------
@@ -266,38 +238,30 @@ public class DefaultComponentDescriptorWriter
 
         PlexusConfiguration[] children = c.getChildren();
 
-        if ( children.length > 0 )
-        {
-            for ( PlexusConfiguration aChildren : children )
-            {
-                writePlexusConfiguration( xmlWriter, aChildren );
+        if (children.length > 0) {
+            for (PlexusConfiguration aChildren : children) {
+                writePlexusConfiguration(xmlWriter, aChildren);
             }
-        }
-        else
-        {
+        } else {
             String value = c.getValue();
 
-            if ( value != null )
-            {
-                xmlWriter.writeText( value );
+            if (value != null) {
+                xmlWriter.writeText(value);
             }
         }
 
         xmlWriter.endElement();
     }
 
-    private void element( XMLWriter w, String name, String value )
-    {
-        if ( value == null )
-        {
+    private void element(XMLWriter w, String name, String value) {
+        if (value == null) {
             return;
         }
 
-        w.startElement( name );
+        w.startElement(name);
 
-        w.writeText( value );
+        w.writeText(value);
 
         w.endElement();
     }
-
 }

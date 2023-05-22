@@ -16,19 +16,16 @@ package org.codehaus.plexus.metadata.gleaner;
  * limitations under the License.
  */
 
-import org.codehaus.plexus.component.repository.ComponentDescriptor;
-
 import com.thoughtworks.qdox.JavaProjectBuilder;
 import com.thoughtworks.qdox.model.JavaClass;
+import org.codehaus.plexus.component.repository.ComponentDescriptor;
 
 /**
  * Interface for component gleaners which glean off of source code.
  *
  */
-public interface SourceComponentGleaner
-{
+public interface SourceComponentGleaner {
     String ROLE = SourceComponentGleaner.class.getName();
 
-    ComponentDescriptor<?> glean( JavaProjectBuilder classCache, JavaClass javaClass )
-        throws ComponentGleanerException;
+    ComponentDescriptor<?> glean(JavaProjectBuilder classCache, JavaClass javaClass) throws ComponentGleanerException;
 }

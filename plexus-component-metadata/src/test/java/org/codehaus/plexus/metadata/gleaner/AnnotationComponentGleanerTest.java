@@ -18,6 +18,7 @@ package org.codehaus.plexus.metadata.gleaner;
 
 import java.util.List;
 
+import junit.framework.TestCase;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
 import org.codehaus.plexus.component.repository.ComponentRequirement;
 import org.codehaus.plexus.component.repository.ComponentRequirementList;
@@ -25,39 +26,36 @@ import org.codehaus.plexus.configuration.PlexusConfiguration;
 import org.codehaus.plexus.metadata.gleaner.ann.AnnotatedComponent;
 import org.codehaus.plexus.metadata.gleaner.ann.AnnotatedComponentRole;
 
-import junit.framework.TestCase;
-
 /**
  * @author Eugene Kuleshov
  */
 public class AnnotationComponentGleanerTest extends TestCase {
 
-  public void testGlean() throws Exception {
-    AnnotationComponentGleaner gleaner = new AnnotationComponentGleaner();
-    Class<AnnotatedComponent> c = AnnotatedComponent.class;
-    ComponentDescriptor<?> descriptor = gleaner.glean(c.getName(), c.getClassLoader());
-    
-    assertEquals("foo", descriptor.getComponentType());
-    assertEquals(AnnotatedComponentRole.class.getName(), descriptor.getRole());
-    
-    List<ComponentRequirement> requirements = descriptor.getRequirements();
-    assertEquals(requirements.toString(), 2, requirements.size());
+    public void testGlean() throws Exception {
+        AnnotationComponentGleaner gleaner = new AnnotationComponentGleaner();
+        Class<AnnotatedComponent> c = AnnotatedComponent.class;
+        ComponentDescriptor<?> descriptor = gleaner.glean(c.getName(), c.getClassLoader());
 
-    ComponentRequirement requirement = requirements.get(0);
-    assertEquals("dependency", requirement.getFieldName());
-    assertEquals("default", requirement.getRoleHint());
+        assertEquals("foo", descriptor.getComponentType());
+        assertEquals(AnnotatedComponentRole.class.getName(), descriptor.getRole());
 
-    ComponentRequirement requirement2 = requirements.get(1);
-    assertEquals("dependency2", requirement2.getFieldName());
-    assertTrue(requirement2 instanceof ComponentRequirementList);
-    assertEquals("release,latest,snapshot",
-            String.join(",", ((ComponentRequirementList) requirement2).getRoleHints()));
+        List<ComponentRequirement> requirements = descriptor.getRequirements();
+        assertEquals(requirements.toString(), 2, requirements.size());
 
-    PlexusConfiguration configuration = descriptor.getConfiguration();
-    assertEquals(1, configuration.getChildCount());
-    PlexusConfiguration child = configuration.getChild(0);
-    assertEquals("param", child.getName());
-    assertEquals("value", child.getValue());
-  }
+        ComponentRequirement requirement = requirements.get(0);
+        assertEquals("dependency", requirement.getFieldName());
+        assertEquals("default", requirement.getRoleHint());
 
+        ComponentRequirement requirement2 = requirements.get(1);
+        assertEquals("dependency2", requirement2.getFieldName());
+        assertTrue(requirement2 instanceof ComponentRequirementList);
+        assertEquals(
+                "release,latest,snapshot", String.join(",", ((ComponentRequirementList) requirement2).getRoleHints()));
+
+        PlexusConfiguration configuration = descriptor.getConfiguration();
+        assertEquals(1, configuration.getChildCount());
+        PlexusConfiguration child = configuration.getChild(0);
+        assertEquals("param", child.getName());
+        assertEquals("value", child.getValue());
+    }
 }

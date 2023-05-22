@@ -22,8 +22,6 @@ package org.codehaus.plexus.personality.plexus.lifecycle.phase;
  * @author Jason van Zyl
  *
  */
-public interface Initializable
-{
-    public void initialize()
-        throws InitializationException;
+public interface Initializable {
+    public void initialize() throws InitializationException;
 }

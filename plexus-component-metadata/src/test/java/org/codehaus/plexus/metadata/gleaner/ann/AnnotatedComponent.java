@@ -25,14 +25,15 @@ import org.codehaus.plexus.component.annotations.Requirement;
 /**
  * @author Eugene Kuleshov
  */
-@Component(type="foo", role=AnnotatedComponentRole.class)
+@Component(type = "foo", role = AnnotatedComponentRole.class)
 public class AnnotatedComponent implements AnnotatedComponentRole {
 
-  @Requirement(hint="default")
-  @Configuration(name="param", value="value")
-  AnnotatedComponentDependency dependency;
-  
-  @Requirement(role=AnnotatedComponentDependency.class, hints={"release", "latest", "snapshot"})
-  List<AnnotatedComponentDependency> dependency2;
-  
+    @Requirement(hint = "default")
+    @Configuration(name = "param", value = "value")
+    AnnotatedComponentDependency dependency;
+
+    @Requirement(
+            role = AnnotatedComponentDependency.class,
+            hints = {"release", "latest", "snapshot"})
+    List<AnnotatedComponentDependency> dependency2;
 }

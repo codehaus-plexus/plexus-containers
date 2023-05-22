@@ -25,27 +25,21 @@ import org.codehaus.plexus.util.xml.Xpp3Dom;
 
 /**
  */
-public class XmlPlexusConfiguration
-    extends DefaultPlexusConfiguration
-{
-    public XmlPlexusConfiguration()
-    {
+public class XmlPlexusConfiguration extends DefaultPlexusConfiguration {
+    public XmlPlexusConfiguration() {
         super();
     }
 
-    public XmlPlexusConfiguration( String name )
-    {
-        super( name );
-    }
-    
-    public XmlPlexusConfiguration( String name, String value )
-    {
-        super( name, value );
+    public XmlPlexusConfiguration(String name) {
+        super(name);
     }
 
-    public XmlPlexusConfiguration( Xpp3Dom dom )
-    {
-        super( dom.getName(), dom.getValue() );
+    public XmlPlexusConfiguration(String name, String value) {
+        super(name, value);
+    }
+
+    public XmlPlexusConfiguration(Xpp3Dom dom) {
+        super(dom.getName(), dom.getValue());
 
         // attrs
         String[] attributes = dom.getAttributeNames();
@@ -56,9 +50,8 @@ public class XmlPlexusConfiguration
 
         // children
         int childCount = dom.getChildCount();
-        for ( int i = 0; i < childCount; i++ )
-        {
-            addChild( new XmlPlexusConfiguration( dom.getChild( i ) ) );
+        for (int i = 0; i < childCount; i++) {
+            addChild(new XmlPlexusConfiguration(dom.getChild(i)));
         }
     }
 
@@ -66,18 +59,14 @@ public class XmlPlexusConfiguration
     //
     // ----------------------------------------------------------------------
 
-    public String toString()
-    {
+    public String toString() {
         StringWriter sw = new StringWriter();
 
         XmlPlexusConfigurationWriter xw = new XmlPlexusConfigurationWriter();
 
-        try
-        {
-            xw.write( sw, this );
-        }
-        catch ( IOException e )
-        {
+        try {
+            xw.write(sw, this);
+        } catch (IOException e) {
             // will not happen with StringWriter
         }
 

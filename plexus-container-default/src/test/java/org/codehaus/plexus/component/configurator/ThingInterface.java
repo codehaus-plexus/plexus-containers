@@ -24,8 +24,6 @@ package org.codehaus.plexus.component.configurator;
  * SOFTWARE.
  */
 
-
-public interface ThingInterface
-{
+public interface ThingInterface {
     String getName();
 }

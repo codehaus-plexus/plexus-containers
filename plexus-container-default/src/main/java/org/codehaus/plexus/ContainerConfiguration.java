@@ -19,32 +19,31 @@ import org.codehaus.plexus.lifecycle.LifecycleHandlerManager;
 /**
  * @author Jason van Zyl
  */
-public interface ContainerConfiguration
-{
-    ContainerConfiguration setName( String name );
+public interface ContainerConfiguration {
+    ContainerConfiguration setName(String name);
 
     String getName();
 
-    ContainerConfiguration setContext( Map<Object, Object> context );
+    ContainerConfiguration setContext(Map<Object, Object> context);
 
     Map<Object, Object> getContext();
 
-    ContainerConfiguration setClassWorld( ClassWorld classWorld );
+    ContainerConfiguration setClassWorld(ClassWorld classWorld);
 
     ClassWorld getClassWorld();
 
-    ContainerConfiguration setRealm( ClassRealm realm );
+    ContainerConfiguration setRealm(ClassRealm realm);
 
     ClassRealm getRealm();
-    
+
     //
     // Configuration
     //
-    ContainerConfiguration setContainerConfiguration( String configuration );
+    ContainerConfiguration setContainerConfiguration(String configuration);
 
     String getContainerConfiguration();
 
-    ContainerConfiguration setContainerConfigurationURL( URL configuration );
+    ContainerConfiguration setContainerConfigurationURL(URL configuration);
 
     URL getContainerConfigurationURL();
 
@@ -62,17 +61,17 @@ public interface ContainerConfiguration
 
     // Component discoverer manager
 
-    ContainerConfiguration addComponentDiscoverer( ComponentDiscoverer componentDiscoverer );
+    ContainerConfiguration addComponentDiscoverer(ComponentDiscoverer componentDiscoverer);
 
-    ContainerConfiguration addComponentDiscoveryListener( ComponentDiscoveryListener componentDiscoveryListener );
+    ContainerConfiguration addComponentDiscoveryListener(ComponentDiscoveryListener componentDiscoveryListener);
 
-    ContainerConfiguration setComponentDiscovererManager( ComponentDiscovererManager componentDiscovererManager );
+    ContainerConfiguration setComponentDiscovererManager(ComponentDiscovererManager componentDiscovererManager);
 
     ComponentDiscovererManager getComponentDiscovererManager();
 
     // Component factory manager
 
-    ContainerConfiguration setComponentFactoryManager( ComponentFactoryManager componentFactoryManager );
+    ContainerConfiguration setComponentFactoryManager(ComponentFactoryManager componentFactoryManager);
 
     ComponentFactoryManager getComponentFactoryManager();
 
@@ -80,7 +79,7 @@ public interface ContainerConfiguration
 
     // Component repository
 
-    ContainerConfiguration setComponentRepository( ComponentRepository componentRepository );
+    ContainerConfiguration setComponentRepository(ComponentRepository componentRepository);
 
     ComponentRepository getComponentRepository();
 
@@ -88,24 +87,23 @@ public interface ContainerConfiguration
 
     // Lifecycle handler manager
 
-    ContainerConfiguration addLifecycleHandler( LifecycleHandler lifecycleHandler );
+    ContainerConfiguration addLifecycleHandler(LifecycleHandler lifecycleHandler);
 
-    ContainerConfiguration setLifecycleHandlerManager( LifecycleHandlerManager lifecycleHandlerManager );
+    ContainerConfiguration setLifecycleHandlerManager(LifecycleHandlerManager lifecycleHandlerManager);
 
     LifecycleHandlerManager getLifecycleHandlerManager();
 
     // Configuration Sources
 
-    ContainerConfiguration setConfigurationSource( ConfigurationSource configurationSource );
+    ContainerConfiguration setConfigurationSource(ConfigurationSource configurationSource);
 
     ConfigurationSource getConfigurationSource();
 
-    ContainerConfiguration addComponentDiscoverer( Class<?> componentDiscoverer );
-    
-    ContainerConfiguration addComponentDiscoveryListener( Class<?> componentDiscoveryListener );
+    ContainerConfiguration addComponentDiscoverer(Class<?> componentDiscoverer);
+
+    ContainerConfiguration addComponentDiscoveryListener(Class<?> componentDiscoveryListener);
 
     List<Class> getComponentDiscoverers();
 
-    List<Class> getComponentDiscoveryListeners();    
+    List<Class> getComponentDiscoveryListeners();
 }
-

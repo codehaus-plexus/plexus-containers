@@ -21,16 +21,13 @@ import junit.framework.TestCase;
 /**
  * @author <a href="michal.maczka@dimatics.com">Michal Maczka</a>
  */
-public class ComponentRequirementTest
-    extends TestCase
-{
-    public void testComponentRequirement()
-    {
+public class ComponentRequirementTest extends TestCase {
+    public void testComponentRequirement() {
         ComponentRequirement requirement = new ComponentRequirement();
-        requirement.setFieldName( "field" );
-        requirement.setRole( "role" );
+        requirement.setFieldName("field");
+        requirement.setRole("role");
 
-        assertEquals( "field", requirement.getFieldName() );
-        assertEquals( "role", requirement.getRole() );
+        assertEquals("field", requirement.getFieldName());
+        assertEquals("role", requirement.getRole());
     }
 }

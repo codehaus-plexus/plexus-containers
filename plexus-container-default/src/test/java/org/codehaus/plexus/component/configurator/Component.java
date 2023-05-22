@@ -26,10 +26,8 @@ package org.codehaus.plexus.component.configurator;
 
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public interface Component
-{
-}
+public interface Component {}

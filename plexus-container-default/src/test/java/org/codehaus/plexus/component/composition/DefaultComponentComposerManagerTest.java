@@ -21,27 +21,22 @@ import org.codehaus.plexus.PlexusTestCase;
 /**
  * @author <a href="mailto:mma@imtf.ch">Michal Maczka</a>
  */
-public class DefaultComponentComposerManagerTest
-    extends PlexusTestCase
-{
-    protected String getCustomConfigurationName()
-    {
+public class DefaultComponentComposerManagerTest extends PlexusTestCase {
+    protected String getCustomConfigurationName() {
         return "org/codehaus/plexus/component/composition/components.xml";
     }
 
-    public void testComposition()
-        throws Exception
-    {
-        ComponentA componentA = lookup( ComponentA.class );
+    public void testComposition() throws Exception {
+        ComponentA componentA = lookup(ComponentA.class);
 
-        assertNotNull( componentA );
+        assertNotNull(componentA);
 
         ComponentB componentB = componentA.getComponentB();
 
-        assertNotNull( componentB );
+        assertNotNull(componentB);
 
         ComponentC componentC = componentB.getComponentC();
 
-        assertNotNull( componentC );
+        assertNotNull(componentC);
     }
 }

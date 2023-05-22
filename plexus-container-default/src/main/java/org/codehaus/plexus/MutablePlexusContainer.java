@@ -28,40 +28,38 @@ import org.codehaus.plexus.logging.LoggerManager;
 /**
  * @author Jason van Zyl
  */
-public interface MutablePlexusContainer
-    extends PlexusContainer
-{
+public interface MutablePlexusContainer extends PlexusContainer {
     // Core Components
 
     ComponentRegistry getComponentRegistry();
 
-    void setComponentRegistry( ComponentRegistry componentRegistry );
+    void setComponentRegistry(ComponentRegistry componentRegistry);
 
     ComponentDiscovererManager getComponentDiscovererManager();
 
-    void setComponentDiscovererManager( ComponentDiscovererManager componentDiscovererManager );
+    void setComponentDiscovererManager(ComponentDiscovererManager componentDiscovererManager);
 
     ComponentFactoryManager getComponentFactoryManager();
 
-    void setComponentFactoryManager( ComponentFactoryManager componentFactoryManager );
+    void setComponentFactoryManager(ComponentFactoryManager componentFactoryManager);
 
     LoggerManager getLoggerManager();
 
-    void setLoggerManager( LoggerManager loggerManager );
+    void setLoggerManager(LoggerManager loggerManager);
 
     Logger getLogger();
-    
-    void setConfigurationSource( ConfigurationSource configurationSource );
+
+    void setConfigurationSource(ConfigurationSource configurationSource);
 
     ConfigurationSource getConfigurationSource();
-    
+
     // Configuration
 
-    void setConfiguration( PlexusConfiguration configuration );
+    void setConfiguration(PlexusConfiguration configuration);
 
     PlexusConfiguration getConfiguration();
 
-    ClassRealm getComponentRealm( String realmId );
+    ClassRealm getComponentRealm(String realmId);
 
     ClassWorld getClassWorld();
 }

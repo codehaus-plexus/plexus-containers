@@ -16,9 +16,6 @@ package org.codehaus.plexus;
  * limitations under the License.
  */
 
-import static org.codehaus.plexus.PlexusConstants.PLEXUS_DEFAULT_HINT;
-import static org.codehaus.plexus.component.CastUtils.cast;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -61,15 +58,15 @@ import org.codehaus.plexus.util.IOUtil;
 import org.codehaus.plexus.util.InterpolationFilterReader;
 import org.codehaus.plexus.util.ReaderFactory;
 
+import static org.codehaus.plexus.PlexusConstants.PLEXUS_DEFAULT_HINT;
+import static org.codehaus.plexus.component.CastUtils.cast;
+
 /**
  * Default implementation of PlexusContainer and MutablePlexusContainer.
  * @author Jason van Zyl
  * @author Kenney Westerhof
  */
-public class DefaultPlexusContainer
-    extends AbstractLogEnabled
-    implements MutablePlexusContainer
-{
+public class DefaultPlexusContainer extends AbstractLogEnabled implements MutablePlexusContainer {
     protected static final String DEFAULT_CONTAINER_NAME = "default";
 
     protected static final String DEFAULT_REALM_NAME = "plexus.core";
@@ -122,37 +119,31 @@ public class DefaultPlexusContainer
     // TODO: Is there a more threadpool-friendly way to do this?
     private ThreadLocal<ClassRealm> lookupRealm = new ThreadLocal<ClassRealm>();
 
-    public void addComponent( Object component, String role )
-    {
-        addComponent( component, role, PLEXUS_DEFAULT_HINT );
+    public void addComponent(Object component, String role) {
+        addComponent(component, role, PLEXUS_DEFAULT_HINT);
     }
 
-    public <T> void addComponent( T component, Class<?> role, String roleHint ) 
-    {
-        addComponent( component, role.getName(), roleHint );
+    public <T> void addComponent(T component, Class<?> role, String roleHint) {
+        addComponent(component, role.getName(), roleHint);
     }
 
-    public void addComponent( Object component, String role, String roleHint )
-    {
-        if ( roleHint == null )
-        {
+    public void addComponent(Object component, String role, String roleHint) {
+        if (roleHint == null) {
             roleHint = PLEXUS_DEFAULT_HINT;
         }
 
-        getComponentRegistry().addComponent( component, role, roleHint );
+        getComponentRegistry().addComponent(component, role, roleHint);
     }
 
-    public ClassRealm setLookupRealm( ClassRealm realm )
-    {
+    public ClassRealm setLookupRealm(ClassRealm realm) {
         ClassRealm oldRealm = lookupRealm.get();
 
-        lookupRealm.set( realm );
+        lookupRealm.set(realm);
 
         return oldRealm;
     }
 
-    public ClassRealm getLookupRealm()
-    {
+    public ClassRealm getLookupRealm() {
         return lookupRealm.get();
     }
 
@@ -160,40 +151,27 @@ public class DefaultPlexusContainer
     // Constructors
     // ----------------------------------------------------------------------
 
-    public DefaultPlexusContainer()
-        throws PlexusContainerException
-    {
-        construct( new DefaultContainerConfiguration() );
+    public DefaultPlexusContainer() throws PlexusContainerException {
+        construct(new DefaultContainerConfiguration());
     }
 
-    public DefaultPlexusContainer( ContainerConfiguration c )
-        throws PlexusContainerException
-    {
-        construct( c );
+    public DefaultPlexusContainer(ContainerConfiguration c) throws PlexusContainerException {
+        construct(c);
     }
 
-    public ClassRealm createChildRealm( String id )
-    {
-        try
-        {
-            return containerRealm.createChildRealm( id );
-        }
-        catch ( DuplicateRealmException e )
-        {
-            try
-            {
-                return classWorld.getRealm( id );
-            }
-            catch ( NoSuchRealmException e1 )
-            {
+    public ClassRealm createChildRealm(String id) {
+        try {
+            return containerRealm.createChildRealm(id);
+        } catch (DuplicateRealmException e) {
+            try {
+                return classWorld.getRealm(id);
+            } catch (NoSuchRealmException e1) {
                 return null;
             }
         }
     }
 
-    private void construct( ContainerConfiguration c )
-        throws PlexusContainerException
-    {
+    private void construct(ContainerConfiguration c) throws PlexusContainerException {
         configurationSource = c.getConfigurationSource();
 
         // ----------------------------------------------------------------------------
@@ -203,44 +181,36 @@ public class DefaultPlexusContainer
         classWorld = c.getClassWorld();
 
         // Make sure we have a valid ClassWorld
-        if ( classWorld == null )
-        {
-            classWorld = new ClassWorld( DEFAULT_REALM_NAME, Thread.currentThread().getContextClassLoader() );
+        if (classWorld == null) {
+            classWorld =
+                    new ClassWorld(DEFAULT_REALM_NAME, Thread.currentThread().getContextClassLoader());
         }
 
         containerRealm = c.getRealm();
 
-        if ( containerRealm == null )
-        {
-            try
-            {
-                containerRealm = classWorld.getRealm( DEFAULT_REALM_NAME );
-            }
-            catch ( NoSuchRealmException e )
-            {
+        if (containerRealm == null) {
+            try {
+                containerRealm = classWorld.getRealm(DEFAULT_REALM_NAME);
+            } catch (NoSuchRealmException e) {
                 containerRealm = (ClassRealm) classWorld.getRealms().iterator().next();
 
-                if ( containerRealm == null )
-                {
-                    System.err.println( "No container realm! Expect errors." );
+                if (containerRealm == null) {
+                    System.err.println("No container realm! Expect errors.");
 
                     new Throwable().printStackTrace();
                 }
             }
         }
 
-        setLookupRealm( containerRealm );
+        setLookupRealm(containerRealm);
 
         // ----------------------------------------------------------------------------
         // Context
         // ----------------------------------------------------------------------------
 
-        if ( c.getContext() != null )
-        {
-            containerContext = new DefaultContext( c.getContext() );            
-        }
-        else
-        {                
+        if (c.getContext() != null) {
+            containerContext = new DefaultContext(c.getContext());
+        } else {
             containerContext = new DefaultContext();
         }
 
@@ -250,295 +220,225 @@ public class DefaultPlexusContainer
 
         InputStream in = null;
 
-        if ( c.getContainerConfiguration() != null )
-        {
-            in = toStream( c.getContainerConfiguration() );
+        if (c.getContainerConfiguration() != null) {
+            in = toStream(c.getContainerConfiguration());
         }
 
-        try
-        {
-            if ( c.getContainerConfigurationURL() != null )
-            {
+        try {
+            if (c.getContainerConfigurationURL() != null) {
                 in = c.getContainerConfigurationURL().openStream();
             }
-        }
-        catch ( IOException e )
-        {
-            throw new PlexusContainerException( "Error reading configuration URL", e );
+        } catch (IOException e) {
+            throw new PlexusContainerException("Error reading configuration URL", e);
         }
 
-        try
-        {
-            configurationReader = in == null ? null : ReaderFactory.newXmlReader( in );
-        }
-        catch ( IOException e )
-        {
-            throw new PlexusContainerException( "Error reading configuration file", e );
+        try {
+            configurationReader = in == null ? null : ReaderFactory.newXmlReader(in);
+        } catch (IOException e) {
+            throw new PlexusContainerException("Error reading configuration file", e);
         }
 
-        try
-        {
-            initialize( c );
+        try {
+            initialize(c);
 
             start();
+        } finally {
+            IOUtil.close(configurationReader);
         }
-        finally
-        {
-            IOUtil.close( configurationReader );
-        }
-        
-        for( Class clazz : c.getComponentDiscoverers() )
-        {
-            try
-            {
-                ComponentDiscoverer cd = (ComponentDiscoverer) lookup( clazz );
-                componentDiscovererManager.addComponentDiscoverer( cd );
-            }
-            catch ( ComponentLookupException e )
-            {
+
+        for (Class clazz : c.getComponentDiscoverers()) {
+            try {
+                ComponentDiscoverer cd = (ComponentDiscoverer) lookup(clazz);
+                componentDiscovererManager.addComponentDiscoverer(cd);
+            } catch (ComponentLookupException e) {
             }
         }
-        
-        for( Class clazz : c.getComponentDiscoveryListeners() )
-        {
-            try
-            {
-                ComponentDiscoveryListener cdl = (ComponentDiscoveryListener) lookup( clazz );
-                componentDiscovererManager.registerComponentDiscoveryListener( cdl );
+
+        for (Class clazz : c.getComponentDiscoveryListeners()) {
+            try {
+                ComponentDiscoveryListener cdl = (ComponentDiscoveryListener) lookup(clazz);
+                componentDiscovererManager.registerComponentDiscoveryListener(cdl);
+            } catch (ComponentLookupException e) {
             }
-            catch ( ComponentLookupException e )
-            {
-            }
-        }                
+        }
     }
 
     // ----------------------------------------------------------------------------
     // Lookup
     // ----------------------------------------------------------------------------
 
-    private Class<?> getInterfaceClass( String role, String hint )
-    {
+    private Class<?> getInterfaceClass(String role, String hint) {
         ComponentDescriptor<?> cd;
 
-        if ( hint == null )
-        {
-            cd = getComponentDescriptor( role );
+        if (hint == null) {
+            cd = getComponentDescriptor(role);
+        } else {
+            cd = getComponentDescriptor(role, hint);
         }
-        else
-        {
-            cd = getComponentDescriptor( role, hint );
-        }
-        
-        if ( cd != null )
-        {                        
-            try
-            {
+
+        if (cd != null) {
+            try {
                 ClassRealm realm = getLookupRealm();
 
-                if ( realm != null )
-                {
-                    return realm.loadClass( role );
-                }
-                else
-                {                    
+                if (realm != null) {
+                    return realm.loadClass(role);
+                } else {
                     ClassLoader loader = cd.getImplementationClass().getClassLoader();
 
-                    if ( loader != null )
-                    {
-                        return loader.loadClass( role );
+                    if (loader != null) {
+                        return loader.loadClass(role);
                     }
                 }
-            }
-            catch ( ClassNotFoundException e )
-            {
+            } catch (ClassNotFoundException e) {
                 return Object.class;
-            }                        
+            }
         }
 
         return Object.class;
     }
-    
-    private Class<?> getRoleClass( String role )
-    {
-        return getInterfaceClass( role, null );        
+
+    private Class<?> getRoleClass(String role) {
+        return getInterfaceClass(role, null);
     }
 
-    private Class<?> getRoleClass( String role, String hint )
-    {
-        return getInterfaceClass( role, hint );
+    private Class<?> getRoleClass(String role, String hint) {
+        return getInterfaceClass(role, hint);
     }
 
-    public Object lookup( String role ) throws ComponentLookupException
-    {
-        return componentRegistry.lookup( getRoleClass( role ), role, "" );
+    public Object lookup(String role) throws ComponentLookupException {
+        return componentRegistry.lookup(getRoleClass(role), role, "");
     }
 
-    public Object lookup( String role, String roleHint ) throws ComponentLookupException
-    {
-        return componentRegistry.lookup( getRoleClass( role, roleHint ), role, roleHint );
+    public Object lookup(String role, String roleHint) throws ComponentLookupException {
+        return componentRegistry.lookup(getRoleClass(role, roleHint), role, roleHint);
     }
 
-    public <T> T lookup( Class<T> type ) throws ComponentLookupException
-    {
-        return componentRegistry.lookup( type, type.getName(), "" );
+    public <T> T lookup(Class<T> type) throws ComponentLookupException {
+        return componentRegistry.lookup(type, type.getName(), "");
     }
 
-    public <T> T lookup( Class<T> type, String roleHint ) throws ComponentLookupException
-    {
-        return componentRegistry.lookup( type, type.getName(), roleHint );
+    public <T> T lookup(Class<T> type, String roleHint) throws ComponentLookupException {
+        return componentRegistry.lookup(type, type.getName(), roleHint);
     }
 
-    public <T> T lookup( Class<T> type, String role, String roleHint ) throws ComponentLookupException
-    {
-        return componentRegistry.lookup( type, role, roleHint );
+    public <T> T lookup(Class<T> type, String role, String roleHint) throws ComponentLookupException {
+        return componentRegistry.lookup(type, role, roleHint);
     }
 
-    public <T> T lookup( ComponentDescriptor<T> componentDescriptor )
-        throws ComponentLookupException
-    {
-        return componentRegistry.lookup( componentDescriptor );
+    public <T> T lookup(ComponentDescriptor<T> componentDescriptor) throws ComponentLookupException {
+        return componentRegistry.lookup(componentDescriptor);
     }
 
-    public List<Object> lookupList( String role ) throws ComponentLookupException
-    {
-        return cast(componentRegistry.lookupList( getRoleClass( role ), role, null));
+    public List<Object> lookupList(String role) throws ComponentLookupException {
+        return cast(componentRegistry.lookupList(getRoleClass(role), role, null));
     }
 
-    public List<Object> lookupList( String role, List<String> roleHints ) throws ComponentLookupException
-    {
-        return cast(componentRegistry.lookupList( getRoleClass( role ), role, roleHints ));
+    public List<Object> lookupList(String role, List<String> roleHints) throws ComponentLookupException {
+        return cast(componentRegistry.lookupList(getRoleClass(role), role, roleHints));
     }
 
-    public <T> List<T> lookupList( Class<T> type ) throws ComponentLookupException
-    {
-        return componentRegistry.lookupList( type, type.getName(), null );
+    public <T> List<T> lookupList(Class<T> type) throws ComponentLookupException {
+        return componentRegistry.lookupList(type, type.getName(), null);
     }
 
-    public <T> List<T> lookupList( Class<T> type, List<String> roleHints ) throws ComponentLookupException
-    {
-        return componentRegistry.lookupList( type, type.getName(), roleHints );
+    public <T> List<T> lookupList(Class<T> type, List<String> roleHints) throws ComponentLookupException {
+        return componentRegistry.lookupList(type, type.getName(), roleHints);
     }
 
-    public Map<String, Object> lookupMap( String role ) throws ComponentLookupException
-    {
-        return cast(componentRegistry.lookupMap(  getRoleClass( role ), role, null ));
+    public Map<String, Object> lookupMap(String role) throws ComponentLookupException {
+        return cast(componentRegistry.lookupMap(getRoleClass(role), role, null));
     }
 
-    public Map<String, Object> lookupMap( String role, List<String> roleHints ) throws ComponentLookupException
-    {
-        return cast(componentRegistry.lookupMap( getRoleClass( role ), role, roleHints ));
+    public Map<String, Object> lookupMap(String role, List<String> roleHints) throws ComponentLookupException {
+        return cast(componentRegistry.lookupMap(getRoleClass(role), role, roleHints));
     }
 
-    public <T> Map<String, T> lookupMap( Class<T> type ) throws ComponentLookupException
-    {
-        return componentRegistry.lookupMap( type, type.getName(), null );
+    public <T> Map<String, T> lookupMap(Class<T> type) throws ComponentLookupException {
+        return componentRegistry.lookupMap(type, type.getName(), null);
     }
 
-    public <T> Map<String, T> lookupMap( Class<T> type, List<String> roleHints ) throws ComponentLookupException
-    {
-        return componentRegistry.lookupMap( type, type.getName(), roleHints );
+    public <T> Map<String, T> lookupMap(Class<T> type, List<String> roleHints) throws ComponentLookupException {
+        return componentRegistry.lookupMap(type, type.getName(), roleHints);
     }
 
     // ----------------------------------------------------------------------
     // Component Descriptor Lookup
     // ----------------------------------------------------------------------
 
-    public boolean hasComponent( String role )
-    {
-        return componentRegistry.getComponentDescriptor( Object.class, role, "" ) != null;
+    public boolean hasComponent(String role) {
+        return componentRegistry.getComponentDescriptor(Object.class, role, "") != null;
     }
 
-    public boolean hasComponent( String role, String roleHint )
-    {
-        return componentRegistry.getComponentDescriptor( Object.class, role, roleHint ) != null;
+    public boolean hasComponent(String role, String roleHint) {
+        return componentRegistry.getComponentDescriptor(Object.class, role, roleHint) != null;
     }
 
-    public boolean hasComponent( Class<?> type )
-    {
-        return componentRegistry.getComponentDescriptor( type, type.getName(), "" ) != null;
+    public boolean hasComponent(Class<?> type) {
+        return componentRegistry.getComponentDescriptor(type, type.getName(), "") != null;
     }
 
-    public boolean hasComponent( Class<?> type, String roleHint )
-    {
-        return componentRegistry.getComponentDescriptor( type, type.getName(), roleHint ) != null;
+    public boolean hasComponent(Class<?> type, String roleHint) {
+        return componentRegistry.getComponentDescriptor(type, type.getName(), roleHint) != null;
     }
 
-    public boolean hasComponent( Class<?> type, String role, String roleHint )
-    {
-        return componentRegistry.getComponentDescriptor( type, role, roleHint ) != null;
+    public boolean hasComponent(Class<?> type, String role, String roleHint) {
+        return componentRegistry.getComponentDescriptor(type, role, roleHint) != null;
     }
 
-    public ComponentDescriptor<?> getComponentDescriptor( String role )
-    {
-        return componentRegistry.getComponentDescriptor( Object.class, role, "" );
+    public ComponentDescriptor<?> getComponentDescriptor(String role) {
+        return componentRegistry.getComponentDescriptor(Object.class, role, "");
     }
 
-    public ComponentDescriptor<?> getComponentDescriptor( String role, String roleHint )
-    {
-        return componentRegistry.getComponentDescriptor( Object.class, role, roleHint );
+    public ComponentDescriptor<?> getComponentDescriptor(String role, String roleHint) {
+        return componentRegistry.getComponentDescriptor(Object.class, role, roleHint);
     }
 
-    public <T> ComponentDescriptor<T> getComponentDescriptor( Class<T> type, String role, String roleHint )
-    {
-        return componentRegistry.getComponentDescriptor( type, role, roleHint );
+    public <T> ComponentDescriptor<T> getComponentDescriptor(Class<T> type, String role, String roleHint) {
+        return componentRegistry.getComponentDescriptor(type, role, roleHint);
     }
 
-    public Map<String, ComponentDescriptor<?>> getComponentDescriptorMap( String role )
-    {
-        return cast(componentRegistry.getComponentDescriptorMap( Object.class, role ));
+    public Map<String, ComponentDescriptor<?>> getComponentDescriptorMap(String role) {
+        return cast(componentRegistry.getComponentDescriptorMap(Object.class, role));
     }
 
-    public <T> Map<String, ComponentDescriptor<T>> getComponentDescriptorMap( Class<T> type, String role )
-    {
-        return componentRegistry.getComponentDescriptorMap( type, role );
+    public <T> Map<String, ComponentDescriptor<T>> getComponentDescriptorMap(Class<T> type, String role) {
+        return componentRegistry.getComponentDescriptorMap(type, role);
     }
 
-    public List<ComponentDescriptor<?>> getComponentDescriptorList( String role )
-    {
-        return cast(componentRegistry.getComponentDescriptorList( Object.class, role ));
+    public List<ComponentDescriptor<?>> getComponentDescriptorList(String role) {
+        return cast(componentRegistry.getComponentDescriptorList(Object.class, role));
     }
 
-    public <T> List<ComponentDescriptor<T>> getComponentDescriptorList( Class<T> type, String role )
-    {
-        return componentRegistry.getComponentDescriptorList( type, role );
+    public <T> List<ComponentDescriptor<T>> getComponentDescriptorList(Class<T> type, String role) {
+        return componentRegistry.getComponentDescriptorList(type, role);
     }
 
-    public void addComponentDescriptor( ComponentDescriptor<?> componentDescriptor ) 
-        throws CycleDetectedInComponentGraphException
-    {
-        if ( componentDescriptor.getRealm() == null )
-        {
-            componentDescriptor.setRealm( this.containerRealm );
+    public void addComponentDescriptor(ComponentDescriptor<?> componentDescriptor)
+            throws CycleDetectedInComponentGraphException {
+        if (componentDescriptor.getRealm() == null) {
+            componentDescriptor.setRealm(this.containerRealm);
             // throw new ComponentImplementationNotFoundException( "ComponentDescriptor is missing realmId" );
         }
-        componentRegistry.addComponentDescriptor( componentDescriptor );
+        componentRegistry.addComponentDescriptor(componentDescriptor);
     }
 
     // ----------------------------------------------------------------------
     // Component Release
     // ----------------------------------------------------------------------
 
-    public void release( Object component )
-        throws ComponentLifecycleException
-    {
-        componentRegistry.release( component );
+    public void release(Object component) throws ComponentLifecycleException {
+        componentRegistry.release(component);
     }
 
-    public void releaseAll( Map<String, ?> components )
-        throws ComponentLifecycleException
-    {
-        for ( Object component : components.values() )
-        {
-            release( component );
+    public void releaseAll(Map<String, ?> components) throws ComponentLifecycleException {
+        for (Object component : components.values()) {
+            release(component);
         }
     }
 
-    public void releaseAll( List<?> components )
-        throws ComponentLifecycleException
-    {
-        for ( Object component : components )
-        {
-            release( component );
+    public void releaseAll(List<?> components) throws ComponentLifecycleException {
+        for (Object component : components) {
+            release(component);
         }
     }
 
@@ -546,172 +446,126 @@ public class DefaultPlexusContainer
     // Lifecycle Management
     // ----------------------------------------------------------------------
 
-    protected void initialize( ContainerConfiguration containerConfiguration )
-        throws PlexusContainerException
-    {
-        try
-        {
-            initializeConfiguration( containerConfiguration );
+    protected void initialize(ContainerConfiguration containerConfiguration) throws PlexusContainerException {
+        try {
+            initializeConfiguration(containerConfiguration);
 
-            initializePhases( containerConfiguration );
-            
-            containerContext.put( PlexusConstants.PLEXUS_KEY, this );
-            
-            discoverComponents( getContainerRealm() );   
-            
-            PlexusConfiguration[] loadOnStartComponents = getConfiguration().getChild( "load-on-start" ).getChildren( "component" );
+            initializePhases(containerConfiguration);
 
-            getLogger().debug( "Found " + loadOnStartComponents.length + " components to load on start" );
+            containerContext.put(PlexusConstants.PLEXUS_KEY, this);
+
+            discoverComponents(getContainerRealm());
+
+            PlexusConfiguration[] loadOnStartComponents =
+                    getConfiguration().getChild("load-on-start").getChildren("component");
+
+            getLogger().debug("Found " + loadOnStartComponents.length + " components to load on start");
 
             ClassLoader prevCl = Thread.currentThread().getContextClassLoader();
 
-            try
-            {
-                for ( PlexusConfiguration loadOnStartComponent : loadOnStartComponents )
-                {
-                    String role = loadOnStartComponent.getChild( "role" ).getValue( null );
+            try {
+                for (PlexusConfiguration loadOnStartComponent : loadOnStartComponents) {
+                    String role = loadOnStartComponent.getChild("role").getValue(null);
 
-                    String roleHint = loadOnStartComponent.getChild( "role-hint" ).getValue( null );
+                    String roleHint = loadOnStartComponent.getChild("role-hint").getValue(null);
 
-                    if ( role == null )
-                    {
-                        throw new PlexusContainerException( "Missing 'role' element from load-on-start." );
+                    if (role == null) {
+                        throw new PlexusContainerException("Missing 'role' element from load-on-start.");
                     }
 
-                    if ( roleHint == null )
-                    {
+                    if (roleHint == null) {
                         roleHint = PlexusConstants.PLEXUS_DEFAULT_HINT;
                     }
 
-                    if ( roleHint.equals( "*" ) )
-                    {
-                        getLogger().info( "Loading on start all components with [role]: " + "[" + role + "]" );
+                    if (roleHint.equals("*")) {
+                        getLogger().info("Loading on start all components with [role]: " + "[" + role + "]");
 
-                        lookupList( role );
-                    }
-                    else
-                    {
-                        getLogger().info( "Loading on start [role,roleHint]: " + "[" + role + "," + roleHint + "]" );
+                        lookupList(role);
+                    } else {
+                        getLogger().info("Loading on start [role,roleHint]: " + "[" + role + "," + roleHint + "]");
 
-                        lookup( role, roleHint );
+                        lookup(role, roleHint);
                     }
                 }
+            } catch (ComponentLookupException e) {
+                throw new PlexusContainerException("Error looking up load-on-start component.", e);
+            } finally {
+                Thread.currentThread().setContextClassLoader(prevCl);
             }
-            catch ( ComponentLookupException e )
-            {
-                throw new PlexusContainerException( "Error looking up load-on-start component.", e );
-            }
-            finally
-            {
-                Thread.currentThread().setContextClassLoader( prevCl );
-            }
-            
+
+        } catch (ContextException e) {
+            throw new PlexusContainerException("Error processing configuration", e);
+        } catch (PlexusConfigurationException e) {
+            throw new PlexusContainerException("Error configuring components", e);
+        } catch (IOException e) {
+            throw new PlexusContainerException("Error reading configuration file", e);
+        } catch (CycleDetectedInComponentGraphException e) {
+            throw new PlexusContainerException("Cycle detected in component graph in the system: ", e);
         }
-        catch ( ContextException e )
-        {
-            throw new PlexusContainerException( "Error processing configuration", e );
-        }
-        catch ( PlexusConfigurationException e )
-        {
-            throw new PlexusContainerException( "Error configuring components", e );
-        }
-        catch ( IOException e )
-        {
-            throw new PlexusContainerException( "Error reading configuration file", e );
-        }
-        catch ( CycleDetectedInComponentGraphException e )
-        {
-            throw new PlexusContainerException( "Cycle detected in component graph in the system: ", e );
-        }        
     }
 
-    protected void initializePhases( ContainerConfiguration containerConfiguration )
-        throws PlexusContainerException
-    {
+    protected void initializePhases(ContainerConfiguration containerConfiguration) throws PlexusContainerException {
         ContainerInitializationPhase[] initPhases = containerConfiguration.getInitializationPhases();
 
         ContainerInitializationContext initializationContext = new ContainerInitializationContext(
-            this,
-            classWorld,
-            containerRealm,
-            configuration,
-            containerConfiguration );
+                this, classWorld, containerRealm, configuration, containerConfiguration);
 
-        for ( ContainerInitializationPhase phase : initPhases )
-        {
-            try
-            {
-                phase.execute( initializationContext );
-            }
-            catch ( Exception e )
-            {
-                throw new PlexusContainerException( "Error initializaing container in " + phase.getClass().getName()
-                    + ".", e );
+        for (ContainerInitializationPhase phase : initPhases) {
+            try {
+                phase.execute(initializationContext);
+            } catch (Exception e) {
+                throw new PlexusContainerException(
+                        "Error initializaing container in " + phase.getClass().getName() + ".", e);
             }
         }
     }
 
-    protected void start()
-        throws PlexusContainerException
-    {
+    protected void start() throws PlexusContainerException {
         // XXX this is called after initializeConfiguration - is this correct?
         configuration = null;
     }
 
-    public void dispose()
-    {
-        try
-        {
+    public void dispose() {
+        try {
             componentRegistry.dispose();
 
             boolean needToDisposeRealm = false;
 
-            try
-            {
-                containerRealm.setParentRealm( null );
+            try {
+                containerRealm.setParentRealm(null);
 
-                if ( needToDisposeRealm )
-                {
-                    classWorld.disposeRealm( containerRealm.getId() );
+                if (needToDisposeRealm) {
+                    classWorld.disposeRealm(containerRealm.getId());
                 }
+            } catch (NoSuchRealmException e) {
+                getLogger().debug("Failed to dispose realm.");
             }
-            catch ( NoSuchRealmException e )
-            {
-                getLogger().debug( "Failed to dispose realm." );
-            }
-        }
-        finally
-        {
-            lookupRealm.set( null );
+        } finally {
+            lookupRealm.set(null);
         }
     }
 
-    public void addContextValue( Object key, Object value )
-    {
-        containerContext.put( key, value );
+    public void addContextValue(Object key, Object value) {
+        containerContext.put(key, value);
     }
 
     // ----------------------------------------------------------------------
     // Misc Configuration
     // ----------------------------------------------------------------------
 
-    public ClassWorld getClassWorld()
-    {
+    public ClassWorld getClassWorld() {
         return classWorld;
     }
 
-    public void setClassWorld( ClassWorld classWorld )
-    {
+    public void setClassWorld(ClassWorld classWorld) {
         this.classWorld = classWorld;
     }
 
-    public ClassRealm getContainerRealm()
-    {
+    public ClassRealm getContainerRealm() {
         return containerRealm;
     }
 
-    public void setContainerRealm( ClassRealm containerRealm )
-    {
+    public void setContainerRealm(ClassRealm containerRealm) {
         this.containerRealm = containerRealm;
     }
 
@@ -719,8 +573,7 @@ public class DefaultPlexusContainer
     // Context
     // ----------------------------------------------------------------------
 
-    public Context getContext()
-    {
+    public Context getContext() {
         return containerContext;
     }
 
@@ -730,32 +583,29 @@ public class DefaultPlexusContainer
 
     // TODO: put this in a separate helper class and turn into a component if possible, too big.
 
-    protected void initializeConfiguration( ContainerConfiguration c )
-    throws PlexusConfigurationException, ContextException, IOException
-{
-    // We need an empty plexus configuration for merging. This is a function of removing the
-    // plexus-boostrap.xml file.
-    configuration = new XmlPlexusConfiguration( "plexus" );
+    protected void initializeConfiguration(ContainerConfiguration c)
+            throws PlexusConfigurationException, ContextException, IOException {
+        // We need an empty plexus configuration for merging. This is a function of removing the
+        // plexus-boostrap.xml file.
+        configuration = new XmlPlexusConfiguration("plexus");
 
-    if ( configurationReader != null )
-    {
-        // User userConfiguration
+        if (configurationReader != null) {
+            // User userConfiguration
 
-        PlexusConfiguration userConfiguration = PlexusTools.buildConfiguration( "<User Specified Configuration Reader>", getInterpolationConfigurationReader( configurationReader ) );
+            PlexusConfiguration userConfiguration = PlexusTools.buildConfiguration(
+                    "<User Specified Configuration Reader>", getInterpolationConfigurationReader(configurationReader));
 
-        // Merger of bootstrapConfiguration and user userConfiguration
+            // Merger of bootstrapConfiguration and user userConfiguration
 
-        configuration = PlexusConfigurationMerger.merge( userConfiguration, configuration );
-    }
-}
-
-    protected Reader getInterpolationConfigurationReader( Reader reader )
-    {
-        return new InterpolationFilterReader( reader, new ContextMapAdapter( containerContext ) );
+            configuration = PlexusConfigurationMerger.merge(userConfiguration, configuration);
+        }
     }
 
-    public Logger getLogger()
-    {
+    protected Reader getInterpolationConfigurationReader(Reader reader) {
+        return new InterpolationFilterReader(reader, new ContextMapAdapter(containerContext));
+    }
+
+    public Logger getLogger() {
         return super.getLogger();
     }
 
@@ -763,59 +613,49 @@ public class DefaultPlexusContainer
     // Discovery
     // ----------------------------------------------------------------------
 
-    public void registerComponentDiscoveryListener( ComponentDiscoveryListener listener )
-    {
-        componentDiscovererManager.registerComponentDiscoveryListener( listener );
+    public void registerComponentDiscoveryListener(ComponentDiscoveryListener listener) {
+        componentDiscovererManager.registerComponentDiscoveryListener(listener);
     }
 
-    public void removeComponentDiscoveryListener( ComponentDiscoveryListener listener )
-    {
-        componentDiscovererManager.removeComponentDiscoveryListener( listener );
+    public void removeComponentDiscoveryListener(ComponentDiscoveryListener listener) {
+        componentDiscovererManager.removeComponentDiscoveryListener(listener);
     }
 
     // ----------------------------------------------------------------------------
     // Mutable Container Interface
     // ----------------------------------------------------------------------------
 
-    public ComponentRegistry getComponentRegistry()
-    {
+    public ComponentRegistry getComponentRegistry() {
         return componentRegistry;
     }
 
-    public void setComponentRegistry( ComponentRegistry componentRegistry )
-    {
+    public void setComponentRegistry(ComponentRegistry componentRegistry) {
         this.componentRegistry = componentRegistry;
     }
 
-    public ComponentDiscovererManager getComponentDiscovererManager()
-    {
+    public ComponentDiscovererManager getComponentDiscovererManager() {
         return componentDiscovererManager;
     }
 
-    public void setComponentDiscovererManager( ComponentDiscovererManager componentDiscovererManager )
-    {
+    public void setComponentDiscovererManager(ComponentDiscovererManager componentDiscovererManager) {
         this.componentDiscovererManager = componentDiscovererManager;
     }
 
-    public ComponentFactoryManager getComponentFactoryManager()
-    {
+    public ComponentFactoryManager getComponentFactoryManager() {
         return componentFactoryManager;
     }
 
-    public void setComponentFactoryManager( ComponentFactoryManager componentFactoryManager )
-    {
+    public void setComponentFactoryManager(ComponentFactoryManager componentFactoryManager) {
         this.componentFactoryManager = componentFactoryManager;
     }
 
     // Configuration
 
-    public PlexusConfiguration getConfiguration()
-    {
+    public PlexusConfiguration getConfiguration() {
         return configuration;
     }
 
-    public void setConfiguration( PlexusConfiguration configuration )
-    {
+    public void setConfiguration(PlexusConfiguration configuration) {
         this.configuration = configuration;
     }
 
@@ -823,22 +663,17 @@ public class DefaultPlexusContainer
     // Component Realms
     // ----------------------------------------------------------------------------
 
-    public ClassRealm getComponentRealm( String realmId )
-    {
+    public ClassRealm getComponentRealm(String realmId) {
         ClassRealm realm = null;
 
-        try
-        {
-            realm = classWorld.getRealm( realmId );
-        }
-        catch ( NoSuchRealmException e )
-        {
+        try {
+            realm = classWorld.getRealm(realmId);
+        } catch (NoSuchRealmException e) {
             // This should never happen: when a component is discovered, it is discovered from a realm and
             // it is at that point the realm id is assigned to the component descriptor.
         }
 
-        if ( realm == null )
-        {
+        if (realm == null) {
             // The core components need the container realm.
             realm = containerRealm;
         }
@@ -846,48 +681,36 @@ public class DefaultPlexusContainer
         return realm;
     }
 
-    public void removeComponentRealm( ClassRealm realm )
-        throws PlexusContainerException
-    {
-        if ( getContainerRealm().getId().equals( realm.getId() ) )
-        {
-            throw new IllegalArgumentException( "Cannot remove container realm: " + realm.getId()
-                + "\n(trying to remove container realm as if it were a component realm)." );
+    public void removeComponentRealm(ClassRealm realm) throws PlexusContainerException {
+        if (getContainerRealm().getId().equals(realm.getId())) {
+            throw new IllegalArgumentException("Cannot remove container realm: " + realm.getId()
+                    + "\n(trying to remove container realm as if it were a component realm).");
         }
 
-        componentRegistry.removeComponentRealm( realm );
+        componentRegistry.removeComponentRealm(realm);
 
         ClassRealm lookupRealm = getLookupRealm();
-        if ( ( lookupRealm != null ) && lookupRealm.getId().equals( realm.getId() ) )
-        {
-            setLookupRealm( getContainerRealm() );
+        if ((lookupRealm != null) && lookupRealm.getId().equals(realm.getId())) {
+            setLookupRealm(getContainerRealm());
         }
     }
 
-    private InputStream toStream( String resource )
-        throws PlexusContainerException
-    {
-        if ( resource == null )
-        {
+    private InputStream toStream(String resource) throws PlexusContainerException {
+        if (resource == null) {
             return null;
         }
 
         String relativeResource = resource;
-        if ( resource.startsWith( "/" ) )
-        {
-            relativeResource = resource.substring( 1 );
+        if (resource.startsWith("/")) {
+            relativeResource = resource.substring(1);
         }
 
-        InputStream is = getClass().getClassLoader().getResourceAsStream( relativeResource );
+        InputStream is = getClass().getClassLoader().getResourceAsStream(relativeResource);
 
-        if ( is == null )
-        {
-            try
-            {
-                return new FileInputStream( resource );
-            }
-            catch ( FileNotFoundException e )
-            {
+        if (is == null) {
+            try {
+                return new FileInputStream(resource);
+            } catch (FileNotFoundException e) {
                 return null;
             }
         }
@@ -898,77 +721,64 @@ public class DefaultPlexusContainer
     /**
      * Utility method to get a default lookup realm for a component.
      */
-    public ClassRealm getLookupRealm( Object component )
-    {
-        if ( component.getClass().getClassLoader() instanceof ClassRealm )
-        {
-            return ( (ClassRealm) component.getClass().getClassLoader() );
-        }
-        else
-        {
+    public ClassRealm getLookupRealm(Object component) {
+        if (component.getClass().getClassLoader() instanceof ClassRealm) {
+            return ((ClassRealm) component.getClass().getClassLoader());
+        } else {
             return getLookupRealm();
         }
-
     }
 
-    public void setConfigurationSource( ConfigurationSource configurationSource )
-    {
+    public void setConfigurationSource(ConfigurationSource configurationSource) {
         this.configurationSource = configurationSource;
     }
 
-    public ConfigurationSource getConfigurationSource()
-    {
+    public ConfigurationSource getConfigurationSource() {
         return configurationSource;
     }
 
-    public LoggerManager getLoggerManager()
-    {
+    public LoggerManager getLoggerManager() {
         // TODO Auto-generated method stub
         return loggerManager;
     }
 
-    public void setLoggerManager( LoggerManager loggerManager )
-    {
+    public void setLoggerManager(LoggerManager loggerManager) {
         this.loggerManager = loggerManager;
-
     }
-    
+
     // Discovery
 
-    public List<ComponentDescriptor<?>> discoverComponents( ClassRealm realm )
-        throws PlexusConfigurationException, CycleDetectedInComponentGraphException
-    {
-        return discoverComponents( realm, null );
-    }    
-    
-    public List<ComponentDescriptor<?>> discoverComponents( ClassRealm realm, Object data )            
-        throws PlexusConfigurationException, CycleDetectedInComponentGraphException
-    {
+    public List<ComponentDescriptor<?>> discoverComponents(ClassRealm realm)
+            throws PlexusConfigurationException, CycleDetectedInComponentGraphException {
+        return discoverComponents(realm, null);
+    }
+
+    public List<ComponentDescriptor<?>> discoverComponents(ClassRealm realm, Object data)
+            throws PlexusConfigurationException, CycleDetectedInComponentGraphException {
         List<ComponentSetDescriptor> componentSetDescriptors = new ArrayList<ComponentSetDescriptor>();
 
         List<ComponentDescriptor<?>> discoveredComponentDescriptors = new ArrayList<ComponentDescriptor<?>>();
 
-        for ( ComponentDiscoverer componentDiscoverer : getComponentDiscovererManager().getComponentDiscoverers() )
-        {
-            for ( ComponentSetDescriptor componentSetDescriptor : componentDiscoverer.findComponents( getContext(), realm ) )
-            {
+        for (ComponentDiscoverer componentDiscoverer :
+                getComponentDiscovererManager().getComponentDiscoverers()) {
+            for (ComponentSetDescriptor componentSetDescriptor :
+                    componentDiscoverer.findComponents(getContext(), realm)) {
                 // Here we should collect all the urls
                 // do the interpolation against the context
                 // register all the components
                 // allow interception and replacement of the components
 
-                componentSetDescriptors.add( componentSetDescriptor );
+                componentSetDescriptors.add(componentSetDescriptor);
 
                 // Fire the event
-                ComponentDiscoveryEvent event = new ComponentDiscoveryEvent( componentSetDescriptor, data );
+                ComponentDiscoveryEvent event = new ComponentDiscoveryEvent(componentSetDescriptor, data);
 
-                componentDiscovererManager.fireComponentDiscoveryEvent( event );
+                componentDiscovererManager.fireComponentDiscoveryEvent(event);
 
-                for ( ComponentDescriptor<?> componentDescriptor : componentSetDescriptor.getComponents() )
-                {
-                    addComponentDescriptor( componentDescriptor );
+                for (ComponentDescriptor<?> componentDescriptor : componentSetDescriptor.getComponents()) {
+                    addComponentDescriptor(componentDescriptor);
 
-                    discoveredComponentDescriptors.add( componentDescriptor );
+                    discoveredComponentDescriptors.add(componentDescriptor);
                 }
             }
         }

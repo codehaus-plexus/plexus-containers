@@ -37,12 +37,9 @@ import org.jdom2.Element;
 /**
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
  */
-public abstract class AbstractMergeableElement
-    extends AbstractMergeableSupport
-{
-    public AbstractMergeableElement( Element element )
-    {
-        super( element );
+public abstract class AbstractMergeableElement extends AbstractMergeableSupport {
+    public AbstractMergeableElement(Element element) {
+        super(element);
     }
 
     /**
@@ -56,12 +53,11 @@ public abstract class AbstractMergeableElement
      * @return <code>true</code> if there was a conflict of element.
      * @deprecated <em>use {@link #isRecessiveElementInConflict(AbstractMergeableElement,List)} instead.</em>
      */
-    protected boolean isRecessiveElementInConflict( AbstractMergeableElement re, String eltName )
-    {
+    protected boolean isRecessiveElementInConflict(AbstractMergeableElement re, String eltName) {
         // return (null != getChild (eltName) && null != re.getChild (eltName));
         List l = new ArrayList();
-        l.add( eltName );
-        return isRecessiveElementInConflict( re, l );
+        l.add(eltName);
+        return isRecessiveElementInConflict(re, l);
     }
 
     /**
@@ -77,14 +73,12 @@ public abstract class AbstractMergeableElement
      * @param eltNameList List of elements that will be checked for values in both dominant and recessive sets.
      * @return true/false.
      */
-    protected boolean isRecessiveElementInConflict( AbstractMergeableElement re, List eltNameList )
-    {
+    protected boolean isRecessiveElementInConflict(AbstractMergeableElement re, List eltNameList) {
         // give opportunity to subclasses to provide any custom Composite keys
         // for conflict checks.
-        eltNameList = getElementNamesForConflictResolution( eltNameList );
+        eltNameList = getElementNamesForConflictResolution(eltNameList);
 
-        if ( null == eltNameList || eltNameList.size() == 0 )
-        {
+        if (null == eltNameList || eltNameList.size() == 0) {
             return false;
         }
 
@@ -108,9 +102,8 @@ public abstract class AbstractMergeableElement
      * @param eltName Element name to test for.
      * @return true/false.
      */
-    protected boolean mergeableElementComesFromRecessive( AbstractMergeableElement re, String eltName )
-    {
-        return null == getChildText( eltName ) && null != re.getChildText( eltName );
+    protected boolean mergeableElementComesFromRecessive(AbstractMergeableElement re, String eltName) {
+        return null == getChildText(eltName) && null != re.getChildText(eltName);
     }
 
     /**
@@ -118,58 +111,49 @@ public abstract class AbstractMergeableElement
      *
      * @see Mergeable#merge(Mergeable,org.codehaus.plexus.metadata.merge.MergeStrategy)
      */
-    public void merge( Mergeable me, MergeStrategy strategy )
-        throws MergeException
-    {
+    public void merge(Mergeable me, MergeStrategy strategy) throws MergeException {
         // TODO set up a unit test for this!
-        strategy.apply( this, me );
+        strategy.apply(this, me);
     }
 
-    public void merge( Mergeable me )
-        throws MergeException
-    {
-        if ( !isExpectedElementType( me ) )
-        {
+    public void merge(Mergeable me) throws MergeException {
+        if (!isExpectedElementType(me)) {
             // if (getLogger().isErrorEnabled)
-            //     getLogger().error ("Cannot Merge dissimilar elements. (Expected : '" + getClass ().getName () + "', found '" + me.getClass ().getName () + "')");
-            throw new MergeException( "Cannot Merge dissimilar elements. " + "(Expected : '" + getClass().getName() +
-                "', found '" + me.getClass().getName() + "')" );
+            //     getLogger().error ("Cannot Merge dissimilar elements. (Expected : '" + getClass ().getName () + "',
+            // found '" + me.getClass ().getName () + "')");
+            throw new MergeException("Cannot Merge dissimilar elements. " + "(Expected : '"
+                    + getClass().getName() + "', found '" + me.getClass().getName() + "')");
         }
         // recessive Component Element.
         AbstractMergeableElement rce = (AbstractMergeableElement) me;
 
         Set allowedTags = new HashSet();
 
-        for ( int i = 0; i < getAllowedTags().length; i++ )
-        {
+        for (int i = 0; i < getAllowedTags().length; i++) {
             String tagName = getAllowedTags()[i].getTagName();
 
-            allowedTags.add( tagName );
+            allowedTags.add(tagName);
 
             List defaultConflictChecklist = new ArrayList();
-            defaultConflictChecklist.add( tagName );
+            defaultConflictChecklist.add(tagName);
 
-            if ( !isRecessiveElementInConflict( rce, defaultConflictChecklist ) &&
-                mergeableElementComesFromRecessive( rce, tagName ) )
-            {
-                this.addContent( (Element) rce.getChild( tagName ).clone() );
+            if (!isRecessiveElementInConflict(rce, defaultConflictChecklist)
+                    && mergeableElementComesFromRecessive(rce, tagName)) {
+                this.addContent((Element) rce.getChild(tagName).clone());
                 // else dominant wins in anycase!
-            }
-            else
-            if ( getAllowedTags()[i].isMergeable() && isRecessiveElementInConflict( rce, defaultConflictChecklist ) )
-            {
+            } else if (getAllowedTags()[i].isMergeable()
+                    && isRecessiveElementInConflict(rce, defaultConflictChecklist)) {
                 // this allows for merging multiple/list of elements.
-                try
-                {
-                    getAllowedTags()[i].createMergeable( this.getChild( tagName ) )
-                        .merge( getAllowedTags()[i].createMergeable( rce.getChild( tagName ) ),
-                                getDefaultMergeStrategy() );
-                }
-                catch ( Exception e )
-                {
+                try {
+                    getAllowedTags()[i]
+                            .createMergeable(this.getChild(tagName))
+                            .merge(
+                                    getAllowedTags()[i].createMergeable(rce.getChild(tagName)),
+                                    getDefaultMergeStrategy());
+                } catch (Exception e) {
                     // TODO log to error
                     throw new MergeException(
-                        "Unable to create Mergeable instance for tag " + "'" + getAllowedTags()[i] + "'.", e );
+                            "Unable to create Mergeable instance for tag " + "'" + getAllowedTags()[i] + "'.", e);
                 }
             }
         }
@@ -182,7 +166,5 @@ public abstract class AbstractMergeableElement
                 element.addContent((Content) child.clone());
             }
         }
-
     }
-
 }

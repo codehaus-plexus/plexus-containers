@@ -16,11 +16,8 @@ package org.codehaus.plexus.personality.plexus.lifecycle.phase;
  * limitations under the License.
  */
 
-public interface Startable
-{
-    void start()
-        throws StartingException;
+public interface Startable {
+    void start() throws StartingException;
 
-    void stop()
-        throws StoppingException;
+    void stop() throws StoppingException;
 }

@@ -21,21 +21,17 @@ package org.codehaus.plexus.component.configurator.expression;
  *
  * @author <a href="mailto:brett@codehaus.org">Brett Porter</a>
  */
-public interface TypeAwareExpressionEvaluator
-    extends ExpressionEvaluator
-{
+public interface TypeAwareExpressionEvaluator extends ExpressionEvaluator {
 
     /**
      * Evaluate an expression. The optional type provided to this method is a hint (not a requirement) for the evaluator
      * to resolve the expression to a compatible value. The evaluator is not expected to perform any conversion but
      * rather filter out incompatible values from its result.
-     * 
+     *
      * @param expression the expression
      * @param type The expected type of expression result, may be {@code null}.
      * @return the value of the expression
-     * @throws ExpressionEvaluationException in case of an error. 
+     * @throws ExpressionEvaluationException in case of an error.
      */
-    Object evaluate( String expression, Class<?> type )
-        throws ExpressionEvaluationException;
-
+    Object evaluate(String expression, Class<?> type) throws ExpressionEvaluationException;
 }

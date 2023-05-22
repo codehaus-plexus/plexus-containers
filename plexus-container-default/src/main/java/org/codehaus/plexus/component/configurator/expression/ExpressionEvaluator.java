@@ -23,19 +23,17 @@ import java.io.File;
  *
  * @author <a href="mailto:brett@codehaus.org">Brett Porter</a>
  */
-public interface ExpressionEvaluator
-{
+public interface ExpressionEvaluator {
     String ROLE = ExpressionEvaluator.class.getName();
-    
+
     /**
      * Evaluate an expression.
      *
      * @param expression the expression
      * @return the value of the expression
-     * @throws ExpressionEvaluationException in case of an error. 
+     * @throws ExpressionEvaluationException in case of an error.
      */
-    Object evaluate( String expression )
-        throws ExpressionEvaluationException;
+    Object evaluate(String expression) throws ExpressionEvaluationException;
 
     /**
      * Align a given path to the base directory that can be evaluated by this expression evaluator, if known.
@@ -43,5 +41,5 @@ public interface ExpressionEvaluator
      * @param file the file
      * @return the aligned file
      */
-    File alignToBaseDirectory( File file );
+    File alignToBaseDirectory(File file);
 }

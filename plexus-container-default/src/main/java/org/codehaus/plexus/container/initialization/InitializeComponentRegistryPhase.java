@@ -16,75 +16,67 @@ package org.codehaus.plexus.container.initialization;
  * limitations under the License.
  */
 
-import org.codehaus.plexus.component.repository.ComponentRepository;
-import org.codehaus.plexus.component.repository.ComponentDescriptor;
-import org.codehaus.plexus.component.repository.io.PlexusTools;
+import org.codehaus.plexus.ComponentRegistry;
+import org.codehaus.plexus.DefaultComponentRegistry;
 import org.codehaus.plexus.component.composition.CycleDetectedInComponentGraphException;
 import org.codehaus.plexus.component.manager.PerLookupComponentManagerFactory;
 import org.codehaus.plexus.component.manager.SingletonComponentManagerFactory;
+import org.codehaus.plexus.component.repository.ComponentDescriptor;
+import org.codehaus.plexus.component.repository.ComponentRepository;
+import org.codehaus.plexus.component.repository.io.PlexusTools;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 import org.codehaus.plexus.configuration.PlexusConfigurationException;
-import org.codehaus.plexus.DefaultComponentRegistry;
-import org.codehaus.plexus.ComponentRegistry;
 import org.codehaus.plexus.lifecycle.LifecycleHandlerManager;
 
 /**
  * @author Jason van Zyl
  */
-public class InitializeComponentRegistryPhase 
-    implements ContainerInitializationPhase
-{
-    public void execute( ContainerInitializationContext context )
-        throws ContainerInitializationException
-    {
-        ComponentRepository repository = getComponentRepository( context );
+public class InitializeComponentRegistryPhase implements ContainerInitializationPhase {
+    public void execute(ContainerInitializationContext context) throws ContainerInitializationException {
+        ComponentRepository repository = getComponentRepository(context);
 
-        LifecycleHandlerManager lifecycleHandlerManager = getLifecycleHandlerManager( context );
+        LifecycleHandlerManager lifecycleHandlerManager = getLifecycleHandlerManager(context);
 
-        ComponentRegistry componentRegistry = new DefaultComponentRegistry( context.getContainer(),
-            repository,
-            lifecycleHandlerManager );
+        ComponentRegistry componentRegistry =
+                new DefaultComponentRegistry(context.getContainer(), repository, lifecycleHandlerManager);
 
-        componentRegistry.registerComponentManagerFactory( new PerLookupComponentManagerFactory() );
+        componentRegistry.registerComponentManagerFactory(new PerLookupComponentManagerFactory());
 
-        componentRegistry.registerComponentManagerFactory( new SingletonComponentManagerFactory() );
+        componentRegistry.registerComponentManagerFactory(new SingletonComponentManagerFactory());
 
-        context.getContainer().setComponentRegistry( componentRegistry );
+        context.getContainer().setComponentRegistry(componentRegistry);
     }
 
-    private ComponentRepository getComponentRepository( ContainerInitializationContext context )
-        throws ContainerInitializationException
-    {
+    private ComponentRepository getComponentRepository(ContainerInitializationContext context)
+            throws ContainerInitializationException {
         ComponentRepository repository = context.getContainerConfiguration().getComponentRepository();
 
         // Add the components defined in the container xml configuration
-        try
-        {
+        try {
             PlexusConfiguration configuration = context.getContainerXmlConfiguration();
 
-            PlexusConfiguration[] componentConfigurations = configuration.getChild( "components" ).getChildren( "component" );
-            for ( PlexusConfiguration componentConfiguration : componentConfigurations )
-            {
-                ComponentDescriptor<?> componentDescriptor = PlexusTools.buildComponentDescriptor( componentConfiguration, context.getContainer().getContainerRealm() );
-                componentDescriptor.setRealm( context.getContainer().getContainerRealm() );
-                repository.addComponentDescriptor( componentDescriptor );
+            PlexusConfiguration[] componentConfigurations =
+                    configuration.getChild("components").getChildren("component");
+            for (PlexusConfiguration componentConfiguration : componentConfigurations) {
+                ComponentDescriptor<?> componentDescriptor = PlexusTools.buildComponentDescriptor(
+                        componentConfiguration, context.getContainer().getContainerRealm());
+                componentDescriptor.setRealm(context.getContainer().getContainerRealm());
+                repository.addComponentDescriptor(componentDescriptor);
             }
+        } catch (PlexusConfigurationException e) {
+            throw new ContainerInitializationException(
+                    "Error initializing component repository: " + "Cannot unmarshall component descriptor: ", e);
+        } catch (CycleDetectedInComponentGraphException e) {
+            throw new ContainerInitializationException(
+                    "A cycle has been detected in the components of the system: ", e);
         }
-        catch ( PlexusConfigurationException e )
-        {
-            throw new ContainerInitializationException( "Error initializing component repository: " + "Cannot unmarshall component descriptor: ", e );
-        }
-        catch ( CycleDetectedInComponentGraphException e )
-        {
-            throw new ContainerInitializationException( "A cycle has been detected in the components of the system: ", e );
-        }
-        
+
         return repository;
     }
 
-    private LifecycleHandlerManager getLifecycleHandlerManager( ContainerInitializationContext context )
-    {
-        LifecycleHandlerManager lifecycleHandlerManager = context.getContainerConfiguration().getLifecycleHandlerManager();
+    private LifecycleHandlerManager getLifecycleHandlerManager(ContainerInitializationContext context) {
+        LifecycleHandlerManager lifecycleHandlerManager =
+                context.getContainerConfiguration().getLifecycleHandlerManager();
         lifecycleHandlerManager.initialize();
         return lifecycleHandlerManager;
     }

@@ -21,16 +21,12 @@ package org.codehaus.plexus.personality.plexus.lifecycle.phase;
  *
  * @author <a href="mailto:brett@codehaus.org">Brett Porter</a>
  */
-public class StartingException
-    extends Exception
-{
-    public StartingException( String message )
-    {
-        super( message );
+public class StartingException extends Exception {
+    public StartingException(String message) {
+        super(message);
     }
 
-    public StartingException( String message, Throwable cause )
-    {
-        super( message, cause );
+    public StartingException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

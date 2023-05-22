@@ -29,28 +29,23 @@ import java.lang.annotation.ElementType;
 /**
  * @author Benjamin Bentmann
  */
-public class ComponentWithEnumFields
-{
+public class ComponentWithEnumFields {
 
-    public enum NestedEnum
-    {
-
-        ONE, TWO, THREE,
-
+    public enum NestedEnum {
+        ONE,
+        TWO,
+        THREE,
     }
 
     private NestedEnum nestedEnum;
 
     private ElementType simpleEnum;
 
-    public NestedEnum getNestedEnum()
-    {
+    public NestedEnum getNestedEnum() {
         return nestedEnum;
     }
 
-    public ElementType getSimpleEnum()
-    {
+    public ElementType getSimpleEnum() {
         return simpleEnum;
     }
-
 }

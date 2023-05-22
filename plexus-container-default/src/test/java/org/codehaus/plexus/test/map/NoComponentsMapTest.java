@@ -21,16 +21,12 @@ import org.codehaus.plexus.PlexusTestCase;
 /**
  * @author <a href="mailto:trygvis@inamo.no">Trygve Laugst&oslash;l</a>
  */
-public class NoComponentsMapTest
-    extends PlexusTestCase
-{
-	public void testNoComponents()
-        throws Exception
-    {
+public class NoComponentsMapTest extends PlexusTestCase {
+    public void testNoComponents() throws Exception {
         ActivityManager manager;
-        
-        manager = lookup( ActivityManager.class );
 
-        assertEquals( 0, manager.getActivityCount() );
+        manager = lookup(ActivityManager.class);
+
+        assertEquals(0, manager.getActivityCount());
     }
 }

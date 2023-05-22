@@ -22,9 +22,7 @@ package org.codehaus.plexus.test;
  * @component.requirement org.codehaus.plexus.test.ComponentC
  * @component.version 1.0
  */
-public class DefaultComponentA
-    implements ComponentA
-{
+public class DefaultComponentA implements ComponentA {
     private ComponentB componentB;
 
     private ComponentC componentC;
@@ -35,23 +33,19 @@ public class DefaultComponentA
     /** @default 10000 */
     private int port;
 
-    public ComponentB getComponentB()
-    {
+    public ComponentB getComponentB() {
         return componentB;
     }
 
-    public ComponentC getComponentC()
-    {
+    public ComponentC getComponentC() {
         return componentC;
     }
 
-    public String getHost()
-    {
+    public String getHost() {
         return host;
     }
 
-    public int getPort()
-    {
+    public int getPort() {
         return port;
     }
 }

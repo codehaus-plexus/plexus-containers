@@ -18,22 +18,18 @@ package org.codehaus.plexus.test.map;
 
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public abstract class AbstractActivity
-    implements Activity
-{
+public abstract class AbstractActivity implements Activity {
     private boolean state;
 
-    public boolean getState()
-    {
+    public boolean getState() {
         return state;
     }
 
-    public void execute()
-    {
+    public void execute() {
         state = true;
     }
 }

@@ -23,21 +23,18 @@ import org.codehaus.plexus.logging.LogEnabled;
 import org.codehaus.plexus.logging.Logger;
 import org.codehaus.plexus.logging.LoggerManager;
 
-public class LogEnablePhase
-    extends AbstractPhase
-{
-    public void execute( Object object, ComponentManager componentManager, ClassRealm lookupRealm )
-        throws PhaseExecutionException
-    {
-        if ( object instanceof LogEnabled )
-        {
+public class LogEnablePhase extends AbstractPhase {
+    public void execute(Object object, ComponentManager componentManager, ClassRealm lookupRealm)
+            throws PhaseExecutionException {
+        if (object instanceof LogEnabled) {
             LogEnabled logEnabled = (LogEnabled) object;
 
             LoggerManager loggerManager = componentManager.getContainer().getLoggerManager();
 
-            Logger logger = loggerManager.getLoggerForComponent( componentManager.getRole(), componentManager.getRoleHint() );
+            Logger logger =
+                    loggerManager.getLoggerForComponent(componentManager.getRole(), componentManager.getRoleHint());
 
-            logEnabled.enableLogging( logger );
+            logEnabled.enableLogging(logger);
         }
     }
 }

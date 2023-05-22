@@ -24,19 +24,17 @@ package org.codehaus.plexus.component.configurator;
  * SOFTWARE.
  */
 
+import java.util.List;
 
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 
-import java.util.List;
-
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public class ComponentWithSetters
-{
+public class ComponentWithSetters {
     private int intValueVariable;
     private float floatValueVariable;
     private long longValueVariable;
@@ -45,38 +43,31 @@ public class ComponentWithSetters
     private List importantThingsVariable;
     private PlexusConfiguration configurationVariable;
 
-    public int getIntValue()
-    {
+    public int getIntValue() {
         return intValueVariable;
     }
-                                          
-    public float getFloatValue()
-    {
+
+    public float getFloatValue() {
         return floatValueVariable;
     }
 
-    public long getLongValue()
-    {
+    public long getLongValue() {
         return longValueVariable;
     }
 
-    public double getDoubleValue()
-    {
+    public double getDoubleValue() {
         return doubleValueVariable;
     }
 
-    public String getStringValue()
-    {
+    public String getStringValue() {
         return stringValueVariable;
     }
 
-    public List getImportantThings()
-    {
+    public List getImportantThings() {
         return importantThingsVariable;
     }
 
-    public PlexusConfiguration getConfiguration()
-    {
+    public PlexusConfiguration getConfiguration() {
         return configurationVariable;
     }
 
@@ -92,50 +83,43 @@ public class ComponentWithSetters
     boolean importantThingsValueSet;
     boolean configurationValueSet;
 
-    public void setIntValue( int intValue )
-    {
+    public void setIntValue(int intValue) {
         this.intValueVariable = intValue;
 
         intValueSet = true;
     }
 
-    public void setFloatValue( float floatValue )
-    {
+    public void setFloatValue(float floatValue) {
         this.floatValueVariable = floatValue;
 
         floatValueSet = true;
     }
 
-    public void setLongValue( long longValue )
-    {
+    public void setLongValue(long longValue) {
         this.longValueVariable = longValue;
 
         longValueSet = true;
     }
 
-    public void setDoubleValue( double doubleValue )
-    {
+    public void setDoubleValue(double doubleValue) {
         this.doubleValueVariable = doubleValue;
 
         doubleValueSet = true;
     }
 
-    public void setStringValue( String stringValue )
-    {
+    public void setStringValue(String stringValue) {
         this.stringValueVariable = stringValue;
 
         stringValueSet = true;
     }
 
-    public void setImportantThings( List importantThings )
-    {
+    public void setImportantThings(List importantThings) {
         this.importantThingsVariable = importantThings;
 
         importantThingsValueSet = true;
     }
 
-    public void setConfiguration( PlexusConfiguration configuration )
-    {
+    public void setConfiguration(PlexusConfiguration configuration) {
         this.configurationVariable = configuration;
 
         configurationValueSet = true;

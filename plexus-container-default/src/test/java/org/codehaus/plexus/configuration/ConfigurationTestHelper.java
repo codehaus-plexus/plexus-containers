@@ -16,65 +16,58 @@ package org.codehaus.plexus.configuration;
  * limitations under the License.
  */
 
+import java.io.StringReader;
+
 import junit.framework.TestCase;
 import org.codehaus.plexus.component.repository.io.PlexusTools;
-
-import java.io.StringReader;
 
 /**
  * @author Jason van Zyl
  */
-public abstract class ConfigurationTestHelper
-    extends TestCase
-{
-    public static PlexusConfiguration getTestConfiguration()
-        throws Exception
-    {
-        return PlexusTools.buildConfiguration( "<Test String>", new StringReader( ConfigurationTestHelper.getXmlConfiguration() ) );
+public abstract class ConfigurationTestHelper extends TestCase {
+    public static PlexusConfiguration getTestConfiguration() throws Exception {
+        return PlexusTools.buildConfiguration(
+                "<Test String>", new StringReader(ConfigurationTestHelper.getXmlConfiguration()));
     }
 
-    public static String getXmlConfiguration()
-    {
-        return "<configuration>" +
-               "<empty-element></empty-element>" +
-               "<singleton attribute='attribute' />" +
-               "<string string='string'>string</string>" +
-               "<number number='0'>0</number>" +
-               "<not-a-number not-a-number='foo'>not-a-number</not-a-number>" +
-               "<boolean-true boolean-true='true'>true</boolean-true>" +
-               "<boolean-false boolean-false='false'>false</boolean-false>" +
-               "<not-a-boolean>not-a-boolean</not-a-boolean>" +
-               "</configuration>";
+    public static String getXmlConfiguration() {
+        return "<configuration>" + "<empty-element></empty-element>"
+                + "<singleton attribute='attribute' />"
+                + "<string string='string'>string</string>"
+                + "<number number='0'>0</number>"
+                + "<not-a-number not-a-number='foo'>not-a-number</not-a-number>"
+                + "<boolean-true boolean-true='true'>true</boolean-true>"
+                + "<boolean-false boolean-false='false'>false</boolean-false>"
+                + "<not-a-boolean>not-a-boolean</not-a-boolean>"
+                + "</configuration>";
     }
 
-    public static void testConfiguration( PlexusConfiguration c )
-        throws Exception
-    {
+    public static void testConfiguration(PlexusConfiguration c) throws Exception {
         // Exercise all value/attribute retrieval methods.
 
         // Values
 
-// TODO: uncomment once maven can test the latest plexus-utils
-//        assertNull( c.getChild( "singleton" ).getValue( null ) );
+        // TODO: uncomment once maven can test the latest plexus-utils
+        //        assertNull( c.getChild( "singleton" ).getValue( null ) );
 
         // String
 
-        assertEquals( "string", c.getValue( "string" ) );
+        assertEquals("string", c.getValue("string"));
 
-        assertEquals( "string", c.getChild( "string" ).getValue() );
+        assertEquals("string", c.getChild("string").getValue());
 
-        assertEquals( "string", c.getChild( "ne-string" ).getValue( "string" ) );
+        assertEquals("string", c.getChild("ne-string").getValue("string"));
 
-        assertNull( c.getChild( "not-existing" ).getValue( null ) );
+        assertNull(c.getChild("not-existing").getValue(null));
 
-        assertEquals( "''", "'" + c.getChild( "empty-element" ).getValue() + "'" );
+        assertEquals("''", "'" + c.getChild("empty-element").getValue() + "'");
 
-        assertEquals( "", c.getChild( "empty-element" ).getValue( null ) );
+        assertEquals("", c.getChild("empty-element").getValue(null));
 
         // Attributes
 
-        assertEquals( "string", c.getChild( "string" ).getAttribute( "string" ));
+        assertEquals("string", c.getChild("string").getAttribute("string"));
 
-        assertEquals( "attribute", c.getChild( "singleton" ).getAttribute( "attribute" ));
+        assertEquals("attribute", c.getChild("singleton").getAttribute("attribute"));
     }
 }

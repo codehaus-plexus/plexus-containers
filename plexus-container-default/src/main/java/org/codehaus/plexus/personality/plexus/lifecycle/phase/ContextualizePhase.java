@@ -22,29 +22,20 @@ import org.codehaus.plexus.context.Context;
 import org.codehaus.plexus.context.ContextException;
 import org.codehaus.plexus.lifecycle.phase.AbstractPhase;
 
-public class ContextualizePhase
-    extends AbstractPhase
-{
-    public void execute( Object object, ComponentManager manager, ClassRealm lookupRealm )
-        throws PhaseExecutionException
-    {
-        if ( object instanceof Contextualizable )
-        {
+public class ContextualizePhase extends AbstractPhase {
+    public void execute(Object object, ComponentManager manager, ClassRealm lookupRealm)
+            throws PhaseExecutionException {
+        if (object instanceof Contextualizable) {
             Context context = manager.getContainer().getContext();
 
-            ClassRealm origRealm = manager.getContainer().setLookupRealm( lookupRealm );
+            ClassRealm origRealm = manager.getContainer().setLookupRealm(lookupRealm);
 
-            try
-            {
-                ( (Contextualizable) object ).contextualize( context );
-            }
-            catch ( ContextException e )
-            {
-                throw new PhaseExecutionException( "Unable to contextualize component", e );
-            }
-            finally
-            {
-                manager.getContainer().setLookupRealm( origRealm );
+            try {
+                ((Contextualizable) object).contextualize(context);
+            } catch (ContextException e) {
+                throw new PhaseExecutionException("Unable to contextualize component", e);
+            } finally {
+                manager.getContainer().setLookupRealm(origRealm);
             }
         }
     }

@@ -22,8 +22,7 @@ package org.codehaus.plexus.component.composition;
  * @author Jason van Zyl
  *
  */
-public interface ComponentA
-{
+public interface ComponentA {
     String ROLE = ComponentA.class.getName();
 
     ComponentB getComponentB();

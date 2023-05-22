@@ -32,9 +32,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  *
  * @author <a href="mailto:dev@avalon.codehaus.org">Avalon Development Team</a>
  */
-public class DefaultContext
-    implements Context
-{
+public class DefaultContext implements Context {
     /**
      * Context data.
      */
@@ -48,9 +46,7 @@ public class DefaultContext
     /**
      * Create an empty Context.
      */
-    public DefaultContext()
-    {
-    }
+    public DefaultContext() {}
 
     /**
      * Create a Context with specified data.  The specified data is copied into the context so any subsequent updates
@@ -59,76 +55,59 @@ public class DefaultContext
      *
      * @param contextData the containerContext data
      */
-    public DefaultContext( Map<Object, Object> contextData )
-    {
-        if ( contextData == null )
-        {
-            throw new NullPointerException( "contextData is null" );
+    public DefaultContext(Map<Object, Object> contextData) {
+        if (contextData == null) {
+            throw new NullPointerException("contextData is null");
         }
 
         // check for nulls in key and value
-        for ( Entry<Object, Object> entry : contextData.entrySet() )
-        {
+        for (Entry<Object, Object> entry : contextData.entrySet()) {
             Object key = entry.getKey();
             Object value = entry.getValue();
-            if ( key == null )
-            {
-                throw new IllegalArgumentException( "Key is null" );
+            if (key == null) {
+                throw new IllegalArgumentException("Key is null");
             }
-            if ( value != null )
-            {
-                this.contextData.put( key, value );
+            if (value != null) {
+                this.contextData.put(key, value);
             }
         }
     }
 
-    public boolean contains( Object key )
-    {
-        Object data = contextData.get( key );
+    public boolean contains(Object key) {
+        Object data = contextData.get(key);
 
         return data != null;
     }
 
-    public Object get( Object key )
-        throws ContextException
-    {
-        Object data = contextData.get( key );
+    public Object get(Object key) throws ContextException {
+        Object data = contextData.get(key);
 
-        if ( data == null )
-        {
+        if (data == null) {
             // There is no data for the key
-            throw new ContextException( "Unable to resolve context key: " + key );
+            throw new ContextException("Unable to resolve context key: " + key);
         }
         return data;
     }
 
-    public void put( Object key, Object value )
-        throws IllegalStateException
-    {
+    public void put(Object key, Object value) throws IllegalStateException {
         checkWriteable();
 
         // check for a null key
-        if (key == null)
-        {
+        if (key == null) {
             throw new IllegalArgumentException("Key is null");
         }
 
-        if ( value == null )
-        {
-            contextData.remove( key );
-        }
-        else
-        {
-            contextData.put( key, value );
+        if (value == null) {
+            contextData.remove(key);
+        } else {
+            contextData.put(key, value);
         }
     }
 
-    public void hide( Object key )
-        throws IllegalStateException
-    {
+    public void hide(Object key) throws IllegalStateException {
         checkWriteable();
-        
-        contextData.remove( key );
+
+        contextData.remove(key);
     }
 
     /**
@@ -136,10 +115,8 @@ public class DefaultContext
      *
      * @return the containerContext data
      */
-    public Map<Object,Object> getContextData()
-    {
-        return Collections.unmodifiableMap( contextData );
-
+    public Map<Object, Object> getContextData() {
+        return Collections.unmodifiableMap(contextData);
     }
 
     /**
@@ -147,9 +124,8 @@ public class DefaultContext
      * Any attempt to write to the containerContext via put()
      * will result in an IllegalStateException.
      */
-    public void makeReadOnly()
-    {
-        readOnly.set( true );
+    public void makeReadOnly() {
+        readOnly.set(true);
     }
 
     /**
@@ -157,17 +133,13 @@ public class DefaultContext
      *
      * @throws java.lang.IllegalStateException if containerContext is read only
      */
-    protected void checkWriteable()
-        throws IllegalStateException
-    {
-        if ( readOnly.get() )
-        {
-            throw new IllegalStateException( "Context is read only and can not be modified" );
+    protected void checkWriteable() throws IllegalStateException {
+        if (readOnly.get()) {
+            throw new IllegalStateException("Context is read only and can not be modified");
         }
     }
-    
-    public String toString()
-    {
+
+    public String toString() {
         return contextData.toString();
     }
 }

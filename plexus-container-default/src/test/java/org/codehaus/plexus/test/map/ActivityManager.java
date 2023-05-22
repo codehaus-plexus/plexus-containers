@@ -18,17 +18,16 @@ package org.codehaus.plexus.test.map;
 
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public interface ActivityManager
-{
+public interface ActivityManager {
     static String ROLE = ActivityManager.class.getName();
 
-    void execute( String id );
+    void execute(String id);
 
-    Activity getActivity( String id );
-    
+    Activity getActivity(String id);
+
     int getActivityCount();
 }

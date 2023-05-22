@@ -26,17 +26,14 @@ package org.codehaus.plexus.component.configurator;
 
 /**
  *
- * 
+ *
  * @author Jason van Zyl
  *
  */
-public class DefaultComponent
-    extends AbstractComponent
-{
+public class DefaultComponent extends AbstractComponent {
     private String address;
 
-    public String getAddress()
-    {
+    public String getAddress() {
         return address;
     }
 }

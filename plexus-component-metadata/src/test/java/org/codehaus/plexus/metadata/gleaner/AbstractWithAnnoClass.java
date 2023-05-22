@@ -21,6 +21,4 @@ package org.codehaus.plexus.metadata.gleaner;
  * @plexus.component role="foo"
  *
  */
-public abstract class AbstractWithAnnoClass
-{
-}
+public abstract class AbstractWithAnnoClass {}

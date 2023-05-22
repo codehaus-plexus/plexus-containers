@@ -22,18 +22,15 @@ package org.codehaus.plexus.component.repository.exception;
  *
  * @author Jason van Zyl
  */
-public class ComponentRepositoryException
-    extends Exception
-{
+public class ComponentRepositoryException extends Exception {
     private static final long serialVersionUID = 3698017788731736736L;
 
     /**
      * Construct a new <code>ComponentRepositoryException</code> instance.
      * @param message exception message
      */
-    public ComponentRepositoryException( String message )
-    {
-        super( message );
+    public ComponentRepositoryException(String message) {
+        super(message);
     }
 
     /**
@@ -41,8 +38,7 @@ public class ComponentRepositoryException
      * @param message exception message
      * @param cause causing exception to chain
      */
-    public ComponentRepositoryException( String message, Throwable cause )
-    {
-        super( message, cause );
+    public ComponentRepositoryException(String message, Throwable cause) {
+        super(message, cause);
     }
 }

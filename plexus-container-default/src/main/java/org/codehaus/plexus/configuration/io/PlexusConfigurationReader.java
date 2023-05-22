@@ -7,13 +7,8 @@ import java.io.Reader;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 import org.codehaus.plexus.configuration.PlexusConfigurationException;
 
-public interface PlexusConfigurationReader
-{
-    public PlexusConfiguration read( Reader reader )
-        throws IOException,
-            PlexusConfigurationException;
+public interface PlexusConfigurationReader {
+    public PlexusConfiguration read(Reader reader) throws IOException, PlexusConfigurationException;
 
-    public PlexusConfiguration read( InputStream inputStream )
-        throws IOException,
-            PlexusConfigurationException;
+    public PlexusConfiguration read(InputStream inputStream) throws IOException, PlexusConfigurationException;
 }

@@ -18,27 +18,23 @@ package org.codehaus.plexus.test;
 
 /**
  * Component counts number of created instances of it.
- * 
+ *
  * @author ptab at newitech.com Piotr Tabor
  */
-public class CountInstancesComponent
-{
+public class CountInstancesComponent {
     public static String ROLE = CountInstancesComponent.class.getName();
 
     private static int instances = 0;
 
-    public CountInstancesComponent()
-    {
+    public CountInstancesComponent() {
         instances++;
     }
 
-    public static void reset()
-    {
+    public static void reset() {
         instances = 0;
     }
 
-    public static int getInstancesCount()
-    {
+    public static int getInstancesCount() {
         return instances;
     }
 }

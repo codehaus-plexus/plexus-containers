@@ -42,12 +42,9 @@ import org.jdom2.Element;
  *
  * @author <a href='mailto:rahul.thakur.xdev@gmail.com'>Rahul Thakur</a>
  */
-public abstract class AbstractMergeableElementList
-    extends AbstractMergeableElement
-{
-    public AbstractMergeableElementList( Element element )
-    {
-        super( element );
+public abstract class AbstractMergeableElementList extends AbstractMergeableElement {
+    public AbstractMergeableElementList(Element element) {
+        super(element);
     }
 
     /**
@@ -61,11 +58,10 @@ public abstract class AbstractMergeableElementList
      *         {@link #getElementNamesForConflictResolution(java.util.List)}
      * @throws Exception if there was an error parsing and registering {@link Mergeable} instances
      */
-    protected Map parseRecurringMergeables( String tagName, List compositeKeyList, Mergeable parentElement )
-        throws Exception
-    {
+    protected Map parseRecurringMergeables(String tagName, List compositeKeyList, Mergeable parentElement)
+            throws Exception {
         Map mergeables = new LinkedHashMap();
-        List list = this.getChildren( tagName );
+        List list = this.getChildren(tagName);
         for (Object aList : list) {
             Element ce = (Element) aList;
 
@@ -95,14 +91,11 @@ public abstract class AbstractMergeableElementList
      * @return {@link DescriptorTag} instance whose name matches the name specified.
      *         Returns <code>null</code> if no match is found.
      */
-    private DescriptorTag lookupTagInstanceByName( String name, DescriptorTag[] values )
-    {
+    private DescriptorTag lookupTagInstanceByName(String name, DescriptorTag[] values) {
         DescriptorTag value = null;
 
-        for ( int i = 0; i < values.length && value == null; i++ )
-        {
-            if ( values[i].getTagName().equals( name ) )
-            {
+        for (int i = 0; i < values.length && value == null; i++) {
+            if (values[i].getTagName().equals(name)) {
                 value = values[i];
             }
         }
@@ -110,25 +103,21 @@ public abstract class AbstractMergeableElementList
         return value;
     }
 
-    public void merge( Mergeable me )
-        throws MergeException
-    {
-        try
-        {
-            Map dRequirementsMap = parseRecurringMergeables( getTagNameForRecurringMergeable(),
-                                                             getElementNamesForConflictResolution( new ArrayList() ), me );
-            Map rRequirementsMap = ( (AbstractMergeableElementList) me )
-                .parseRecurringMergeables( getTagNameForRecurringMergeable(),
-                                           getElementNamesForConflictResolution( new ArrayList() ), me );
-            merge( getElement(), dRequirementsMap, rRequirementsMap );
-        }
-        catch ( Exception e )
-        {
+    public void merge(Mergeable me) throws MergeException {
+        try {
+            Map dRequirementsMap = parseRecurringMergeables(
+                    getTagNameForRecurringMergeable(), getElementNamesForConflictResolution(new ArrayList()), me);
+            Map rRequirementsMap = ((AbstractMergeableElementList) me)
+                    .parseRecurringMergeables(
+                            getTagNameForRecurringMergeable(),
+                            getElementNamesForConflictResolution(new ArrayList()),
+                            me);
+            merge(getElement(), dRequirementsMap, rRequirementsMap);
+        } catch (Exception e) {
             // TODO: log to error
             // TODO: better error message
-            throw new MergeException( "Unable to merge Mergeable lists for element '" + getName() + "'.", e );
+            throw new MergeException("Unable to merge Mergeable lists for element '" + getName() + "'.", e);
         }
-
     }
 
     /**
@@ -143,14 +132,11 @@ public abstract class AbstractMergeableElementList
      *               {@link #getElementNamesForConflictResolution(List)}
      * @throws Exception if there was an error merging both the maps.
      */
-    protected void merge( Element parent, Map dMap, Map rMap )
-        throws Exception
-    {
+    protected void merge(Element parent, Map dMap, Map rMap) throws Exception {
         Set dKeySet = dMap.keySet();
         Set rKeySet = rMap.keySet();
         // check if there are any entities to merge
-        if ( !isMergeRequired( dKeySet, rKeySet ) )
-        {
+        if (!isMergeRequired(dKeySet, rKeySet)) {
             return;
         }
 
@@ -158,7 +144,7 @@ public abstract class AbstractMergeableElementList
         for (Object aDKeySet : dKeySet) {
             String dKey = (String) aDKeySet;
             if (rMap.containsKey(dKey)) {
-                // conflict ! merge this component                
+                // conflict ! merge this component
                 Mergeable dMeregeable = (Mergeable) dMap.get(dKey);
                 Mergeable rMergeable = (Mergeable) rMap.get(dKey);
 
@@ -170,13 +156,13 @@ public abstract class AbstractMergeableElementList
         }
 
         // check if any unmerged components are left in the recessive map.
-        if ( rMap.keySet().size() > 0 )
-        {
+        if (rMap.keySet().size() > 0) {
             // add them to results
             for (Object aRKeySet : rKeySet) {
                 String rKey = (String) aRKeySet;
                 // add to parent
-                parent.addContent((Element) ((Mergeable) rMap.get(rKey)).getElement().clone());
+                parent.addContent(
+                        (Element) ((Mergeable) rMap.get(rKey)).getElement().clone());
             }
         }
     }
@@ -188,9 +174,8 @@ public abstract class AbstractMergeableElementList
      * @param rKeySet the recessive set of elements.
      * @return <code>true</code> if a merge operation was required.
      */
-    private boolean isMergeRequired( Set dKeySet, Set rKeySet )
-    {
-        return ( dKeySet.size() > 0 || rKeySet.size() > 0 );
+    private boolean isMergeRequired(Set dKeySet, Set rKeySet) {
+        return (dKeySet.size() > 0 || rKeySet.size() > 0);
     }
 
     /**
@@ -208,5 +193,5 @@ public abstract class AbstractMergeableElementList
      */
     protected abstract String getTagNameForRecurringMergeable();
 
-    protected abstract List getElementNamesForConflictResolution( List defaultList );
+    protected abstract List getElementNamesForConflictResolution(List defaultList);
 }
