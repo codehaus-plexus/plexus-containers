@@ -33,19 +33,20 @@
 <a class="jxr_linenumber" name="L25" href="#L25">25</a>  <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L26" href="#L26">26</a>  <em class="jxr_javadoccomment"> * @author Eugene Kuleshov</em>
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  @Component(type=<span class="jxr_string">"foo"</span>, role=AnnotatedComponentRole.<strong class="jxr_keyword">class</strong>)
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  @Component(type = <span class="jxr_string">"foo"</span>, role = AnnotatedComponentRole.<strong class="jxr_keyword">class</strong>)
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="AnnotatedComponent" href="../../../../../../org/codehaus/plexus/metadata/gleaner/ann/AnnotatedComponent.html#AnnotatedComponent">AnnotatedComponent</a> <strong class="jxr_keyword">implements</strong> <a name="AnnotatedComponentRole" href="../../../../../../org/codehaus/plexus/metadata/gleaner/ann/AnnotatedComponentRole.html#AnnotatedComponentRole">AnnotatedComponentRole</a> {
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>  
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>    @Requirement(hint=<span class="jxr_string">"default"</span>)
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>    @Configuration(name=<span class="jxr_string">"param"</span>, value=<span class="jxr_string">"value"</span>)
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>    <a name="AnnotatedComponentDependency" href="../../../../../../org/codehaus/plexus/metadata/gleaner/ann/AnnotatedComponentDependency.html#AnnotatedComponentDependency">AnnotatedComponentDependency</a> dependency;
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>    
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>    @Requirement(role=AnnotatedComponentDependency.<strong class="jxr_keyword">class</strong>, hints={<span class="jxr_string">"release"</span>, <span class="jxr_string">"latest"</span>, <span class="jxr_string">"snapshot"</span>})
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>    List&lt;AnnotatedComponentDependency&gt; dependency2;
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>    
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  }
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>      @Requirement(hint = <span class="jxr_string">"default"</span>)
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>      @Configuration(name = <span class="jxr_string">"param"</span>, value = <span class="jxr_string">"value"</span>)
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>      <a name="AnnotatedComponentDependency" href="../../../../../../org/codehaus/plexus/metadata/gleaner/ann/AnnotatedComponentDependency.html#AnnotatedComponentDependency">AnnotatedComponentDependency</a> dependency;
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>      @Requirement(
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>              role = AnnotatedComponentDependency.<strong class="jxr_keyword">class</strong>,
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>              hints = {<span class="jxr_string">"release"</span>, <span class="jxr_string">"latest"</span>, <span class="jxr_string">"snapshot"</span>})
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>      List&lt;AnnotatedComponentDependency&gt; dependency2;
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2001&#x2013;2022 <a href="https://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2001&#x2013;2023 <a href="https://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
 </body>
 </html>

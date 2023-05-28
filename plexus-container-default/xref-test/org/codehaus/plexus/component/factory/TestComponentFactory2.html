@@ -28,24 +28,19 @@
 <a class="jxr_linenumber" name="L20" href="#L20">20</a>  <strong class="jxr_keyword">import</strong> org.codehaus.plexus.classworlds.realm.ClassRealm;
 <a class="jxr_linenumber" name="L21" href="#L21">21</a>  <strong class="jxr_keyword">import</strong> org.codehaus.plexus.component.repository.ComponentDescriptor;
 <a class="jxr_linenumber" name="L22" href="#L22">22</a>  
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="TestComponentFactory2" href="../../../../../org/codehaus/plexus/component/factory/TestComponentFactory2.html#TestComponentFactory2">TestComponentFactory2</a>
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>      <strong class="jxr_keyword">implements</strong> ComponentFactory
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  {
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>      <strong class="jxr_keyword">public</strong> String getId()
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>      {
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>          <strong class="jxr_keyword">return</strong> <span class="jxr_string">"testFactory2"</span>;
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>      }
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>      <strong class="jxr_keyword">public</strong> Object newInstance( ComponentDescriptor componentDescriptor, ClassRealm classRealm, PlexusContainer container )
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>          <strong class="jxr_keyword">throws</strong> ComponentInstantiationException
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>      {
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>          <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a name="TestFactoryResultComponent" href="../../../../../org/codehaus/plexus/component/factory/TestFactoryResultComponent.html#TestFactoryResultComponent">TestFactoryResultComponent</a>(getId());
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>      }
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>  
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  }
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="TestComponentFactory2" href="../../../../../org/codehaus/plexus/component/factory/TestComponentFactory2.html#TestComponentFactory2">TestComponentFactory2</a> <strong class="jxr_keyword">implements</strong> ComponentFactory {
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>      <strong class="jxr_keyword">public</strong> String getId() {
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>          <strong class="jxr_keyword">return</strong> <span class="jxr_string">"testFactory2"</span>;
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>      }
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>      <strong class="jxr_keyword">public</strong> Object newInstance(ComponentDescriptor componentDescriptor, ClassRealm classRealm, PlexusContainer container)
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>              <strong class="jxr_keyword">throws</strong> ComponentInstantiationException {
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>          <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a name="TestFactoryResultComponent" href="../../../../../org/codehaus/plexus/component/factory/TestFactoryResultComponent.html#TestFactoryResultComponent">TestFactoryResultComponent</a>(getId());
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>      }
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2001&#x2013;2022 <a href="https://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2001&#x2013;2023 <a href="https://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
 </body>
 </html>

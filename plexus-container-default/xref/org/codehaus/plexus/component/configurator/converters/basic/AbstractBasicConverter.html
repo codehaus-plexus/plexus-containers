@@ -43,112 +43,92 @@
 <a class="jxr_linenumber" name="L35" href="#L35">35</a>  
 <a class="jxr_linenumber" name="L36" href="#L36">36</a>  <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L37" href="#L37">37</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">abstract</strong> <strong class="jxr_keyword">class</strong> <a name="AbstractBasicConverter" href="../../../../../../../org/codehaus/plexus/component/configurator/converters/basic/AbstractBasicConverter.html#AbstractBasicConverter">AbstractBasicConverter</a>
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>      <strong class="jxr_keyword">extends</strong> <a name="AbstractConfigurationConverter" href="../../../../../../../org/codehaus/plexus/component/configurator/converters/AbstractConfigurationConverter.html#AbstractConfigurationConverter">AbstractConfigurationConverter</a>
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>  {
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>      <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">abstract</strong> Object fromString( String str )
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>          <strong class="jxr_keyword">throws</strong> ComponentConfigurationException;
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>  
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>      <strong class="jxr_keyword">protected</strong> Object fromExpression( <a name="PlexusConfiguration" href="../../../../../../../org/codehaus/plexus/configuration/PlexusConfiguration.html#PlexusConfiguration">PlexusConfiguration</a> configuration, <a name="ExpressionEvaluator" href="../../../../../../../org/codehaus/plexus/component/configurator/expression/ExpressionEvaluator.html#ExpressionEvaluator">ExpressionEvaluator</a> expressionEvaluator, Class type )
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>          <strong class="jxr_keyword">throws</strong> <a name="ComponentConfigurationException" href="../../../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a>
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>      {
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>          Object v = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>  
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>          String value = configuration.getValue( <strong class="jxr_keyword">null</strong> );
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>  
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>          <strong class="jxr_keyword">if</strong> ( value != <strong class="jxr_keyword">null</strong> &amp;&amp; value.length() &gt; 0 )
-<a class="jxr_linenumber" name="L52" href="#L52">52</a>          {
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>              <em class="jxr_comment">// Object is provided by an expression</em>
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>              <em class="jxr_comment">// This seems a bit ugly... canConvert really should return false in this instance, but it doesn't have the</em>
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>              <em class="jxr_comment">//   configuration to know better</em>
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>              <strong class="jxr_keyword">try</strong>
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>              {
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>                  <strong class="jxr_keyword">if</strong> ( expressionEvaluator instanceof <a name="TypeAwareExpressionEvaluator" href="../../../../../../../org/codehaus/plexus/component/configurator/expression/TypeAwareExpressionEvaluator.html#TypeAwareExpressionEvaluator">TypeAwareExpressionEvaluator</a> )
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>                  {
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>                      v = ( (<a name="TypeAwareExpressionEvaluator" href="../../../../../../../org/codehaus/plexus/component/configurator/expression/TypeAwareExpressionEvaluator.html#TypeAwareExpressionEvaluator">TypeAwareExpressionEvaluator</a>) expressionEvaluator ).evaluate( value, type );
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>                  }
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>                  <strong class="jxr_keyword">else</strong>
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>                  {
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>                      v = expressionEvaluator.evaluate( value );
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>                  }
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>              }
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>              <strong class="jxr_keyword">catch</strong> ( <a name="ExpressionEvaluationException" href="../../../../../../../org/codehaus/plexus/component/configurator/expression/ExpressionEvaluationException.html#ExpressionEvaluationException">ExpressionEvaluationException</a> e )
-<a class="jxr_linenumber" name="L68" href="#L68">68</a>              {
-<a class="jxr_linenumber" name="L69" href="#L69">69</a>                  String msg = <span class="jxr_string">"Error evaluating the expression '"</span> + value + <span class="jxr_string">"' for configuration value '"</span> +
-<a class="jxr_linenumber" name="L70" href="#L70">70</a>                      configuration.getName() + <span class="jxr_string">"'"</span>;
-<a class="jxr_linenumber" name="L71" href="#L71">71</a>                  <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentConfigurationException" href="../../../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a>( configuration, msg, e );
-<a class="jxr_linenumber" name="L72" href="#L72">72</a>              }
-<a class="jxr_linenumber" name="L73" href="#L73">73</a>          }
-<a class="jxr_linenumber" name="L74" href="#L74">74</a>  
-<a class="jxr_linenumber" name="L75" href="#L75">75</a>          <strong class="jxr_keyword">if</strong> ( v == <strong class="jxr_keyword">null</strong> )
-<a class="jxr_linenumber" name="L76" href="#L76">76</a>          {
-<a class="jxr_linenumber" name="L77" href="#L77">77</a>              value = configuration.getAttribute( <span class="jxr_string">"default-value"</span>, <strong class="jxr_keyword">null</strong> );
-<a class="jxr_linenumber" name="L78" href="#L78">78</a>  
-<a class="jxr_linenumber" name="L79" href="#L79">79</a>              <strong class="jxr_keyword">if</strong> ( value != <strong class="jxr_keyword">null</strong> &amp;&amp; value.length() &gt; 0 )
-<a class="jxr_linenumber" name="L80" href="#L80">80</a>              {
-<a class="jxr_linenumber" name="L81" href="#L81">81</a>                  <strong class="jxr_keyword">try</strong>
-<a class="jxr_linenumber" name="L82" href="#L82">82</a>                  {
-<a class="jxr_linenumber" name="L83" href="#L83">83</a>                      <strong class="jxr_keyword">if</strong> ( expressionEvaluator instanceof <a name="TypeAwareExpressionEvaluator" href="../../../../../../../org/codehaus/plexus/component/configurator/expression/TypeAwareExpressionEvaluator.html#TypeAwareExpressionEvaluator">TypeAwareExpressionEvaluator</a> )
-<a class="jxr_linenumber" name="L84" href="#L84">84</a>                      {
-<a class="jxr_linenumber" name="L85" href="#L85">85</a>                          v = ( (<a name="TypeAwareExpressionEvaluator" href="../../../../../../../org/codehaus/plexus/component/configurator/expression/TypeAwareExpressionEvaluator.html#TypeAwareExpressionEvaluator">TypeAwareExpressionEvaluator</a>) expressionEvaluator ).evaluate( value, type );
-<a class="jxr_linenumber" name="L86" href="#L86">86</a>                      }
-<a class="jxr_linenumber" name="L87" href="#L87">87</a>                      <strong class="jxr_keyword">else</strong>
-<a class="jxr_linenumber" name="L88" href="#L88">88</a>                      {
-<a class="jxr_linenumber" name="L89" href="#L89">89</a>                          v = expressionEvaluator.evaluate( value );
-<a class="jxr_linenumber" name="L90" href="#L90">90</a>                      }
-<a class="jxr_linenumber" name="L91" href="#L91">91</a>                  }
-<a class="jxr_linenumber" name="L92" href="#L92">92</a>                  <strong class="jxr_keyword">catch</strong> ( <a name="ExpressionEvaluationException" href="../../../../../../../org/codehaus/plexus/component/configurator/expression/ExpressionEvaluationException.html#ExpressionEvaluationException">ExpressionEvaluationException</a> e )
-<a class="jxr_linenumber" name="L93" href="#L93">93</a>                  {
-<a class="jxr_linenumber" name="L94" href="#L94">94</a>                      String msg = <span class="jxr_string">"Error evaluating the expression '"</span> + value + <span class="jxr_string">"' for configuration value '"</span> +
-<a class="jxr_linenumber" name="L95" href="#L95">95</a>                          configuration.getName() + <span class="jxr_string">"'"</span>;
-<a class="jxr_linenumber" name="L96" href="#L96">96</a>                      <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentConfigurationException" href="../../../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a>( configuration, msg, e );
-<a class="jxr_linenumber" name="L97" href="#L97">97</a>                  }
-<a class="jxr_linenumber" name="L98" href="#L98">98</a>              }
-<a class="jxr_linenumber" name="L99" href="#L99">99</a>          }
-<a class="jxr_linenumber" name="L100" href="#L100">100</a> 
-<a class="jxr_linenumber" name="L101" href="#L101">101</a>         <em class="jxr_comment">/*</em>
-<a class="jxr_linenumber" name="L102" href="#L102">102</a> <em class="jxr_comment">         * NOTE: We don't check the type here which would be ugly to do correctly (e.g. value=Short -&gt; type=int), the</em>
-<a class="jxr_linenumber" name="L103" href="#L103">103</a> <em class="jxr_comment">         * reflective setter/field injection will fail by itself when the type didn't match.</em>
-<a class="jxr_linenumber" name="L104" href="#L104">104</a> <em class="jxr_comment">         */</em>
-<a class="jxr_linenumber" name="L105" href="#L105">105</a> 
-<a class="jxr_linenumber" name="L106" href="#L106">106</a>         <strong class="jxr_keyword">return</strong> v;
-<a class="jxr_linenumber" name="L107" href="#L107">107</a>     }
-<a class="jxr_linenumber" name="L108" href="#L108">108</a> 
-<a class="jxr_linenumber" name="L109" href="#L109">109</a>     <strong class="jxr_keyword">public</strong> Object fromConfiguration( <a name="ConverterLookup" href="../../../../../../../org/codehaus/plexus/component/configurator/converters/lookup/ConverterLookup.html#ConverterLookup">ConverterLookup</a> converterLookup, <a name="PlexusConfiguration" href="../../../../../../../org/codehaus/plexus/configuration/PlexusConfiguration.html#PlexusConfiguration">PlexusConfiguration</a> configuration, Class type,
-<a class="jxr_linenumber" name="L110" href="#L110">110</a>                                      Class baseType, ClassLoader classLoader, <a name="ExpressionEvaluator" href="../../../../../../../org/codehaus/plexus/component/configurator/expression/ExpressionEvaluator.html#ExpressionEvaluator">ExpressionEvaluator</a> expressionEvaluator,
-<a class="jxr_linenumber" name="L111" href="#L111">111</a>                                      <a name="ConfigurationListener" href="../../../../../../../org/codehaus/plexus/component/configurator/ConfigurationListener.html#ConfigurationListener">ConfigurationListener</a> listener )
-<a class="jxr_linenumber" name="L112" href="#L112">112</a>         <strong class="jxr_keyword">throws</strong> <a name="ComponentConfigurationException" href="../../../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a>
-<a class="jxr_linenumber" name="L113" href="#L113">113</a>     {
-<a class="jxr_linenumber" name="L114" href="#L114">114</a>         <strong class="jxr_keyword">if</strong> ( configuration.getChildCount() &gt; 0 )
-<a class="jxr_linenumber" name="L115" href="#L115">115</a>         {
-<a class="jxr_linenumber" name="L116" href="#L116">116</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentConfigurationException" href="../../../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a>( <span class="jxr_string">"When configuring a basic element the configuration cannot "</span> +
-<a class="jxr_linenumber" name="L117" href="#L117">117</a>                 <span class="jxr_string">"contain any child elements. "</span> + <span class="jxr_string">"Configuration element '"</span> + configuration.getName() + <span class="jxr_string">"'."</span> );
-<a class="jxr_linenumber" name="L118" href="#L118">118</a>         }
-<a class="jxr_linenumber" name="L119" href="#L119">119</a> 
-<a class="jxr_linenumber" name="L120" href="#L120">120</a>         Object retValue = fromExpression( configuration, expressionEvaluator, type );
-<a class="jxr_linenumber" name="L121" href="#L121">121</a> 
-<a class="jxr_linenumber" name="L122" href="#L122">122</a>         <strong class="jxr_keyword">if</strong> ( retValue instanceof String )
-<a class="jxr_linenumber" name="L123" href="#L123">123</a>         {
-<a class="jxr_linenumber" name="L124" href="#L124">124</a>             <strong class="jxr_keyword">try</strong>
-<a class="jxr_linenumber" name="L125" href="#L125">125</a>             {
-<a class="jxr_linenumber" name="L126" href="#L126">126</a>                 retValue = fromString( (String) retValue );
-<a class="jxr_linenumber" name="L127" href="#L127">127</a>             }
-<a class="jxr_linenumber" name="L128" href="#L128">128</a>             <strong class="jxr_keyword">catch</strong> ( <a name="ComponentConfigurationException" href="../../../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a> e )
-<a class="jxr_linenumber" name="L129" href="#L129">129</a>             {
-<a class="jxr_linenumber" name="L130" href="#L130">130</a>                 <strong class="jxr_keyword">if</strong> ( e.getFailedConfiguration() == <strong class="jxr_keyword">null</strong> )
-<a class="jxr_linenumber" name="L131" href="#L131">131</a>                 {
-<a class="jxr_linenumber" name="L132" href="#L132">132</a>                     e.setFailedConfiguration( configuration );
-<a class="jxr_linenumber" name="L133" href="#L133">133</a>                 }
-<a class="jxr_linenumber" name="L134" href="#L134">134</a> 
-<a class="jxr_linenumber" name="L135" href="#L135">135</a>                 <strong class="jxr_keyword">throw</strong> e;
-<a class="jxr_linenumber" name="L136" href="#L136">136</a>             }
-<a class="jxr_linenumber" name="L137" href="#L137">137</a>         }
-<a class="jxr_linenumber" name="L138" href="#L138">138</a> 
-<a class="jxr_linenumber" name="L139" href="#L139">139</a>         <strong class="jxr_keyword">return</strong> retValue;
-<a class="jxr_linenumber" name="L140" href="#L140">140</a>     }
-<a class="jxr_linenumber" name="L141" href="#L141">141</a> }
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">abstract</strong> <strong class="jxr_keyword">class</strong> <a name="AbstractBasicConverter" href="../../../../../../../org/codehaus/plexus/component/configurator/converters/basic/AbstractBasicConverter.html#AbstractBasicConverter">AbstractBasicConverter</a> <strong class="jxr_keyword">extends</strong> <a name="AbstractConfigurationConverter" href="../../../../../../../org/codehaus/plexus/component/configurator/converters/AbstractConfigurationConverter.html#AbstractConfigurationConverter">AbstractConfigurationConverter</a> {
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>      <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">abstract</strong> Object fromString(String str) <strong class="jxr_keyword">throws</strong> ComponentConfigurationException;
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>      <strong class="jxr_keyword">protected</strong> Object fromExpression(
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>              <a name="PlexusConfiguration" href="../../../../../../../org/codehaus/plexus/configuration/PlexusConfiguration.html#PlexusConfiguration">PlexusConfiguration</a> configuration, <a name="ExpressionEvaluator" href="../../../../../../../org/codehaus/plexus/component/configurator/expression/ExpressionEvaluator.html#ExpressionEvaluator">ExpressionEvaluator</a> expressionEvaluator, Class type)
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>              <strong class="jxr_keyword">throws</strong> <a name="ComponentConfigurationException" href="../../../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a> {
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>          Object v = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>  
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>          String value = configuration.getValue(<strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>          <strong class="jxr_keyword">if</strong> (value != <strong class="jxr_keyword">null</strong> &amp;&amp; value.length() &gt; 0) {
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>              <em class="jxr_comment">// Object is provided by an expression</em>
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>              <em class="jxr_comment">// This seems a bit ugly... canConvert really should return false in this instance, but it doesn't have the</em>
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>              <em class="jxr_comment">//   configuration to know better</em>
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>              <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>                  <strong class="jxr_keyword">if</strong> (expressionEvaluator instanceof <a name="TypeAwareExpressionEvaluator" href="../../../../../../../org/codehaus/plexus/component/configurator/expression/TypeAwareExpressionEvaluator.html#TypeAwareExpressionEvaluator">TypeAwareExpressionEvaluator</a>) {
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>                      v = ((<a name="TypeAwareExpressionEvaluator" href="../../../../../../../org/codehaus/plexus/component/configurator/expression/TypeAwareExpressionEvaluator.html#TypeAwareExpressionEvaluator">TypeAwareExpressionEvaluator</a>) expressionEvaluator).evaluate(value, type);
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>                  } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>                      v = expressionEvaluator.evaluate(value);
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>                  }
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>              } <strong class="jxr_keyword">catch</strong> (<a name="ExpressionEvaluationException" href="../../../../../../../org/codehaus/plexus/component/configurator/expression/ExpressionEvaluationException.html#ExpressionEvaluationException">ExpressionEvaluationException</a> e) {
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>                  String msg = <span class="jxr_string">"Error evaluating the expression '"</span> + value + <span class="jxr_string">"' for configuration value '"</span>
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>                          + configuration.getName() + <span class="jxr_string">"'"</span>;
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>                  <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentConfigurationException" href="../../../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a>(configuration, msg, e);
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>              }
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>          }
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>  
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>          <strong class="jxr_keyword">if</strong> (v == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>              value = configuration.getAttribute(<span class="jxr_string">"default-value"</span>, <strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>  
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>              <strong class="jxr_keyword">if</strong> (value != <strong class="jxr_keyword">null</strong> &amp;&amp; value.length() &gt; 0) {
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>                  <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>                      <strong class="jxr_keyword">if</strong> (expressionEvaluator instanceof <a name="TypeAwareExpressionEvaluator" href="../../../../../../../org/codehaus/plexus/component/configurator/expression/TypeAwareExpressionEvaluator.html#TypeAwareExpressionEvaluator">TypeAwareExpressionEvaluator</a>) {
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>                          v = ((<a name="TypeAwareExpressionEvaluator" href="../../../../../../../org/codehaus/plexus/component/configurator/expression/TypeAwareExpressionEvaluator.html#TypeAwareExpressionEvaluator">TypeAwareExpressionEvaluator</a>) expressionEvaluator).evaluate(value, type);
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>                      } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>                          v = expressionEvaluator.evaluate(value);
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>                      }
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>                  } <strong class="jxr_keyword">catch</strong> (<a name="ExpressionEvaluationException" href="../../../../../../../org/codehaus/plexus/component/configurator/expression/ExpressionEvaluationException.html#ExpressionEvaluationException">ExpressionEvaluationException</a> e) {
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>                      String msg = <span class="jxr_string">"Error evaluating the expression '"</span> + value + <span class="jxr_string">"' for configuration value '"</span>
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>                              + configuration.getName() + <span class="jxr_string">"'"</span>;
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>                      <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentConfigurationException" href="../../../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a>(configuration, msg, e);
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>                  }
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>              }
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>          }
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>  
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>          <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>  <em class="jxr_comment">         * NOTE: We don't check the type here which would be ugly to do correctly (e.g. value=Short -&gt; type=int), the</em>
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>  <em class="jxr_comment">         * reflective setter/field injection will fail by itself when the type didn't match.</em>
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>  <em class="jxr_comment">         */</em>
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>  
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>          <strong class="jxr_keyword">return</strong> v;
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>      }
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>  
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>      <strong class="jxr_keyword">public</strong> Object fromConfiguration(
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>              <a name="ConverterLookup" href="../../../../../../../org/codehaus/plexus/component/configurator/converters/lookup/ConverterLookup.html#ConverterLookup">ConverterLookup</a> converterLookup,
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>              <a name="PlexusConfiguration" href="../../../../../../../org/codehaus/plexus/configuration/PlexusConfiguration.html#PlexusConfiguration">PlexusConfiguration</a> configuration,
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>              Class type,
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>              Class baseType,
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>              ClassLoader classLoader,
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>              <a name="ExpressionEvaluator" href="../../../../../../../org/codehaus/plexus/component/configurator/expression/ExpressionEvaluator.html#ExpressionEvaluator">ExpressionEvaluator</a> expressionEvaluator,
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>              <a name="ConfigurationListener" href="../../../../../../../org/codehaus/plexus/component/configurator/ConfigurationListener.html#ConfigurationListener">ConfigurationListener</a> listener)
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>              <strong class="jxr_keyword">throws</strong> <a name="ComponentConfigurationException" href="../../../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a> {
+<a class="jxr_linenumber" name="L100" href="#L100">100</a>         <strong class="jxr_keyword">if</strong> (configuration.getChildCount() &gt; 0) {
+<a class="jxr_linenumber" name="L101" href="#L101">101</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a name="ComponentConfigurationException" href="../../../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a>(<span class="jxr_string">"When configuring a basic element the configuration cannot "</span>
+<a class="jxr_linenumber" name="L102" href="#L102">102</a>                     + <span class="jxr_string">"contain any child elements. "</span> + <span class="jxr_string">"Configuration element '"</span> + configuration.getName() + <span class="jxr_string">"'."</span>);
+<a class="jxr_linenumber" name="L103" href="#L103">103</a>         }
+<a class="jxr_linenumber" name="L104" href="#L104">104</a> 
+<a class="jxr_linenumber" name="L105" href="#L105">105</a>         Object retValue = fromExpression(configuration, expressionEvaluator, type);
+<a class="jxr_linenumber" name="L106" href="#L106">106</a> 
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>         <strong class="jxr_keyword">if</strong> (retValue instanceof String) {
+<a class="jxr_linenumber" name="L108" href="#L108">108</a>             <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L109" href="#L109">109</a>                 retValue = fromString((String) retValue);
+<a class="jxr_linenumber" name="L110" href="#L110">110</a>             } <strong class="jxr_keyword">catch</strong> (<a name="ComponentConfigurationException" href="../../../../../../../org/codehaus/plexus/component/configurator/ComponentConfigurationException.html#ComponentConfigurationException">ComponentConfigurationException</a> e) {
+<a class="jxr_linenumber" name="L111" href="#L111">111</a>                 <strong class="jxr_keyword">if</strong> (e.getFailedConfiguration() == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L112" href="#L112">112</a>                     e.setFailedConfiguration(configuration);
+<a class="jxr_linenumber" name="L113" href="#L113">113</a>                 }
+<a class="jxr_linenumber" name="L114" href="#L114">114</a> 
+<a class="jxr_linenumber" name="L115" href="#L115">115</a>                 <strong class="jxr_keyword">throw</strong> e;
+<a class="jxr_linenumber" name="L116" href="#L116">116</a>             }
+<a class="jxr_linenumber" name="L117" href="#L117">117</a>         }
+<a class="jxr_linenumber" name="L118" href="#L118">118</a> 
+<a class="jxr_linenumber" name="L119" href="#L119">119</a>         <strong class="jxr_keyword">return</strong> retValue;
+<a class="jxr_linenumber" name="L120" href="#L120">120</a>     }
+<a class="jxr_linenumber" name="L121" href="#L121">121</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2001&#x2013;2022 <a href="https://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2001&#x2013;2023 <a href="https://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
 </body>
 </html>

@@ -12,25 +12,23 @@
 <a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> org.codehaus.plexus.component.repository.ComponentDescriptor;
 <a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> org.codehaus.plexus.lifecycle.LifecycleHandler;
 <a class="jxr_linenumber" name="L6" href="#L6">6</a>   
-<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="PerLookupComponentManagerFactory" href="../../../../../org/codehaus/plexus/component/manager/PerLookupComponentManagerFactory.html#PerLookupComponentManagerFactory">PerLookupComponentManagerFactory</a> <strong class="jxr_keyword">implements</strong> <a name="ComponentManagerFactory" href="../../../../../org/codehaus/plexus/component/manager/ComponentManagerFactory.html#ComponentManagerFactory">ComponentManagerFactory</a>
-<a class="jxr_linenumber" name="L8" href="#L8">8</a>   {
-<a class="jxr_linenumber" name="L9" href="#L9">9</a>       <strong class="jxr_keyword">public</strong> String getId()
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>      {
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>          <strong class="jxr_keyword">return</strong> <span class="jxr_string">"per-lookup"</span>;
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>      }
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>  
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>      @SuppressWarnings({<span class="jxr_string">"RawUseOfParameterizedType"</span>})
-<a class="jxr_linenumber" name="L15" href="#L15">15</a>      <strong class="jxr_keyword">public</strong> ComponentManager&lt;?&gt; createComponentManager( <a name="MutablePlexusContainer" href="../../../../../org/codehaus/plexus/MutablePlexusContainer.html#MutablePlexusContainer">MutablePlexusContainer</a> container,
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>                                                      <a name="LifecycleHandler" href="../../../../../org/codehaus/plexus/lifecycle/LifecycleHandler.html#LifecycleHandler">LifecycleHandler</a> lifecycleHandler,
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>                                                      <a name="ComponentDescriptor" href="../../../../../org/codehaus/plexus/component/repository/ComponentDescriptor.html#ComponentDescriptor">ComponentDescriptor</a> componentDescriptor,
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>                                                      String role,
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>                                                      String roleHint )
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>      {
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>          <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a name="PerLookupComponentManager" href="../../../../../org/codehaus/plexus/component/manager/PerLookupComponentManager.html#PerLookupComponentManager">PerLookupComponentManager</a>( container, lifecycleHandler, componentDescriptor, role, roleHint );
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>      }
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  }
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="PerLookupComponentManagerFactory" href="../../../../../org/codehaus/plexus/component/manager/PerLookupComponentManagerFactory.html#PerLookupComponentManagerFactory">PerLookupComponentManagerFactory</a> <strong class="jxr_keyword">implements</strong> <a name="ComponentManagerFactory" href="../../../../../org/codehaus/plexus/component/manager/ComponentManagerFactory.html#ComponentManagerFactory">ComponentManagerFactory</a> {
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>       <strong class="jxr_keyword">public</strong> String getId() {
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>           <strong class="jxr_keyword">return</strong> <span class="jxr_string">"per-lookup"</span>;
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>      }
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>      @SuppressWarnings({<span class="jxr_string">"RawUseOfParameterizedType"</span>})
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>      <strong class="jxr_keyword">public</strong> ComponentManager&lt;?&gt; createComponentManager(
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>              <a name="MutablePlexusContainer" href="../../../../../org/codehaus/plexus/MutablePlexusContainer.html#MutablePlexusContainer">MutablePlexusContainer</a> container,
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>              <a name="LifecycleHandler" href="../../../../../org/codehaus/plexus/lifecycle/LifecycleHandler.html#LifecycleHandler">LifecycleHandler</a> lifecycleHandler,
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>              <a name="ComponentDescriptor" href="../../../../../org/codehaus/plexus/component/repository/ComponentDescriptor.html#ComponentDescriptor">ComponentDescriptor</a> componentDescriptor,
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>              String role,
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>              String roleHint) {
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>          <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a name="PerLookupComponentManager" href="../../../../../org/codehaus/plexus/component/manager/PerLookupComponentManager.html#PerLookupComponentManager">PerLookupComponentManager</a>(container, lifecycleHandler, componentDescriptor, role, roleHint);
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>      }
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2001&#x2013;2022 <a href="https://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2001&#x2013;2023 <a href="https://codehaus-plexus.github.io/">Codehaus Plexus</a>. All rights reserved.</div>
 </body>
 </html>
