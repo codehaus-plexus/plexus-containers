@@ -47,7 +47,8 @@
       <plugin>
         <groupId>org.codehaus.modello</groupId>
         <artifactId>modello-maven-plugin</artifactId>
-        <version>2.1.1</version>
+        <!-- do not upgrade, as it breaks site generation -->
+        <version>1.11</version>
         <configuration>
           <models>
             <model>src/main/mdo/components.mdo</model>
