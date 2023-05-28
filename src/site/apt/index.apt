@@ -33,3 +33,5 @@ Overview
   Plexus Containers is deprecated, replaced by {{{https://www.eclipse.org/sisu/}Eclipse Sisu}}
   ({{{https://github.com/eclipse/sisu.inject}sisu.inject}}, {{{https://github.com/eclipse/sisu.plexus}sisu.plexus}}, {{{https://github.com/eclipse/sisu.mojos}sisu.mojos}}):
   see each Plexus Containers component (container, Maven plugin and annotations) documentation for more details on how to replace each one.
+
+   See also {{{https://maven.apache.org/maven-jsr330.html}Maven & JSR-330}} for more details in Maven context.
