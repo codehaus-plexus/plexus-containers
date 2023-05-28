@@ -35,6 +35,9 @@ Overview
 
 * Deprecated
 
-  <<<plexus-default-container>>> is replaced by {{{https://github.com/eclipse/sisu.inject}Sisu container}}
-  and its {{{https://github.com/eclipse/sisu.plexus}Plexus shim <<<org.eclipse.sisu.plexus>>>}}
-  ({{{https://eclipse.github.io/sisu.plexus/apidocs/reference/packages.html}javadoc}}).
+  <<<plexus-default-container>>> is replaced by:
+
+  * {{{https://github.com/eclipse/sisu.inject}Sisu container}}, reading <<<META-INF/sisu/javax.inject.Named>>> index files,
+
+  * and optional {{{https://github.com/eclipse/sisu.plexus}Plexus shim <<<org.eclipse.sisu.plexus>>>}} for compatibility with legacy Plexus <<<META-INF/plexus/components.xml>>>.
+  See also Plexus shim {{{https://eclipse.github.io/sisu.plexus/apidocs/reference/packages.html}javadoc}}.

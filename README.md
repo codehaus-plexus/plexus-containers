@@ -7,7 +7,7 @@ Plexus IoC Container core with companion tools.
 
 ## Deprecated
 
-Plexus IoC Container is replaced by [Eclipse Sisu](https://www.eclipse.org/sisu/).
+Plexus IoC Container is replaced by [Eclipse Sisu](https://www.eclipse.org/sisu/): [sisu.inject](https://github.com/eclipse/sisu.inject), [sisu.plexus](https://github.com/eclipse/sisu.plexus), [sisu.mojos](https://github.com/eclipse/sisu.mojos/).
 
 ## Attention
 
