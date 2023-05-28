@@ -64,3 +64,8 @@ ${project.name}
   Of course, patches are welcome, too. Contributors can check out the project from our
   {{{./source-repository.html}source repository}} and will find supplementary information in the
   {{{http://maven.apache.org/guides/development/guide-helping.html}guide to helping with Maven}}.
+
+* Deprecated
+
+  When using {{{https://www.eclipse.org/sisu/}Eclipse Sisu}} with {{{https://github.com/eclipse/sisu.plexus/wiki/Plexus-to-JSR330}JSR-330 <<<javax.inject>>> annotations}},
+  use {{{https://github.com/eclipse/sisu.mojos/} <<<sisu-maven-plugin>>>}} instead of Plexus Component Metadata Maven Plugin.
