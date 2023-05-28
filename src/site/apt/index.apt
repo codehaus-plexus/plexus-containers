@@ -1,5 +1,5 @@
  -----
- plexus-containers
+ plexus-containers (deprecated)
  -----
  Hervé Boutemy
  -----
@@ -16,7 +16,7 @@ Overview
 
  and companion tools:
  
-  * {{{./plexus-component-metadata}plexus-component-metadata}}(-maven-plugin) is a Maven plugin to generate plexus <<<{{{./plexus-container-default/plexus-components.html}component.xml}}>>> from
+  * {{{./plexus-component-metadata}plexus-component-metadata}}(-maven-plugin) is a Maven plugin to generate Plexus' <<<{{{./plexus-container-default/plexus-components.html}component.xml}}>>> from
   source javadoc tags and Java 5 class annotations,
 
   * {{{./plexus-component-annotations}plexus-component-annotations}} provides the Java 5 annotations for plexus components,
@@ -30,4 +30,6 @@ Overview
   
 * Deprecated
 
-  Plexus Containers is deprecated, replaced by {{{https://www.eclipse.org/sisu/}Eclipse Sisu}}: see each component documentation for more details.
+  Plexus Containers is deprecated, replaced by {{{https://www.eclipse.org/sisu/}Eclipse Sisu}}
+  ({{{https://github.com/eclipse/sisu.inject}sisu.inject}}, {{{https://github.com/eclipse/sisu.plexus}sisu.plexus}}, {{{https://github.com/eclipse/sisu.mojos}sisu.mojos}}):
+  see each Plexus Containers component (container, Maven plugin and annotations) documentation for more details on how to replace each one.
