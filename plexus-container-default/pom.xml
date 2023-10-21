@@ -13,6 +13,36 @@
   <name>Plexus :: Default Container (deprecated)</name>
   <description>The Plexus IoC container API and its default implementation.</description>
 
+  <properties>
+    <classWorldsVersion>2.7.0</classWorldsVersion>
+    <xbeanReflectVersion>4.23</xbeanReflectVersion>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.codehaus.plexus</groupId>
+        <artifactId>plexus-classworlds</artifactId>
+        <version>${classWorldsVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.codehaus.plexus</groupId>
+        <artifactId>plexus-utils</artifactId>
+        <version>${plexusUtilsVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.xbean</groupId>
+        <artifactId>xbean-reflect</artifactId>
+        <version>${xbeanReflectVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.13.2</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <dependencies>
     <dependency>
       <groupId>org.codehaus.plexus</groupId>
