@@ -15,7 +15,7 @@
 
   <properties>
     <classWorldsVersion>2.7.0</classWorldsVersion>
-    <xbeanReflectVersion>4.23</xbeanReflectVersion>
+    <xbeanReflectVersion>4.24</xbeanReflectVersion>
   </properties>
 
   <dependencyManagement>
