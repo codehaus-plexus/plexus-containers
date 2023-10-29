@@ -43,14 +43,12 @@ class QDoxComponentGleanerTest {
 
     private JavaProjectBuilder builder;
 
-    // @Override
     @BeforeEach
     public void setUp() {
         gleaner = new QDoxComponentGleaner();
         builder = new JavaProjectBuilder();
     }
 
-    // @Override
     @AfterEach
     protected void tearDown() {
         gleaner = null;
