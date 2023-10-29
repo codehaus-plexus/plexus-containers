@@ -18,20 +18,24 @@ package org.codehaus.plexus.metadata.gleaner;
 
 import java.util.List;
 
-import junit.framework.TestCase;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
 import org.codehaus.plexus.component.repository.ComponentRequirement;
 import org.codehaus.plexus.component.repository.ComponentRequirementList;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
 import org.codehaus.plexus.metadata.gleaner.ann.AnnotatedComponent;
 import org.codehaus.plexus.metadata.gleaner.ann.AnnotatedComponentRole;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Eugene Kuleshov
  */
-public class AnnotationComponentGleanerTest extends TestCase {
+class AnnotationComponentGleanerTest {
 
-    public void testGlean() throws Exception {
+    @Test
+    void testGlean() throws Exception {
         AnnotationComponentGleaner gleaner = new AnnotationComponentGleaner();
         Class<AnnotatedComponent> c = AnnotatedComponent.class;
         ComponentDescriptor<?> descriptor = gleaner.glean(c.getName(), c.getClassLoader());
@@ -40,7 +44,7 @@ public class AnnotationComponentGleanerTest extends TestCase {
         assertEquals(AnnotatedComponentRole.class.getName(), descriptor.getRole());
 
         List<ComponentRequirement> requirements = descriptor.getRequirements();
-        assertEquals(requirements.toString(), 2, requirements.size());
+        assertEquals(2, requirements.size(), requirements.toString());
 
         ComponentRequirement requirement = requirements.get(0);
         assertEquals("dependency", requirement.getFieldName());

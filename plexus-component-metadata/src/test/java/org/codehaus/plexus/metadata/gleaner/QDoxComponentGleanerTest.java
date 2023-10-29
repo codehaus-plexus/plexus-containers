@@ -21,41 +21,43 @@ import java.util.List;
 import com.thoughtworks.qdox.JavaProjectBuilder;
 import com.thoughtworks.qdox.model.JavaClass;
 import com.thoughtworks.qdox.model.JavaSource;
-import org.codehaus.plexus.PlexusTestCase;
 import org.codehaus.plexus.component.repository.ComponentDescriptor;
 import org.codehaus.plexus.component.repository.ComponentRequirement;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Tests for the {@link QDoxComponentGleaner} class.
  *
  * @version $Rev$ $Date$
  */
-public class QDoxComponentGleanerTest extends PlexusTestCase {
+class QDoxComponentGleanerTest {
     private QDoxComponentGleaner gleaner;
 
     private JavaProjectBuilder builder;
 
-    // @Override
-    protected void setUp() throws Exception {
-        super.setUp();
-
+    @BeforeEach
+    public void setUp() {
         gleaner = new QDoxComponentGleaner();
         builder = new JavaProjectBuilder();
     }
 
-    // @Override
-    protected void tearDown() throws Exception {
+    @AfterEach
+    protected void tearDown() {
         gleaner = null;
         builder = null;
-
-        super.tearDown();
     }
 
     private JavaSource addSource(final String name) throws IOException {
         File url = new File(
-                getBasedir(),
-                "src/test/java/" + getClass().getPackage().getName().replace('.', '/') + "/" + name);
+                ".", "src/test/java/" + this.getClass().getPackage().getName().replace('.', '/') + "/" + name);
         assertTrue(url.exists());
         return builder.addSource(url);
     }
@@ -87,12 +89,14 @@ public class QDoxComponentGleanerTest extends PlexusTestCase {
         return glean(name, null);
     }
 
-    public void testNoAnnotationsClass() throws Exception {
+    @Test
+    void testNoAnnotationsClass() throws Exception {
         ComponentDescriptor<?> component = glean("NoAnnotationsClass.java");
         assertNull(component);
     }
 
-    public void testAbstractClass() throws Exception {
+    @Test
+    void testAbstractClass() throws Exception {
         ComponentDescriptor<?> component = glean("AbstractClass.java");
         assertNull(component);
     }
@@ -104,12 +108,14 @@ public class QDoxComponentGleanerTest extends PlexusTestCase {
     }
     */
 
-    public void testNoAnnotationsIntf() throws Exception {
+    @Test
+    void testNoAnnotationsIntf() throws Exception {
         ComponentDescriptor<?> component = glean("NoAnnotationsIntf.java");
         assertNull(component);
     }
 
-    public void testMyComponent() throws Exception {
+    @Test
+    void testMyComponent() throws Exception {
         addSource("ChildComponent.java");
         ComponentDescriptor<?> component = glean("MyComponent.java");
         assertNotNull(component);

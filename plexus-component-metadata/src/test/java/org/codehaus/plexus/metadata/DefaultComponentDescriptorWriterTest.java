@@ -16,6 +16,8 @@
 
 package org.codehaus.plexus.metadata;
 
+import javax.inject.Inject;
+
 import java.io.File;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -23,7 +25,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.codehaus.plexus.PlexusTestCase;
 import org.codehaus.plexus.classworlds.ClassWorld;
 import org.codehaus.plexus.classworlds.realm.ClassRealm;
 import org.codehaus.plexus.component.repository.*;
@@ -33,38 +34,36 @@ import org.codehaus.plexus.configuration.xml.XmlPlexusConfiguration;
 import org.codehaus.plexus.metadata.merge.ComponentsXmlMerger;
 import org.codehaus.plexus.metadata.merge.Merger;
 import org.codehaus.plexus.metadata.merge.PlexusXmlMerger;
+import org.codehaus.plexus.testing.PlexusTest;
 import org.codehaus.plexus.util.xml.Xpp3DomBuilder;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Test for the {@link DefaultComponentDescriptorWriter} class.
  *
  * @version $Rev$ $Date$
  */
-public class DefaultComponentDescriptorWriterTest extends PlexusTestCase {
+@PlexusTest
+class DefaultComponentDescriptorWriterTest {
+
+    @Inject
     private DefaultComponentDescriptorWriter descriptorWriter;
 
-    // @Override
-    protected void setUp() throws Exception {
-        super.setUp();
+    @Inject
+    private MetadataGenerator generator;
 
-        descriptorWriter = (DefaultComponentDescriptorWriter) lookup(ComponentDescriptorWriter.class);
-        assertNotNull(descriptorWriter);
-    }
-
-    // @Override
-    protected void tearDown() throws Exception {
-        descriptorWriter = null;
-
-        super.tearDown();
-    }
-
-    public void testBasic() throws Exception {
+    @Test
+    void testBasic() throws Exception {
         ComponentSetDescriptor set = new ComponentSetDescriptor();
 
-        ComponentDescriptor component = new ComponentDescriptor();
+        ComponentDescriptor<String> component = new ComponentDescriptor<>();
         component.setImplementation("java.lang.String");
         component.setRole("foo");
         component.setRoleHint("bar");
@@ -105,8 +104,8 @@ public class DefaultComponentDescriptorWriterTest extends PlexusTestCase {
         //
     }
 
-    public void testComponentsOrder() throws Exception {
-        MetadataGenerator generator = lookup(MetadataGenerator.class);
+    @Test
+    void testComponentsOrder() throws Exception {
         assertNotNull(generator);
 
         MetadataGenerationRequest request = new MetadataGenerationRequest();
@@ -118,58 +117,52 @@ public class DefaultComponentDescriptorWriterTest extends PlexusTestCase {
 
         generator.generateDescriptor(request);
 
-        assertTrue("Descriptor not generated", request.outputFile.exists());
+        assertTrue(request.outputFile.exists(), "Descriptor not generated");
 
         Document doc = new SAXBuilder().build(request.outputFile);
 
         // check if the components are sorted by role+impl
         List<Element> components = doc.getRootElement().getChild("components").getChildren();
-        assertEquals("Number of components", 5, components.size());
+        assertEquals(5, components.size(), "Number of components");
 
         assertEquals(
-                "Component 1 role",
                 ComponentDescriptorExtractor.class.getName(),
-                components.get(0).getChild("role").getText());
+                components.get(0).getChild("role").getText(),
+                "Component 1 role");
         assertEquals(
-                "Component 1 impl",
                 ClassComponentDescriptorExtractor.class.getName(),
-                components.get(0).getChild("implementation").getText());
+                components.get(0).getChild("implementation").getText(),
+                "Component 1 impl");
 
         assertEquals(
-                "Component 2 role",
                 ComponentDescriptorExtractor.class.getName(),
-                components.get(1).getChild("role").getText());
+                components.get(1).getChild("role").getText(),
+                "Component 2 role");
         assertEquals(
-                "Component 2 impl",
                 SourceComponentDescriptorExtractor.class.getName(),
-                components.get(1).getChild("implementation").getText());
+                components.get(1).getChild("implementation").getText(),
+                "Component 2 impl");
 
         assertEquals(
-                "Component 3 role",
                 MetadataGenerator.class.getName(),
-                components.get(2).getChild("role").getText());
+                components.get(2).getChild("role").getText(),
+                "Component 3 role");
         assertEquals(
-                "Component 3 impl",
                 DefaultMetadataGenerator.class.getName(),
-                components.get(2).getChild("implementation").getText());
+                components.get(2).getChild("implementation").getText(),
+                "Component 3 impl");
 
+        assertEquals(Merger.class.getName(), components.get(3).getChild("role").getText(), "Component 4 role");
         assertEquals(
-                "Component 4 role",
-                Merger.class.getName(),
-                components.get(3).getChild("role").getText());
-        assertEquals(
-                "Component 4 impl",
                 ComponentsXmlMerger.class.getName(),
-                components.get(3).getChild("implementation").getText());
+                components.get(3).getChild("implementation").getText(),
+                "Component 4 impl");
 
+        assertEquals(Merger.class.getName(), components.get(4).getChild("role").getText(), "Component 5 role");
         assertEquals(
-                "Component 5 role",
-                Merger.class.getName(),
-                components.get(4).getChild("role").getText());
-        assertEquals(
-                "Component 5 impl",
                 PlexusXmlMerger.class.getName(),
-                components.get(4).getChild("implementation").getText());
+                components.get(4).getChild("implementation").getText(),
+                "Component 5 impl");
     }
 
     // TODO copied from PlexusTools.buildConfiguration() - find a better way to do this
