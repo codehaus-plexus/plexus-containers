@@ -3,7 +3,7 @@ Plexus Containers Release Notes
 
 Plexus Containers 2.2.0
 ---------------------
-Plexus Containers 2.2.0 requires Java 8 and Maven 3.2.5+
+Plexus Containers 2.2.0 requires Java 8 and Maven 3.6.3+
 
 ### Improvements
 * Drop deprecated plexus-container-default artefact
